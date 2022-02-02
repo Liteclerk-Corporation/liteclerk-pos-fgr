@@ -51,7 +51,7 @@ namespace EasyPOS.Controllers
                                 PriceLevel = d.PriceLevel
                             };
 
-            return customers.OrderByDescending(d => d.Id).ToList();
+            return customers.OrderBy(d => d.Customer).ToList();
         }
 
         // ===============
