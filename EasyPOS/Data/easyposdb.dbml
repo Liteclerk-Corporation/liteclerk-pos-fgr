@@ -905,7 +905,7 @@
       <Column Name="Price2LessTax" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
       <Column Name="PriceSplitPercentage" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
       <Column Name="IsPrinted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="BodegaItemQty" Type="System.Decimal" DbType="Decimal(18,5)" CanBeNull="true" />
+      <Column Name="BodegaItemQty" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
       <Column Name="IsDelivery" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="DeliveryStatus" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="MstAccount_TrnSalesLine" Member="MstAccount" ThisKey="SalesAccountId" OtherKey="Id" Type="MstAccount" IsForeignKey="true" />

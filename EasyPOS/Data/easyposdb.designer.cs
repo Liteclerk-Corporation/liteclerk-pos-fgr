@@ -21714,7 +21714,7 @@ namespace EasyPOS.Data
 		
 		private System.Nullable<bool> _IsPrinted;
 		
-		private System.Nullable<decimal> _BodegaItemQty;
+		private decimal _BodegaItemQty;
 		
 		private System.Nullable<bool> _IsDelivery;
 		
@@ -21798,7 +21798,7 @@ namespace EasyPOS.Data
     partial void OnPriceSplitPercentageChanged();
     partial void OnIsPrintedChanging(System.Nullable<bool> value);
     partial void OnIsPrintedChanged();
-    partial void OnBodegaItemQtyChanging(System.Nullable<decimal> value);
+    partial void OnBodegaItemQtyChanging(decimal value);
     partial void OnBodegaItemQtyChanged();
     partial void OnIsDeliveryChanging(System.Nullable<bool> value);
     partial void OnIsDeliveryChanged();
@@ -22401,8 +22401,8 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BodegaItemQty", DbType="Decimal(18,5)")]
-		public System.Nullable<decimal> BodegaItemQty
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BodegaItemQty", DbType="Decimal(18,5) NOT NULL")]
+		public decimal BodegaItemQty
 		{
 			get
 			{
