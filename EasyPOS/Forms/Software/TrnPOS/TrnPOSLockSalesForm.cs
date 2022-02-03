@@ -181,7 +181,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         {
                             trnPOSBarcodeDetailForm.trnSalesEntity.CustomerCode = customerCode;
                             trnPOSBarcodeDetailForm.trnSalesEntity.Customer = customerName;
-                            trnPOSBarcodeDetailForm.trnSalesEntity.Remarks = newSalesEntity.Remarks;
                             trnSalesEntity.CollectedAmount = newSalesEntity.CollectedAmount;
                             trnSalesEntity.OrderChangeAmount = newSalesEntity.OrderChangeAmount;
 
@@ -209,6 +208,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             trnPOSTouchDetailForm.trnSalesEntity.TermId = newSalesEntity.TermId;
                             trnPOSTouchDetailForm.trnSalesEntity.Remarks = newSalesEntity.Remarks;
                             trnPOSTouchDetailForm.trnSalesEntity.SalesAgent = newSalesEntity.SalesAgent;
+                        }
+
+                        if (Modules.SysCurrentModule.GetCurrentSettings().DisableLockTender == true)
+                        {
+                            trnPOSBarcodeDetailForm.buttonTender.Enabled = false;
                         }
 
                         Close();
@@ -246,7 +250,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     {
                         trnPOSBarcodeDetailForm.trnSalesEntity.CustomerCode = customerCode;
                         trnPOSBarcodeDetailForm.trnSalesEntity.Customer = customerName;
-                        trnPOSBarcodeDetailForm.trnSalesEntity.Remarks = newSalesEntity.Remarks;
                         trnSalesEntity.CollectedAmount = newSalesEntity.CollectedAmount;
                         trnSalesEntity.OrderChangeAmount = newSalesEntity.OrderChangeAmount;
 
