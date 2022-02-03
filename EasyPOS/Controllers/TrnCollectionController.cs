@@ -91,7 +91,7 @@ namespace EasyPOS.Controllers
                                Customer = d.Customer
                            };
 
-            return customer.ToList();
+            return customer.OrderBy(d => d.Customer).ToList();
         }
 
         // ==========================

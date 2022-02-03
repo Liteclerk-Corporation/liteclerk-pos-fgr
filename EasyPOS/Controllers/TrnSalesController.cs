@@ -1746,9 +1746,22 @@ namespace EasyPOS.Controllers
                         }
                         
                     }
-                    else if(customerSales.FirstOrDefault().MstCustomer.CreditLimit == 0)
+                    else
                     {
-                        return new String[] { "Exceeds Credit Limit.", "0" };
+                        var customerCreditLimit = from d in db.MstCustomers
+                                            where d.Id == objSales.CustomerId
+                                            select d;
+                        if (customerCreditLimit.FirstOrDefault().CreditLimit == 0)
+                        {
+                            return new String[] { "Exceeds Credit Limit.", "0" };
+                        }
+                        else
+                        {
+                            if (objSales.Amount > customerCreditLimit.FirstOrDefault().CreditLimit)
+                            {
+                                return new String[] { "Exceeds Credit Limit.", "0" };
+                            }
+                        }
                     }
 
                     var lockSales = sales.FirstOrDefault();
