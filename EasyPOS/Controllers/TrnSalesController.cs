@@ -1708,6 +1708,7 @@ namespace EasyPOS.Controllers
 
                         var previousSalesBalance = from d in customerSales
                                             where d.Id != salesId
+                                            && d.IsLocked == true
                                             && d.BalanceAmount > 0
                                             select d;
 
@@ -1744,6 +1745,10 @@ namespace EasyPOS.Controllers
                             }
                         }
                         
+                    }
+                    else if(customerSales.FirstOrDefault().MstCustomer.CreditLimit == 0)
+                    {
+                        return new String[] { "Exceeds Credit Limit.", "0" };
                     }
 
                     var lockSales = sales.FirstOrDefault();

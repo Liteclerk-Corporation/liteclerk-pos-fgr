@@ -49,6 +49,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
             trnSalesEntity = salesEntity;
 
             GetTermList();
+
+            if (Modules.SysCurrentModule.GetCurrentSettings().ChangeComputationOnLock == true)
+            {
+                textBoxTenderedAmount.Enabled = true;
+            }
+            else
+            {
+                textBoxTenderedAmount.Enabled = false;
+            }
         }
         public string SetLabel(string label)
         {
@@ -149,7 +158,74 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if ((Convert.ToDecimal(textBoxTenderedAmount.Text) > 0 && Convert.ToDecimal(textBoxTenderedAmount.Text) >= trnSalesEntity.Amount) && textBoxTenderedAmount.Text != "")
+            if (Modules.SysCurrentModule.GetCurrentSettings().ChangeComputationOnLock == true)
+            {
+                if ((Convert.ToDecimal(textBoxTenderedAmount.Text) > 0 && Convert.ToDecimal(textBoxTenderedAmount.Text) >= trnSalesEntity.Amount) && textBoxTenderedAmount.Text != "")
+                {
+                    Entities.TrnSalesEntity newSalesEntity = new Entities.TrnSalesEntity()
+                    {
+                        CustomerId = Convert.ToInt32(comboBoxTenderSalesCustomer.SelectedValue),
+                        TermId = Convert.ToInt32(comboBoxTenderSalesTerms.SelectedValue),
+                        Remarks = textBoxTenderSalesRemarks.Text,
+                        SalesAgent = Convert.ToInt32(comboBoxTenderSalesUsers.SelectedValue),
+                        Amount = trnSalesEntity.Amount,
+                        CollectedAmount = Convert.ToDecimal(textBoxTenderedAmount.Text),
+                        OrderChangeAmount = Convert.ToDecimal(textBoxTenderedAmount.Text) - trnSalesEntity.Amount,
+                    };
+
+                    Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
+                    String[] updateSales = trnPOSSalesController.LockSales(trnSalesEntity.Id, newSalesEntity);
+                    if (updateSales[1].Equals("0") == false)
+                    {
+                        if (trnPOSBarcodeDetailForm != null)
+                        {
+                            trnPOSBarcodeDetailForm.trnSalesEntity.CustomerCode = customerCode;
+                            trnPOSBarcodeDetailForm.trnSalesEntity.Customer = customerName;
+                            trnPOSBarcodeDetailForm.trnSalesEntity.Remarks = newSalesEntity.Remarks;
+                            trnSalesEntity.CollectedAmount = newSalesEntity.CollectedAmount;
+                            trnSalesEntity.OrderChangeAmount = newSalesEntity.OrderChangeAmount;
+
+                            trnPOSBarcodeDetailForm.GetSalesDetail();
+                            trnPOSBarcodeDetailForm.LockComponents(true);
+
+                            trnPOSBarcodeDetailForm.trnSalesEntity.CustomerId = newSalesEntity.CustomerId;
+                            trnPOSBarcodeDetailForm.trnSalesEntity.TermId = newSalesEntity.TermId;
+                            trnPOSBarcodeDetailForm.trnSalesEntity.Remarks = newSalesEntity.Remarks;
+                            trnPOSBarcodeDetailForm.trnSalesEntity.SalesAgent = newSalesEntity.SalesAgent;
+                            trnSalesEntity.CollectedAmount = newSalesEntity.CollectedAmount;
+                            trnSalesEntity.OrderChangeAmount = newSalesEntity.OrderChangeAmount;
+                        }
+
+                        if (trnPOSTouchDetailForm != null)
+                        {
+                            trnPOSTouchDetailForm.trnSalesEntity.CustomerCode = customerCode;
+                            trnPOSTouchDetailForm.trnSalesEntity.Customer = customerName;
+                            trnPOSTouchDetailForm.trnSalesEntity.Remarks = newSalesEntity.Remarks;
+
+                            trnPOSTouchDetailForm.GetSalesDetail();
+                            trnPOSTouchDetailForm.LockComponents(true);
+
+                            trnPOSTouchDetailForm.trnSalesEntity.CustomerId = newSalesEntity.CustomerId;
+                            trnPOSTouchDetailForm.trnSalesEntity.TermId = newSalesEntity.TermId;
+                            trnPOSTouchDetailForm.trnSalesEntity.Remarks = newSalesEntity.Remarks;
+                            trnPOSTouchDetailForm.trnSalesEntity.SalesAgent = newSalesEntity.SalesAgent;
+                        }
+
+                        Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show(updateSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Tendered Amount!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    textBoxTenderedAmount.Focus();
+                    textBoxTenderedAmount.SelectAll();
+                }
+            }
+            else
             {
                 Entities.TrnSalesEntity newSalesEntity = new Entities.TrnSalesEntity()
                 {
@@ -158,8 +234,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     Remarks = textBoxTenderSalesRemarks.Text,
                     SalesAgent = Convert.ToInt32(comboBoxTenderSalesUsers.SelectedValue),
                     Amount = trnSalesEntity.Amount,
-                    CollectedAmount = Convert.ToDecimal(textBoxTenderedAmount.Text),
-                    OrderChangeAmount = Convert.ToDecimal(textBoxTenderedAmount.Text) - trnSalesEntity.Amount,
+                    CollectedAmount = 0,
+                    OrderChangeAmount = 0,
                 };
 
                 Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
@@ -207,12 +283,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     MessageBox.Show(updateSales[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            else
-            {
-                MessageBox.Show("Invalid Tendered Amount!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                textBoxTenderedAmount.Focus();
-                textBoxTenderedAmount.SelectAll();
-            }
+
         }
 
         private void textBoxCustomerCode_KeyDown(object sender, KeyEventArgs e)
