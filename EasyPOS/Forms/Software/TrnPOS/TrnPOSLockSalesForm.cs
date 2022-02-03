@@ -330,16 +330,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                         break;
                     }
-                case Keys.Enter:
-                    {
-                        if (buttonSave.Enabled == true)
-                        {
-                            buttonSave.PerformClick();
-                            Focus();
-                        }
+                //case Keys.Enter:
+                //    {
+                //        if (buttonSave.Enabled == true)
+                //        {
+                //            buttonSave.PerformClick();
+                //            Focus();
+                //        }
 
-                        break;
-                    }
+                //        break;
+                //    }
                 default:
                     {
                         break;
