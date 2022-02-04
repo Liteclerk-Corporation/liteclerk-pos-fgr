@@ -43,7 +43,5 @@ namespace EasyPOS.Entities
         public String TableCode { get; set; }
         public Boolean? IsPrinted { get; set; }
         public Decimal BodegaItemQty { get; set; }
-        public Boolean? IsDelivery { get; set; }
-        public String DeliveryStatus { get; set; }
     }
 }

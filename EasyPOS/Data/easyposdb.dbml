@@ -1,20 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="easypos" Class="easyposdbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=(local);Initial Catalog=easypos;Persist Security Info=True;User ID=sa" SettingsObjectName="EasyPOS.Properties.Settings" SettingsPropertyName="easyposConnectionString3" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.IntCloudSettings" Member="IntCloudSettings">
-    <Type Name="IntCloudSetting">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="BranchCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="UserCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="PostUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PostSupplierId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="UseItemPrice" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
-      <Column Name="Domain" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="LogFileLocation" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
-      <Column Name="Application" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Association Name="MstSupplier_IntCloudSetting" Member="MstSupplier" ThisKey="PostSupplierId" OtherKey="Id" Type="MstSupplier" IsForeignKey="true" />
-      <Association Name="MstUser_IntCloudSetting" Member="MstUser" ThisKey="PostUserId" OtherKey="Id" Type="MstUser" IsForeignKey="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.TrnStockOutLine" Member="TrnStockOutLines">
     <Type Name="TrnStockOutLine">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -29,6 +14,21 @@
       <Association Name="MstItem_TrnStockOutLine" Member="MstItem" ThisKey="ItemId" OtherKey="Id" Type="MstItem" IsForeignKey="true" />
       <Association Name="MstUnit_TrnStockOutLine" Member="MstUnit" ThisKey="UnitId" OtherKey="Id" Type="MstUnit" IsForeignKey="true" />
       <Association Name="TrnStockOut_TrnStockOutLine" Member="TrnStockOut" ThisKey="StockOutId" OtherKey="Id" Type="TrnStockOut" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.IntCloudSettings" Member="IntCloudSettings">
+    <Type Name="IntCloudSetting">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BranchCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UserCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PostUserId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PostSupplierId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UseItemPrice" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="Domain" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="LogFileLocation" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="Application" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Association Name="MstSupplier_IntCloudSetting" Member="MstSupplier" ThisKey="PostSupplierId" OtherKey="Id" Type="MstSupplier" IsForeignKey="true" />
+      <Association Name="MstUser_IntCloudSetting" Member="MstUser" ThisKey="PostUserId" OtherKey="Id" Type="MstUser" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.MstAccount" Member="MstAccounts">
@@ -906,8 +906,6 @@
       <Column Name="PriceSplitPercentage" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
       <Column Name="IsPrinted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="BodegaItemQty" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
-      <Column Name="IsDelivery" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="DeliveryStatus" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="MstAccount_TrnSalesLine" Member="MstAccount" ThisKey="SalesAccountId" OtherKey="Id" Type="MstAccount" IsForeignKey="true" />
       <Association Name="MstAccount_TrnSalesLine1" Member="MstAccount1" ThisKey="AssetAccountId" OtherKey="Id" Type="MstAccount" IsForeignKey="true" />
       <Association Name="MstAccount_TrnSalesLine2" Member="MstAccount2" ThisKey="CostAccountId" OtherKey="Id" Type="MstAccount" IsForeignKey="true" />

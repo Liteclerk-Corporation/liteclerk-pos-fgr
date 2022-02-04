@@ -544,9 +544,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         objSalesLineList.Price2.ToString("#,##0.00"),
                         objSalesLineList.Price2LessTax.ToString("#,##0.00"),
                         objSalesLineList.PriceSplitPercentage.ToString("#,##0.00"),
-                        objSalesLineList.BodegaItemQty.ToString("#,##0.00"),
-                        objSalesLineList.IsDelivery,
-                        objSalesLineList.DeliveryStatus
+                        objSalesLineList.BodegaItemQty.ToString("#,##0.00")
                     );
                 }
             }
@@ -637,9 +635,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     Price2 = Price2,
                     Price2LessTax = Price2LessTax,
                     PriceSplitPercentage = PriceSplitPercentage,
-                    BodegaItemQty = BodegaItemQty,
-                    IsDelivery = IsDelivery,
-                    DeliveryStatus = DeliveryStatus
+                    BodegaItemQty = BodegaItemQty
                 };
 
                 TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(this, null, trnSalesLineEntity, null);

@@ -60,11 +60,8 @@
             this.textBoxSalesLineRemarks = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label14 = new System.Windows.Forms.Label();
             this.textBoxBodegaItemQty = new System.Windows.Forms.TextBox();
-            this.checkBoxDelivery = new System.Windows.Forms.CheckBox();
-            this.comboBoxDeliveryStatus = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -424,11 +421,11 @@
             // textBoxSalesLineRemarks
             // 
             this.textBoxSalesLineRemarks.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxSalesLineRemarks.Location = new System.Drawing.Point(458, 214);
+            this.textBoxSalesLineRemarks.Location = new System.Drawing.Point(458, 172);
             this.textBoxSalesLineRemarks.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineRemarks.Multiline = true;
             this.textBoxSalesLineRemarks.Name = "textBoxSalesLineRemarks";
-            this.textBoxSalesLineRemarks.Size = new System.Drawing.Size(392, 274);
+            this.textBoxSalesLineRemarks.Size = new System.Drawing.Size(392, 316);
             this.textBoxSalesLineRemarks.TabIndex = 12;
             this.textBoxSalesLineRemarks.TabStop = false;
             // 
@@ -436,7 +433,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label13.Location = new System.Drawing.Point(455, 180);
+            this.label13.Location = new System.Drawing.Point(455, 132);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(209, 28);
@@ -445,9 +442,6 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.comboBoxDeliveryStatus);
-            this.panel2.Controls.Add(this.checkBoxDelivery);
             this.panel2.Controls.Add(this.textBoxBodegaItemQty);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label2);
@@ -482,17 +476,6 @@
             this.panel2.Size = new System.Drawing.Size(860, 500);
             this.panel2.TabIndex = 31;
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label14.Location = new System.Drawing.Point(468, 55);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(117, 28);
-            this.label14.TabIndex = 30;
-            this.label14.Text = "For Bodega:";
-            // 
             // textBoxBodegaItemQty
             // 
             this.textBoxBodegaItemQty.AcceptsTab = true;
@@ -505,38 +488,16 @@
             this.textBoxBodegaItemQty.TabIndex = 2;
             this.textBoxBodegaItemQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // checkBoxDelivery
+            // label14
             // 
-            this.checkBoxDelivery.AutoSize = true;
-            this.checkBoxDelivery.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.checkBoxDelivery.Location = new System.Drawing.Point(502, 96);
-            this.checkBoxDelivery.Name = "checkBoxDelivery";
-            this.checkBoxDelivery.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.checkBoxDelivery.Size = new System.Drawing.Size(105, 32);
-            this.checkBoxDelivery.TabIndex = 33;
-            this.checkBoxDelivery.Text = "Delivery";
-            this.checkBoxDelivery.UseVisualStyleBackColor = true;
-            this.checkBoxDelivery.CheckedChanged += new System.EventHandler(this.checkBoxDelivery_CheckedChanged);
-            // 
-            // comboBoxDeliveryStatus
-            // 
-            this.comboBoxDeliveryStatus.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.comboBoxDeliveryStatus.FormattingEnabled = true;
-            this.comboBoxDeliveryStatus.Location = new System.Drawing.Point(589, 132);
-            this.comboBoxDeliveryStatus.Name = "comboBoxDeliveryStatus";
-            this.comboBoxDeliveryStatus.Size = new System.Drawing.Size(259, 36);
-            this.comboBoxDeliveryStatus.TabIndex = 34;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label15.Location = new System.Drawing.Point(515, 136);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(69, 28);
-            this.label15.TabIndex = 35;
-            this.label15.Text = "Status:";
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label14.Location = new System.Drawing.Point(468, 55);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(117, 28);
+            this.label14.TabIndex = 30;
+            this.label14.Text = "For Bodega:";
             // 
             // TrnPOSSalesItemDetailForm
             // 
@@ -594,9 +555,6 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.ComboBox comboBoxDeliveryStatus;
-        private System.Windows.Forms.CheckBox checkBoxDelivery;
         private System.Windows.Forms.TextBox textBoxBodegaItemQty;
         private System.Windows.Forms.Label label14;
     }
