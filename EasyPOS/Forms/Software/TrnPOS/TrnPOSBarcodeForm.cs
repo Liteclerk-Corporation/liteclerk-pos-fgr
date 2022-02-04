@@ -508,6 +508,19 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     }
                 }
             }
+            if (Modules.SysCurrentModule.GetCurrentSettings().DisableLockTender == true)
+            {
+                Boolean isLocked = Convert.ToBoolean(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnIsLocked"].Index].Value);
+                Boolean isTendered = Convert.ToBoolean(dataGridViewSalesList.Rows[dataGridViewSalesList.CurrentCell.RowIndex].Cells[dataGridViewSalesList.Columns["ColumnIsTendered"].Index].Value);
+                if (isLocked == true && isTendered == false)
+                {
+                    buttonTender.Enabled = false;
+                }
+                else
+                {
+                    buttonTender.Enabled = true;
+                }
+            }
         }
 
         public void CurrentSelectedCell(Int32 rowIndex)

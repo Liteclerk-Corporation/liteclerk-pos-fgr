@@ -436,7 +436,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
             labelCustomerCode.Text = trnSalesEntity.CustomerCode;
             labelCustomer.Text = trnSalesEntity.Customer;
             labelRemarks.Text = trnSalesEntity.Remarks;
-
         }
 
         private void buttonTender_Click(object sender, EventArgs e)
@@ -487,7 +486,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
             TrnPOSSearchItemForm trnSalesDetailSearchItemForm = new TrnPOSSearchItemForm(this, null, trnSalesEntity);
             trnSalesDetailSearchItemForm.ShowDialog();
         }
-
         public void GetSalesLineList()
         {
             Decimal totalSalesAmount = 0;
@@ -909,11 +907,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 TrnPOSLockSalesForm trnPOSLockSalesForm = new TrnPOSLockSalesForm(this, null, trnSalesEntity);
                 trnPOSLockSalesForm.ShowDialog();
-
-                if (Modules.SysCurrentModule.GetCurrentSettings().DisableLockTender == true)
-                {
-                    buttonTender.Enabled = false;
-                }
             }
             else
             {
@@ -929,11 +922,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 {
                     trnSalesListForm.buttonAutoSales();
                 }
-
-                if (Modules.SysCurrentModule.GetCurrentSettings().DisableLockTender == true)
-                {
-                    buttonTender.Enabled = false;
-                }
+            }
+            if (Modules.SysCurrentModule.GetCurrentSettings().DisableLockTender == true)
+            {
+                buttonTender.Enabled = false;
             }
 
         }
