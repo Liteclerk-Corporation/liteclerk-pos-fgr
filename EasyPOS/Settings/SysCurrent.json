@@ -15,7 +15,7 @@
   "TenantOf": "",
   "CurrentUserId": 1,
   "CurrentUserName": "admin",
-  "CurrentVersion": "Version 1.202202031018NOR",
+  "CurrentVersion": "Version 1.202202041306NOR",
   "CurrentDeveloper": "Easyfis Corporation",
   "CurrentSupport": "(032) 234-0787",
   "CurrentPeriodId": 1,
@@ -64,8 +64,8 @@
   "Language": "English",
   "SingleColumnBarcodePrintOut": false,
   "RestrictCashin": false,
-  "DisableLockTender": true,
-  "PopupCustomerInfo": true,
+  "DisableLockTender": false,
+  "PopupCustomerInfo": false,
   "BodegaTransaction": false,
   "ChangeComputationOnLock": false
 }

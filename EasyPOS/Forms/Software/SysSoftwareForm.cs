@@ -409,8 +409,26 @@ namespace EasyPOS.Forms.Software
 
             if (Modules.SysCurrentModule.GetCurrentSettings().PopupCustomerInfo == true)
             {
-                TrnPOSTenderSalesForm trnSalesDetailTenderSalesForm = new TrnPOSTenderSalesForm(salesListForm, trnSalesDetailForm, null, null, null, salesEntity);
-                trnSalesDetailTenderSalesForm.ShowDialog();
+                if (Modules.SysCurrentModule.GetCurrentSettings().DisableLockTender == true)
+                {
+                    if (salesEntity.IsLocked == false)
+                    {
+                        TrnPOSTenderSalesForm trnSalesDetailTenderSalesForm = new TrnPOSTenderSalesForm(salesListForm, trnSalesDetailForm, null, null, null, salesEntity);
+                        trnSalesDetailTenderSalesForm.ShowDialog();
+
+                        trnSalesDetailForm.buttonTender.Enabled = true;
+
+                    }
+                    else
+                    {
+                        trnSalesDetailForm.buttonTender.Enabled = false;
+                    }
+                }
+                else
+                {
+                    TrnPOSTenderSalesForm trnSalesDetailTenderSalesForm = new TrnPOSTenderSalesForm(salesListForm, trnSalesDetailForm, null, null, null, salesEntity);
+                    trnSalesDetailTenderSalesForm.ShowDialog();
+                }
             }
         }
 
