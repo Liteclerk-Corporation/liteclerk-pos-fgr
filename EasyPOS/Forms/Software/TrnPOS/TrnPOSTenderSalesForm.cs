@@ -162,7 +162,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             };
 
             Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-            String[] updateSales = trnPOSSalesController.TenderUpdateSales(trnSalesEntity.Id, trnSalesEntity);
+            String[] updateSales = trnPOSSalesController.TenderUpdateSales(trnSalesEntity.Id, newSalesEntity);
             if (updateSales[1].Equals("0") == false)
             {
                 if (trnSalesDetailTenderForm != null)

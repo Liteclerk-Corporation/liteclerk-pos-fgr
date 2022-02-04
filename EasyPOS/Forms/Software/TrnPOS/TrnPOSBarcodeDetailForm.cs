@@ -599,8 +599,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Decimal Price2LessTax = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[29].Value);
                 Decimal PriceSplitPercentage = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[30].Value);
                 Decimal BodegaItemQty = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[31].Value);
-                Boolean? IsDelivery = Convert.ToBoolean(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[32].Value);
-                String DeliveryStatus = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[33].Value.ToString();
 
                 Entities.TrnSalesLineEntity trnSalesLineEntity = new Entities.TrnSalesLineEntity()
                 {
