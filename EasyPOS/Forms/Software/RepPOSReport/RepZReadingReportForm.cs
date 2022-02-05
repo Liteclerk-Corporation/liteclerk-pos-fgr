@@ -268,6 +268,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                             && d.TrnSale.IsLocked == true
                                             && d.TrnSale.IsCancelled == false
                                             && d.TrnSale.IsReturned == true
+                                            && d.TrnSale.TerminalId == filterTerminalId
                                             select d;
 
                 if (salesReturnLinesQuery.Any())
