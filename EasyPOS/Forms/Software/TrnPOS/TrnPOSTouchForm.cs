@@ -53,30 +53,24 @@ namespace EasyPOS.Forms.Software.TrnPOS
             dateTimePickerSalesDate.Value = Convert.ToDateTime(currentDate);
 
             sysUserRights = new Modules.SysUserRightsModule("TrnRestaurant");
-            if (sysUserRights.GetUserRights() == null)
+
+            if (sysUserRights.GetUserRights().CanAdd == false)
             {
-                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                buttonWalkIn.Enabled = false;
+            }
+
+            GetTerminalList();
+
+            sysSoftwareForm = softwareForm;
+            if (Modules.SysCurrentModule.GetCurrentSettings().HideSalesAmount == true)
+            {
+                textBoxTotalAmount.Visible = false;
+                tabPageCollectedColumnAmount.Visible = false;
             }
             else
             {
-                if (sysUserRights.GetUserRights().CanAdd == false)
-                {
-                    buttonWalkIn.Enabled = false;
-                }
-
-                GetTerminalList();
-
-                sysSoftwareForm = softwareForm;
-                if (Modules.SysCurrentModule.GetCurrentSettings().HideSalesAmount == true)
-                {
-                    textBoxTotalAmount.Visible = false;
-                    tabPageCollectedColumnAmount.Visible = false;
-                }
-                else
-                {
-                    textBoxTotalAmount.Visible = true;
-                    tabPageCollectedColumnAmount.Visible = true;
-                }
+                textBoxTotalAmount.Visible = true;
+                tabPageCollectedColumnAmount.Visible = true;
             }
 
             Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();

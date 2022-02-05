@@ -148,7 +148,7 @@ namespace EasyPOS.Controllers
                             FormDescription = d.FormDescription
                         };
 
-            return forms.ToList();
+            return forms.OrderBy(d => d.FormDescription).ToList();
         }
 
         // =============

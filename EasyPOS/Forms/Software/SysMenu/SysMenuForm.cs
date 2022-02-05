@@ -113,7 +113,15 @@ namespace EasyPOS.Forms.Software.SysMenu
                 var sysCurrent = Modules.SysCurrentModule.GetCurrentSettings();
                 if (sysCurrent.POSType == "POS Touch")
                 {
-                    sysSoftwareForm.AddTabPagePOSTouchSalesList();
+                    sysUserRights = new Modules.SysUserRightsModule("TrnRestaurant");
+                    if (sysUserRights.GetUserRights() == null)
+                    {
+                        MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else 
+                    {
+                        sysSoftwareForm.AddTabPagePOSTouchSalesList();
+                    }
                 }
                 else
                 {
