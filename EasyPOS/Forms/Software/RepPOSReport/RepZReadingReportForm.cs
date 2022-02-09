@@ -219,8 +219,9 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                     var salesLines = salesLinesQuery.ToArray();
 
                     Decimal VATAmountValue = salesLines.Sum(d =>
-                        d.MstTax.Code == "EXEMPTVAT" ? ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : d.TaxAmount
+                        d.MstTax.Code == "EXEMPTVAT" ? ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : (d.Amount / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100))
                     );
+                    VATAmountValue = Math.Round(VATAmountValue, 2);
                     totalGrossSales = salesLines.Sum(d => d.Price * d.Quantity) - VATAmountValue;
 
                     totalRegularDiscount = salesLines.Sum(d =>
@@ -240,8 +241,9 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                     );
 
                     totalVATAmount = salesLines.Sum(d =>
-                        d.MstTax.Code == "EXEMPTVAT" ? 0 : d.TaxAmount
+                        d.MstTax.Code == "EXEMPTVAT" ? 0 : (d.Amount / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100))
                     );
+                    totalVATAmount = Math.Round(totalVATAmount, 2);
 
                     totalNonVATSales = salesLines.Sum(d =>
                         d.MstTax.Code == "NONVAT" ? d.Amount : 0
@@ -318,7 +320,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                 repZReadingReportEntity.TotalVATSales = totalVATSales - (VATSalesReturn * -1);
                 repZReadingReportEntity.TotalVATAmount = totalVATAmount - VATAmountSalesReturn - VATAmountExemptSalesReturn;
-                repZReadingReportEntity.TotalNonVAT = totalNonVATSales;
+                repZReadingReportEntity.TotalNonVAT = totalNonVATSales - (NONVATSalesReturn * -1);
                 repZReadingReportEntity.TotalVATExempt = (totalVATExemptSales - Convert.ToDecimal(_totalSeniorCitizenDiscount) - Convert.ToDecimal(_totalPWDDiscount)) - (VATExemptSalesReturn * -1);
                 repZReadingReportEntity.TotalVATZeroRated = totalVATZeroRatedSales;
                 repZReadingReportEntity.TotalNumberOfSKU = totalNoOfSKUs;

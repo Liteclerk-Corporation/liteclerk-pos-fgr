@@ -46,6 +46,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 printDocumentOfficialReceipt.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 280, 38500);
                 printDocumentOfficialReceipt.Print();
             }
+            else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "ZiJiang Label Printer")
+            {
+                printDocumentOfficialReceipt.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 255, 38500);
+                printDocumentOfficialReceipt.Print();
+            }
             else
             {
                 printDocumentOfficialReceipt.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 175, 38500);
@@ -100,7 +105,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "ZiJiang Label Printer")
             {
                 x = 5; y = 5;
-                width = 250.0F; height = 0F;
+                width = 245.0F; height = 0F;
             }
             else
             {
@@ -187,7 +192,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 // 1st Line
                 // ========
                 Point firstLineFirstPoint = new Point(0, Convert.ToInt32(y) + 10);
-                Point firstLineSecondPoint = new Point(250, Convert.ToInt32(y) + 10);
+                Point firstLineSecondPoint = new Point(500, Convert.ToInt32(y) + 10);
                 graphics.DrawLine(blackPen, firstLineFirstPoint, firstLineSecondPoint);
 
             }
@@ -943,24 +948,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     }
                 }
 
-                if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "ZiJiang Label Printer")
-                {
-                    // ========
-                    // 2nd Line
-                    // ========
-                    Point secondLineFirstPoint = new Point(0, Convert.ToInt32(y) + 10);
-                    Point secondLineSecondPoint = new Point(250, Convert.ToInt32(y) + 10);
-                    graphics.DrawLine(blackPen, secondLineFirstPoint, secondLineSecondPoint);
-                }
-                else
-                {
-                    // ========
-                    // 2nd Line
-                    // ========
-                    Point secondLineFirstPoint = new Point(0, Convert.ToInt32(y) + 10);
-                    Point secondLineSecondPoint = new Point(500, Convert.ToInt32(y) + 10);
-                    graphics.DrawLine(blackPen, secondLineFirstPoint, secondLineSecondPoint);
-                }
+                // ========
+                // 2nd Line
+                // ========
+                Point secondLineFirstPoint = new Point(0, Convert.ToInt32(y) + 10);
+                Point secondLineSecondPoint = new Point(500, Convert.ToInt32(y) + 10);
+                graphics.DrawLine(blackPen, secondLineFirstPoint, secondLineSecondPoint);
 
                 // ==============================
                 // Total Sales and Total Discount
@@ -999,24 +992,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 y += graphics.MeasureString(totalNumberOfItemsQuantity, fontArial8Regular).Height;
 
 
-                if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "ZiJiang Label Printer")
-                {
-                    // ========
-                    // 3rd Line
-                    // ========
-                    Point thirdLineFirstPoint = new Point(0, Convert.ToInt32(y) - 7);
-                    Point thirdLineSecondPoint = new Point(250, Convert.ToInt32(y) - 7);
-                    graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
-                }
-                else
-                {
-                    // ========
-                    // 3rd Line
-                    // ========
-                    Point thirdLineFirstPoint = new Point(0, Convert.ToInt32(y) - 7);
-                    Point thirdLineSecondPoint = new Point(500, Convert.ToInt32(y) - 7);
-                    graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
-                }
+                // ========
+                // 3rd Line
+                // ========
+                Point thirdLineFirstPoint = new Point(0, Convert.ToInt32(y) - 7);
+                Point thirdLineSecondPoint = new Point(500, Convert.ToInt32(y) - 7);
+                graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
+
 
                 // ================
                 // Collection Lines
@@ -1047,24 +1029,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 y += graphics.MeasureString(changeAmount, fontArial8Regular).Height;
 
 
-                if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "ZiJiang Label Printer")
-                {
-                    // ========
-                    // 4th Line
-                    // ========
-                    Point forthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                    Point forthLineSecondPoint = new Point(250, Convert.ToInt32(y) + 5);
-                    graphics.DrawLine(blackPen, forthLineFirstPoint, forthLineSecondPoint);
-                }
-                else
-                {
-                    // ========
-                    // 4th Line
-                    // ========
-                    Point forthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                    Point forthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                    graphics.DrawLine(blackPen, forthLineFirstPoint, forthLineSecondPoint);
-                }
+
+                // ========
+                // 4th Line
+                // ========
+                Point forthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point forthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, forthLineFirstPoint, forthLineSecondPoint);
 
 
                 if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType != "ZiJiang Label Printer")
@@ -1137,25 +1108,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 graphics.DrawString(serverUserData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(serverUserData, fontArial8Regular).Height;
 
-
-                if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "ZiJiang Label Printer")
-                {
-                    // ========
-                    // 7th Line
-                    // ========
-                    Point seventhLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                    Point seventhLineSecondPoint = new Point(250, Convert.ToInt32(y) + 5);
-                    graphics.DrawLine(blackPen, seventhLineFirstPoint, seventhLineSecondPoint);
-                }
-                else
-                {
-                    // ========
-                    // 7th Line
-                    // ========
-                    Point seventhLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                    Point seventhLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                    graphics.DrawLine(blackPen, seventhLineFirstPoint, seventhLineSecondPoint);
-                }
+                // ========
+                // 7th Line
+                // ========
+                Point seventhLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point seventhLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, seventhLineFirstPoint, seventhLineSecondPoint);
 
                 if (Modules.SysCurrentModule.GetCurrentSettings().ShowCustomerInfo == false)
                 {
@@ -1181,24 +1139,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             graphics.DrawString("\nSC/PWD Age: " + seniorCitizenAge, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                             y += graphics.MeasureString(seniorCitizenAge, fontArial8Regular).Height;
 
-                            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "ZiJiang Label Printer")
-                            {
-                                // ========
-                                // 8th Line
-                                // ========
-                                Point eightLineFirstPoint = new Point(0, Convert.ToInt32(y) + 18);
-                                Point eightLineSecondPoint = new Point(250, Convert.ToInt32(y) + 18);
-                                graphics.DrawLine(blackPen, eightLineFirstPoint, eightLineSecondPoint);
-                            }
-                            else
-                            {
-                                // ========
-                                // 8th Line
-                                // ========
-                                Point eightLineFirstPoint = new Point(0, Convert.ToInt32(y) + 18);
-                                Point eightLineSecondPoint = new Point(500, Convert.ToInt32(y) + 18);
-                                graphics.DrawLine(blackPen, eightLineFirstPoint, eightLineSecondPoint);
-                            }
+                            // ========
+                            // 8th Line
+                            // ========
+                            Point eightLineFirstPoint = new Point(0, Convert.ToInt32(y) + 18);
+                            Point eightLineSecondPoint = new Point(500, Convert.ToInt32(y) + 18);
+                            graphics.DrawLine(blackPen, eightLineFirstPoint, eightLineSecondPoint);
 
                             soldToLabel = "\n\nCustomer Name: _______________________";
                         }
@@ -1262,25 +1208,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             graphics.DrawString("\nSC/PWD Age: " + seniorCitizenAge, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                             y += graphics.MeasureString(seniorCitizenAge, fontArial8Regular).Height;
 
-
-                            if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "ZiJiang Label Printer")
-                            {
-                                // ========
-                                // 8th Line
-                                // ========
-                                Point eightLineFirstPoint = new Point(0, Convert.ToInt32(y) + 18);
-                                Point eightLineSecondPoint = new Point(250, Convert.ToInt32(y) + 18);
-                                graphics.DrawLine(blackPen, eightLineFirstPoint, eightLineSecondPoint);
-                            }
-                            else
-                            {
-                                // ========
-                                // 8th Line
-                                // ========
-                                Point eightLineFirstPoint = new Point(0, Convert.ToInt32(y) + 18);
-                                Point eightLineSecondPoint = new Point(500, Convert.ToInt32(y) + 18);
-                                graphics.DrawLine(blackPen, eightLineFirstPoint, eightLineSecondPoint);
-                            }
+                            // ========
+                            // 8th Line
+                            // ========
+                            Point eightLineFirstPoint = new Point(0, Convert.ToInt32(y) + 18);
+                            Point eightLineSecondPoint = new Point(500, Convert.ToInt32(y) + 18);
+                            graphics.DrawLine(blackPen, eightLineFirstPoint, eightLineSecondPoint);
 
                             soldToLabel = "\n\nCustomer Name: " + customerName;
                         }
@@ -1304,24 +1237,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     }
                 }
 
-                if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "ZiJiang Label Printer")
-                {
-                    // ========
-                    // 9th Line
-                    // ========
-                    Point ninethLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                    Point ninethLineSecondPoint = new Point(250, Convert.ToInt32(y) + 5);
-                    graphics.DrawLine(blackPen, ninethLineFirstPoint, ninethLineSecondPoint);
-                }
-                else
-                {
-                    // ========
-                    // 9th Line
-                    // ========
-                    Point ninethLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                    Point ninethLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                    graphics.DrawLine(blackPen, ninethLineFirstPoint, ninethLineSecondPoint);
-                }
+                // ========
+                // 9th Line
+                // ========
+                Point ninethLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point ninethLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, ninethLineFirstPoint, ninethLineSecondPoint);
 
                 String remarks = "\nRemarks: \n\n " + collections.FirstOrDefault().TrnSale.Remarks;
                 graphics.DrawString(remarks, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
