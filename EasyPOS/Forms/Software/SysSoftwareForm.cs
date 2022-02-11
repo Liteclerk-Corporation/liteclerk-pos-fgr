@@ -14,6 +14,8 @@ namespace EasyPOS.Forms.Software
 {
     public partial class SysSoftwareForm : Form
     {
+        private Modules.SysUserRightsModule sysUserRights;
+
         public SysSoftwareForm()
         {
             InitializeComponent();
@@ -1120,12 +1122,28 @@ namespace EasyPOS.Forms.Software
 
         private void pOSToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            AddTabPagePOSSalesList();
+            sysUserRights = new Modules.SysUserRightsModule("TrnSales");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                AddTabPagePOSSalesList();
+            }
         }
 
         private void pOSTouchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AddTabPagePOSTouchSalesList();
+            sysUserRights = new Modules.SysUserRightsModule("TrnRestaurant");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                AddTabPagePOSTouchSalesList();
+            }
         }
 
         private void remittanceToolStripMenuItem_Click(object sender, EventArgs e)
