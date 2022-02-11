@@ -34,7 +34,8 @@ namespace EasyPOS.Controllers
                             UpdateUserId = d.UpdateUserId,
                             UpdatedUserName = d.UserName,
                             UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
-                            IsLocked = d.IsLocked
+                            IsLocked = d.IsLocked,
+                            CanEditPrice = d.CanEditPrice
                         };
 
             return users.OrderBy(d => d.Id).ToList();
@@ -64,12 +65,25 @@ namespace EasyPOS.Controllers
                             UpdatedUserUserName = d.UserName,
                             UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
                             UpdateTime = d.UpdateDateTime.ToShortTimeString(),
-                            IsLocked = d.IsLocked
+                            IsLocked = d.IsLocked,
+                            CanEditPrice = d.CanEditPrice
                         };
 
             return users.FirstOrDefault();
         }
 
+        public Boolean CheckUserCanEditPrice(Int32 UserId)
+        {
+            Boolean canEditPrice = false;
+            var currentUser = from d in db.MstUsers
+                              where d.Id == UserId
+                              select d;
+            if (currentUser.Any())
+            {
+                canEditPrice = currentUser.FirstOrDefault().CanEditPrice;
+            }
+            return canEditPrice;
+        }
         public String GetUser(Int32 UserId)
         {
             var userName = "";
@@ -106,7 +120,8 @@ namespace EasyPOS.Controllers
                     EntryDateTime = DateTime.Now,
                     UpdateUserId = currentUserLogin.FirstOrDefault().Id,
                     UpdateDateTime = DateTime.Now,
-                    IsLocked = false
+                    IsLocked = false,
+                    CanEditPrice = false
                 };
 
                 db.MstUsers.InsertOnSubmit(newUser);
@@ -172,6 +187,7 @@ namespace EasyPOS.Controllers
                     lockUser.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
                     lockUser.UpdateDateTime = DateTime.Now;
                     lockUser.IsLocked = true;
+                    lockUser.CanEditPrice = objUser.CanEditPrice;
                     db.SubmitChanges();
 
                     String newObject = Modules.SysAuditTrailModule.GetObjectString(user.FirstOrDefault());
@@ -338,6 +354,7 @@ namespace EasyPOS.Controllers
                     saveUser.UserCardNumber = objUser.UserCardNumber;
                     saveUser.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
                     saveUser.UpdateDateTime = DateTime.Now;
+                    saveUser.CanEditPrice = objUser.CanEditPrice;
                     db.SubmitChanges();
 
                     String newObject = Modules.SysAuditTrailModule.GetObjectString(user.FirstOrDefault());

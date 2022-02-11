@@ -68,14 +68,15 @@
             this.buttonUserFormListPageListLast = new System.Windows.Forms.Button();
             this.textBoxUserFormListPageNumber = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxUserCardNumber = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxFullName = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBoxUserCardNumber = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.checkBoxCanEditPrice = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -574,6 +575,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel3.Controls.Add(this.checkBoxCanEditPrice);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.textBoxUserCardNumber);
             this.panel3.Controls.Add(this.textBoxPassword);
@@ -589,6 +591,28 @@
             this.panel3.Padding = new System.Windows.Forms.Padding(8);
             this.panel3.Size = new System.Drawing.Size(1096, 105);
             this.panel3.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label2.Location = new System.Drawing.Point(364, 11);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(127, 19);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "User Card Number:";
+            // 
+            // textBoxUserCardNumber
+            // 
+            this.textBoxUserCardNumber.AcceptsTab = true;
+            this.textBoxUserCardNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxUserCardNumber.HideSelection = false;
+            this.textBoxUserCardNumber.Location = new System.Drawing.Point(495, 8);
+            this.textBoxUserCardNumber.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxUserCardNumber.Name = "textBoxUserCardNumber";
+            this.textBoxUserCardNumber.Size = new System.Drawing.Size(256, 26);
+            this.textBoxUserCardNumber.TabIndex = 5;
             // 
             // textBoxPassword
             // 
@@ -653,27 +677,15 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Username:";
             // 
-            // textBoxUserCardNumber
+            // checkBoxCanEditPrice
             // 
-            this.textBoxUserCardNumber.AcceptsTab = true;
-            this.textBoxUserCardNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxUserCardNumber.HideSelection = false;
-            this.textBoxUserCardNumber.Location = new System.Drawing.Point(495, 8);
-            this.textBoxUserCardNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxUserCardNumber.Name = "textBoxUserCardNumber";
-            this.textBoxUserCardNumber.Size = new System.Drawing.Size(256, 26);
-            this.textBoxUserCardNumber.TabIndex = 5;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label2.Location = new System.Drawing.Point(364, 11);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(127, 19);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "User Card Number:";
+            this.checkBoxCanEditPrice.AutoSize = true;
+            this.checkBoxCanEditPrice.Location = new System.Drawing.Point(495, 40);
+            this.checkBoxCanEditPrice.Name = "checkBoxCanEditPrice";
+            this.checkBoxCanEditPrice.Size = new System.Drawing.Size(112, 23);
+            this.checkBoxCanEditPrice.TabIndex = 7;
+            this.checkBoxCanEditPrice.Text = "Can Edit Price";
+            this.checkBoxCanEditPrice.UseVisualStyleBackColor = true;
             // 
             // MstUserDetailForm
             // 
@@ -749,5 +761,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnUserFormListCanReturn;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxUserCardNumber;
+        private System.Windows.Forms.CheckBox checkBoxCanEditPrice;
     }
 }
