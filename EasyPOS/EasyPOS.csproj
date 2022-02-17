@@ -460,6 +460,12 @@
     <Compile Include="Forms\Account\SysLogin\SysLoginForm.Designer.cs">
       <DependentUpon>SysLoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Account\SysLogin\SysLoginOpenDrawerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Account\SysLogin\SysLoginOpenDrawerForm.Designer.cs">
+      <DependentUpon>SysLoginOpenDrawerForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\License\SysLincense\SysLicenseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -951,6 +957,12 @@
     </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnPOSBillOutForm.Designer.cs">
       <DependentUpon>TrnPOSBillOutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSOpenCashDrawerPrintForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSOpenCashDrawerPrintForm.Designer.cs">
+      <DependentUpon>TrnPOSOpenCashDrawerPrintForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnPOSSalesInvoicePDFReportForm.cs">
       <SubType>Form</SubType>
@@ -1481,6 +1493,9 @@
     <Compile Include="Forms\Software\RepPOSReport\RepZReadingReportForm.Designer.cs">
       <DependentUpon>RepZReadingReportForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Forms\Account\SysLogin\SysLoginOpenDrawerForm.resx">
+      <DependentUpon>SysLoginOpenDrawerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\License\SysLincense\SysLicenseForm.resx">
       <DependentUpon>SysLicenseForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -1717,6 +1732,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSBillOutForm.resx">
       <DependentUpon>TrnPOSBillOutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSOpenCashDrawerPrintForm.resx">
+      <DependentUpon>TrnPOSOpenCashDrawerPrintForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSSalesInvoiceReportForm.resx">
       <DependentUpon>TrnPOSSalesInvoiceReportForm.cs</DependentUpon>

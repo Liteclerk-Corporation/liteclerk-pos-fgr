@@ -30,12 +30,12 @@ namespace EasyPOS.Data
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
-    partial void InsertTrnStockOutLine(TrnStockOutLine instance);
-    partial void UpdateTrnStockOutLine(TrnStockOutLine instance);
-    partial void DeleteTrnStockOutLine(TrnStockOutLine instance);
     partial void InsertIntCloudSetting(IntCloudSetting instance);
     partial void UpdateIntCloudSetting(IntCloudSetting instance);
     partial void DeleteIntCloudSetting(IntCloudSetting instance);
+    partial void InsertTrnStockOutLine(TrnStockOutLine instance);
+    partial void UpdateTrnStockOutLine(TrnStockOutLine instance);
+    partial void DeleteTrnStockOutLine(TrnStockOutLine instance);
     partial void InsertMstAccount(MstAccount instance);
     partial void UpdateMstAccount(MstAccount instance);
     partial void DeleteMstAccount(MstAccount instance);
@@ -180,7 +180,7 @@ namespace EasyPOS.Data
     #endregion
 		
 		public easyposdbDataContext() : 
-				base(global::EasyPOS.Properties.Settings.Default.easyposConnectionString3, mappingSource)
+				base(global::EasyPOS.Properties.Settings.Default.easyposConnectionString4, mappingSource)
 		{
 			OnCreated();
 		}
@@ -209,19 +209,19 @@ namespace EasyPOS.Data
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<TrnStockOutLine> TrnStockOutLines
-		{
-			get
-			{
-				return this.GetTable<TrnStockOutLine>();
-			}
-		}
-		
 		public System.Data.Linq.Table<IntCloudSetting> IntCloudSettings
 		{
 			get
 			{
 				return this.GetTable<IntCloudSetting>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TrnStockOutLine> TrnStockOutLines
+		{
+			get
+			{
+				return this.GetTable<TrnStockOutLine>();
 			}
 		}
 		
@@ -602,6 +602,342 @@ namespace EasyPOS.Data
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.IntCloudSettings")]
+	public partial class IntCloudSetting : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _BranchCode;
+		
+		private string _UserCode;
+		
+		private int _PostUserId;
+		
+		private int _PostSupplierId;
+		
+		private bool _UseItemPrice;
+		
+		private string _Domain;
+		
+		private string _LogFileLocation;
+		
+		private string _Application;
+		
+		private EntityRef<MstSupplier> _MstSupplier;
+		
+		private EntityRef<MstUser> _MstUser;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnBranchCodeChanging(string value);
+    partial void OnBranchCodeChanged();
+    partial void OnUserCodeChanging(string value);
+    partial void OnUserCodeChanged();
+    partial void OnPostUserIdChanging(int value);
+    partial void OnPostUserIdChanged();
+    partial void OnPostSupplierIdChanging(int value);
+    partial void OnPostSupplierIdChanged();
+    partial void OnUseItemPriceChanging(bool value);
+    partial void OnUseItemPriceChanged();
+    partial void OnDomainChanging(string value);
+    partial void OnDomainChanged();
+    partial void OnLogFileLocationChanging(string value);
+    partial void OnLogFileLocationChanged();
+    partial void OnApplicationChanging(string value);
+    partial void OnApplicationChanged();
+    #endregion
+		
+		public IntCloudSetting()
+		{
+			this._MstSupplier = default(EntityRef<MstSupplier>);
+			this._MstUser = default(EntityRef<MstUser>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BranchCode", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string BranchCode
+		{
+			get
+			{
+				return this._BranchCode;
+			}
+			set
+			{
+				if ((this._BranchCode != value))
+				{
+					this.OnBranchCodeChanging(value);
+					this.SendPropertyChanging();
+					this._BranchCode = value;
+					this.SendPropertyChanged("BranchCode");
+					this.OnBranchCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserCode", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string UserCode
+		{
+			get
+			{
+				return this._UserCode;
+			}
+			set
+			{
+				if ((this._UserCode != value))
+				{
+					this.OnUserCodeChanging(value);
+					this.SendPropertyChanging();
+					this._UserCode = value;
+					this.SendPropertyChanged("UserCode");
+					this.OnUserCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostUserId", DbType="Int NOT NULL")]
+		public int PostUserId
+		{
+			get
+			{
+				return this._PostUserId;
+			}
+			set
+			{
+				if ((this._PostUserId != value))
+				{
+					if (this._MstUser.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPostUserIdChanging(value);
+					this.SendPropertyChanging();
+					this._PostUserId = value;
+					this.SendPropertyChanged("PostUserId");
+					this.OnPostUserIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostSupplierId", DbType="Int NOT NULL")]
+		public int PostSupplierId
+		{
+			get
+			{
+				return this._PostSupplierId;
+			}
+			set
+			{
+				if ((this._PostSupplierId != value))
+				{
+					if (this._MstSupplier.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPostSupplierIdChanging(value);
+					this.SendPropertyChanging();
+					this._PostSupplierId = value;
+					this.SendPropertyChanged("PostSupplierId");
+					this.OnPostSupplierIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UseItemPrice", DbType="Bit NOT NULL")]
+		public bool UseItemPrice
+		{
+			get
+			{
+				return this._UseItemPrice;
+			}
+			set
+			{
+				if ((this._UseItemPrice != value))
+				{
+					this.OnUseItemPriceChanging(value);
+					this.SendPropertyChanging();
+					this._UseItemPrice = value;
+					this.SendPropertyChanged("UseItemPrice");
+					this.OnUseItemPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Domain", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string Domain
+		{
+			get
+			{
+				return this._Domain;
+			}
+			set
+			{
+				if ((this._Domain != value))
+				{
+					this.OnDomainChanging(value);
+					this.SendPropertyChanging();
+					this._Domain = value;
+					this.SendPropertyChanged("Domain");
+					this.OnDomainChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogFileLocation", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string LogFileLocation
+		{
+			get
+			{
+				return this._LogFileLocation;
+			}
+			set
+			{
+				if ((this._LogFileLocation != value))
+				{
+					this.OnLogFileLocationChanging(value);
+					this.SendPropertyChanging();
+					this._LogFileLocation = value;
+					this.SendPropertyChanged("LogFileLocation");
+					this.OnLogFileLocationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Application", DbType="NVarChar(255)")]
+		public string Application
+		{
+			get
+			{
+				return this._Application;
+			}
+			set
+			{
+				if ((this._Application != value))
+				{
+					this.OnApplicationChanging(value);
+					this.SendPropertyChanging();
+					this._Application = value;
+					this.SendPropertyChanged("Application");
+					this.OnApplicationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstSupplier_IntCloudSetting", Storage="_MstSupplier", ThisKey="PostSupplierId", OtherKey="Id", IsForeignKey=true)]
+		public MstSupplier MstSupplier
+		{
+			get
+			{
+				return this._MstSupplier.Entity;
+			}
+			set
+			{
+				MstSupplier previousValue = this._MstSupplier.Entity;
+				if (((previousValue != value) 
+							|| (this._MstSupplier.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstSupplier.Entity = null;
+						previousValue.IntCloudSettings.Remove(this);
+					}
+					this._MstSupplier.Entity = value;
+					if ((value != null))
+					{
+						value.IntCloudSettings.Add(this);
+						this._PostSupplierId = value.Id;
+					}
+					else
+					{
+						this._PostSupplierId = default(int);
+					}
+					this.SendPropertyChanged("MstSupplier");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_IntCloudSetting", Storage="_MstUser", ThisKey="PostUserId", OtherKey="Id", IsForeignKey=true)]
+		public MstUser MstUser
+		{
+			get
+			{
+				return this._MstUser.Entity;
+			}
+			set
+			{
+				MstUser previousValue = this._MstUser.Entity;
+				if (((previousValue != value) 
+							|| (this._MstUser.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstUser.Entity = null;
+						previousValue.IntCloudSettings.Remove(this);
+					}
+					this._MstUser.Entity = value;
+					if ((value != null))
+					{
+						value.IntCloudSettings.Add(this);
+						this._PostUserId = value.Id;
+					}
+					else
+					{
+						this._PostUserId = default(int);
+					}
+					this.SendPropertyChanged("MstUser");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrnStockOutLine")]
 	public partial class TrnStockOutLine : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -971,342 +1307,6 @@ namespace EasyPOS.Data
 						this._StockOutId = default(int);
 					}
 					this.SendPropertyChanged("TrnStockOut");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.IntCloudSettings")]
-	public partial class IntCloudSetting : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _BranchCode;
-		
-		private string _UserCode;
-		
-		private int _PostUserId;
-		
-		private int _PostSupplierId;
-		
-		private bool _UseItemPrice;
-		
-		private string _Domain;
-		
-		private string _LogFileLocation;
-		
-		private string _Application;
-		
-		private EntityRef<MstSupplier> _MstSupplier;
-		
-		private EntityRef<MstUser> _MstUser;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnBranchCodeChanging(string value);
-    partial void OnBranchCodeChanged();
-    partial void OnUserCodeChanging(string value);
-    partial void OnUserCodeChanged();
-    partial void OnPostUserIdChanging(int value);
-    partial void OnPostUserIdChanged();
-    partial void OnPostSupplierIdChanging(int value);
-    partial void OnPostSupplierIdChanged();
-    partial void OnUseItemPriceChanging(bool value);
-    partial void OnUseItemPriceChanged();
-    partial void OnDomainChanging(string value);
-    partial void OnDomainChanged();
-    partial void OnLogFileLocationChanging(string value);
-    partial void OnLogFileLocationChanged();
-    partial void OnApplicationChanging(string value);
-    partial void OnApplicationChanged();
-    #endregion
-		
-		public IntCloudSetting()
-		{
-			this._MstSupplier = default(EntityRef<MstSupplier>);
-			this._MstUser = default(EntityRef<MstUser>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BranchCode", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string BranchCode
-		{
-			get
-			{
-				return this._BranchCode;
-			}
-			set
-			{
-				if ((this._BranchCode != value))
-				{
-					this.OnBranchCodeChanging(value);
-					this.SendPropertyChanging();
-					this._BranchCode = value;
-					this.SendPropertyChanged("BranchCode");
-					this.OnBranchCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserCode", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string UserCode
-		{
-			get
-			{
-				return this._UserCode;
-			}
-			set
-			{
-				if ((this._UserCode != value))
-				{
-					this.OnUserCodeChanging(value);
-					this.SendPropertyChanging();
-					this._UserCode = value;
-					this.SendPropertyChanged("UserCode");
-					this.OnUserCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostUserId", DbType="Int NOT NULL")]
-		public int PostUserId
-		{
-			get
-			{
-				return this._PostUserId;
-			}
-			set
-			{
-				if ((this._PostUserId != value))
-				{
-					if (this._MstUser.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPostUserIdChanging(value);
-					this.SendPropertyChanging();
-					this._PostUserId = value;
-					this.SendPropertyChanged("PostUserId");
-					this.OnPostUserIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PostSupplierId", DbType="Int NOT NULL")]
-		public int PostSupplierId
-		{
-			get
-			{
-				return this._PostSupplierId;
-			}
-			set
-			{
-				if ((this._PostSupplierId != value))
-				{
-					if (this._MstSupplier.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPostSupplierIdChanging(value);
-					this.SendPropertyChanging();
-					this._PostSupplierId = value;
-					this.SendPropertyChanged("PostSupplierId");
-					this.OnPostSupplierIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UseItemPrice", DbType="Bit NOT NULL")]
-		public bool UseItemPrice
-		{
-			get
-			{
-				return this._UseItemPrice;
-			}
-			set
-			{
-				if ((this._UseItemPrice != value))
-				{
-					this.OnUseItemPriceChanging(value);
-					this.SendPropertyChanging();
-					this._UseItemPrice = value;
-					this.SendPropertyChanged("UseItemPrice");
-					this.OnUseItemPriceChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Domain", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string Domain
-		{
-			get
-			{
-				return this._Domain;
-			}
-			set
-			{
-				if ((this._Domain != value))
-				{
-					this.OnDomainChanging(value);
-					this.SendPropertyChanging();
-					this._Domain = value;
-					this.SendPropertyChanged("Domain");
-					this.OnDomainChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LogFileLocation", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string LogFileLocation
-		{
-			get
-			{
-				return this._LogFileLocation;
-			}
-			set
-			{
-				if ((this._LogFileLocation != value))
-				{
-					this.OnLogFileLocationChanging(value);
-					this.SendPropertyChanging();
-					this._LogFileLocation = value;
-					this.SendPropertyChanged("LogFileLocation");
-					this.OnLogFileLocationChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Application", DbType="NVarChar(255)")]
-		public string Application
-		{
-			get
-			{
-				return this._Application;
-			}
-			set
-			{
-				if ((this._Application != value))
-				{
-					this.OnApplicationChanging(value);
-					this.SendPropertyChanging();
-					this._Application = value;
-					this.SendPropertyChanged("Application");
-					this.OnApplicationChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstSupplier_IntCloudSetting", Storage="_MstSupplier", ThisKey="PostSupplierId", OtherKey="Id", IsForeignKey=true)]
-		public MstSupplier MstSupplier
-		{
-			get
-			{
-				return this._MstSupplier.Entity;
-			}
-			set
-			{
-				MstSupplier previousValue = this._MstSupplier.Entity;
-				if (((previousValue != value) 
-							|| (this._MstSupplier.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._MstSupplier.Entity = null;
-						previousValue.IntCloudSettings.Remove(this);
-					}
-					this._MstSupplier.Entity = value;
-					if ((value != null))
-					{
-						value.IntCloudSettings.Add(this);
-						this._PostSupplierId = value.Id;
-					}
-					else
-					{
-						this._PostSupplierId = default(int);
-					}
-					this.SendPropertyChanged("MstSupplier");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_IntCloudSetting", Storage="_MstUser", ThisKey="PostUserId", OtherKey="Id", IsForeignKey=true)]
-		public MstUser MstUser
-		{
-			get
-			{
-				return this._MstUser.Entity;
-			}
-			set
-			{
-				MstUser previousValue = this._MstUser.Entity;
-				if (((previousValue != value) 
-							|| (this._MstUser.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._MstUser.Entity = null;
-						previousValue.IntCloudSettings.Remove(this);
-					}
-					this._MstUser.Entity = value;
-					if ((value != null))
-					{
-						value.IntCloudSettings.Add(this);
-						this._PostUserId = value.Id;
-					}
-					else
-					{
-						this._PostUserId = default(int);
-					}
-					this.SendPropertyChanged("MstUser");
 				}
 			}
 		}
@@ -9997,6 +9997,8 @@ namespace EasyPOS.Data
 		
 		private bool _CanEditPrice;
 		
+		private bool _CanOpenDrawer;
+		
 		private EntitySet<IntCloudSetting> _IntCloudSettings;
 		
 		private EntitySet<MstCustomer> _MstCustomers;
@@ -10139,6 +10141,8 @@ namespace EasyPOS.Data
     partial void OnIsLockedChanged();
     partial void OnCanEditPriceChanging(bool value);
     partial void OnCanEditPriceChanged();
+    partial void OnCanOpenDrawerChanging(bool value);
+    partial void OnCanOpenDrawerChanged();
     #endregion
 		
 		public MstUser()
@@ -10420,6 +10424,26 @@ namespace EasyPOS.Data
 					this._CanEditPrice = value;
 					this.SendPropertyChanged("CanEditPrice");
 					this.OnCanEditPriceChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CanOpenDrawer", DbType="Bit NOT NULL")]
+		public bool CanOpenDrawer
+		{
+			get
+			{
+				return this._CanOpenDrawer;
+			}
+			set
+			{
+				if ((this._CanOpenDrawer != value))
+				{
+					this.OnCanOpenDrawerChanging(value);
+					this.SendPropertyChanging();
+					this._CanOpenDrawer = value;
+					this.SendPropertyChanged("CanOpenDrawer");
+					this.OnCanOpenDrawerChanged();
 				}
 			}
 		}

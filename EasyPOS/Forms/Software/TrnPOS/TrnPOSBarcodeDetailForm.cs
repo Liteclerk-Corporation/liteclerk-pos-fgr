@@ -1111,6 +1111,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                         break;
                     }
+                case Keys.F12:
+                    {
+                        if (buttonClose.Enabled == true)
+                        {
+                            buttonOpenCashDrawer.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
                 case Keys.Escape:
                     {
                         if (buttonClose.Enabled == true)
@@ -1126,7 +1136,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         break;
                     }
             }
-
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
@@ -1208,6 +1217,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     trnSalesDetailSalesItemDetailForm.ShowDialog();
                 }
             }
+        }
+
+        private void buttonOpenCashDrawer_Click(object sender, EventArgs e)
+        {
+            Account.SysLogin.SysLoginOpenDrawerForm login = new Account.SysLogin.SysLoginOpenDrawerForm();
+            login.ShowDialog();
         }
     }
 }

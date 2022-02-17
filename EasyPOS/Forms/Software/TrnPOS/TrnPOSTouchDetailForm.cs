@@ -1247,5 +1247,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
             TrnPOSTouchChangeTableForm trnPOSTouchChangeTableForm = new TrnPOSTouchChangeTableForm(sysSoftwareForm, trnPOSTouchForm, this, trnSalesEntity, Convert.ToDateTime(trnSalesEntity.SalesDate));
             trnPOSTouchChangeTableForm.ShowDialog();
         }
+
+        private void buttonOpenCashDrawer_Click(object sender, EventArgs e)
+        {
+            Account.SysLogin.SysLoginOpenDrawerForm login = new Account.SysLogin.SysLoginOpenDrawerForm();
+            login.ShowDialog();
+        }
     }
 }

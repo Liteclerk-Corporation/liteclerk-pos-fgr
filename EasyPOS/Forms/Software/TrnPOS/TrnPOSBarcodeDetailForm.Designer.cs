@@ -45,7 +45,6 @@
             this.buttonUnlock = new System.Windows.Forms.Button();
             this.buttonReturn = new System.Windows.Forms.Button();
             this.buttonDiscount = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonTender = new System.Windows.Forms.Button();
@@ -102,18 +101,20 @@
             this.buttonBarcode = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.buttonOpenCashDrawer = new System.Windows.Forms.Button();
             this.textBoxChange = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.buttonDownload = new System.Windows.Forms.Button();
             this.printDialogSalesOrder = new System.Windows.Forms.PrintDialog();
             this.printDialogSalesInvoice = new System.Windows.Forms.PrintDialog();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesLineList)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -249,17 +250,6 @@
             this.buttonDiscount.Text = "F6 - Discount";
             this.buttonDiscount.UseVisualStyleBackColor = false;
             this.buttonDiscount.Click += new System.EventHandler(this.buttonDiscount_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.POS;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -928,6 +918,7 @@
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.buttonOpenCashDrawer);
             this.panel5.Controls.Add(this.textBoxChange);
             this.panel5.Controls.Add(this.label5);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -935,6 +926,25 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1096, 41);
             this.panel5.TabIndex = 8;
+            // 
+            // buttonOpenCashDrawer
+            // 
+            this.buttonOpenCashDrawer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonOpenCashDrawer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonOpenCashDrawer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonOpenCashDrawer.FlatAppearance.BorderSize = 0;
+            this.buttonOpenCashDrawer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOpenCashDrawer.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonOpenCashDrawer.ForeColor = System.Drawing.Color.White;
+            this.buttonOpenCashDrawer.Location = new System.Drawing.Point(10, 5);
+            this.buttonOpenCashDrawer.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonOpenCashDrawer.Name = "buttonOpenCashDrawer";
+            this.buttonOpenCashDrawer.Size = new System.Drawing.Size(203, 32);
+            this.buttonOpenCashDrawer.TabIndex = 10;
+            this.buttonOpenCashDrawer.TabStop = false;
+            this.buttonOpenCashDrawer.Text = "F12 - Open Cash Drawer";
+            this.buttonOpenCashDrawer.UseVisualStyleBackColor = false;
+            this.buttonOpenCashDrawer.Click += new System.EventHandler(this.buttonOpenCashDrawer_Click);
             // 
             // textBoxChange
             // 
@@ -989,6 +999,17 @@
             // 
             this.printDialogSalesInvoice.UseEXDialog = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.POS;
+            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // TrnPOSBarcodeDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1007,7 +1028,6 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TrnSalesDetailForm_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -1017,6 +1037,7 @@
             this.panel3.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1092,5 +1113,6 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnSalesLineIsDelivery;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineDeliveryStatus;
         public System.Windows.Forms.Button buttonTender;
+        private System.Windows.Forms.Button buttonOpenCashDrawer;
     }
 }
