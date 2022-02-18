@@ -269,6 +269,7 @@
     <Compile Include="Controllers\TrnPurchaseOrderController.cs" />
     <Compile Include="Controllers\TrnPurchaseOrderLineController.cs" />
     <Compile Include="Controllers\TrnSalesController.cs" />
+    <Compile Include="Controllers\TrnSalesLineDeletedController.cs" />
     <Compile Include="Controllers\TrnSalesLineController.cs" />
     <Compile Include="Controllers\TrnStockCountController.cs" />
     <Compile Include="Controllers\TrnStockCountLineController.cs" />
@@ -446,6 +447,7 @@
     <Compile Include="Entities\TrnPurchaseOrderEntity.cs" />
     <Compile Include="Entities\TrnPurchaseOrderLineEntity.cs" />
     <Compile Include="Entities\TrnSalesEntity.cs" />
+    <Compile Include="Entities\TrnSalesLineDeletedEntity.cs" />
     <Compile Include="Entities\TrnSalesLineEntity.cs" />
     <Compile Include="Entities\TrnStockCountEntity.cs" />
     <Compile Include="Entities\TrnStockCountLineEntity.cs" />

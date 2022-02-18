@@ -15,7 +15,7 @@
   "TenantOf": "",
   "CurrentUserId": 1,
   "CurrentUserName": "admin",
-  "CurrentVersion": "Version 1.202202171711NOR",
+  "CurrentVersion": "Version 1.202202181353NOR",
   "CurrentDeveloper": "Easyfis Corporation",
   "CurrentSupport": "(032) 234-0787",
   "CurrentPeriodId": 1,
@@ -41,7 +41,7 @@
   "EasypayMotherCardNumber": "0000000001",
   "ActivateAuditTrail": true,
   "FacepayImagePath": "D:\\Facepay",
-  "POSType": "POS Barcode",
+  "POSType": "POS Touch",
   "AllowNegativeInventory": true,
   "IsLoginDate": true,
   "EnableEasyShopIntegration": false,
@@ -67,5 +67,6 @@
   "DisableLockTender": false,
   "PopupCustomerInfo": false,
   "BodegaTransaction": false,
-  "ChangeComputationOnLock": false
+  "ChangeComputationOnLock": false,
+  "PrintDeletedSalesItem":  true
 }

@@ -809,7 +809,57 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 DialogResult deleteDialogResult = MessageBox.Show("Delete Sales?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (deleteDialogResult == DialogResult.Yes)
                 {
+                    Int32 Id = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[2].Value);
+                    Int32 SalesId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[3].Value);
+                    Int32 ItemId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[4].Value);
+                    String ItemDescription = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[5].Value.ToString();
+                    Decimal Quantity = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[6].Value);
+                    Int32 UnitId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[7].Value);
+                    String Unit = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[8].Value.ToString();
+                    Decimal Price = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[9].Value);
+                    Int32 DiscountId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[10].Value);
+                    String Discount = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[11].Value.ToString(); ;
+                    Decimal DiscountRate = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[12].Value);
+                    Decimal DiscountAmount = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[13].Value);
+                    Decimal NetPrice = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[14].Value);
+                    Decimal Amount = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[15].Value);
+                    Int32 TaxId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[16].Value);
+                    String Tax = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[17].Value.ToString();
+                    Decimal TaxRate = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[18].Value);
+                    Decimal TaxAmount = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[19].Value);
+                    Int32 UserId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[25].Value);
+
+
+                    Entities.TrnSalesLineEntity trnSalesLineEntity = new Entities.TrnSalesLineEntity()
+                    {
+                        Id = Id,
+                        SalesId = SalesId,
+                        ItemId = ItemId,
+                        ItemDescription = ItemDescription,
+                        UnitId = UnitId,
+                        Unit = Unit,
+                        Price = Price,
+                        DiscountId = DiscountId,
+                        Discount = Discount,
+                        DiscountRate = DiscountRate,
+                        DiscountAmount = DiscountAmount,
+                        NetPrice = NetPrice,
+                        Quantity = Quantity,
+                        Amount = Amount,
+                        TaxId = TaxId,
+                        Tax = Tax,
+                        TaxRate = TaxRate,
+                        TaxAmount = TaxAmount,
+                        UserId = UserId,
+                    };
+
                     Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
+                    Controllers.TrnSalesLineDeletedController trnPOSSalesLineDeletedController = new Controllers.TrnSalesLineDeletedController();
+
+                    trnPOSSalesLineDeletedController.AddDeletedSalesLine(trnSalesLineEntity);
+
+                    trnPOSSalesLineDeletedController.IsPrinted(trnSalesLineEntity.Id);
+                    
 
                     String[] deleteSalesLine = trnPOSSalesLineController.DeleteSalesLine(Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[2].Value));
                     if (deleteSalesLine[1].Equals("0") == false)

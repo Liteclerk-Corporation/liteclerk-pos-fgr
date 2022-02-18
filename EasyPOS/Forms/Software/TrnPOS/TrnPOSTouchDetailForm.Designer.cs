@@ -30,16 +30,17 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSTouchDetailForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonOpenCashDrawer = new System.Windows.Forms.Button();
             this.buttonOverRide = new System.Windows.Forms.Button();
             this.buttonPrint = new System.Windows.Forms.Button();
             this.buttonReturn = new System.Windows.Forms.Button();
@@ -152,7 +153,6 @@
             this.labelLastChange = new System.Windows.Forms.Label();
             this.buttonHideItems = new System.Windows.Forms.Button();
             this.printDialogSelectPrinter = new System.Windows.Forms.PrintDialog();
-            this.buttonOpenCashDrawer = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -188,6 +188,25 @@
             this.panel1.Size = new System.Drawing.Size(1096, 50);
             this.panel1.TabIndex = 4;
             // 
+            // buttonOpenCashDrawer
+            // 
+            this.buttonOpenCashDrawer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonOpenCashDrawer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonOpenCashDrawer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonOpenCashDrawer.FlatAppearance.BorderSize = 0;
+            this.buttonOpenCashDrawer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOpenCashDrawer.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonOpenCashDrawer.ForeColor = System.Drawing.Color.White;
+            this.buttonOpenCashDrawer.Location = new System.Drawing.Point(216, 11);
+            this.buttonOpenCashDrawer.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonOpenCashDrawer.Name = "buttonOpenCashDrawer";
+            this.buttonOpenCashDrawer.Size = new System.Drawing.Size(123, 32);
+            this.buttonOpenCashDrawer.TabIndex = 28;
+            this.buttonOpenCashDrawer.TabStop = false;
+            this.buttonOpenCashDrawer.Text = "Open Drawer";
+            this.buttonOpenCashDrawer.UseVisualStyleBackColor = false;
+            this.buttonOpenCashDrawer.Click += new System.EventHandler(this.buttonOpenCashDrawer_Click);
+            // 
             // buttonOverRide
             // 
             this.buttonOverRide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -197,10 +216,10 @@
             this.buttonOverRide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOverRide.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOverRide.ForeColor = System.Drawing.Color.White;
-            this.buttonOverRide.Location = new System.Drawing.Point(897, 10);
+            this.buttonOverRide.Location = new System.Drawing.Point(948, 10);
             this.buttonOverRide.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOverRide.Name = "buttonOverRide";
-            this.buttonOverRide.Size = new System.Drawing.Size(115, 32);
+            this.buttonOverRide.Size = new System.Drawing.Size(81, 32);
             this.buttonOverRide.TabIndex = 27;
             this.buttonOverRide.TabStop = false;
             this.buttonOverRide.Text = "Override";
@@ -216,10 +235,10 @@
             this.buttonPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPrint.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPrint.ForeColor = System.Drawing.Color.White;
-            this.buttonPrint.Location = new System.Drawing.Point(439, 10);
+            this.buttonPrint.Location = new System.Drawing.Point(541, 10);
             this.buttonPrint.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPrint.Name = "buttonPrint";
-            this.buttonPrint.Size = new System.Drawing.Size(70, 32);
+            this.buttonPrint.Size = new System.Drawing.Size(59, 32);
             this.buttonPrint.TabIndex = 26;
             this.buttonPrint.TabStop = false;
             this.buttonPrint.Text = "Print";
@@ -235,10 +254,10 @@
             this.buttonReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReturn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonReturn.ForeColor = System.Drawing.Color.White;
-            this.buttonReturn.Location = new System.Drawing.Point(661, 10);
+            this.buttonReturn.Location = new System.Drawing.Point(735, 10);
             this.buttonReturn.Margin = new System.Windows.Forms.Padding(2);
             this.buttonReturn.Name = "buttonReturn";
-            this.buttonReturn.Size = new System.Drawing.Size(77, 32);
+            this.buttonReturn.Size = new System.Drawing.Size(63, 32);
             this.buttonReturn.TabIndex = 26;
             this.buttonReturn.TabStop = false;
             this.buttonReturn.Text = "Return";
@@ -254,10 +273,10 @@
             this.buttonDownload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDownload.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.buttonDownload.ForeColor = System.Drawing.Color.White;
-            this.buttonDownload.Location = new System.Drawing.Point(334, 10);
+            this.buttonDownload.Location = new System.Drawing.Point(449, 10);
             this.buttonDownload.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDownload.Name = "buttonDownload";
-            this.buttonDownload.Size = new System.Drawing.Size(101, 32);
+            this.buttonDownload.Size = new System.Drawing.Size(88, 32);
             this.buttonDownload.TabIndex = 25;
             this.buttonDownload.TabStop = false;
             this.buttonDownload.Text = "Download";
@@ -273,10 +292,10 @@
             this.buttonLock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLock.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLock.ForeColor = System.Drawing.Color.White;
-            this.buttonLock.Location = new System.Drawing.Point(513, 10);
+            this.buttonLock.Location = new System.Drawing.Point(604, 10);
             this.buttonLock.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLock.Name = "buttonLock";
-            this.buttonLock.Size = new System.Drawing.Size(70, 32);
+            this.buttonLock.Size = new System.Drawing.Size(58, 32);
             this.buttonLock.TabIndex = 6;
             this.buttonLock.TabStop = false;
             this.buttonLock.Text = "Lock";
@@ -292,10 +311,10 @@
             this.buttonUnlock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonUnlock.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonUnlock.ForeColor = System.Drawing.Color.White;
-            this.buttonUnlock.Location = new System.Drawing.Point(587, 10);
+            this.buttonUnlock.Location = new System.Drawing.Point(666, 10);
             this.buttonUnlock.Margin = new System.Windows.Forms.Padding(2);
             this.buttonUnlock.Name = "buttonUnlock";
-            this.buttonUnlock.Size = new System.Drawing.Size(70, 32);
+            this.buttonUnlock.Size = new System.Drawing.Size(65, 32);
             this.buttonUnlock.TabIndex = 5;
             this.buttonUnlock.TabStop = false;
             this.buttonUnlock.Text = "Unlock";
@@ -311,10 +330,10 @@
             this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
-            this.buttonSearchItem.Location = new System.Drawing.Point(212, 10);
+            this.buttonSearchItem.Location = new System.Drawing.Point(343, 10);
             this.buttonSearchItem.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSearchItem.Name = "buttonSearchItem";
-            this.buttonSearchItem.Size = new System.Drawing.Size(118, 32);
+            this.buttonSearchItem.Size = new System.Drawing.Size(102, 32);
             this.buttonSearchItem.TabIndex = 8;
             this.buttonSearchItem.TabStop = false;
             this.buttonSearchItem.Text = "Search Item";
@@ -330,10 +349,10 @@
             this.buttonDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDiscount.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDiscount.ForeColor = System.Drawing.Color.White;
-            this.buttonDiscount.Location = new System.Drawing.Point(742, 10);
+            this.buttonDiscount.Location = new System.Drawing.Point(802, 10);
             this.buttonDiscount.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDiscount.Name = "buttonDiscount";
-            this.buttonDiscount.Size = new System.Drawing.Size(77, 32);
+            this.buttonDiscount.Size = new System.Drawing.Size(74, 32);
             this.buttonDiscount.TabIndex = 4;
             this.buttonDiscount.TabStop = false;
             this.buttonDiscount.Text = "Discount";
@@ -371,10 +390,10 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(1016, 10);
+            this.buttonClose.Location = new System.Drawing.Point(1033, 10);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(70, 32);
+            this.buttonClose.Size = new System.Drawing.Size(53, 32);
             this.buttonClose.TabIndex = 1;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
@@ -390,10 +409,10 @@
             this.buttonTender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTender.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTender.ForeColor = System.Drawing.Color.White;
-            this.buttonTender.Location = new System.Drawing.Point(823, 10);
+            this.buttonTender.Location = new System.Drawing.Point(880, 10);
             this.buttonTender.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTender.Name = "buttonTender";
-            this.buttonTender.Size = new System.Drawing.Size(70, 32);
+            this.buttonTender.Size = new System.Drawing.Size(64, 32);
             this.buttonTender.TabIndex = 1;
             this.buttonTender.TabStop = false;
             this.buttonTender.Text = "Tender";
@@ -1288,14 +1307,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewSalesLineList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSalesLineList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewSalesLineList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewSalesLineList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSalesLineList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnSalesLineEdit,
@@ -1391,8 +1410,8 @@
             // 
             // ColumnSalesLineQuantity
             // 
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineQuantity.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineQuantity.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnSalesLineQuantity.HeaderText = "Quantity";
             this.ColumnSalesLineQuantity.Name = "ColumnSalesLineQuantity";
             this.ColumnSalesLineQuantity.ReadOnly = true;
@@ -1412,8 +1431,8 @@
             // 
             // ColumnSalesLinePrice
             // 
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLinePrice.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLinePrice.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnSalesLinePrice.HeaderText = "Price";
             this.ColumnSalesLinePrice.Name = "ColumnSalesLinePrice";
             this.ColumnSalesLinePrice.ReadOnly = true;
@@ -1434,8 +1453,8 @@
             // 
             // ColumnSalesLineDiscountRate
             // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineDiscountRate.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineDiscountRate.DefaultCellStyle = dataGridViewCellStyle4;
             this.ColumnSalesLineDiscountRate.HeaderText = "Discount %";
             this.ColumnSalesLineDiscountRate.Name = "ColumnSalesLineDiscountRate";
             this.ColumnSalesLineDiscountRate.ReadOnly = true;
@@ -1443,24 +1462,24 @@
             // 
             // ColumnSalesLineDiscountAmount
             // 
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineDiscountAmount.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineDiscountAmount.DefaultCellStyle = dataGridViewCellStyle5;
             this.ColumnSalesLineDiscountAmount.HeaderText = "Discount";
             this.ColumnSalesLineDiscountAmount.Name = "ColumnSalesLineDiscountAmount";
             this.ColumnSalesLineDiscountAmount.ReadOnly = true;
             // 
             // ColumnSalesLineNetPrice
             // 
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineNetPrice.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineNetPrice.DefaultCellStyle = dataGridViewCellStyle6;
             this.ColumnSalesLineNetPrice.HeaderText = "Net Price";
             this.ColumnSalesLineNetPrice.Name = "ColumnSalesLineNetPrice";
             this.ColumnSalesLineNetPrice.ReadOnly = true;
             // 
             // ColumnSalesLineAmount
             // 
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineAmount.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineAmount.DefaultCellStyle = dataGridViewCellStyle7;
             this.ColumnSalesLineAmount.HeaderText = "Amount";
             this.ColumnSalesLineAmount.Name = "ColumnSalesLineAmount";
             this.ColumnSalesLineAmount.ReadOnly = true;
@@ -1481,16 +1500,16 @@
             // 
             // ColumnSalesLineTaxRate
             // 
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineTaxRate.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineTaxRate.DefaultCellStyle = dataGridViewCellStyle8;
             this.ColumnSalesLineTaxRate.HeaderText = "Tax %";
             this.ColumnSalesLineTaxRate.Name = "ColumnSalesLineTaxRate";
             this.ColumnSalesLineTaxRate.ReadOnly = true;
             // 
             // ColumnSalesLineTaxAmount
             // 
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineTaxAmount.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineTaxAmount.DefaultCellStyle = dataGridViewCellStyle9;
             this.ColumnSalesLineTaxAmount.HeaderText = "Tax";
             this.ColumnSalesLineTaxAmount.Name = "ColumnSalesLineTaxAmount";
             this.ColumnSalesLineTaxAmount.ReadOnly = true;
@@ -1669,25 +1688,6 @@
             // printDialogSelectPrinter
             // 
             this.printDialogSelectPrinter.UseEXDialog = true;
-            // 
-            // buttonOpenCashDrawer
-            // 
-            this.buttonOpenCashDrawer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonOpenCashDrawer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonOpenCashDrawer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonOpenCashDrawer.FlatAppearance.BorderSize = 0;
-            this.buttonOpenCashDrawer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonOpenCashDrawer.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonOpenCashDrawer.ForeColor = System.Drawing.Color.White;
-            this.buttonOpenCashDrawer.Location = new System.Drawing.Point(55, 10);
-            this.buttonOpenCashDrawer.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonOpenCashDrawer.Name = "buttonOpenCashDrawer";
-            this.buttonOpenCashDrawer.Size = new System.Drawing.Size(153, 32);
-            this.buttonOpenCashDrawer.TabIndex = 28;
-            this.buttonOpenCashDrawer.TabStop = false;
-            this.buttonOpenCashDrawer.Text = "Open Cash Drawer";
-            this.buttonOpenCashDrawer.UseVisualStyleBackColor = false;
-            this.buttonOpenCashDrawer.Click += new System.EventHandler(this.buttonOpenCashDrawer_Click);
             // 
             // TrnPOSTouchDetailForm
             // 
