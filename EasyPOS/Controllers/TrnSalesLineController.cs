@@ -124,6 +124,7 @@ namespace EasyPOS.Controllers
                             BarCode = d.BarCode,
                             ItemDescription = d.ItemDescription,
                             GenericName = d.GenericName,
+                            Category = d.Category,
                             OutTaxId = d.OutTaxId,
                             OutTax = d.MstTax1.Tax,
                             OutTaxRate = d.MstTax1.Rate,
