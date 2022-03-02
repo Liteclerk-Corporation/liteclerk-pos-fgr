@@ -160,6 +160,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                               ColumnSearchItemBarcode = d.BarCode,
                               ColumnSearchItemDescription = d.ItemDescription,
                               ColumnSearchItemGenericName = d.GenericName,
+                              ColumnSearchItemCategory = d.Category,
                               ColumnSearchItemOutTaxId = d.OutTaxId,
                               ColumnSearchItemOutTax = d.OutTax,
                               ColumnSearchItemOutTaxRate = d.OutTaxRate.ToString("#,##0.00"),
