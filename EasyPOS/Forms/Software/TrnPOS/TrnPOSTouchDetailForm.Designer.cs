@@ -40,7 +40,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonOpenCashDrawer = new System.Windows.Forms.Button();
             this.buttonOverRide = new System.Windows.Forms.Button();
             this.buttonPrint = new System.Windows.Forms.Button();
             this.buttonReturn = new System.Windows.Forms.Button();
@@ -168,7 +167,6 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.buttonOpenCashDrawer);
             this.panel1.Controls.Add(this.buttonOverRide);
             this.panel1.Controls.Add(this.buttonPrint);
             this.panel1.Controls.Add(this.buttonReturn);
@@ -187,25 +185,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1096, 50);
             this.panel1.TabIndex = 4;
-            // 
-            // buttonOpenCashDrawer
-            // 
-            this.buttonOpenCashDrawer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonOpenCashDrawer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonOpenCashDrawer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonOpenCashDrawer.FlatAppearance.BorderSize = 0;
-            this.buttonOpenCashDrawer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonOpenCashDrawer.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonOpenCashDrawer.ForeColor = System.Drawing.Color.White;
-            this.buttonOpenCashDrawer.Location = new System.Drawing.Point(216, 11);
-            this.buttonOpenCashDrawer.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonOpenCashDrawer.Name = "buttonOpenCashDrawer";
-            this.buttonOpenCashDrawer.Size = new System.Drawing.Size(123, 32);
-            this.buttonOpenCashDrawer.TabIndex = 28;
-            this.buttonOpenCashDrawer.TabStop = false;
-            this.buttonOpenCashDrawer.Text = "Open Drawer";
-            this.buttonOpenCashDrawer.UseVisualStyleBackColor = false;
-            this.buttonOpenCashDrawer.Click += new System.EventHandler(this.buttonOpenCashDrawer_Click);
             // 
             // buttonOverRide
             // 
@@ -1837,6 +1816,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2LessTax;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePriceSplitPercentage;
-        private System.Windows.Forms.Button buttonOpenCashDrawer;
     }
 }

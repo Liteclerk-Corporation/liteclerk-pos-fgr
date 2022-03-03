@@ -66,7 +66,8 @@ namespace EasyPOS.Controllers
                             UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
                             UpdateTime = d.UpdateDateTime.ToShortTimeString(),
                             IsLocked = d.IsLocked,
-                            CanEditPrice = d.CanEditPrice
+                            CanEditPrice = d.CanEditPrice,
+                            CanOpenDrawer = d.CanOpenDrawer
                         };
 
             return users.FirstOrDefault();
@@ -188,6 +189,7 @@ namespace EasyPOS.Controllers
                     lockUser.UpdateDateTime = DateTime.Now;
                     lockUser.IsLocked = true;
                     lockUser.CanEditPrice = objUser.CanEditPrice;
+                    lockUser.CanOpenDrawer = objUser.CanOpenDrawer;
                     db.SubmitChanges();
 
                     String newObject = Modules.SysAuditTrailModule.GetObjectString(user.FirstOrDefault());
@@ -355,6 +357,7 @@ namespace EasyPOS.Controllers
                     saveUser.UpdateUserId = currentUserLogin.FirstOrDefault().Id;
                     saveUser.UpdateDateTime = DateTime.Now;
                     saveUser.CanEditPrice = objUser.CanEditPrice;
+                    saveUser.CanOpenDrawer = objUser.CanOpenDrawer;
                     db.SubmitChanges();
 
                     String newObject = Modules.SysAuditTrailModule.GetObjectString(user.FirstOrDefault());

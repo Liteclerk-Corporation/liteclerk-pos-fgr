@@ -515,7 +515,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
             dataGridViewOpenSalesList.Columns["TabPageOpenColumnDelete"].DisplayIndex = 1;
             dataGridViewOpenSalesList.Columns["TabPageOpenColumnId"].DisplayIndex = 2;
             dataGridViewOpenSalesList.Columns["TabPageOpenColumnTerminal"].DisplayIndex = 3;
-            dataGridViewOpenSalesList.Columns["TabPageOpenColumnSalesDate"].DisplayIndex = 4;
             dataGridViewOpenSalesList.Columns["TabPageOpenColumnSalesNumber"].DisplayIndex = 6;
             dataGridViewOpenSalesList.Columns["TabPageOpenColumnManualSalesNumber"].DisplayIndex = 7;
             dataGridViewOpenSalesList.Columns["TabPageOpenColumnRececiptInvoiceNumber"].DisplayIndex = 8;
@@ -527,7 +526,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             dataGridViewOpenSalesList.Columns["TabPageOpenColumnIsTendered"].DisplayIndex = 14;
             dataGridViewOpenSalesList.Columns["TabPageOpenColumnIsCancelled"].DisplayIndex = 15;
             dataGridViewOpenSalesList.Columns["TabPageOpenColumnRemarks"].DisplayIndex = 16;
-            dataGridViewOpenSalesList.Columns["TabPageOpenColumnDelivery"].DisplayIndex = 17;
+            dataGridViewOpenSalesList.Columns["TabPageOpenColumnDelivery"].DisplayIndex = 18;
             dataGridViewOpenSalesList.Columns["TabPageOpenColumnAmount"].DisplayIndex = 11;
             dataGridViewOpenSalesList.Columns["TabPageOpenColumnSpace"].DisplayIndex = 18;
 
@@ -536,7 +535,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnDelete"].DisplayIndex = 1;
             dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnId"].DisplayIndex = 2;
             dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnTerminal"].DisplayIndex = 3;
-            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnSalesDate"].DisplayIndex = 4;
+            dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnSalesDate"].DisplayIndex = 18;
             dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnSalesNumber"].DisplayIndex = 6;
             dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnManualSalesNumber"].DisplayIndex = 7;
             dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnInvoiceNumber"].DisplayIndex = 8;
@@ -551,6 +550,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnDelivery"].DisplayIndex = 17;
             dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnAmount"].DisplayIndex = 11;
             dataGridViewBilledOutSalesList.Columns["tabPageBilledOutColumnSpace"].DisplayIndex = 18;
+
 
             dataGridViewCollectedSalesList.AutoGenerateColumns = false;
             dataGridViewCollectedSalesList.Columns["tabPageCollectedColumnEdit"].DisplayIndex = 0;
@@ -842,6 +842,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 panelWalkIn.Visible = true;
             }
+        }
+
+        private void buttonOpenCashDrawer_Click(object sender, EventArgs e)
+        {
+            Account.SysLogin.SysLoginOpenDrawerForm login = new Account.SysLogin.SysLoginOpenDrawerForm();
+            login.ShowDialog();
         }
     }
 }

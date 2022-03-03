@@ -219,7 +219,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                     var salesLines = salesLinesQuery.ToArray();
 
                     Decimal VATAmountValue = salesLines.Sum(d =>
-                        d.MstTax.Code == "EXEMPTVAT" ? ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : (d.Amount / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100))
+                        d.MstTax.Code == "VAT" ? ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : 0
                     );
                     VATAmountValue = Math.Round(VATAmountValue, 2);
                     totalGrossSales = salesLines.Sum(d => d.Price * d.Quantity) - VATAmountValue;
@@ -241,7 +241,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                     );
 
                     totalVATAmount = salesLines.Sum(d =>
-                        d.MstTax.Code == "EXEMPTVAT" ? 0 : (d.Amount / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100))
+                        d.MstTax.Code == "VAT" ? (d.Amount / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : 0
                     );
                     totalVATAmount = Math.Round(totalVATAmount, 2);
 

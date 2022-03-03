@@ -68,6 +68,7 @@
             this.buttonUserFormListPageListLast = new System.Windows.Forms.Button();
             this.textBoxUserFormListPageNumber = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.checkBoxCanEditPrice = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxUserCardNumber = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
@@ -76,7 +77,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxUserName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.checkBoxCanEditPrice = new System.Windows.Forms.CheckBox();
+            this.checkBoxCanOpenDrawer = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -575,6 +576,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel3.Controls.Add(this.checkBoxCanOpenDrawer);
             this.panel3.Controls.Add(this.checkBoxCanEditPrice);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.textBoxUserCardNumber);
@@ -591,6 +593,16 @@
             this.panel3.Padding = new System.Windows.Forms.Padding(8);
             this.panel3.Size = new System.Drawing.Size(1096, 105);
             this.panel3.TabIndex = 0;
+            // 
+            // checkBoxCanEditPrice
+            // 
+            this.checkBoxCanEditPrice.AutoSize = true;
+            this.checkBoxCanEditPrice.Location = new System.Drawing.Point(495, 40);
+            this.checkBoxCanEditPrice.Name = "checkBoxCanEditPrice";
+            this.checkBoxCanEditPrice.Size = new System.Drawing.Size(112, 23);
+            this.checkBoxCanEditPrice.TabIndex = 7;
+            this.checkBoxCanEditPrice.Text = "Can Edit Price";
+            this.checkBoxCanEditPrice.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -677,15 +689,15 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Username:";
             // 
-            // checkBoxCanEditPrice
+            // checkBoxCanOpenDrawer
             // 
-            this.checkBoxCanEditPrice.AutoSize = true;
-            this.checkBoxCanEditPrice.Location = new System.Drawing.Point(495, 40);
-            this.checkBoxCanEditPrice.Name = "checkBoxCanEditPrice";
-            this.checkBoxCanEditPrice.Size = new System.Drawing.Size(112, 23);
-            this.checkBoxCanEditPrice.TabIndex = 7;
-            this.checkBoxCanEditPrice.Text = "Can Edit Price";
-            this.checkBoxCanEditPrice.UseVisualStyleBackColor = true;
+            this.checkBoxCanOpenDrawer.AutoSize = true;
+            this.checkBoxCanOpenDrawer.Location = new System.Drawing.Point(495, 65);
+            this.checkBoxCanOpenDrawer.Name = "checkBoxCanOpenDrawer";
+            this.checkBoxCanOpenDrawer.Size = new System.Drawing.Size(172, 23);
+            this.checkBoxCanOpenDrawer.TabIndex = 7;
+            this.checkBoxCanOpenDrawer.Text = "Can Open Cash Drawer";
+            this.checkBoxCanOpenDrawer.UseVisualStyleBackColor = true;
             // 
             // MstUserDetailForm
             // 
@@ -762,5 +774,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxUserCardNumber;
         private System.Windows.Forms.CheckBox checkBoxCanEditPrice;
+        private System.Windows.Forms.CheckBox checkBoxCanOpenDrawer;
     }
 }
