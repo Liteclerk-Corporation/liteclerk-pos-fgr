@@ -19,11 +19,10 @@ namespace EasyPOS.Controllers
         // ======================
         // List Delete Sales Line
         // ======================
-        public List<Entities.TrnSalesLineDeletedEntity> ListSalesLineDeleted(Int32 salesId)
+        public List<Entities.TrnSalesLineDeletedEntity> ListSalesLineDeleted()
         {
             var deletedSalesLines = from d in db.TrnSalesLineDeleteds
-                             where d.SalesId == salesId
-                             && d.IsPrinted == false
+                             where d.IsPrinted == false
                              select new Entities.TrnSalesLineDeletedEntity
                              {
                                  Id = d.Id,
@@ -31,6 +30,8 @@ namespace EasyPOS.Controllers
                                  SalesNumber = d.SalesNumber,
                                  ItemId = d.ItemId,
                                  ItemDescription = d.ItemDescription,
+                                 ItemKitchen = d.ItemKitchen,
+                                 Preparation = d.Preparation,
                                  UnitId = d.UnitId,
                                  Unit = d.Unit,
                                  Price = d.Price,
@@ -49,7 +50,9 @@ namespace EasyPOS.Controllers
                                  SalesDate = d.SalesDate,
                                  DeletedDate = d.DeletedDate,
                                  IsPrinted = d.IsPrinted,
-                                 SalesLineId = d.SalesLineId
+                                 SalesLineId = d.SalesLineId,
+                                 TableId = d.TableId,
+                                 TableCode = d.TableCode
                              };
 
             return deletedSalesLines.OrderByDescending(d => d.Id).ToList();
@@ -107,6 +110,8 @@ namespace EasyPOS.Controllers
                     SalesNumber = sales.FirstOrDefault().SalesNumber,
                     ItemId = objSalesLine.ItemId,
                     ItemDescription = objSalesLine.ItemDescription,
+                    ItemKitchen = item.FirstOrDefault().DefaultKitchenReport,
+                    Preparation = objSalesLine.Preparation,
                     UnitId = item.FirstOrDefault().UnitId,
                     Unit = item.FirstOrDefault().MstUnit.Unit,
                     Price = objSalesLine.Price,
@@ -126,7 +131,9 @@ namespace EasyPOS.Controllers
                     SalesDate = sales.FirstOrDefault().SalesDate,
                     DeletedDate = DateTime.Now,
                     IsPrinted = false,
-                    SalesLineId = objSalesLine.Id
+                    SalesLineId = objSalesLine.Id,
+                    TableId = sales.FirstOrDefault().MstTable.Id,
+                    TableCode = sales.FirstOrDefault().MstTable.TableCode
                 };
 
                 db.TrnSalesLineDeleteds.InsertOnSubmit(newDeletedSaleLine);

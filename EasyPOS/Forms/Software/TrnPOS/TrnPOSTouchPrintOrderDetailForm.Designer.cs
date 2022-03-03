@@ -30,8 +30,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSTouchPrintOrderDetailForm));
             this.dataGridViewPrintOrderSalesLineList = new System.Windows.Forms.DataGridView();
             this.buttonPrint = new System.Windows.Forms.Button();
@@ -68,29 +69,30 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.ColumnSalesLineListPrintOrderPrinted,
             this.ColumnSalesLineListItemPrintOrderDescription,
             this.ColumnSalesLineListPrintOrderPreparation});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewPrintOrderSalesLineList.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridViewPrintOrderSalesLineList.Location = new System.Drawing.Point(0, 37);
-            this.dataGridViewPrintOrderSalesLineList.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridViewPrintOrderSalesLineList.Name = "dataGridViewPrintOrderSalesLineList";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewPrintOrderSalesLineList.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewPrintOrderSalesLineList.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridViewPrintOrderSalesLineList.Location = new System.Drawing.Point(0, 46);
+            this.dataGridViewPrintOrderSalesLineList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataGridViewPrintOrderSalesLineList.Name = "dataGridViewPrintOrderSalesLineList";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewPrintOrderSalesLineList.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewPrintOrderSalesLineList.RowHeadersVisible = false;
+            this.dataGridViewPrintOrderSalesLineList.RowHeadersWidth = 51;
             this.dataGridViewPrintOrderSalesLineList.RowTemplate.Height = 24;
             this.dataGridViewPrintOrderSalesLineList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPrintOrderSalesLineList.Size = new System.Drawing.Size(793, 385);
+            this.dataGridViewPrintOrderSalesLineList.Size = new System.Drawing.Size(1057, 474);
             this.dataGridViewPrintOrderSalesLineList.TabIndex = 28;
             this.dataGridViewPrintOrderSalesLineList.TabStop = false;
             // 
@@ -103,10 +105,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPrint.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPrint.ForeColor = System.Drawing.Color.White;
-            this.buttonPrint.Location = new System.Drawing.Point(650, 2);
-            this.buttonPrint.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonPrint.Location = new System.Drawing.Point(867, 2);
+            this.buttonPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonPrint.Name = "buttonPrint";
-            this.buttonPrint.Size = new System.Drawing.Size(70, 32);
+            this.buttonPrint.Size = new System.Drawing.Size(93, 39);
             this.buttonPrint.TabIndex = 29;
             this.buttonPrint.TabStop = false;
             this.buttonPrint.Text = "Print";
@@ -126,10 +128,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(723, 2);
-            this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonClose.Location = new System.Drawing.Point(964, 2);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(70, 32);
+            this.buttonClose.Size = new System.Drawing.Size(93, 39);
             this.buttonClose.TabIndex = 30;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Close";
@@ -140,38 +142,52 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // 
             this.ColumnSalesLineListPrintOrderId.DataPropertyName = "ColumnSalesLineListPrintOrderId";
             this.ColumnSalesLineListPrintOrderId.HeaderText = "Id";
+            this.ColumnSalesLineListPrintOrderId.MinimumWidth = 6;
             this.ColumnSalesLineListPrintOrderId.Name = "ColumnSalesLineListPrintOrderId";
             this.ColumnSalesLineListPrintOrderId.ReadOnly = true;
             this.ColumnSalesLineListPrintOrderId.Visible = false;
+            this.ColumnSalesLineListPrintOrderId.Width = 125;
             // 
             // ColumnSalesLineListPrintOrderSalesId
             // 
             this.ColumnSalesLineListPrintOrderSalesId.DataPropertyName = "ColumnSalesLineListPrintOrderSalesId";
             this.ColumnSalesLineListPrintOrderSalesId.HeaderText = "SalesId";
+            this.ColumnSalesLineListPrintOrderSalesId.MinimumWidth = 6;
             this.ColumnSalesLineListPrintOrderSalesId.Name = "ColumnSalesLineListPrintOrderSalesId";
             this.ColumnSalesLineListPrintOrderSalesId.ReadOnly = true;
             this.ColumnSalesLineListPrintOrderSalesId.Visible = false;
+            this.ColumnSalesLineListPrintOrderSalesId.Width = 125;
             // 
             // ColumnSalesLineListPrintOrderItemId
             // 
             this.ColumnSalesLineListPrintOrderItemId.DataPropertyName = "ColumnSalesLineListPrintOrderItemId";
             this.ColumnSalesLineListPrintOrderItemId.HeaderText = "ItemId";
+            this.ColumnSalesLineListPrintOrderItemId.MinimumWidth = 6;
             this.ColumnSalesLineListPrintOrderItemId.Name = "ColumnSalesLineListPrintOrderItemId";
             this.ColumnSalesLineListPrintOrderItemId.ReadOnly = true;
             this.ColumnSalesLineListPrintOrderItemId.Visible = false;
+            this.ColumnSalesLineListPrintOrderItemId.Width = 125;
             // 
             // ColumnSalesLineListPrintOrderPrinted
             // 
             this.ColumnSalesLineListPrintOrderPrinted.DataPropertyName = "ColumnSalesLineListPrintOrderPrinted";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.NullValue = false;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ColumnSalesLineListPrintOrderPrinted.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnSalesLineListPrintOrderPrinted.FalseValue = "false";
             this.ColumnSalesLineListPrintOrderPrinted.HeaderText = "Printed";
+            this.ColumnSalesLineListPrintOrderPrinted.MinimumWidth = 6;
             this.ColumnSalesLineListPrintOrderPrinted.Name = "ColumnSalesLineListPrintOrderPrinted";
             this.ColumnSalesLineListPrintOrderPrinted.TrueValue = "";
+            this.ColumnSalesLineListPrintOrderPrinted.Width = 125;
             // 
             // ColumnSalesLineListItemPrintOrderDescription
             // 
             this.ColumnSalesLineListItemPrintOrderDescription.DataPropertyName = "ColumnSalesLineListItemPrintOrderDescription";
             this.ColumnSalesLineListItemPrintOrderDescription.HeaderText = "Item Description";
+            this.ColumnSalesLineListItemPrintOrderDescription.MinimumWidth = 6;
             this.ColumnSalesLineListItemPrintOrderDescription.Name = "ColumnSalesLineListItemPrintOrderDescription";
             this.ColumnSalesLineListItemPrintOrderDescription.ReadOnly = true;
             this.ColumnSalesLineListItemPrintOrderDescription.Width = 350;
@@ -180,18 +196,20 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // 
             this.ColumnSalesLineListPrintOrderPreparation.DataPropertyName = "ColumnSalesLineListPrintOrderPreparation";
             this.ColumnSalesLineListPrintOrderPreparation.HeaderText = "Preparation";
+            this.ColumnSalesLineListPrintOrderPreparation.MinimumWidth = 6;
             this.ColumnSalesLineListPrintOrderPreparation.Name = "ColumnSalesLineListPrintOrderPreparation";
             this.ColumnSalesLineListPrintOrderPreparation.Width = 350;
             // 
             // TrnPOSTouchPrintOrderDetailForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(795, 418);
+            this.ClientSize = new System.Drawing.Size(1060, 514);
             this.Controls.Add(this.buttonClose);
             this.Controls.Add(this.buttonPrint);
             this.Controls.Add(this.dataGridViewPrintOrderSalesLineList);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "TrnPOSTouchPrintOrderDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

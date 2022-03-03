@@ -917,12 +917,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Point sixthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
                 graphics.DrawLine(blackPen, sixthLineFirstPoint, sixthLineSecondPoint);
 
-                String collectionDateText = "\n" + sales.FirstOrDefault().SalesDate.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
-                graphics.DrawString(collectionDateText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                String printedDateText = "\n" + sales.FirstOrDefault().SalesDate.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
+                graphics.DrawString(printedDateText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 
-                String collectionTimeText = "\n" + sales.FirstOrDefault().UpdateDateTime.ToString("H:mm:ss", CultureInfo.InvariantCulture);
-                graphics.DrawString(collectionTimeText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(collectionTimeText, fontArial10Regular).Height;
+                String printedTimeText = "\n" + DateTime.Now.ToString("H:mm:ss", CultureInfo.InvariantCulture);
+                graphics.DrawString(printedTimeText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(printedTimeText, fontArial10Regular).Height;
 
                 String tableNoText = "\nTable: " + sales.FirstOrDefault().MstTable.TableCode;
                 graphics.DrawString(tableNoText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);

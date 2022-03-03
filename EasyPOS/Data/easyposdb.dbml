@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="easypos" Class="easyposdbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-RT4V2EU\SQLEXPRESS;Initial Catalog=easypos;Persist Security Info=True;User ID=sa" SettingsObjectName="EasyPOS.Properties.Settings" SettingsPropertyName="easyposConnectionString4" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(local);Initial Catalog=easypos;Persist Security Info=True;User ID=sa" SettingsObjectName="EasyPOS.Properties.Settings" SettingsPropertyName="easyposConnectionString3" Provider="System.Data.SqlClient" />
   <Table Name="dbo.IntCloudSettings" Member="IntCloudSettings">
     <Type Name="IntCloudSetting">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -947,6 +947,10 @@
       <Column Name="DeletedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="IsPrinted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="SalesLineId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemKitchen" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Preparation" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="TableCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TableId" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.TrnStockCount" Member="TrnStockCounts">

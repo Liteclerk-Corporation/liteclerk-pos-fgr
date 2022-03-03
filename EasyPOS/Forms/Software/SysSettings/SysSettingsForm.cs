@@ -552,6 +552,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxPopupCustomer.Checked = Convert.ToBoolean(sysCurrent.PopupCustomerInfo);
                 checkBoxBodega.Checked = Convert.ToBoolean(sysCurrent.BodegaTransaction);
                 checkBoxChangeComputeOnLock.Checked = Convert.ToBoolean(sysCurrent.ChangeComputationOnLock);
+                checkBoxPrintDeletedItem.Checked = Convert.ToBoolean(sysCurrent.EnablePOSTouchPrintDeletedItem);
             }
         }
 
@@ -640,7 +641,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 DisableLockTender = checkBoxDisableLockTender.Checked,
                 PopupCustomerInfo = checkBoxPopupCustomer.Checked,
                 BodegaTransaction = checkBoxBodega.Checked,
-                ChangeComputationOnLock = checkBoxChangeComputeOnLock.Checked
+                ChangeComputationOnLock = checkBoxChangeComputeOnLock.Checked,
+                EnablePOSTouchPrintDeletedItem = checkBoxPrintDeletedItem.Checked
             };
 
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);
@@ -710,6 +712,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxPopupCustomer.Enabled = false;
                 checkBoxBodega.Enabled = false;
                 checkBoxChangeComputeOnLock.Enabled = false;
+                checkBoxPrintDeletedItem.Enabled = false;
             }
             else
             {
@@ -804,6 +807,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxPopupCustomer.Enabled = true;
                 checkBoxBodega.Enabled = true;
                 checkBoxChangeComputeOnLock.Enabled = true;
+                checkBoxPrintDeletedItem.Enabled = true;
             }
         }
 
