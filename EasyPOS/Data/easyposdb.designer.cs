@@ -183,7 +183,7 @@ namespace EasyPOS.Data
     #endregion
 		
 		public easyposdbDataContext() : 
-				base(global::EasyPOS.Properties.Settings.Default.easyposConnectionString4, mappingSource)
+				base(global::EasyPOS.Properties.Settings.Default.easyposConnectionString3, mappingSource)
 		{
 			OnCreated();
 		}
@@ -22889,6 +22889,14 @@ namespace EasyPOS.Data
 		
 		private int _SalesLineId;
 		
+		private string _ItemKitchen;
+		
+		private string _Preparation;
+		
+		private string _TableCode;
+		
+		private System.Nullable<int> _TableId;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -22943,6 +22951,14 @@ namespace EasyPOS.Data
     partial void OnIsPrintedChanged();
     partial void OnSalesLineIdChanging(int value);
     partial void OnSalesLineIdChanged();
+    partial void OnItemKitchenChanging(string value);
+    partial void OnItemKitchenChanged();
+    partial void OnPreparationChanging(string value);
+    partial void OnPreparationChanged();
+    partial void OnTableCodeChanging(string value);
+    partial void OnTableCodeChanged();
+    partial void OnTableIdChanging(System.Nullable<int> value);
+    partial void OnTableIdChanged();
     #endregion
 		
 		public TrnSalesLineDeleted()
@@ -23446,6 +23462,86 @@ namespace EasyPOS.Data
 					this._SalesLineId = value;
 					this.SendPropertyChanged("SalesLineId");
 					this.OnSalesLineIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemKitchen", DbType="NVarChar(100)")]
+		public string ItemKitchen
+		{
+			get
+			{
+				return this._ItemKitchen;
+			}
+			set
+			{
+				if ((this._ItemKitchen != value))
+				{
+					this.OnItemKitchenChanging(value);
+					this.SendPropertyChanging();
+					this._ItemKitchen = value;
+					this.SendPropertyChanged("ItemKitchen");
+					this.OnItemKitchenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Preparation", DbType="VarChar(255)")]
+		public string Preparation
+		{
+			get
+			{
+				return this._Preparation;
+			}
+			set
+			{
+				if ((this._Preparation != value))
+				{
+					this.OnPreparationChanging(value);
+					this.SendPropertyChanging();
+					this._Preparation = value;
+					this.SendPropertyChanged("Preparation");
+					this.OnPreparationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableCode", DbType="NVarChar(50)")]
+		public string TableCode
+		{
+			get
+			{
+				return this._TableCode;
+			}
+			set
+			{
+				if ((this._TableCode != value))
+				{
+					this.OnTableCodeChanging(value);
+					this.SendPropertyChanging();
+					this._TableCode = value;
+					this.SendPropertyChanged("TableCode");
+					this.OnTableCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableId", DbType="Int")]
+		public System.Nullable<int> TableId
+		{
+			get
+			{
+				return this._TableId;
+			}
+			set
+			{
+				if ((this._TableId != value))
+				{
+					this.OnTableIdChanging(value);
+					this.SendPropertyChanging();
+					this._TableId = value;
+					this.SendPropertyChanged("TableId");
+					this.OnTableIdChanged();
 				}
 			}
 		}

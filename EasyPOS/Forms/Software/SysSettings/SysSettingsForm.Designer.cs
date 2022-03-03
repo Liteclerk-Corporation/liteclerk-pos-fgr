@@ -49,6 +49,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.checkBoxChangeComputeOnLock = new System.Windows.Forms.CheckBox();
             this.checkBoxBodega = new System.Windows.Forms.CheckBox();
             this.checkBoxPopupCustomer = new System.Windows.Forms.CheckBox();
             this.checkBoxDisableLockTender = new System.Windows.Forms.CheckBox();
@@ -190,7 +191,7 @@
             this.buttonKitchenPageListLast = new System.Windows.Forms.Button();
             this.textBoxKitchenPageNumber = new System.Windows.Forms.TextBox();
             this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
-            this.checkBoxChangeComputeOnLock = new System.Windows.Forms.CheckBox();
+            this.checkBoxPrintDeletedItem = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -452,6 +453,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel5.Controls.Add(this.checkBoxPrintDeletedItem);
             this.panel5.Controls.Add(this.checkBoxChangeComputeOnLock);
             this.panel5.Controls.Add(this.checkBoxBodega);
             this.panel5.Controls.Add(this.checkBoxPopupCustomer);
@@ -509,12 +511,25 @@
             this.panel5.Size = new System.Drawing.Size(1370, 594);
             this.panel5.TabIndex = 34;
             // 
+            // checkBoxChangeComputeOnLock
+            // 
+            this.checkBoxChangeComputeOnLock.AutoSize = true;
+            this.checkBoxChangeComputeOnLock.Enabled = false;
+            this.checkBoxChangeComputeOnLock.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxChangeComputeOnLock.Location = new System.Drawing.Point(1051, 210);
+            this.checkBoxChangeComputeOnLock.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxChangeComputeOnLock.Name = "checkBoxChangeComputeOnLock";
+            this.checkBoxChangeComputeOnLock.Size = new System.Drawing.Size(261, 27);
+            this.checkBoxChangeComputeOnLock.TabIndex = 99;
+            this.checkBoxChangeComputeOnLock.Text = "Change Computation on Lock";
+            this.checkBoxChangeComputeOnLock.UseVisualStyleBackColor = true;
+            // 
             // checkBoxBodega
             // 
             this.checkBoxBodega.AutoSize = true;
             this.checkBoxBodega.Enabled = false;
             this.checkBoxBodega.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxBodega.Location = new System.Drawing.Point(1092, 176);
+            this.checkBoxBodega.Location = new System.Drawing.Point(1051, 176);
             this.checkBoxBodega.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxBodega.Name = "checkBoxBodega";
             this.checkBoxBodega.Size = new System.Drawing.Size(182, 27);
@@ -527,7 +542,7 @@
             this.checkBoxPopupCustomer.AutoSize = true;
             this.checkBoxPopupCustomer.Enabled = false;
             this.checkBoxPopupCustomer.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxPopupCustomer.Location = new System.Drawing.Point(1092, 142);
+            this.checkBoxPopupCustomer.Location = new System.Drawing.Point(1051, 142);
             this.checkBoxPopupCustomer.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxPopupCustomer.Name = "checkBoxPopupCustomer";
             this.checkBoxPopupCustomer.Size = new System.Drawing.Size(202, 27);
@@ -540,7 +555,7 @@
             this.checkBoxDisableLockTender.AutoSize = true;
             this.checkBoxDisableLockTender.Enabled = false;
             this.checkBoxDisableLockTender.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxDisableLockTender.Location = new System.Drawing.Point(1092, 109);
+            this.checkBoxDisableLockTender.Location = new System.Drawing.Point(1051, 109);
             this.checkBoxDisableLockTender.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxDisableLockTender.Name = "checkBoxDisableLockTender";
             this.checkBoxDisableLockTender.Size = new System.Drawing.Size(207, 27);
@@ -575,7 +590,7 @@
             this.checkBoxRestrictCashin.AutoSize = true;
             this.checkBoxRestrictCashin.Enabled = false;
             this.checkBoxRestrictCashin.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxRestrictCashin.Location = new System.Drawing.Point(1092, 78);
+            this.checkBoxRestrictCashin.Location = new System.Drawing.Point(1051, 78);
             this.checkBoxRestrictCashin.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxRestrictCashin.Name = "checkBoxRestrictCashin";
             this.checkBoxRestrictCashin.Size = new System.Drawing.Size(151, 27);
@@ -588,7 +603,7 @@
             this.checkBoxDisableSalesCustomerSelection.AutoSize = true;
             this.checkBoxDisableSalesCustomerSelection.Enabled = false;
             this.checkBoxDisableSalesCustomerSelection.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxDisableSalesCustomerSelection.Location = new System.Drawing.Point(1092, 44);
+            this.checkBoxDisableSalesCustomerSelection.Location = new System.Drawing.Point(1051, 44);
             this.checkBoxDisableSalesCustomerSelection.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxDisableSalesCustomerSelection.Name = "checkBoxDisableSalesCustomerSelection";
             this.checkBoxDisableSalesCustomerSelection.Size = new System.Drawing.Size(283, 27);
@@ -601,7 +616,7 @@
             this.checkBoxEnableEditPrice.AutoSize = true;
             this.checkBoxEnableEditPrice.Enabled = false;
             this.checkBoxEnableEditPrice.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxEnableEditPrice.Location = new System.Drawing.Point(1092, 14);
+            this.checkBoxEnableEditPrice.Location = new System.Drawing.Point(1051, 14);
             this.checkBoxEnableEditPrice.Margin = new System.Windows.Forms.Padding(2);
             this.checkBoxEnableEditPrice.Name = "checkBoxEnableEditPrice";
             this.checkBoxEnableEditPrice.Size = new System.Drawing.Size(159, 27);
@@ -2205,18 +2220,18 @@
             this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
             this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
             // 
-            // checkBoxChangeComputeOnLock
+            // checkBoxPrintDeletedItem
             // 
-            this.checkBoxChangeComputeOnLock.AutoSize = true;
-            this.checkBoxChangeComputeOnLock.Enabled = false;
-            this.checkBoxChangeComputeOnLock.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxChangeComputeOnLock.Location = new System.Drawing.Point(1092, 210);
-            this.checkBoxChangeComputeOnLock.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxChangeComputeOnLock.Name = "checkBoxChangeComputeOnLock";
-            this.checkBoxChangeComputeOnLock.Size = new System.Drawing.Size(261, 27);
-            this.checkBoxChangeComputeOnLock.TabIndex = 99;
-            this.checkBoxChangeComputeOnLock.Text = "Change Computation on Lock";
-            this.checkBoxChangeComputeOnLock.UseVisualStyleBackColor = true;
+            this.checkBoxPrintDeletedItem.AutoSize = true;
+            this.checkBoxPrintDeletedItem.Enabled = false;
+            this.checkBoxPrintDeletedItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxPrintDeletedItem.Location = new System.Drawing.Point(1051, 241);
+            this.checkBoxPrintDeletedItem.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxPrintDeletedItem.Name = "checkBoxPrintDeletedItem";
+            this.checkBoxPrintDeletedItem.Size = new System.Drawing.Size(315, 27);
+            this.checkBoxPrintDeletedItem.TabIndex = 100;
+            this.checkBoxPrintDeletedItem.Text = "Enable POS Touch Print Deleted Item";
+            this.checkBoxPrintDeletedItem.UseVisualStyleBackColor = true;
             // 
             // SysSettingsForm
             // 
@@ -2434,5 +2449,6 @@
         private System.Windows.Forms.CheckBox checkBoxPopupCustomer;
         private System.Windows.Forms.CheckBox checkBoxBodega;
         private System.Windows.Forms.CheckBox checkBoxChangeComputeOnLock;
+        private System.Windows.Forms.CheckBox checkBoxPrintDeletedItem;
     }
 }

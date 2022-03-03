@@ -15,7 +15,7 @@
   "TenantOf": "",
   "CurrentUserId": 1,
   "CurrentUserName": "admin",
-  "CurrentVersion": "Version 1.202202181753NOR",
+  "CurrentVersion": "Version 1.202203031134NOR",
   "CurrentDeveloper": "Easyfis Corporation",
   "CurrentSupport": "(032) 234-0787",
   "CurrentPeriodId": 1,
@@ -41,7 +41,7 @@
   "EasypayMotherCardNumber": "0000000001",
   "ActivateAuditTrail": true,
   "FacepayImagePath": "D:\\Facepay",
-  "POSType": "POS Barcode",
+  "POSType": "POS Touch",
   "AllowNegativeInventory": true,
   "IsLoginDate": true,
   "EnableEasyShopIntegration": false,
@@ -59,7 +59,7 @@
   "ChoosePrinter": false,
   "IsTriggeredQuantity": false,
   "EnableEditPrice": false,
-  "SalesOrderPrinterType": "Default Printer",
+  "SalesOrderPrinterType": "Kitchen Printer",
   "DisableSalesCustomerSelection": false,
   "Language": "English",
   "SingleColumnBarcodePrintOut": false,
@@ -68,5 +68,5 @@
   "PopupCustomerInfo": false,
   "BodegaTransaction": false,
   "ChangeComputationOnLock": false,
-  "PrintDeletedSalesItem": true
+  "EnablePOSTouchPrintDeletedItem": true
 }
