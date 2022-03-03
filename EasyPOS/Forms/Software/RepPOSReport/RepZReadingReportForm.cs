@@ -438,7 +438,6 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 {
                     var salesLines = salesLinesQuery.ToArray();
                     var previousDeclareRatesValues = previousDeclareRates.ToArray();
-
                     totalAccumulatedGrossSales = salesLines.Sum(d =>
                         previousDeclareRatesValues.Where(p => p.Date == d.TrnSale.SalesDate).Any() == true ?
                             (

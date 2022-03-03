@@ -202,6 +202,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
             }
 
+            if (trnSalesEntity.IsLocked == true && trnSalesEntity.IsTendered == true)
+            {
+                buttonUnlock.Enabled = false;
+                buttonTender.Enabled = false;
+                buttonOverRide.Enabled = false;
+                panelItems.Visible = false;
+            }
+
             GetSalesDetail();
             GetSalesLineList();
 
@@ -467,7 +475,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     CustomerId = trnSalesEntity.CustomerId,
                     CustomerCode = trnSalesEntity.CustomerCode,
                     Customer = trnSalesEntity.Customer,
-                    Remarks = trnSalesEntity.Remarks
+                    Remarks = trnSalesEntity.Remarks,
+                    SalesAgent = trnSalesEntity.SalesAgent
                 };
 
                 TrnPOSTenderForm trnSalesDetailTenderForm = new TrnPOSTenderForm(sysSoftwareForm, null, null, trnPOSTouchForm, this, newSalesEntity);
@@ -584,6 +593,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         private void buttonClose_Click(object sender, EventArgs e)
         {
             Close();
+            trnPOSTouchForm.UpdateSalesListGridDataSource();
             sysSoftwareForm.RemoveTabPage();
         }
 
