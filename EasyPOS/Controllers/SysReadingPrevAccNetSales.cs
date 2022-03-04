@@ -19,6 +19,7 @@ namespace EasyPOS.Controllers
             {
                 ReadingDate = objPrevAccNetSales.ReadingDate,
                 AccumulatedNetSales = objPrevAccNetSales.AccumulatedNetSales,
+                AccumulatedGrossSalesNetOfVat = objPrevAccNetSales.AccumulatedGrossSalesNetOfVat
             };
 
             db.SysReadingPrevAccNetSales.InsertOnSubmit(addPrevAccNetSales);
@@ -39,6 +40,7 @@ namespace EasyPOS.Controllers
                 {
                     var updatedPreAccNetSales = prevAccNetSales.FirstOrDefault();
                     updatedPreAccNetSales.AccumulatedNetSales = objPrevAccNetSales.AccumulatedNetSales;
+                    updatedPreAccNetSales.AccumulatedGrossSalesNetOfVat = objPrevAccNetSales.AccumulatedGrossSalesNetOfVat;
                     db.SubmitChanges();
                 }
 

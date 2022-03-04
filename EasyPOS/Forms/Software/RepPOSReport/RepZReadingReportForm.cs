@@ -415,6 +415,13 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             Decimal totalAccumulatedPWDDiscount = 0;
             Decimal totalAccumulatedSalesReturn = 0;
 
+            // -------- Custom Previous Accumulated Net Sales --------------------------
+            DateTime minusDay = filterDate.AddDays(-1);
+            var accNetSales = from d in db.SysReadingPrevAccNetSales
+                              where d.ReadingDate == minusDay
+                              select d;
+            // -------------------------------------------------------------------------
+
             var previousCollectionSalesLineQuery = from d in db.TrnSalesLines
                                                    where d.TrnSale.TrnCollections.Any() == true
                                                    && d.TrnSale.TrnCollections.Where(
@@ -438,24 +445,37 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 {
                     var salesLines = salesLinesQuery.ToArray();
                     var previousDeclareRatesValues = previousDeclareRates.ToArray();
-                    totalAccumulatedGrossSales = salesLines.Sum(d =>
-                        previousDeclareRatesValues.Where(p => p.Date == d.TrnSale.SalesDate).Any() == true ?
-                            (
-                                d.MstTax.Code == "EXEMPTVAT" ?
-                                    d.MstItem.MstTax1.Rate > 0 ?
-                                        (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : d.Price * d.Quantity
-                                : d.MstTax.Rate > 0 ?
-                                        (d.Price * d.Quantity) - d.TaxAmount : d.Price * d.Quantity
-                            ) * Convert.ToDecimal(previousDeclareRatesValues.Where(p => p.Date == d.TrnSale.SalesDate).FirstOrDefault().DeclareRate)
-                        :
-                            (
-                                d.MstTax.Code == "EXEMPTVAT" ?
-                                    d.MstItem.MstTax1.Rate > 0 ?
-                                        (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : d.Price * d.Quantity
-                                : d.MstTax.Rate > 0 ?
-                                        (d.Price * d.Quantity) - d.TaxAmount : d.Price * d.Quantity
-                            ) * currentDeclareRate
-                    );
+
+                    // -------- Custom Previous Accumulated Gross Sales Net of Vat ------------------------
+                    if (accNetSales.Any())
+                    {
+                        var prevAccGrossSalesNetOfVat = accNetSales.FirstOrDefault().AccumulatedGrossSalesNetOfVat;
+                        if (prevAccGrossSalesNetOfVat > 0)
+                        {
+                            totalAccumulatedGrossSales = prevAccGrossSalesNetOfVat;
+                        }
+                        else
+                        {
+                            totalAccumulatedGrossSales = salesLines.Sum(d =>
+                            previousDeclareRatesValues.Where(p => p.Date == d.TrnSale.SalesDate).Any() == true ?
+                                (
+                                    d.MstTax.Code == "EXEMPTVAT" ?
+                                        d.MstItem.MstTax1.Rate > 0 ?
+                                            (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : d.Price * d.Quantity
+                                    : d.MstTax.Rate > 0 ?
+                                            (d.Price * d.Quantity) - d.TaxAmount : d.Price * d.Quantity
+                                ) * Convert.ToDecimal(previousDeclareRatesValues.Where(p => p.Date == d.TrnSale.SalesDate).FirstOrDefault().DeclareRate)
+                            :
+                                (
+                                    d.MstTax.Code == "EXEMPTVAT" ?
+                                        d.MstItem.MstTax1.Rate > 0 ?
+                                            (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : d.Price * d.Quantity
+                                    : d.MstTax.Rate > 0 ?
+                                            (d.Price * d.Quantity) - d.TaxAmount : d.Price * d.Quantity
+                                ) * currentDeclareRate
+                            );
+                        }
+                    }
 
                     totalAccumulatedRegularDiscount = salesLines.Sum(d =>
                         previousDeclareRatesValues.Where(p => p.Date == d.TrnSale.SalesDate).Any() == true ?
@@ -528,12 +548,6 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                     totalAccumulatedSalesReturn = (VATSalesReturn + VATExemptSalesReturn);
                 }
             }
-            // -------- Custom Previous Accumulated Net Sales --------------------------
-            DateTime minusDay = filterDate.AddDays(-1);
-            var accNetSales = from d in db.SysReadingPrevAccNetSales
-                              where d.ReadingDate == minusDay
-                              select d;
-            // -------------------------------------------------------------------------
 
             repZReadingReportEntity.GrossSalesTotalPreviousReading = totalAccumulatedGrossSales;
             repZReadingReportEntity.GrossSalesRunningTotal = (repZReadingReportEntity.TotalGrossSales * currentDeclareRate) + repZReadingReportEntity.GrossSalesTotalPreviousReading;
@@ -564,7 +578,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             repZReadingReportEntity.NetSalesTotalPreviousReading = _totalAccumulatedPreviousNetSales;
             repZReadingReportEntity.NetSalesRunningTotal = repZReadingReportEntity.TotalNetSales + repZReadingReportEntity.NetSalesTotalPreviousReading;
 
-            // -------- Custom Previous Accumulated Net Sales --------------------------
+            // -------- Custom Previous Accumulated Net and Gross Sales --------------------------
             var accNetSalesCurrent = from d in db.SysReadingPrevAccNetSales
                                      where d.ReadingDate == Convert.ToDateTime(filterDate.ToShortDateString())
                                      select d;
@@ -572,7 +586,8 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             Entities.SysReadingPrevAccNetSales newPrevAccNetSales = new Entities.SysReadingPrevAccNetSales()
             {
                 ReadingDate = Convert.ToDateTime(filterDate.ToShortDateString()),
-                AccumulatedNetSales = repZReadingReportEntity.NetSalesRunningTotal
+                AccumulatedNetSales = repZReadingReportEntity.NetSalesRunningTotal,
+                AccumulatedGrossSalesNetOfVat = repZReadingReportEntity.GrossSalesRunningTotal
             };
 
             Controllers.SysReadingPrevAccNetSales addAccNetSales = new Controllers.SysReadingPrevAccNetSales();
@@ -584,7 +599,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             {
                 addAccNetSales.InsertPrevAccNetSales(newPrevAccNetSales);
             }
-            
+
             // -------------------------------------------------------------------------
 
             var firstCollection = from d in db.TrnCollections

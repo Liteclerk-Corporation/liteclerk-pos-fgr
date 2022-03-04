@@ -11,5 +11,6 @@ namespace EasyPOS.Entities
         public Int32 Id { get; set; }
         public DateTime ReadingDate { get; set; }
         public Decimal AccumulatedNetSales { get; set; }
+        public Decimal AccumulatedGrossSalesNetOfVat { get; set; }
     }
 }
