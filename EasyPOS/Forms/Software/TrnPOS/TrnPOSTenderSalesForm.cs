@@ -127,7 +127,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 comboBoxTenderSalesUsers.DisplayMember = "FullName";
 
                 var currentUserId = Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId;
-                comboBoxTenderSalesUsers.SelectedValue = Convert.ToInt32(currentUserId);
+                comboBoxTenderSalesUsers.SelectedValue = trnSalesEntity.SalesAgent == null ? Convert.ToInt32(currentUserId) : trnSalesEntity.SalesAgent;
             }
 
             comboBoxTenderSalesCustomer.SelectedValue = trnSalesEntity.CustomerId;
@@ -167,11 +167,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 if (trnSalesDetailTenderForm != null)
                 {
-                    trnPOSBarcodeDetailForm.trnSalesEntity.CustomerId = newSalesEntity.CustomerId;
-                    trnPOSBarcodeDetailForm.trnSalesEntity.TermId = newSalesEntity.TermId;
                     trnSalesDetailTenderForm.trnSalesEntity.CustomerCode = customerCode;
                     trnSalesDetailTenderForm.trnSalesEntity.Customer = customerName;
                     trnSalesDetailTenderForm.trnSalesEntity.Remarks = newSalesEntity.Remarks;
+                    trnSalesDetailTenderForm.trnSalesEntity.SalesAgent = newSalesEntity.SalesAgent;
                     trnSalesDetailTenderForm.GetSalesDetail();
                 }
 
@@ -182,6 +181,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     trnPOSBarcodeDetailForm.trnSalesEntity.CustomerCode = customerCode;
                     trnPOSBarcodeDetailForm.trnSalesEntity.Customer = customerName;
                     trnPOSBarcodeDetailForm.trnSalesEntity.Remarks = newSalesEntity.Remarks;
+                    trnPOSBarcodeDetailForm.trnSalesEntity.SalesAgent = newSalesEntity.SalesAgent;
                     trnPOSBarcodeDetailForm.GetSalesDetail();
                 }
                 else
@@ -194,9 +194,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 if (trnPOSTouchDetailForm != null)
                 {
+                    trnPOSTouchDetailForm.trnSalesEntity.CustomerId = newSalesEntity.CustomerId;
+                    trnPOSTouchDetailForm.trnSalesEntity.TermId = newSalesEntity.TermId;
                     trnPOSTouchDetailForm.trnSalesEntity.CustomerCode = customerCode;
                     trnPOSTouchDetailForm.trnSalesEntity.Customer = customerName;
                     trnPOSTouchDetailForm.trnSalesEntity.Remarks = newSalesEntity.Remarks;
+                    trnPOSTouchDetailForm.trnSalesEntity.SalesAgent = newSalesEntity.SalesAgent;
                     trnPOSTouchDetailForm.GetSalesDetail();
                 }
                 else

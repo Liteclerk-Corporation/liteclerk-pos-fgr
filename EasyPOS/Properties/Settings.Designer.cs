@@ -129,5 +129,16 @@ namespace EasyPOS.Properties {
                 return ((string)(this["easyposConnectionString4"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-RT4V2EU\\SQLEXPRESS;Initial Catalog=easypos_mylora_baybay;Pers" +
+            "ist Security Info=True;User ID=sa")]
+        public string easypos_mylora_baybayConnectionString {
+            get {
+                return ((string)(this["easypos_mylora_baybayConnectionString"]));
+            }
+        }
     }
 }

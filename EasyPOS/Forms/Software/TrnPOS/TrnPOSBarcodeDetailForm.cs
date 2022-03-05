@@ -451,7 +451,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     CustomerId = trnSalesEntity.CustomerId,
                     CustomerCode = trnSalesEntity.CustomerCode,
                     Customer = trnSalesEntity.Customer,
-                    Remarks = trnSalesEntity.Remarks
+                    Remarks = trnSalesEntity.Remarks,
+                    SalesAgent = trnSalesEntity.SalesAgent
                 };
                 if (Modules.SysCurrentModule.GetCurrentSettings().RestrictCashin == true)
                 {

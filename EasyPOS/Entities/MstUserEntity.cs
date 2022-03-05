@@ -25,5 +25,6 @@ namespace EasyPOS.Entities
         public String UpdateTime { get; set; }
         public Boolean IsLocked { get; set; }
         public Boolean CanEditPrice { get; set; }
+        public Boolean CanOpenDrawer { get; set; }
     }
 }

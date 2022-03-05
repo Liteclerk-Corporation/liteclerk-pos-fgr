@@ -63,23 +63,27 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             if (isLocked == true && isTendered == true && isCanclled == false)
             {
-                buttonEditOrder.Enabled = false;
+                buttonEditOrder.Enabled = true;
                 buttonBillOut.Enabled = false;
                 buttonPrintPartialBill.Enabled = false;
                 buttonSplitMergeBill.Enabled = false;
                 buttonTender.Enabled = false;
                 buttonDeliver.Enabled = false;
                 buttonDelete.Enabled = false;
+
+                buttonEditOrder.Text = "F2 - View Order";
             }
             else if (isLocked == true && isTendered == true && isCanclled == true)
             {
-                buttonEditOrder.Enabled = false;
+                buttonEditOrder.Enabled = true;
                 buttonBillOut.Enabled = false;
                 buttonPrintPartialBill.Enabled = false;
                 buttonSplitMergeBill.Enabled = false;
                 buttonTender.Enabled = false;
                 buttonCancel.Enabled = false;
                 buttonDeliver.Enabled = false;
+
+                buttonEditOrder.Text = "F2 - View Order";
             }
             else if (isLocked == true)
             {
