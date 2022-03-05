@@ -634,6 +634,8 @@ namespace EasyPOS.Controllers
                     UpdateDateTime = DateTime.Now,
                     Pax = null,
                     PostCode = null,
+                    IsDelivery = false,
+                    DeliveryType = "Paid"
                 };
 
                 db.TrnSales.InsertOnSubmit(newSales);
