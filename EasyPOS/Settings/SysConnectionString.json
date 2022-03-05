@@ -1,6 +1,6 @@
 ﻿{
-  "DataSource": "DESKTOP-RT4V2EU\\SQLEXPRESS",
-  "InitialCatalog": "easypos_mylora_baybay",
+  "DataSource": "localhost",
+  "InitialCatalog": "easypos_jepoy",
   "UserId": "sa",
   "Password": "easyfis"
 }

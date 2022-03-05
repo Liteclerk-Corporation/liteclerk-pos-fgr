@@ -47,6 +47,7 @@ namespace EasyPOS.Controllers
                                  TaxRate = d.TaxRate,
                                  TaxAmount = d.TaxAmount,
                                  UserId = d.UserId,
+                                 UserName = d.UserName,
                                  SalesDate = d.SalesDate,
                                  DeletedDate = d.DeletedDate,
                                  IsPrinted = d.IsPrinted,
@@ -58,6 +59,50 @@ namespace EasyPOS.Controllers
             return deletedSalesLines.OrderByDescending(d => d.Id).ToList();
         }
 
+        // =============================
+        // Stored List Delete Sales Line
+        // =============================
+        public List<Entities.TrnSalesLineDeletedEntity> ListSalesLineDeletedItems(DateTime dateStart, DateTime dateEnd)
+        {
+            var deletedSalesLines = from d in db.TrnSalesLineDeleteds
+                                    where d.SalesDate >= dateStart
+                                             && d.SalesDate <= dateEnd
+                                             && d.IsPrinted == true
+                                    select new Entities.TrnSalesLineDeletedEntity
+                                    {
+                                        Id = d.Id,
+                                        SalesId = d.SalesId,
+                                        SalesNumber = d.SalesNumber,
+                                        ItemId = d.ItemId,
+                                        ItemDescription = d.ItemDescription,
+                                        ItemKitchen = d.ItemKitchen,
+                                        Preparation = d.Preparation,
+                                        UnitId = d.UnitId,
+                                        Unit = d.Unit,
+                                        Price = d.Price,
+                                        DiscountId = d.DiscountId,
+                                        Discount = d.Discount,
+                                        DiscountRate = d.DiscountRate,
+                                        DiscountAmount = d.DiscountAmount,
+                                        NetPrice = d.NetPrice,
+                                        Quantity = d.Quantity,
+                                        Amount = d.Amount,
+                                        TaxId = d.TaxId,
+                                        Tax = d.Tax,
+                                        TaxRate = d.TaxRate,
+                                        TaxAmount = d.TaxAmount,
+                                        UserId = d.UserId,
+                                        UserName = d.UserName,
+                                        SalesDate = d.SalesDate,
+                                        DeletedDate = d.DeletedDate,
+                                        IsPrinted = d.IsPrinted,
+                                        SalesLineId = d.SalesLineId,
+                                        TableId = d.TableId,
+                                        TableCode = d.TableCode
+                                    };
+
+            return deletedSalesLines.OrderByDescending(d => d.Id).ToList();
+        }
         // ======================
         // Add Deleted Sales Line
         // ======================
@@ -111,7 +156,7 @@ namespace EasyPOS.Controllers
                     ItemId = objSalesLine.ItemId,
                     ItemDescription = objSalesLine.ItemDescription,
                     ItemKitchen = item.FirstOrDefault().DefaultKitchenReport,
-                    Preparation = objSalesLine.Preparation,
+                    Preparation = sales.FirstOrDefault().TrnSalesLines.FirstOrDefault().Preparation,
                     UnitId = item.FirstOrDefault().UnitId,
                     Unit = item.FirstOrDefault().MstUnit.Unit,
                     Price = objSalesLine.Price,

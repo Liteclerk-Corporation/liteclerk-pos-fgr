@@ -281,7 +281,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 String collectionDateText = "\n" + salesLineDeletedItem.FirstOrDefault().SalesDate.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
                 graphics.DrawString(collectionDateText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
 
-                String collectionTimeText = "\n" + salesLineDeletedItem.FirstOrDefault().DeletedDate.ToString("H:mm:ss", CultureInfo.InvariantCulture);
+                String collectionTimeText = "\n" + salesLineDeletedItem.FirstOrDefault().DeletedDate.ToString("hh:mm:tt", CultureInfo.InvariantCulture);
                 graphics.DrawString(collectionTimeText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(collectionTimeText, fontArial10Regular).Height;
 

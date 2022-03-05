@@ -1394,8 +1394,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             {
                                 if (sysUserRights.GetUserRights().CanView == true)
                                 {
-                                    _80mmReport.RepSalesDeletedItems80mmForm repSalesDeletedItems80MmForm = new _80mmReport.RepSalesDeletedItems80mmForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
-                                    repSalesDeletedItems80MmForm.ShowDialog();
+                                    RepDeletedItemReportForm repDeletedItemReportForm = new RepDeletedItemReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                                    repDeletedItemReportForm.ShowDialog();
                                 }
                                 else
                                 {

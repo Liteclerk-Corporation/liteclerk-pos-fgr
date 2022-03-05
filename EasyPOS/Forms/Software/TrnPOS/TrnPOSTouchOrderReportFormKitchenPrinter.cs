@@ -920,7 +920,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 String printedDateText = "\n" + sales.FirstOrDefault().SalesDate.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
                 graphics.DrawString(printedDateText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 
-                String printedTimeText = "\n" + DateTime.Now.ToString("H:mm:ss", CultureInfo.InvariantCulture);
+                String printedTimeText = "\n" + DateTime.Now.ToString("hh:mm:tt", CultureInfo.InvariantCulture);
                 graphics.DrawString(printedTimeText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(printedTimeText, fontArial10Regular).Height;
 
