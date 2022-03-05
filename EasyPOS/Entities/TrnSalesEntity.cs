@@ -73,6 +73,8 @@ namespace EasyPOS.Entities
         public String Status { get; set; }
         public Decimal CollectedAmount { get; set; }
         public Decimal OrderChangeAmount { get; set; }
+        public Boolean? IsDelivery { get; set; }
+        public String DeliveryType { get; set; }
     }
 
     public class SysDeliverDriver
