@@ -48,15 +48,35 @@ namespace EasyPOS.Forms.Software.TrnPOS
             trnPOSTouchDetailForm = POSTouchDetailForm;
             trnSalesEntity = salesEntity;
 
+            List<String> deliveryType = new List<String>
+            {
+                "Paid",
+                "COD",
+                "Reserve"
+            };
+            comboBoxDeliveryType.DataSource = deliveryType;
+
             GetTermList();
 
             if (Modules.SysCurrentModule.GetCurrentSettings().ChangeComputationOnLock == true)
             {
                 textBoxTenderedAmount.Enabled = true;
+                checkBoxIsDelivery.Enabled = true;
+
+                if (checkBoxIsDelivery.Checked == true)
+                {
+                    comboBoxDeliveryType.Enabled = true;
+                }
+                else
+                {
+                    comboBoxDeliveryType.Enabled = false;
+                }
             }
             else
             {
                 textBoxTenderedAmount.Enabled = false;
+                checkBoxIsDelivery.Enabled = false;
+                comboBoxDeliveryType.Enabled = false;
             }
         }
         public string SetLabel(string label)
@@ -90,10 +110,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 GetCustomerList();
             }
-
-
         }
-
         public void GetCustomerList()
         {
             if (Modules.SysCurrentModule.GetCurrentSettings().DisableSalesCustomerSelection == true)
@@ -135,6 +152,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             comboBoxTenderSalesTerms.SelectedValue = trnSalesEntity.TermId;
             textBoxTenderSalesRemarks.Text = trnSalesEntity.Remarks;
             textBoxTenderedAmount.Text = trnSalesEntity.CollectedAmount.ToString("#,##0.00");
+            checkBoxIsDelivery.Checked = Convert.ToBoolean(trnSalesEntity.IsDelivery);
+            comboBoxDeliveryType.Text = trnSalesEntity.DeliveryType.ToString();
         }
 
         private void comboBoxTenderSalesCustomer_SelectedIndexChanged(object sender, EventArgs e)
@@ -171,6 +190,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         Amount = trnSalesEntity.Amount,
                         CollectedAmount = Convert.ToDecimal(textBoxTenderedAmount.Text),
                         OrderChangeAmount = Convert.ToDecimal(textBoxTenderedAmount.Text) - trnSalesEntity.Amount,
+                        IsDelivery = Convert.ToBoolean(checkBoxIsDelivery.Checked),
+                        DeliveryType = comboBoxDeliveryType.SelectedValue.ToString()
                     };
 
                     Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
@@ -193,6 +214,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             trnPOSBarcodeDetailForm.trnSalesEntity.SalesAgent = newSalesEntity.SalesAgent;
                             trnSalesEntity.CollectedAmount = newSalesEntity.CollectedAmount;
                             trnSalesEntity.OrderChangeAmount = newSalesEntity.OrderChangeAmount;
+                            trnSalesEntity.IsDelivery = newSalesEntity.IsDelivery;
+                            trnSalesEntity.DeliveryType = newSalesEntity.DeliveryType;
                         }
 
                         if (trnPOSTouchDetailForm != null)
@@ -358,6 +381,18 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 String inputString = comboBoxTenderSalesCustomer.Text;
                 comboBoxTenderSalesCustomer.SelectedIndex = comboBoxTenderSalesCustomer.FindString(inputString);
+            }
+        }
+
+        private void checkBoxIsDelivery_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (checkBoxIsDelivery.Checked == true)
+            {
+                comboBoxDeliveryType.Enabled = true;
+            }
+            else
+            {
+                comboBoxDeliveryType.Enabled = false;
             }
         }
     }

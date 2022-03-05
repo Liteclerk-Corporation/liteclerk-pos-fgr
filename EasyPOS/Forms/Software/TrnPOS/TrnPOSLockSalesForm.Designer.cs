@@ -50,6 +50,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.comboBoxDeliveryType = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.checkBoxIsDelivery = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -194,6 +197,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.comboBoxDeliveryType);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.checkBoxIsDelivery);
             this.panel2.Controls.Add(this.textBoxTenderedAmount);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label7);
@@ -213,13 +219,13 @@
             this.panel2.Location = new System.Drawing.Point(0, 50);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(484, 314);
+            this.panel2.Size = new System.Drawing.Size(484, 377);
             this.panel2.TabIndex = 26;
             // 
             // textBoxTenderedAmount
             // 
             this.textBoxTenderedAmount.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxTenderedAmount.Location = new System.Drawing.Point(146, 280);
+            this.textBoxTenderedAmount.Location = new System.Drawing.Point(145, 339);
             this.textBoxTenderedAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTenderedAmount.Multiline = true;
             this.textBoxTenderedAmount.Name = "textBoxTenderedAmount";
@@ -232,7 +238,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label8.Location = new System.Drawing.Point(6, 285);
+            this.label8.Location = new System.Drawing.Point(5, 344);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(136, 21);
@@ -327,11 +333,46 @@
             this.label6.TabIndex = 24;
             this.label6.Text = "Sales Agent:";
             // 
+            // comboBoxDeliveryType
+            // 
+            this.comboBoxDeliveryType.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.comboBoxDeliveryType.FormattingEnabled = true;
+            this.comboBoxDeliveryType.Location = new System.Drawing.Point(145, 306);
+            this.comboBoxDeliveryType.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxDeliveryType.Name = "comboBoxDeliveryType";
+            this.comboBoxDeliveryType.Size = new System.Drawing.Size(328, 29);
+            this.comboBoxDeliveryType.TabIndex = 33;
+            this.comboBoxDeliveryType.TabStop = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label9.Location = new System.Drawing.Point(5, 309);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(106, 21);
+            this.label9.TabIndex = 32;
+            this.label9.Text = "Delivery Type:";
+            // 
+            // checkBoxIsDelivery
+            // 
+            this.checkBoxIsDelivery.AutoSize = true;
+            this.checkBoxIsDelivery.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.checkBoxIsDelivery.Location = new System.Drawing.Point(146, 279);
+            this.checkBoxIsDelivery.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxIsDelivery.Name = "checkBoxIsDelivery";
+            this.checkBoxIsDelivery.Size = new System.Drawing.Size(77, 23);
+            this.checkBoxIsDelivery.TabIndex = 31;
+            this.checkBoxIsDelivery.Text = "Delivery";
+            this.checkBoxIsDelivery.UseVisualStyleBackColor = true;
+            this.checkBoxIsDelivery.MouseClick += new System.Windows.Forms.MouseEventHandler(this.checkBoxIsDelivery_MouseClick);
+            // 
             // TrnPOSLockSalesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(484, 364);
+            this.ClientSize = new System.Drawing.Size(484, 427);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
@@ -374,5 +415,8 @@
         private System.Windows.Forms.TextBox textBoxCustomerCode2;
         private System.Windows.Forms.TextBox textBoxTenderedAmount;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.ComboBox comboBoxDeliveryType;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.CheckBox checkBoxIsDelivery;
     }
 }

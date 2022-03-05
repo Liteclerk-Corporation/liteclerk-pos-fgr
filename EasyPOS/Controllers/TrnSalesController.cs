@@ -198,7 +198,9 @@ namespace EasyPOS.Controllers
                                 Pax = d.Pax,
                                 PostCode = d.PostCode,
                                 CollectedAmount = d.CollectedAmount,
-                                OrderChangeAmount = d.OrderChangeAmount
+                                OrderChangeAmount = d.OrderChangeAmount,
+                                IsDelivery = d.IsDelivery,
+                                DeliveryType = d.DeliveryType
                             };
 
                 return sales.OrderByDescending(d => d.Id).ToList();
@@ -271,7 +273,9 @@ namespace EasyPOS.Controllers
                                 Pax = d.Pax,
                                 PostCode = d.PostCode,
                                 CollectedAmount = d.CollectedAmount,
-                                OrderChangeAmount = d.OrderChangeAmount
+                                OrderChangeAmount = d.OrderChangeAmount,
+                                IsDelivery = d.IsDelivery,
+                                DeliveryType = d.DeliveryType
                             };
 
                 return sales.OrderByDescending(d => d.Id).ToList();
@@ -344,7 +348,9 @@ namespace EasyPOS.Controllers
                                 Pax = d.Pax,
                                 PostCode = d.PostCode,
                                 CollectedAmount = d.CollectedAmount,
-                                OrderChangeAmount = d.OrderChangeAmount
+                                OrderChangeAmount = d.OrderChangeAmount,
+                                IsDelivery = d.IsDelivery,
+                                DeliveryType = d.DeliveryType
                             };
 
                 return sales.OrderByDescending(d => d.Id).ToList();
@@ -424,7 +430,9 @@ namespace EasyPOS.Controllers
                                 Pax = d.Pax,
                                 PostCode = d.PostCode,
                                 CollectedAmount = d.CollectedAmount,
-                                OrderChangeAmount = d.OrderChangeAmount
+                                OrderChangeAmount = d.OrderChangeAmount,
+                                IsDelivery = d.IsDelivery,
+                                DeliveryType = d.DeliveryType
                             };
 
                 return sales.OrderByDescending(d => d.Id).ToList();
@@ -498,7 +506,9 @@ namespace EasyPOS.Controllers
                             Pax = d.Pax,
                             PostCode = d.PostCode,
                             CollectedAmount = d.CollectedAmount,
-                            OrderChangeAmount = d.OrderChangeAmount
+                            OrderChangeAmount = d.OrderChangeAmount,
+                            IsDelivery = d.IsDelivery,
+                            DeliveryType = d.DeliveryType
                         };
 
             return sales.FirstOrDefault();
@@ -623,7 +633,9 @@ namespace EasyPOS.Controllers
                     UpdateUserId = user.FirstOrDefault().Id,
                     UpdateDateTime = DateTime.Now,
                     Pax = null,
-                    PostCode = null
+                    PostCode = null,
+                    IsDelivery = false,
+                    DeliveryType = "Paid"
                 };
 
                 db.TrnSales.InsertOnSubmit(newSales);
@@ -1775,31 +1787,36 @@ namespace EasyPOS.Controllers
                     lockSales.UpdateDateTime = DateTime.Now;
                     lockSales.CollectedAmount = objSales.CollectedAmount;
                     lockSales.OrderChangeAmount = objSales.OrderChangeAmount;
+                    lockSales.IsDelivery = objSales.IsDelivery;
+                    lockSales.DeliveryType = objSales.DeliveryType;
                     db.SubmitChanges();
 
                     Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
                     trnInventoryModule.UpdateSalesInventory(salesId);
 
-                    if (sales.FirstOrDefault().MstCustomer.WithReward == true)
+                    if (Modules.SysCurrentModule.GetCurrentSettings().DisableLockTender == true)
                     {
-                        Decimal rewardConversion = sales.FirstOrDefault().MstCustomer.RewardConversion;
-                        if (rewardConversion != 0)
+                        if (sales.FirstOrDefault().MstCustomer.WithReward == true)
                         {
-                            var customer = from d in db.MstCustomers
-                                           where d.Id == sales.FirstOrDefault().CustomerId
-                                           select d;
-
-                            if (customer.Any())
+                            Decimal rewardConversion = sales.FirstOrDefault().MstCustomer.RewardConversion;
+                            if (rewardConversion != 0)
                             {
-                                Decimal availableReward = sales.FirstOrDefault().Amount / rewardConversion;
-                                Decimal existingReward = customer.FirstOrDefault().AvailableReward;
+                                var customer = from d in db.MstCustomers
+                                               where d.Id == sales.FirstOrDefault().CustomerId
+                                               select d;
 
-                                var updateRewards = customer.FirstOrDefault();
-                                updateRewards.AvailableReward = existingReward + availableReward;
-                                db.SubmitChanges();
+                                if (customer.Any())
+                                {
+                                    Decimal availableReward = sales.FirstOrDefault().Amount / rewardConversion;
+                                    Decimal existingReward = customer.FirstOrDefault().AvailableReward;
+
+                                    var updateRewards = customer.FirstOrDefault();
+                                    updateRewards.AvailableReward = existingReward + availableReward;
+                                    db.SubmitChanges();
+                                }
                             }
                         }
-                    }
+                    }   
 
                     return new String[] { "", "1" };
                 }

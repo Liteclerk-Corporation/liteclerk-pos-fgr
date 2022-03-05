@@ -20134,6 +20134,10 @@ namespace EasyPOS.Data
 		
 		private decimal _OrderChangeAmount;
 		
+		private System.Nullable<bool> _IsDelivery;
+		
+		private string _DeliveryType;
+		
 		private EntitySet<SysSalesLocked> _SysSalesLockeds;
 		
 		private EntitySet<TrnCollection> _TrnCollections;
@@ -20264,6 +20268,10 @@ namespace EasyPOS.Data
     partial void OnCollectedAmountChanged();
     partial void OnOrderChangeAmountChanging(decimal value);
     partial void OnOrderChangeAmountChanged();
+    partial void OnIsDeliveryChanging(System.Nullable<bool> value);
+    partial void OnIsDeliveryChanged();
+    partial void OnDeliveryTypeChanging(string value);
+    partial void OnDeliveryTypeChanged();
     #endregion
 		
 		public TrnSale()
@@ -21195,6 +21203,46 @@ namespace EasyPOS.Data
 					this._OrderChangeAmount = value;
 					this.SendPropertyChanged("OrderChangeAmount");
 					this.OnOrderChangeAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsDelivery", DbType="Bit")]
+		public System.Nullable<bool> IsDelivery
+		{
+			get
+			{
+				return this._IsDelivery;
+			}
+			set
+			{
+				if ((this._IsDelivery != value))
+				{
+					this.OnIsDeliveryChanging(value);
+					this.SendPropertyChanging();
+					this._IsDelivery = value;
+					this.SendPropertyChanged("IsDelivery");
+					this.OnIsDeliveryChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DeliveryType", DbType="NVarChar(255)")]
+		public string DeliveryType
+		{
+			get
+			{
+				return this._DeliveryType;
+			}
+			set
+			{
+				if ((this._DeliveryType != value))
+				{
+					this.OnDeliveryTypeChanging(value);
+					this.SendPropertyChanging();
+					this._DeliveryType = value;
+					this.SendPropertyChanged("DeliveryType");
+					this.OnDeliveryTypeChanged();
 				}
 			}
 		}
