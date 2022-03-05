@@ -303,7 +303,9 @@
             "Unsold Item Report",
             "Cost Of Sales Report",
             "",
-            "Accounts Receivable"});
+            "Accounts Receivable",
+            "",
+            "POS Touch Deleted Items"});
             this.listBoxSalesReport.Location = new System.Drawing.Point(0, 0);
             this.listBoxSalesReport.Margin = new System.Windows.Forms.Padding(2);
             this.listBoxSalesReport.Name = "listBoxSalesReport";

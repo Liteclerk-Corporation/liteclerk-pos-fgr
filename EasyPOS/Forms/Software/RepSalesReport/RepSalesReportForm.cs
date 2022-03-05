@@ -811,7 +811,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         break;
                     case "Daily Sales Report (BIR)":
-                    //case "应收账款":
+                        //case "应收账款":
                         labelStartDate.Visible = true;
                         dateTimePickerStartDate.Visible = true;
 
@@ -840,6 +840,37 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         buttonView.Text = "View";
 
                         break;
+
+                    case "POS Touch Deleted Items":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+
+                        labelTerminal.Visible = false;
+                        comboBoxTerminal.Visible = false;
+
+                        labelCustomer.Visible = false;
+                        comboBoxCustomer.Visible = false;
+
+                        labelAgent.Visible = false;
+                        comboBoxSalesAgent.Visible = false;
+
+                        labelSupplier.Visible = false;
+                        comboBoxSupplier.Visible = false;
+
+                        labelItem.Visible = false;
+                        comboBoxItemFilter.Visible = false;
+
+                        labelDateAsOf.Visible = false;
+                        dateTimePickerDateAsOf.Visible = false;
+
+                        dateTimePickerStartDate.Focus();
+                        buttonView.Text = SetLabel("Print");
+
+                        break;
+
                     default:
                         labelStartDate.Visible = false;
                         dateTimePickerStartDate.Visible = false;
@@ -1331,7 +1362,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             break;
 
                         case "Daily Sales Report (BIR)":
-                        //case "应收账款":
+                            //case "应收账款":
                             sysUserRights = new Modules.SysUserRightsModule("RepSalesDetail");
 
                             if (sysUserRights.GetUserRights() == null)
@@ -1344,6 +1375,27 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                 {
                                     RepDailySalesBIRReportPDFForm repDailySalesBIRReportPDFForm = new RepDailySalesBIRReportPDFForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
                                     repDailySalesBIRReportPDFForm.ShowDialog();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            break;
+
+                        case "POS Touch Deleted Items":
+                            sysUserRights = new Modules.SysUserRightsModule("RepSalesDetail");
+
+                            if (sysUserRights.GetUserRights() == null)
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                if (sysUserRights.GetUserRights().CanView == true)
+                                {
+                                    _80mmReport.RepSalesDeletedItems80mmForm repSalesDeletedItems80MmForm = new _80mmReport.RepSalesDeletedItems80mmForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                                    repSalesDeletedItems80MmForm.ShowDialog();
                                 }
                                 else
                                 {
