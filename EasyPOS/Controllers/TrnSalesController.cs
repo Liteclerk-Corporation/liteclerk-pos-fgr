@@ -547,6 +547,10 @@ namespace EasyPOS.Controllers
 
                     tableId = table.FirstOrDefault().Id;
                 }
+                else
+                {
+                    return new String[] { "Table not found.", "0" };
+                }
 
                 var customer = from d in db.MstCustomers where d.Id == customerId select d;
                 if (customer.Any() == false)
@@ -1719,10 +1723,10 @@ namespace EasyPOS.Controllers
                                             select d;
 
                         var previousSalesBalance = from d in customerSales
-                                            where d.Id != salesId
-                                            && d.IsLocked == true
-                                            && d.BalanceAmount > 0
-                                            select d;
+                                                   where d.Id != salesId
+                                                   && d.IsLocked == true
+                                                   && d.BalanceAmount > 0
+                                                   select d;
 
                         Decimal totalPreviousSalesBalance = 0;
                         Decimal totalBalance = 0;
@@ -1756,13 +1760,13 @@ namespace EasyPOS.Controllers
                                 }
                             }
                         }
-                        
+
                     }
                     else
                     {
                         var customerCreditLimit = from d in db.MstCustomers
-                                            where d.Id == objSales.CustomerId
-                                            select d;
+                                                  where d.Id == objSales.CustomerId
+                                                  select d;
                         if (customerCreditLimit.FirstOrDefault().CreditLimit == 0)
                         {
                             return new String[] { "Exceeds Credit Limit.", "0" };
@@ -1816,7 +1820,7 @@ namespace EasyPOS.Controllers
                                 }
                             }
                         }
-                    }   
+                    }
 
                     return new String[] { "", "1" };
                 }
@@ -1873,34 +1877,46 @@ namespace EasyPOS.Controllers
         {
             try
             {
+                Int32? tableId = null;
+
+                var table = from d in db.MstTables
+                            where d.TableCode == tableCode
+                            select d;
+
                 var sales = from d in db.TrnSales
                             where d.Id == salesId
                             select d;
 
+                var salesTable = from d in db.TrnSales
+                                 where d.IsTendered == false
+                                 && d.SalesDate == Convert.ToDateTime(DateTime.Today.ToShortDateString())
+                                 && d.TableId == table.FirstOrDefault().Id
+                                 select d;
+
                 if (sales.Any())
                 {
-                    Int32? tableId = null;
-
-                    var table = from d in db.MstTables
-                                where d.TableCode == tableCode
-                                select d;
-
                     if (table.Any() == true)
                     {
                         tableId = table.FirstOrDefault().Id;
                     }
 
-                    var updateSales = sales.FirstOrDefault();
-                    updateSales.TableId = tableId;
-                    updateSales.MstTable.TableCode = tableCode;
-                    updateSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
-                    updateSales.UpdateDateTime = DateTime.Now;
-                    db.SubmitChanges();
+                    if (salesTable.Any() == false)
+                    {
+                        var updateSales = sales.FirstOrDefault();
+                        updateSales.TableId = tableId;
+                        updateSales.MstTable.TableCode = tableCode;
+                        updateSales.UpdateUserId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId);
+                        updateSales.UpdateDateTime = DateTime.Now;
+                        db.SubmitChanges();
+                        Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
+                        trnInventoryModule.UpdateSalesInventory(salesId);
 
-                    Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
-                    trnInventoryModule.UpdateSalesInventory(salesId);
-
-                    return new String[] { "", "1" };
+                        return new String[] { "", "1" };
+                    }
+                    else
+                    {
+                        return new String[] { "Table Occupied!", "0" };
+                    }
                 }
                 else
                 {

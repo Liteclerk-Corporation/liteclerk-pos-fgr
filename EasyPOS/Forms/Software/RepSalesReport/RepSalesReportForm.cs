@@ -1373,8 +1373,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             {
                                 if (sysUserRights.GetUserRights().CanView == true)
                                 {
-                                    RepDailySalesBIRReportPDFForm repDailySalesBIRReportPDFForm = new RepDailySalesBIRReportPDFForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
-                                    repDailySalesBIRReportPDFForm.ShowDialog();
+                                    new RepDailySalesBIRReportPDFForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxTerminal.SelectedValue));
                                 }
                                 else
                                 {

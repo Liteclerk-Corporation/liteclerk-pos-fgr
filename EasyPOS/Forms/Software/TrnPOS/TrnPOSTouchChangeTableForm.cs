@@ -156,7 +156,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         {
                             tableButtons[i].BackColor = Color.Brown;
                             tableButtons[i].ForeColor = Color.White;
-                            tableButtons[i].Enabled = false;
                         }
                         else
                         {
@@ -180,24 +179,29 @@ namespace EasyPOS.Forms.Software.TrnPOS
             String tableCode = tableToolTip.GetToolTip(b);
 
             Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-            trnPOSSalesController.ChangeTableSales(trnSalesEntity.Id, tableCode);
-
-            trnPOSTouchForm.UpdateSalesListGridDataSource();
-
-            Entities.TrnSalesEntity newSalesEntity = new Entities.TrnSalesEntity()
+            String[] changeTable = trnPOSSalesController.ChangeTableSales(trnSalesEntity.Id, tableCode);
+            if (changeTable[1].Equals("1") == true)
             {
-                Table = tableCode
-            };
+                trnPOSTouchForm.UpdateSalesListGridDataSource();
 
-            if (trnPOSTouchDetailForm != null)
-            {
-                trnPOSTouchDetailForm.trnSalesEntity.Table = newSalesEntity.Table;
+                Entities.TrnSalesEntity newSalesEntity = new Entities.TrnSalesEntity()
+                {
+                    Table = tableCode
+                };
+
+                if (trnPOSTouchDetailForm != null)
+                {
+                    trnPOSTouchDetailForm.trnSalesEntity.Table = newSalesEntity.Table;
+                }
+
+                trnPOSTouchDetailForm.GetSalesDetail();
+
+                Close();
             }
-
-            trnPOSTouchDetailForm.GetSalesDetail();
-
-            Close();
-
+            else
+            {
+                MessageBox.Show(changeTable[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
