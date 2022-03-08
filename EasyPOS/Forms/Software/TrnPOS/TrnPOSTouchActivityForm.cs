@@ -135,8 +135,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         Amount = trnSalesEntity.Amount,
                         SalesNumber = trnSalesEntity.SalesNumber,
                         SalesDate = trnSalesEntity.SalesDate.ToString(),
+                        CustomerId = trnSalesEntity.CustomerId,
+                        CustomerCode = trnSalesEntity.CustomerCode,
                         Customer = trnSalesEntity.Customer,
-                        Remarks = trnSalesEntity.Remarks
+                        Remarks = trnSalesEntity.Remarks,
+                        SalesAgent = trnSalesEntity.SalesAgent
                     };
 
                     String line1 = Modules.SysCurrentModule.GetCurrentSettings().CustomerDisplayFirstLineMessage;
