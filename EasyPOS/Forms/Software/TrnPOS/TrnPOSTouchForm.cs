@@ -197,6 +197,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         tableButtons[i].Text = listTablePage[i].TableCode;
                     }
                 }
+
+                for (int i = 0; i < tableNoOfButtons; i++)
+                {
+                    if (tableButtons[i].Text == "")
+                    {
+                        tableButtons[i].BackColor = SystemColors.Control;
+                        tableButtons[i].ForeColor = Color.Black;
+                    }
+                }
             }
             catch (Exception ex)
             {
