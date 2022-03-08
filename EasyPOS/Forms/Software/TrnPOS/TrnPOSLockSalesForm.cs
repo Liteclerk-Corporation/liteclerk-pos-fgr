@@ -229,6 +229,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             trnPOSTouchDetailForm.trnSalesEntity.TermId = newSalesEntity.TermId;
                             trnPOSTouchDetailForm.trnSalesEntity.Remarks = newSalesEntity.Remarks;
                             trnPOSTouchDetailForm.trnSalesEntity.SalesAgent = newSalesEntity.SalesAgent;
+                            trnSalesEntity.IsDelivery = newSalesEntity.IsDelivery;
+                            trnSalesEntity.DeliveryType = newSalesEntity.DeliveryType;
                         }
 
                         if (Modules.SysCurrentModule.GetCurrentSettings().DisableLockTender == true)

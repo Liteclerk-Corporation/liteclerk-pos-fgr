@@ -3197,7 +3197,9 @@ namespace EasyPOS.Controllers
                                 UpdateUserId = currentUserLogin.FirstOrDefault().Id,
                                 UpdateDateTime = DateTime.Now,
                                 Pax = null,
-                                PostCode = null
+                                PostCode = null,
+                                IsDelivery = false,
+                                DeliveryType = "Paid"
                             };
 
                             db.TrnSales.InsertOnSubmit(newSales);
@@ -3572,7 +3574,9 @@ namespace EasyPOS.Controllers
                         UpdateUserId = user.FirstOrDefault().Id,
                         UpdateDateTime = DateTime.Now,
                         Pax = null,
-                        PostCode = null
+                        PostCode = null,
+                        IsDelivery = false,
+                        DeliveryType = "Paid"
                     };
 
                     db.TrnSales.InsertOnSubmit(newSales);
