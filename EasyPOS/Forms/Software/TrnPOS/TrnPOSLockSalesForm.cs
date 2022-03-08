@@ -190,8 +190,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         Amount = trnSalesEntity.Amount,
                         CollectedAmount = Convert.ToDecimal(textBoxTenderedAmount.Text),
                         OrderChangeAmount = Convert.ToDecimal(textBoxTenderedAmount.Text) - trnSalesEntity.Amount,
-                        IsDelivery = Convert.ToBoolean(checkBoxIsDelivery.Checked),
-                        DeliveryType = comboBoxDeliveryType.SelectedValue.ToString()
                     };
 
                     Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
@@ -263,6 +261,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     Amount = trnSalesEntity.Amount,
                     CollectedAmount = 0,
                     OrderChangeAmount = 0,
+                    IsDelivery = Convert.ToBoolean(checkBoxIsDelivery.Checked),
+                    DeliveryType = comboBoxDeliveryType.Text
                 };
 
                 Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
@@ -285,6 +285,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         trnPOSBarcodeDetailForm.trnSalesEntity.SalesAgent = newSalesEntity.SalesAgent;
                         trnSalesEntity.CollectedAmount = newSalesEntity.CollectedAmount;
                         trnSalesEntity.OrderChangeAmount = newSalesEntity.OrderChangeAmount;
+                        trnSalesEntity.IsDelivery = newSalesEntity.IsDelivery;
+                        trnSalesEntity.DeliveryType = newSalesEntity.DeliveryType;
                     }
 
                     if (trnPOSTouchDetailForm != null)
@@ -300,6 +302,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         trnPOSTouchDetailForm.trnSalesEntity.TermId = newSalesEntity.TermId;
                         trnPOSTouchDetailForm.trnSalesEntity.Remarks = newSalesEntity.Remarks;
                         trnPOSTouchDetailForm.trnSalesEntity.SalesAgent = newSalesEntity.SalesAgent;
+                        trnSalesEntity.CollectedAmount = newSalesEntity.CollectedAmount;
+                        trnSalesEntity.OrderChangeAmount = newSalesEntity.OrderChangeAmount;
+                        trnSalesEntity.IsDelivery = newSalesEntity.IsDelivery;
+                        trnSalesEntity.DeliveryType = newSalesEntity.DeliveryType;
                     }
 
                     Close();
