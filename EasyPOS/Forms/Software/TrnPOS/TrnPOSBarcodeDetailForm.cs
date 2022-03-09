@@ -491,6 +491,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             Decimal totalSalesAmount = 0;
 
+            if (Modules.SysCurrentModule.GetCurrentSettings().BodegaTransaction == false)
+            {
+                dataGridViewSalesLineList.Columns[7].Visible = false;
+            }
+            else
+            {
+                dataGridViewSalesLineList.Columns[7].Visible = true;
+            }
+
             dataGridViewSalesLineList.Rows.Clear();
             dataGridViewSalesLineList.Refresh();
 
@@ -507,53 +516,45 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 dataGridViewSalesLineList.Columns[1].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#F34F1C");
                 dataGridViewSalesLineList.Columns[1].DefaultCellStyle.ForeColor = Color.White;
 
-                if (Modules.SysCurrentModule.GetCurrentSettings().BodegaTransaction == false)
-                {
-                    dataGridViewSalesLineList.Columns[7].Visible = false;
-                }
-                else
-                {
-                    dataGridViewSalesLineList.Columns[7].Visible = true;
-                }
 
                 foreach (var objSalesLineList in salesLineList)
                 {
                     totalSalesAmount += objSalesLineList.Amount;
 
                     dataGridViewSalesLineList.Rows.Add(
-                        "Edit",
-                        "Delete",
-                        objSalesLineList.Id,
-                        objSalesLineList.SalesId,
-                        objSalesLineList.ItemId,
-                        objSalesLineList.ItemDescription,
-                        objSalesLineList.Quantity.ToString("#,##0.00"),
-                        objSalesLineList.BodegaItemQty.ToString("#,##0.00"),
-                        objSalesLineList.UnitId,
-                        objSalesLineList.Unit,
-                        objSalesLineList.Price.ToString("#,##0.00"),
-                        objSalesLineList.DiscountId,
-                        objSalesLineList.Discount,
-                        objSalesLineList.DiscountRate.ToString("#,##0.00"),
-                        objSalesLineList.DiscountAmount.ToString("#,##0.00"),
-                        objSalesLineList.NetPrice.ToString("#,##0.00"),
-                        objSalesLineList.Amount.ToString("#,##0.00"),
-                        objSalesLineList.TaxId,
-                        objSalesLineList.Tax,
-                        objSalesLineList.TaxRate.ToString("#,##0.00"),
-                        objSalesLineList.TaxAmount.ToString("#,##0.00"),
-                        objSalesLineList.SalesAccountId,
-                        objSalesLineList.AssetAccountId,
-                        objSalesLineList.CostAccountId,
-                        objSalesLineList.TaxAccountId,
-                        objSalesLineList.SalesLineTimeStamp,
-                        objSalesLineList.UserId,
-                        objSalesLineList.Preparation,
-                        objSalesLineList.Price1.ToString("#,##0.00"),
-                        objSalesLineList.Price2.ToString("#,##0.00"),
-                        objSalesLineList.Price2LessTax.ToString("#,##0.00"),
-                        objSalesLineList.PriceSplitPercentage.ToString("#,##0.00")
-                    );
+                    "Edit",
+                    "Delete",
+                    objSalesLineList.Id,
+                    objSalesLineList.SalesId,
+                    objSalesLineList.ItemId,
+                    objSalesLineList.ItemDescription,
+                    objSalesLineList.Quantity.ToString("#,##0.00"),
+                    objSalesLineList.BodegaItemQty.ToString("#,##0.00"),
+                    objSalesLineList.UnitId,
+                    objSalesLineList.Unit,
+                    objSalesLineList.Price.ToString("#,##0.00"),
+                    objSalesLineList.DiscountId,
+                    objSalesLineList.Discount,
+                    objSalesLineList.DiscountRate.ToString("#,##0.00"),
+                    objSalesLineList.DiscountAmount.ToString("#,##0.00"),
+                    objSalesLineList.NetPrice.ToString("#,##0.00"),
+                    objSalesLineList.Amount.ToString("#,##0.00"),
+                    objSalesLineList.TaxId,
+                    objSalesLineList.Tax,
+                    objSalesLineList.TaxRate.ToString("#,##0.00"),
+                    objSalesLineList.TaxAmount.ToString("#,##0.00"),
+                    objSalesLineList.SalesAccountId,
+                    objSalesLineList.AssetAccountId,
+                    objSalesLineList.CostAccountId,
+                    objSalesLineList.TaxAccountId,
+                    objSalesLineList.SalesLineTimeStamp,
+                    objSalesLineList.UserId,
+                    objSalesLineList.Preparation,
+                    objSalesLineList.Price1.ToString("#,##0.00"),
+                    objSalesLineList.Price2.ToString("#,##0.00"),
+                    objSalesLineList.Price2LessTax.ToString("#,##0.00"),
+                    objSalesLineList.PriceSplitPercentage.ToString("#,##0.00")
+                );
                 }
             }
 
