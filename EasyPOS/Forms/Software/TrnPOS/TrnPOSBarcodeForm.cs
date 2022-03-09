@@ -225,7 +225,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             Int32 customerId = Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().WalkinCustomerId);
 
             Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
-            String[] addSales = trnPOSSalesController.AddSales("", customerId);
+            String[] addSales = trnPOSSalesController.AddSales("Walk-In", customerId);
             if (addSales[1].Equals("0") == false)
             {
                 sysSoftwareForm.AddTabPagePOSSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(addSales[1])));

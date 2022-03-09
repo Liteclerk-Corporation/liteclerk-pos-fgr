@@ -37,6 +37,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSBarcodeDetailForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonOverRide = new System.Windows.Forms.Button();
@@ -45,6 +46,7 @@
             this.buttonUnlock = new System.Windows.Forms.Button();
             this.buttonReturn = new System.Windows.Forms.Button();
             this.buttonDiscount = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonTender = new System.Windows.Forms.Button();
@@ -62,6 +64,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.labelInvoiceNumber = new System.Windows.Forms.Label();
             this.dataGridViewSalesLineList = new System.Windows.Forms.DataGridView();
+            this.buttonSearchItem = new System.Windows.Forms.Button();
+            this.textBoxBarcode = new System.Windows.Forms.TextBox();
+            this.buttonBarcode = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.buttonOpenCashDrawer = new System.Windows.Forms.Button();
+            this.textBoxChange = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.buttonDownload = new System.Windows.Forms.Button();
+            this.printDialogSalesOrder = new System.Windows.Forms.PrintDialog();
+            this.printDialogSalesInvoice = new System.Windows.Forms.PrintDialog();
             this.ColumnSalesLineEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnSalesLineDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnSalesLineId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -69,6 +82,7 @@
             this.ColumnSalesLineItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineBodegaQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineUnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLinePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,28 +107,13 @@
             this.ColumnSalesLinePrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLinePrice2LessTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLinePriceSplitPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesLineBodegaItemQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesLineIsDelivery = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnSalesLineDeliveryStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonSearchItem = new System.Windows.Forms.Button();
-            this.textBoxBarcode = new System.Windows.Forms.TextBox();
-            this.buttonBarcode = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.buttonOpenCashDrawer = new System.Windows.Forms.Button();
-            this.textBoxChange = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.buttonDownload = new System.Windows.Forms.Button();
-            this.printDialogSalesOrder = new System.Windows.Forms.PrintDialog();
-            this.printDialogSalesInvoice = new System.Windows.Forms.PrintDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesLineList)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -250,6 +249,17 @@
             this.buttonDiscount.Text = "F6 - Discount";
             this.buttonDiscount.UseVisualStyleBackColor = false;
             this.buttonDiscount.Click += new System.EventHandler(this.buttonDiscount_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.POS;
+            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -495,6 +505,7 @@
             this.ColumnSalesLineItemId,
             this.ColumnSalesLineItemDescription,
             this.ColumnSalesLineQuantity,
+            this.ColumnSalesLineBodegaQty,
             this.ColumnSalesLineUnitId,
             this.ColumnSalesLineUnit,
             this.ColumnSalesLinePrice,
@@ -518,10 +529,7 @@
             this.ColumnSalesLinePrice1,
             this.ColumnSalesLinePrice2,
             this.ColumnSalesLinePrice2LessTax,
-            this.ColumnSalesLinePriceSplitPercentage,
-            this.ColumnSalesLineBodegaItemQty,
-            this.ColumnSalesLineIsDelivery,
-            this.ColumnSalesLineDeliveryStatus});
+            this.ColumnSalesLinePriceSplitPercentage});
             this.dataGridViewSalesLineList.Location = new System.Drawing.Point(10, 44);
             this.dataGridViewSalesLineList.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewSalesLineList.MultiSelect = false;
@@ -535,321 +543,6 @@
             this.dataGridViewSalesLineList.TabIndex = 1;
             this.dataGridViewSalesLineList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesLineList_CellClick);
             this.dataGridViewSalesLineList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewSalesLineList_KeyDown);
-            // 
-            // ColumnSalesLineEdit
-            // 
-            this.ColumnSalesLineEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnSalesLineEdit.Frozen = true;
-            this.ColumnSalesLineEdit.HeaderText = "";
-            this.ColumnSalesLineEdit.MinimumWidth = 6;
-            this.ColumnSalesLineEdit.Name = "ColumnSalesLineEdit";
-            this.ColumnSalesLineEdit.ReadOnly = true;
-            this.ColumnSalesLineEdit.Width = 70;
-            // 
-            // ColumnSalesLineDelete
-            // 
-            this.ColumnSalesLineDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnSalesLineDelete.Frozen = true;
-            this.ColumnSalesLineDelete.HeaderText = "";
-            this.ColumnSalesLineDelete.MinimumWidth = 6;
-            this.ColumnSalesLineDelete.Name = "ColumnSalesLineDelete";
-            this.ColumnSalesLineDelete.ReadOnly = true;
-            this.ColumnSalesLineDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnSalesLineDelete.Width = 70;
-            // 
-            // ColumnSalesLineId
-            // 
-            this.ColumnSalesLineId.HeaderText = "Id";
-            this.ColumnSalesLineId.MinimumWidth = 6;
-            this.ColumnSalesLineId.Name = "ColumnSalesLineId";
-            this.ColumnSalesLineId.ReadOnly = true;
-            this.ColumnSalesLineId.Visible = false;
-            this.ColumnSalesLineId.Width = 125;
-            // 
-            // ColumnSalesLineSalesId
-            // 
-            this.ColumnSalesLineSalesId.HeaderText = "SalesId";
-            this.ColumnSalesLineSalesId.MinimumWidth = 6;
-            this.ColumnSalesLineSalesId.Name = "ColumnSalesLineSalesId";
-            this.ColumnSalesLineSalesId.ReadOnly = true;
-            this.ColumnSalesLineSalesId.Visible = false;
-            this.ColumnSalesLineSalesId.Width = 125;
-            // 
-            // ColumnSalesLineItemId
-            // 
-            this.ColumnSalesLineItemId.HeaderText = "ItemId";
-            this.ColumnSalesLineItemId.MinimumWidth = 6;
-            this.ColumnSalesLineItemId.Name = "ColumnSalesLineItemId";
-            this.ColumnSalesLineItemId.ReadOnly = true;
-            this.ColumnSalesLineItemId.Visible = false;
-            this.ColumnSalesLineItemId.Width = 125;
-            // 
-            // ColumnSalesLineItemDescription
-            // 
-            this.ColumnSalesLineItemDescription.HeaderText = "Item Description";
-            this.ColumnSalesLineItemDescription.MinimumWidth = 6;
-            this.ColumnSalesLineItemDescription.Name = "ColumnSalesLineItemDescription";
-            this.ColumnSalesLineItemDescription.ReadOnly = true;
-            this.ColumnSalesLineItemDescription.Width = 200;
-            // 
-            // ColumnSalesLineQuantity
-            // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineQuantity.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnSalesLineQuantity.HeaderText = "Quantity";
-            this.ColumnSalesLineQuantity.MinimumWidth = 6;
-            this.ColumnSalesLineQuantity.Name = "ColumnSalesLineQuantity";
-            this.ColumnSalesLineQuantity.ReadOnly = true;
-            this.ColumnSalesLineQuantity.Width = 125;
-            // 
-            // ColumnSalesLineUnitId
-            // 
-            this.ColumnSalesLineUnitId.HeaderText = "UnitId";
-            this.ColumnSalesLineUnitId.MinimumWidth = 6;
-            this.ColumnSalesLineUnitId.Name = "ColumnSalesLineUnitId";
-            this.ColumnSalesLineUnitId.ReadOnly = true;
-            this.ColumnSalesLineUnitId.Visible = false;
-            this.ColumnSalesLineUnitId.Width = 125;
-            // 
-            // ColumnSalesLineUnit
-            // 
-            this.ColumnSalesLineUnit.HeaderText = "Unit";
-            this.ColumnSalesLineUnit.MinimumWidth = 6;
-            this.ColumnSalesLineUnit.Name = "ColumnSalesLineUnit";
-            this.ColumnSalesLineUnit.ReadOnly = true;
-            this.ColumnSalesLineUnit.Width = 125;
-            // 
-            // ColumnSalesLinePrice
-            // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLinePrice.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnSalesLinePrice.HeaderText = "Price";
-            this.ColumnSalesLinePrice.MinimumWidth = 6;
-            this.ColumnSalesLinePrice.Name = "ColumnSalesLinePrice";
-            this.ColumnSalesLinePrice.ReadOnly = true;
-            this.ColumnSalesLinePrice.Width = 125;
-            // 
-            // ColumnSalesLineDiscountId
-            // 
-            this.ColumnSalesLineDiscountId.HeaderText = "DiscountId";
-            this.ColumnSalesLineDiscountId.MinimumWidth = 6;
-            this.ColumnSalesLineDiscountId.Name = "ColumnSalesLineDiscountId";
-            this.ColumnSalesLineDiscountId.ReadOnly = true;
-            this.ColumnSalesLineDiscountId.Visible = false;
-            this.ColumnSalesLineDiscountId.Width = 125;
-            // 
-            // ColumnSalesLineDiscount
-            // 
-            this.ColumnSalesLineDiscount.HeaderText = "Discount";
-            this.ColumnSalesLineDiscount.MinimumWidth = 6;
-            this.ColumnSalesLineDiscount.Name = "ColumnSalesLineDiscount";
-            this.ColumnSalesLineDiscount.ReadOnly = true;
-            this.ColumnSalesLineDiscount.Visible = false;
-            this.ColumnSalesLineDiscount.Width = 125;
-            // 
-            // ColumnSalesLineDiscountRate
-            // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineDiscountRate.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ColumnSalesLineDiscountRate.HeaderText = "Discount %";
-            this.ColumnSalesLineDiscountRate.MinimumWidth = 6;
-            this.ColumnSalesLineDiscountRate.Name = "ColumnSalesLineDiscountRate";
-            this.ColumnSalesLineDiscountRate.ReadOnly = true;
-            this.ColumnSalesLineDiscountRate.Width = 110;
-            // 
-            // ColumnSalesLineDiscountAmount
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineDiscountAmount.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ColumnSalesLineDiscountAmount.HeaderText = "Discount";
-            this.ColumnSalesLineDiscountAmount.MinimumWidth = 6;
-            this.ColumnSalesLineDiscountAmount.Name = "ColumnSalesLineDiscountAmount";
-            this.ColumnSalesLineDiscountAmount.ReadOnly = true;
-            this.ColumnSalesLineDiscountAmount.Width = 125;
-            // 
-            // ColumnSalesLineNetPrice
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineNetPrice.DefaultCellStyle = dataGridViewCellStyle6;
-            this.ColumnSalesLineNetPrice.HeaderText = "Net Price";
-            this.ColumnSalesLineNetPrice.MinimumWidth = 6;
-            this.ColumnSalesLineNetPrice.Name = "ColumnSalesLineNetPrice";
-            this.ColumnSalesLineNetPrice.ReadOnly = true;
-            this.ColumnSalesLineNetPrice.Width = 125;
-            // 
-            // ColumnSalesLineAmount
-            // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineAmount.DefaultCellStyle = dataGridViewCellStyle7;
-            this.ColumnSalesLineAmount.HeaderText = "Amount";
-            this.ColumnSalesLineAmount.MinimumWidth = 6;
-            this.ColumnSalesLineAmount.Name = "ColumnSalesLineAmount";
-            this.ColumnSalesLineAmount.ReadOnly = true;
-            this.ColumnSalesLineAmount.Width = 125;
-            // 
-            // ColumnSalesLineTaxId
-            // 
-            this.ColumnSalesLineTaxId.HeaderText = "TaxId";
-            this.ColumnSalesLineTaxId.MinimumWidth = 6;
-            this.ColumnSalesLineTaxId.Name = "ColumnSalesLineTaxId";
-            this.ColumnSalesLineTaxId.ReadOnly = true;
-            this.ColumnSalesLineTaxId.Visible = false;
-            this.ColumnSalesLineTaxId.Width = 125;
-            // 
-            // ColumnSalesLineTax
-            // 
-            this.ColumnSalesLineTax.HeaderText = "Tax";
-            this.ColumnSalesLineTax.MinimumWidth = 6;
-            this.ColumnSalesLineTax.Name = "ColumnSalesLineTax";
-            this.ColumnSalesLineTax.ReadOnly = true;
-            this.ColumnSalesLineTax.Visible = false;
-            this.ColumnSalesLineTax.Width = 56;
-            // 
-            // ColumnSalesLineTaxRate
-            // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineTaxRate.DefaultCellStyle = dataGridViewCellStyle8;
-            this.ColumnSalesLineTaxRate.HeaderText = "Tax %";
-            this.ColumnSalesLineTaxRate.MinimumWidth = 6;
-            this.ColumnSalesLineTaxRate.Name = "ColumnSalesLineTaxRate";
-            this.ColumnSalesLineTaxRate.ReadOnly = true;
-            this.ColumnSalesLineTaxRate.Width = 125;
-            // 
-            // ColumnSalesLineTaxAmount
-            // 
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineTaxAmount.DefaultCellStyle = dataGridViewCellStyle9;
-            this.ColumnSalesLineTaxAmount.HeaderText = "Tax";
-            this.ColumnSalesLineTaxAmount.MinimumWidth = 6;
-            this.ColumnSalesLineTaxAmount.Name = "ColumnSalesLineTaxAmount";
-            this.ColumnSalesLineTaxAmount.ReadOnly = true;
-            this.ColumnSalesLineTaxAmount.Width = 125;
-            // 
-            // ColumnSalesLineSalesAccountId
-            // 
-            this.ColumnSalesLineSalesAccountId.HeaderText = "SalesAccountId";
-            this.ColumnSalesLineSalesAccountId.MinimumWidth = 6;
-            this.ColumnSalesLineSalesAccountId.Name = "ColumnSalesLineSalesAccountId";
-            this.ColumnSalesLineSalesAccountId.ReadOnly = true;
-            this.ColumnSalesLineSalesAccountId.Visible = false;
-            this.ColumnSalesLineSalesAccountId.Width = 125;
-            // 
-            // ColumnSalesLineAssetAccountId
-            // 
-            this.ColumnSalesLineAssetAccountId.HeaderText = "AssetAccountId";
-            this.ColumnSalesLineAssetAccountId.MinimumWidth = 6;
-            this.ColumnSalesLineAssetAccountId.Name = "ColumnSalesLineAssetAccountId";
-            this.ColumnSalesLineAssetAccountId.ReadOnly = true;
-            this.ColumnSalesLineAssetAccountId.Visible = false;
-            this.ColumnSalesLineAssetAccountId.Width = 125;
-            // 
-            // ColumnSalesLineCostAccountId
-            // 
-            this.ColumnSalesLineCostAccountId.HeaderText = "CostAccountId";
-            this.ColumnSalesLineCostAccountId.MinimumWidth = 6;
-            this.ColumnSalesLineCostAccountId.Name = "ColumnSalesLineCostAccountId";
-            this.ColumnSalesLineCostAccountId.ReadOnly = true;
-            this.ColumnSalesLineCostAccountId.Visible = false;
-            this.ColumnSalesLineCostAccountId.Width = 125;
-            // 
-            // ColumnSalesLineTaxAccountId
-            // 
-            this.ColumnSalesLineTaxAccountId.HeaderText = "TaxAccountId";
-            this.ColumnSalesLineTaxAccountId.MinimumWidth = 6;
-            this.ColumnSalesLineTaxAccountId.Name = "ColumnSalesLineTaxAccountId";
-            this.ColumnSalesLineTaxAccountId.ReadOnly = true;
-            this.ColumnSalesLineTaxAccountId.Visible = false;
-            this.ColumnSalesLineTaxAccountId.Width = 125;
-            // 
-            // ColumnSalesLineTimeStamp
-            // 
-            this.ColumnSalesLineTimeStamp.HeaderText = "SalesLineTimeStamp";
-            this.ColumnSalesLineTimeStamp.MinimumWidth = 6;
-            this.ColumnSalesLineTimeStamp.Name = "ColumnSalesLineTimeStamp";
-            this.ColumnSalesLineTimeStamp.ReadOnly = true;
-            this.ColumnSalesLineTimeStamp.Visible = false;
-            this.ColumnSalesLineTimeStamp.Width = 125;
-            // 
-            // ColumnSalesLineUserId
-            // 
-            this.ColumnSalesLineUserId.HeaderText = "UserId";
-            this.ColumnSalesLineUserId.MinimumWidth = 6;
-            this.ColumnSalesLineUserId.Name = "ColumnSalesLineUserId";
-            this.ColumnSalesLineUserId.ReadOnly = true;
-            this.ColumnSalesLineUserId.Visible = false;
-            this.ColumnSalesLineUserId.Width = 125;
-            // 
-            // ColumnSalesLinePreparation
-            // 
-            this.ColumnSalesLinePreparation.HeaderText = "Preparation";
-            this.ColumnSalesLinePreparation.MinimumWidth = 6;
-            this.ColumnSalesLinePreparation.Name = "ColumnSalesLinePreparation";
-            this.ColumnSalesLinePreparation.ReadOnly = true;
-            this.ColumnSalesLinePreparation.Visible = false;
-            this.ColumnSalesLinePreparation.Width = 125;
-            // 
-            // ColumnSalesLinePrice1
-            // 
-            this.ColumnSalesLinePrice1.HeaderText = "Price1";
-            this.ColumnSalesLinePrice1.MinimumWidth = 6;
-            this.ColumnSalesLinePrice1.Name = "ColumnSalesLinePrice1";
-            this.ColumnSalesLinePrice1.ReadOnly = true;
-            this.ColumnSalesLinePrice1.Visible = false;
-            this.ColumnSalesLinePrice1.Width = 125;
-            // 
-            // ColumnSalesLinePrice2
-            // 
-            this.ColumnSalesLinePrice2.HeaderText = "Price2";
-            this.ColumnSalesLinePrice2.MinimumWidth = 6;
-            this.ColumnSalesLinePrice2.Name = "ColumnSalesLinePrice2";
-            this.ColumnSalesLinePrice2.ReadOnly = true;
-            this.ColumnSalesLinePrice2.Visible = false;
-            this.ColumnSalesLinePrice2.Width = 125;
-            // 
-            // ColumnSalesLinePrice2LessTax
-            // 
-            this.ColumnSalesLinePrice2LessTax.HeaderText = "Price2LessTax";
-            this.ColumnSalesLinePrice2LessTax.MinimumWidth = 6;
-            this.ColumnSalesLinePrice2LessTax.Name = "ColumnSalesLinePrice2LessTax";
-            this.ColumnSalesLinePrice2LessTax.ReadOnly = true;
-            this.ColumnSalesLinePrice2LessTax.Visible = false;
-            this.ColumnSalesLinePrice2LessTax.Width = 125;
-            // 
-            // ColumnSalesLinePriceSplitPercentage
-            // 
-            this.ColumnSalesLinePriceSplitPercentage.HeaderText = "PriceSplitPercentage";
-            this.ColumnSalesLinePriceSplitPercentage.MinimumWidth = 6;
-            this.ColumnSalesLinePriceSplitPercentage.Name = "ColumnSalesLinePriceSplitPercentage";
-            this.ColumnSalesLinePriceSplitPercentage.ReadOnly = true;
-            this.ColumnSalesLinePriceSplitPercentage.Visible = false;
-            this.ColumnSalesLinePriceSplitPercentage.Width = 125;
-            // 
-            // ColumnSalesLineBodegaItemQty
-            // 
-            this.ColumnSalesLineBodegaItemQty.HeaderText = "For Bodega";
-            this.ColumnSalesLineBodegaItemQty.MinimumWidth = 6;
-            this.ColumnSalesLineBodegaItemQty.Name = "ColumnSalesLineBodegaItemQty";
-            this.ColumnSalesLineBodegaItemQty.ReadOnly = true;
-            this.ColumnSalesLineBodegaItemQty.Visible = false;
-            this.ColumnSalesLineBodegaItemQty.Width = 125;
-            // 
-            // ColumnSalesLineIsDelivery
-            // 
-            this.ColumnSalesLineIsDelivery.HeaderText = "Delivery";
-            this.ColumnSalesLineIsDelivery.MinimumWidth = 6;
-            this.ColumnSalesLineIsDelivery.Name = "ColumnSalesLineIsDelivery";
-            this.ColumnSalesLineIsDelivery.ReadOnly = true;
-            this.ColumnSalesLineIsDelivery.Visible = false;
-            this.ColumnSalesLineIsDelivery.Width = 125;
-            // 
-            // ColumnSalesLineDeliveryStatus
-            // 
-            this.ColumnSalesLineDeliveryStatus.HeaderText = "Delivery Status";
-            this.ColumnSalesLineDeliveryStatus.MinimumWidth = 6;
-            this.ColumnSalesLineDeliveryStatus.Name = "ColumnSalesLineDeliveryStatus";
-            this.ColumnSalesLineDeliveryStatus.ReadOnly = true;
-            this.ColumnSalesLineDeliveryStatus.Visible = false;
-            this.ColumnSalesLineDeliveryStatus.Width = 125;
             // 
             // buttonSearchItem
             // 
@@ -999,16 +692,301 @@
             // 
             this.printDialogSalesInvoice.UseEXDialog = true;
             // 
-            // pictureBox1
+            // ColumnSalesLineEdit
             // 
-            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.POS;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.ColumnSalesLineEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnSalesLineEdit.Frozen = true;
+            this.ColumnSalesLineEdit.HeaderText = "";
+            this.ColumnSalesLineEdit.MinimumWidth = 6;
+            this.ColumnSalesLineEdit.Name = "ColumnSalesLineEdit";
+            this.ColumnSalesLineEdit.ReadOnly = true;
+            this.ColumnSalesLineEdit.Width = 70;
+            // 
+            // ColumnSalesLineDelete
+            // 
+            this.ColumnSalesLineDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnSalesLineDelete.Frozen = true;
+            this.ColumnSalesLineDelete.HeaderText = "";
+            this.ColumnSalesLineDelete.MinimumWidth = 6;
+            this.ColumnSalesLineDelete.Name = "ColumnSalesLineDelete";
+            this.ColumnSalesLineDelete.ReadOnly = true;
+            this.ColumnSalesLineDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnSalesLineDelete.Width = 70;
+            // 
+            // ColumnSalesLineId
+            // 
+            this.ColumnSalesLineId.HeaderText = "Id";
+            this.ColumnSalesLineId.MinimumWidth = 6;
+            this.ColumnSalesLineId.Name = "ColumnSalesLineId";
+            this.ColumnSalesLineId.ReadOnly = true;
+            this.ColumnSalesLineId.Visible = false;
+            this.ColumnSalesLineId.Width = 125;
+            // 
+            // ColumnSalesLineSalesId
+            // 
+            this.ColumnSalesLineSalesId.HeaderText = "SalesId";
+            this.ColumnSalesLineSalesId.MinimumWidth = 6;
+            this.ColumnSalesLineSalesId.Name = "ColumnSalesLineSalesId";
+            this.ColumnSalesLineSalesId.ReadOnly = true;
+            this.ColumnSalesLineSalesId.Visible = false;
+            this.ColumnSalesLineSalesId.Width = 125;
+            // 
+            // ColumnSalesLineItemId
+            // 
+            this.ColumnSalesLineItemId.HeaderText = "ItemId";
+            this.ColumnSalesLineItemId.MinimumWidth = 6;
+            this.ColumnSalesLineItemId.Name = "ColumnSalesLineItemId";
+            this.ColumnSalesLineItemId.ReadOnly = true;
+            this.ColumnSalesLineItemId.Visible = false;
+            this.ColumnSalesLineItemId.Width = 125;
+            // 
+            // ColumnSalesLineItemDescription
+            // 
+            this.ColumnSalesLineItemDescription.HeaderText = "Item Description";
+            this.ColumnSalesLineItemDescription.MinimumWidth = 6;
+            this.ColumnSalesLineItemDescription.Name = "ColumnSalesLineItemDescription";
+            this.ColumnSalesLineItemDescription.ReadOnly = true;
+            this.ColumnSalesLineItemDescription.Width = 200;
+            // 
+            // ColumnSalesLineQuantity
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineQuantity.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnSalesLineQuantity.HeaderText = "Quantity";
+            this.ColumnSalesLineQuantity.MinimumWidth = 6;
+            this.ColumnSalesLineQuantity.Name = "ColumnSalesLineQuantity";
+            this.ColumnSalesLineQuantity.ReadOnly = true;
+            this.ColumnSalesLineQuantity.Width = 125;
+            // 
+            // ColumnSalesLineBodegaQty
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineBodegaQty.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnSalesLineBodegaQty.HeaderText = "Bodega Qty";
+            this.ColumnSalesLineBodegaQty.Name = "ColumnSalesLineBodegaQty";
+            this.ColumnSalesLineBodegaQty.ReadOnly = true;
+            // 
+            // ColumnSalesLineUnitId
+            // 
+            this.ColumnSalesLineUnitId.HeaderText = "UnitId";
+            this.ColumnSalesLineUnitId.MinimumWidth = 6;
+            this.ColumnSalesLineUnitId.Name = "ColumnSalesLineUnitId";
+            this.ColumnSalesLineUnitId.ReadOnly = true;
+            this.ColumnSalesLineUnitId.Visible = false;
+            this.ColumnSalesLineUnitId.Width = 125;
+            // 
+            // ColumnSalesLineUnit
+            // 
+            this.ColumnSalesLineUnit.HeaderText = "Unit";
+            this.ColumnSalesLineUnit.MinimumWidth = 6;
+            this.ColumnSalesLineUnit.Name = "ColumnSalesLineUnit";
+            this.ColumnSalesLineUnit.ReadOnly = true;
+            this.ColumnSalesLineUnit.Width = 125;
+            // 
+            // ColumnSalesLinePrice
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLinePrice.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColumnSalesLinePrice.HeaderText = "Price";
+            this.ColumnSalesLinePrice.MinimumWidth = 6;
+            this.ColumnSalesLinePrice.Name = "ColumnSalesLinePrice";
+            this.ColumnSalesLinePrice.ReadOnly = true;
+            this.ColumnSalesLinePrice.Width = 125;
+            // 
+            // ColumnSalesLineDiscountId
+            // 
+            this.ColumnSalesLineDiscountId.HeaderText = "DiscountId";
+            this.ColumnSalesLineDiscountId.MinimumWidth = 6;
+            this.ColumnSalesLineDiscountId.Name = "ColumnSalesLineDiscountId";
+            this.ColumnSalesLineDiscountId.ReadOnly = true;
+            this.ColumnSalesLineDiscountId.Visible = false;
+            this.ColumnSalesLineDiscountId.Width = 125;
+            // 
+            // ColumnSalesLineDiscount
+            // 
+            this.ColumnSalesLineDiscount.HeaderText = "Discount";
+            this.ColumnSalesLineDiscount.MinimumWidth = 6;
+            this.ColumnSalesLineDiscount.Name = "ColumnSalesLineDiscount";
+            this.ColumnSalesLineDiscount.ReadOnly = true;
+            this.ColumnSalesLineDiscount.Visible = false;
+            this.ColumnSalesLineDiscount.Width = 125;
+            // 
+            // ColumnSalesLineDiscountRate
+            // 
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineDiscountRate.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ColumnSalesLineDiscountRate.HeaderText = "Discount %";
+            this.ColumnSalesLineDiscountRate.MinimumWidth = 6;
+            this.ColumnSalesLineDiscountRate.Name = "ColumnSalesLineDiscountRate";
+            this.ColumnSalesLineDiscountRate.ReadOnly = true;
+            this.ColumnSalesLineDiscountRate.Width = 110;
+            // 
+            // ColumnSalesLineDiscountAmount
+            // 
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineDiscountAmount.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ColumnSalesLineDiscountAmount.HeaderText = "Discount";
+            this.ColumnSalesLineDiscountAmount.MinimumWidth = 6;
+            this.ColumnSalesLineDiscountAmount.Name = "ColumnSalesLineDiscountAmount";
+            this.ColumnSalesLineDiscountAmount.ReadOnly = true;
+            this.ColumnSalesLineDiscountAmount.Width = 125;
+            // 
+            // ColumnSalesLineNetPrice
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineNetPrice.DefaultCellStyle = dataGridViewCellStyle7;
+            this.ColumnSalesLineNetPrice.HeaderText = "Net Price";
+            this.ColumnSalesLineNetPrice.MinimumWidth = 6;
+            this.ColumnSalesLineNetPrice.Name = "ColumnSalesLineNetPrice";
+            this.ColumnSalesLineNetPrice.ReadOnly = true;
+            this.ColumnSalesLineNetPrice.Width = 125;
+            // 
+            // ColumnSalesLineAmount
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineAmount.DefaultCellStyle = dataGridViewCellStyle8;
+            this.ColumnSalesLineAmount.HeaderText = "Amount";
+            this.ColumnSalesLineAmount.MinimumWidth = 6;
+            this.ColumnSalesLineAmount.Name = "ColumnSalesLineAmount";
+            this.ColumnSalesLineAmount.ReadOnly = true;
+            this.ColumnSalesLineAmount.Width = 125;
+            // 
+            // ColumnSalesLineTaxId
+            // 
+            this.ColumnSalesLineTaxId.HeaderText = "TaxId";
+            this.ColumnSalesLineTaxId.MinimumWidth = 6;
+            this.ColumnSalesLineTaxId.Name = "ColumnSalesLineTaxId";
+            this.ColumnSalesLineTaxId.ReadOnly = true;
+            this.ColumnSalesLineTaxId.Visible = false;
+            this.ColumnSalesLineTaxId.Width = 125;
+            // 
+            // ColumnSalesLineTax
+            // 
+            this.ColumnSalesLineTax.HeaderText = "Tax";
+            this.ColumnSalesLineTax.MinimumWidth = 6;
+            this.ColumnSalesLineTax.Name = "ColumnSalesLineTax";
+            this.ColumnSalesLineTax.ReadOnly = true;
+            this.ColumnSalesLineTax.Visible = false;
+            this.ColumnSalesLineTax.Width = 56;
+            // 
+            // ColumnSalesLineTaxRate
+            // 
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineTaxRate.DefaultCellStyle = dataGridViewCellStyle9;
+            this.ColumnSalesLineTaxRate.HeaderText = "Tax %";
+            this.ColumnSalesLineTaxRate.MinimumWidth = 6;
+            this.ColumnSalesLineTaxRate.Name = "ColumnSalesLineTaxRate";
+            this.ColumnSalesLineTaxRate.ReadOnly = true;
+            this.ColumnSalesLineTaxRate.Width = 125;
+            // 
+            // ColumnSalesLineTaxAmount
+            // 
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineTaxAmount.DefaultCellStyle = dataGridViewCellStyle10;
+            this.ColumnSalesLineTaxAmount.HeaderText = "Tax";
+            this.ColumnSalesLineTaxAmount.MinimumWidth = 6;
+            this.ColumnSalesLineTaxAmount.Name = "ColumnSalesLineTaxAmount";
+            this.ColumnSalesLineTaxAmount.ReadOnly = true;
+            this.ColumnSalesLineTaxAmount.Width = 125;
+            // 
+            // ColumnSalesLineSalesAccountId
+            // 
+            this.ColumnSalesLineSalesAccountId.HeaderText = "SalesAccountId";
+            this.ColumnSalesLineSalesAccountId.MinimumWidth = 6;
+            this.ColumnSalesLineSalesAccountId.Name = "ColumnSalesLineSalesAccountId";
+            this.ColumnSalesLineSalesAccountId.ReadOnly = true;
+            this.ColumnSalesLineSalesAccountId.Visible = false;
+            this.ColumnSalesLineSalesAccountId.Width = 125;
+            // 
+            // ColumnSalesLineAssetAccountId
+            // 
+            this.ColumnSalesLineAssetAccountId.HeaderText = "AssetAccountId";
+            this.ColumnSalesLineAssetAccountId.MinimumWidth = 6;
+            this.ColumnSalesLineAssetAccountId.Name = "ColumnSalesLineAssetAccountId";
+            this.ColumnSalesLineAssetAccountId.ReadOnly = true;
+            this.ColumnSalesLineAssetAccountId.Visible = false;
+            this.ColumnSalesLineAssetAccountId.Width = 125;
+            // 
+            // ColumnSalesLineCostAccountId
+            // 
+            this.ColumnSalesLineCostAccountId.HeaderText = "CostAccountId";
+            this.ColumnSalesLineCostAccountId.MinimumWidth = 6;
+            this.ColumnSalesLineCostAccountId.Name = "ColumnSalesLineCostAccountId";
+            this.ColumnSalesLineCostAccountId.ReadOnly = true;
+            this.ColumnSalesLineCostAccountId.Visible = false;
+            this.ColumnSalesLineCostAccountId.Width = 125;
+            // 
+            // ColumnSalesLineTaxAccountId
+            // 
+            this.ColumnSalesLineTaxAccountId.HeaderText = "TaxAccountId";
+            this.ColumnSalesLineTaxAccountId.MinimumWidth = 6;
+            this.ColumnSalesLineTaxAccountId.Name = "ColumnSalesLineTaxAccountId";
+            this.ColumnSalesLineTaxAccountId.ReadOnly = true;
+            this.ColumnSalesLineTaxAccountId.Visible = false;
+            this.ColumnSalesLineTaxAccountId.Width = 125;
+            // 
+            // ColumnSalesLineTimeStamp
+            // 
+            this.ColumnSalesLineTimeStamp.HeaderText = "SalesLineTimeStamp";
+            this.ColumnSalesLineTimeStamp.MinimumWidth = 6;
+            this.ColumnSalesLineTimeStamp.Name = "ColumnSalesLineTimeStamp";
+            this.ColumnSalesLineTimeStamp.ReadOnly = true;
+            this.ColumnSalesLineTimeStamp.Visible = false;
+            this.ColumnSalesLineTimeStamp.Width = 125;
+            // 
+            // ColumnSalesLineUserId
+            // 
+            this.ColumnSalesLineUserId.HeaderText = "UserId";
+            this.ColumnSalesLineUserId.MinimumWidth = 6;
+            this.ColumnSalesLineUserId.Name = "ColumnSalesLineUserId";
+            this.ColumnSalesLineUserId.ReadOnly = true;
+            this.ColumnSalesLineUserId.Visible = false;
+            this.ColumnSalesLineUserId.Width = 125;
+            // 
+            // ColumnSalesLinePreparation
+            // 
+            this.ColumnSalesLinePreparation.HeaderText = "Preparation";
+            this.ColumnSalesLinePreparation.MinimumWidth = 6;
+            this.ColumnSalesLinePreparation.Name = "ColumnSalesLinePreparation";
+            this.ColumnSalesLinePreparation.ReadOnly = true;
+            this.ColumnSalesLinePreparation.Visible = false;
+            this.ColumnSalesLinePreparation.Width = 125;
+            // 
+            // ColumnSalesLinePrice1
+            // 
+            this.ColumnSalesLinePrice1.HeaderText = "Price1";
+            this.ColumnSalesLinePrice1.MinimumWidth = 6;
+            this.ColumnSalesLinePrice1.Name = "ColumnSalesLinePrice1";
+            this.ColumnSalesLinePrice1.ReadOnly = true;
+            this.ColumnSalesLinePrice1.Visible = false;
+            this.ColumnSalesLinePrice1.Width = 125;
+            // 
+            // ColumnSalesLinePrice2
+            // 
+            this.ColumnSalesLinePrice2.HeaderText = "Price2";
+            this.ColumnSalesLinePrice2.MinimumWidth = 6;
+            this.ColumnSalesLinePrice2.Name = "ColumnSalesLinePrice2";
+            this.ColumnSalesLinePrice2.ReadOnly = true;
+            this.ColumnSalesLinePrice2.Visible = false;
+            this.ColumnSalesLinePrice2.Width = 125;
+            // 
+            // ColumnSalesLinePrice2LessTax
+            // 
+            this.ColumnSalesLinePrice2LessTax.HeaderText = "Price2LessTax";
+            this.ColumnSalesLinePrice2LessTax.MinimumWidth = 6;
+            this.ColumnSalesLinePrice2LessTax.Name = "ColumnSalesLinePrice2LessTax";
+            this.ColumnSalesLinePrice2LessTax.ReadOnly = true;
+            this.ColumnSalesLinePrice2LessTax.Visible = false;
+            this.ColumnSalesLinePrice2LessTax.Width = 125;
+            // 
+            // ColumnSalesLinePriceSplitPercentage
+            // 
+            this.ColumnSalesLinePriceSplitPercentage.HeaderText = "PriceSplitPercentage";
+            this.ColumnSalesLinePriceSplitPercentage.MinimumWidth = 6;
+            this.ColumnSalesLinePriceSplitPercentage.Name = "ColumnSalesLinePriceSplitPercentage";
+            this.ColumnSalesLinePriceSplitPercentage.ReadOnly = true;
+            this.ColumnSalesLinePriceSplitPercentage.Visible = false;
+            this.ColumnSalesLinePriceSplitPercentage.Width = 125;
             // 
             // TrnPOSBarcodeDetailForm
             // 
@@ -1028,6 +1006,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TrnSalesDetailForm_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
@@ -1037,7 +1016,6 @@
             this.panel3.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1078,6 +1056,8 @@
         private System.Windows.Forms.PrintDialog printDialogSalesOrder;
         private System.Windows.Forms.PrintDialog printDialogSalesInvoice;
         public System.Windows.Forms.DataGridView dataGridViewSalesLineList;
+        public System.Windows.Forms.Button buttonTender;
+        private System.Windows.Forms.Button buttonOpenCashDrawer;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnSalesLineEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnSalesLineDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineId;
@@ -1085,6 +1065,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineItemId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineItemDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineBodegaQty;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineUnitId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice;
@@ -1109,10 +1090,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2LessTax;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePriceSplitPercentage;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineBodegaItemQty;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnSalesLineIsDelivery;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineDeliveryStatus;
-        public System.Windows.Forms.Button buttonTender;
-        private System.Windows.Forms.Button buttonOpenCashDrawer;
     }
 }
