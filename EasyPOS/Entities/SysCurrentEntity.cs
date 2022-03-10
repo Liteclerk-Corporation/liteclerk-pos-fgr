@@ -79,5 +79,6 @@ namespace EasyPOS.Entities
         public Boolean BodegaTransaction { get; set; }
         public Boolean ChangeComputationOnLock { get; set; }
         public Boolean EnablePOSTouchPrintDeletedItem { get; set; }
+        public Boolean DisableSalesDate { get; set; }
     }
 }

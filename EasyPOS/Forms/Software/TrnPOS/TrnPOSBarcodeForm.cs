@@ -100,6 +100,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             dateTimePickerSalesDate.Value = Convert.ToDateTime(currentDate);
 
+            if (Modules.SysCurrentModule.GetCurrentSettings().DisableSalesDate == true)
+            {
+                dateTimePickerSalesDate.Enabled = false;
+            }
+            else
+            {
+                dateTimePickerSalesDate.Enabled = true;
+            }
+
             sysUserRights = new Modules.SysUserRightsModule("TrnSales");
             if (sysUserRights.GetUserRights() == null)
             {

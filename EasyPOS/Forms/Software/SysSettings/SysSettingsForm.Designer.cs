@@ -49,6 +49,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.checkBoxDisableSalesDate = new System.Windows.Forms.CheckBox();
             this.checkBoxPrintDeletedItem = new System.Windows.Forms.CheckBox();
             this.checkBoxChangeComputeOnLock = new System.Windows.Forms.CheckBox();
             this.checkBoxBodega = new System.Windows.Forms.CheckBox();
@@ -349,7 +350,7 @@
             this.tabPage4.Controls.Add(this.panel6);
             this.tabPage4.Location = new System.Drawing.Point(4, 28);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(1101, 478);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Company Information";
@@ -441,7 +442,7 @@
             this.tabPage1.Controls.Add(this.panel5);
             this.tabPage1.Location = new System.Drawing.Point(4, 28);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(1101, 478);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "POS Information";
@@ -450,6 +451,7 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel5.Controls.Add(this.checkBoxDisableSalesDate);
             this.panel5.Controls.Add(this.checkBoxPrintDeletedItem);
             this.panel5.Controls.Add(this.checkBoxChangeComputeOnLock);
             this.panel5.Controls.Add(this.checkBoxBodega);
@@ -506,6 +508,19 @@
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1095, 472);
             this.panel5.TabIndex = 34;
+            // 
+            // checkBoxDisableSalesDate
+            // 
+            this.checkBoxDisableSalesDate.AutoSize = true;
+            this.checkBoxDisableSalesDate.Enabled = false;
+            this.checkBoxDisableSalesDate.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxDisableSalesDate.Location = new System.Drawing.Point(841, 217);
+            this.checkBoxDisableSalesDate.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxDisableSalesDate.Name = "checkBoxDisableSalesDate";
+            this.checkBoxDisableSalesDate.Size = new System.Drawing.Size(230, 23);
+            this.checkBoxDisableSalesDate.TabIndex = 101;
+            this.checkBoxDisableSalesDate.Text = "Disable Sales Date (POS Barcode)";
+            this.checkBoxDisableSalesDate.UseVisualStyleBackColor = true;
             // 
             // checkBoxPrintDeletedItem
             // 
@@ -1117,7 +1132,7 @@
             this.tabPage3.Controls.Add(this.panel7);
             this.tabPage3.Location = new System.Drawing.Point(4, 28);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(1101, 478);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "BIR Settings";
@@ -1252,7 +1267,7 @@
             this.tabPage5.Controls.Add(this.panel8);
             this.tabPage5.Location = new System.Drawing.Point(4, 28);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage5.Size = new System.Drawing.Size(1101, 478);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Easypay Settings";
@@ -1582,7 +1597,7 @@
             this.tabPage6.Controls.Add(this.panel4);
             this.tabPage6.Location = new System.Drawing.Point(4, 28);
             this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage6.Size = new System.Drawing.Size(1101, 478);
             this.tabPage6.TabIndex = 5;
             this.tabPage6.Text = "EasyShop Integration";
@@ -1616,7 +1631,7 @@
             this.tabPage7.Controls.Add(this.panel9);
             this.tabPage7.Location = new System.Drawing.Point(4, 28);
             this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage7.Size = new System.Drawing.Size(1101, 478);
             this.tabPage7.TabIndex = 6;
             this.tabPage7.Text = "Printer Settings";
@@ -1838,7 +1853,7 @@
             this.tabControl10.Controls.Add(this.panel10);
             this.tabControl10.Location = new System.Drawing.Point(4, 28);
             this.tabControl10.Name = "tabControl10";
-            this.tabControl10.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabControl10.Padding = new System.Windows.Forms.Padding(3);
             this.tabControl10.Size = new System.Drawing.Size(1101, 478);
             this.tabControl10.TabIndex = 7;
             this.tabControl10.Text = "Customer Display Settings";
@@ -1990,7 +2005,7 @@
             this.tabPage8.Controls.Add(this.panel11);
             this.tabPage8.Location = new System.Drawing.Point(4, 28);
             this.tabPage8.Name = "tabPage8";
-            this.tabPage8.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage8.Size = new System.Drawing.Size(1101, 478);
             this.tabPage8.TabIndex = 8;
             this.tabPage8.Text = "Printer Setup";
@@ -2433,5 +2448,6 @@
         private System.Windows.Forms.CheckBox checkBoxBodega;
         private System.Windows.Forms.CheckBox checkBoxChangeComputeOnLock;
         private System.Windows.Forms.CheckBox checkBoxPrintDeletedItem;
+        private System.Windows.Forms.CheckBox checkBoxDisableSalesDate;
     }
 }
