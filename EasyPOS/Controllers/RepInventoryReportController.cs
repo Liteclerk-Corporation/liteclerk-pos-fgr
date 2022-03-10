@@ -2396,6 +2396,7 @@ namespace EasyPOS.Controllers
                                  select new Entities.RepInventoryReportStockInDetailReportEntity
                                  {
                                      Id = d.Id,
+                                     stockInId = d.StockInId,
                                      ItemCode = d.MstItem.ItemCode,
                                      BarCode = d.MstItem.BarCode,
                                      StockInDate = d.TrnStockIn.StockInDate.ToShortDateString(),
@@ -2428,6 +2429,7 @@ namespace EasyPOS.Controllers
                                   select new Entities.RepInventoryReportStockOutDetailEntity
                                   {
                                       Id = d.Id,
+                                      stockOutId = d.StockOutId,
                                       ItemCode = d.MstItem.ItemCode,
                                       BarCode = d.MstItem.BarCode,
                                       StockOutDate = d.TrnStockOut.StockOutDate.ToShortDateString(),
@@ -2454,6 +2456,7 @@ namespace EasyPOS.Controllers
                                     select new Entities.RepInventoryReportStockCountDetailReportEntity
                                     {
                                         Id = d.Id,
+                                        StockCountId = d.StockCountId,
                                         ItemCode = d.MstItem.ItemCode,
                                         BarCode = d.MstItem.BarCode,
                                         StockCountDate = d.TrnStockCount.StockCountDate.ToShortDateString(),
