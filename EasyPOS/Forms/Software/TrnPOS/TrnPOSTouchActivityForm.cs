@@ -65,7 +65,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 buttonEditOrder.Enabled = true;
                 buttonBillOut.Enabled = false;
-                buttonPrintPartialBill.Enabled = false;
+                buttonSelectOrderTaker.Enabled = false;
                 buttonSplitMergeBill.Enabled = false;
                 buttonTender.Enabled = false;
                 buttonDeliver.Enabled = false;
@@ -77,7 +77,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 buttonEditOrder.Enabled = true;
                 buttonBillOut.Enabled = false;
-                buttonPrintPartialBill.Enabled = false;
+                buttonSelectOrderTaker.Enabled = false;
                 buttonSplitMergeBill.Enabled = false;
                 buttonTender.Enabled = false;
                 buttonCancel.Enabled = false;
@@ -266,9 +266,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     }
                 case Keys.F9:
                     {
-                        if (buttonPrintPartialBill.Enabled == true)
+                        if (buttonSelectOrderTaker.Enabled == true)
                         {
-                            buttonPrintPartialBill.PerformClick();
+                            buttonSelectOrderTaker.PerformClick();
                             Close();
                         }
 
@@ -406,6 +406,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             TrnPOSTouchActivitySplitMergeForm trnPOSTouchActivitySplitMergeForm = new TrnPOSTouchActivitySplitMergeForm(sysSoftwareForm, trnPOSTouchForm, this, trnSalesEntity);
             trnPOSTouchActivitySplitMergeForm.ShowDialog();
+        }
+
+        private void buttonSelectOrderTaker_Click(object sender, EventArgs e)
+        {
+            TrnPOSTouchSelectOrderTaker trnPOSTouchSelectOrderTaker = new TrnPOSTouchSelectOrderTaker(trnPOSTouchForm,this,trnSalesEntity);
+            trnPOSTouchSelectOrderTaker.ShowDialog();
         }
     }
 }

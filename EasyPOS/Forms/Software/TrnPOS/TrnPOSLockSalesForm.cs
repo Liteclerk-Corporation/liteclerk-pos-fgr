@@ -144,7 +144,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 comboBoxTenderSalesUsers.DisplayMember = "FullName";
 
                 var currentUserId = Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId;
-                comboBoxTenderSalesUsers.SelectedValue = Convert.ToInt32(currentUserId);
+                //comboBoxTenderSalesUsers.SelectedValue = Convert.ToInt32(currentUserId);
+                comboBoxTenderSalesUsers.SelectedValue = trnSalesEntity.SalesAgent;
             }
 
             textBoxCustomerCode.Text = trnSalesEntity.CustomerCode;

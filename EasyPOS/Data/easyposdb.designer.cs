@@ -10032,6 +10032,8 @@ namespace EasyPOS.Data
 		
 		private bool _CanOpenDrawer;
 		
+		private bool _IsOrderTaker;
+		
 		private EntitySet<IntCloudSetting> _IntCloudSettings;
 		
 		private EntitySet<MstCustomer> _MstCustomers;
@@ -10176,6 +10178,8 @@ namespace EasyPOS.Data
     partial void OnCanEditPriceChanged();
     partial void OnCanOpenDrawerChanging(bool value);
     partial void OnCanOpenDrawerChanged();
+    partial void OnIsOrderTakerChanging(bool value);
+    partial void OnIsOrderTakerChanged();
     #endregion
 		
 		public MstUser()
@@ -10477,6 +10481,26 @@ namespace EasyPOS.Data
 					this._CanOpenDrawer = value;
 					this.SendPropertyChanged("CanOpenDrawer");
 					this.OnCanOpenDrawerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsOrderTaker", DbType="Bit NOT NULL")]
+		public bool IsOrderTaker
+		{
+			get
+			{
+				return this._IsOrderTaker;
+			}
+			set
+			{
+				if ((this._IsOrderTaker != value))
+				{
+					this.OnIsOrderTakerChanging(value);
+					this.SendPropertyChanging();
+					this._IsOrderTaker = value;
+					this.SendPropertyChanged("IsOrderTaker");
+					this.OnIsOrderTakerChanged();
 				}
 			}
 		}

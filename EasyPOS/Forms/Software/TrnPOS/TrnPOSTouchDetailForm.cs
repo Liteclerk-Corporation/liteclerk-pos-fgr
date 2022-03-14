@@ -929,7 +929,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void buttonLock_Click(object sender, EventArgs e)
         {
-            TrnPOSLockSalesForm trnPOSLockSalesForm = new TrnPOSLockSalesForm(null, this, trnSalesEntity);
+            Controllers.TrnSalesController newSales = new Controllers.TrnSalesController();
+            var detail = newSales.DetailSales(trnSalesEntity.Id);
+
+            TrnPOSLockSalesForm trnPOSLockSalesForm = new TrnPOSLockSalesForm(null, this, detail);
             trnPOSLockSalesForm.ShowDialog();
         }
 
@@ -1321,7 +1324,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 panelItems.Visible = true;
             }
         }
-
         private void buttonChangeTable_Click(object sender, EventArgs e)
         {
             TrnPOSTouchChangeTableForm trnPOSTouchChangeTableForm = new TrnPOSTouchChangeTableForm(sysSoftwareForm, trnPOSTouchForm, this, trnSalesEntity, Convert.ToDateTime(trnSalesEntity.SalesDate));

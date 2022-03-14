@@ -26,5 +26,6 @@ namespace EasyPOS.Entities
         public Boolean IsLocked { get; set; }
         public Boolean CanEditPrice { get; set; }
         public Boolean CanOpenDrawer { get; set; }
+        public Boolean IsOrderTaker { get; set; }
     }
 }

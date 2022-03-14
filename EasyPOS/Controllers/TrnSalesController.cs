@@ -1969,6 +1969,24 @@ namespace EasyPOS.Controllers
             return tables.OrderBy(d => d.TableCode).ToList();
         }
 
+        // ===========
+        // Order Taker
+        // ===========
+        public List<Entities.MstUserEntity> ListOrderTaker()
+        {
+            var orderTakers = from d in db.MstUsers
+                         where d.IsLocked == true
+                         && d.IsOrderTaker == true
+                         select new Entities.MstUserEntity
+                         {
+                             Id = d.Id,
+                             UserName = d.UserName,
+                             FullName = d.FullName
+                         };
+
+            return orderTakers.OrderBy(d => d.UserName).ToList();
+        }
+
         // ===============
         // Tables Sales Id
         // ===============
@@ -3689,6 +3707,35 @@ namespace EasyPOS.Controllers
                 }
 
                 return new String[] { "", "1" };
+            }
+            catch (Exception e)
+            {
+                return new String[] { e.Message, "0" };
+            }
+        }
+        // ==================
+        // Update Order Taker
+        // ==================
+        public String[] UpdateOrderTaker(Int32 salesId, Int32 userId)
+        {
+            try
+            {
+                var sales = from d in db.TrnSales
+                                 where d.Id == salesId
+                                 select d;
+
+                if (sales.Any())
+                {
+                    var sale = sales.FirstOrDefault();
+                    sale.SalesAgent = userId;
+                    db.SubmitChanges();
+
+                    return new String[] { "", "1" };
+                }
+                else
+                {
+                    return new String[] { "Sales not found.", "0" };
+                }
             }
             catch (Exception e)
             {
