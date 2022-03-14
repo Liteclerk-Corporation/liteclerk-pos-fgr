@@ -35,7 +35,9 @@ namespace EasyPOS.Controllers
                             UpdatedUserName = d.UserName,
                             UpdateDateTime = d.UpdateDateTime.ToShortDateString(),
                             IsLocked = d.IsLocked,
-                            CanEditPrice = d.CanEditPrice
+                            CanEditPrice = d.CanEditPrice,
+                            CanOpenDrawer = d.CanOpenDrawer,
+                            IsOrderTaker = d.IsOrderTaker
                         };
 
             return users.OrderBy(d => d.Id).ToList();
@@ -67,7 +69,8 @@ namespace EasyPOS.Controllers
                             UpdateTime = d.UpdateDateTime.ToShortTimeString(),
                             IsLocked = d.IsLocked,
                             CanEditPrice = d.CanEditPrice,
-                            CanOpenDrawer = d.CanOpenDrawer
+                            CanOpenDrawer = d.CanOpenDrawer,
+                            IsOrderTaker = d.IsOrderTaker
                         };
 
             return users.FirstOrDefault();
@@ -122,7 +125,9 @@ namespace EasyPOS.Controllers
                     UpdateUserId = currentUserLogin.FirstOrDefault().Id,
                     UpdateDateTime = DateTime.Now,
                     IsLocked = false,
-                    CanEditPrice = false
+                    CanEditPrice = false,
+                    CanOpenDrawer = false,
+                    IsOrderTaker = false
                 };
 
                 db.MstUsers.InsertOnSubmit(newUser);
@@ -190,6 +195,7 @@ namespace EasyPOS.Controllers
                     lockUser.IsLocked = true;
                     lockUser.CanEditPrice = objUser.CanEditPrice;
                     lockUser.CanOpenDrawer = objUser.CanOpenDrawer;
+                    lockUser.IsOrderTaker = objUser.IsOrderTaker;
                     db.SubmitChanges();
 
                     String newObject = Modules.SysAuditTrailModule.GetObjectString(user.FirstOrDefault());
@@ -358,6 +364,7 @@ namespace EasyPOS.Controllers
                     saveUser.UpdateDateTime = DateTime.Now;
                     saveUser.CanEditPrice = objUser.CanEditPrice;
                     saveUser.CanOpenDrawer = objUser.CanOpenDrawer;
+                    saveUser.IsOrderTaker = objUser.IsOrderTaker;
                     db.SubmitChanges();
 
                     String newObject = Modules.SysAuditTrailModule.GetObjectString(user.FirstOrDefault());
