@@ -61,31 +61,65 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
 
                 if (inventoryReportList.Any())
                 {
+                    Decimal grandTotalAmount = 0;
+
                     PdfPTable tableLines = new PdfPTable(10);
                     tableLines.SetWidths(new float[] { 50f, 50f, 50f, 50f, 50f, 100f, 50f, 50f, 50f, 50f });
                     tableLines.WidthPercentage = 100;
 
-                    //Decimal totalAmount = 0;
+                    var stockCounts = from d in inventoryReportList
+                                    group d by new
+                                    {
+                                        d.StockCountId,
+                                        d.StockCountDate,
+                                        d.StockCountNumber,
+                                        d.Remarks
+                                    }
+                                        into g
+                                    select new
+                                    {
+                                        g.Key.StockCountId,
+                                        g.Key.StockCountDate,
+                                        g.Key.StockCountNumber,
+                                        g.Key.Remarks,
+                                    };
 
-                    foreach (var inventoryReport in inventoryReportList)
+                    foreach (var stockCount in stockCounts)
                     {
-                        tableLines.AddCell(new PdfPCell(new Phrase(inventoryReport.ItemCode, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(inventoryReport.BarCode, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(inventoryReport.StockCountDate, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(inventoryReport.StockCountNumber, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(inventoryReport.Remarks, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(inventoryReport.Item, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(inventoryReport.Unit, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(inventoryReport.Quantity.ToString("#,##0.00"), fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(inventoryReport.Cost.ToString("#,##0.00"), fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(inventoryReport.Amount.ToString("#,##0.00"), fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                        Decimal totalAmount = 0;
+                        Decimal count = 0;
 
-                        //totalAmount += Convert.ToDecimal(inventoryReport.Amount);
+                        tableLines.AddCell(new PdfPCell(new Phrase(stockCount.StockCountDate, fontTimesNewRoman10Bold)) { Colspan = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 6f });
+                        tableLines.AddCell(new PdfPCell(new Phrase(stockCount.StockCountNumber, fontTimesNewRoman10Bold)) {Colspan = 3, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 6f });
+                        tableLines.AddCell(new PdfPCell(new Phrase(stockCount.Remarks, fontTimesNewRoman10Bold)) { Colspan = 5, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 6f, HorizontalAlignment = 0 });
+
+                        var stockOutItems = from d in inventoryReportList
+                                            where d.StockCountId == stockCount.StockCountId
+                                            select d;
+
+                        foreach (var inventoryReport in stockOutItems)
+                        {
+                            tableLines.AddCell(new PdfPCell(new Phrase(inventoryReport.BarCode, fontTimesNewRoman10)) {Colspan = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                            tableLines.AddCell(new PdfPCell(new Phrase(inventoryReport.Item, fontTimesNewRoman10)) {Colspan = 4, HorizontalAlignment = 0, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                            tableLines.AddCell(new PdfPCell(new Phrase(inventoryReport.Unit, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                            tableLines.AddCell(new PdfPCell(new Phrase(inventoryReport.Quantity.ToString("#,##0.00"), fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                            tableLines.AddCell(new PdfPCell(new Phrase(inventoryReport.Cost.ToString("#,##0.00"), fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                            tableLines.AddCell(new PdfPCell(new Phrase(inventoryReport.Amount.ToString("#,##0.00"), fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+
+                            totalAmount += Convert.ToDecimal(inventoryReport.Amount);
+                            count += 1;
+                        }
+                        tableLines.AddCell(new PdfPCell(new Phrase(line)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = -5f, Colspan = 10 });
+                        tableLines.AddCell(new PdfPCell(new Phrase("Count: ", fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, Colspan = 2, HorizontalAlignment = 2 });
+                        tableLines.AddCell(new PdfPCell(new Phrase(count.ToString(), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 0 });
+                        tableLines.AddCell(new PdfPCell(new Phrase("Sub - Total: ", fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, Colspan = 6, HorizontalAlignment = 2 });
+                        tableLines.AddCell(new PdfPCell(new Phrase(totalAmount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+
+                        grandTotalAmount += totalAmount;
                     }
-
-                    //tableLines.AddCell(new PdfPCell(new Phrase(line)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = -5f, Colspan = 15 });
-                    //tableLines.AddCell(new PdfPCell(new Phrase("Total: ", fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, Colspan = 14, HorizontalAlignment = 2 });
-                    //tableLines.AddCell(new PdfPCell(new Phrase(totalAmount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                    tableLines.AddCell(new PdfPCell(new Phrase(line)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = -5f, Colspan = 10 });
+                    tableLines.AddCell(new PdfPCell(new Phrase("Grand Total: ", fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, Colspan = 9, HorizontalAlignment = 2 });
+                    tableLines.AddCell(new PdfPCell(new Phrase(grandTotalAmount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
 
                     document.Add(tableLines);
                     document.Close();
@@ -141,24 +175,20 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 var systemCurrent = Modules.SysCurrentModule.GetCurrentSettings();
 
                 String companyName = systemCurrent.CompanyName;
-                String documentTitle = "Stock Out Detail Report";
+                String documentTitle = "Stock Count Detail Report";
 
                 PdfPTable tableHeader = new PdfPTable(4);
                 tableHeader.SetWidths(new float[] { 20f, 30f, 20f, 50f });
                 tableHeader.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
                 tableHeader.AddCell(new PdfPCell(new Phrase(companyName, fontTimesNewRoman14Bold)) { Colspan = 2, Border = 0, Padding = 3f, PaddingBottom = 3f });
                 tableHeader.AddCell(new PdfPCell(new Phrase(documentTitle, fontTimesNewRoman14Bold)) { HorizontalAlignment = 2, Colspan = 2, Border = 0, Padding = 3f, PaddingBottom = 3f });
-                tableHeader.AddCell(new PdfPCell(new Phrase("From : " + startDate.ToShortDateString() + " To: " + endDate.ToShortDateString() + "\n", fontTimesNewRoman10)) { Colspan = 4, Border = 0, Padding = 3f, PaddingBottom = 3f });
+                tableHeader.AddCell(new PdfPCell(new Phrase("From : " + startDate.ToShortDateString() + " To: " + endDate.ToShortDateString() + "\n", fontTimesNewRoman10)) { Colspan = 4, Border = 0, Padding = 3f, PaddingBottom = 6f });
 
                 PdfPTable tableLines = new PdfPTable(10);
                 tableLines.SetWidths(new float[] { 50f, 50f, 50f, 50f, 50f, 100f, 50f, 50f, 50f, 50f });
                 tableLines.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
-                tableLines.AddCell(new PdfPCell(new Phrase("Item Code", fontTimesNewRoman10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
-                tableLines.AddCell(new PdfPCell(new Phrase("Barcode", fontTimesNewRoman10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
-                tableLines.AddCell(new PdfPCell(new Phrase("Stock Count Date", fontTimesNewRoman10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
-                tableLines.AddCell(new PdfPCell(new Phrase("Stock Count No.", fontTimesNewRoman10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
-                tableLines.AddCell(new PdfPCell(new Phrase("Remarks", fontTimesNewRoman10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
-                tableLines.AddCell(new PdfPCell(new Phrase("Item", fontTimesNewRoman10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
+                tableLines.AddCell(new PdfPCell(new Phrase("Barcode", fontTimesNewRoman10Bold)) {Colspan=2, HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
+                tableLines.AddCell(new PdfPCell(new Phrase("Item", fontTimesNewRoman10Bold)) {Colspan = 4, HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
                 tableLines.AddCell(new PdfPCell(new Phrase("Unit", fontTimesNewRoman10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
                 tableLines.AddCell(new PdfPCell(new Phrase("Quantity", fontTimesNewRoman10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
                 tableLines.AddCell(new PdfPCell(new Phrase("Cost", fontTimesNewRoman10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });

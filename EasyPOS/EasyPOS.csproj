@@ -1327,6 +1327,12 @@
     <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchPrintOrderDetailForm.Designer.cs">
       <DependentUpon>TrnPOSTouchPrintOrderDetailForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchSelectOrderTaker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchSelectOrderTaker.Designer.cs">
+      <DependentUpon>TrnPOSTouchSelectOrderTaker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnPurchaseOrder\TrnPurchaseOrderDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1919,6 +1925,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTouchPrintOrderDetailForm.resx">
       <DependentUpon>TrnPOSTouchPrintOrderDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTouchSelectOrderTaker.resx">
+      <DependentUpon>TrnPOSTouchSelectOrderTaker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPurchaseOrder\TrnPurchaseOrderDetailForm.resx">
       <DependentUpon>TrnPurchaseOrderDetailForm.cs</DependentUpon>

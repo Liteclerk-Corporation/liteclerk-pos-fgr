@@ -417,6 +417,7 @@
       <Column Name="IsLocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CanEditPrice" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="CanOpenDrawer" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="IsOrderTaker" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="MstUser_IntCloudSetting" Member="IntCloudSettings" ThisKey="Id" OtherKey="PostUserId" Type="IntCloudSetting" />
       <Association Name="MstUser_MstCustomer" Member="MstCustomers" ThisKey="Id" OtherKey="EntryUserId" Type="MstCustomer" />
       <Association Name="MstUser_MstCustomer1" Member="MstCustomers1" ThisKey="Id" OtherKey="UpdateUserId" Type="MstCustomer" />
