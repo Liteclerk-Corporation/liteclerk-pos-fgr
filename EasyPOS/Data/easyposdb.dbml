@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="easypos_mylora_baybay" Class="easyposdbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-RT4V2EU\SQLEXPRESS;Initial Catalog=easypos_mylora_baybay;Persist Security Info=True;User ID=sa" SettingsObjectName="EasyPOS.Properties.Settings" SettingsPropertyName="easypos_mylora_baybayConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="easypos" Class="easyposdbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(local);Initial Catalog=easypos;Persist Security Info=True;User ID=sa" SettingsObjectName="EasyPOS.Properties.Settings" SettingsPropertyName="easyposConnectionString3" Provider="System.Data.SqlClient" />
   <Table Name="dbo.IntCloudSettings" Member="IntCloudSettings">
     <Type Name="IntCloudSetting">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -338,6 +338,7 @@
       <Column Name="TableGroupId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="TopLocation" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="LeftLocation" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SortNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="MstTable_TrnSale" Member="TrnSales" ThisKey="Id" OtherKey="TableId" Type="TrnSale" />
       <Association Name="MstTableGroup_MstTable" Member="MstTableGroup" ThisKey="TableGroupId" OtherKey="Id" Type="MstTableGroup" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
@@ -634,31 +635,6 @@
       <Association Name="TrnCollection_TrnCollectionLine" Member="TrnCollection" ThisKey="CollectionId" OtherKey="Id" Type="TrnCollection" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
       <Association Name="TrnSale_TrnCollectionLine" Member="TrnSale" ThisKey="SalesReturnSalesId" OtherKey="Id" Type="TrnSale" IsForeignKey="true" />
       <Association Name="TrnStockIn_TrnCollectionLine" Member="TrnStockIn" ThisKey="StockInId" OtherKey="Id" Type="TrnStockIn" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TrnConvert" Member="TrnConverts">
-    <Type Name="TrnConvert">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="ConvertNo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="ConvertDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="Remarks" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="isLocked" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="stockinid" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="stockoutid" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="isconvert" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-      <Column Name="mytime" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.TrnConvertSub" Member="TrnConvertSubs">
-    <Type Name="TrnConvertSub">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Convertid" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="StockInItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="StockInItemIDQty" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
-      <Column Name="StockInItemIDUnit" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="StockOutItemID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="StockOutItemIDQty" Type="System.Decimal" DbType="Decimal(18,4)" CanBeNull="true" />
-      <Column Name="StockOutItemIDUnit" Type="System.Int32" DbType="Int" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.TrnDebitCreditMemo" Member="TrnDebitCreditMemos">
@@ -975,10 +951,10 @@
       <Column Name="DeletedDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="IsPrinted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="SalesLineId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemKitchen" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
       <Column Name="Preparation" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="ItemKitchen" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="TableCode" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
-      <Column Name="TableId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TableCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TableId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.TrnStockCount" Member="TrnStockCounts">

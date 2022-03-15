@@ -27,7 +27,8 @@ namespace EasyPOS.Controllers
                              TableGroupId = d.TableGroupId,
                              TableGroup = d.MstTableGroup.TableGroup,
                              TopLocation = d.TopLocation,
-                             LeftLocation = d.LeftLocation
+                             LeftLocation = d.LeftLocation,
+                             SortNumber = d.SortNumber
                          };
 
             return tables.OrderByDescending(d => d.Id).ToList();
@@ -59,6 +60,7 @@ namespace EasyPOS.Controllers
                 {
                     TableCode = objTable.TableCode,
                     TableGroupId = objTable.TableGroupId,
+                    SortNumber = objTable.SortNumber,
                     TopLocation = null,
                     LeftLocation = null
                 };
@@ -120,6 +122,7 @@ namespace EasyPOS.Controllers
 
                     var updateTable = table.FirstOrDefault();
                     updateTable.TableCode = objTable.TableCode;
+                    updateTable.SortNumber = objTable.SortNumber;
                     db.SubmitChanges();
 
                     String newObject = Modules.SysAuditTrailModule.GetObjectString(table.FirstOrDefault());

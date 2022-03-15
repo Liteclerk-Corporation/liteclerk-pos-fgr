@@ -45,6 +45,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
             if (mstTableEntity != null)
             {
                 textBoxTableCode.Text = mstTableEntity.TableCode;
+                textBoxSortNumber.Text = Convert.ToString(mstTableEntity.SortNumber);
             }
         }
 
@@ -55,6 +56,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
                 Entities.MstTableEntity newTable = new Entities.MstTableEntity()
                 {
                     TableCode = textBoxTableCode.Text,
+                    SortNumber = Convert.ToInt32(textBoxSortNumber.Text),
                     TableGroupId = mstTableEntity.TableGroupId
                 };
 
@@ -73,6 +75,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
             else
             {
                 mstTableEntity.TableCode = textBoxTableCode.Text;
+                mstTableEntity.SortNumber = Convert.ToInt32(textBoxSortNumber.Text);
                 Controllers.MstTableController mstTableController = new Controllers.MstTableController();
                 String[] updateTable = mstTableController.UpdateTable(mstTableEntity.Id, mstTableEntity);
                 if (updateTable[1].Equals("0") == true)

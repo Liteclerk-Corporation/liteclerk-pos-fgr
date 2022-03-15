@@ -153,6 +153,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             Controllers.TrnSalesController trnPOSSalesController = new Controllers.TrnSalesController();
             textBoxLastChange.Text = trnPOSSalesController.GetLastChange(Convert.ToInt32(Modules.SysCurrentModule.GetCurrentSettings().TerminalId)).ToString("#,##0.00");
+            labelTerminal.Text = Convert.ToString(Modules.SysCurrentModule.GetCurrentSettings().TerminalId);
         }
 
         public string SetLabel(string label)

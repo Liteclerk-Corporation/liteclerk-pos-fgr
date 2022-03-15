@@ -22,7 +22,7 @@ namespace EasyPOS.Data
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="easypos_mylora_baybay")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="easypos")]
 	public partial class easyposdbDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -135,12 +135,6 @@ namespace EasyPOS.Data
     partial void InsertTrnCollectionLine(TrnCollectionLine instance);
     partial void UpdateTrnCollectionLine(TrnCollectionLine instance);
     partial void DeleteTrnCollectionLine(TrnCollectionLine instance);
-    partial void InsertTrnConvert(TrnConvert instance);
-    partial void UpdateTrnConvert(TrnConvert instance);
-    partial void DeleteTrnConvert(TrnConvert instance);
-    partial void InsertTrnConvertSub(TrnConvertSub instance);
-    partial void UpdateTrnConvertSub(TrnConvertSub instance);
-    partial void DeleteTrnConvertSub(TrnConvertSub instance);
     partial void InsertTrnDebitCreditMemo(TrnDebitCreditMemo instance);
     partial void UpdateTrnDebitCreditMemo(TrnDebitCreditMemo instance);
     partial void DeleteTrnDebitCreditMemo(TrnDebitCreditMemo instance);
@@ -189,7 +183,7 @@ namespace EasyPOS.Data
     #endregion
 		
 		public easyposdbDataContext() : 
-				base(global::EasyPOS.Properties.Settings.Default.easypos_mylora_baybayConnectionString, mappingSource)
+				base(global::EasyPOS.Properties.Settings.Default.easyposConnectionString3, mappingSource)
 		{
 			OnCreated();
 		}
@@ -495,22 +489,6 @@ namespace EasyPOS.Data
 			get
 			{
 				return this.GetTable<TrnCollectionLine>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TrnConvert> TrnConverts
-		{
-			get
-			{
-				return this.GetTable<TrnConvert>();
-			}
-		}
-		
-		public System.Data.Linq.Table<TrnConvertSub> TrnConvertSubs
-		{
-			get
-			{
-				return this.GetTable<TrnConvertSub>();
 			}
 		}
 		
@@ -8518,6 +8496,8 @@ namespace EasyPOS.Data
 		
 		private System.Nullable<int> _LeftLocation;
 		
+		private int _SortNumber;
+		
 		private EntitySet<TrnSale> _TrnSales;
 		
 		private EntityRef<MstTableGroup> _MstTableGroup;
@@ -8536,6 +8516,8 @@ namespace EasyPOS.Data
     partial void OnTopLocationChanged();
     partial void OnLeftLocationChanging(System.Nullable<int> value);
     partial void OnLeftLocationChanged();
+    partial void OnSortNumberChanging(int value);
+    partial void OnSortNumberChanged();
     #endregion
 		
 		public MstTable()
@@ -8645,6 +8627,26 @@ namespace EasyPOS.Data
 					this._LeftLocation = value;
 					this.SendPropertyChanged("LeftLocation");
 					this.OnLeftLocationChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SortNumber", DbType="Int NOT NULL")]
+		public int SortNumber
+		{
+			get
+			{
+				return this._SortNumber;
+			}
+			set
+			{
+				if ((this._SortNumber != value))
+				{
+					this.OnSortNumberChanging(value);
+					this.SendPropertyChanging();
+					this._SortNumber = value;
+					this.SendPropertyChanged("SortNumber");
+					this.OnSortNumberChanged();
 				}
 			}
 		}
@@ -15468,490 +15470,6 @@ namespace EasyPOS.Data
 						this._StockInId = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("TrnStockIn");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrnConvert")]
-	public partial class TrnConvert : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _ConvertNo;
-		
-		private System.Nullable<System.DateTime> _ConvertDate;
-		
-		private string _Remarks;
-		
-		private System.Nullable<bool> _isLocked;
-		
-		private System.Nullable<int> _stockinid;
-		
-		private System.Nullable<int> _stockoutid;
-		
-		private System.Nullable<bool> _isconvert;
-		
-		private System.Data.Linq.Binary _mytime;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnConvertNoChanging(string value);
-    partial void OnConvertNoChanged();
-    partial void OnConvertDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnConvertDateChanged();
-    partial void OnRemarksChanging(string value);
-    partial void OnRemarksChanged();
-    partial void OnisLockedChanging(System.Nullable<bool> value);
-    partial void OnisLockedChanged();
-    partial void OnstockinidChanging(System.Nullable<int> value);
-    partial void OnstockinidChanged();
-    partial void OnstockoutidChanging(System.Nullable<int> value);
-    partial void OnstockoutidChanged();
-    partial void OnisconvertChanging(System.Nullable<bool> value);
-    partial void OnisconvertChanged();
-    partial void OnmytimeChanging(System.Data.Linq.Binary value);
-    partial void OnmytimeChanged();
-    #endregion
-		
-		public TrnConvert()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ConvertNo", DbType="VarChar(50)", UpdateCheck=UpdateCheck.Never)]
-		public string ConvertNo
-		{
-			get
-			{
-				return this._ConvertNo;
-			}
-			set
-			{
-				if ((this._ConvertNo != value))
-				{
-					this.OnConvertNoChanging(value);
-					this.SendPropertyChanging();
-					this._ConvertNo = value;
-					this.SendPropertyChanged("ConvertNo");
-					this.OnConvertNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ConvertDate", DbType="DateTime", UpdateCheck=UpdateCheck.Never)]
-		public System.Nullable<System.DateTime> ConvertDate
-		{
-			get
-			{
-				return this._ConvertDate;
-			}
-			set
-			{
-				if ((this._ConvertDate != value))
-				{
-					this.OnConvertDateChanging(value);
-					this.SendPropertyChanging();
-					this._ConvertDate = value;
-					this.SendPropertyChanged("ConvertDate");
-					this.OnConvertDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remarks", DbType="VarChar(50)", UpdateCheck=UpdateCheck.Never)]
-		public string Remarks
-		{
-			get
-			{
-				return this._Remarks;
-			}
-			set
-			{
-				if ((this._Remarks != value))
-				{
-					this.OnRemarksChanging(value);
-					this.SendPropertyChanging();
-					this._Remarks = value;
-					this.SendPropertyChanged("Remarks");
-					this.OnRemarksChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isLocked", DbType="Bit", UpdateCheck=UpdateCheck.Never)]
-		public System.Nullable<bool> isLocked
-		{
-			get
-			{
-				return this._isLocked;
-			}
-			set
-			{
-				if ((this._isLocked != value))
-				{
-					this.OnisLockedChanging(value);
-					this.SendPropertyChanging();
-					this._isLocked = value;
-					this.SendPropertyChanged("isLocked");
-					this.OnisLockedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_stockinid", DbType="Int", UpdateCheck=UpdateCheck.Never)]
-		public System.Nullable<int> stockinid
-		{
-			get
-			{
-				return this._stockinid;
-			}
-			set
-			{
-				if ((this._stockinid != value))
-				{
-					this.OnstockinidChanging(value);
-					this.SendPropertyChanging();
-					this._stockinid = value;
-					this.SendPropertyChanged("stockinid");
-					this.OnstockinidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_stockoutid", DbType="Int", UpdateCheck=UpdateCheck.Never)]
-		public System.Nullable<int> stockoutid
-		{
-			get
-			{
-				return this._stockoutid;
-			}
-			set
-			{
-				if ((this._stockoutid != value))
-				{
-					this.OnstockoutidChanging(value);
-					this.SendPropertyChanging();
-					this._stockoutid = value;
-					this.SendPropertyChanged("stockoutid");
-					this.OnstockoutidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_isconvert", DbType="Bit", UpdateCheck=UpdateCheck.Never)]
-		public System.Nullable<bool> isconvert
-		{
-			get
-			{
-				return this._isconvert;
-			}
-			set
-			{
-				if ((this._isconvert != value))
-				{
-					this.OnisconvertChanging(value);
-					this.SendPropertyChanging();
-					this._isconvert = value;
-					this.SendPropertyChanged("isconvert");
-					this.OnisconvertChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_mytime", AutoSync=AutoSync.Always, DbType="rowversion", IsDbGenerated=true, IsVersion=true, UpdateCheck=UpdateCheck.Never)]
-		public System.Data.Linq.Binary mytime
-		{
-			get
-			{
-				return this._mytime;
-			}
-			set
-			{
-				if ((this._mytime != value))
-				{
-					this.OnmytimeChanging(value);
-					this.SendPropertyChanging();
-					this._mytime = value;
-					this.SendPropertyChanged("mytime");
-					this.OnmytimeChanged();
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrnConvertSub")]
-	public partial class TrnConvertSub : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private System.Nullable<int> _Convertid;
-		
-		private System.Nullable<int> _StockInItemID;
-		
-		private System.Nullable<decimal> _StockInItemIDQty;
-		
-		private System.Nullable<int> _StockInItemIDUnit;
-		
-		private System.Nullable<int> _StockOutItemID;
-		
-		private System.Nullable<decimal> _StockOutItemIDQty;
-		
-		private System.Nullable<int> _StockOutItemIDUnit;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnConvertidChanging(System.Nullable<int> value);
-    partial void OnConvertidChanged();
-    partial void OnStockInItemIDChanging(System.Nullable<int> value);
-    partial void OnStockInItemIDChanged();
-    partial void OnStockInItemIDQtyChanging(System.Nullable<decimal> value);
-    partial void OnStockInItemIDQtyChanged();
-    partial void OnStockInItemIDUnitChanging(System.Nullable<int> value);
-    partial void OnStockInItemIDUnitChanged();
-    partial void OnStockOutItemIDChanging(System.Nullable<int> value);
-    partial void OnStockOutItemIDChanged();
-    partial void OnStockOutItemIDQtyChanging(System.Nullable<decimal> value);
-    partial void OnStockOutItemIDQtyChanged();
-    partial void OnStockOutItemIDUnitChanging(System.Nullable<int> value);
-    partial void OnStockOutItemIDUnitChanged();
-    #endregion
-		
-		public TrnConvertSub()
-		{
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Convertid", DbType="Int")]
-		public System.Nullable<int> Convertid
-		{
-			get
-			{
-				return this._Convertid;
-			}
-			set
-			{
-				if ((this._Convertid != value))
-				{
-					this.OnConvertidChanging(value);
-					this.SendPropertyChanging();
-					this._Convertid = value;
-					this.SendPropertyChanged("Convertid");
-					this.OnConvertidChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockInItemID", DbType="Int")]
-		public System.Nullable<int> StockInItemID
-		{
-			get
-			{
-				return this._StockInItemID;
-			}
-			set
-			{
-				if ((this._StockInItemID != value))
-				{
-					this.OnStockInItemIDChanging(value);
-					this.SendPropertyChanging();
-					this._StockInItemID = value;
-					this.SendPropertyChanged("StockInItemID");
-					this.OnStockInItemIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockInItemIDQty", DbType="Decimal(18,4)")]
-		public System.Nullable<decimal> StockInItemIDQty
-		{
-			get
-			{
-				return this._StockInItemIDQty;
-			}
-			set
-			{
-				if ((this._StockInItemIDQty != value))
-				{
-					this.OnStockInItemIDQtyChanging(value);
-					this.SendPropertyChanging();
-					this._StockInItemIDQty = value;
-					this.SendPropertyChanged("StockInItemIDQty");
-					this.OnStockInItemIDQtyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockInItemIDUnit", DbType="Int")]
-		public System.Nullable<int> StockInItemIDUnit
-		{
-			get
-			{
-				return this._StockInItemIDUnit;
-			}
-			set
-			{
-				if ((this._StockInItemIDUnit != value))
-				{
-					this.OnStockInItemIDUnitChanging(value);
-					this.SendPropertyChanging();
-					this._StockInItemIDUnit = value;
-					this.SendPropertyChanged("StockInItemIDUnit");
-					this.OnStockInItemIDUnitChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockOutItemID", DbType="Int")]
-		public System.Nullable<int> StockOutItemID
-		{
-			get
-			{
-				return this._StockOutItemID;
-			}
-			set
-			{
-				if ((this._StockOutItemID != value))
-				{
-					this.OnStockOutItemIDChanging(value);
-					this.SendPropertyChanging();
-					this._StockOutItemID = value;
-					this.SendPropertyChanged("StockOutItemID");
-					this.OnStockOutItemIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockOutItemIDQty", DbType="Decimal(18,4)")]
-		public System.Nullable<decimal> StockOutItemIDQty
-		{
-			get
-			{
-				return this._StockOutItemIDQty;
-			}
-			set
-			{
-				if ((this._StockOutItemIDQty != value))
-				{
-					this.OnStockOutItemIDQtyChanging(value);
-					this.SendPropertyChanging();
-					this._StockOutItemIDQty = value;
-					this.SendPropertyChanged("StockOutItemIDQty");
-					this.OnStockOutItemIDQtyChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockOutItemIDUnit", DbType="Int")]
-		public System.Nullable<int> StockOutItemIDUnit
-		{
-			get
-			{
-				return this._StockOutItemIDUnit;
-			}
-			set
-			{
-				if ((this._StockOutItemIDUnit != value))
-				{
-					this.OnStockOutItemIDUnitChanging(value);
-					this.SendPropertyChanging();
-					this._StockOutItemIDUnit = value;
-					this.SendPropertyChanged("StockOutItemIDUnit");
-					this.OnStockOutItemIDUnitChanged();
 				}
 			}
 		}
@@ -23467,13 +22985,13 @@ namespace EasyPOS.Data
 		
 		private int _SalesLineId;
 		
-		private string _Preparation;
-		
 		private string _ItemKitchen;
+		
+		private string _Preparation;
 		
 		private string _TableCode;
 		
-		private System.Nullable<int> _TableId;
+		private int _TableId;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -23529,13 +23047,13 @@ namespace EasyPOS.Data
     partial void OnIsPrintedChanged();
     partial void OnSalesLineIdChanging(int value);
     partial void OnSalesLineIdChanged();
-    partial void OnPreparationChanging(string value);
-    partial void OnPreparationChanged();
     partial void OnItemKitchenChanging(string value);
     partial void OnItemKitchenChanged();
+    partial void OnPreparationChanging(string value);
+    partial void OnPreparationChanged();
     partial void OnTableCodeChanging(string value);
     partial void OnTableCodeChanged();
-    partial void OnTableIdChanging(System.Nullable<int> value);
+    partial void OnTableIdChanging(int value);
     partial void OnTableIdChanged();
     #endregion
 		
@@ -24044,6 +23562,26 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemKitchen", DbType="NVarChar(100) NOT NULL", CanBeNull=false)]
+		public string ItemKitchen
+		{
+			get
+			{
+				return this._ItemKitchen;
+			}
+			set
+			{
+				if ((this._ItemKitchen != value))
+				{
+					this.OnItemKitchenChanging(value);
+					this.SendPropertyChanging();
+					this._ItemKitchen = value;
+					this.SendPropertyChanged("ItemKitchen");
+					this.OnItemKitchenChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Preparation", DbType="VarChar(255)")]
 		public string Preparation
 		{
@@ -24064,27 +23602,7 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemKitchen", DbType="VarChar(255)")]
-		public string ItemKitchen
-		{
-			get
-			{
-				return this._ItemKitchen;
-			}
-			set
-			{
-				if ((this._ItemKitchen != value))
-				{
-					this.OnItemKitchenChanging(value);
-					this.SendPropertyChanging();
-					this._ItemKitchen = value;
-					this.SendPropertyChanged("ItemKitchen");
-					this.OnItemKitchenChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableCode", DbType="VarChar(255)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableCode", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
 		public string TableCode
 		{
 			get
@@ -24104,8 +23622,8 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableId", DbType="Int")]
-		public System.Nullable<int> TableId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableId", DbType="Int NOT NULL")]
+		public int TableId
 		{
 			get
 			{

@@ -238,6 +238,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
                                 ColumnTableListId = d.Id,
                                 ColumnTableListTableCode = d.TableCode,
                                 ColumnTableListTableGroupId = d.TableGroupId,
+                                ColumnTableListSortNumber = d.SortNumber
                             };
 
                 return Task.FromResult(items.ToList());
@@ -280,6 +281,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
                 var id = Convert.ToInt32(dataGridViewTableList.Rows[e.RowIndex].Cells[dataGridViewTableList.Columns["ColumnTableListId"].Index].Value);
                 var tableCode = dataGridViewTableList.Rows[e.RowIndex].Cells[dataGridViewTableList.Columns["ColumnTableListTableCode"].Index].Value.ToString();
                 var tableGroupId = Convert.ToInt32(dataGridViewTableList.Rows[e.RowIndex].Cells[dataGridViewTableList.Columns["ColumnTableListTableGroupId"].Index].Value);
+                var sortNumber = Convert.ToInt32(dataGridViewTableList.Rows[e.RowIndex].Cells[dataGridViewTableList.Columns["ColumnTableListSortNumber"].Index].Value);
 
                 Entities.MstTableEntity mstTableEntity = new Entities.MstTableEntity()
                 {
@@ -287,6 +289,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
                     TableCode = tableCode,
                     TableGroupId = tableGroupId,
                     TableGroup = "",
+                    SortNumber = sortNumber,
                     TopLocation = null,
                     LeftLocation = null,
                 };
