@@ -767,8 +767,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 graphics.DrawString(collectionNumberText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
                 y += graphics.MeasureString(collectionNumberText, fontArial10Regular).Height;
 
+                String tableNoText = "Table: " + sales.FirstOrDefault().MstTable.TableCode;
+                graphics.DrawString(tableNoText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                y += graphics.MeasureString(tableNoText, fontArial10Regular).Height;
 
+                String printedDateText = sales.FirstOrDefault().SalesDate.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
+                graphics.DrawString(printedDateText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
 
+                String printedTimeText = DateTime.Now.ToString("hh:mm:tt", CultureInfo.InvariantCulture);
+                graphics.DrawString(printedTimeText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(printedTimeText, fontArial10Regular).Height;
 
                 // ========
                 // 1st Line
@@ -904,7 +912,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 // =======
                 String cashier = sales.FirstOrDefault().MstUser5.UserName;
 
-                String cashierLabel = "\nTeller";
+                String cashierLabel = "\nOrder Taker";
                 String cashierUserData = "\n" + cashier;
                 graphics.DrawString(cashierLabel, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(cashierUserData, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
@@ -916,17 +924,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Point sixthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
                 Point sixthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
                 graphics.DrawLine(blackPen, sixthLineFirstPoint, sixthLineSecondPoint);
-
-                String printedDateText = "\n" + sales.FirstOrDefault().SalesDate.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
-                graphics.DrawString(printedDateText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                
-                String printedTimeText = "\n" + DateTime.Now.ToString("hh:mm:tt", CultureInfo.InvariantCulture);
-                graphics.DrawString(printedTimeText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(printedTimeText, fontArial10Regular).Height;
-
-                String tableNoText = "\nTable: " + sales.FirstOrDefault().MstTable.TableCode;
-                graphics.DrawString(tableNoText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                y += graphics.MeasureString(tableNoText, fontArial10Regular).Height;
             }
         }
 
