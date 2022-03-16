@@ -85,6 +85,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     }
 
                     dataGridViewPrintOrderSalesLineList.Rows.Add(
+                        isPrinted == true ? "Pick" : "Unpick",
                         objSalesLineList.Id,
                         objSalesLineList.SalesId,
                         objSalesLineList.ItemId,
@@ -99,6 +100,51 @@ namespace EasyPOS.Forms.Software.TrnPOS
         private void buttonClose_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void dataGridViewPrintOrderSalesLineList_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            foreach (DataGridViewRow row in dataGridViewPrintOrderSalesLineList.Rows)
+            {
+                String buttonText = dataGridViewPrintOrderSalesLineList.Rows[e.RowIndex].Cells[0].Value.ToString();
+                if (buttonText == "Pick")
+                {
+                    dataGridViewPrintOrderSalesLineList.Rows[e.RowIndex].Cells[0].Style.BackColor = ColorTranslator.FromHtml("#01A6F0");
+                    dataGridViewPrintOrderSalesLineList.Rows[e.RowIndex].Cells[0].Style.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
+                    dataGridViewPrintOrderSalesLineList.Rows[e.RowIndex].Cells[0].Style.ForeColor = Color.White;
+                }
+                else
+                {
+                    if (buttonText == "Unpick")
+                    {
+                        dataGridViewPrintOrderSalesLineList.Rows[e.RowIndex].Cells[0].Style.BackColor = ColorTranslator.FromHtml("#F34F1C");
+                        dataGridViewPrintOrderSalesLineList.Rows[e.RowIndex].Cells[0].Style.SelectionBackColor = ColorTranslator.FromHtml("#F34F1C");
+                        dataGridViewPrintOrderSalesLineList.Rows[e.RowIndex].Cells[0].Style.ForeColor = Color.White;
+                    }
+                }
+            }
+        }
+
+        private void dataGridViewPrintOrderSalesLineList_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex > -1 && dataGridViewPrintOrderSalesLineList.CurrentCell.ColumnIndex == dataGridViewPrintOrderSalesLineList.Columns["ColumnSalesLineListPrintOrderSelect"].Index)
+            {
+                String buttonText = dataGridViewPrintOrderSalesLineList.Rows[e.RowIndex].Cells[0].Value.ToString();
+
+                if (buttonText == "Pick")
+                {
+                    dataGridViewPrintOrderSalesLineList.Rows[e.RowIndex].Cells[4].Value = false;
+                    dataGridViewPrintOrderSalesLineList.Rows[e.RowIndex].Cells[0].Value = "Unpick";
+                }
+                else
+                {
+                    if (buttonText == "Unpick")
+                    {
+                        dataGridViewPrintOrderSalesLineList.Rows[e.RowIndex].Cells[4].Value = true;
+                        dataGridViewPrintOrderSalesLineList.Rows[e.RowIndex].Cells[0].Value = "Pick";
+                    }
+                }
+            }
         }
     }
 }

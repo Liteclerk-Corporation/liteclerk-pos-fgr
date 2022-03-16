@@ -44,7 +44,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     {
                         Boolean? isPrinted = true;
 
-                        if (row.Cells[3].Value.ToString() == "false" || Convert.ToBoolean(row.Cells[3].Value.ToString()) == false)
+                        if (row.Cells[4].Value.ToString() == "false" || Convert.ToBoolean(row.Cells[4].Value.ToString()) == false)
                         {
                             isPrinted = null;
                         }
@@ -52,7 +52,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         if (isPrinted == null)
                         {
                             var salesLineKitchenReports = from d in salesLineList
-                                                          where d.Id == Convert.ToInt32(row.Cells[0].Value)
+                                                          where d.Id == Convert.ToInt32(row.Cells[1].Value)
                                                           select d;
 
                             if (salesLineKitchenReports.Any())
@@ -812,7 +812,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         {
                             Boolean? isPrinted = true;
 
-                            if (row.Cells[3].Value.ToString() == "false" || Convert.ToBoolean(row.Cells[3].Value.ToString()) == false)
+                            if (row.Cells[4].Value.ToString() == "false" || Convert.ToBoolean(row.Cells[4].Value.ToString()) == false)
                             {
                                 isPrinted = null;
                             }
@@ -821,7 +821,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             {
                                 //Id = Convert.ToInt32(row.Cells["ColumnSalesLineListPrintOrderId"].Value),
                                 //IsPrinted = isPrinted
-                                Id = Convert.ToInt32(row.Cells[0].Value),
+                                Id = Convert.ToInt32(row.Cells[1].Value),
                                 IsPrinted = isPrinted
                             });
                         }
