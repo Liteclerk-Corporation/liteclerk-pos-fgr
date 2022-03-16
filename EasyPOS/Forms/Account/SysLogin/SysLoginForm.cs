@@ -44,13 +44,21 @@ namespace EasyPOS.Forms.Account.SysLogin
 
             _isOverride = isOverride;
 
-            if(Modules.SysCurrentModule.GetCurrentSettings().DateLogin == false)
+            if(Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == false)
             {
+                radioButtonLoginDate.Checked = false;
                 radioButtonLoginDate.Enabled = false;
+                radioButtonSystemDate.Enabled = true;
+                buttonChangeLoginDate.Enabled = false;
+                dateTimePickerLoginDate.Value = DateTime.Now;
             }
             else
             {
+                radioButtonLoginDate.Checked = true;
                 radioButtonLoginDate.Enabled = true;
+                radioButtonSystemDate.Enabled = false;
+                buttonChangeLoginDate.Enabled = true;
+                dateTimePickerLoginDate.Value = Convert.ToDateTime(Modules.SysCurrentModule.GetCurrentSettings().DateLogin);
             }
 
             if (Modules.SysCurrentModule.GetCurrentSettings().SwipeLogin == false)
@@ -61,6 +69,7 @@ namespace EasyPOS.Forms.Account.SysLogin
             {
                 textBoxUserCardNumber.Visible = true;
             }
+
             dateTimePickerLoginDate.Enabled = false;
             textBoxUsername.Focus();
             labelVersion.Text = "EasyPOS Version: " + Modules.SysCurrentModule.GetCurrentSettings().CurrentVersion;
@@ -238,6 +247,12 @@ namespace EasyPOS.Forms.Account.SysLogin
         private void radioButtonLoginDate_CheckedChanged(object sender, EventArgs e)
         {
             dateTimePickerLoginDate.Enabled = true;
+        }
+
+        private void buttonChangeLoginDate_Click(object sender, EventArgs e)
+        {
+            SysChangeLoginDateForm sysChangeLoginDateForm = new SysChangeLoginDateForm(this);
+            sysChangeLoginDateForm.ShowDialog();
         }
     }
 }

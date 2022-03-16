@@ -57,7 +57,7 @@ namespace EasyPOS.Entities
         public Boolean SwipeLogin { get; set; }
         public String WithdrawalFooter { get; set; }
         public String WithdrawalPrintTitle { get; set; }
-        public Boolean DateLogin { get; set; }
+        public String DateLogin { get; set; }
         public Boolean HideSalesAmount { get; set; }
         public Boolean HideStockInPriceAndCost { get; set; }
         public Boolean HideSalesItemDetail { get; set; }

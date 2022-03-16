@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SysLoginForm));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonLogin = new System.Windows.Forms.Button();
@@ -44,17 +43,19 @@
             this.radioButtonLoginDate = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.labelVersion = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.labelSupport = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBoxUserCardNumber = new System.Windows.Forms.TextBox();
+            this.buttonChangeLoginDate = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -70,17 +71,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(463, 50);
             this.panel1.TabIndex = 7;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.User;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 9);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -104,7 +94,7 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(383, 8);
+            this.buttonClose.Location = new System.Drawing.Point(385, 5);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(70, 32);
@@ -125,7 +115,7 @@
             this.buttonLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLogin.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLogin.ForeColor = System.Drawing.Color.White;
-            this.buttonLogin.Location = new System.Drawing.Point(308, 8);
+            this.buttonLogin.Location = new System.Drawing.Point(310, 5);
             this.buttonLogin.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(70, 32);
@@ -189,29 +179,29 @@
             this.dateTimePickerLoginDate.CalendarFont = new System.Drawing.Font("Segoe UI", 12F);
             this.dateTimePickerLoginDate.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.dateTimePickerLoginDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerLoginDate.Location = new System.Drawing.Point(149, 36);
+            this.dateTimePickerLoginDate.Location = new System.Drawing.Point(121, 36);
             this.dateTimePickerLoginDate.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerLoginDate.Name = "dateTimePickerLoginDate";
-            this.dateTimePickerLoginDate.Size = new System.Drawing.Size(230, 29);
+            this.dateTimePickerLoginDate.Size = new System.Drawing.Size(246, 29);
             this.dateTimePickerLoginDate.TabIndex = 5;
             this.dateTimePickerLoginDate.TabStop = false;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label8.Location = new System.Drawing.Point(55, 38);
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(118, 21);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(88, 21);
+            this.label8.Size = new System.Drawing.Size(63, 13);
             this.label8.TabIndex = 16;
-            this.label8.Text = "Login Date:";
+            this.label8.Text = "Login Date";
             // 
             // radioButtonSystemDate
             // 
             this.radioButtonSystemDate.AutoSize = true;
             this.radioButtonSystemDate.Checked = true;
-            this.radioButtonSystemDate.Location = new System.Drawing.Point(149, 10);
+            this.radioButtonSystemDate.Location = new System.Drawing.Point(10, 9);
             this.radioButtonSystemDate.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonSystemDate.Name = "radioButtonSystemDate";
             this.radioButtonSystemDate.Size = new System.Drawing.Size(104, 23);
@@ -224,7 +214,7 @@
             // radioButtonLoginDate
             // 
             this.radioButtonLoginDate.AutoSize = true;
-            this.radioButtonLoginDate.Location = new System.Drawing.Point(254, 10);
+            this.radioButtonLoginDate.Location = new System.Drawing.Point(11, 39);
             this.radioButtonLoginDate.Margin = new System.Windows.Forms.Padding(2);
             this.radioButtonLoginDate.Name = "radioButtonLoginDate";
             this.radioButtonLoginDate.Size = new System.Drawing.Size(94, 23);
@@ -260,17 +250,6 @@
             this.labelVersion.TabIndex = 9;
             this.labelVersion.Text = "Easy POS Version: 1.20200518";
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::EasyPOS.Properties.Resources.easypos1;
-            this.pictureBox2.Location = new System.Drawing.Point(10, 6);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(53, 34);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 0;
-            this.pictureBox2.TabStop = false;
-            // 
             // labelSupport
             // 
             this.labelSupport.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -287,6 +266,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.buttonChangeLoginDate);
             this.panel3.Controls.Add(this.radioButtonSystemDate);
             this.panel3.Controls.Add(this.dateTimePickerLoginDate);
             this.panel3.Controls.Add(this.label8);
@@ -325,6 +305,49 @@
             this.textBoxUserCardNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.textBoxUserCardNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxUserCardNumber_KeyDown);
             // 
+            // buttonChangeLoginDate
+            // 
+            this.buttonChangeLoginDate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonChangeLoginDate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonChangeLoginDate.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonChangeLoginDate.FlatAppearance.BorderSize = 0;
+            this.buttonChangeLoginDate.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
+            this.buttonChangeLoginDate.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(126)))), ((int)(((byte)(181)))));
+            this.buttonChangeLoginDate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChangeLoginDate.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonChangeLoginDate.ForeColor = System.Drawing.Color.White;
+            this.buttonChangeLoginDate.Location = new System.Drawing.Point(371, 36);
+            this.buttonChangeLoginDate.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonChangeLoginDate.Name = "buttonChangeLoginDate";
+            this.buttonChangeLoginDate.Size = new System.Drawing.Size(84, 29);
+            this.buttonChangeLoginDate.TabIndex = 9;
+            this.buttonChangeLoginDate.TabStop = false;
+            this.buttonChangeLoginDate.Text = "Change";
+            this.buttonChangeLoginDate.UseVisualStyleBackColor = false;
+            this.buttonChangeLoginDate.Click += new System.EventHandler(this.buttonChangeLoginDate_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::EasyPOS.Properties.Resources.easypos1;
+            this.pictureBox2.Location = new System.Drawing.Point(10, 6);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(53, 34);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 0;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.User;
+            this.pictureBox1.Location = new System.Drawing.Point(10, 9);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // SysLoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -345,14 +368,14 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SysLoginForm_FormClosing);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -368,7 +391,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.DateTimePicker dateTimePickerLoginDate;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.RadioButton radioButtonSystemDate;
         private System.Windows.Forms.RadioButton radioButtonLoginDate;
@@ -379,5 +401,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox textBoxUserCardNumber;
+        private System.Windows.Forms.Button buttonChangeLoginDate;
+        public System.Windows.Forms.DateTimePicker dateTimePickerLoginDate;
     }
 }

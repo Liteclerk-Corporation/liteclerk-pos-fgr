@@ -35,7 +35,13 @@ namespace EasyPOS.Modules
             var currentSettings = GetCurrentSettings();
 
             DateTime currentDate = DateTime.Today;
+            DateTime dateLogin = Convert.ToDateTime(currentSettings.DateLogin);
             if (IsLoginDate == true)
+            {
+                currentDate = Convert.ToDateTime(loginDate);
+                dateLogin = Convert.ToDateTime(loginDate);
+            }
+            else
             {
                 currentDate = Convert.ToDateTime(loginDate);
             }
@@ -91,7 +97,7 @@ namespace EasyPOS.Modules
                 SwipeLogin = currentSettings.SwipeLogin,
                 WithdrawalFooter = currentSettings.WithdrawalFooter,
                 WithdrawalPrintTitle = currentSettings.WithdrawalPrintTitle,
-                DateLogin = currentSettings.DateLogin,
+                DateLogin = dateLogin.ToShortDateString(),
                 HideSalesAmount = currentSettings.HideSalesAmount,
                 HideStockInPriceAndCost = currentSettings.HideStockInPriceAndCost,
                 HideSalesItemDetail = currentSettings.HideSalesItemDetail,
@@ -171,14 +177,14 @@ namespace EasyPOS.Modules
                 FacepayImagePath = currentSettings.FacepayImagePath,
                 POSType = objSysCurrentEntity.POSType,
                 AllowNegativeInventory = objSysCurrentEntity.AllowNegativeInventory,
-                IsLoginDate = currentSettings.IsLoginDate,
+                IsLoginDate = objSysCurrentEntity.IsLoginDate,
+                DateLogin = objSysCurrentEntity.DateLogin,
                 EnableEasyShopIntegration = objSysCurrentEntity.EnableEasyShopIntegration,
                 PromptLoginSales = objSysCurrentEntity.PromptLoginSales,
                 PrinterType = objSysCurrentEntity.PrinterType,
                 SwipeLogin = objSysCurrentEntity.SwipeLogin,
                 WithdrawalFooter = objSysCurrentEntity.WithdrawalFooter,
                 WithdrawalPrintTitle = objSysCurrentEntity.WithdrawalPrintTitle,
-                DateLogin = objSysCurrentEntity.DateLogin,
                 HideSalesAmount = objSysCurrentEntity.HideSalesAmount,
                 HideStockInPriceAndCost = objSysCurrentEntity.HideStockInPriceAndCost,
                 HideSalesItemDetail = objSysCurrentEntity.HideSalesItemDetail,

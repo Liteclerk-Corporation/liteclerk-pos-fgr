@@ -773,7 +773,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                     Int32 ItemId = Convert.ToInt32(row.Cells[4].Value);
                     String ItemDescription = row.Cells[5].Value.ToString();
-                    Decimal Price = Convert.ToDecimal(row.Cells[9].Value);
+                    Decimal Price = Convert.ToDecimal(row.Cells[10].Value);
                     Decimal Quantity = Convert.ToDecimal(row.Cells[6].Value);
 
 
