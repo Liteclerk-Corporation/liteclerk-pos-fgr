@@ -1084,7 +1084,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     y += graphics.MeasureString(totalVatZeroRatedAmount, fontArial8Regular).Height;
 
                     // ========
-                    // 6th Line
+                    // 5th Line
                     // ========
                     Point sixthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
                     Point sixthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
@@ -1109,7 +1109,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 y += graphics.MeasureString(serverUserData, fontArial8Regular).Height;
 
                 // ========
-                // 7th Line
+                // 6th Line
                 // ========
                 Point seventhLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
                 Point seventhLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
@@ -1140,7 +1140,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             y += graphics.MeasureString(seniorCitizenAge, fontArial8Regular).Height;
 
                             // ========
-                            // 8th Line
+                            // 7th Line
                             // ========
                             Point eightLineFirstPoint = new Point(0, Convert.ToInt32(y) + 18);
                             Point eightLineSecondPoint = new Point(500, Convert.ToInt32(y) + 18);
@@ -1181,12 +1181,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 else
                 {
                     String customerName = collections.FirstOrDefault().TrnSale.MstCustomer.Customer;
+                    Decimal customerAvailableReward = collections.FirstOrDefault().TrnSale.MstCustomer.AvailableReward;
+                    Decimal customerAvailableLoad = collections.FirstOrDefault().TrnSale.MstCustomer.LoadAmount;
                     String customerAddress = collections.FirstOrDefault().TrnSale.MstCustomer.Address;
                     String customerTIN = collections.FirstOrDefault().TrnSale.MstCustomer.TIN;
                     String customerBusinessStyle = collections.FirstOrDefault().TrnSale.MstCustomer.BusinessStyle;
-                    String soldToLabel = "\nCustomer Name: " + customerName;
-                    graphics.DrawString(soldToLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    y += graphics.MeasureString(soldToLabel, fontArial8Regular).Height;
+                    
+                    
 
                     // ==================================
                     // Senior Citizen and PWD Information
@@ -1209,17 +1210,19 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             y += graphics.MeasureString(seniorCitizenAge, fontArial8Regular).Height;
 
                             // ========
-                            // 8th Line
+                            // 7th Line
                             // ========
                             Point eightLineFirstPoint = new Point(0, Convert.ToInt32(y) + 18);
                             Point eightLineSecondPoint = new Point(500, Convert.ToInt32(y) + 18);
                             graphics.DrawLine(blackPen, eightLineFirstPoint, eightLineSecondPoint);
 
-                            soldToLabel = "\n\nCustomer Name: " + customerName;
+                            //soldToLabel = "\n\nCustomer Name: " + customerName;
                         }
                     }
 
-
+                    String soldToLabel = "\n\nCustomer Name: " + customerName;
+                    graphics.DrawString(soldToLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                    y += graphics.MeasureString(soldToLabel, fontArial8Regular).Height;
 
                     String soldToAddressLabel = "Address: " + customerAddress;
                     graphics.DrawString(soldToAddressLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
@@ -1235,16 +1238,24 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         graphics.DrawString(soldToBusinessStyleLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                         y += graphics.MeasureString(soldToTINLabel, fontArial8Regular).Height;
                     }
+
+                    String customerAvailableRewaredLabel = "Available Reward: " + customerAvailableReward.ToString("#,##0.00");
+                    graphics.DrawString(customerAvailableRewaredLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                    y += graphics.MeasureString(customerAvailableRewaredLabel, fontArial8Regular).Height;
+
+                    String customerAvailableRewaredLoad = "Available Load: " + customerAvailableLoad.ToString("#,##0.00");
+                    graphics.DrawString(customerAvailableRewaredLoad, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                    y += graphics.MeasureString(customerAvailableRewaredLoad, fontArial8Regular).Height;
                 }
 
                 // ========
-                // 9th Line
+                // 8th Line
                 // ========
                 Point ninethLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
                 Point ninethLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
                 graphics.DrawLine(blackPen, ninethLineFirstPoint, ninethLineSecondPoint);
 
-                String remarks = "\nRemarks: \n\n " + collections.FirstOrDefault().TrnSale.Remarks;
+                String remarks = "\nRemarks: \n" + collections.FirstOrDefault().TrnSale.Remarks;
                 graphics.DrawString(remarks, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 y += graphics.MeasureString(remarks, fontArial8Regular).Height;
 
@@ -1262,7 +1273,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType != "ZiJiang Label Printer")
                 {
                     // =========
-                    // 11th Line
+                    // 8th Line
                     // =========
                     Point eleventhLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
                     Point eleventhLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
@@ -1274,22 +1285,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 }
             }
         }
-
-        //if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
-        //{
-        //    String space = "\n\n\n\n\n\n\n\n\n\n.";
-        //    graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-        //}
-        //else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Thermal Printer")
-        //{
-        //    String space = "\n\n\n.";
-        //    graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-        //}
-        //else
-        //{
-        //    String space = "\n.";
-        //    graphics.DrawString(space, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-        //}
     }
 }
 

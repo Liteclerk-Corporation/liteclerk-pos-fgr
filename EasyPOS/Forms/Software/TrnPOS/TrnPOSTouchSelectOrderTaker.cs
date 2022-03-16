@@ -73,18 +73,25 @@ namespace EasyPOS.Forms.Software.TrnPOS
             Button b = sender as Button;
             String salesAgent = tableToolTip.GetToolTip(b);
 
-            Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();
-            trnSalesController.UpdateOrderTaker(trnSalesEntity.Id, Convert.ToInt32(salesAgent));
-
-            if (trnPOSTouchActivityForm != null)
+            if (salesAgent.Equals("") == false)
             {
-                trnPOSTouchForm.UpdateSalesListGridDataSource();
-                trnPOSTouchActivityForm.Close();
-                Close();
+                Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();
+                trnSalesController.UpdateOrderTaker(trnSalesEntity.Id, Convert.ToInt32(salesAgent));
+
+                if (trnPOSTouchActivityForm != null)
+                {
+                    trnPOSTouchForm.UpdateSalesListGridDataSource();
+                    trnPOSTouchActivityForm.Close();
+                    Close();
+                }
+                else
+                {
+                    Close();
+                }
             }
             else
             {
-                Close();
+                MessageBox.Show("Order Taker not found!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         private void FillTable()

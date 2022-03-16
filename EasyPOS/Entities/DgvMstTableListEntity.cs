@@ -13,5 +13,6 @@ namespace EasyPOS.Entities
         public Int32 ColumnTableListId { get; set; }
         public String ColumnTableListTableCode { get; set; }
         public Int32 ColumnTableListTableGroupId { get; set; }
+        public Int32 ColumnTableListSortNumber { get; set; }
     }
 }

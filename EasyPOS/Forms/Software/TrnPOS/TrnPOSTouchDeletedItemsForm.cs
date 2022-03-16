@@ -206,6 +206,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 graphics.DrawString(collectionNumberText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
                 y += graphics.MeasureString(collectionNumberText, fontArial10Regular).Height;
 
+                String tableNoText = "Table: " + salesLineDeletedItem.FirstOrDefault().TableCode;
+                graphics.DrawString(tableNoText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                y += graphics.MeasureString(tableNoText, fontArial10Regular).Height;
+
+                String collectionDateText = salesLineDeletedItem.FirstOrDefault().SalesDate.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
+                graphics.DrawString(collectionDateText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+
+                String collectionTimeText = salesLineDeletedItem.FirstOrDefault().DeletedDate.ToString("hh:mm:tt", CultureInfo.InvariantCulture);
+                graphics.DrawString(collectionTimeText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                y += graphics.MeasureString(collectionTimeText, fontArial10Regular).Height;
 
                 // ========
                 // 1st Line
@@ -277,17 +287,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Point sixthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
                 Point sixthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
                 graphics.DrawLine(blackPen, sixthLineFirstPoint, sixthLineSecondPoint);
-
-                String collectionDateText = "\n" + salesLineDeletedItem.FirstOrDefault().SalesDate.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
-                graphics.DrawString(collectionDateText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-
-                String collectionTimeText = "\n" + salesLineDeletedItem.FirstOrDefault().DeletedDate.ToString("hh:mm:tt", CultureInfo.InvariantCulture);
-                graphics.DrawString(collectionTimeText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(collectionTimeText, fontArial10Regular).Height;
-
-                String tableNoText = "\nTable: " + salesLineDeletedItem.FirstOrDefault().TableCode;
-                graphics.DrawString(tableNoText, fontArial10Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                y += graphics.MeasureString(tableNoText, fontArial10Regular).Height;
             }
         }
     }

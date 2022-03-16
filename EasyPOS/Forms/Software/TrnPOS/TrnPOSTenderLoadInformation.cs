@@ -49,7 +49,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 {
                     CustomerId = customerId,
                     TermId = termId,
-                    Remarks = "Sales Number: " + trnPOSTenderForm.trnSalesEntity.SalesNumber + ", Sales Date: " + trnPOSTenderForm.trnSalesEntity.SalesDate,
+                    Remarks = "Sales Number: " + trnPOSTenderForm.trnSalesEntity.SalesNumber + ",\n Sales Date: " + trnPOSTenderForm.trnSalesEntity.SalesDate,
                     SalesAgent = Modules.SysCurrentModule.GetCurrentSettings().CurrentUserId
                 };
 
@@ -61,7 +61,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     trnPOSTenderForm.trnSalesEntity.CustomerCode = customerCode;
                     trnPOSTenderForm.trnSalesEntity.Customer = customer;
                     trnPOSTenderForm.trnSalesEntity.CustomerAddress = address;
-                    trnPOSTenderForm.trnSalesEntity.Remarks = "Sales Number: " + trnPOSTenderForm.trnSalesEntity.SalesNumber + ", Sales Date: " + trnPOSTenderForm.trnSalesEntity.SalesDate;
+                    trnPOSTenderForm.trnSalesEntity.Remarks = "Sales Number: " + trnPOSTenderForm.trnSalesEntity.SalesNumber + ",\nSales Date: " + trnPOSTenderForm.trnSalesEntity.SalesDate;
                     trnPOSTenderForm.GetSalesDetail();
 
                     if (trnPOSTenderForm.trnPOSBarcodeDetailForm != null)
@@ -105,7 +105,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             LoadDate = DateTime.Today.ToShortDateString(),
                             Type = "Sales",
                             Amount = amount * -1,
-                            Remarks = "Sales Number: " + trnPOSTenderForm.trnSalesEntity.SalesNumber + ", Sales Date: " + trnPOSTenderForm.trnSalesEntity.SalesDate
+                            Remarks = "Sales Number: " + trnPOSTenderForm.trnSalesEntity.SalesNumber + ",\nSales Date: " + trnPOSTenderForm.trnSalesEntity.SalesDate
                         };
 
                         Controllers.MstCustomerLoadController mstCustomerLoadController = new Controllers.MstCustomerLoadController();
@@ -146,11 +146,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 {
                     if (mstDataGridViewTenderPayType.Rows.Contains(mstDataGridViewTenderPayType.CurrentRow))
                     {
-                        Int32 id = Convert.ToInt32(mstDataGridViewTenderPayType.CurrentRow.Cells[0].Value);
-                        String payTypeCode = mstDataGridViewTenderPayType.CurrentRow.Cells[1].Value.ToString();
-                        String payType = mstDataGridViewTenderPayType.CurrentRow.Cells[2].Value.ToString();
+                        Int32 id = 14;
+                        String payTypeCode = "LOAD";
+                        String payType = "Customer Load";
                         Decimal amount = Convert.ToDecimal(textBoxAmount.Text);
-                        String otherInformation = "Reward Payment " + DateTime.Now.ToLongDateString();
+                        String otherInformation = "Load Payment " + DateTime.Now.ToLongDateString();
                         String LoadNumber = textBoxCardNumber.Text;
 
                         mstDataGridViewTenderPayType.CurrentRow.Cells[0].Value = id;

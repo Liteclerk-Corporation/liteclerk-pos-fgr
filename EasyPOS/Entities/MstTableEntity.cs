@@ -15,5 +15,6 @@ namespace EasyPOS.Entities
         public Int32? TopLocation { get; set; }
         public Int32? LeftLocation { get; set; }
         public Boolean HasSales { get; set; }
+        public Int32 SortNumber { get; set; }
     }
 }

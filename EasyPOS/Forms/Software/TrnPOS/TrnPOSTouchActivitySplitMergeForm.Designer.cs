@@ -31,15 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSTouchActivitySplitMergeForm));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -67,6 +63,13 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panel10 = new System.Windows.Forms.Panel();
             this.dataGridViewMergeSalesList = new System.Windows.Forms.DataGridView();
+            this.ColumnMergeCheckbox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ColumnMergeSalesId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnMergeSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnMergeTableId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnMergeTableCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnMergeSalesAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnMergeSalesUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonMerge = new System.Windows.Forms.Button();
             this.comboBoxTableCode = new System.Windows.Forms.ComboBox();
             this.comboBoxTableGroup = new System.Windows.Forms.ComboBox();
@@ -77,13 +80,6 @@
             this.buttonSalesMergePageListNext = new System.Windows.Forms.Button();
             this.buttonSalesMergePageListLast = new System.Windows.Forms.Button();
             this.textBoxSalesMergePageNumber = new System.Windows.Forms.TextBox();
-            this.ColumnMergeCheckbox = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ColumnMergeSalesId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnMergeSalesNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnMergeTableId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnMergeTableCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnMergeSalesAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnMergeSalesUser = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -108,16 +104,16 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(909, 50);
+            this.panel1.Size = new System.Drawing.Size(1136, 62);
             this.panel1.TabIndex = 5;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
+            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -126,10 +122,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(50, 14);
+            this.label1.Location = new System.Drawing.Point(62, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(137, 28);
+            this.label1.Size = new System.Drawing.Size(171, 35);
             this.label1.TabIndex = 2;
             this.label1.Text = "Split / Merge";
             // 
@@ -142,10 +138,10 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(789, 10);
+            this.buttonClose.Location = new System.Drawing.Point(986, 12);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(109, 32);
+            this.buttonClose.Size = new System.Drawing.Size(136, 40);
             this.buttonClose.TabIndex = 21;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Esc - Close";
@@ -157,10 +153,10 @@
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
             this.panel2.Controls.Add(this.tabControlSystemTable);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 50);
+            this.panel2.Location = new System.Drawing.Point(0, 62);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(909, 440);
+            this.panel2.Size = new System.Drawing.Size(1136, 550);
             this.panel2.TabIndex = 6;
             // 
             // tabControlSystemTable
@@ -168,21 +164,22 @@
             this.tabControlSystemTable.Controls.Add(this.tabPage1);
             this.tabControlSystemTable.Controls.Add(this.tabPage2);
             this.tabControlSystemTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControlSystemTable.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControlSystemTable.Location = new System.Drawing.Point(0, 0);
             this.tabControlSystemTable.Margin = new System.Windows.Forms.Padding(2);
             this.tabControlSystemTable.Name = "tabControlSystemTable";
             this.tabControlSystemTable.SelectedIndex = 0;
-            this.tabControlSystemTable.Size = new System.Drawing.Size(909, 440);
+            this.tabControlSystemTable.Size = new System.Drawing.Size(1136, 550);
             this.tabControlSystemTable.TabIndex = 1;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.panel9);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Location = new System.Drawing.Point(4, 37);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage1.Size = new System.Drawing.Size(901, 414);
+            this.tabPage1.Size = new System.Drawing.Size(1128, 509);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Split";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -197,7 +194,7 @@
             this.panel9.Location = new System.Drawing.Point(2, 2);
             this.panel9.Margin = new System.Windows.Forms.Padding(2);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(897, 410);
+            this.panel9.Size = new System.Drawing.Size(1124, 505);
             this.panel9.TabIndex = 1;
             // 
             // dataGridViewSalesItemSplitItems
@@ -211,14 +208,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewSalesItemSplitItems.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewSalesItemSplitItems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridViewSalesItemSplitItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewSalesItemSplitItems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnSplitSalesItemId,
@@ -229,22 +218,15 @@
             this.ColumnSplitSalesTableId,
             this.ColumnSalesItemTableCode,
             this.ColumnSalesLineId});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewSalesItemSplitItems.DefaultCellStyle = dataGridViewCellStyle6;
-            this.dataGridViewSalesItemSplitItems.Location = new System.Drawing.Point(2, 40);
+            this.dataGridViewSalesItemSplitItems.Location = new System.Drawing.Point(2, 50);
             this.dataGridViewSalesItemSplitItems.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewSalesItemSplitItems.MultiSelect = false;
             this.dataGridViewSalesItemSplitItems.Name = "dataGridViewSalesItemSplitItems";
+            this.dataGridViewSalesItemSplitItems.RowHeadersWidth = 51;
             this.dataGridViewSalesItemSplitItems.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataGridViewSalesItemSplitItems.RowTemplate.Height = 24;
             this.dataGridViewSalesItemSplitItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewSalesItemSplitItems.Size = new System.Drawing.Size(890, 324);
+            this.dataGridViewSalesItemSplitItems.Size = new System.Drawing.Size(1115, 398);
             this.dataGridViewSalesItemSplitItems.TabIndex = 26;
             this.dataGridViewSalesItemSplitItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesItemSplit_CellClick);
             // 
@@ -252,24 +234,28 @@
             // 
             this.ColumnSplitSalesItemId.DataPropertyName = "ColumnSplitSalesItemId";
             this.ColumnSplitSalesItemId.HeaderText = "Item Id";
+            this.ColumnSplitSalesItemId.MinimumWidth = 6;
             this.ColumnSplitSalesItemId.Name = "ColumnSplitSalesItemId";
             this.ColumnSplitSalesItemId.ReadOnly = true;
             this.ColumnSplitSalesItemId.Visible = false;
+            this.ColumnSplitSalesItemId.Width = 125;
             // 
             // ColumnSplitSalesItemDescription
             // 
             this.ColumnSplitSalesItemDescription.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ColumnSplitSalesItemDescription.DataPropertyName = "ColumnSplitSalesItemDescription";
             this.ColumnSplitSalesItemDescription.HeaderText = "Item Description";
+            this.ColumnSplitSalesItemDescription.MinimumWidth = 6;
             this.ColumnSplitSalesItemDescription.Name = "ColumnSplitSalesItemDescription";
             this.ColumnSplitSalesItemDescription.ReadOnly = true;
             // 
             // ColumnSalesItemUnit
             // 
             this.ColumnSalesItemUnit.DataPropertyName = "ColumnSalesItemUnit";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesItemUnit.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesItemUnit.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnSalesItemUnit.HeaderText = "Unit";
+            this.ColumnSalesItemUnit.MinimumWidth = 6;
             this.ColumnSalesItemUnit.Name = "ColumnSalesItemUnit";
             this.ColumnSalesItemUnit.ReadOnly = true;
             this.ColumnSalesItemUnit.Width = 70;
@@ -277,32 +263,39 @@
             // ColumnSalesItemQuantity
             // 
             this.ColumnSalesItemQuantity.DataPropertyName = "ColumnSalesItemQuantity";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesItemQuantity.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesItemQuantity.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnSalesItemQuantity.HeaderText = "Quantity";
+            this.ColumnSalesItemQuantity.MinimumWidth = 6;
             this.ColumnSalesItemQuantity.Name = "ColumnSalesItemQuantity";
             this.ColumnSalesItemQuantity.ReadOnly = true;
+            this.ColumnSalesItemQuantity.Width = 125;
             // 
             // ColumnSalesItemButtonPickTable
             // 
             this.ColumnSalesItemButtonPickTable.DataPropertyName = "ColumnSalesItemButtonPickTable";
             this.ColumnSalesItemButtonPickTable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ColumnSalesItemButtonPickTable.HeaderText = "";
+            this.ColumnSalesItemButtonPickTable.MinimumWidth = 6;
             this.ColumnSalesItemButtonPickTable.Name = "ColumnSalesItemButtonPickTable";
+            this.ColumnSalesItemButtonPickTable.Width = 125;
             // 
             // ColumnSplitSalesTableId
             // 
             this.ColumnSplitSalesTableId.DataPropertyName = "ColumnSplitSalesTableId";
             this.ColumnSplitSalesTableId.HeaderText = "Table Id";
+            this.ColumnSplitSalesTableId.MinimumWidth = 6;
             this.ColumnSplitSalesTableId.Name = "ColumnSplitSalesTableId";
             this.ColumnSplitSalesTableId.Visible = false;
+            this.ColumnSplitSalesTableId.Width = 125;
             // 
             // ColumnSalesItemTableCode
             // 
             this.ColumnSalesItemTableCode.DataPropertyName = "ColumnSalesItemTableCode";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesItemTableCode.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesItemTableCode.DefaultCellStyle = dataGridViewCellStyle4;
             this.ColumnSalesItemTableCode.HeaderText = "Table Code";
+            this.ColumnSalesItemTableCode.MinimumWidth = 6;
             this.ColumnSalesItemTableCode.Name = "ColumnSalesItemTableCode";
             this.ColumnSalesItemTableCode.ReadOnly = true;
             this.ColumnSalesItemTableCode.Width = 150;
@@ -311,8 +304,10 @@
             // 
             this.ColumnSalesLineId.DataPropertyName = "ColumnSalesLineId";
             this.ColumnSalesLineId.HeaderText = "Sales Line Id";
+            this.ColumnSalesLineId.MinimumWidth = 6;
             this.ColumnSalesLineId.Name = "ColumnSalesLineId";
             this.ColumnSalesLineId.Visible = false;
+            this.ColumnSalesLineId.Width = 125;
             // 
             // buttonSplit
             // 
@@ -323,10 +318,10 @@
             this.buttonSplit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSplit.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSplit.ForeColor = System.Drawing.Color.White;
-            this.buttonSplit.Location = new System.Drawing.Point(5, 4);
+            this.buttonSplit.Location = new System.Drawing.Point(9, 5);
             this.buttonSplit.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSplit.Name = "buttonSplit";
-            this.buttonSplit.Size = new System.Drawing.Size(112, 32);
+            this.buttonSplit.Size = new System.Drawing.Size(140, 40);
             this.buttonSplit.TabIndex = 23;
             this.buttonSplit.TabStop = false;
             this.buttonSplit.Text = "F2 - Split";
@@ -342,10 +337,10 @@
             this.panel15.Controls.Add(this.buttonSalesItemSplitPageListLast);
             this.panel15.Controls.Add(this.textBoxSalesItemSplitPageNumber);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel15.Location = new System.Drawing.Point(0, 368);
+            this.panel15.Location = new System.Drawing.Point(0, 453);
             this.panel15.Margin = new System.Windows.Forms.Padding(2);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(897, 42);
+            this.panel15.Size = new System.Drawing.Size(1124, 52);
             this.panel15.TabIndex = 22;
             // 
             // buttonSalesItemSplitPageListFirst
@@ -355,10 +350,10 @@
             this.buttonSalesItemSplitPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonSalesItemSplitPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesItemSplitPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonSalesItemSplitPageListFirst.Location = new System.Drawing.Point(10, 9);
+            this.buttonSalesItemSplitPageListFirst.Location = new System.Drawing.Point(12, 11);
             this.buttonSalesItemSplitPageListFirst.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSalesItemSplitPageListFirst.Name = "buttonSalesItemSplitPageListFirst";
-            this.buttonSalesItemSplitPageListFirst.Size = new System.Drawing.Size(66, 26);
+            this.buttonSalesItemSplitPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesItemSplitPageListFirst.TabIndex = 13;
             this.buttonSalesItemSplitPageListFirst.TabStop = false;
             this.buttonSalesItemSplitPageListFirst.Text = "First";
@@ -372,10 +367,10 @@
             this.buttonSalesItemSplitPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonSalesItemSplitPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesItemSplitPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonSalesItemSplitPageListPrevious.Location = new System.Drawing.Point(80, 9);
+            this.buttonSalesItemSplitPageListPrevious.Location = new System.Drawing.Point(100, 11);
             this.buttonSalesItemSplitPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSalesItemSplitPageListPrevious.Name = "buttonSalesItemSplitPageListPrevious";
-            this.buttonSalesItemSplitPageListPrevious.Size = new System.Drawing.Size(66, 26);
+            this.buttonSalesItemSplitPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesItemSplitPageListPrevious.TabIndex = 14;
             this.buttonSalesItemSplitPageListPrevious.TabStop = false;
             this.buttonSalesItemSplitPageListPrevious.Text = "Previous";
@@ -388,10 +383,10 @@
             this.buttonSalesItemSplitPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonSalesItemSplitPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesItemSplitPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonSalesItemSplitPageListNext.Location = new System.Drawing.Point(210, 9);
+            this.buttonSalesItemSplitPageListNext.Location = new System.Drawing.Point(262, 11);
             this.buttonSalesItemSplitPageListNext.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSalesItemSplitPageListNext.Name = "buttonSalesItemSplitPageListNext";
-            this.buttonSalesItemSplitPageListNext.Size = new System.Drawing.Size(66, 26);
+            this.buttonSalesItemSplitPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesItemSplitPageListNext.TabIndex = 15;
             this.buttonSalesItemSplitPageListNext.TabStop = false;
             this.buttonSalesItemSplitPageListNext.Text = "Next";
@@ -404,10 +399,10 @@
             this.buttonSalesItemSplitPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonSalesItemSplitPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesItemSplitPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonSalesItemSplitPageListLast.Location = new System.Drawing.Point(278, 9);
+            this.buttonSalesItemSplitPageListLast.Location = new System.Drawing.Point(348, 11);
             this.buttonSalesItemSplitPageListLast.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSalesItemSplitPageListLast.Name = "buttonSalesItemSplitPageListLast";
-            this.buttonSalesItemSplitPageListLast.Size = new System.Drawing.Size(66, 26);
+            this.buttonSalesItemSplitPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesItemSplitPageListLast.TabIndex = 16;
             this.buttonSalesItemSplitPageListLast.TabStop = false;
             this.buttonSalesItemSplitPageListLast.Text = "Last";
@@ -420,11 +415,11 @@
             this.textBoxSalesItemSplitPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxSalesItemSplitPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxSalesItemSplitPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxSalesItemSplitPageNumber.Location = new System.Drawing.Point(150, 13);
+            this.textBoxSalesItemSplitPageNumber.Location = new System.Drawing.Point(188, 16);
             this.textBoxSalesItemSplitPageNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesItemSplitPageNumber.Name = "textBoxSalesItemSplitPageNumber";
             this.textBoxSalesItemSplitPageNumber.ReadOnly = true;
-            this.textBoxSalesItemSplitPageNumber.Size = new System.Drawing.Size(55, 16);
+            this.textBoxSalesItemSplitPageNumber.Size = new System.Drawing.Size(69, 20);
             this.textBoxSalesItemSplitPageNumber.TabIndex = 17;
             this.textBoxSalesItemSplitPageNumber.TabStop = false;
             this.textBoxSalesItemSplitPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -432,11 +427,11 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.panel10);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 37);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(2);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPage2.Size = new System.Drawing.Size(901, 414);
+            this.tabPage2.Size = new System.Drawing.Size(1128, 509);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Merge";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -454,7 +449,7 @@
             this.panel10.Location = new System.Drawing.Point(2, 2);
             this.panel10.Margin = new System.Windows.Forms.Padding(2);
             this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(897, 410);
+            this.panel10.Size = new System.Drawing.Size(1124, 505);
             this.panel10.TabIndex = 2;
             // 
             // dataGridViewMergeSalesList
@@ -462,20 +457,12 @@
             this.dataGridViewMergeSalesList.AllowUserToAddRows = false;
             this.dataGridViewMergeSalesList.AllowUserToDeleteRows = false;
             this.dataGridViewMergeSalesList.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataGridViewMergeSalesList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewMergeSalesList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.dataGridViewMergeSalesList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridViewMergeSalesList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewMergeSalesList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewMergeSalesList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMergeSalesList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColumnMergeCheckbox,
@@ -485,24 +472,86 @@
             this.ColumnMergeTableCode,
             this.ColumnMergeSalesAmount,
             this.ColumnMergeSalesUser});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewMergeSalesList.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dataGridViewMergeSalesList.Location = new System.Drawing.Point(2, 40);
+            this.dataGridViewMergeSalesList.Location = new System.Drawing.Point(2, 50);
             this.dataGridViewMergeSalesList.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewMergeSalesList.MultiSelect = false;
             this.dataGridViewMergeSalesList.Name = "dataGridViewMergeSalesList";
+            this.dataGridViewMergeSalesList.RowHeadersWidth = 51;
             this.dataGridViewMergeSalesList.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataGridViewMergeSalesList.RowTemplate.Height = 24;
             this.dataGridViewMergeSalesList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewMergeSalesList.Size = new System.Drawing.Size(890, 324);
+            this.dataGridViewMergeSalesList.Size = new System.Drawing.Size(1115, 398);
             this.dataGridViewMergeSalesList.TabIndex = 54;
             this.dataGridViewMergeSalesList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesMerge_CellClick);
+            // 
+            // ColumnMergeCheckbox
+            // 
+            this.ColumnMergeCheckbox.DataPropertyName = "ColumnMergeCheckbox";
+            this.ColumnMergeCheckbox.HeaderText = "M";
+            this.ColumnMergeCheckbox.MinimumWidth = 6;
+            this.ColumnMergeCheckbox.Name = "ColumnMergeCheckbox";
+            this.ColumnMergeCheckbox.ReadOnly = true;
+            this.ColumnMergeCheckbox.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnMergeCheckbox.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.ColumnMergeCheckbox.Width = 65;
+            // 
+            // ColumnMergeSalesId
+            // 
+            this.ColumnMergeSalesId.DataPropertyName = "ColumnMergeSalesId";
+            this.ColumnMergeSalesId.HeaderText = "Sales Id";
+            this.ColumnMergeSalesId.MinimumWidth = 6;
+            this.ColumnMergeSalesId.Name = "ColumnMergeSalesId";
+            this.ColumnMergeSalesId.ReadOnly = true;
+            this.ColumnMergeSalesId.Visible = false;
+            this.ColumnMergeSalesId.Width = 125;
+            // 
+            // ColumnMergeSalesNumber
+            // 
+            this.ColumnMergeSalesNumber.DataPropertyName = "ColumnMergeSalesNumber";
+            this.ColumnMergeSalesNumber.HeaderText = "Sales Number";
+            this.ColumnMergeSalesNumber.MinimumWidth = 6;
+            this.ColumnMergeSalesNumber.Name = "ColumnMergeSalesNumber";
+            this.ColumnMergeSalesNumber.ReadOnly = true;
+            this.ColumnMergeSalesNumber.Width = 250;
+            // 
+            // ColumnMergeTableId
+            // 
+            this.ColumnMergeTableId.DataPropertyName = "ColumnMergeTableId";
+            this.ColumnMergeTableId.HeaderText = "Table Id";
+            this.ColumnMergeTableId.MinimumWidth = 6;
+            this.ColumnMergeTableId.Name = "ColumnMergeTableId";
+            this.ColumnMergeTableId.Visible = false;
+            this.ColumnMergeTableId.Width = 125;
+            // 
+            // ColumnMergeTableCode
+            // 
+            this.ColumnMergeTableCode.DataPropertyName = "ColumnMergeTableCode";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnMergeTableCode.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ColumnMergeTableCode.HeaderText = "Table Code";
+            this.ColumnMergeTableCode.MinimumWidth = 6;
+            this.ColumnMergeTableCode.Name = "ColumnMergeTableCode";
+            this.ColumnMergeTableCode.ReadOnly = true;
+            this.ColumnMergeTableCode.Width = 150;
+            // 
+            // ColumnMergeSalesAmount
+            // 
+            this.ColumnMergeSalesAmount.DataPropertyName = "ColumnMergeSalesAmount";
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnMergeSalesAmount.DefaultCellStyle = dataGridViewCellStyle7;
+            this.ColumnMergeSalesAmount.HeaderText = "Amount";
+            this.ColumnMergeSalesAmount.MinimumWidth = 6;
+            this.ColumnMergeSalesAmount.Name = "ColumnMergeSalesAmount";
+            this.ColumnMergeSalesAmount.ReadOnly = true;
+            this.ColumnMergeSalesAmount.Width = 150;
+            // 
+            // ColumnMergeSalesUser
+            // 
+            this.ColumnMergeSalesUser.DataPropertyName = "ColumnMergeSalesUser";
+            this.ColumnMergeSalesUser.HeaderText = "User";
+            this.ColumnMergeSalesUser.MinimumWidth = 6;
+            this.ColumnMergeSalesUser.Name = "ColumnMergeSalesUser";
+            this.ColumnMergeSalesUser.Width = 150;
             // 
             // buttonMerge
             // 
@@ -513,10 +562,10 @@
             this.buttonMerge.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonMerge.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonMerge.ForeColor = System.Drawing.Color.White;
-            this.buttonMerge.Location = new System.Drawing.Point(780, 4);
+            this.buttonMerge.Location = new System.Drawing.Point(978, 5);
             this.buttonMerge.Margin = new System.Windows.Forms.Padding(2);
             this.buttonMerge.Name = "buttonMerge";
-            this.buttonMerge.Size = new System.Drawing.Size(112, 32);
+            this.buttonMerge.Size = new System.Drawing.Size(140, 40);
             this.buttonMerge.TabIndex = 53;
             this.buttonMerge.TabStop = false;
             this.buttonMerge.Text = "F2 - Merge";
@@ -527,18 +576,20 @@
             // 
             this.comboBoxTableCode.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.comboBoxTableCode.FormattingEnabled = true;
-            this.comboBoxTableCode.Location = new System.Drawing.Point(447, 6);
+            this.comboBoxTableCode.Location = new System.Drawing.Point(559, 8);
+            this.comboBoxTableCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxTableCode.Name = "comboBoxTableCode";
-            this.comboBoxTableCode.Size = new System.Drawing.Size(328, 29);
+            this.comboBoxTableCode.Size = new System.Drawing.Size(409, 36);
             this.comboBoxTableCode.TabIndex = 52;
             // 
             // comboBoxTableGroup
             // 
             this.comboBoxTableGroup.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.comboBoxTableGroup.FormattingEnabled = true;
-            this.comboBoxTableGroup.Location = new System.Drawing.Point(241, 6);
+            this.comboBoxTableGroup.Location = new System.Drawing.Point(301, 8);
+            this.comboBoxTableGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxTableGroup.Name = "comboBoxTableGroup";
-            this.comboBoxTableGroup.Size = new System.Drawing.Size(200, 29);
+            this.comboBoxTableGroup.Size = new System.Drawing.Size(249, 36);
             this.comboBoxTableGroup.TabIndex = 50;
             this.comboBoxTableGroup.SelectedIndexChanged += new System.EventHandler(this.comboBoxTableGroup_SelectedIndexChanged);
             // 
@@ -546,10 +597,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label4.Location = new System.Drawing.Point(6, 9);
+            this.label4.Location = new System.Drawing.Point(8, 11);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(230, 21);
+            this.label4.Size = new System.Drawing.Size(292, 28);
             this.label4.TabIndex = 51;
             this.label4.Text = "Merge selected sales to table to:";
             // 
@@ -562,10 +613,10 @@
             this.panel16.Controls.Add(this.buttonSalesMergePageListLast);
             this.panel16.Controls.Add(this.textBoxSalesMergePageNumber);
             this.panel16.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel16.Location = new System.Drawing.Point(0, 368);
+            this.panel16.Location = new System.Drawing.Point(0, 453);
             this.panel16.Margin = new System.Windows.Forms.Padding(2);
             this.panel16.Name = "panel16";
-            this.panel16.Size = new System.Drawing.Size(897, 42);
+            this.panel16.Size = new System.Drawing.Size(1124, 52);
             this.panel16.TabIndex = 23;
             // 
             // buttonSalesMergePageListFirst
@@ -575,10 +626,10 @@
             this.buttonSalesMergePageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonSalesMergePageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesMergePageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonSalesMergePageListFirst.Location = new System.Drawing.Point(10, 9);
+            this.buttonSalesMergePageListFirst.Location = new System.Drawing.Point(12, 11);
             this.buttonSalesMergePageListFirst.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSalesMergePageListFirst.Name = "buttonSalesMergePageListFirst";
-            this.buttonSalesMergePageListFirst.Size = new System.Drawing.Size(66, 26);
+            this.buttonSalesMergePageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesMergePageListFirst.TabIndex = 13;
             this.buttonSalesMergePageListFirst.TabStop = false;
             this.buttonSalesMergePageListFirst.Text = "First";
@@ -592,10 +643,10 @@
             this.buttonSalesMergePageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonSalesMergePageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesMergePageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonSalesMergePageListPrevious.Location = new System.Drawing.Point(80, 9);
+            this.buttonSalesMergePageListPrevious.Location = new System.Drawing.Point(100, 11);
             this.buttonSalesMergePageListPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSalesMergePageListPrevious.Name = "buttonSalesMergePageListPrevious";
-            this.buttonSalesMergePageListPrevious.Size = new System.Drawing.Size(66, 26);
+            this.buttonSalesMergePageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesMergePageListPrevious.TabIndex = 14;
             this.buttonSalesMergePageListPrevious.TabStop = false;
             this.buttonSalesMergePageListPrevious.Text = "Previous";
@@ -608,10 +659,10 @@
             this.buttonSalesMergePageListNext.FlatAppearance.BorderSize = 0;
             this.buttonSalesMergePageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesMergePageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonSalesMergePageListNext.Location = new System.Drawing.Point(210, 9);
+            this.buttonSalesMergePageListNext.Location = new System.Drawing.Point(262, 11);
             this.buttonSalesMergePageListNext.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSalesMergePageListNext.Name = "buttonSalesMergePageListNext";
-            this.buttonSalesMergePageListNext.Size = new System.Drawing.Size(66, 26);
+            this.buttonSalesMergePageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesMergePageListNext.TabIndex = 15;
             this.buttonSalesMergePageListNext.TabStop = false;
             this.buttonSalesMergePageListNext.Text = "Next";
@@ -624,10 +675,10 @@
             this.buttonSalesMergePageListLast.FlatAppearance.BorderSize = 0;
             this.buttonSalesMergePageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSalesMergePageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonSalesMergePageListLast.Location = new System.Drawing.Point(278, 9);
+            this.buttonSalesMergePageListLast.Location = new System.Drawing.Point(348, 11);
             this.buttonSalesMergePageListLast.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSalesMergePageListLast.Name = "buttonSalesMergePageListLast";
-            this.buttonSalesMergePageListLast.Size = new System.Drawing.Size(66, 26);
+            this.buttonSalesMergePageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonSalesMergePageListLast.TabIndex = 16;
             this.buttonSalesMergePageListLast.TabStop = false;
             this.buttonSalesMergePageListLast.Text = "Last";
@@ -640,80 +691,20 @@
             this.textBoxSalesMergePageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxSalesMergePageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxSalesMergePageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxSalesMergePageNumber.Location = new System.Drawing.Point(150, 13);
+            this.textBoxSalesMergePageNumber.Location = new System.Drawing.Point(188, 16);
             this.textBoxSalesMergePageNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesMergePageNumber.Name = "textBoxSalesMergePageNumber";
             this.textBoxSalesMergePageNumber.ReadOnly = true;
-            this.textBoxSalesMergePageNumber.Size = new System.Drawing.Size(55, 16);
+            this.textBoxSalesMergePageNumber.Size = new System.Drawing.Size(69, 20);
             this.textBoxSalesMergePageNumber.TabIndex = 17;
             this.textBoxSalesMergePageNumber.TabStop = false;
             this.textBoxSalesMergePageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // ColumnMergeCheckbox
-            // 
-            this.ColumnMergeCheckbox.DataPropertyName = "ColumnMergeCheckbox";
-            this.ColumnMergeCheckbox.HeaderText = "M";
-            this.ColumnMergeCheckbox.Name = "ColumnMergeCheckbox";
-            this.ColumnMergeCheckbox.ReadOnly = true;
-            this.ColumnMergeCheckbox.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnMergeCheckbox.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.ColumnMergeCheckbox.Width = 65;
-            // 
-            // ColumnMergeSalesId
-            // 
-            this.ColumnMergeSalesId.DataPropertyName = "ColumnMergeSalesId";
-            this.ColumnMergeSalesId.HeaderText = "Sales Id";
-            this.ColumnMergeSalesId.Name = "ColumnMergeSalesId";
-            this.ColumnMergeSalesId.ReadOnly = true;
-            this.ColumnMergeSalesId.Visible = false;
-            // 
-            // ColumnMergeSalesNumber
-            // 
-            this.ColumnMergeSalesNumber.DataPropertyName = "ColumnMergeSalesNumber";
-            this.ColumnMergeSalesNumber.HeaderText = "Sales Number";
-            this.ColumnMergeSalesNumber.Name = "ColumnMergeSalesNumber";
-            this.ColumnMergeSalesNumber.ReadOnly = true;
-            this.ColumnMergeSalesNumber.Width = 250;
-            // 
-            // ColumnMergeTableId
-            // 
-            this.ColumnMergeTableId.DataPropertyName = "ColumnMergeTableId";
-            this.ColumnMergeTableId.HeaderText = "Table Id";
-            this.ColumnMergeTableId.Name = "ColumnMergeTableId";
-            this.ColumnMergeTableId.Visible = false;
-            // 
-            // ColumnMergeTableCode
-            // 
-            this.ColumnMergeTableCode.DataPropertyName = "ColumnMergeTableCode";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnMergeTableCode.DefaultCellStyle = dataGridViewCellStyle9;
-            this.ColumnMergeTableCode.HeaderText = "Table Code";
-            this.ColumnMergeTableCode.Name = "ColumnMergeTableCode";
-            this.ColumnMergeTableCode.ReadOnly = true;
-            this.ColumnMergeTableCode.Width = 150;
-            // 
-            // ColumnMergeSalesAmount
-            // 
-            this.ColumnMergeSalesAmount.DataPropertyName = "ColumnMergeSalesAmount";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnMergeSalesAmount.DefaultCellStyle = dataGridViewCellStyle10;
-            this.ColumnMergeSalesAmount.HeaderText = "Amount";
-            this.ColumnMergeSalesAmount.Name = "ColumnMergeSalesAmount";
-            this.ColumnMergeSalesAmount.ReadOnly = true;
-            this.ColumnMergeSalesAmount.Width = 150;
-            // 
-            // ColumnMergeSalesUser
-            // 
-            this.ColumnMergeSalesUser.DataPropertyName = "ColumnMergeSalesUser";
-            this.ColumnMergeSalesUser.HeaderText = "User";
-            this.ColumnMergeSalesUser.Name = "ColumnMergeSalesUser";
-            this.ColumnMergeSalesUser.Width = 150;
-            // 
             // TrnPOSTouchActivitySplitMergeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(909, 490);
+            this.ClientSize = new System.Drawing.Size(1136, 612);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

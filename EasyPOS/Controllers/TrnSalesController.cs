@@ -1963,10 +1963,11 @@ namespace EasyPOS.Controllers
                          {
                              Id = d.Id,
                              TableCode = d.TableCode,
+                             SortNumber = d.SortNumber,
                              HasSales = d.TrnSales.Where(s => s.SalesDate == salesDate && s.IsTendered == false && s.IsCancelled == false).Any()
                          };
 
-            return tables.OrderBy(d => d.TableCode).ToList();
+            return tables.OrderBy(d => d.SortNumber).ToList();
         }
 
         // ===========
