@@ -476,6 +476,29 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                             );
                         }
                     }
+                    else
+                    {
+                        totalAccumulatedGrossSales = salesLines.Sum(d =>
+                        previousDeclareRatesValues.Where(p => p.Date == d.TrnSale.SalesDate).Any() == true ?
+                            (
+                                d.MstTax.Code == "EXEMPTVAT" ?
+                                    d.MstItem.MstTax1.Rate > 0 ?
+                                        (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : d.Price * d.Quantity
+                                : d.MstTax.Rate > 0 ?
+                                        (d.Price * d.Quantity) - d.TaxAmount : d.Price * d.Quantity
+                            ) * Convert.ToDecimal(previousDeclareRatesValues.Where(p => p.Date == d.TrnSale.SalesDate).FirstOrDefault().DeclareRate)
+                        :
+                            (
+                                d.MstTax.Code == "EXEMPTVAT" ?
+                                    d.MstItem.MstTax1.Rate > 0 ?
+                                        (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : d.Price * d.Quantity
+                                : d.MstTax.Rate > 0 ?
+                                        (d.Price * d.Quantity) - d.TaxAmount : d.Price * d.Quantity
+                            ) * currentDeclareRate
+                        );
+                    }
+
+
 
                     totalAccumulatedRegularDiscount = salesLines.Sum(d =>
                         previousDeclareRatesValues.Where(p => p.Date == d.TrnSale.SalesDate).Any() == true ?
