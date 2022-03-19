@@ -2851,6 +2851,9 @@ namespace EasyPOS.Forms.Software._80mm_Report
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
+            printDialogInventoryReport.Document = printDocument80mm;
+            printDocument80mm.PrinterSettings = printDialogInventoryReport.PrinterSettings;
+            
             DialogResult printerDialogResult = printDialogInventoryReport.ShowDialog();
             if (printerDialogResult == DialogResult.OK)
             {

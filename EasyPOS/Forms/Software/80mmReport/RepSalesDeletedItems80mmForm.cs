@@ -239,6 +239,9 @@ namespace EasyPOS.Forms.Software._80mmReport
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
+            printDialogDeletedItem.Document = printDocumentDeletedItem;
+            printDocumentDeletedItem.PrinterSettings = printDialogDeletedItem.PrinterSettings;
+
             DialogResult printerDialogResult = printDialogDeletedItem.ShowDialog();
             if (printerDialogResult == DialogResult.OK)
             {

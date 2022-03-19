@@ -296,6 +296,9 @@ namespace EasyPOS.Forms.Software._80mmReport
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
+            printDialogSalesStatusReport.Document = printDocument80mm;
+            printDocument80mm.PrinterSettings = printDialogSalesStatusReport.PrinterSettings;
+
             DialogResult printerDialogResult = printDialogSalesStatusReport.ShowDialog();
             if (printerDialogResult == DialogResult.OK)
             {
