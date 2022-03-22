@@ -194,82 +194,188 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     }
                 }
 
-                var accountReceivables = from d in newSales select d;
-                if (accountReceivables.Any())
+                if (customerId == 0)
                 {
                     PdfPTable tableLines = new PdfPTable(14);
                     tableLines.SetWidths(new float[] { 100f, 50f, 60f, 70f, 55f, 60f, 60f, 60f, 60f, 60f, 60f, 60f, 60f, 60f });
                     tableLines.WidthPercentage = 100;
 
-                    Decimal sales_amount = 0;
-                    Decimal payment_amount = 0;
-                    Decimal balance_amount = 0;
-                    Decimal current_amount = 0;
-                    Decimal _30Days_amount = 0;
-                    Decimal _60Days_amount = 0;
-                    Decimal _90Days_amount = 0;
-                    Decimal _120Days_amount = 0;
+                    var accountReceivablesPerCustomer = from d in newSales
+                                                        group d by new
+                                                        {
+                                                            d.ColumnCustomer
+                                                        }
+                                                        into g
+                                                        select new
+                                                        {
+                                                            g.Key.ColumnCustomer
+                                                        };
 
-                    foreach (var accountReceivable in accountReceivables)
+                    if (accountReceivablesPerCustomer.Any())
                     {
-                        tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnCustomer, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnTerm, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnCreditLimit, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnSalesNumber, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnSalesDate, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnSalesAmount, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnPaymentAmount, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnBalanceAmount, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnDueDate, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnCurrent, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.Column30Days, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.Column60Days, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.Column90Days, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
-                        tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.Column120Days, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                        Decimal sales_amount_total = 0;
+                        Decimal payment_amount_total = 0;
+                        Decimal balance_amount_total = 0;
+                        Decimal current_amount_total = 0;
+                        Decimal _30Days_amount_total = 0;
+                        Decimal _60Days_amount_total = 0;
+                        Decimal _90Days_amount_total = 0;
+                        Decimal _120Days_amount_total = 0;
 
-                        sales_amount += Convert.ToDecimal(accountReceivable.ColumnSalesAmount);
-                        payment_amount += Convert.ToDecimal(accountReceivable.ColumnPaymentAmount);
-                        balance_amount += Convert.ToDecimal(accountReceivable.ColumnBalanceAmount);
-                        current_amount += Convert.ToDecimal(accountReceivable.ColumnCurrent);
-                        _30Days_amount += Convert.ToDecimal(accountReceivable.Column30Days);
-                        _60Days_amount += Convert.ToDecimal(accountReceivable.Column60Days);
-                        _90Days_amount += Convert.ToDecimal(accountReceivable.Column90Days);
-                        _120Days_amount += Convert.ToDecimal(accountReceivable.Column120Days);
+                        foreach (var accountReceivableCustomer in accountReceivablesPerCustomer)
+                        {
+                            Decimal sales_amount = 0;
+                            Decimal payment_amount = 0;
+                            Decimal balance_amount = 0;
+                            Decimal current_amount = 0;
+                            Decimal _30Days_amount = 0;
+                            Decimal _60Days_amount = 0;
+                            Decimal _90Days_amount = 0;
+                            Decimal _120Days_amount = 0;
+
+                            var accountReceivables = from d in newSales
+                                                     where d.ColumnCustomer == accountReceivableCustomer.ColumnCustomer
+                                                     select d;
+
+                            foreach (var accountReceivable in accountReceivables)
+                            {
+                                tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnCustomer, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                                tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnTerm, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                                tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnCreditLimit, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                                tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnSalesNumber, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                                tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnSalesDate, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                                tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnSalesAmount, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                                tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnPaymentAmount, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                                tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnBalanceAmount, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                                tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnDueDate, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                                tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnCurrent, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                                tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.Column30Days, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                                tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.Column60Days, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                                tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.Column90Days, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                                tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.Column120Days, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+
+                                sales_amount += Convert.ToDecimal(accountReceivable.ColumnSalesAmount);
+                                payment_amount += Convert.ToDecimal(accountReceivable.ColumnPaymentAmount);
+                                balance_amount += Convert.ToDecimal(accountReceivable.ColumnBalanceAmount);
+                                current_amount += Convert.ToDecimal(accountReceivable.ColumnCurrent);
+                                _30Days_amount += Convert.ToDecimal(accountReceivable.Column30Days);
+                                _60Days_amount += Convert.ToDecimal(accountReceivable.Column60Days);
+                                _90Days_amount += Convert.ToDecimal(accountReceivable.Column90Days);
+                                _120Days_amount += Convert.ToDecimal(accountReceivable.Column120Days);
+                            }
+                            sales_amount_total += sales_amount;
+                            payment_amount_total += payment_amount;
+                            balance_amount_total += balance_amount;
+                            current_amount_total += current_amount;
+                            _30Days_amount_total += _30Days_amount;
+                            _60Days_amount_total += _60Days_amount;
+                            _90Days_amount_total += _90Days_amount;
+                            _120Days_amount_total += _120Days_amount;
+
+                            tableLines.AddCell(new PdfPCell(new Phrase(line)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = -5f, Colspan = 14 });
+                            tableLines.AddCell(new PdfPCell(new Phrase("Sub Total: ", fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, Colspan = 5, HorizontalAlignment = 2 });
+                            tableLines.AddCell(new PdfPCell(new Phrase(sales_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                            tableLines.AddCell(new PdfPCell(new Phrase(payment_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                            tableLines.AddCell(new PdfPCell(new Phrase(balance_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                            tableLines.AddCell(new PdfPCell(new Phrase("", fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                            tableLines.AddCell(new PdfPCell(new Phrase(current_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                            tableLines.AddCell(new PdfPCell(new Phrase(_30Days_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                            tableLines.AddCell(new PdfPCell(new Phrase(_60Days_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                            tableLines.AddCell(new PdfPCell(new Phrase(_90Days_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                            tableLines.AddCell(new PdfPCell(new Phrase(_120Days_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });  
+                        }
+                        tableLines.AddCell(new PdfPCell(new Phrase(line)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = -5f, Colspan = 14 });
+                        tableLines.AddCell(new PdfPCell(new Phrase("Grand Total: ", fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, Colspan = 5, HorizontalAlignment = 2 });
+                        tableLines.AddCell(new PdfPCell(new Phrase(sales_amount_total.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                        tableLines.AddCell(new PdfPCell(new Phrase(payment_amount_total.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                        tableLines.AddCell(new PdfPCell(new Phrase(balance_amount_total.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                        tableLines.AddCell(new PdfPCell(new Phrase("", fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                        tableLines.AddCell(new PdfPCell(new Phrase(current_amount_total.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                        tableLines.AddCell(new PdfPCell(new Phrase(_30Days_amount_total.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                        tableLines.AddCell(new PdfPCell(new Phrase(_60Days_amount_total.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                        tableLines.AddCell(new PdfPCell(new Phrase(_90Days_amount_total.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                        tableLines.AddCell(new PdfPCell(new Phrase(_120Days_amount_total.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                        
+                        document.Add(tableLines);
                     }
-
-                    tableLines.AddCell(new PdfPCell(new Phrase(line)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = -5f, Colspan = 14 });
-                    tableLines.AddCell(new PdfPCell(new Phrase("Total: ", fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, Colspan = 5, HorizontalAlignment = 2 });
-                    tableLines.AddCell(new PdfPCell(new Phrase(sales_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
-                    tableLines.AddCell(new PdfPCell(new Phrase(payment_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
-                    tableLines.AddCell(new PdfPCell(new Phrase(balance_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
-                    tableLines.AddCell(new PdfPCell(new Phrase("", fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
-                    tableLines.AddCell(new PdfPCell(new Phrase(current_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
-                    tableLines.AddCell(new PdfPCell(new Phrase(_30Days_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
-                    tableLines.AddCell(new PdfPCell(new Phrase(_60Days_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
-                    tableLines.AddCell(new PdfPCell(new Phrase(_90Days_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
-                    tableLines.AddCell(new PdfPCell(new Phrase(_120Days_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
-
-                    document.Add(tableLines);
-                    document.Close();
-
-                    //ProcessStartInfo info = new ProcessStartInfo(fileName)
-                    //{
-                    //    Verb = "Print",
-                    //    CreateNoWindow = true,
-                    //    WindowStyle = ProcessWindowStyle.Hidden
-                    //};
-
-                    //Process printDwg = new Process
-                    //{
-                    //    StartInfo = info
-                    //};
-
-                    //printDwg.Start();
-                    //printDwg.Close();
-
-
-                    Process.Start(fileName);
                 }
+                else
+                {
+                    var accountReceivables = from d in newSales select d;
+                    if (accountReceivables.Any())
+                    {
+                        PdfPTable tableLines = new PdfPTable(14);
+                        tableLines.SetWidths(new float[] { 100f, 50f, 60f, 70f, 55f, 60f, 60f, 60f, 60f, 60f, 60f, 60f, 60f, 60f });
+                        tableLines.WidthPercentage = 100;
+
+                        Decimal sales_amount = 0;
+                        Decimal payment_amount = 0;
+                        Decimal balance_amount = 0;
+                        Decimal current_amount = 0;
+                        Decimal _30Days_amount = 0;
+                        Decimal _60Days_amount = 0;
+                        Decimal _90Days_amount = 0;
+                        Decimal _120Days_amount = 0;
+
+                        foreach (var accountReceivable in accountReceivables)
+                        {
+                            tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnCustomer, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                            tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnTerm, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                            tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnCreditLimit, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                            tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnSalesNumber, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                            tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnSalesDate, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                            tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnSalesAmount, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                            tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnPaymentAmount, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                            tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnBalanceAmount, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                            tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnDueDate, fontTimesNewRoman10)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                            tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.ColumnCurrent, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                            tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.Column30Days, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                            tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.Column60Days, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                            tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.Column90Days, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+                            tableLines.AddCell(new PdfPCell(new Phrase(accountReceivable.Column120Days, fontTimesNewRoman10)) { HorizontalAlignment = 2, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 0f });
+
+                            sales_amount += Convert.ToDecimal(accountReceivable.ColumnSalesAmount);
+                            payment_amount += Convert.ToDecimal(accountReceivable.ColumnPaymentAmount);
+                            balance_amount += Convert.ToDecimal(accountReceivable.ColumnBalanceAmount);
+                            current_amount += Convert.ToDecimal(accountReceivable.ColumnCurrent);
+                            _30Days_amount += Convert.ToDecimal(accountReceivable.Column30Days);
+                            _60Days_amount += Convert.ToDecimal(accountReceivable.Column60Days);
+                            _90Days_amount += Convert.ToDecimal(accountReceivable.Column90Days);
+                            _120Days_amount += Convert.ToDecimal(accountReceivable.Column120Days);
+                        }
+
+                        tableLines.AddCell(new PdfPCell(new Phrase(line)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = -5f, Colspan = 14 });
+                        tableLines.AddCell(new PdfPCell(new Phrase("Total: ", fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, Colspan = 5, HorizontalAlignment = 2 });
+                        tableLines.AddCell(new PdfPCell(new Phrase(sales_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                        tableLines.AddCell(new PdfPCell(new Phrase(payment_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                        tableLines.AddCell(new PdfPCell(new Phrase(balance_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                        tableLines.AddCell(new PdfPCell(new Phrase("", fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                        tableLines.AddCell(new PdfPCell(new Phrase(current_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                        tableLines.AddCell(new PdfPCell(new Phrase(_30Days_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                        tableLines.AddCell(new PdfPCell(new Phrase(_60Days_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                        tableLines.AddCell(new PdfPCell(new Phrase(_90Days_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+                        tableLines.AddCell(new PdfPCell(new Phrase(_120Days_amount.ToString("#,##0.00"), fontTimesNewRoman10Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 20f, HorizontalAlignment = 2 });
+
+                        document.Add(tableLines);
+                    }
+                }
+                //ProcessStartInfo info = new ProcessStartInfo(fileName)
+                //{
+                //    Verb = "Print",
+                //    CreateNoWindow = true,
+                //    WindowStyle = ProcessWindowStyle.Hidden
+                //};
+
+                //Process printDwg = new Process
+                //{
+                //    StartInfo = info
+                //};
+
+                //printDwg.Start();
+                //printDwg.Close();
+
+                document.Close();
+                Process.Start(fileName);
             }
             catch (Exception ex)
             {
