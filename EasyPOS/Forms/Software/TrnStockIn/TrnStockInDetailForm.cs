@@ -517,6 +517,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                 var id = Convert.ToInt32(dataGridViewStockInLineList.Rows[e.RowIndex].Cells[dataGridViewStockInLineList.Columns["ColumnStockInLineListId"].Index].Value);
                 var stockInId = Convert.ToInt32(dataGridViewStockInLineList.Rows[e.RowIndex].Cells[dataGridViewStockInLineList.Columns["ColumnStockInLineListStockInId"].Index].Value);
                 var itemId = Convert.ToInt32(dataGridViewStockInLineList.Rows[e.RowIndex].Cells[dataGridViewStockInLineList.Columns["ColumnStockInLineListItemId"].Index].Value);
+                var itemBarcode = dataGridViewStockInLineList.Rows[e.RowIndex].Cells[dataGridViewStockInLineList.Columns["ColumnStockInLineListItemBarcode"].Index].Value.ToString();
                 var itemDescription = dataGridViewStockInLineList.Rows[e.RowIndex].Cells[dataGridViewStockInLineList.Columns["ColumnStockInLineListItemDescription"].Index].Value.ToString();
                 var unitId = Convert.ToInt32(dataGridViewStockInLineList.Rows[e.RowIndex].Cells[dataGridViewStockInLineList.Columns["ColumnStockInLineListUnitId"].Index].Value);
                 var unit = dataGridViewStockInLineList.Rows[e.RowIndex].Cells[dataGridViewStockInLineList.Columns["ColumnStockInLineListUnit"].Index].Value.ToString();
@@ -534,6 +535,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                     Id = id,
                     StockInId = stockInId,
                     ItemId = itemId,
+                    ItemBarcode = itemBarcode,
                     ItemDescription = itemDescription,
                     UnitId = unitId,
                     Unit = unit,
@@ -763,7 +765,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                     securityRules.AddAccessRule(new FileSystemAccessRule(executingUser, FileSystemRights.FullControl, AccessControlType.Allow));
 
                     DirectoryInfo createDirectorySTCSV = Directory.CreateDirectory(folderBrowserDialogGenerateCSV.SelectedPath, securityRules);
-                    File.WriteAllText(createDirectorySTCSV.FullName + "\\StockInAllItems_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("iso-8859-1"));
+                    File.WriteAllText(createDirectorySTCSV.FullName + "\\StockInAllItems_" + DateTime.Now.ToString("yyyyMMdd_hhmmss") + ".csv", csv.ToString(), Encoding.GetEncoding("utf-8"));
 
                     MessageBox.Show("Generate CSV Successful!", "Generate CSV", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
