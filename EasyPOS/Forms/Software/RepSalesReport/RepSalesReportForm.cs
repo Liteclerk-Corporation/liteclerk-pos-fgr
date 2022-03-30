@@ -837,7 +837,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         dateTimePickerDateAsOf.Visible = false;
 
                         labelDateAsOf.Focus();
-                        buttonView.Text = "View";
+                        buttonView.Text = "Print";
 
                         break;
 

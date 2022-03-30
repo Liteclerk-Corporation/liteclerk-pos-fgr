@@ -76,7 +76,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     tableLines.SetWidths(new float[] { 50f, 50f, 50f, 50f, 50f, 50f, 50f, 50f, 50f, 50f, 50f, 50f });
                     tableLines.WidthPercentage = 100;
 
-                    var groupCollection = from d in collectionList.OrderBy(d => d.CollectionDate)
+                    var groupCollection = from d in collectionList.OrderBy(d => Convert.ToDateTime(d.CollectionDate))
                                           group d by d.CollectionDate
                                           into g
                                           select g;
