@@ -1719,6 +1719,7 @@ namespace EasyPOS.Controllers
 
                         var previousSales = from d in customerSales
                                             where d.SalesDate < sales.FirstOrDefault().SalesDate
+                                            && d.IsLocked == true
                                             && d.BalanceAmount > 0
                                             select d;
 
