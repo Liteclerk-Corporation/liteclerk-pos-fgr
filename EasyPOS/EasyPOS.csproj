@@ -7,7 +7,7 @@
     <ProjectGuid>{A0BF508D-CC6D-480E-86EF-713A26C5309F}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>EasyPOS</RootNamespace>
-    <AssemblyName>EasyPOS</AssemblyName>
+    <AssemblyName>Liteclerk</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -51,7 +51,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Images\Logo\liteclerkicon.ico</ApplicationIcon>
+    <ApplicationIcon>liteclerkicon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -61,9 +61,10 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup />
-  <PropertyGroup>
-    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
-  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
   <ItemGroup>
     <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -2057,14 +2058,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Data\easyposdb.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>easyposdb.designer.cs</LastGenOutput>
@@ -2084,6 +2080,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -2134,8 +2135,6 @@
     <Content Include="Resources\Images\Logo\easypos cropped.jpg" />
     <None Include="Resources\Images\Logo\liteclerklogo.png" />
     <Content Include="Resources\Images\Logo\liteclerkicon.ico" />
-    <Content Include="Resources\Images\Logo\newEasyposIcon.ico" />
-    <Content Include="Resources\Images\NewLogo\easypos.ico" />
     <Content Include="Resources\Images\NewLogo\easypos.png" />
     <Content Include="Resources\Images\Others\color theme.jpg" />
     <Content Include="Resources\Images\POSTouchIcons\cancel.png" />
