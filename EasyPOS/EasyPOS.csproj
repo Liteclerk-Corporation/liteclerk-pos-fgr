@@ -51,7 +51,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>liteclerkicon.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Images\Logo\liteclerkicon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -59,6 +59,8 @@
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
   </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
   <PropertyGroup>
     <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
   </PropertyGroup>
@@ -2100,7 +2102,6 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="liteclerkicon.ico" />
-    <Content Include="newEasyposIcon.ico" />
     <Content Include="OpenCvSharpExtern.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -2132,6 +2133,7 @@
     <Content Include="Resources\Images\Logo\easypos cropped.ico" />
     <Content Include="Resources\Images\Logo\easypos cropped.jpg" />
     <None Include="Resources\Images\Logo\liteclerklogo.png" />
+    <Content Include="Resources\Images\Logo\liteclerkicon.ico" />
     <Content Include="Resources\Images\Logo\newEasyposIcon.ico" />
     <Content Include="Resources\Images\NewLogo\easypos.ico" />
     <Content Include="Resources\Images\NewLogo\easypos.png" />
