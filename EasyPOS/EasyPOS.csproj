@@ -51,7 +51,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>newEasyposIcon.ico</ApplicationIcon>
+    <ApplicationIcon>liteclerkicon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>
@@ -2099,6 +2099,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="liteclerkicon.ico" />
     <Content Include="newEasyposIcon.ico" />
     <Content Include="OpenCvSharpExtern.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
