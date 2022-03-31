@@ -29,6 +29,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSTouchDeletedItemsForm));
             this.printDocumentDeletedItems = new System.Drawing.Printing.PrintDocument();
             this.SuspendLayout();
             // 
@@ -42,6 +43,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(485, 94);
             this.ControlBox = false;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "TrnPOSTouchDeletedItemsForm";

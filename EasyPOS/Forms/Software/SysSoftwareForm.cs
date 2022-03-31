@@ -45,7 +45,7 @@ namespace EasyPOS.Forms.Software
             labelCurrentUser.Text = "Date: " + currentDate + "     User: " + currentUserName + "     Terminal: " + currentTerminal;
             panelSidebarMenu.Visible = false;
 
-            labelVersion.Text = "EasyPOS Version: " + Modules.SysCurrentModule.GetCurrentSettings().CurrentVersion;
+            labelVersion.Text = "Liteclerk POS Version: " + Modules.SysCurrentModule.GetCurrentSettings().CurrentVersion;
             labelSupport.Text = "Support: Easyfis Corporation " + Modules.SysCurrentModule.GetCurrentSettings().CurrentSupport;
         }
 

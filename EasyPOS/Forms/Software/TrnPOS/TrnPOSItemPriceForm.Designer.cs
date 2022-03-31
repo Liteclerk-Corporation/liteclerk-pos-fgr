@@ -61,18 +61,18 @@
             this.panel1.Controls.Add(this.buttonClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(540, 50);
+            this.panel1.Size = new System.Drawing.Size(675, 62);
             this.panel1.TabIndex = 6;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.POS;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
+            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -81,10 +81,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(50, 14);
+            this.label1.Location = new System.Drawing.Point(62, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 28);
+            this.label1.Size = new System.Drawing.Size(183, 35);
             this.label1.TabIndex = 2;
             this.label1.Text = "Item Price List";
             // 
@@ -97,10 +97,10 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(422, 10);
-            this.buttonClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonClose.Location = new System.Drawing.Point(528, 12);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(109, 32);
+            this.buttonClose.Size = new System.Drawing.Size(136, 40);
             this.buttonClose.TabIndex = 1;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Esc - Close";
@@ -114,10 +114,10 @@
             this.panel2.Controls.Add(this.dataGridViewItemPriceList);
             this.panel2.Controls.Add(this.textBoxItemDescription);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 50);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Location = new System.Drawing.Point(0, 62);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(540, 251);
+            this.panel2.Size = new System.Drawing.Size(675, 314);
             this.panel2.TabIndex = 7;
             // 
             // panel15
@@ -129,10 +129,10 @@
             this.panel15.Controls.Add(this.buttonItemPriceListPageListLast);
             this.panel15.Controls.Add(this.textBoxItemPriceListPageNumber);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel15.Location = new System.Drawing.Point(0, 209);
-            this.panel15.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel15.Location = new System.Drawing.Point(0, 262);
+            this.panel15.Margin = new System.Windows.Forms.Padding(2);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(540, 42);
+            this.panel15.Size = new System.Drawing.Size(675, 52);
             this.panel15.TabIndex = 26;
             // 
             // buttonItemPriceListPageListFirst
@@ -142,10 +142,10 @@
             this.buttonItemPriceListPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonItemPriceListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemPriceListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemPriceListPageListFirst.Location = new System.Drawing.Point(10, 7);
-            this.buttonItemPriceListPageListFirst.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonItemPriceListPageListFirst.Location = new System.Drawing.Point(12, 9);
+            this.buttonItemPriceListPageListFirst.Margin = new System.Windows.Forms.Padding(2);
             this.buttonItemPriceListPageListFirst.Name = "buttonItemPriceListPageListFirst";
-            this.buttonItemPriceListPageListFirst.Size = new System.Drawing.Size(66, 26);
+            this.buttonItemPriceListPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonItemPriceListPageListFirst.TabIndex = 13;
             this.buttonItemPriceListPageListFirst.Text = "First";
             this.buttonItemPriceListPageListFirst.UseVisualStyleBackColor = false;
@@ -157,10 +157,10 @@
             this.buttonItemPriceListPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonItemPriceListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemPriceListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemPriceListPageListPrevious.Location = new System.Drawing.Point(80, 7);
-            this.buttonItemPriceListPageListPrevious.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonItemPriceListPageListPrevious.Location = new System.Drawing.Point(100, 9);
+            this.buttonItemPriceListPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.buttonItemPriceListPageListPrevious.Name = "buttonItemPriceListPageListPrevious";
-            this.buttonItemPriceListPageListPrevious.Size = new System.Drawing.Size(66, 26);
+            this.buttonItemPriceListPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonItemPriceListPageListPrevious.TabIndex = 14;
             this.buttonItemPriceListPageListPrevious.Text = "Previous";
             this.buttonItemPriceListPageListPrevious.UseVisualStyleBackColor = false;
@@ -171,10 +171,10 @@
             this.buttonItemPriceListPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonItemPriceListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemPriceListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemPriceListPageListNext.Location = new System.Drawing.Point(210, 7);
-            this.buttonItemPriceListPageListNext.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonItemPriceListPageListNext.Location = new System.Drawing.Point(262, 9);
+            this.buttonItemPriceListPageListNext.Margin = new System.Windows.Forms.Padding(2);
             this.buttonItemPriceListPageListNext.Name = "buttonItemPriceListPageListNext";
-            this.buttonItemPriceListPageListNext.Size = new System.Drawing.Size(66, 26);
+            this.buttonItemPriceListPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonItemPriceListPageListNext.TabIndex = 15;
             this.buttonItemPriceListPageListNext.Text = "Next";
             this.buttonItemPriceListPageListNext.UseVisualStyleBackColor = false;
@@ -185,10 +185,10 @@
             this.buttonItemPriceListPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonItemPriceListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonItemPriceListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonItemPriceListPageListLast.Location = new System.Drawing.Point(278, 7);
-            this.buttonItemPriceListPageListLast.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonItemPriceListPageListLast.Location = new System.Drawing.Point(348, 9);
+            this.buttonItemPriceListPageListLast.Margin = new System.Windows.Forms.Padding(2);
             this.buttonItemPriceListPageListLast.Name = "buttonItemPriceListPageListLast";
-            this.buttonItemPriceListPageListLast.Size = new System.Drawing.Size(66, 26);
+            this.buttonItemPriceListPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonItemPriceListPageListLast.TabIndex = 16;
             this.buttonItemPriceListPageListLast.Text = "Last";
             this.buttonItemPriceListPageListLast.UseVisualStyleBackColor = false;
@@ -199,11 +199,11 @@
             this.textBoxItemPriceListPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxItemPriceListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxItemPriceListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxItemPriceListPageNumber.Location = new System.Drawing.Point(150, 11);
-            this.textBoxItemPriceListPageNumber.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxItemPriceListPageNumber.Location = new System.Drawing.Point(188, 14);
+            this.textBoxItemPriceListPageNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxItemPriceListPageNumber.Name = "textBoxItemPriceListPageNumber";
             this.textBoxItemPriceListPageNumber.ReadOnly = true;
-            this.textBoxItemPriceListPageNumber.Size = new System.Drawing.Size(55, 16);
+            this.textBoxItemPriceListPageNumber.Size = new System.Drawing.Size(69, 20);
             this.textBoxItemPriceListPageNumber.TabIndex = 17;
             this.textBoxItemPriceListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -221,14 +221,15 @@
             this.ColumnItemPriceListButtonPick,
             this.ColumnItemPriceListPriceDescription,
             this.ColumnItemPriceListPrice});
-            this.dataGridViewItemPriceList.Location = new System.Drawing.Point(10, 35);
-            this.dataGridViewItemPriceList.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridViewItemPriceList.Location = new System.Drawing.Point(12, 44);
+            this.dataGridViewItemPriceList.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewItemPriceList.MultiSelect = false;
             this.dataGridViewItemPriceList.Name = "dataGridViewItemPriceList";
             this.dataGridViewItemPriceList.ReadOnly = true;
+            this.dataGridViewItemPriceList.RowHeadersWidth = 51;
             this.dataGridViewItemPriceList.RowTemplate.Height = 24;
             this.dataGridViewItemPriceList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewItemPriceList.Size = new System.Drawing.Size(521, 169);
+            this.dataGridViewItemPriceList.Size = new System.Drawing.Size(651, 211);
             this.dataGridViewItemPriceList.TabIndex = 0;
             this.dataGridViewItemPriceList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewItemPriceList_CellClick);
             this.dataGridViewItemPriceList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewItemPriceList_KeyDown);
@@ -238,6 +239,7 @@
             this.ColumnItemPriceListButtonPick.DataPropertyName = "ColumnItemPriceListButtonPick";
             this.ColumnItemPriceListButtonPick.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ColumnItemPriceListButtonPick.HeaderText = "";
+            this.ColumnItemPriceListButtonPick.MinimumWidth = 6;
             this.ColumnItemPriceListButtonPick.Name = "ColumnItemPriceListButtonPick";
             this.ColumnItemPriceListButtonPick.ReadOnly = true;
             this.ColumnItemPriceListButtonPick.Width = 70;
@@ -246,6 +248,7 @@
             // 
             this.ColumnItemPriceListPriceDescription.DataPropertyName = "ColumnItemPriceListPriceDescription";
             this.ColumnItemPriceListPriceDescription.HeaderText = "Price Description";
+            this.ColumnItemPriceListPriceDescription.MinimumWidth = 6;
             this.ColumnItemPriceListPriceDescription.Name = "ColumnItemPriceListPriceDescription";
             this.ColumnItemPriceListPriceDescription.ReadOnly = true;
             this.ColumnItemPriceListPriceDescription.Width = 250;
@@ -256,6 +259,7 @@
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnItemPriceListPrice.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColumnItemPriceListPrice.HeaderText = "Price";
+            this.ColumnItemPriceListPrice.MinimumWidth = 6;
             this.ColumnItemPriceListPrice.Name = "ColumnItemPriceListPrice";
             this.ColumnItemPriceListPrice.ReadOnly = true;
             this.ColumnItemPriceListPrice.Width = 150;
@@ -267,26 +271,26 @@
             this.textBoxItemDescription.BackColor = System.Drawing.Color.White;
             this.textBoxItemDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxItemDescription.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.textBoxItemDescription.Location = new System.Drawing.Point(10, 5);
-            this.textBoxItemDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxItemDescription.Location = new System.Drawing.Point(12, 6);
+            this.textBoxItemDescription.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxItemDescription.Name = "textBoxItemDescription";
             this.textBoxItemDescription.ReadOnly = true;
-            this.textBoxItemDescription.Size = new System.Drawing.Size(521, 25);
+            this.textBoxItemDescription.Size = new System.Drawing.Size(651, 32);
             this.textBoxItemDescription.TabIndex = 7;
             this.textBoxItemDescription.TabStop = false;
             this.textBoxItemDescription.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TrnPOSItemPriceForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(540, 301);
+            this.ClientSize = new System.Drawing.Size(675, 376);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "TrnPOSItemPriceForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

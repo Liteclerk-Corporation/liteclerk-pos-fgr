@@ -59,16 +59,16 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(513, 50);
+            this.panel1.Size = new System.Drawing.Size(641, 62);
             this.panel1.TabIndex = 8;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.POS;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
+            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -77,10 +77,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(50, 14);
+            this.label1.Location = new System.Drawing.Point(62, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(187, 28);
+            this.label1.Size = new System.Drawing.Size(234, 35);
             this.label1.TabIndex = 2;
             this.label1.Text = "Check Information";
             // 
@@ -93,10 +93,10 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(394, 10);
+            this.buttonClose.Location = new System.Drawing.Point(492, 12);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(109, 32);
+            this.buttonClose.Size = new System.Drawing.Size(136, 40);
             this.buttonClose.TabIndex = 1;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Esc - Close";
@@ -112,10 +112,10 @@
             this.buttonOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOK.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOK.ForeColor = System.Drawing.Color.White;
-            this.buttonOK.Location = new System.Drawing.Point(278, 10);
+            this.buttonOK.Location = new System.Drawing.Point(348, 12);
             this.buttonOK.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(112, 32);
+            this.buttonOK.Size = new System.Drawing.Size(140, 40);
             this.buttonOK.TabIndex = 0;
             this.buttonOK.TabStop = false;
             this.buttonOK.Text = "Ent - OK";
@@ -133,29 +133,30 @@
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.textBoxCheckNumber);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 50);
+            this.panel2.Location = new System.Drawing.Point(0, 62);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(513, 145);
+            this.panel2.Size = new System.Drawing.Size(641, 182);
             this.panel2.TabIndex = 9;
             // 
             // dateTimePickerCheckDate
             // 
             this.dateTimePickerCheckDate.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.dateTimePickerCheckDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerCheckDate.Location = new System.Drawing.Point(135, 40);
+            this.dateTimePickerCheckDate.Location = new System.Drawing.Point(169, 50);
+            this.dateTimePickerCheckDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTimePickerCheckDate.Name = "dateTimePickerCheckDate";
-            this.dateTimePickerCheckDate.Size = new System.Drawing.Size(141, 29);
+            this.dateTimePickerCheckDate.Size = new System.Drawing.Size(175, 34);
             this.dateTimePickerCheckDate.TabIndex = 1;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label5.Location = new System.Drawing.Point(6, 76);
+            this.label5.Location = new System.Drawing.Point(8, 95);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 21);
+            this.label5.Size = new System.Drawing.Size(58, 28);
             this.label5.TabIndex = 39;
             this.label5.Text = "Bank:";
             // 
@@ -164,30 +165,30 @@
             this.textBoxCheckBank.AcceptsTab = true;
             this.textBoxCheckBank.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxCheckBank.HideSelection = false;
-            this.textBoxCheckBank.Location = new System.Drawing.Point(135, 73);
+            this.textBoxCheckBank.Location = new System.Drawing.Point(169, 91);
             this.textBoxCheckBank.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCheckBank.Name = "textBoxCheckBank";
-            this.textBoxCheckBank.Size = new System.Drawing.Size(367, 29);
+            this.textBoxCheckBank.Size = new System.Drawing.Size(458, 34);
             this.textBoxCheckBank.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label3.Location = new System.Drawing.Point(6, 46);
+            this.label3.Location = new System.Drawing.Point(8, 58);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 21);
+            this.label3.Size = new System.Drawing.Size(114, 28);
             this.label3.TabIndex = 35;
             this.label3.Text = "Check Date:";
             // 
             // textBoxAmount
             // 
             this.textBoxAmount.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxAmount.Location = new System.Drawing.Point(135, 106);
+            this.textBoxAmount.Location = new System.Drawing.Point(169, 132);
             this.textBoxAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxAmount.Name = "textBoxAmount";
-            this.textBoxAmount.Size = new System.Drawing.Size(255, 29);
+            this.textBoxAmount.Size = new System.Drawing.Size(318, 34);
             this.textBoxAmount.TabIndex = 3;
             this.textBoxAmount.Text = "0.00";
             this.textBoxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -198,10 +199,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label6.Location = new System.Drawing.Point(6, 109);
+            this.label6.Location = new System.Drawing.Point(8, 136);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 21);
+            this.label6.Size = new System.Drawing.Size(87, 28);
             this.label6.TabIndex = 33;
             this.label6.Text = "Amount:";
             // 
@@ -209,10 +210,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label7.Location = new System.Drawing.Point(6, 10);
+            this.label7.Location = new System.Drawing.Point(8, 12);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(117, 21);
+            this.label7.Size = new System.Drawing.Size(145, 28);
             this.label7.TabIndex = 32;
             this.label7.Text = "Check Number:";
             // 
@@ -221,17 +222,17 @@
             this.textBoxCheckNumber.AcceptsTab = true;
             this.textBoxCheckNumber.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxCheckNumber.HideSelection = false;
-            this.textBoxCheckNumber.Location = new System.Drawing.Point(135, 7);
+            this.textBoxCheckNumber.Location = new System.Drawing.Point(169, 9);
             this.textBoxCheckNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCheckNumber.Name = "textBoxCheckNumber";
-            this.textBoxCheckNumber.Size = new System.Drawing.Size(367, 29);
+            this.textBoxCheckNumber.Size = new System.Drawing.Size(458, 34);
             this.textBoxCheckNumber.TabIndex = 0;
             // 
             // TrnPOSTenderCheckInformation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(513, 195);
+            this.ClientSize = new System.Drawing.Size(641, 244);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

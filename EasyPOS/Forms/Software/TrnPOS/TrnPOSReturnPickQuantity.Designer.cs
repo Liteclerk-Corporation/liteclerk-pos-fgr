@@ -51,16 +51,16 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(510, 50);
+            this.panel1.Size = new System.Drawing.Size(638, 62);
             this.panel1.TabIndex = 5;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.POS;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
+            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -69,10 +69,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(50, 14);
+            this.label1.Location = new System.Drawing.Point(62, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(165, 28);
+            this.label1.Size = new System.Drawing.Size(203, 35);
             this.label1.TabIndex = 2;
             this.label1.Text = "Return Quantity";
             // 
@@ -85,10 +85,10 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(390, 10);
+            this.buttonClose.Location = new System.Drawing.Point(488, 12);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(109, 32);
+            this.buttonClose.Size = new System.Drawing.Size(136, 40);
             this.buttonClose.TabIndex = 1;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Esc - Close";
@@ -104,10 +104,10 @@
             this.buttonOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOK.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOK.ForeColor = System.Drawing.Color.White;
-            this.buttonOK.Location = new System.Drawing.Point(274, 10);
+            this.buttonOK.Location = new System.Drawing.Point(342, 12);
             this.buttonOK.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(112, 32);
+            this.buttonOK.Size = new System.Drawing.Size(140, 40);
             this.buttonOK.TabIndex = 1;
             this.buttonOK.TabStop = false;
             this.buttonOK.Text = "Ent - OK";
@@ -119,10 +119,10 @@
             this.textBoxReturnQuantity.AcceptsTab = true;
             this.textBoxReturnQuantity.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxReturnQuantity.HideSelection = false;
-            this.textBoxReturnQuantity.Location = new System.Drawing.Point(89, 54);
+            this.textBoxReturnQuantity.Location = new System.Drawing.Point(111, 68);
             this.textBoxReturnQuantity.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxReturnQuantity.Name = "textBoxReturnQuantity";
-            this.textBoxReturnQuantity.Size = new System.Drawing.Size(410, 29);
+            this.textBoxReturnQuantity.Size = new System.Drawing.Size(512, 34);
             this.textBoxReturnQuantity.TabIndex = 32;
             this.textBoxReturnQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxReturnQuantity.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxReturnQuantity_KeyDown);
@@ -133,18 +133,18 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label13.Location = new System.Drawing.Point(11, 57);
+            this.label13.Location = new System.Drawing.Point(14, 71);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(73, 21);
+            this.label13.Size = new System.Drawing.Size(92, 28);
             this.label13.TabIndex = 33;
             this.label13.Text = "Quantity:";
             // 
             // TrnPOSReturnPickQuantity
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(510, 90);
+            this.ClientSize = new System.Drawing.Size(638, 112);
             this.Controls.Add(this.textBoxReturnQuantity);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.panel1);

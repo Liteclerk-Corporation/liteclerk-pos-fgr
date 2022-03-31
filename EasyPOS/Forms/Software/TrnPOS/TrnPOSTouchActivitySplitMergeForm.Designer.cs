@@ -577,7 +577,7 @@
             this.comboBoxTableCode.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.comboBoxTableCode.FormattingEnabled = true;
             this.comboBoxTableCode.Location = new System.Drawing.Point(559, 8);
-            this.comboBoxTableCode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxTableCode.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxTableCode.Name = "comboBoxTableCode";
             this.comboBoxTableCode.Size = new System.Drawing.Size(409, 36);
             this.comboBoxTableCode.TabIndex = 52;
@@ -587,7 +587,7 @@
             this.comboBoxTableGroup.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.comboBoxTableGroup.FormattingEnabled = true;
             this.comboBoxTableGroup.Location = new System.Drawing.Point(301, 8);
-            this.comboBoxTableGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.comboBoxTableGroup.Margin = new System.Windows.Forms.Padding(4);
             this.comboBoxTableGroup.Name = "comboBoxTableGroup";
             this.comboBoxTableGroup.Size = new System.Drawing.Size(249, 36);
             this.comboBoxTableGroup.TabIndex = 50;

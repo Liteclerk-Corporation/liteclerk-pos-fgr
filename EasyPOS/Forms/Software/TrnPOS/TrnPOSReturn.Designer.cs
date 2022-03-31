@@ -83,7 +83,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(912, 50);
+            this.panel1.Size = new System.Drawing.Size(1140, 62);
             this.panel1.TabIndex = 6;
             // 
             // buttonReturn
@@ -95,10 +95,10 @@
             this.buttonReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReturn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonReturn.ForeColor = System.Drawing.Color.White;
-            this.buttonReturn.Location = new System.Drawing.Point(682, 10);
+            this.buttonReturn.Location = new System.Drawing.Point(852, 12);
             this.buttonReturn.Margin = new System.Windows.Forms.Padding(2);
             this.buttonReturn.Name = "buttonReturn";
-            this.buttonReturn.Size = new System.Drawing.Size(108, 32);
+            this.buttonReturn.Size = new System.Drawing.Size(135, 40);
             this.buttonReturn.TabIndex = 7;
             this.buttonReturn.TabStop = false;
             this.buttonReturn.Text = "F2 - Return";
@@ -108,10 +108,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.POS;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
+            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -120,10 +120,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(50, 14);
+            this.label1.Location = new System.Drawing.Point(62, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 28);
+            this.label1.Size = new System.Drawing.Size(94, 35);
             this.label1.TabIndex = 2;
             this.label1.Text = "Return";
             // 
@@ -136,10 +136,10 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(794, 10);
+            this.buttonClose.Location = new System.Drawing.Point(992, 12);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(109, 32);
+            this.buttonClose.Size = new System.Drawing.Size(136, 40);
             this.buttonClose.TabIndex = 1;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Esc - Close";
@@ -156,20 +156,20 @@
             this.panel2.Controls.Add(this.textBoxReturnORNumber);
             this.panel2.Controls.Add(this.dataGridViewReturnItems);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 50);
+            this.panel2.Location = new System.Drawing.Point(0, 62);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(912, 393);
+            this.panel2.Size = new System.Drawing.Size(1140, 492);
             this.panel2.TabIndex = 7;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label3.Location = new System.Drawing.Point(11, 40);
+            this.label3.Location = new System.Drawing.Point(14, 50);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(111, 21);
+            this.label3.Size = new System.Drawing.Size(137, 28);
             this.label3.TabIndex = 28;
             this.label3.Text = "Sales Number:";
             // 
@@ -178,21 +178,21 @@
             this.textBoxReturnSalesNumber.AcceptsTab = true;
             this.textBoxReturnSalesNumber.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxReturnSalesNumber.HideSelection = false;
-            this.textBoxReturnSalesNumber.Location = new System.Drawing.Point(126, 37);
+            this.textBoxReturnSalesNumber.Location = new System.Drawing.Point(158, 46);
             this.textBoxReturnSalesNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxReturnSalesNumber.Name = "textBoxReturnSalesNumber";
             this.textBoxReturnSalesNumber.ReadOnly = true;
-            this.textBoxReturnSalesNumber.Size = new System.Drawing.Size(314, 29);
+            this.textBoxReturnSalesNumber.Size = new System.Drawing.Size(392, 34);
             this.textBoxReturnSalesNumber.TabIndex = 27;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label2.Location = new System.Drawing.Point(25, 7);
+            this.label2.Location = new System.Drawing.Point(31, 9);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 21);
+            this.label2.Size = new System.Drawing.Size(120, 28);
             this.label2.TabIndex = 19;
             this.label2.Text = "OR Number:";
             // 
@@ -205,10 +205,10 @@
             this.panel15.Controls.Add(this.buttonReturnPageListLast);
             this.panel15.Controls.Add(this.textBoxReturnPageNumber);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel15.Location = new System.Drawing.Point(0, 351);
+            this.panel15.Location = new System.Drawing.Point(0, 440);
             this.panel15.Margin = new System.Windows.Forms.Padding(2);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(912, 42);
+            this.panel15.Size = new System.Drawing.Size(1140, 52);
             this.panel15.TabIndex = 26;
             // 
             // buttonReturnPageListFirst
@@ -218,10 +218,10 @@
             this.buttonReturnPageListFirst.FlatAppearance.BorderSize = 0;
             this.buttonReturnPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReturnPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonReturnPageListFirst.Location = new System.Drawing.Point(10, 7);
+            this.buttonReturnPageListFirst.Location = new System.Drawing.Point(12, 9);
             this.buttonReturnPageListFirst.Margin = new System.Windows.Forms.Padding(2);
             this.buttonReturnPageListFirst.Name = "buttonReturnPageListFirst";
-            this.buttonReturnPageListFirst.Size = new System.Drawing.Size(66, 26);
+            this.buttonReturnPageListFirst.Size = new System.Drawing.Size(82, 32);
             this.buttonReturnPageListFirst.TabIndex = 13;
             this.buttonReturnPageListFirst.Text = "First";
             this.buttonReturnPageListFirst.UseVisualStyleBackColor = false;
@@ -234,10 +234,10 @@
             this.buttonReturnPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonReturnPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReturnPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonReturnPageListPrevious.Location = new System.Drawing.Point(80, 7);
+            this.buttonReturnPageListPrevious.Location = new System.Drawing.Point(100, 9);
             this.buttonReturnPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.buttonReturnPageListPrevious.Name = "buttonReturnPageListPrevious";
-            this.buttonReturnPageListPrevious.Size = new System.Drawing.Size(66, 26);
+            this.buttonReturnPageListPrevious.Size = new System.Drawing.Size(82, 32);
             this.buttonReturnPageListPrevious.TabIndex = 14;
             this.buttonReturnPageListPrevious.Text = "Previous";
             this.buttonReturnPageListPrevious.UseVisualStyleBackColor = false;
@@ -249,10 +249,10 @@
             this.buttonReturnPageListNext.FlatAppearance.BorderSize = 0;
             this.buttonReturnPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReturnPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonReturnPageListNext.Location = new System.Drawing.Point(210, 7);
+            this.buttonReturnPageListNext.Location = new System.Drawing.Point(262, 9);
             this.buttonReturnPageListNext.Margin = new System.Windows.Forms.Padding(2);
             this.buttonReturnPageListNext.Name = "buttonReturnPageListNext";
-            this.buttonReturnPageListNext.Size = new System.Drawing.Size(66, 26);
+            this.buttonReturnPageListNext.Size = new System.Drawing.Size(82, 32);
             this.buttonReturnPageListNext.TabIndex = 15;
             this.buttonReturnPageListNext.Text = "Next";
             this.buttonReturnPageListNext.UseVisualStyleBackColor = false;
@@ -264,10 +264,10 @@
             this.buttonReturnPageListLast.FlatAppearance.BorderSize = 0;
             this.buttonReturnPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonReturnPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonReturnPageListLast.Location = new System.Drawing.Point(278, 7);
+            this.buttonReturnPageListLast.Location = new System.Drawing.Point(348, 9);
             this.buttonReturnPageListLast.Margin = new System.Windows.Forms.Padding(2);
             this.buttonReturnPageListLast.Name = "buttonReturnPageListLast";
-            this.buttonReturnPageListLast.Size = new System.Drawing.Size(66, 26);
+            this.buttonReturnPageListLast.Size = new System.Drawing.Size(82, 32);
             this.buttonReturnPageListLast.TabIndex = 16;
             this.buttonReturnPageListLast.Text = "Last";
             this.buttonReturnPageListLast.UseVisualStyleBackColor = false;
@@ -279,11 +279,11 @@
             this.textBoxReturnPageNumber.BackColor = System.Drawing.Color.White;
             this.textBoxReturnPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxReturnPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxReturnPageNumber.Location = new System.Drawing.Point(150, 11);
+            this.textBoxReturnPageNumber.Location = new System.Drawing.Point(188, 14);
             this.textBoxReturnPageNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxReturnPageNumber.Name = "textBoxReturnPageNumber";
             this.textBoxReturnPageNumber.ReadOnly = true;
-            this.textBoxReturnPageNumber.Size = new System.Drawing.Size(55, 16);
+            this.textBoxReturnPageNumber.Size = new System.Drawing.Size(69, 20);
             this.textBoxReturnPageNumber.TabIndex = 17;
             this.textBoxReturnPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -292,10 +292,10 @@
             this.textBoxReturnORNumber.AcceptsTab = true;
             this.textBoxReturnORNumber.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxReturnORNumber.HideSelection = false;
-            this.textBoxReturnORNumber.Location = new System.Drawing.Point(126, 4);
+            this.textBoxReturnORNumber.Location = new System.Drawing.Point(158, 5);
             this.textBoxReturnORNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxReturnORNumber.Name = "textBoxReturnORNumber";
-            this.textBoxReturnORNumber.Size = new System.Drawing.Size(314, 29);
+            this.textBoxReturnORNumber.Size = new System.Drawing.Size(392, 34);
             this.textBoxReturnORNumber.TabIndex = 18;
             this.textBoxReturnORNumber.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxReturnORNumber_KeyDown);
             // 
@@ -324,13 +324,14 @@
             this.ColumnReturnTaxId,
             this.ColumnReturnTaxRate,
             this.ColumnReturnTaxAmount});
-            this.dataGridViewReturnItems.Location = new System.Drawing.Point(10, 70);
+            this.dataGridViewReturnItems.Location = new System.Drawing.Point(12, 88);
             this.dataGridViewReturnItems.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewReturnItems.MultiSelect = false;
             this.dataGridViewReturnItems.Name = "dataGridViewReturnItems";
+            this.dataGridViewReturnItems.RowHeadersWidth = 51;
             this.dataGridViewReturnItems.RowTemplate.Height = 24;
             this.dataGridViewReturnItems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewReturnItems.Size = new System.Drawing.Size(893, 276);
+            this.dataGridViewReturnItems.Size = new System.Drawing.Size(1116, 346);
             this.dataGridViewReturnItems.TabIndex = 25;
             this.dataGridViewReturnItems.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewReturn_CellClick);
             // 
@@ -338,9 +339,11 @@
             // 
             this.ColumnReturnItemId.DataPropertyName = "ColumnReturnItemId";
             this.ColumnReturnItemId.HeaderText = "Item Id";
+            this.ColumnReturnItemId.MinimumWidth = 6;
             this.ColumnReturnItemId.Name = "ColumnReturnItemId";
             this.ColumnReturnItemId.ReadOnly = true;
             this.ColumnReturnItemId.Visible = false;
+            this.ColumnReturnItemId.Width = 125;
             // 
             // ColumnReturnItemDescription
             // 
@@ -357,6 +360,7 @@
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnReturnUnit.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColumnReturnUnit.HeaderText = "Unit";
+            this.ColumnReturnUnit.MinimumWidth = 6;
             this.ColumnReturnUnit.Name = "ColumnReturnUnit";
             this.ColumnReturnUnit.ReadOnly = true;
             this.ColumnReturnUnit.Width = 70;
@@ -367,8 +371,10 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnReturnPrice.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnReturnPrice.HeaderText = "Price";
+            this.ColumnReturnPrice.MinimumWidth = 6;
             this.ColumnReturnPrice.Name = "ColumnReturnPrice";
             this.ColumnReturnPrice.ReadOnly = true;
+            this.ColumnReturnPrice.Width = 125;
             // 
             // ColumnReturnQuantity
             // 
@@ -376,20 +382,26 @@
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnReturnQuantity.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnReturnQuantity.HeaderText = "Quantity";
+            this.ColumnReturnQuantity.MinimumWidth = 6;
             this.ColumnReturnQuantity.Name = "ColumnReturnQuantity";
             this.ColumnReturnQuantity.ReadOnly = true;
+            this.ColumnReturnQuantity.Width = 125;
             // 
             // ColumnReturnDiscountAmount
             // 
             this.ColumnReturnDiscountAmount.DataPropertyName = "ColumnReturnDiscountAmount";
             this.ColumnReturnDiscountAmount.HeaderText = "Discount";
+            this.ColumnReturnDiscountAmount.MinimumWidth = 6;
             this.ColumnReturnDiscountAmount.Name = "ColumnReturnDiscountAmount";
+            this.ColumnReturnDiscountAmount.Width = 125;
             // 
             // ColumnReturnNetPrice
             // 
             this.ColumnReturnNetPrice.DataPropertyName = "ColumnReturnNetPrice";
             this.ColumnReturnNetPrice.HeaderText = "Net Price";
+            this.ColumnReturnNetPrice.MinimumWidth = 6;
             this.ColumnReturnNetPrice.Name = "ColumnReturnNetPrice";
+            this.ColumnReturnNetPrice.Width = 125;
             // 
             // ColumnReturnAmount
             // 
@@ -397,14 +409,17 @@
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnReturnAmount.DefaultCellStyle = dataGridViewCellStyle4;
             this.ColumnReturnAmount.HeaderText = "Amount";
+            this.ColumnReturnAmount.MinimumWidth = 6;
             this.ColumnReturnAmount.Name = "ColumnReturnAmount";
             this.ColumnReturnAmount.ReadOnly = true;
+            this.ColumnReturnAmount.Width = 125;
             // 
             // ColumnReturnPickItem
             // 
             this.ColumnReturnPickItem.DataPropertyName = "ColumnReturnPickItem";
             this.ColumnReturnPickItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ColumnReturnPickItem.HeaderText = "";
+            this.ColumnReturnPickItem.MinimumWidth = 6;
             this.ColumnReturnPickItem.Name = "ColumnReturnPickItem";
             this.ColumnReturnPickItem.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.ColumnReturnPickItem.Width = 70;
@@ -414,6 +429,7 @@
             this.ColumnReturnUnpickItem.DataPropertyName = "ColumnReturnUnpickItem";
             this.ColumnReturnUnpickItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ColumnReturnUnpickItem.HeaderText = "";
+            this.ColumnReturnUnpickItem.MinimumWidth = 6;
             this.ColumnReturnUnpickItem.Name = "ColumnReturnUnpickItem";
             this.ColumnReturnUnpickItem.Width = 70;
             // 
@@ -423,6 +439,7 @@
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnReturnReturnQuantity.DefaultCellStyle = dataGridViewCellStyle5;
             this.ColumnReturnReturnQuantity.HeaderText = "Return Quantity";
+            this.ColumnReturnReturnQuantity.MinimumWidth = 6;
             this.ColumnReturnReturnQuantity.Name = "ColumnReturnReturnQuantity";
             this.ColumnReturnReturnQuantity.ReadOnly = true;
             this.ColumnReturnReturnQuantity.Width = 150;
@@ -431,28 +448,34 @@
             // 
             this.ColumnReturnTaxId.DataPropertyName = "ColumnReturnTaxId";
             this.ColumnReturnTaxId.HeaderText = "Tax Id";
+            this.ColumnReturnTaxId.MinimumWidth = 6;
             this.ColumnReturnTaxId.Name = "ColumnReturnTaxId";
             this.ColumnReturnTaxId.Visible = false;
+            this.ColumnReturnTaxId.Width = 125;
             // 
             // ColumnReturnTaxRate
             // 
             this.ColumnReturnTaxRate.DataPropertyName = "ColumnReturnTaxRate";
             this.ColumnReturnTaxRate.HeaderText = "Tax Rate";
+            this.ColumnReturnTaxRate.MinimumWidth = 6;
             this.ColumnReturnTaxRate.Name = "ColumnReturnTaxRate";
             this.ColumnReturnTaxRate.Visible = false;
+            this.ColumnReturnTaxRate.Width = 125;
             // 
             // ColumnReturnTaxAmount
             // 
             this.ColumnReturnTaxAmount.DataPropertyName = "ColumnReturnTaxAmount";
             this.ColumnReturnTaxAmount.HeaderText = "Tax Amount";
+            this.ColumnReturnTaxAmount.MinimumWidth = 6;
             this.ColumnReturnTaxAmount.Name = "ColumnReturnTaxAmount";
             this.ColumnReturnTaxAmount.Visible = false;
+            this.ColumnReturnTaxAmount.Width = 125;
             // 
             // TrnPOSReturn
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(912, 443);
+            this.ClientSize = new System.Drawing.Size(1140, 554);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);

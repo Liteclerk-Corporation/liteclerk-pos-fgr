@@ -29,6 +29,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSTouchSelectOrderTaker));
             this.buttonTable4 = new System.Windows.Forms.Button();
             this.buttonTable5 = new System.Windows.Forms.Button();
             this.buttonTable6 = new System.Windows.Forms.Button();
@@ -73,10 +74,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable4.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable4.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable4.Location = new System.Drawing.Point(277, 54);
-            this.buttonTable4.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable4.Location = new System.Drawing.Point(369, 66);
+            this.buttonTable4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable4.Name = "buttonTable4";
-            this.buttonTable4.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable4.Size = new System.Drawing.Size(115, 76);
             this.buttonTable4.TabIndex = 65;
             this.buttonTable4.UseVisualStyleBackColor = false;
             // 
@@ -88,10 +89,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable5.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable5.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable5.Location = new System.Drawing.Point(366, 54);
-            this.buttonTable5.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable5.Location = new System.Drawing.Point(488, 66);
+            this.buttonTable5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable5.Name = "buttonTable5";
-            this.buttonTable5.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable5.Size = new System.Drawing.Size(115, 76);
             this.buttonTable5.TabIndex = 64;
             this.buttonTable5.UseVisualStyleBackColor = false;
             // 
@@ -103,10 +104,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable6.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable6.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable6.Location = new System.Drawing.Point(456, 54);
-            this.buttonTable6.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable6.Location = new System.Drawing.Point(608, 66);
+            this.buttonTable6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable6.Name = "buttonTable6";
-            this.buttonTable6.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable6.Size = new System.Drawing.Size(115, 76);
             this.buttonTable6.TabIndex = 63;
             this.buttonTable6.UseVisualStyleBackColor = false;
             // 
@@ -118,10 +119,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable10.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable10.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable10.Location = new System.Drawing.Point(277, 120);
-            this.buttonTable10.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable10.Location = new System.Drawing.Point(369, 148);
+            this.buttonTable10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable10.Name = "buttonTable10";
-            this.buttonTable10.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable10.Size = new System.Drawing.Size(115, 76);
             this.buttonTable10.TabIndex = 62;
             this.buttonTable10.UseVisualStyleBackColor = false;
             // 
@@ -133,10 +134,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable11.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable11.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable11.Location = new System.Drawing.Point(366, 120);
-            this.buttonTable11.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable11.Location = new System.Drawing.Point(488, 148);
+            this.buttonTable11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable11.Name = "buttonTable11";
-            this.buttonTable11.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable11.Size = new System.Drawing.Size(115, 76);
             this.buttonTable11.TabIndex = 61;
             this.buttonTable11.UseVisualStyleBackColor = false;
             // 
@@ -148,10 +149,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable12.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable12.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable12.Location = new System.Drawing.Point(456, 120);
-            this.buttonTable12.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable12.Location = new System.Drawing.Point(608, 148);
+            this.buttonTable12.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable12.Name = "buttonTable12";
-            this.buttonTable12.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable12.Size = new System.Drawing.Size(115, 76);
             this.buttonTable12.TabIndex = 60;
             this.buttonTable12.UseVisualStyleBackColor = false;
             // 
@@ -163,10 +164,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable16.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable16.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable16.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable16.Location = new System.Drawing.Point(277, 187);
-            this.buttonTable16.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable16.Location = new System.Drawing.Point(369, 230);
+            this.buttonTable16.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable16.Name = "buttonTable16";
-            this.buttonTable16.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable16.Size = new System.Drawing.Size(115, 76);
             this.buttonTable16.TabIndex = 59;
             this.buttonTable16.UseVisualStyleBackColor = false;
             // 
@@ -178,10 +179,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable17.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable17.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable17.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable17.Location = new System.Drawing.Point(367, 187);
-            this.buttonTable17.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable17.Location = new System.Drawing.Point(489, 230);
+            this.buttonTable17.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable17.Name = "buttonTable17";
-            this.buttonTable17.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable17.Size = new System.Drawing.Size(115, 76);
             this.buttonTable17.TabIndex = 58;
             this.buttonTable17.UseVisualStyleBackColor = false;
             // 
@@ -193,10 +194,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable18.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable18.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable18.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable18.Location = new System.Drawing.Point(457, 187);
-            this.buttonTable18.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable18.Location = new System.Drawing.Point(609, 230);
+            this.buttonTable18.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable18.Name = "buttonTable18";
-            this.buttonTable18.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable18.Size = new System.Drawing.Size(115, 76);
             this.buttonTable18.TabIndex = 57;
             this.buttonTable18.UseVisualStyleBackColor = false;
             // 
@@ -208,10 +209,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable22.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable22.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable22.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable22.Location = new System.Drawing.Point(277, 253);
-            this.buttonTable22.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable22.Location = new System.Drawing.Point(369, 311);
+            this.buttonTable22.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable22.Name = "buttonTable22";
-            this.buttonTable22.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable22.Size = new System.Drawing.Size(115, 76);
             this.buttonTable22.TabIndex = 56;
             this.buttonTable22.UseVisualStyleBackColor = false;
             // 
@@ -223,10 +224,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable23.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable23.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable23.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable23.Location = new System.Drawing.Point(367, 253);
-            this.buttonTable23.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable23.Location = new System.Drawing.Point(489, 311);
+            this.buttonTable23.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable23.Name = "buttonTable23";
-            this.buttonTable23.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable23.Size = new System.Drawing.Size(115, 76);
             this.buttonTable23.TabIndex = 55;
             this.buttonTable23.UseVisualStyleBackColor = false;
             // 
@@ -238,10 +239,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable24.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable24.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable24.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable24.Location = new System.Drawing.Point(457, 253);
-            this.buttonTable24.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable24.Location = new System.Drawing.Point(609, 311);
+            this.buttonTable24.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable24.Name = "buttonTable24";
-            this.buttonTable24.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable24.Size = new System.Drawing.Size(115, 76);
             this.buttonTable24.TabIndex = 54;
             this.buttonTable24.UseVisualStyleBackColor = false;
             // 
@@ -253,10 +254,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable1.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable1.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable1.Location = new System.Drawing.Point(6, 54);
-            this.buttonTable1.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable1.Location = new System.Drawing.Point(8, 66);
+            this.buttonTable1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable1.Name = "buttonTable1";
-            this.buttonTable1.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable1.Size = new System.Drawing.Size(115, 76);
             this.buttonTable1.TabIndex = 53;
             this.buttonTable1.UseVisualStyleBackColor = false;
             this.buttonTable1.Click += new System.EventHandler(this.buttonTable_Click);
@@ -269,10 +270,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable2.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable2.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable2.Location = new System.Drawing.Point(97, 54);
-            this.buttonTable2.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable2.Location = new System.Drawing.Point(129, 66);
+            this.buttonTable2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable2.Name = "buttonTable2";
-            this.buttonTable2.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable2.Size = new System.Drawing.Size(115, 76);
             this.buttonTable2.TabIndex = 52;
             this.buttonTable2.UseVisualStyleBackColor = false;
             // 
@@ -284,10 +285,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable3.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable3.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable3.Location = new System.Drawing.Point(187, 54);
-            this.buttonTable3.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable3.Location = new System.Drawing.Point(249, 66);
+            this.buttonTable3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable3.Name = "buttonTable3";
-            this.buttonTable3.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable3.Size = new System.Drawing.Size(115, 76);
             this.buttonTable3.TabIndex = 51;
             this.buttonTable3.UseVisualStyleBackColor = false;
             // 
@@ -299,10 +300,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable7.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable7.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable7.Location = new System.Drawing.Point(6, 120);
-            this.buttonTable7.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable7.Location = new System.Drawing.Point(8, 148);
+            this.buttonTable7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable7.Name = "buttonTable7";
-            this.buttonTable7.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable7.Size = new System.Drawing.Size(115, 76);
             this.buttonTable7.TabIndex = 50;
             this.buttonTable7.UseVisualStyleBackColor = false;
             // 
@@ -314,10 +315,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable8.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable8.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable8.Location = new System.Drawing.Point(97, 120);
-            this.buttonTable8.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable8.Location = new System.Drawing.Point(129, 148);
+            this.buttonTable8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable8.Name = "buttonTable8";
-            this.buttonTable8.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable8.Size = new System.Drawing.Size(115, 76);
             this.buttonTable8.TabIndex = 49;
             this.buttonTable8.UseVisualStyleBackColor = false;
             // 
@@ -329,10 +330,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable9.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable9.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable9.Location = new System.Drawing.Point(187, 120);
-            this.buttonTable9.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable9.Location = new System.Drawing.Point(249, 148);
+            this.buttonTable9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable9.Name = "buttonTable9";
-            this.buttonTable9.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable9.Size = new System.Drawing.Size(115, 76);
             this.buttonTable9.TabIndex = 48;
             this.buttonTable9.UseVisualStyleBackColor = false;
             // 
@@ -344,10 +345,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable13.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable13.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable13.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable13.Location = new System.Drawing.Point(6, 187);
-            this.buttonTable13.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable13.Location = new System.Drawing.Point(8, 230);
+            this.buttonTable13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable13.Name = "buttonTable13";
-            this.buttonTable13.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable13.Size = new System.Drawing.Size(115, 76);
             this.buttonTable13.TabIndex = 47;
             this.buttonTable13.UseVisualStyleBackColor = false;
             // 
@@ -359,10 +360,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable14.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable14.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable14.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable14.Location = new System.Drawing.Point(97, 187);
-            this.buttonTable14.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable14.Location = new System.Drawing.Point(129, 230);
+            this.buttonTable14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable14.Name = "buttonTable14";
-            this.buttonTable14.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable14.Size = new System.Drawing.Size(115, 76);
             this.buttonTable14.TabIndex = 46;
             this.buttonTable14.UseVisualStyleBackColor = false;
             // 
@@ -374,10 +375,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable15.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable15.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable15.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable15.Location = new System.Drawing.Point(187, 187);
-            this.buttonTable15.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable15.Location = new System.Drawing.Point(249, 230);
+            this.buttonTable15.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable15.Name = "buttonTable15";
-            this.buttonTable15.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable15.Size = new System.Drawing.Size(115, 76);
             this.buttonTable15.TabIndex = 45;
             this.buttonTable15.UseVisualStyleBackColor = false;
             // 
@@ -389,10 +390,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable19.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable19.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable19.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable19.Location = new System.Drawing.Point(6, 253);
-            this.buttonTable19.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable19.Location = new System.Drawing.Point(8, 311);
+            this.buttonTable19.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable19.Name = "buttonTable19";
-            this.buttonTable19.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable19.Size = new System.Drawing.Size(115, 76);
             this.buttonTable19.TabIndex = 44;
             this.buttonTable19.UseVisualStyleBackColor = false;
             // 
@@ -404,10 +405,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable20.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable20.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable20.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable20.Location = new System.Drawing.Point(97, 253);
-            this.buttonTable20.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable20.Location = new System.Drawing.Point(129, 311);
+            this.buttonTable20.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable20.Name = "buttonTable20";
-            this.buttonTable20.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable20.Size = new System.Drawing.Size(115, 76);
             this.buttonTable20.TabIndex = 43;
             this.buttonTable20.UseVisualStyleBackColor = false;
             // 
@@ -419,10 +420,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable21.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable21.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable21.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable21.Location = new System.Drawing.Point(187, 253);
-            this.buttonTable21.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable21.Location = new System.Drawing.Point(249, 311);
+            this.buttonTable21.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable21.Name = "buttonTable21";
-            this.buttonTable21.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable21.Size = new System.Drawing.Size(115, 76);
             this.buttonTable21.TabIndex = 42;
             this.buttonTable21.UseVisualStyleBackColor = false;
             // 
@@ -434,10 +435,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable28.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable28.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable28.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable28.Location = new System.Drawing.Point(277, 319);
-            this.buttonTable28.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable28.Location = new System.Drawing.Point(369, 393);
+            this.buttonTable28.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable28.Name = "buttonTable28";
-            this.buttonTable28.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable28.Size = new System.Drawing.Size(115, 76);
             this.buttonTable28.TabIndex = 41;
             this.buttonTable28.UseVisualStyleBackColor = false;
             // 
@@ -449,10 +450,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable29.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable29.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable29.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable29.Location = new System.Drawing.Point(367, 319);
-            this.buttonTable29.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable29.Location = new System.Drawing.Point(489, 393);
+            this.buttonTable29.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable29.Name = "buttonTable29";
-            this.buttonTable29.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable29.Size = new System.Drawing.Size(115, 76);
             this.buttonTable29.TabIndex = 40;
             this.buttonTable29.UseVisualStyleBackColor = false;
             // 
@@ -464,10 +465,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable30.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable30.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable30.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable30.Location = new System.Drawing.Point(457, 319);
-            this.buttonTable30.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable30.Location = new System.Drawing.Point(609, 393);
+            this.buttonTable30.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable30.Name = "buttonTable30";
-            this.buttonTable30.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable30.Size = new System.Drawing.Size(115, 76);
             this.buttonTable30.TabIndex = 39;
             this.buttonTable30.UseVisualStyleBackColor = false;
             // 
@@ -479,10 +480,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable25.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable25.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable25.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable25.Location = new System.Drawing.Point(6, 319);
-            this.buttonTable25.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable25.Location = new System.Drawing.Point(8, 393);
+            this.buttonTable25.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable25.Name = "buttonTable25";
-            this.buttonTable25.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable25.Size = new System.Drawing.Size(115, 76);
             this.buttonTable25.TabIndex = 38;
             this.buttonTable25.UseVisualStyleBackColor = false;
             // 
@@ -494,10 +495,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable26.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable26.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable26.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable26.Location = new System.Drawing.Point(97, 319);
-            this.buttonTable26.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable26.Location = new System.Drawing.Point(129, 393);
+            this.buttonTable26.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable26.Name = "buttonTable26";
-            this.buttonTable26.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable26.Size = new System.Drawing.Size(115, 76);
             this.buttonTable26.TabIndex = 37;
             this.buttonTable26.UseVisualStyleBackColor = false;
             // 
@@ -509,10 +510,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonTable27.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTable27.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
             this.buttonTable27.ForeColor = System.Drawing.Color.Black;
-            this.buttonTable27.Location = new System.Drawing.Point(187, 319);
-            this.buttonTable27.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTable27.Location = new System.Drawing.Point(249, 393);
+            this.buttonTable27.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonTable27.Name = "buttonTable27";
-            this.buttonTable27.Size = new System.Drawing.Size(86, 62);
+            this.buttonTable27.Size = new System.Drawing.Size(115, 76);
             this.buttonTable27.TabIndex = 36;
             this.buttonTable27.UseVisualStyleBackColor = false;
             // 
@@ -520,10 +521,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(9, 14);
+            this.label1.Location = new System.Drawing.Point(12, 17);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(186, 28);
+            this.label1.Size = new System.Drawing.Size(232, 35);
             this.label1.TabIndex = 2;
             this.label1.Text = "Select Order Taker";
             // 
@@ -536,10 +537,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(429, 10);
-            this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonClose.Location = new System.Drawing.Point(572, 12);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(109, 32);
+            this.buttonClose.Size = new System.Drawing.Size(145, 39);
             this.buttonClose.TabIndex = 21;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Esc - Close";
@@ -553,17 +554,17 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.panel1.Controls.Add(this.buttonClose);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(549, 50);
+            this.panel1.Size = new System.Drawing.Size(732, 62);
             this.panel1.TabIndex = 66;
             // 
             // TrnPOSTouchSelectOrderTaker
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(549, 387);
+            this.ClientSize = new System.Drawing.Size(732, 476);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.buttonTable4);
@@ -597,6 +598,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.Controls.Add(this.buttonTable26);
             this.Controls.Add(this.buttonTable27);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "TrnPOSTouchSelectOrderTaker";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order Taker";

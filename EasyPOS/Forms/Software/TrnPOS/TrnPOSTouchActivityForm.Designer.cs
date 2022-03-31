@@ -48,12 +48,12 @@
             this.imageListPOSTouchCancel = new System.Windows.Forms.ImageList(this.components);
             this.buttonSplitMergeBill = new System.Windows.Forms.Button();
             this.buttonSelectOrderTaker = new System.Windows.Forms.Button();
+            this.imageListPOSTouchOrderTaker = new System.Windows.Forms.ImageList(this.components);
             this.buttonEditOrder = new System.Windows.Forms.Button();
             this.imageListPOSTouchEditOrder = new System.Windows.Forms.ImageList(this.components);
             this.printDialogReprintOR = new System.Windows.Forms.PrintDialog();
             this.printDialog1 = new System.Windows.Forms.PrintDialog();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.imageListPOSTouchOrderTaker = new System.Windows.Forms.ImageList(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -70,16 +70,16 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(803, 50);
+            this.panel1.Size = new System.Drawing.Size(1004, 62);
             this.panel1.TabIndex = 5;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.POS_Touch;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
+            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -88,10 +88,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(50, 14);
+            this.label1.Location = new System.Drawing.Point(62, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(192, 28);
+            this.label1.Size = new System.Drawing.Size(238, 35);
             this.label1.TabIndex = 2;
             this.label1.Text = "POS Touch Activity";
             // 
@@ -104,10 +104,10 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(683, 10);
+            this.buttonClose.Location = new System.Drawing.Point(854, 12);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(109, 32);
+            this.buttonClose.Size = new System.Drawing.Size(136, 40);
             this.buttonClose.TabIndex = 21;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Esc - Close";
@@ -128,10 +128,10 @@
             this.panel2.Controls.Add(this.buttonSelectOrderTaker);
             this.panel2.Controls.Add(this.buttonEditOrder);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 50);
+            this.panel2.Location = new System.Drawing.Point(0, 62);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(803, 378);
+            this.panel2.Size = new System.Drawing.Size(1004, 473);
             this.panel2.TabIndex = 6;
             // 
             // buttonCancel
@@ -144,11 +144,11 @@
             this.buttonCancel.ForeColor = System.Drawing.Color.White;
             this.buttonCancel.ImageIndex = 0;
             this.buttonCancel.ImageList = this.imageListPOSTouchOthers;
-            this.buttonCancel.Location = new System.Drawing.Point(665, 155);
+            this.buttonCancel.Location = new System.Drawing.Point(831, 194);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(2);
             this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Padding = new System.Windows.Forms.Padding(8);
-            this.buttonCancel.Size = new System.Drawing.Size(127, 105);
+            this.buttonCancel.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.buttonCancel.Size = new System.Drawing.Size(159, 131);
             this.buttonCancel.TabIndex = 11;
             this.buttonCancel.Text = "\r\nF7 - Cancel";
             this.buttonCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -175,11 +175,11 @@
             this.buttonReprint.ForeColor = System.Drawing.Color.White;
             this.buttonReprint.ImageIndex = 0;
             this.buttonReprint.ImageList = this.imageListPOSTouchBIllOut;
-            this.buttonReprint.Location = new System.Drawing.Point(272, 155);
+            this.buttonReprint.Location = new System.Drawing.Point(340, 194);
             this.buttonReprint.Margin = new System.Windows.Forms.Padding(2);
             this.buttonReprint.Name = "buttonReprint";
-            this.buttonReprint.Padding = new System.Windows.Forms.Padding(8);
-            this.buttonReprint.Size = new System.Drawing.Size(258, 105);
+            this.buttonReprint.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.buttonReprint.Size = new System.Drawing.Size(322, 131);
             this.buttonReprint.TabIndex = 10;
             this.buttonReprint.Text = " \r\nF5 -Reprint";
             this.buttonReprint.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -203,11 +203,11 @@
             this.buttonDeliver.ForeColor = System.Drawing.Color.White;
             this.buttonDeliver.ImageIndex = 4;
             this.buttonDeliver.ImageList = this.imageListPOSTouchOthers;
-            this.buttonDeliver.Location = new System.Drawing.Point(10, 264);
+            this.buttonDeliver.Location = new System.Drawing.Point(12, 330);
             this.buttonDeliver.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDeliver.Name = "buttonDeliver";
-            this.buttonDeliver.Padding = new System.Windows.Forms.Padding(8);
-            this.buttonDeliver.Size = new System.Drawing.Size(258, 105);
+            this.buttonDeliver.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.buttonDeliver.Size = new System.Drawing.Size(322, 131);
             this.buttonDeliver.TabIndex = 9;
             this.buttonDeliver.Text = "\r\nF8 - Deliver";
             this.buttonDeliver.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -222,7 +222,7 @@
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(803, 42);
+            this.panel3.Size = new System.Drawing.Size(1004, 52);
             this.panel3.TabIndex = 8;
             // 
             // labelInvoiceNumber
@@ -230,10 +230,10 @@
             this.labelInvoiceNumber.AutoSize = true;
             this.labelInvoiceNumber.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelInvoiceNumber.ForeColor = System.Drawing.Color.White;
-            this.labelInvoiceNumber.Location = new System.Drawing.Point(14, 6);
+            this.labelInvoiceNumber.Location = new System.Drawing.Point(18, 8);
             this.labelInvoiceNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelInvoiceNumber.Name = "labelInvoiceNumber";
-            this.labelInvoiceNumber.Size = new System.Drawing.Size(0, 25);
+            this.labelInvoiceNumber.Size = new System.Drawing.Size(0, 30);
             this.labelInvoiceNumber.TabIndex = 6;
             // 
             // buttonTender
@@ -246,11 +246,11 @@
             this.buttonTender.ForeColor = System.Drawing.Color.White;
             this.buttonTender.ImageIndex = 3;
             this.buttonTender.ImageList = this.imageListPOSTouchOthers;
-            this.buttonTender.Location = new System.Drawing.Point(534, 46);
+            this.buttonTender.Location = new System.Drawing.Point(668, 58);
             this.buttonTender.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTender.Name = "buttonTender";
-            this.buttonTender.Padding = new System.Windows.Forms.Padding(8);
-            this.buttonTender.Size = new System.Drawing.Size(258, 105);
+            this.buttonTender.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.buttonTender.Size = new System.Drawing.Size(322, 131);
             this.buttonTender.TabIndex = 7;
             this.buttonTender.Text = "\r\nF4 - Tender";
             this.buttonTender.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -267,11 +267,11 @@
             this.buttonBillOut.ForeColor = System.Drawing.Color.White;
             this.buttonBillOut.ImageIndex = 0;
             this.buttonBillOut.ImageList = this.imageListPOSTouchBIllOut;
-            this.buttonBillOut.Location = new System.Drawing.Point(272, 46);
+            this.buttonBillOut.Location = new System.Drawing.Point(340, 58);
             this.buttonBillOut.Margin = new System.Windows.Forms.Padding(2);
             this.buttonBillOut.Name = "buttonBillOut";
-            this.buttonBillOut.Padding = new System.Windows.Forms.Padding(8);
-            this.buttonBillOut.Size = new System.Drawing.Size(258, 105);
+            this.buttonBillOut.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.buttonBillOut.Size = new System.Drawing.Size(322, 131);
             this.buttonBillOut.TabIndex = 6;
             this.buttonBillOut.Text = " \r\nF3 -Bill Out";
             this.buttonBillOut.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -289,11 +289,11 @@
             this.buttonDelete.ForeColor = System.Drawing.Color.White;
             this.buttonDelete.ImageIndex = 3;
             this.buttonDelete.ImageList = this.imageListPOSTouchCancel;
-            this.buttonDelete.Location = new System.Drawing.Point(534, 155);
+            this.buttonDelete.Location = new System.Drawing.Point(668, 194);
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Padding = new System.Windows.Forms.Padding(8);
-            this.buttonDelete.Size = new System.Drawing.Size(127, 105);
+            this.buttonDelete.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.buttonDelete.Size = new System.Drawing.Size(159, 131);
             this.buttonDelete.TabIndex = 4;
             this.buttonDelete.Text = "\r\nF6 - Delete";
             this.buttonDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -319,11 +319,11 @@
             this.buttonSplitMergeBill.ForeColor = System.Drawing.Color.White;
             this.buttonSplitMergeBill.ImageIndex = 2;
             this.buttonSplitMergeBill.ImageList = this.imageListPOSTouchOthers;
-            this.buttonSplitMergeBill.Location = new System.Drawing.Point(534, 264);
+            this.buttonSplitMergeBill.Location = new System.Drawing.Point(668, 330);
             this.buttonSplitMergeBill.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSplitMergeBill.Name = "buttonSplitMergeBill";
-            this.buttonSplitMergeBill.Padding = new System.Windows.Forms.Padding(8);
-            this.buttonSplitMergeBill.Size = new System.Drawing.Size(258, 105);
+            this.buttonSplitMergeBill.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.buttonSplitMergeBill.Size = new System.Drawing.Size(322, 131);
             this.buttonSplitMergeBill.TabIndex = 3;
             this.buttonSplitMergeBill.Text = "\r\nF10 - Split/Merge Bill";
             this.buttonSplitMergeBill.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
@@ -341,16 +341,27 @@
             this.buttonSelectOrderTaker.ForeColor = System.Drawing.Color.White;
             this.buttonSelectOrderTaker.ImageIndex = 5;
             this.buttonSelectOrderTaker.ImageList = this.imageListPOSTouchOrderTaker;
-            this.buttonSelectOrderTaker.Location = new System.Drawing.Point(272, 264);
+            this.buttonSelectOrderTaker.Location = new System.Drawing.Point(340, 330);
             this.buttonSelectOrderTaker.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSelectOrderTaker.Name = "buttonSelectOrderTaker";
-            this.buttonSelectOrderTaker.Padding = new System.Windows.Forms.Padding(8);
-            this.buttonSelectOrderTaker.Size = new System.Drawing.Size(257, 105);
+            this.buttonSelectOrderTaker.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.buttonSelectOrderTaker.Size = new System.Drawing.Size(321, 131);
             this.buttonSelectOrderTaker.TabIndex = 2;
             this.buttonSelectOrderTaker.Text = "\r\nF9 - Select Order Taker";
             this.buttonSelectOrderTaker.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.buttonSelectOrderTaker.UseVisualStyleBackColor = false;
             this.buttonSelectOrderTaker.Click += new System.EventHandler(this.buttonSelectOrderTaker_Click);
+            // 
+            // imageListPOSTouchOrderTaker
+            // 
+            this.imageListPOSTouchOrderTaker.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListPOSTouchOrderTaker.ImageStream")));
+            this.imageListPOSTouchOrderTaker.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListPOSTouchOrderTaker.Images.SetKeyName(0, "cancel.png");
+            this.imageListPOSTouchOrderTaker.Images.SetKeyName(1, "print.png");
+            this.imageListPOSTouchOrderTaker.Images.SetKeyName(2, "splitMergeBill.png");
+            this.imageListPOSTouchOrderTaker.Images.SetKeyName(3, "tender.png");
+            this.imageListPOSTouchOrderTaker.Images.SetKeyName(4, "DeliveryMan.png");
+            this.imageListPOSTouchOrderTaker.Images.SetKeyName(5, "Customer.png");
             // 
             // buttonEditOrder
             // 
@@ -362,11 +373,11 @@
             this.buttonEditOrder.ForeColor = System.Drawing.Color.White;
             this.buttonEditOrder.ImageIndex = 1;
             this.buttonEditOrder.ImageList = this.imageListPOSTouchEditOrder;
-            this.buttonEditOrder.Location = new System.Drawing.Point(11, 46);
+            this.buttonEditOrder.Location = new System.Drawing.Point(14, 58);
             this.buttonEditOrder.Margin = new System.Windows.Forms.Padding(2);
             this.buttonEditOrder.Name = "buttonEditOrder";
-            this.buttonEditOrder.Padding = new System.Windows.Forms.Padding(8);
-            this.buttonEditOrder.Size = new System.Drawing.Size(257, 214);
+            this.buttonEditOrder.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.buttonEditOrder.Size = new System.Drawing.Size(321, 268);
             this.buttonEditOrder.TabIndex = 1;
             this.buttonEditOrder.Text = "\r\nF2 - Edit Order";
             this.buttonEditOrder.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -399,22 +410,11 @@
             this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
             this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
             // 
-            // imageListPOSTouchOrderTaker
-            // 
-            this.imageListPOSTouchOrderTaker.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListPOSTouchOrderTaker.ImageStream")));
-            this.imageListPOSTouchOrderTaker.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListPOSTouchOrderTaker.Images.SetKeyName(0, "cancel.png");
-            this.imageListPOSTouchOrderTaker.Images.SetKeyName(1, "print.png");
-            this.imageListPOSTouchOrderTaker.Images.SetKeyName(2, "splitMergeBill.png");
-            this.imageListPOSTouchOrderTaker.Images.SetKeyName(3, "tender.png");
-            this.imageListPOSTouchOrderTaker.Images.SetKeyName(4, "DeliveryMan.png");
-            this.imageListPOSTouchOrderTaker.Images.SetKeyName(5, "Customer.png");
-            // 
             // TrnPOSTouchActivityForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(803, 428);
+            this.ClientSize = new System.Drawing.Size(1004, 535);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;

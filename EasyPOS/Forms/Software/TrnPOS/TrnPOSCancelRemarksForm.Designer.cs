@@ -49,18 +49,18 @@
             this.panel1.Controls.Add(this.buttonOK);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(544, 50);
+            this.panel1.Size = new System.Drawing.Size(680, 62);
             this.panel1.TabIndex = 5;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.POS;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
+            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -69,10 +69,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(50, 14);
+            this.label1.Location = new System.Drawing.Point(62, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(161, 28);
+            this.label1.Size = new System.Drawing.Size(199, 35);
             this.label1.TabIndex = 2;
             this.label1.Text = "Cancel Remarks";
             // 
@@ -85,10 +85,10 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(427, 10);
-            this.buttonClose.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonClose.Location = new System.Drawing.Point(534, 12);
+            this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(109, 32);
+            this.buttonClose.Size = new System.Drawing.Size(136, 40);
             this.buttonClose.TabIndex = 1;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Esc - Close";
@@ -104,10 +104,10 @@
             this.buttonOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOK.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOK.ForeColor = System.Drawing.Color.White;
-            this.buttonOK.Location = new System.Drawing.Point(311, 10);
-            this.buttonOK.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.buttonOK.Location = new System.Drawing.Point(389, 12);
+            this.buttonOK.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(112, 32);
+            this.buttonOK.Size = new System.Drawing.Size(140, 40);
             this.buttonOK.TabIndex = 1;
             this.buttonOK.TabStop = false;
             this.buttonOK.Text = "Ent - OK";
@@ -119,35 +119,35 @@
             this.textBoxCancelRemarks.AcceptsTab = true;
             this.textBoxCancelRemarks.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxCancelRemarks.HideSelection = false;
-            this.textBoxCancelRemarks.Location = new System.Drawing.Point(10, 78);
-            this.textBoxCancelRemarks.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBoxCancelRemarks.Location = new System.Drawing.Point(12, 98);
+            this.textBoxCancelRemarks.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCancelRemarks.Multiline = true;
             this.textBoxCancelRemarks.Name = "textBoxCancelRemarks";
-            this.textBoxCancelRemarks.Size = new System.Drawing.Size(526, 150);
+            this.textBoxCancelRemarks.Size = new System.Drawing.Size(656, 186);
             this.textBoxCancelRemarks.TabIndex = 32;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label13.Location = new System.Drawing.Point(6, 53);
+            this.label13.Location = new System.Drawing.Point(8, 66);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(74, 21);
+            this.label13.Size = new System.Drawing.Size(89, 28);
             this.label13.TabIndex = 33;
             this.label13.Text = "Remarks:";
             // 
             // TrnPOSCancelRemarksForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(544, 236);
+            this.ClientSize = new System.Drawing.Size(680, 295);
             this.Controls.Add(this.textBoxCancelRemarks);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "TrnPOSCancelRemarksForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

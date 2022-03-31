@@ -2107,6 +2107,7 @@
     <Content Include="Resources\Images\Company\easycloud.jpg" />
     <Content Include="Resources\Images\Customers\sonnets.png" />
     <Content Include="Resources\Images\Icons\Customer.png" />
+    <None Include="Resources\liteclerklogoimg.png" />
     <None Include="Resources\Images\Icons\DeliveryMan.png" />
     <Content Include="Resources\Images\Icons\Disbursement.png" />
     <Content Include="Resources\Images\Icons\Discounting.png" />

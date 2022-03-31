@@ -99,7 +99,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(783, 50);
+            this.panel1.Size = new System.Drawing.Size(979, 62);
             this.panel1.TabIndex = 3;
             // 
             // buttonSales
@@ -111,10 +111,10 @@
             this.buttonSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSales.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSales.ForeColor = System.Drawing.Color.White;
-            this.buttonSales.Location = new System.Drawing.Point(433, 10);
+            this.buttonSales.Location = new System.Drawing.Point(541, 12);
             this.buttonSales.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSales.Name = "buttonSales";
-            this.buttonSales.Size = new System.Drawing.Size(112, 32);
+            this.buttonSales.Size = new System.Drawing.Size(140, 40);
             this.buttonSales.TabIndex = 4;
             this.buttonSales.TabStop = false;
             this.buttonSales.Text = "F2 - Sales";
@@ -124,10 +124,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.POS;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
+            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -136,10 +136,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(50, 14);
+            this.label1.Location = new System.Drawing.Point(62, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 28);
+            this.label1.Size = new System.Drawing.Size(96, 35);
             this.label1.TabIndex = 2;
             this.label1.Text = "Tender";
             // 
@@ -152,10 +152,10 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(665, 10);
+            this.buttonClose.Location = new System.Drawing.Point(831, 12);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(109, 32);
+            this.buttonClose.Size = new System.Drawing.Size(136, 40);
             this.buttonClose.TabIndex = 1;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Esc - Close";
@@ -171,10 +171,10 @@
             this.buttonTender.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonTender.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonTender.ForeColor = System.Drawing.Color.White;
-            this.buttonTender.Location = new System.Drawing.Point(549, 10);
+            this.buttonTender.Location = new System.Drawing.Point(686, 12);
             this.buttonTender.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTender.Name = "buttonTender";
-            this.buttonTender.Size = new System.Drawing.Size(112, 32);
+            this.buttonTender.Size = new System.Drawing.Size(140, 40);
             this.buttonTender.TabIndex = 1;
             this.buttonTender.TabStop = false;
             this.buttonTender.Text = "F3 - Tender";
@@ -189,10 +189,10 @@
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 502);
+            this.panel3.Location = new System.Drawing.Point(0, 627);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(783, 71);
+            this.panel3.Size = new System.Drawing.Size(979, 89);
             this.panel3.TabIndex = 6;
             // 
             // textBoxChangeAmount
@@ -203,11 +203,11 @@
             this.textBoxChangeAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxChangeAmount.Font = new System.Drawing.Font("Segoe UI Semibold", 15F, System.Drawing.FontStyle.Bold);
             this.textBoxChangeAmount.ForeColor = System.Drawing.Color.White;
-            this.textBoxChangeAmount.Location = new System.Drawing.Point(301, 34);
+            this.textBoxChangeAmount.Location = new System.Drawing.Point(376, 42);
             this.textBoxChangeAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxChangeAmount.Name = "textBoxChangeAmount";
             this.textBoxChangeAmount.ReadOnly = true;
-            this.textBoxChangeAmount.Size = new System.Drawing.Size(466, 27);
+            this.textBoxChangeAmount.Size = new System.Drawing.Size(582, 34);
             this.textBoxChangeAmount.TabIndex = 12;
             this.textBoxChangeAmount.TabStop = false;
             this.textBoxChangeAmount.Text = "0.00";
@@ -221,11 +221,11 @@
             this.textBoxTenderAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxTenderAmount.Font = new System.Drawing.Font("Segoe UI Semibold", 15F, System.Drawing.FontStyle.Bold);
             this.textBoxTenderAmount.ForeColor = System.Drawing.Color.White;
-            this.textBoxTenderAmount.Location = new System.Drawing.Point(301, 9);
+            this.textBoxTenderAmount.Location = new System.Drawing.Point(376, 11);
             this.textBoxTenderAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTenderAmount.Name = "textBoxTenderAmount";
             this.textBoxTenderAmount.ReadOnly = true;
-            this.textBoxTenderAmount.Size = new System.Drawing.Size(466, 27);
+            this.textBoxTenderAmount.Size = new System.Drawing.Size(582, 34);
             this.textBoxTenderAmount.TabIndex = 11;
             this.textBoxTenderAmount.TabStop = false;
             this.textBoxTenderAmount.Text = "0.00";
@@ -238,10 +238,10 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(12, 38);
+            this.label3.Location = new System.Drawing.Point(15, 48);
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 20);
+            this.label3.Size = new System.Drawing.Size(82, 25);
             this.label3.TabIndex = 5;
             this.label3.Text = "Change:";
             // 
@@ -252,10 +252,10 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(12, 15);
+            this.label2.Location = new System.Drawing.Point(15, 19);
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(119, 20);
+            this.label2.Size = new System.Drawing.Size(149, 25);
             this.label2.TabIndex = 4;
             this.label2.Text = "Tender Amount:";
             // 
@@ -274,19 +274,20 @@
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.labelInvoiceNumber);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 50);
+            this.panel2.Location = new System.Drawing.Point(0, 62);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(783, 88);
+            this.panel2.Size = new System.Drawing.Size(979, 110);
             this.panel2.TabIndex = 7;
             // 
             // panel5
             // 
             this.panel5.Controls.Add(this.textBoxTotalSalesAmount);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel5.Location = new System.Drawing.Point(355, 0);
+            this.panel5.Location = new System.Drawing.Point(444, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(428, 88);
+            this.panel5.Size = new System.Drawing.Size(535, 110);
             this.panel5.TabIndex = 15;
             // 
             // textBoxTotalSalesAmount
@@ -296,11 +297,11 @@
             this.textBoxTotalSalesAmount.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxTotalSalesAmount.Font = new System.Drawing.Font("Segoe UI Semibold", 40F, System.Drawing.FontStyle.Bold);
             this.textBoxTotalSalesAmount.ForeColor = System.Drawing.Color.White;
-            this.textBoxTotalSalesAmount.Location = new System.Drawing.Point(12, 5);
+            this.textBoxTotalSalesAmount.Location = new System.Drawing.Point(15, 6);
             this.textBoxTotalSalesAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTotalSalesAmount.Name = "textBoxTotalSalesAmount";
             this.textBoxTotalSalesAmount.ReadOnly = true;
-            this.textBoxTotalSalesAmount.Size = new System.Drawing.Size(405, 71);
+            this.textBoxTotalSalesAmount.Size = new System.Drawing.Size(506, 89);
             this.textBoxTotalSalesAmount.TabIndex = 1;
             this.textBoxTotalSalesAmount.TabStop = false;
             this.textBoxTotalSalesAmount.Text = "0.00";
@@ -311,10 +312,10 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.label9.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label9.Location = new System.Drawing.Point(11, 66);
+            this.label9.Location = new System.Drawing.Point(14, 82);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(55, 15);
+            this.label9.Size = new System.Drawing.Size(71, 20);
             this.label9.TabIndex = 13;
             this.label9.Text = "Remarks:";
             // 
@@ -324,10 +325,10 @@
             this.labelRemarks.AutoSize = true;
             this.labelRemarks.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.labelRemarks.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelRemarks.Location = new System.Drawing.Point(83, 66);
+            this.labelRemarks.Location = new System.Drawing.Point(104, 82);
             this.labelRemarks.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelRemarks.Name = "labelRemarks";
-            this.labelRemarks.Size = new System.Drawing.Size(56, 15);
+            this.labelRemarks.Size = new System.Drawing.Size(70, 20);
             this.labelRemarks.TabIndex = 14;
             this.labelRemarks.Text = "Remarks";
             // 
@@ -336,10 +337,10 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.label7.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label7.Location = new System.Drawing.Point(11, 36);
+            this.label7.Location = new System.Drawing.Point(14, 45);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(37, 15);
+            this.label7.Size = new System.Drawing.Size(48, 20);
             this.label7.TabIndex = 11;
             this.label7.Text = "Code:";
             // 
@@ -348,10 +349,10 @@
             this.labelCustomerCode.AutoSize = true;
             this.labelCustomerCode.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.labelCustomerCode.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelCustomerCode.Location = new System.Drawing.Point(83, 36);
+            this.labelCustomerCode.Location = new System.Drawing.Point(104, 45);
             this.labelCustomerCode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCustomerCode.Name = "labelCustomerCode";
-            this.labelCustomerCode.Size = new System.Drawing.Size(77, 15);
+            this.labelCustomerCode.Size = new System.Drawing.Size(99, 20);
             this.labelCustomerCode.TabIndex = 12;
             this.labelCustomerCode.Text = "0000000000";
             // 
@@ -360,10 +361,10 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.label6.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label6.Location = new System.Drawing.Point(11, 51);
+            this.label6.Location = new System.Drawing.Point(14, 64);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 15);
+            this.label6.Size = new System.Drawing.Size(79, 20);
             this.label6.TabIndex = 9;
             this.label6.Text = "Customer:";
             // 
@@ -372,10 +373,10 @@
             this.labelCustomer.AutoSize = true;
             this.labelCustomer.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.labelCustomer.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelCustomer.Location = new System.Drawing.Point(83, 51);
+            this.labelCustomer.Location = new System.Drawing.Point(104, 64);
             this.labelCustomer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCustomer.Name = "labelCustomer";
-            this.labelCustomer.Size = new System.Drawing.Size(97, 15);
+            this.labelCustomer.Size = new System.Drawing.Size(123, 20);
             this.labelCustomer.TabIndex = 10;
             this.labelCustomer.Text = "Customer Name";
             // 
@@ -384,10 +385,10 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label4.Location = new System.Drawing.Point(11, 21);
+            this.label4.Location = new System.Drawing.Point(14, 26);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 15);
+            this.label4.Size = new System.Drawing.Size(89, 20);
             this.label4.TabIndex = 7;
             this.label4.Text = "Order Date:";
             // 
@@ -396,10 +397,10 @@
             this.labelInvoiceDate.AutoSize = true;
             this.labelInvoiceDate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.labelInvoiceDate.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelInvoiceDate.Location = new System.Drawing.Point(83, 21);
+            this.labelInvoiceDate.Location = new System.Drawing.Point(104, 26);
             this.labelInvoiceDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelInvoiceDate.Name = "labelInvoiceDate";
-            this.labelInvoiceDate.Size = new System.Drawing.Size(77, 15);
+            this.labelInvoiceDate.Size = new System.Drawing.Size(101, 20);
             this.labelInvoiceDate.TabIndex = 8;
             this.labelInvoiceDate.Text = "MM/dd/yyyy";
             // 
@@ -408,10 +409,10 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.label5.Location = new System.Drawing.Point(11, 6);
+            this.label5.Location = new System.Drawing.Point(14, 8);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 15);
+            this.label5.Size = new System.Drawing.Size(82, 20);
             this.label5.TabIndex = 5;
             this.label5.Text = "Order No.:";
             // 
@@ -420,10 +421,10 @@
             this.labelInvoiceNumber.AutoSize = true;
             this.labelInvoiceNumber.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.labelInvoiceNumber.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelInvoiceNumber.Location = new System.Drawing.Point(83, 6);
+            this.labelInvoiceNumber.Location = new System.Drawing.Point(104, 8);
             this.labelInvoiceNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelInvoiceNumber.Name = "labelInvoiceNumber";
-            this.labelInvoiceNumber.Size = new System.Drawing.Size(77, 15);
+            this.labelInvoiceNumber.Size = new System.Drawing.Size(99, 20);
             this.labelInvoiceNumber.TabIndex = 6;
             this.labelInvoiceNumber.Text = "0000000000";
             // 
@@ -431,10 +432,10 @@
             // 
             this.panel4.Controls.Add(this.dataGridViewTenderPayType);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 138);
+            this.panel4.Location = new System.Drawing.Point(0, 172);
             this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(783, 364);
+            this.panel4.Size = new System.Drawing.Size(979, 455);
             this.panel4.TabIndex = 8;
             // 
             // dataGridViewTenderPayType
@@ -476,17 +477,18 @@
             this.ColumnTenderListPayTypeCreditCardBank,
             this.ColumnTenderListPayTypeCreditCardExpiry,
             this.ColumnTenderListPayTypeGiftCertificateNumber});
-            this.dataGridViewTenderPayType.Location = new System.Drawing.Point(10, 5);
+            this.dataGridViewTenderPayType.Location = new System.Drawing.Point(12, 6);
             this.dataGridViewTenderPayType.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewTenderPayType.MultiSelect = false;
             this.dataGridViewTenderPayType.Name = "dataGridViewTenderPayType";
             this.dataGridViewTenderPayType.RowHeadersVisible = false;
+            this.dataGridViewTenderPayType.RowHeadersWidth = 51;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.dataGridViewTenderPayType.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewTenderPayType.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI Semibold", 15F, System.Drawing.FontStyle.Bold);
             this.dataGridViewTenderPayType.RowTemplate.Height = 50;
             this.dataGridViewTenderPayType.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewTenderPayType.Size = new System.Drawing.Size(764, 355);
+            this.dataGridViewTenderPayType.Size = new System.Drawing.Size(955, 444);
             this.dataGridViewTenderPayType.TabIndex = 0;
             this.dataGridViewTenderPayType.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTenderPayType_CellClick);
             this.dataGridViewTenderPayType.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewTenderPayType_CellEndEdit);
@@ -494,14 +496,18 @@
             // ColumnTenderListPayTypeId
             // 
             this.ColumnTenderListPayTypeId.HeaderText = "Id";
+            this.ColumnTenderListPayTypeId.MinimumWidth = 6;
             this.ColumnTenderListPayTypeId.Name = "ColumnTenderListPayTypeId";
             this.ColumnTenderListPayTypeId.Visible = false;
+            this.ColumnTenderListPayTypeId.Width = 125;
             // 
             // ColumnTenderListPayTypePayTypeCode
             // 
             this.ColumnTenderListPayTypePayTypeCode.HeaderText = "Code";
+            this.ColumnTenderListPayTypePayTypeCode.MinimumWidth = 6;
             this.ColumnTenderListPayTypePayTypeCode.Name = "ColumnTenderListPayTypePayTypeCode";
             this.ColumnTenderListPayTypePayTypeCode.Visible = false;
+            this.ColumnTenderListPayTypePayTypeCode.Width = 125;
             // 
             // ColumnTenderListPayTypePayType
             // 
@@ -512,6 +518,7 @@
             this.ColumnTenderListPayTypePayType.FillWeight = 5.076141F;
             this.ColumnTenderListPayTypePayType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ColumnTenderListPayTypePayType.HeaderText = "PayType";
+            this.ColumnTenderListPayTypePayType.MinimumWidth = 6;
             this.ColumnTenderListPayTypePayType.Name = "ColumnTenderListPayTypePayType";
             this.ColumnTenderListPayTypePayType.ReadOnly = true;
             this.ColumnTenderListPayTypePayType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -520,7 +527,9 @@
             // 
             this.ColumnTenderListNumpad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ColumnTenderListNumpad.HeaderText = "";
+            this.ColumnTenderListNumpad.MinimumWidth = 6;
             this.ColumnTenderListNumpad.Name = "ColumnTenderListNumpad";
+            this.ColumnTenderListNumpad.Width = 125;
             // 
             // ColumnTenderListPayTypeAmount
             // 
@@ -530,6 +539,7 @@
             this.ColumnTenderListPayTypeAmount.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnTenderListPayTypeAmount.FillWeight = 194.9239F;
             this.ColumnTenderListPayTypeAmount.HeaderText = "Amount";
+            this.ColumnTenderListPayTypeAmount.MinimumWidth = 6;
             this.ColumnTenderListPayTypeAmount.Name = "ColumnTenderListPayTypeAmount";
             this.ColumnTenderListPayTypeAmount.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.ColumnTenderListPayTypeAmount.Width = 300;
@@ -537,92 +547,120 @@
             // ColumnTenderListPayTypeOtherInformation
             // 
             this.ColumnTenderListPayTypeOtherInformation.HeaderText = "Other Information";
+            this.ColumnTenderListPayTypeOtherInformation.MinimumWidth = 6;
             this.ColumnTenderListPayTypeOtherInformation.Name = "ColumnTenderListPayTypeOtherInformation";
             this.ColumnTenderListPayTypeOtherInformation.Visible = false;
+            this.ColumnTenderListPayTypeOtherInformation.Width = 125;
             // 
             // ColumnTenderListPayTypeSalesReturnSalesId
             // 
             this.ColumnTenderListPayTypeSalesReturnSalesId.HeaderText = "Sales Return Sales Id";
+            this.ColumnTenderListPayTypeSalesReturnSalesId.MinimumWidth = 6;
             this.ColumnTenderListPayTypeSalesReturnSalesId.Name = "ColumnTenderListPayTypeSalesReturnSalesId";
             this.ColumnTenderListPayTypeSalesReturnSalesId.Visible = false;
+            this.ColumnTenderListPayTypeSalesReturnSalesId.Width = 125;
             // 
             // ColumnTenderListPayTypeSalesReturnSalesNumber
             // 
             this.ColumnTenderListPayTypeSalesReturnSalesNumber.HeaderText = "Sales Return Sales No.";
+            this.ColumnTenderListPayTypeSalesReturnSalesNumber.MinimumWidth = 6;
             this.ColumnTenderListPayTypeSalesReturnSalesNumber.Name = "ColumnTenderListPayTypeSalesReturnSalesNumber";
             this.ColumnTenderListPayTypeSalesReturnSalesNumber.Visible = false;
+            this.ColumnTenderListPayTypeSalesReturnSalesNumber.Width = 125;
             // 
             // ColumnTenderListPayTypeCheckNumber
             // 
             this.ColumnTenderListPayTypeCheckNumber.HeaderText = "Check Number";
+            this.ColumnTenderListPayTypeCheckNumber.MinimumWidth = 6;
             this.ColumnTenderListPayTypeCheckNumber.Name = "ColumnTenderListPayTypeCheckNumber";
             this.ColumnTenderListPayTypeCheckNumber.Visible = false;
+            this.ColumnTenderListPayTypeCheckNumber.Width = 125;
             // 
             // ColumnTenderListPayTypeCheckDate
             // 
             this.ColumnTenderListPayTypeCheckDate.HeaderText = "Check Date";
+            this.ColumnTenderListPayTypeCheckDate.MinimumWidth = 6;
             this.ColumnTenderListPayTypeCheckDate.Name = "ColumnTenderListPayTypeCheckDate";
             this.ColumnTenderListPayTypeCheckDate.Visible = false;
+            this.ColumnTenderListPayTypeCheckDate.Width = 125;
             // 
             // ColumnTenderListPayTypeCheckBank
             // 
             this.ColumnTenderListPayTypeCheckBank.HeaderText = "Check Bank";
+            this.ColumnTenderListPayTypeCheckBank.MinimumWidth = 6;
             this.ColumnTenderListPayTypeCheckBank.Name = "ColumnTenderListPayTypeCheckBank";
             this.ColumnTenderListPayTypeCheckBank.Visible = false;
+            this.ColumnTenderListPayTypeCheckBank.Width = 125;
             // 
             // ColumnTenderListPayTypeCreditCardVerificationCode
             // 
             this.ColumnTenderListPayTypeCreditCardVerificationCode.HeaderText = "Credit Card Verification Code";
+            this.ColumnTenderListPayTypeCreditCardVerificationCode.MinimumWidth = 6;
             this.ColumnTenderListPayTypeCreditCardVerificationCode.Name = "ColumnTenderListPayTypeCreditCardVerificationCode";
             this.ColumnTenderListPayTypeCreditCardVerificationCode.Visible = false;
+            this.ColumnTenderListPayTypeCreditCardVerificationCode.Width = 125;
             // 
             // ColumnTenderListPayTypeCreditCardReferenceNumber
             // 
             this.ColumnTenderListPayTypeCreditCardReferenceNumber.HeaderText = "Credit Card Reference Number";
+            this.ColumnTenderListPayTypeCreditCardReferenceNumber.MinimumWidth = 6;
             this.ColumnTenderListPayTypeCreditCardReferenceNumber.Name = "ColumnTenderListPayTypeCreditCardReferenceNumber";
             this.ColumnTenderListPayTypeCreditCardReferenceNumber.Visible = false;
+            this.ColumnTenderListPayTypeCreditCardReferenceNumber.Width = 125;
             // 
             // ColumnTenderListPayTypeCreditCardHolder
             // 
             this.ColumnTenderListPayTypeCreditCardHolder.HeaderText = "Credit Card Holder";
+            this.ColumnTenderListPayTypeCreditCardHolder.MinimumWidth = 6;
             this.ColumnTenderListPayTypeCreditCardHolder.Name = "ColumnTenderListPayTypeCreditCardHolder";
             this.ColumnTenderListPayTypeCreditCardHolder.Visible = false;
+            this.ColumnTenderListPayTypeCreditCardHolder.Width = 125;
             // 
             // ColumnTenderListPayTypeCreditCardNumber
             // 
             this.ColumnTenderListPayTypeCreditCardNumber.HeaderText = "Credit Card Number";
+            this.ColumnTenderListPayTypeCreditCardNumber.MinimumWidth = 6;
             this.ColumnTenderListPayTypeCreditCardNumber.Name = "ColumnTenderListPayTypeCreditCardNumber";
             this.ColumnTenderListPayTypeCreditCardNumber.Visible = false;
+            this.ColumnTenderListPayTypeCreditCardNumber.Width = 125;
             // 
             // ColumnTenderListPayTypeCreditCardType
             // 
             this.ColumnTenderListPayTypeCreditCardType.HeaderText = "Credit Card Type";
+            this.ColumnTenderListPayTypeCreditCardType.MinimumWidth = 6;
             this.ColumnTenderListPayTypeCreditCardType.Name = "ColumnTenderListPayTypeCreditCardType";
             this.ColumnTenderListPayTypeCreditCardType.Visible = false;
+            this.ColumnTenderListPayTypeCreditCardType.Width = 125;
             // 
             // ColumnTenderListPayTypeCreditCardBank
             // 
             this.ColumnTenderListPayTypeCreditCardBank.HeaderText = "Credit Card Bank";
+            this.ColumnTenderListPayTypeCreditCardBank.MinimumWidth = 6;
             this.ColumnTenderListPayTypeCreditCardBank.Name = "ColumnTenderListPayTypeCreditCardBank";
             this.ColumnTenderListPayTypeCreditCardBank.Visible = false;
+            this.ColumnTenderListPayTypeCreditCardBank.Width = 125;
             // 
             // ColumnTenderListPayTypeCreditCardExpiry
             // 
             this.ColumnTenderListPayTypeCreditCardExpiry.HeaderText = "Credit Card Expiry";
+            this.ColumnTenderListPayTypeCreditCardExpiry.MinimumWidth = 6;
             this.ColumnTenderListPayTypeCreditCardExpiry.Name = "ColumnTenderListPayTypeCreditCardExpiry";
             this.ColumnTenderListPayTypeCreditCardExpiry.Visible = false;
+            this.ColumnTenderListPayTypeCreditCardExpiry.Width = 125;
             // 
             // ColumnTenderListPayTypeGiftCertificateNumber
             // 
             this.ColumnTenderListPayTypeGiftCertificateNumber.HeaderText = "Gift Certificate Number";
+            this.ColumnTenderListPayTypeGiftCertificateNumber.MinimumWidth = 6;
             this.ColumnTenderListPayTypeGiftCertificateNumber.Name = "ColumnTenderListPayTypeGiftCertificateNumber";
             this.ColumnTenderListPayTypeGiftCertificateNumber.Visible = false;
+            this.ColumnTenderListPayTypeGiftCertificateNumber.Width = 125;
             // 
             // TrnPOSTenderForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(783, 573);
+            this.ClientSize = new System.Drawing.Size(979, 716);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel3);
@@ -630,7 +668,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
             this.MaximizeBox = false;
             this.Name = "TrnPOSTenderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

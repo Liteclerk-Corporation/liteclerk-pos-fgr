@@ -96,7 +96,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(116)))), ((int)(((byte)(116)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel1.Controls.Add(this.labelUpdatedDate);
             this.panel1.Controls.Add(this.labelUpdatedByUser);
             this.panel1.Controls.Add(this.labelCreatedDate);
@@ -216,7 +216,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.easypos1;
+            this.pictureBox1.Image = global::EasyPOS.Properties.Resources.liteclerklogoimg;
             this.pictureBox1.Location = new System.Drawing.Point(12, 8);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
@@ -345,7 +345,7 @@
             this.menuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(10, 10, 10, 10);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(10);
             this.menuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.menuStrip1.Size = new System.Drawing.Size(152, 653);
             this.menuStrip1.TabIndex = 1;
@@ -354,7 +354,7 @@
             // menuToolStripMenuItem
             // 
             this.menuToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.menuToolStripMenuItem.Image = global::EasyPOS.Properties.Resources.easypos;
+            this.menuToolStripMenuItem.Image = global::EasyPOS.Properties.Resources.liteclerklogoimg;
             this.menuToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
@@ -679,7 +679,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "SysSoftwareForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Easy POS";
+            this.Text = "Liteclerk POS";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SysSoftwareForm_FormClosing);
             this.panel1.ResumeLayout(false);

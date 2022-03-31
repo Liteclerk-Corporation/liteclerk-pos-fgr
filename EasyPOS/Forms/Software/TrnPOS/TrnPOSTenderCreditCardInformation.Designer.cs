@@ -67,16 +67,16 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(574, 50);
+            this.panel1.Size = new System.Drawing.Size(718, 62);
             this.panel1.TabIndex = 8;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::EasyPOS.Properties.Resources.POS;
-            this.pictureBox1.Location = new System.Drawing.Point(10, 10);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(38, 32);
+            this.pictureBox1.Size = new System.Drawing.Size(48, 40);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -85,10 +85,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(50, 14);
+            this.label1.Location = new System.Drawing.Point(62, 18);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(237, 28);
+            this.label1.Size = new System.Drawing.Size(296, 35);
             this.label1.TabIndex = 2;
             this.label1.Text = "Credit Card Information";
             // 
@@ -101,10 +101,10 @@
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(455, 10);
+            this.buttonClose.Location = new System.Drawing.Point(569, 12);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(109, 32);
+            this.buttonClose.Size = new System.Drawing.Size(136, 40);
             this.buttonClose.TabIndex = 1;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Esc - Close";
@@ -120,10 +120,10 @@
             this.buttonOK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonOK.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOK.ForeColor = System.Drawing.Color.White;
-            this.buttonOK.Location = new System.Drawing.Point(339, 10);
+            this.buttonOK.Location = new System.Drawing.Point(424, 12);
             this.buttonOK.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(112, 32);
+            this.buttonOK.Size = new System.Drawing.Size(140, 40);
             this.buttonOK.TabIndex = 0;
             this.buttonOK.TabStop = false;
             this.buttonOK.Text = "Ent - OK";
@@ -149,29 +149,30 @@
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.textBoxVerificationCode);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 50);
+            this.panel2.Location = new System.Drawing.Point(0, 62);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(574, 278);
+            this.panel2.Size = new System.Drawing.Size(718, 348);
             this.panel2.TabIndex = 9;
             // 
             // comboBoxCreditCardType
             // 
             this.comboBoxCreditCardType.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.comboBoxCreditCardType.FormattingEnabled = true;
-            this.comboBoxCreditCardType.Location = new System.Drawing.Point(156, 139);
+            this.comboBoxCreditCardType.Location = new System.Drawing.Point(195, 174);
+            this.comboBoxCreditCardType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.comboBoxCreditCardType.Name = "comboBoxCreditCardType";
-            this.comboBoxCreditCardType.Size = new System.Drawing.Size(295, 29);
+            this.comboBoxCreditCardType.Size = new System.Drawing.Size(368, 36);
             this.comboBoxCreditCardType.TabIndex = 4;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label9.Location = new System.Drawing.Point(6, 208);
+            this.label9.Location = new System.Drawing.Point(8, 260);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(138, 21);
+            this.label9.Size = new System.Drawing.Size(173, 28);
             this.label9.TabIndex = 55;
             this.label9.Text = "Credit Card Expiry:";
             // 
@@ -180,20 +181,20 @@
             this.textBoxCreditCardExpiry.AcceptsTab = true;
             this.textBoxCreditCardExpiry.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxCreditCardExpiry.HideSelection = false;
-            this.textBoxCreditCardExpiry.Location = new System.Drawing.Point(156, 205);
+            this.textBoxCreditCardExpiry.Location = new System.Drawing.Point(195, 256);
             this.textBoxCreditCardExpiry.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCreditCardExpiry.Name = "textBoxCreditCardExpiry";
-            this.textBoxCreditCardExpiry.Size = new System.Drawing.Size(407, 29);
+            this.textBoxCreditCardExpiry.Size = new System.Drawing.Size(508, 34);
             this.textBoxCreditCardExpiry.TabIndex = 6;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label8.Location = new System.Drawing.Point(6, 76);
+            this.label8.Location = new System.Drawing.Point(8, 95);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(143, 21);
+            this.label8.Size = new System.Drawing.Size(180, 28);
             this.label8.TabIndex = 53;
             this.label8.Text = "Credit Card Holder:";
             // 
@@ -202,20 +203,20 @@
             this.textBoxCreditCardHolder.AcceptsTab = true;
             this.textBoxCreditCardHolder.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxCreditCardHolder.HideSelection = false;
-            this.textBoxCreditCardHolder.Location = new System.Drawing.Point(156, 73);
+            this.textBoxCreditCardHolder.Location = new System.Drawing.Point(195, 91);
             this.textBoxCreditCardHolder.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCreditCardHolder.Name = "textBoxCreditCardHolder";
-            this.textBoxCreditCardHolder.Size = new System.Drawing.Size(407, 29);
+            this.textBoxCreditCardHolder.Size = new System.Drawing.Size(508, 34);
             this.textBoxCreditCardHolder.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label2.Location = new System.Drawing.Point(6, 43);
+            this.label2.Location = new System.Drawing.Point(8, 54);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(110, 21);
+            this.label2.Size = new System.Drawing.Size(136, 28);
             this.label2.TabIndex = 51;
             this.label2.Text = "Reference No.:";
             // 
@@ -224,20 +225,20 @@
             this.textBoxReferenceNumber.AcceptsTab = true;
             this.textBoxReferenceNumber.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxReferenceNumber.HideSelection = false;
-            this.textBoxReferenceNumber.Location = new System.Drawing.Point(156, 40);
+            this.textBoxReferenceNumber.Location = new System.Drawing.Point(195, 50);
             this.textBoxReferenceNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxReferenceNumber.Name = "textBoxReferenceNumber";
-            this.textBoxReferenceNumber.Size = new System.Drawing.Size(407, 29);
+            this.textBoxReferenceNumber.Size = new System.Drawing.Size(508, 34);
             this.textBoxReferenceNumber.TabIndex = 1;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label5.Location = new System.Drawing.Point(6, 175);
+            this.label5.Location = new System.Drawing.Point(8, 219);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(130, 21);
+            this.label5.Size = new System.Drawing.Size(162, 28);
             this.label5.TabIndex = 49;
             this.label5.Text = "Credit Card Bank:";
             // 
@@ -246,20 +247,20 @@
             this.textBoxCreditCardBank.AcceptsTab = true;
             this.textBoxCreditCardBank.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxCreditCardBank.HideSelection = false;
-            this.textBoxCreditCardBank.Location = new System.Drawing.Point(156, 172);
+            this.textBoxCreditCardBank.Location = new System.Drawing.Point(195, 215);
             this.textBoxCreditCardBank.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCreditCardBank.Name = "textBoxCreditCardBank";
-            this.textBoxCreditCardBank.Size = new System.Drawing.Size(407, 29);
+            this.textBoxCreditCardBank.Size = new System.Drawing.Size(508, 34);
             this.textBoxCreditCardBank.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label4.Location = new System.Drawing.Point(6, 142);
+            this.label4.Location = new System.Drawing.Point(8, 178);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(128, 21);
+            this.label4.Size = new System.Drawing.Size(161, 28);
             this.label4.TabIndex = 47;
             this.label4.Text = "Credit Card Type:";
             // 
@@ -267,10 +268,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label3.Location = new System.Drawing.Point(6, 109);
+            this.label3.Location = new System.Drawing.Point(8, 136);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(120, 21);
+            this.label3.Size = new System.Drawing.Size(151, 28);
             this.label3.TabIndex = 45;
             this.label3.Text = "Credit Card No.:";
             // 
@@ -279,19 +280,19 @@
             this.textBoxCreditCardNumber.AcceptsTab = true;
             this.textBoxCreditCardNumber.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxCreditCardNumber.HideSelection = false;
-            this.textBoxCreditCardNumber.Location = new System.Drawing.Point(156, 106);
+            this.textBoxCreditCardNumber.Location = new System.Drawing.Point(195, 132);
             this.textBoxCreditCardNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCreditCardNumber.Name = "textBoxCreditCardNumber";
-            this.textBoxCreditCardNumber.Size = new System.Drawing.Size(407, 29);
+            this.textBoxCreditCardNumber.Size = new System.Drawing.Size(508, 34);
             this.textBoxCreditCardNumber.TabIndex = 3;
             // 
             // textBoxAmount
             // 
             this.textBoxAmount.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxAmount.Location = new System.Drawing.Point(156, 238);
+            this.textBoxAmount.Location = new System.Drawing.Point(195, 298);
             this.textBoxAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxAmount.Name = "textBoxAmount";
-            this.textBoxAmount.Size = new System.Drawing.Size(295, 29);
+            this.textBoxAmount.Size = new System.Drawing.Size(368, 34);
             this.textBoxAmount.TabIndex = 7;
             this.textBoxAmount.Text = "0.00";
             this.textBoxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -302,10 +303,10 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label6.Location = new System.Drawing.Point(6, 241);
+            this.label6.Location = new System.Drawing.Point(8, 301);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 21);
+            this.label6.Size = new System.Drawing.Size(87, 28);
             this.label6.TabIndex = 43;
             this.label6.Text = "Amount:";
             // 
@@ -313,10 +314,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label7.Location = new System.Drawing.Point(6, 10);
+            this.label7.Location = new System.Drawing.Point(8, 12);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(131, 21);
+            this.label7.Size = new System.Drawing.Size(165, 28);
             this.label7.TabIndex = 42;
             this.label7.Text = "Verification Code:";
             // 
@@ -325,17 +326,17 @@
             this.textBoxVerificationCode.AcceptsTab = true;
             this.textBoxVerificationCode.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxVerificationCode.HideSelection = false;
-            this.textBoxVerificationCode.Location = new System.Drawing.Point(156, 7);
+            this.textBoxVerificationCode.Location = new System.Drawing.Point(195, 9);
             this.textBoxVerificationCode.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxVerificationCode.Name = "textBoxVerificationCode";
-            this.textBoxVerificationCode.Size = new System.Drawing.Size(407, 29);
+            this.textBoxVerificationCode.Size = new System.Drawing.Size(508, 34);
             this.textBoxVerificationCode.TabIndex = 0;
             // 
             // TrnPOSTenderCreditCardInformation
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(574, 328);
+            this.ClientSize = new System.Drawing.Size(718, 410);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
