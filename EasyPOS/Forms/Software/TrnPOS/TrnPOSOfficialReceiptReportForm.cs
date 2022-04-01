@@ -48,7 +48,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
             else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "ZiJiang Label Printer")
             {
-                printDocumentOfficialReceipt.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 255, 38500);
+                printDocumentOfficialReceipt.DefaultPageSettings.PaperSize = new PaperSize("Official Receipt", 255, 20000);
                 printDocumentOfficialReceipt.Print();
             }
             else
@@ -104,8 +104,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
             else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "ZiJiang Label Printer")
             {
-                x = 5; y = 5;
-                width = 245.0F; height = 0F;
+                x = 30; y = 5;
+                width = 255.0F; height = 0F;
             }
             else
             {
@@ -187,6 +187,18 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 };
                 graphics.DrawString(title, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
                 y += titleRectangle.Size.Height + 1F;
+
+                String collectionNumberText = collections.FirstOrDefault().CollectionNumber;
+                graphics.DrawString(collectionNumberText, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                y += graphics.MeasureString(collectionNumberText, fontArial8Regular).Height;
+
+                String collectionDateText = collections.FirstOrDefault().CollectionDate.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
+                graphics.DrawString(collectionDateText, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                y += graphics.MeasureString(collectionDateText, fontArial8Regular).Height;
+
+                String collectionTimeText = collections.FirstOrDefault().UpdateDateTime.ToString("H:mm:ss", CultureInfo.InvariantCulture);
+                graphics.DrawString(collectionTimeText, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                y += graphics.MeasureString(collectionTimeText, fontArial8Regular).Height;
 
                 // ========
                 // 1st Line
