@@ -103,9 +103,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataGridViewPrintOrderSalesLineList.RowsDefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewPrintOrderSalesLineList.RowTemplate.Height = 30;
-            this.dataGridViewPrintOrderSalesLineList.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.dataGridViewPrintOrderSalesLineList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewPrintOrderSalesLineList.Size = new System.Drawing.Size(1188, 474);
+            this.dataGridViewPrintOrderSalesLineList.Size = new System.Drawing.Size(906, 474);
             this.dataGridViewPrintOrderSalesLineList.TabIndex = 28;
             this.dataGridViewPrintOrderSalesLineList.TabStop = false;
             this.dataGridViewPrintOrderSalesLineList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewPrintOrderSalesLineList_CellClick);
@@ -201,7 +200,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPrint.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPrint.ForeColor = System.Drawing.Color.White;
-            this.buttonPrint.Location = new System.Drawing.Point(992, 0);
+            this.buttonPrint.Location = new System.Drawing.Point(709, 1);
             this.buttonPrint.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonPrint.Name = "buttonPrint";
             this.buttonPrint.Size = new System.Drawing.Size(93, 39);
@@ -224,7 +223,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(1089, 0);
+            this.buttonClose.Location = new System.Drawing.Point(806, 1);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(93, 39);
@@ -236,12 +235,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.buttonClose);
             this.panel1.Controls.Add(this.buttonPrint);
             this.panel1.Location = new System.Drawing.Point(0, 2);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1188, 39);
             this.panel1.TabIndex = 31;
@@ -250,11 +247,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1191, 523);
+            this.ClientSize = new System.Drawing.Size(909, 523);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridViewPrintOrderSalesLineList);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "TrnPOSTouchPrintOrderDetailForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
