@@ -194,6 +194,7 @@
             this.buttonKitchenPageListLast = new System.Windows.Forms.Button();
             this.textBoxKitchenPageNumber = new System.Windows.Forms.TextBox();
             this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
+            this.checkBoxEnableSelectOrderTaker = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -453,6 +454,7 @@
             // 
             this.panel5.BackColor = System.Drawing.SystemColors.ControlLight;
             this.panel5.Controls.Add(this.dateTimePickerLoginDate);
+            this.panel5.Controls.Add(this.checkBoxEnableSelectOrderTaker);
             this.panel5.Controls.Add(this.checkBoxDisableSalesDate);
             this.panel5.Controls.Add(this.checkBoxPrintDeletedItem);
             this.panel5.Controls.Add(this.checkBoxChangeComputeOnLock);
@@ -2244,6 +2246,19 @@
             this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
             this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
             // 
+            // checkBoxEnableSelectOrderTaker
+            // 
+            this.checkBoxEnableSelectOrderTaker.AutoSize = true;
+            this.checkBoxEnableSelectOrderTaker.Enabled = false;
+            this.checkBoxEnableSelectOrderTaker.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxEnableSelectOrderTaker.Location = new System.Drawing.Point(830, 240);
+            this.checkBoxEnableSelectOrderTaker.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxEnableSelectOrderTaker.Name = "checkBoxEnableSelectOrderTaker";
+            this.checkBoxEnableSelectOrderTaker.Size = new System.Drawing.Size(260, 23);
+            this.checkBoxEnableSelectOrderTaker.TabIndex = 101;
+            this.checkBoxEnableSelectOrderTaker.Text = "Enable Select Order Taker (POS Touch)";
+            this.checkBoxEnableSelectOrderTaker.UseVisualStyleBackColor = true;
+            // 
             // SysSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -2463,5 +2478,6 @@
         private System.Windows.Forms.CheckBox checkBoxPrintDeletedItem;
         private System.Windows.Forms.CheckBox checkBoxDisableSalesDate;
         private System.Windows.Forms.DateTimePicker dateTimePickerLoginDate;
+        private System.Windows.Forms.CheckBox checkBoxEnableSelectOrderTaker;
     }
 }

@@ -555,6 +555,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxChangeComputeOnLock.Checked = Convert.ToBoolean(sysCurrent.ChangeComputationOnLock);
                 checkBoxPrintDeletedItem.Checked = Convert.ToBoolean(sysCurrent.EnablePOSTouchPrintDeletedItem);
                 checkBoxDisableSalesDate.Checked = Convert.ToBoolean(sysCurrent.DisableSalesDate);
+                checkBoxEnableSelectOrderTaker.Checked = Convert.ToBoolean(sysCurrent.EnableSelectOrderTaker);
             }
             dateTimePickerLoginDate.Enabled = false;
         }
@@ -646,7 +647,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 BodegaTransaction = checkBoxBodega.Checked,
                 ChangeComputationOnLock = checkBoxChangeComputeOnLock.Checked,
                 EnablePOSTouchPrintDeletedItem = checkBoxPrintDeletedItem.Checked,
-                DisableSalesDate = checkBoxDisableSalesDate.Checked
+                DisableSalesDate = checkBoxDisableSalesDate.Checked,
+                EnableSelectOrderTaker = checkBoxEnableSelectOrderTaker.Checked
             };
 
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);
@@ -719,6 +721,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxChangeComputeOnLock.Enabled = false;
                 checkBoxPrintDeletedItem.Enabled = false;
                 checkBoxDisableSalesDate.Enabled = false;
+                checkBoxEnableSelectOrderTaker.Enabled = false;
             }
             else
             {
@@ -823,6 +826,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxChangeComputeOnLock.Enabled = true;
                 checkBoxPrintDeletedItem.Enabled = true;
                 checkBoxDisableSalesDate.Enabled = true;
+                checkBoxEnableSelectOrderTaker.Enabled = true;
             }
         }
 

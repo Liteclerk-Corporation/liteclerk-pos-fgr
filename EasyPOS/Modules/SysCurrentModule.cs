@@ -119,7 +119,8 @@ namespace EasyPOS.Modules
                 BodegaTransaction = currentSettings.BodegaTransaction,
                 ChangeComputationOnLock = currentSettings.ChangeComputationOnLock,
                 EnablePOSTouchPrintDeletedItem = currentSettings.EnablePOSTouchPrintDeletedItem,
-                DisableSalesDate = currentSettings.DisableSalesDate
+                DisableSalesDate = currentSettings.DisableSalesDate,
+                EnableSelectOrderTaker = currentSettings.EnableSelectOrderTaker
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);
@@ -206,7 +207,8 @@ namespace EasyPOS.Modules
                 BodegaTransaction = objSysCurrentEntity.BodegaTransaction,
                 ChangeComputationOnLock = objSysCurrentEntity.ChangeComputationOnLock,
                 EnablePOSTouchPrintDeletedItem = objSysCurrentEntity.EnablePOSTouchPrintDeletedItem,
-                DisableSalesDate = objSysCurrentEntity.DisableSalesDate
+                DisableSalesDate = objSysCurrentEntity.DisableSalesDate,
+                EnableSelectOrderTaker = objSysCurrentEntity.EnableSelectOrderTaker
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newSysCurrentEntities);
@@ -294,7 +296,8 @@ namespace EasyPOS.Modules
                 BodegaTransaction = currentSettings.BodegaTransaction,
                 ChangeComputationOnLock = currentSettings.ChangeComputationOnLock,
                 EnablePOSTouchPrintDeletedItem = currentSettings.EnablePOSTouchPrintDeletedItem,
-                DisableSalesDate = currentSettings.DisableSalesDate
+                DisableSalesDate = currentSettings.DisableSalesDate,
+                EnableSelectOrderTaker = currentSettings.EnableSelectOrderTaker
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);

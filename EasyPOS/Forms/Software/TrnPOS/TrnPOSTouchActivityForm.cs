@@ -54,6 +54,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     buttonEditOrder.Enabled = false;
                 }
             }
+            if (Modules.SysCurrentModule.GetCurrentSettings().EnableSelectOrderTaker == true)
+            {
+                buttonSelectOrderTaker.Enabled = true;
+            }
+            else
+            {
+                buttonSelectOrderTaker.Enabled = false;
+            }
 
             labelInvoiceNumber.Text = trnSalesEntity.SalesNumber;
 

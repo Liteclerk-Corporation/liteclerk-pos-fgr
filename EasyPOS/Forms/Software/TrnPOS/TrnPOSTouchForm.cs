@@ -245,8 +245,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         sysSoftwareForm.AddTabPagePOSTouchSalesDetail(this, trnPOSSalesController.DetailSales(Convert.ToInt32(addSales[1])));
                         UpdateSalesListGridDataSource();
 
-                        TrnPOSTouchSelectOrderTaker trnPOSTouchSelectOrderTaker = new TrnPOSTouchSelectOrderTaker(this,null,trnPOSSalesController.DetailSales(Convert.ToInt32(addSales[1])));
-                        trnPOSTouchSelectOrderTaker.ShowDialog();
+                        if (Modules.SysCurrentModule.GetCurrentSettings().EnableSelectOrderTaker == true)
+                        {
+                            TrnPOSTouchSelectOrderTaker trnPOSTouchSelectOrderTaker = new TrnPOSTouchSelectOrderTaker(this, null, trnPOSSalesController.DetailSales(Convert.ToInt32(addSales[1])));
+                            trnPOSTouchSelectOrderTaker.ShowDialog();
+                        }
                     }
                     else
                     {

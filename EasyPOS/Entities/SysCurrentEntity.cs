@@ -80,5 +80,6 @@ namespace EasyPOS.Entities
         public Boolean ChangeComputationOnLock { get; set; }
         public Boolean EnablePOSTouchPrintDeletedItem { get; set; }
         public Boolean DisableSalesDate { get; set; }
+        public Boolean EnableSelectOrderTaker { get; set; }
     }
 }
