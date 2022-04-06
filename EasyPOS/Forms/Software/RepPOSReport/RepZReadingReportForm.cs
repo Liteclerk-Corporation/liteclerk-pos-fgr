@@ -219,7 +219,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                     var salesLines = salesLinesQuery.ToArray();
 
                     Decimal VATAmountValue = salesLines.Sum(d =>
-                        d.MstTax.Code == "VAT" ? ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : 0
+                        d.MstTax.Code == "VAT" ? ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) : 0
                     );
                     VATAmountValue = Math.Round(VATAmountValue, 2);
                     totalGrossSales = salesLines.Sum(d => d.Price * d.Quantity) - VATAmountValue;
@@ -241,7 +241,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                     );
 
                     totalVATAmount = salesLines.Sum(d =>
-                        d.MstTax.Code == "VAT" ? (d.Amount / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : 0
+                        d.MstTax.Code == "VAT" ? (d.Amount / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) : 0
                     );
                     totalVATAmount = Math.Round(totalVATAmount, 2);
 
@@ -250,7 +250,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                     );
 
                     totalVATExemptSales = salesLines.Sum(d =>
-                        d.MstTax.Code == "EXEMPTVAT" ? ((d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100))) : 0
+                        d.MstTax.Code == "EXEMPTVAT" ? ((d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100))) : 0
                     );
 
                     totalVATZeroRatedSales = salesLines.Sum(d =>
@@ -294,7 +294,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                     );
 
                     VATAmountExemptSalesReturn = salesReturnLines.Sum(d =>
-                        d.MstTax.Code == "EXEMPTVAT" ? ((d.Price * (d.Quantity * -1)) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : d.TaxAmount
+                        d.MstTax.Code == "EXEMPTVAT" ? ((d.Price * (d.Quantity * -1)) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) : d.TaxAmount
                     ) * -1;
 
                     totalSalesReturn = (VATSalesReturn + VATExemptSalesReturn + NONVATSalesReturn);
@@ -460,8 +460,8 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                             previousDeclareRatesValues.Where(p => p.Date == d.TrnSale.SalesDate).Any() == true ?
                                 (
                                     d.MstTax.Code == "EXEMPTVAT" ?
-                                        d.MstItem.MstTax1.Rate > 0 ?
-                                            (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : d.Price * d.Quantity
+                                        d.MstTax.Rate > 0 ?
+                                            (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) : d.Price * d.Quantity
                                     : d.MstTax.Rate > 0 ?
                                             (d.Price * d.Quantity) - d.TaxAmount : d.Price * d.Quantity
                                 ) * Convert.ToDecimal(previousDeclareRatesValues.Where(p => p.Date == d.TrnSale.SalesDate).FirstOrDefault().DeclareRate)
@@ -469,7 +469,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                 (
                                     d.MstTax.Code == "EXEMPTVAT" ?
                                         d.MstItem.MstTax1.Rate > 0 ?
-                                            (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : d.Price * d.Quantity
+                                            (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) : d.Price * d.Quantity
                                     : d.MstTax.Rate > 0 ?
                                             (d.Price * d.Quantity) - d.TaxAmount : d.Price * d.Quantity
                                 ) * currentDeclareRate
@@ -482,16 +482,16 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                         previousDeclareRatesValues.Where(p => p.Date == d.TrnSale.SalesDate).Any() == true ?
                             (
                                 d.MstTax.Code == "EXEMPTVAT" ?
-                                    d.MstItem.MstTax1.Rate > 0 ?
-                                        (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : d.Price * d.Quantity
+                                    d.MstTax.Rate > 0 ?
+                                        (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) : d.Price * d.Quantity
                                 : d.MstTax.Rate > 0 ?
                                         (d.Price * d.Quantity) - d.TaxAmount : d.Price * d.Quantity
                             ) * Convert.ToDecimal(previousDeclareRatesValues.Where(p => p.Date == d.TrnSale.SalesDate).FirstOrDefault().DeclareRate)
                         :
                             (
                                 d.MstTax.Code == "EXEMPTVAT" ?
-                                    d.MstItem.MstTax1.Rate > 0 ?
-                                        (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : d.Price * d.Quantity
+                                    d.MstTax.Rate > 0 ?
+                                        (d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) : d.Price * d.Quantity
                                 : d.MstTax.Rate > 0 ?
                                         (d.Price * d.Quantity) - d.TaxAmount : d.Price * d.Quantity
                             ) * currentDeclareRate
@@ -563,9 +563,9 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
                     VATAmountExemptSalesReturn = salesReturnLines.Sum(d =>
                         previousDeclareRatesValues.Where(p => p.Date == d.TrnSale.SalesDate).Any() == true ?
-                            Convert.ToDecimal(((d.MstTax.Code == "EXEMPTVAT" ? ((d.Price * (d.Quantity * -1)) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : d.TaxAmount) * Convert.ToDecimal(previousDeclareRatesValues.Where(p => p.Date == d.TrnSale.SalesDate).FirstOrDefault().DeclareRate)).ToString("#,##0.00"))
+                            Convert.ToDecimal(((d.MstTax.Code == "EXEMPTVAT" ? ((d.Price * (d.Quantity * -1)) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) : d.TaxAmount) * Convert.ToDecimal(previousDeclareRatesValues.Where(p => p.Date == d.TrnSale.SalesDate).FirstOrDefault().DeclareRate)).ToString("#,##0.00"))
                         :
-                            Convert.ToDecimal(((d.MstTax.Code == "EXEMPTVAT" ? ((d.Price * (d.Quantity * -1)) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : d.TaxAmount) * currentDeclareRate).ToString("#,##0.00"))
+                            Convert.ToDecimal(((d.MstTax.Code == "EXEMPTVAT" ? ((d.Price * (d.Quantity * -1)) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) : d.TaxAmount) * currentDeclareRate).ToString("#,##0.00"))
                     ) * -1;
 
                     totalAccumulatedSalesReturn = (VATSalesReturn + VATExemptSalesReturn);
