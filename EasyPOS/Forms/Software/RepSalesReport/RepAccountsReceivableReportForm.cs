@@ -50,6 +50,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 var row = from d in salesList
                           select new Entities.DgvRepSalesReportAccountsReceivableSummaryReportListEntity
                           {
+                              ColumnCustomerCode = d.ColumnCustomerCode,
                               ColumnCustomer = d.ColumnCustomer,
                               ColumnTerm = d.ColumnTerm,
                               ColumnCreditLimit = d.ColumnCreditLimit,
@@ -217,7 +218,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 if (dialogResult == DialogResult.OK)
                 {
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Customer", "Term", "Credit Limit", "Sales No.", "Sales Date", "Sales Amount", "Payment", "Balance", "Due Date", "Current", "30 Days", "60 Days", "90 Days", "120 Days" };
+                    String[] header = { "Code", "Customer", "Term", "Credit Limit", "Sales No.", "Sales Date", "Sales Amount", "Payment", "Balance", "Due Date", "Current", "30 Days", "60 Days", "90 Days", "120 Days" };
                     csv.AppendLine(String.Join(",", header));
 
                     if (salesList.Any())
@@ -225,6 +226,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         foreach (var sales in salesList)
                         {
                             String[] data = {
+                                sales.ColumnCustomerCode.Replace("," , ""),
                                 sales.ColumnCustomer.Replace("," , ""),
                                 sales.ColumnTerm,
                                 sales.ColumnCreditLimit.Replace("," , ""),

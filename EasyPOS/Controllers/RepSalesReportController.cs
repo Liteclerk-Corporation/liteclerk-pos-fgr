@@ -1125,6 +1125,7 @@ namespace EasyPOS.Controllers
 
                         newSales.Add(new Entities.DgvRepSalesReportAccountsReceivableSummaryReportListEntity
                         {
+                            ColumnCustomerCode = sale.MstCustomer.CustomerCode,
                             ColumnCustomer = sale.MstCustomer.Customer,
                             ColumnTerm = sale.MstTerm.Term,
                             ColumnCreditLimit = sale.MstCustomer.CreditLimit.ToString("#,##0.00"),
@@ -1176,6 +1177,7 @@ namespace EasyPOS.Controllers
 
                         newSales.Add(new Entities.DgvRepSalesReportAccountsReceivableSummaryReportListEntity
                         {
+                            ColumnCustomerCode = sale.MstCustomer.CustomerCode,
                             ColumnCustomer = sale.MstCustomer.Customer,
                             ColumnTerm = sale.MstTerm.Term,
                             ColumnCreditLimit = sale.MstCustomer.CreditLimit.ToString("#,##0.00"),
