@@ -54,6 +54,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             if (salesDetailList.OrderByDescending(d => d.Id).Any())
             {
                 Decimal totalCost = 0;
+                Decimal totalProfit = 0;
 
                 var row = from d in salesDetailList
                           select new Entities.DgvRepSalesCostOfSalesReportEntity
@@ -70,9 +71,11 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                               ColumnCostProfit = ((d.Price * d.Quantity) - d.CostAmount).ToString("#,##0.00")
                           };
 
-                totalCost = salesDetailList.Sum(d => d.Cost);
+                totalCost = salesDetailList.Sum(d => d.CostAmount);
+                totalProfit = salesDetailList.Sum(d => (d.Price * d.Quantity) - d.CostAmount);
 
                 textBoxTotalCost.Text = totalCost.ToString("#,##0.00");
+                textBoxTotalProfit.Text = totalProfit.ToString("#,##0.00");
 
                 rowList = row.ToList();
 
@@ -212,7 +215,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                     DateTime endDate = dateEnd;
 
                     StringBuilder csv = new StringBuilder();
-                    String[] header = { "Terminal", "Date", "Sales Number", "Barcode", "Item Description", "Quantity", "Cost", "CostAmount"};
+                    String[] header = { "Terminal", "Date", "Sales Number", "Barcode", "Item Description", "Quantity", "Cost", "CostAmount", "Selling Price", "Profit" };
                     csv.AppendLine(String.Join(",", header));
 
                     if (salesDetailList.Any())
@@ -229,6 +232,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                 salesDetail.ColumnQuantity.Replace("," , ""),
                                 salesDetail.ColumnCost.Replace("," , ""),
                                 salesDetail.ColumnCostAmount.Replace("," , ""),
+                                salesDetail.ColumnCostSellingPrice.Replace("," , ""),
+                                salesDetail.ColumnCostProfit.Replace("," , ""),
                             };
                             csv.AppendLine(String.Join(",", data));
                         }
