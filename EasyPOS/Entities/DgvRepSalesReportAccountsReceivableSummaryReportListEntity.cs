@@ -8,6 +8,7 @@ namespace EasyPOS.Entities
 {
     public class DgvRepSalesReportAccountsReceivableSummaryReportListEntity
     {
+        public String ColumnCustomerCode { get; set; }
         public String ColumnCustomer { get; set; }
         public String ColumnTerm { get; set; }
         public String ColumnCreditLimit { get; set; }
