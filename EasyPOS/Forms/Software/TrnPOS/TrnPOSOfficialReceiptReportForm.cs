@@ -336,7 +336,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         y += graphics.MeasureString("REPRINTED", fontArial8Regular).Height;
                     }
 
-                    if (sales.FirstOrDefault().TableId != null)
+                    if (sales.FirstOrDefault().TableId != null && sales.FirstOrDefault().MstTable.TableCode != "Walk-in")
                     {
                         String tableNo = "Table: " + sales.FirstOrDefault().MstTable.TableCode;
                         graphics.DrawString(tableNo, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
