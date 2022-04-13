@@ -36,14 +36,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // 
             this.printDocumentOpenCashDrawer.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocumentOpenCashDrawer_PrintPage);
             // 
-            // TrnPOSOpenCashDrawerPrint
+            // TrnPOSOpenCashDrawerPrintForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(351, 86);
+            this.ClientSize = new System.Drawing.Size(468, 106);
             this.ControlBox = false;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "TrnPOSOpenCashDrawerPrint";
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Name = "TrnPOSOpenCashDrawerPrintForm";
             this.Text = "Print  - Open Cash Drawer";
             this.ResumeLayout(false);
 

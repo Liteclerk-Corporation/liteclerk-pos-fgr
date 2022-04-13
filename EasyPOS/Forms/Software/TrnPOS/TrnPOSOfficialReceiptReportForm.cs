@@ -937,7 +937,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                 {
                                     X = x,
                                     Y = y,
-                                    Size = new Size(150, ((int)graphics.MeasureString(itemData, fontArial8Regular, 150, StringFormat.GenericDefault).Height))
+                                    Size = new Size(200, ((int)graphics.MeasureString(itemData, fontArial8Regular, 200, StringFormat.GenericDefault).Height))
                                 };
                                 graphics.DrawString(itemData, fontArial8Regular, Brushes.Black, itemDataRectangle, drawFormatLeft);
                                 if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
@@ -1232,7 +1232,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         }
                     }
 
-                    String soldToLabel = "\n\nCustomer Name: " + customerName;
+                    String soldToLabel = "\nCustomer Name: " + customerName;
                     graphics.DrawString(soldToLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                     y += graphics.MeasureString(soldToLabel, fontArial8Regular).Height;
 

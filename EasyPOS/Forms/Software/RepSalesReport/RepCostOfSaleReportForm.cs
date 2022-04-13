@@ -66,6 +66,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                               ColumnQuantity = d.Quantity.ToString("#,##0.00"),
                               ColumnCost = d.Cost.ToString("#,##0.00"),
                               ColumnCostAmount = d.CostAmount.ToString("#,##0.00"),
+                              ColumnCostSellingPrice = d.Price.ToString("#,##0.00"),
+                              ColumnCostProfit = ((d.Price * d.Quantity) - d.CostAmount).ToString("#,##0.00")
                           };
 
                 totalCost = salesDetailList.Sum(d => d.Cost);

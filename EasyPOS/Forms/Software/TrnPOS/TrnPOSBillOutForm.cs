@@ -330,6 +330,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             {
                                 hasServiceCharge = true;
                                 totalServiceCharge += salesLine.Amount;
+                                totalGrossSales -= totalServiceCharge;
                             }
 
                         }
@@ -521,6 +522,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             {
                                 hasServiceCharge = true;
                                 totalServiceCharge += salesLine.Amount;
+                                totalGrossSales -= totalServiceCharge;
                             }
 
                         }

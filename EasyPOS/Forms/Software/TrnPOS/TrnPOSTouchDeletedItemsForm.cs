@@ -238,7 +238,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     {
                         X = x,
                         Y = y,
-                        Size = new Size(180, ((int)graphics.MeasureString(itemData, fontArial10Regular, 150, StringFormat.GenericDefault).Height))
+                        Size = new Size(200, ((int)graphics.MeasureString(itemData, fontArial10Regular, 200, StringFormat.GenericDefault).Height))
                     };
                     graphics.DrawString(itemData, fontArial10Regular, Brushes.Black, itemDataRectangle, drawFormatLeft);
 

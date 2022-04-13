@@ -973,7 +973,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     }
                     else
                     {
-                        //Debug.WriteLine(Modules.SysCurrentModule.GetCurrentSettings().SalesOrderPrinterType);
 
                         if (Modules.SysCurrentModule.GetCurrentSettings().SalesOrderPrinterType == "Label Printer")
                         {

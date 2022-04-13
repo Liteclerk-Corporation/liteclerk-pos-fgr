@@ -53,6 +53,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.ColumnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCostAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCostSellingPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnCostProfit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCostOfSalesReport)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -77,11 +79,14 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.ColumnItemDescription,
             this.ColumnQuantity,
             this.ColumnCost,
-            this.ColumnCostAmount});
+            this.ColumnCostAmount,
+            this.ColumnCostSellingPrice,
+            this.ColumnCostProfit});
             this.dataGridViewCostOfSalesReport.Location = new System.Drawing.Point(0, 50);
             this.dataGridViewCostOfSalesReport.MultiSelect = false;
             this.dataGridViewCostOfSalesReport.Name = "dataGridViewCostOfSalesReport";
             this.dataGridViewCostOfSalesReport.ReadOnly = true;
+            this.dataGridViewCostOfSalesReport.RowHeadersWidth = 51;
             this.dataGridViewCostOfSalesReport.RowTemplate.Height = 24;
             this.dataGridViewCostOfSalesReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewCostOfSalesReport.ShowEditingIcon = false;
@@ -158,7 +163,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.label3.Location = new System.Drawing.Point(57, 12);
             this.label3.Margin = new System.Windows.Forms.Padding(0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(204, 28);
+            this.label3.Size = new System.Drawing.Size(253, 35);
             this.label3.TabIndex = 2;
             this.label3.Text = "Cost of Sales Report";
             // 
@@ -188,7 +193,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.textBoxTotalCost.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTotalCost.Name = "textBoxTotalCost";
             this.textBoxTotalCost.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBoxTotalCost.Size = new System.Drawing.Size(246, 19);
+            this.textBoxTotalCost.Size = new System.Drawing.Size(246, 23);
             this.textBoxTotalCost.TabIndex = 15;
             // 
             // label2
@@ -199,7 +204,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.label2.Location = new System.Drawing.Point(688, 12);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 19);
+            this.label2.Size = new System.Drawing.Size(94, 23);
             this.label2.TabIndex = 13;
             this.label2.Text = "Total Cost:";
             // 
@@ -278,7 +283,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.textBoxPageNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxPageNumber.Name = "textBoxPageNumber";
             this.textBoxPageNumber.ReadOnly = true;
-            this.textBoxPageNumber.Size = new System.Drawing.Size(55, 19);
+            this.textBoxPageNumber.Size = new System.Drawing.Size(55, 23);
             this.textBoxPageNumber.TabIndex = 12;
             this.textBoxPageNumber.TabStop = false;
             this.textBoxPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -287,13 +292,16 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             // 
             this.ColumnTerminal.DataPropertyName = "ColumnTerminal";
             this.ColumnTerminal.HeaderText = "Terminal";
+            this.ColumnTerminal.MinimumWidth = 6;
             this.ColumnTerminal.Name = "ColumnTerminal";
             this.ColumnTerminal.ReadOnly = true;
+            this.ColumnTerminal.Width = 125;
             // 
             // ColumnDate
             // 
             this.ColumnDate.DataPropertyName = "ColumnDate";
             this.ColumnDate.HeaderText = "Sales Date";
+            this.ColumnDate.MinimumWidth = 6;
             this.ColumnDate.Name = "ColumnDate";
             this.ColumnDate.ReadOnly = true;
             this.ColumnDate.Width = 120;
@@ -302,6 +310,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             // 
             this.ColumnSalesNumber.DataPropertyName = "ColumnSalesNumber";
             this.ColumnSalesNumber.HeaderText = "Sales No.";
+            this.ColumnSalesNumber.MinimumWidth = 6;
             this.ColumnSalesNumber.Name = "ColumnSalesNumber";
             this.ColumnSalesNumber.ReadOnly = true;
             this.ColumnSalesNumber.Width = 120;
@@ -310,13 +319,16 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             // 
             this.ColumnBarCode.DataPropertyName = "ColumnBarCode";
             this.ColumnBarCode.HeaderText = "Barcode";
+            this.ColumnBarCode.MinimumWidth = 6;
             this.ColumnBarCode.Name = "ColumnBarCode";
             this.ColumnBarCode.ReadOnly = true;
+            this.ColumnBarCode.Width = 125;
             // 
             // ColumnItemDescription
             // 
             this.ColumnItemDescription.DataPropertyName = "ColumnItemDescription";
             this.ColumnItemDescription.HeaderText = "Item Description";
+            this.ColumnItemDescription.MinimumWidth = 6;
             this.ColumnItemDescription.Name = "ColumnItemDescription";
             this.ColumnItemDescription.ReadOnly = true;
             this.ColumnItemDescription.Width = 200;
@@ -325,6 +337,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             // 
             this.ColumnQuantity.DataPropertyName = "ColumnQuantity";
             this.ColumnQuantity.HeaderText = "Quantity";
+            this.ColumnQuantity.MinimumWidth = 6;
             this.ColumnQuantity.Name = "ColumnQuantity";
             this.ColumnQuantity.ReadOnly = true;
             this.ColumnQuantity.Width = 120;
@@ -333,19 +346,40 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             // 
             this.ColumnCost.DataPropertyName = "ColumnCost";
             this.ColumnCost.HeaderText = "Cost";
+            this.ColumnCost.MinimumWidth = 6;
             this.ColumnCost.Name = "ColumnCost";
             this.ColumnCost.ReadOnly = true;
+            this.ColumnCost.Width = 125;
             // 
             // ColumnCostAmount
             // 
             this.ColumnCostAmount.DataPropertyName = "ColumnCostAmount";
             this.ColumnCostAmount.HeaderText = "Cost Amount";
+            this.ColumnCostAmount.MinimumWidth = 6;
             this.ColumnCostAmount.Name = "ColumnCostAmount";
             this.ColumnCostAmount.ReadOnly = true;
+            this.ColumnCostAmount.Width = 125;
+            // 
+            // ColumnCostSellingPrice
+            // 
+            this.ColumnCostSellingPrice.DataPropertyName = "ColumnCostSellingPrice";
+            this.ColumnCostSellingPrice.HeaderText = "Selling Price";
+            this.ColumnCostSellingPrice.MinimumWidth = 6;
+            this.ColumnCostSellingPrice.Name = "ColumnCostSellingPrice";
+            this.ColumnCostSellingPrice.ReadOnly = true;
+            // 
+            // ColumnCostProfit
+            // 
+            this.ColumnCostProfit.DataPropertyName = "ColumnCostProfit";
+            this.ColumnCostProfit.HeaderText = "Profit";
+            this.ColumnCostProfit.MinimumWidth = 6;
+            this.ColumnCostProfit.Name = "ColumnCostProfit";
+            this.ColumnCostProfit.ReadOnly = true;
+            this.ColumnCostProfit.Width = 125;
             // 
             // RepCostOfSaleReportForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1096, 522);
             this.Controls.Add(this.panel4);
@@ -391,5 +425,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCostAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCostSellingPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCostProfit;
     }
 }
