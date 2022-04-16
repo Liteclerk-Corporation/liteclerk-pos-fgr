@@ -871,6 +871,36 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         break;
 
+                    case "Sales Agent Report":
+                        labelStartDate.Visible = true;
+                        dateTimePickerStartDate.Visible = true;
+
+                        labelEndDate.Visible = true;
+                        dateTimePickerEndDate.Visible = true;
+
+                        labelTerminal.Visible = false;
+                        comboBoxTerminal.Visible = false;
+
+                        labelCustomer.Visible = false;
+                        comboBoxCustomer.Visible = false;
+
+                        labelAgent.Visible = true;
+                        comboBoxSalesAgent.Visible = true;
+
+                        labelSupplier.Visible = false;
+                        comboBoxSupplier.Visible = false;
+
+                        labelItem.Visible = false;
+                        comboBoxItemFilter.Visible = false;
+
+                        labelDateAsOf.Visible = false;
+                        dateTimePickerDateAsOf.Visible = false;
+
+                        dateTimePickerStartDate.Focus();
+                        buttonView.Text = SetLabel("Print");
+
+                        break;
+
                     default:
                         labelStartDate.Visible = false;
                         dateTimePickerStartDate.Visible = false;
@@ -1396,6 +1426,27 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                 {
                                     RepDeletedItemReportForm repDeletedItemReportForm = new RepDeletedItemReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
                                     repDeletedItemReportForm.ShowDialog();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+                            }
+                            break;
+
+                        case "Sales Agent Report":
+                            sysUserRights = new Modules.SysUserRightsModule("RepSalesDetail");
+
+                            if (sysUserRights.GetUserRights() == null)
+                            {
+                                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                if (sysUserRights.GetUserRights().CanView == true)
+                                {
+                                    RepSalesAgentReportForm repSalesAgentReportForm = new RepSalesAgentReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToInt32(comboBoxSalesAgent.SelectedValue));
+                                    repSalesAgentReportForm.ShowDialog();
                                 }
                                 else
                                 {

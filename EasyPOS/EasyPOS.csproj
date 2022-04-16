@@ -315,6 +315,7 @@
     <Compile Include="EasyFISIntegration\Entities\EasyPOSTrnStockTransfer.cs" />
     <Compile Include="EasyFISIntegration\Entities\EasyPOSTrnStockTransferItem.cs" />
     <Compile Include="Entities\DgvRepDeletedItemEntity.cs" />
+    <Compile Include="Entities\DgvRepSalesReportSalesAgentReportListEntity.cs" />
     <Compile Include="Entities\DgvStockLevelReportEntity.cs" />
     <Compile Include="Entities\DgvTrnPOSTouchPrintOrderDetailEntity.cs" />
     <Compile Include="Entities\DgvTrnSalesMergeEntity.cs" />
@@ -388,6 +389,7 @@
     <Compile Include="Entities\DgvSysUtilitiesBarcodePrintingItemList.cs" />
     <Compile Include="Entities\DgvRepUnsoldItemEntity.cs" />
     <Compile Include="Entities\DgvMstSystemTablesLanguageListEntity.cs" />
+    <Compile Include="Entities\RepSalesReportSalesAgentReportEntity.cs" />
     <Compile Include="Entities\SysKitchenPrinterEntity.cs" />
     <Compile Include="Entities\EspCardDetailsEntity.cs" />
     <Compile Include="Entities\EspTokenEntity.cs" />
@@ -801,6 +803,18 @@
     </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepDeletedItemReportPDFForm.Designer.cs">
       <DependentUpon>RepDeletedItemReportPDFForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesAgentReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesAgentReportForm.Designer.cs">
+      <DependentUpon>RepSalesAgentReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesAgentReportPDFForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepSalesAgentReportPDFForm.Designer.cs">
+      <DependentUpon>RepSalesAgentReportPDFForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepSalesDetailReportPDFForm.cs">
       <SubType>Form</SubType>
@@ -1693,6 +1707,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepDeletedItemReportPDFForm.resx">
       <DependentUpon>RepDeletedItemReportPDFForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesAgentReportForm.resx">
+      <DependentUpon>RepSalesAgentReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesAgentReportPDFForm.resx">
+      <DependentUpon>RepSalesAgentReportPDFForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepSalesDetailReportPDFForm.resx">
       <DependentUpon>RepSalesDetailReportPDFForm.cs</DependentUpon>
