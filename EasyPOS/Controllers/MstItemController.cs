@@ -370,7 +370,7 @@ namespace EasyPOS.Controllers
                             ChildItemId = d.ChildItemId
                         };
 
-            return items.OrderByDescending(d => d.Id).ToList();
+            return items.OrderBy(d => d.ItemDescription).ToList();
         }
 
         // ====================
