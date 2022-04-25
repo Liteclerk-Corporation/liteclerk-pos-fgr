@@ -175,8 +175,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         where d.Id == trnSalesId
                         select d;
 
-            String tableNo = "Table: " + sales.FirstOrDefault().MstTable.TableCode;
-            graphics.DrawString(tableNo, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            if (sales.FirstOrDefault().TableId != null && sales.FirstOrDefault().MstTable.TableCode != "Walk-in")
+            {
+                String tableNo = "Table: " + sales.FirstOrDefault().MstTable.TableCode;
+                graphics.DrawString(tableNo, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+            }
+
             String billDateText = "\n" + sales.FirstOrDefault().SalesDate.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
             graphics.DrawString(billDateText, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
             String billTimeText = "\n" + DateTime.Now.ToString("hh:mm:ss:tt", CultureInfo.InvariantCulture);
@@ -214,6 +218,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 Decimal totalServiceCharge = 0;
                 Boolean hasServiceCharge = false;
+                String itemPreparation;
 
                 var salesLines = from d in db.TrnSalesLines where d.SalesId == trnSalesId select d;
                 if (salesLines.Any())
@@ -249,6 +254,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                                    g.Key.ItemId,
                                                    g.Key.MstItem,
                                                    g.Key.MstItem.ItemDescription,
+                                                   g.Key.Preparation,
                                                    g.Key.MstUnit.Unit,
                                                    g.Key.Price,
                                                    g.Key.NetPrice,
@@ -305,15 +311,24 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                 totalVATZeroRated += salesLine.Amount;
                             }
 
+                            if (salesLine.Preparation == "NA")
+                            {
+                                itemPreparation = "";
+                            }
+                            else
+                            {
+                                itemPreparation = salesLine.Preparation;
+                            }
+
                             if (salesLine.MstItem.BarCode != "0000000001")
                             {
-                                String itemData = salesLine.ItemDescription + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
+                                String itemData = salesLine.ItemDescription + " " + itemPreparation + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
                                 String itemAmountData = (salesLine.Amount + salesLine.DiscountAmount).ToString("#,##0.00");
                                 RectangleF itemDataRectangle = new RectangleF
                                 {
                                     X = x,
                                     Y = y,
-                                    Size = new Size(150, ((int)graphics.MeasureString(itemData, fontArial7Regular, 150, StringFormat.GenericTypographic).Height))
+                                    Size = new Size(200, ((int)graphics.MeasureString(itemData, fontArial7Regular, 200, StringFormat.GenericTypographic).Height))
                                 };
                                 graphics.DrawString(itemData, fontArial7Regular, Brushes.Black, itemDataRectangle, drawFormatLeft);
                                 if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "Dot Matrix Printer")
@@ -406,6 +421,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 Decimal totalServiceCharge = 0;
                 Boolean hasServiceCharge = false;
+                String itemPreparation;
 
                 var salesLines = from d in db.TrnSalesLines where d.SalesId == trnSalesId select d;
                 if (salesLines.Any())
@@ -441,6 +457,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                                    g.Key.ItemId,
                                                    g.Key.MstItem,
                                                    g.Key.MstItem.ItemDescription,
+                                                   g.Key.Preparation,
                                                    g.Key.MstUnit.Unit,
                                                    g.Key.Price,
                                                    g.Key.NetPrice,
@@ -497,9 +514,18 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                 totalVATZeroRated += salesLine.Amount;
                             }
 
+                            if (salesLine.Preparation == "NA")
+                            {
+                                itemPreparation = "";
+                            }
+                            else
+                            {
+                                itemPreparation = salesLine.Preparation;
+                            }
+
                             if (salesLine.MstItem.BarCode != "0000000001")
                             {
-                                String itemData = salesLine.ItemDescription + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
+                                String itemData = salesLine.ItemDescription + " " + itemPreparation + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
                                 String itemAmountData = (salesLine.Amount + salesLine.DiscountAmount).ToString("#,##0.00");
                                 RectangleF itemDataRectangle = new RectangleF
                                 {

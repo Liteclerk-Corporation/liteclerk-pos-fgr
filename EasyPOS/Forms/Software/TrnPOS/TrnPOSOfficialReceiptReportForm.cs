@@ -377,6 +377,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 Decimal totalServiceCharge = 0;
                 Boolean hasServiceCharge = false;
+                String itemPreparation;
 
                 var salesLines = from d in db.TrnSalesLines where d.SalesId == trnSalesId select d;
                 if (salesLines.Any())
@@ -481,13 +482,22 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                     _VAT = _amount / (1 + (salesLine.MstItem.MstTax1.Rate / 100));
                                 }
 
-                                String itemData = salesLine.ItemDescription + " " + salesLine.Preparation + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
+                                if (salesLine.Preparation == "NA")
+                                {
+                                    itemPreparation = "";
+                                }
+                                else
+                                {
+                                    itemPreparation = salesLine.Preparation;
+                                }
+
+                                String itemData = salesLine.ItemDescription + " " + itemPreparation + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
                                 String itemAmountData = (_VAT).ToString("#,##0.00");
                                 RectangleF itemDataRectangle = new RectangleF
                                 {
                                     X = x,
                                     Y = y,
-                                    Size = new Size(150, ((int)graphics.MeasureString(itemData, fontArial7Regular, 150, StringFormat.GenericDefault).Height))
+                                    Size = new Size(200, ((int)graphics.MeasureString(itemData, fontArial7Regular, 200, StringFormat.GenericDefault).Height))
                                 };
                                 graphics.DrawString(itemData, fontArial7Regular, Brushes.Black, itemDataRectangle, drawFormatLeft);
                                 graphics.DrawString(itemAmountData, fontArial7Regular, drawBrush, new RectangleF(x, y, 170.0F, height), drawFormatRight);
@@ -826,6 +836,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 Decimal totalServiceCharge = 0;
                 Boolean hasServiceCharge = false;
+                String itemPreparation;
 
                 var salesLines = from d in db.TrnSalesLines where d.SalesId == trnSalesId select d;
                 if (salesLines.Any())
@@ -931,7 +942,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                     _VAT = _amount / (1 + (salesLine.MstItem.MstTax1.Rate / 100));
                                 }
 
-                                String itemData = salesLine.ItemDescription + " " + salesLine.Preparation + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
+                                if (salesLine.Preparation == "NA")
+                                {
+                                    itemPreparation = "";
+                                }
+                                else
+                                {
+                                    itemPreparation = salesLine.Preparation;
+                                }
+
+                                String itemData = salesLine.ItemDescription + " " + itemPreparation + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
                                 String itemAmountData = (_VAT).ToString("#,##0.00");
                                 RectangleF itemDataRectangle = new RectangleF
                                 {
