@@ -50,7 +50,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                 var systemCurrent = Modules.SysCurrentModule.GetCurrentSettings();
 
-                Document document = new Document(PageSize.LEGAL.Rotate());
+                Document document = new Document(PageSize.LETTER);
                 document.SetMargins(15f, 15f, 100f, 30f);
 
                 PdfWriter pdfWriter = PdfWriter.GetInstance(document, new FileStream(fileName, FileMode.Create));
@@ -172,7 +172,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 tableLines.AddCell(new PdfPCell(new Phrase(" ", fontTimesNewRoman10Bold)) { Border = 0, HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 0 });
 
                 tableLines.AddCell(new PdfPCell(new Phrase("Time", fontTimesNewRoman10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
-                tableLines.AddCell(new PdfPCell(new Phrase("Quantity", fontTimesNewRoman10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
+                tableLines.AddCell(new PdfPCell(new Phrase("Qty", fontTimesNewRoman10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
                 tableLines.AddCell(new PdfPCell(new Phrase("Barcode", fontTimesNewRoman10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
                 tableLines.AddCell(new PdfPCell(new Phrase("Item", fontTimesNewRoman10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
                 tableLines.AddCell(new PdfPCell(new Phrase("Price", fontTimesNewRoman10Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
