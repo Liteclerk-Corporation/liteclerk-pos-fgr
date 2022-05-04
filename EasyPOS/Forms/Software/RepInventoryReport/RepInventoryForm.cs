@@ -136,6 +136,29 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                 comboBoxCategory.ValueMember = "Category";
                 comboBoxCategory.DisplayMember = "Category";
             }
+            if (repInventoryReportController.GetStockCountList().Any())
+            {
+                List<Entities.TrnStockCountEntity> newStockCountList = new List<Entities.TrnStockCountEntity>();
+
+                newStockCountList.Add(new Entities.TrnStockCountEntity
+                {
+                    Id = 0,
+                    StockCountNumber = "NONE",
+                });
+
+                foreach (var obj in repInventoryReportController.GetStockCountList())
+                {
+                    newStockCountList.Add(new Entities.TrnStockCountEntity
+                    {
+                        Id = obj.Id,
+                        StockCountNumber = obj.StockCountNumber,
+                        Remarks = obj.Remarks
+                    });
+                };
+                comboBoxStockCount.DataSource = newStockCountList;
+                comboBoxStockCount.ValueMember = "Id";
+                comboBoxStockCount.DisplayMember = "StockCountNumber";
+            }
         }
 
            
@@ -160,6 +183,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         checkBoxFilter.Checked = false;
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("View");
+                        comboBoxStockCount.Visible = true;
+                        labelStockCount.Visible = true;
 
                         break;
                     case "Item List Report":
@@ -169,6 +194,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         comboBoxItem.Visible = false;
                         labelItem.Visible = false;
                         buttonView.Text = SetLabel("View");
+                        comboBoxStockCount.Visible = false;
+                        labelStockCount.Visible = false;
 
                         break;
                     case "Stock Card":
@@ -185,6 +212,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         labelCategory.Visible = false;
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("View");
+                        comboBoxStockCount.Visible = false;
+                        labelStockCount.Visible = false;
 
                         break;
                     case "Stock In Detail Report":
@@ -201,6 +230,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         labelItem.Visible = false;
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("View");
+                        comboBoxStockCount.Visible = false;
+                        labelStockCount.Visible = false;
 
                         break;
                     case "Stock Out Detail Report":
@@ -217,6 +248,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         labelItem.Visible = false;
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("View");
+                        comboBoxStockCount.Visible = false;
+                        labelStockCount.Visible = false;
 
                         break;
                     case "Stock Count Detail Report":
@@ -233,6 +266,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         labelItem.Visible = false;
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("View");
+                        comboBoxStockCount.Visible = false;
+                        labelStockCount.Visible = false;
 
                         break;
                     case "Item Expiry Report":
@@ -249,6 +284,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         labelItem.Visible = false;
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("View");
+                        comboBoxStockCount.Visible = false;
+                        labelStockCount.Visible = false;
 
                         break;
                     case "80mm Inventory Report":
@@ -264,6 +301,9 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         checkBoxFilter.Checked = false;
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("Print");
+                        comboBoxStockCount.Visible = false;
+                        labelStockCount.Visible = false;
+
                         break;
                     default:
                         labelStartDate.Visible = false;
@@ -277,6 +317,8 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         comboBoxItem.Visible = false;
                         labelItem.Visible = false;
                         buttonView.Text = SetLabel("View");
+                        comboBoxStockCount.Visible = false;
+                        labelStockCount.Visible = false;
 
                         break;
                     
@@ -306,7 +348,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                         {
                             if (sysUserRights.GetUserRights().CanView == true)
                             {
-                                RepInventoryReportForm repInventoryReportInventoryReport = new RepInventoryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToString(comboBoxCategory.SelectedValue), Convert.ToInt32(comboBoxItem.SelectedValue));
+                                RepInventoryReportForm repInventoryReportInventoryReport = new RepInventoryReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, Convert.ToString(comboBoxCategory.SelectedValue), Convert.ToInt32(comboBoxItem.SelectedValue), Convert.ToInt32(comboBoxStockCount.SelectedValue));
                                 repInventoryReportInventoryReport.ShowDialog();
                             }
                             else
