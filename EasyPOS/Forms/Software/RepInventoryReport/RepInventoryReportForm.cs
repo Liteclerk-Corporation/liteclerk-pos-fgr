@@ -26,10 +26,11 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
         public DateTime endDate;
         public String category;
         public Int32 itemId;
+        public Int32 countId;
 
         public List<Entities.SysLanguageEntity> sysLanguageEntities = new List<Entities.SysLanguageEntity>();
 
-        public RepInventoryReportForm(DateTime dateStart, DateTime dateEnd, String filterItemCategory, Int32 itemIds)
+        public RepInventoryReportForm(DateTime dateStart, DateTime dateEnd, String filterItemCategory, Int32 itemIds, Int32 stockCountId)
         {
             InitializeComponent();
 
@@ -41,6 +42,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             endDate = dateEnd;
             category = filterItemCategory;
             itemId = itemIds;
+            countId = stockCountId;
 
             GetInventoryReportDataSource("");
             GetDataGridViewCollectionDetailReportSource();
@@ -86,7 +88,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
 
             Controllers.RepInventoryReportController repInvetoryReportController = new Controllers.RepInventoryReportController();
 
-            var inventoryReportList = repInvetoryReportController.InventoryReport(startDate, endDate, category, filter, itemId);
+            var inventoryReportList = repInvetoryReportController.InventoryReport(startDate, endDate, category, filter, itemId, countId);
             if (inventoryReportList.Any())
             {
                 Decimal totalAmount = 0;
@@ -327,7 +329,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
 
         private void buttonPrint_Click(object sender, EventArgs e)
         {
-            new RepInventoryReportPDFForm(startDate, endDate, category, textBoxFilter.Text, itemId);
+            new RepInventoryReportPDFForm(startDate, endDate, category, textBoxFilter.Text, itemId, countId);
         }
     }
 }

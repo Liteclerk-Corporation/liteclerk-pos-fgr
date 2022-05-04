@@ -48,9 +48,9 @@ namespace EasyPOS.Controllers
         // ================
         // Inventory Report
         // ================
-        public List<Entities.RepInventoryReportEntity> InventoryReport(DateTime startDate, DateTime endDate, String category, String filter, Int32 itemId)
+        public List<Entities.RepInventoryReportEntity> InventoryReport(DateTime startDate, DateTime endDate, String category, String filter, Int32 itemId, Int32 stockCountId)
         {
-            if (itemId == 0 &&category == "ALL" )
+            if (itemId == 0 && category == "ALL")
             {
                 List<Entities.RepInventoryReportEntity> newRepInventoryReportEntity = new List<Entities.RepInventoryReportEntity>();
                 var beginningInInventories = from d in db.TrnStockInLines
@@ -283,43 +283,110 @@ namespace EasyPOS.Controllers
                                                 Amount = 0
                                             };
 
-                var unionCurrentInventories = currentInInventories.ToList().Union(currentSoldInventories.ToList()).Union(currentSoldComponentInventories.ToList()).Union(currentOutInventories.ToList());
-
-                var unionInventories = unionBeginningInventories.ToList().Union(unionCurrentInventories.ToList());
-                if (unionInventories.Any())
+                if (stockCountId == 0)
                 {
-                    var inventories = from d in unionInventories
-                                      group d by new
-                                      {
-                                          d.ItemCode,
-                                          d.BarCode,
-                                          d.ItemDescription,
-                                          d.Unit,
-                                          d.Cost,
-                                          d.Price
-                                      } into g
-                                      select new Entities.RepInventoryReportEntity
-                                      {
-                                          ItemCode = g.Key.ItemCode,
-                                          BarCode = g.Key.BarCode,
-                                          ItemDescription = g.Key.ItemDescription,
-                                          Unit = g.Key.Unit,
-                                          BeginningQuantity = g.Sum(s => s.BeginningQuantity),
-                                          InQuantity = g.Sum(s => s.InQuantity),
-                                          OutQuantity = g.Sum(s => s.OutQuantity) * -1,
-                                          EndingQuantity = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
-                                          CountQuantity = 0,
-                                          Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
-                                          Cost = g.Key.Cost,
-                                          Price = g.Key.Price,
-                                          Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
-                                      };
+                    var unionCurrentInventories = currentInInventories.ToList().Union(currentSoldInventories.ToList()).Union(currentSoldComponentInventories.ToList()).Union(currentOutInventories.ToList());
 
-                    return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
+                    var unionInventories = unionBeginningInventories.ToList().Union(unionCurrentInventories.ToList());
+                    if (unionInventories.Any())
+                    {
+                        var inventories = from d in unionInventories
+                                          group d by new
+                                          {
+                                              d.ItemCode,
+                                              d.BarCode,
+                                              d.ItemDescription,
+                                              d.Unit,
+                                              d.Cost,
+                                              d.Price
+                                          } into g
+                                          select new Entities.RepInventoryReportEntity
+                                          {
+                                              ItemCode = g.Key.ItemCode,
+                                              BarCode = g.Key.BarCode,
+                                              ItemDescription = g.Key.ItemDescription,
+                                              Unit = g.Key.Unit,
+                                              BeginningQuantity = g.Sum(s => s.BeginningQuantity),
+                                              InQuantity = g.Sum(s => s.InQuantity),
+                                              OutQuantity = g.Sum(s => s.OutQuantity) * -1,
+                                              EndingQuantity = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
+                                              CountQuantity = 0,
+                                              Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                              Cost = g.Key.Cost,
+                                              Price = g.Key.Price,
+                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                          };
+
+                        return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
+                    }
+                    else
+                    {
+                        return new List<Entities.RepInventoryReportEntity>();
+                    }
                 }
                 else
                 {
-                    return new List<Entities.RepInventoryReportEntity>();
+                    var currentStockCountInventories = from d in db.TrnStockCountLines
+                                                       where d.TrnStockCount.IsLocked == true
+                                                       && d.MstItem.IsInventory == true
+                                                       && d.MstItem.IsLocked == true
+                                                       select new Entities.RepInventoryReportEntity
+                                                       {
+                                                           Document = "Cur",
+                                                           Id = "Cur-Count-" + d.Id,
+                                                           InventoryDate = d.TrnStockCount.StockCountDate,
+                                                           ItemCode = d.MstItem.ItemCode,
+                                                           BarCode = d.MstItem.BarCode,
+                                                           ItemDescription = d.MstItem.ItemDescription,
+                                                           BeginningQuantity = 0,
+                                                           InQuantity = 0,
+                                                           OutQuantity = 0,
+                                                           EndingQuantity = 0,
+                                                           CountQuantity = d.Quantity,
+                                                           Unit = d.MstUnit.Unit,
+                                                           Cost = d.MstItem.Cost,
+                                                           Price = d.MstItem.Price,
+                                                           Amount = 0
+                                                       };
+
+                    var unionCurrentInventories = currentInInventories.ToList().Union(currentSoldInventories.ToList()).Union(currentSoldComponentInventories.ToList()).Union(currentOutInventories.ToList()).Union(currentStockCountInventories.ToList());
+
+                    var unionInventories = unionBeginningInventories.ToList().Union(unionCurrentInventories.ToList());
+                    if (unionInventories.Any())
+                    {
+                        var inventories = from d in unionInventories
+                                          group d by new
+                                          {
+                                              d.ItemCode,
+                                              d.BarCode,
+                                              d.ItemDescription,
+                                              d.Unit,
+                                              d.Cost,
+                                              d.Price
+                                          } into g
+                                          select new Entities.RepInventoryReportEntity
+                                          {
+                                              ItemCode = g.Key.ItemCode,
+                                              BarCode = g.Key.BarCode,
+                                              ItemDescription = g.Key.ItemDescription,
+                                              Unit = g.Key.Unit,
+                                              BeginningQuantity = g.Sum(s => s.BeginningQuantity),
+                                              InQuantity = g.Sum(s => s.InQuantity),
+                                              OutQuantity = g.Sum(s => s.OutQuantity) * -1,
+                                              EndingQuantity = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
+                                              CountQuantity = g.Sum(s => s.CountQuantity),
+                                              Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                              Cost = g.Key.Cost,
+                                              Price = g.Key.Price,
+                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                          };
+
+                        return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
+                    }
+                    else
+                    {
+                        return new List<Entities.RepInventoryReportEntity>();
+                    }
                 }
             }
             else if (category != "ALL" && itemId != 0)
@@ -571,43 +638,112 @@ namespace EasyPOS.Controllers
                                                 Amount = 0
                                             };
 
-                var unionCurrentInventories = currentInInventories.ToList().Union(currentSoldInventories.ToList()).Union(currentSoldComponentInventories.ToList()).Union(currentOutInventories.ToList());
-
-                var unionInventories = unionBeginningInventories.ToList().Union(unionCurrentInventories.ToList());
-                if (unionInventories.Any())
+                if (stockCountId == 0)
                 {
-                    var inventories = from d in unionInventories
-                                      group d by new
-                                      {
-                                          d.ItemCode,
-                                          d.BarCode,
-                                          d.ItemDescription,
-                                          d.Unit,
-                                          d.Cost,
-                                          d.Price
-                                      } into g
-                                      select new Entities.RepInventoryReportEntity
-                                      {
-                                          ItemCode = g.Key.ItemCode,
-                                          BarCode = g.Key.BarCode,
-                                          ItemDescription = g.Key.ItemDescription,
-                                          Unit = g.Key.Unit,
-                                          BeginningQuantity = g.Sum(s => s.BeginningQuantity),
-                                          InQuantity = g.Sum(s => s.InQuantity),
-                                          OutQuantity = g.Sum(s => s.OutQuantity) * -1,
-                                          EndingQuantity = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
-                                          CountQuantity = 0,
-                                          Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
-                                          Cost = g.Key.Cost,
-                                          Price = g.Key.Price,
-                                          Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
-                                      };
+                    var unionCurrentInventories = currentInInventories.ToList().Union(currentSoldInventories.ToList()).Union(currentSoldComponentInventories.ToList()).Union(currentOutInventories.ToList());
 
-                    return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
+                    var unionInventories = unionBeginningInventories.ToList().Union(unionCurrentInventories.ToList());
+                    if (unionInventories.Any())
+                    {
+                        var inventories = from d in unionInventories
+                                          group d by new
+                                          {
+                                              d.ItemCode,
+                                              d.BarCode,
+                                              d.ItemDescription,
+                                              d.Unit,
+                                              d.Cost,
+                                              d.Price
+                                          } into g
+                                          select new Entities.RepInventoryReportEntity
+                                          {
+                                              ItemCode = g.Key.ItemCode,
+                                              BarCode = g.Key.BarCode,
+                                              ItemDescription = g.Key.ItemDescription,
+                                              Unit = g.Key.Unit,
+                                              BeginningQuantity = g.Sum(s => s.BeginningQuantity),
+                                              InQuantity = g.Sum(s => s.InQuantity),
+                                              OutQuantity = g.Sum(s => s.OutQuantity) * -1,
+                                              EndingQuantity = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
+                                              CountQuantity = 0,
+                                              Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                              Cost = g.Key.Cost,
+                                              Price = g.Key.Price,
+                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                          };
+
+                        return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
+                    }
+                    else
+                    {
+                        return new List<Entities.RepInventoryReportEntity>();
+                    }
                 }
                 else
                 {
-                    return new List<Entities.RepInventoryReportEntity>();
+                    var currentStockCountInventories = from d in db.TrnStockCountLines
+                                                       where d.TrnStockCount.IsLocked == true
+                                                       && d.MstItem.IsInventory == true
+                                                       && d.MstItem.IsLocked == true
+                                                       && d.MstItem.Category == category
+                                                       && d.MstItem.Id == itemId
+                                                       select new Entities.RepInventoryReportEntity
+                                                       {
+                                                           Document = "Cur",
+                                                           Id = "Cur-Count-" + d.Id,
+                                                           InventoryDate = d.TrnStockCount.StockCountDate,
+                                                           ItemCode = d.MstItem.ItemCode,
+                                                           BarCode = d.MstItem.BarCode,
+                                                           ItemDescription = d.MstItem.ItemDescription,
+                                                           BeginningQuantity = 0,
+                                                           InQuantity = 0,
+                                                           OutQuantity = 0,
+                                                           EndingQuantity = 0,
+                                                           CountQuantity = d.Quantity,
+                                                           Unit = d.MstUnit.Unit,
+                                                           Cost = d.MstItem.Cost,
+                                                           Price = d.MstItem.Price,
+                                                           Amount = 0
+                                                       };
+
+                    var unionCurrentInventories = currentInInventories.ToList().Union(currentSoldInventories.ToList()).Union(currentSoldComponentInventories.ToList()).Union(currentOutInventories.ToList()).Union(currentStockCountInventories.ToList());
+
+                    var unionInventories = unionBeginningInventories.ToList().Union(unionCurrentInventories.ToList());
+                    if (unionInventories.Any())
+                    {
+                        var inventories = from d in unionInventories
+                                          group d by new
+                                          {
+                                              d.ItemCode,
+                                              d.BarCode,
+                                              d.ItemDescription,
+                                              d.Unit,
+                                              d.Cost,
+                                              d.Price
+                                          } into g
+                                          select new Entities.RepInventoryReportEntity
+                                          {
+                                              ItemCode = g.Key.ItemCode,
+                                              BarCode = g.Key.BarCode,
+                                              ItemDescription = g.Key.ItemDescription,
+                                              Unit = g.Key.Unit,
+                                              BeginningQuantity = g.Sum(s => s.BeginningQuantity),
+                                              InQuantity = g.Sum(s => s.InQuantity),
+                                              OutQuantity = g.Sum(s => s.OutQuantity) * -1,
+                                              EndingQuantity = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
+                                              CountQuantity = g.Sum(s => s.CountQuantity),
+                                              Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                              Cost = g.Key.Cost,
+                                              Price = g.Key.Price,
+                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                          };
+
+                        return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
+                    }
+                    else
+                    {
+                        return new List<Entities.RepInventoryReportEntity>();
+                    }
                 }
             }
             else if (category == "ALL" && itemId != 0)
@@ -851,43 +987,111 @@ namespace EasyPOS.Controllers
                                                 Amount = 0
                                             };
 
-                var unionCurrentInventories = currentInInventories.ToList().Union(currentSoldInventories.ToList()).Union(currentSoldComponentInventories.ToList()).Union(currentOutInventories.ToList());
-
-                var unionInventories = unionBeginningInventories.ToList().Union(unionCurrentInventories.ToList());
-                if (unionInventories.Any())
+                if (stockCountId == 0)
                 {
-                    var inventories = from d in unionInventories
-                                      group d by new
-                                      {
-                                          d.ItemCode,
-                                          d.BarCode,
-                                          d.ItemDescription,
-                                          d.Unit,
-                                          d.Cost,
-                                          d.Price
-                                      } into g
-                                      select new Entities.RepInventoryReportEntity
-                                      {
-                                          ItemCode = g.Key.ItemCode,
-                                          BarCode = g.Key.BarCode,
-                                          ItemDescription = g.Key.ItemDescription,
-                                          Unit = g.Key.Unit,
-                                          BeginningQuantity = g.Sum(s => s.BeginningQuantity),
-                                          InQuantity = g.Sum(s => s.InQuantity),
-                                          OutQuantity = g.Sum(s => s.OutQuantity) * -1,
-                                          EndingQuantity = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
-                                          CountQuantity = 0,
-                                          Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
-                                          Cost = g.Key.Cost,
-                                          Price = g.Key.Price,
-                                          Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
-                                      };
+                    var unionCurrentInventories = currentInInventories.ToList().Union(currentSoldInventories.ToList()).Union(currentSoldComponentInventories.ToList()).Union(currentOutInventories.ToList());
 
-                    return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
+                    var unionInventories = unionBeginningInventories.ToList().Union(unionCurrentInventories.ToList());
+                    if (unionInventories.Any())
+                    {
+                        var inventories = from d in unionInventories
+                                          group d by new
+                                          {
+                                              d.ItemCode,
+                                              d.BarCode,
+                                              d.ItemDescription,
+                                              d.Unit,
+                                              d.Cost,
+                                              d.Price
+                                          } into g
+                                          select new Entities.RepInventoryReportEntity
+                                          {
+                                              ItemCode = g.Key.ItemCode,
+                                              BarCode = g.Key.BarCode,
+                                              ItemDescription = g.Key.ItemDescription,
+                                              Unit = g.Key.Unit,
+                                              BeginningQuantity = g.Sum(s => s.BeginningQuantity),
+                                              InQuantity = g.Sum(s => s.InQuantity),
+                                              OutQuantity = g.Sum(s => s.OutQuantity) * -1,
+                                              EndingQuantity = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
+                                              CountQuantity = 0,
+                                              Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                              Cost = g.Key.Cost,
+                                              Price = g.Key.Price,
+                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                          };
+
+                        return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
+                    }
+                    else
+                    {
+                        return new List<Entities.RepInventoryReportEntity>();
+                    }
                 }
                 else
                 {
-                    return new List<Entities.RepInventoryReportEntity>();
+                    var currentStockCountInventories = from d in db.TrnStockCountLines
+                                                       where d.TrnStockCount.IsLocked == true
+                                                       && d.MstItem.IsInventory == true
+                                                       && d.MstItem.IsLocked == true
+                                                       && d.MstItem.Id == itemId
+                                                       select new Entities.RepInventoryReportEntity
+                                                       {
+                                                           Document = "Cur",
+                                                           Id = "Cur-Count-" + d.Id,
+                                                           InventoryDate = d.TrnStockCount.StockCountDate,
+                                                           ItemCode = d.MstItem.ItemCode,
+                                                           BarCode = d.MstItem.BarCode,
+                                                           ItemDescription = d.MstItem.ItemDescription,
+                                                           BeginningQuantity = 0,
+                                                           InQuantity = 0,
+                                                           OutQuantity = 0,
+                                                           EndingQuantity = 0,
+                                                           CountQuantity = d.Quantity,
+                                                           Unit = d.MstUnit.Unit,
+                                                           Cost = d.MstItem.Cost,
+                                                           Price = d.MstItem.Price,
+                                                           Amount = 0
+                                                       };
+
+                    var unionCurrentInventories = currentInInventories.ToList().Union(currentSoldInventories.ToList()).Union(currentSoldComponentInventories.ToList()).Union(currentOutInventories.ToList()).Union(currentStockCountInventories.ToList());
+
+                    var unionInventories = unionBeginningInventories.ToList().Union(unionCurrentInventories.ToList());
+                    if (unionInventories.Any())
+                    {
+                        var inventories = from d in unionInventories
+                                          group d by new
+                                          {
+                                              d.ItemCode,
+                                              d.BarCode,
+                                              d.ItemDescription,
+                                              d.Unit,
+                                              d.Cost,
+                                              d.Price
+                                          } into g
+                                          select new Entities.RepInventoryReportEntity
+                                          {
+                                              ItemCode = g.Key.ItemCode,
+                                              BarCode = g.Key.BarCode,
+                                              ItemDescription = g.Key.ItemDescription,
+                                              Unit = g.Key.Unit,
+                                              BeginningQuantity = g.Sum(s => s.BeginningQuantity),
+                                              InQuantity = g.Sum(s => s.InQuantity),
+                                              OutQuantity = g.Sum(s => s.OutQuantity) * -1,
+                                              EndingQuantity = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
+                                              CountQuantity = g.Sum(s => s.CountQuantity),
+                                              Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                              Cost = g.Key.Cost,
+                                              Price = g.Key.Price,
+                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                          };
+
+                        return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
+                    }
+                    else
+                    {
+                        return new List<Entities.RepInventoryReportEntity>();
+                    }
                 }
             }
             else if (category != "ALL" && itemId == 0)
@@ -1131,43 +1335,111 @@ namespace EasyPOS.Controllers
                                                 Amount = 0
                                             };
 
-                var unionCurrentInventories = currentInInventories.ToList().Union(currentSoldInventories.ToList()).Union(currentSoldComponentInventories.ToList()).Union(currentOutInventories.ToList());
-
-                var unionInventories = unionBeginningInventories.ToList().Union(unionCurrentInventories.ToList());
-                if (unionInventories.Any())
+                if (stockCountId == 0)
                 {
-                    var inventories = from d in unionInventories
-                                      group d by new
-                                      {
-                                          d.ItemCode,
-                                          d.BarCode,
-                                          d.ItemDescription,
-                                          d.Unit,
-                                          d.Cost,
-                                          d.Price
-                                      } into g
-                                      select new Entities.RepInventoryReportEntity
-                                      {
-                                          ItemCode = g.Key.ItemCode,
-                                          BarCode = g.Key.BarCode,
-                                          ItemDescription = g.Key.ItemDescription,
-                                          Unit = g.Key.Unit,
-                                          BeginningQuantity = g.Sum(s => s.BeginningQuantity),
-                                          InQuantity = g.Sum(s => s.InQuantity),
-                                          OutQuantity = g.Sum(s => s.OutQuantity) * -1,
-                                          EndingQuantity = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
-                                          CountQuantity = 0,
-                                          Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
-                                          Cost = g.Key.Cost,
-                                          Price =g.Key.Price,
-                                          Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
-                                      };
+                    var unionCurrentInventories = currentInInventories.ToList().Union(currentSoldInventories.ToList()).Union(currentSoldComponentInventories.ToList()).Union(currentOutInventories.ToList());
 
-                    return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
+                    var unionInventories = unionBeginningInventories.ToList().Union(unionCurrentInventories.ToList());
+                    if (unionInventories.Any())
+                    {
+                        var inventories = from d in unionInventories
+                                          group d by new
+                                          {
+                                              d.ItemCode,
+                                              d.BarCode,
+                                              d.ItemDescription,
+                                              d.Unit,
+                                              d.Cost,
+                                              d.Price
+                                          } into g
+                                          select new Entities.RepInventoryReportEntity
+                                          {
+                                              ItemCode = g.Key.ItemCode,
+                                              BarCode = g.Key.BarCode,
+                                              ItemDescription = g.Key.ItemDescription,
+                                              Unit = g.Key.Unit,
+                                              BeginningQuantity = g.Sum(s => s.BeginningQuantity),
+                                              InQuantity = g.Sum(s => s.InQuantity),
+                                              OutQuantity = g.Sum(s => s.OutQuantity) * -1,
+                                              EndingQuantity = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
+                                              CountQuantity = 0,
+                                              Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                              Cost = g.Key.Cost,
+                                              Price = g.Key.Price,
+                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                          };
+
+                        return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
+                    }
+                    else
+                    {
+                        return new List<Entities.RepInventoryReportEntity>();
+                    }
                 }
                 else
                 {
-                    return new List<Entities.RepInventoryReportEntity>();
+                    var currentStockCountInventories = from d in db.TrnStockCountLines
+                                                       where d.TrnStockCount.IsLocked == true
+                                                       && d.MstItem.IsInventory == true
+                                                       && d.MstItem.IsLocked == true
+                                                       && d.MstItem.Category == category
+                                                       select new Entities.RepInventoryReportEntity
+                                                       {
+                                                           Document = "Cur",
+                                                           Id = "Cur-Count-" + d.Id,
+                                                           InventoryDate = d.TrnStockCount.StockCountDate,
+                                                           ItemCode = d.MstItem.ItemCode,
+                                                           BarCode = d.MstItem.BarCode,
+                                                           ItemDescription = d.MstItem.ItemDescription,
+                                                           BeginningQuantity = 0,
+                                                           InQuantity = 0,
+                                                           OutQuantity = 0,
+                                                           EndingQuantity = 0,
+                                                           CountQuantity = d.Quantity,
+                                                           Unit = d.MstUnit.Unit,
+                                                           Cost = d.MstItem.Cost,
+                                                           Price = d.MstItem.Price,
+                                                           Amount = 0
+                                                       };
+
+                    var unionCurrentInventories = currentInInventories.ToList().Union(currentSoldInventories.ToList()).Union(currentSoldComponentInventories.ToList()).Union(currentOutInventories.ToList()).Union(currentStockCountInventories.ToList());
+
+                    var unionInventories = unionBeginningInventories.ToList().Union(unionCurrentInventories.ToList());
+                    if (unionInventories.Any())
+                    {
+                        var inventories = from d in unionInventories
+                                          group d by new
+                                          {
+                                              d.ItemCode,
+                                              d.BarCode,
+                                              d.ItemDescription,
+                                              d.Unit,
+                                              d.Cost,
+                                              d.Price
+                                          } into g
+                                          select new Entities.RepInventoryReportEntity
+                                          {
+                                              ItemCode = g.Key.ItemCode,
+                                              BarCode = g.Key.BarCode,
+                                              ItemDescription = g.Key.ItemDescription,
+                                              Unit = g.Key.Unit,
+                                              BeginningQuantity = g.Sum(s => s.BeginningQuantity),
+                                              InQuantity = g.Sum(s => s.InQuantity),
+                                              OutQuantity = g.Sum(s => s.OutQuantity) * -1,
+                                              EndingQuantity = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
+                                              CountQuantity = g.Sum(s => s.CountQuantity),
+                                              Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                              Cost = g.Key.Cost,
+                                              Price = g.Key.Price,
+                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                          };
+
+                        return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
+                    }
+                    else
+                    {
+                        return new List<Entities.RepInventoryReportEntity>();
+                    }
                 }
             }
             else
@@ -1181,7 +1453,7 @@ namespace EasyPOS.Controllers
         // ==========
         public List<Entities.RepInventoryReportStockCardEntity> StockCardReport(DateTime startDate, DateTime endDate, Int32 itemId, String filter/*, String Category*/)
         {
-            if (itemId==0 /*&& Category == "ALL"*/)
+            if (itemId == 0 /*&& Category == "ALL"*/)
             {
                 List<Entities.RepInventoryReportStockCardEntity> newRepInventoryReportStockCardEntity = new List<Entities.RepInventoryReportStockCardEntity>();
                 var beginningInInventories = from d in db.TrnStockInLines
@@ -1473,7 +1745,7 @@ namespace EasyPOS.Controllers
                     }
                 }
             }
-            else if(itemId != 0/* && Category != "ALL"*/)
+            else if (itemId != 0/* && Category != "ALL"*/)
             {
                 List<Entities.RepInventoryReportStockCardEntity> newRepInventoryReportStockCardEntity = new List<Entities.RepInventoryReportStockCardEntity>();
                 var beginningInInventories = from d in db.TrnStockInLines
@@ -2377,9 +2649,9 @@ namespace EasyPOS.Controllers
             {
                 return new List<Entities.RepInventoryReportStockCardEntity>();
             }
-            
+
         }
-           
+
 
         // ======================
         // Stock-In Detail Report
@@ -2388,7 +2660,7 @@ namespace EasyPOS.Controllers
         {
             var stockInDetails = from d in db.TrnStockInLines
                                  where (d.TrnStockIn.StockInNumber.Contains(filter)
-                                 ||d.TrnStockIn.ManualStockInNumber.Contains(filter)
+                                 || d.TrnStockIn.ManualStockInNumber.Contains(filter)
                                  || d.MstUnit.Unit.Contains(filter))
                                        && d.TrnStockIn.IsLocked == true
                                        && d.TrnStockIn.StockInDate >= startDate.Date
@@ -2515,10 +2787,26 @@ namespace EasyPOS.Controllers
                            Price = d.Price,
                            ExpiryDate = d.ExpiryDate.ToString(),
                            LotNumber = d.LotNumber
-                          
+
                        };
 
             return item.ToList();
+        }
+        // ================
+        // Stock Count List
+        // ================
+        public List<Entities.TrnStockCountEntity> GetStockCountList()
+        {
+            var stockCount = from d in db.TrnStockCounts
+                             where d.IsLocked == true
+                             select new Entities.TrnStockCountEntity
+                             {
+                                 Id = d.Id,
+                                 StockCountNumber = d.StockCountNumber,
+                                 Remarks = d.Remarks
+                             };
+
+            return stockCount.ToList();
         }
     }
 }

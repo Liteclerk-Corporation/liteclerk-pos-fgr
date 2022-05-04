@@ -21,8 +21,9 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
         public String category;
         public String filter;
         public Int32 itemId;
+        public Int32 countId;
 
-        public RepInventoryReportPDFForm(DateTime startDate, DateTime endDate, String Category, String Filter, Int32 ItemId)
+        public RepInventoryReportPDFForm(DateTime startDate, DateTime endDate, String Category, String Filter, Int32 ItemId, Int32 stockCountId)
         {
             InitializeComponent();
 
@@ -31,6 +32,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             category = Category;
             filter = Filter;
             itemId = ItemId;
+            countId = stockCountId;
 
             PrintReport();
         }
@@ -63,7 +65,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
 
 
                 Controllers.RepInventoryReportController repInvetoryReportController = new Controllers.RepInventoryReportController();
-                var inventoryReportList = repInvetoryReportController.InventoryReport(dateStart, dateEnd, category, filter, itemId);
+                var inventoryReportList = repInvetoryReportController.InventoryReport(dateStart, dateEnd, category, filter, itemId, countId);
 
                 if (inventoryReportList.Any())
                 {
