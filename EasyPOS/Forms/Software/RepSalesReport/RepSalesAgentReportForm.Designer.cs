@@ -40,6 +40,14 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewSalesAgentReport = new System.Windows.Forms.DataGridView();
+            this.ColumnSalesAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnEntryDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnBarCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDiscountAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel4 = new System.Windows.Forms.Panel();
             this.textBoxTotalAmount = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,14 +57,6 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.buttonPageListPrevious = new System.Windows.Forms.Button();
             this.textBoxPageNumber = new System.Windows.Forms.TextBox();
             this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
-            this.ColumnSalesAgent = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnEntryDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnBarCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDiscountAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewSalesAgentReport)).BeginInit();
@@ -153,7 +153,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.label1.Location = new System.Drawing.Point(57, 12);
             this.label1.Margin = new System.Windows.Forms.Padding(0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(194, 28);
+            this.label1.Size = new System.Drawing.Size(241, 35);
             this.label1.TabIndex = 2;
             this.label1.Text = "Sales Agent Report";
             // 
@@ -188,6 +188,84 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.dataGridViewSalesAgentReport.Size = new System.Drawing.Size(1096, 422);
             this.dataGridViewSalesAgentReport.TabIndex = 12;
             // 
+            // ColumnSalesAgent
+            // 
+            this.ColumnSalesAgent.DataPropertyName = "ColumnSalesAgent";
+            this.ColumnSalesAgent.HeaderText = "Sales Agent";
+            this.ColumnSalesAgent.MinimumWidth = 6;
+            this.ColumnSalesAgent.Name = "ColumnSalesAgent";
+            this.ColumnSalesAgent.ReadOnly = true;
+            this.ColumnSalesAgent.Width = 150;
+            // 
+            // ColumnEntryDateTime
+            // 
+            this.ColumnEntryDateTime.DataPropertyName = "ColumnEntryDateTime";
+            this.ColumnEntryDateTime.HeaderText = "Time";
+            this.ColumnEntryDateTime.MinimumWidth = 6;
+            this.ColumnEntryDateTime.Name = "ColumnEntryDateTime";
+            this.ColumnEntryDateTime.ReadOnly = true;
+            this.ColumnEntryDateTime.Width = 125;
+            // 
+            // ColumnQuantity
+            // 
+            this.ColumnQuantity.DataPropertyName = "ColumnQuantity";
+            this.ColumnQuantity.HeaderText = "Quantity";
+            this.ColumnQuantity.MinimumWidth = 6;
+            this.ColumnQuantity.Name = "ColumnQuantity";
+            this.ColumnQuantity.ReadOnly = true;
+            this.ColumnQuantity.Width = 125;
+            // 
+            // ColumnBarCode
+            // 
+            this.ColumnBarCode.DataPropertyName = "ColumnBarCode";
+            this.ColumnBarCode.HeaderText = "Barcode";
+            this.ColumnBarCode.MinimumWidth = 6;
+            this.ColumnBarCode.Name = "ColumnBarCode";
+            this.ColumnBarCode.ReadOnly = true;
+            this.ColumnBarCode.Width = 125;
+            // 
+            // ColumnItemDescription
+            // 
+            this.ColumnItemDescription.DataPropertyName = "ColumnItemDescription";
+            this.ColumnItemDescription.HeaderText = "Item Description";
+            this.ColumnItemDescription.MinimumWidth = 6;
+            this.ColumnItemDescription.Name = "ColumnItemDescription";
+            this.ColumnItemDescription.ReadOnly = true;
+            this.ColumnItemDescription.Width = 225;
+            // 
+            // ColumnPrice
+            // 
+            this.ColumnPrice.DataPropertyName = "ColumnPrice";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnPrice.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ColumnPrice.HeaderText = "Price";
+            this.ColumnPrice.MinimumWidth = 6;
+            this.ColumnPrice.Name = "ColumnPrice";
+            this.ColumnPrice.ReadOnly = true;
+            this.ColumnPrice.Width = 125;
+            // 
+            // ColumnDiscountAmount
+            // 
+            this.ColumnDiscountAmount.DataPropertyName = "ColumnDiscountAmount";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnDiscountAmount.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnDiscountAmount.HeaderText = "Discount";
+            this.ColumnDiscountAmount.MinimumWidth = 6;
+            this.ColumnDiscountAmount.Name = "ColumnDiscountAmount";
+            this.ColumnDiscountAmount.ReadOnly = true;
+            this.ColumnDiscountAmount.Width = 125;
+            // 
+            // ColumnAmount
+            // 
+            this.ColumnAmount.DataPropertyName = "ColumnAmount";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnAmount.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnAmount.HeaderText = "Amount";
+            this.ColumnAmount.MinimumWidth = 6;
+            this.ColumnAmount.Name = "ColumnAmount";
+            this.ColumnAmount.ReadOnly = true;
+            this.ColumnAmount.Width = 120;
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
@@ -214,7 +292,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.textBoxTotalAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxTotalAmount.Name = "textBoxTotalAmount";
             this.textBoxTotalAmount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.textBoxTotalAmount.Size = new System.Drawing.Size(246, 19);
+            this.textBoxTotalAmount.Size = new System.Drawing.Size(246, 23);
             this.textBoxTotalAmount.TabIndex = 15;
             // 
             // label2
@@ -225,7 +303,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.label2.Location = new System.Drawing.Point(688, 12);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 19);
+            this.label2.Size = new System.Drawing.Size(124, 23);
             this.label2.TabIndex = 13;
             this.label2.Text = "Total Amount:";
             // 
@@ -288,7 +366,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.buttonPageListPrevious.Location = new System.Drawing.Point(80, 8);
             this.buttonPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPageListPrevious.Name = "buttonPageListPrevious";
-            this.buttonPageListPrevious.Size = new System.Drawing.Size(70, 26);
+            this.buttonPageListPrevious.Size = new System.Drawing.Size(87, 26);
             this.buttonPageListPrevious.TabIndex = 9;
             this.buttonPageListPrevious.TabStop = false;
             this.buttonPageListPrevious.Text = "Previous";
@@ -304,86 +382,14 @@ namespace EasyPOS.Forms.Software.RepSalesReport
             this.textBoxPageNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxPageNumber.Name = "textBoxPageNumber";
             this.textBoxPageNumber.ReadOnly = true;
-            this.textBoxPageNumber.Size = new System.Drawing.Size(55, 19);
+            this.textBoxPageNumber.Size = new System.Drawing.Size(55, 23);
             this.textBoxPageNumber.TabIndex = 12;
             this.textBoxPageNumber.TabStop = false;
             this.textBoxPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // ColumnSalesAgent
-            // 
-            this.ColumnSalesAgent.DataPropertyName = "ColumnSalesAgent";
-            this.ColumnSalesAgent.HeaderText = "Sales Agent";
-            this.ColumnSalesAgent.Name = "ColumnSalesAgent";
-            this.ColumnSalesAgent.ReadOnly = true;
-            this.ColumnSalesAgent.Width = 150;
-            // 
-            // ColumnEntryDateTime
-            // 
-            this.ColumnEntryDateTime.DataPropertyName = "ColumnEntryDateTime";
-            this.ColumnEntryDateTime.HeaderText = "Time";
-            this.ColumnEntryDateTime.Name = "ColumnEntryDateTime";
-            this.ColumnEntryDateTime.ReadOnly = true;
-            // 
-            // ColumnQuantity
-            // 
-            this.ColumnQuantity.DataPropertyName = "ColumnQuantity";
-            this.ColumnQuantity.HeaderText = "Quantity";
-            this.ColumnQuantity.MinimumWidth = 6;
-            this.ColumnQuantity.Name = "ColumnQuantity";
-            this.ColumnQuantity.ReadOnly = true;
-            // 
-            // ColumnBarCode
-            // 
-            this.ColumnBarCode.DataPropertyName = "ColumnBarCode";
-            this.ColumnBarCode.HeaderText = "Barcode";
-            this.ColumnBarCode.MinimumWidth = 6;
-            this.ColumnBarCode.Name = "ColumnBarCode";
-            this.ColumnBarCode.ReadOnly = true;
-            this.ColumnBarCode.Width = 125;
-            // 
-            // ColumnItemDescription
-            // 
-            this.ColumnItemDescription.DataPropertyName = "ColumnItemDescription";
-            this.ColumnItemDescription.HeaderText = "Item Description";
-            this.ColumnItemDescription.MinimumWidth = 6;
-            this.ColumnItemDescription.Name = "ColumnItemDescription";
-            this.ColumnItemDescription.ReadOnly = true;
-            this.ColumnItemDescription.Width = 225;
-            // 
-            // ColumnPrice
-            // 
-            this.ColumnPrice.DataPropertyName = "ColumnPrice";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnPrice.DefaultCellStyle = dataGridViewCellStyle1;
-            this.ColumnPrice.HeaderText = "Price";
-            this.ColumnPrice.MinimumWidth = 6;
-            this.ColumnPrice.Name = "ColumnPrice";
-            this.ColumnPrice.ReadOnly = true;
-            // 
-            // ColumnDiscountAmount
-            // 
-            this.ColumnDiscountAmount.DataPropertyName = "ColumnDiscountAmount";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnDiscountAmount.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnDiscountAmount.HeaderText = "Discount";
-            this.ColumnDiscountAmount.MinimumWidth = 6;
-            this.ColumnDiscountAmount.Name = "ColumnDiscountAmount";
-            this.ColumnDiscountAmount.ReadOnly = true;
-            // 
-            // ColumnAmount
-            // 
-            this.ColumnAmount.DataPropertyName = "ColumnAmount";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnAmount.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnAmount.HeaderText = "Amount";
-            this.ColumnAmount.MinimumWidth = 6;
-            this.ColumnAmount.Name = "ColumnAmount";
-            this.ColumnAmount.ReadOnly = true;
-            this.ColumnAmount.Width = 120;
-            // 
             // RepSalesAgentReportForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1096, 522);
             this.ControlBox = false;
