@@ -20,5 +20,8 @@ namespace EasyPOS.Entities
         public String ColumnStockCountLineListQuantity { get; set; }
         public String ColumnStockCountLineListCost { get; set; }
         public String ColumnStockCountLineListAmount { get; set; }
+        public String ColumnStockCountLineListPrice { get; set; }
+        public String ColumnStockCountLineListSellingAmount { get; set; }
+
     }
 }
