@@ -92,6 +92,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             if (inventoryReportList.Any())
             {
                 Decimal totalAmount = 0;
+                Decimal totalSellingAmount = 0;
                 var row = from d in inventoryReportList
                           select new Entities.DgvRepInventoryInventoryReportListEntity
                           {
@@ -107,12 +108,15 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
                               ColumnVariance = d.Variance.ToString("#,##0.00"),
                               ColumnCost = d.Cost.ToString("#,##0.00"),
                               ColumnItemPrice = d.Price.ToString("#,##0.00"),
-                              ColumnAmount = d.Amount.ToString("#,##0.00")
+                              ColumnAmount = d.Amount.ToString("#,##0.00"),
+                              ColumnSellingAmount= d.SellingAmount.ToString("#,##0.00")
                           };
 
                 totalAmount = inventoryReportList.Sum(d => d.Amount);
+                totalSellingAmount = inventoryReportList.Sum(d => d.SellingAmount);
 
                 textBoxTotalAmount.Text = totalAmount.ToString("#,##0.00");
+                textBoxTotalSellingAmount.Text = totalSellingAmount.ToString("#,##0.00");
 
                 rowList = row.ToList();
 

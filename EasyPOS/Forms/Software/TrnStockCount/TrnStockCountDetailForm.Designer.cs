@@ -49,20 +49,6 @@
             this.buttonExport = new System.Windows.Forms.Button();
             this.buttonImport = new System.Windows.Forms.Button();
             this.dataGridViewStockCountLineList = new System.Windows.Forms.DataGridView();
-            this.ColumnStockCountLineListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnStockCountLineListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnStockCountLineListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockCountLineListStockCountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockCountLineListItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockCountLineListItemBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockCountLineListItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockCountLineListUnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockCountLineListUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockCountLineListQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockCountLineListCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockCountLineListAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockCountLineListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnStockCountLineListSellingAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxBarcode = new System.Windows.Forms.TextBox();
             this.buttonBarcode = new System.Windows.Forms.Button();
             this.buttonSearchItem = new System.Windows.Forms.Button();
@@ -91,6 +77,20 @@
             this.textBoxStockCountNumber = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
+            this.ColumnStockCountLineListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnStockCountLineListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnStockCountLineListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListStockCountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListItemBarcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListUnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListSellingAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -349,125 +349,6 @@
             this.dataGridViewStockCountLineList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStockCountLineList_CellClick);
             this.dataGridViewStockCountLineList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewStockCountLineList_CellContentClick);
             // 
-            // ColumnStockCountLineListButtonEdit
-            // 
-            this.ColumnStockCountLineListButtonEdit.DataPropertyName = "ColumnStockCountLineListButtonEdit";
-            this.ColumnStockCountLineListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnStockCountLineListButtonEdit.HeaderText = "";
-            this.ColumnStockCountLineListButtonEdit.Name = "ColumnStockCountLineListButtonEdit";
-            this.ColumnStockCountLineListButtonEdit.ReadOnly = true;
-            this.ColumnStockCountLineListButtonEdit.Width = 70;
-            // 
-            // ColumnStockCountLineListButtonDelete
-            // 
-            this.ColumnStockCountLineListButtonDelete.DataPropertyName = "ColumnStockCountLineListButtonDelete";
-            this.ColumnStockCountLineListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnStockCountLineListButtonDelete.HeaderText = "";
-            this.ColumnStockCountLineListButtonDelete.Name = "ColumnStockCountLineListButtonDelete";
-            this.ColumnStockCountLineListButtonDelete.ReadOnly = true;
-            this.ColumnStockCountLineListButtonDelete.Width = 70;
-            // 
-            // ColumnStockCountLineListId
-            // 
-            this.ColumnStockCountLineListId.DataPropertyName = "ColumnStockCountLineListId";
-            this.ColumnStockCountLineListId.HeaderText = "Id";
-            this.ColumnStockCountLineListId.Name = "ColumnStockCountLineListId";
-            this.ColumnStockCountLineListId.ReadOnly = true;
-            this.ColumnStockCountLineListId.Visible = false;
-            // 
-            // ColumnStockCountLineListStockCountId
-            // 
-            this.ColumnStockCountLineListStockCountId.DataPropertyName = "ColumnStockCountLineListStockCountId";
-            this.ColumnStockCountLineListStockCountId.HeaderText = "Stock Count Id";
-            this.ColumnStockCountLineListStockCountId.Name = "ColumnStockCountLineListStockCountId";
-            this.ColumnStockCountLineListStockCountId.ReadOnly = true;
-            this.ColumnStockCountLineListStockCountId.Visible = false;
-            // 
-            // ColumnStockCountLineListItemId
-            // 
-            this.ColumnStockCountLineListItemId.DataPropertyName = "ColumnStockCountLineListItemId";
-            this.ColumnStockCountLineListItemId.HeaderText = "Item Id";
-            this.ColumnStockCountLineListItemId.Name = "ColumnStockCountLineListItemId";
-            this.ColumnStockCountLineListItemId.ReadOnly = true;
-            this.ColumnStockCountLineListItemId.Visible = false;
-            // 
-            // ColumnStockCountLineListItemBarcode
-            // 
-            this.ColumnStockCountLineListItemBarcode.DataPropertyName = "ColumnStockCountLineListItemBarcode";
-            this.ColumnStockCountLineListItemBarcode.HeaderText = "Barcode";
-            this.ColumnStockCountLineListItemBarcode.Name = "ColumnStockCountLineListItemBarcode";
-            this.ColumnStockCountLineListItemBarcode.ReadOnly = true;
-            this.ColumnStockCountLineListItemBarcode.Visible = false;
-            // 
-            // ColumnStockCountLineListItemDescription
-            // 
-            this.ColumnStockCountLineListItemDescription.DataPropertyName = "ColumnStockCountLineListItemDescription";
-            this.ColumnStockCountLineListItemDescription.HeaderText = "Item Description";
-            this.ColumnStockCountLineListItemDescription.Name = "ColumnStockCountLineListItemDescription";
-            this.ColumnStockCountLineListItemDescription.ReadOnly = true;
-            this.ColumnStockCountLineListItemDescription.Width = 200;
-            // 
-            // ColumnStockCountLineListUnitId
-            // 
-            this.ColumnStockCountLineListUnitId.DataPropertyName = "ColumnStockCountLineListUnitId";
-            this.ColumnStockCountLineListUnitId.HeaderText = "Unit Id";
-            this.ColumnStockCountLineListUnitId.Name = "ColumnStockCountLineListUnitId";
-            this.ColumnStockCountLineListUnitId.ReadOnly = true;
-            this.ColumnStockCountLineListUnitId.Visible = false;
-            // 
-            // ColumnStockCountLineListUnit
-            // 
-            this.ColumnStockCountLineListUnit.DataPropertyName = "ColumnStockCountLineListUnit";
-            this.ColumnStockCountLineListUnit.HeaderText = "Unit";
-            this.ColumnStockCountLineListUnit.Name = "ColumnStockCountLineListUnit";
-            this.ColumnStockCountLineListUnit.ReadOnly = true;
-            // 
-            // ColumnStockCountLineListQuantity
-            // 
-            this.ColumnStockCountLineListQuantity.DataPropertyName = "ColumnStockCountLineListQuantity";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnStockCountLineListQuantity.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnStockCountLineListQuantity.HeaderText = "Quantity";
-            this.ColumnStockCountLineListQuantity.Name = "ColumnStockCountLineListQuantity";
-            this.ColumnStockCountLineListQuantity.ReadOnly = true;
-            // 
-            // ColumnStockCountLineListCost
-            // 
-            this.ColumnStockCountLineListCost.DataPropertyName = "ColumnStockCountLineListCost";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnStockCountLineListCost.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnStockCountLineListCost.HeaderText = "Cost";
-            this.ColumnStockCountLineListCost.Name = "ColumnStockCountLineListCost";
-            this.ColumnStockCountLineListCost.ReadOnly = true;
-            // 
-            // ColumnStockCountLineListAmount
-            // 
-            this.ColumnStockCountLineListAmount.DataPropertyName = "ColumnStockCountLineListAmount";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnStockCountLineListAmount.DefaultCellStyle = dataGridViewCellStyle4;
-            this.ColumnStockCountLineListAmount.HeaderText = "Amount";
-            this.ColumnStockCountLineListAmount.Name = "ColumnStockCountLineListAmount";
-            this.ColumnStockCountLineListAmount.ReadOnly = true;
-            // 
-            // ColumnStockCountLineListPrice
-            // 
-            this.ColumnStockCountLineListPrice.DataPropertyName = "ColumnStockCountLineListPrice";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnStockCountLineListPrice.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ColumnStockCountLineListPrice.HeaderText = "Price";
-            this.ColumnStockCountLineListPrice.Name = "ColumnStockCountLineListPrice";
-            this.ColumnStockCountLineListPrice.ReadOnly = true;
-            // 
-            // ColumnStockCountLineListSellingAmount
-            // 
-            this.ColumnStockCountLineListSellingAmount.DataPropertyName = "ColumnStockCountLineListSellingAmount";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnStockCountLineListSellingAmount.DefaultCellStyle = dataGridViewCellStyle6;
-            this.ColumnStockCountLineListSellingAmount.HeaderText = "Selling Amount";
-            this.ColumnStockCountLineListSellingAmount.Name = "ColumnStockCountLineListSellingAmount";
-            this.ColumnStockCountLineListSellingAmount.ReadOnly = true;
-            this.ColumnStockCountLineListSellingAmount.Width = 130;
-            // 
             // textBoxBarcode
             // 
             this.textBoxBarcode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -554,12 +435,12 @@
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(516, 13);
+            this.label3.Location = new System.Drawing.Point(481, 13);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 20);
+            this.label3.Size = new System.Drawing.Size(149, 20);
             this.label3.TabIndex = 25;
-            this.label3.Text = "Total Amount :";
+            this.label3.Text = "Total Cost Amount :";
             // 
             // buttonStockCountLineListPageListFirst
             // 
@@ -820,6 +701,126 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // ColumnStockCountLineListButtonEdit
+            // 
+            this.ColumnStockCountLineListButtonEdit.DataPropertyName = "ColumnStockCountLineListButtonEdit";
+            this.ColumnStockCountLineListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnStockCountLineListButtonEdit.HeaderText = "";
+            this.ColumnStockCountLineListButtonEdit.Name = "ColumnStockCountLineListButtonEdit";
+            this.ColumnStockCountLineListButtonEdit.ReadOnly = true;
+            this.ColumnStockCountLineListButtonEdit.Width = 70;
+            // 
+            // ColumnStockCountLineListButtonDelete
+            // 
+            this.ColumnStockCountLineListButtonDelete.DataPropertyName = "ColumnStockCountLineListButtonDelete";
+            this.ColumnStockCountLineListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnStockCountLineListButtonDelete.HeaderText = "";
+            this.ColumnStockCountLineListButtonDelete.Name = "ColumnStockCountLineListButtonDelete";
+            this.ColumnStockCountLineListButtonDelete.ReadOnly = true;
+            this.ColumnStockCountLineListButtonDelete.Width = 70;
+            // 
+            // ColumnStockCountLineListId
+            // 
+            this.ColumnStockCountLineListId.DataPropertyName = "ColumnStockCountLineListId";
+            this.ColumnStockCountLineListId.HeaderText = "Id";
+            this.ColumnStockCountLineListId.Name = "ColumnStockCountLineListId";
+            this.ColumnStockCountLineListId.ReadOnly = true;
+            this.ColumnStockCountLineListId.Visible = false;
+            // 
+            // ColumnStockCountLineListStockCountId
+            // 
+            this.ColumnStockCountLineListStockCountId.DataPropertyName = "ColumnStockCountLineListStockCountId";
+            this.ColumnStockCountLineListStockCountId.HeaderText = "Stock Count Id";
+            this.ColumnStockCountLineListStockCountId.Name = "ColumnStockCountLineListStockCountId";
+            this.ColumnStockCountLineListStockCountId.ReadOnly = true;
+            this.ColumnStockCountLineListStockCountId.Visible = false;
+            // 
+            // ColumnStockCountLineListItemId
+            // 
+            this.ColumnStockCountLineListItemId.DataPropertyName = "ColumnStockCountLineListItemId";
+            this.ColumnStockCountLineListItemId.HeaderText = "Item Id";
+            this.ColumnStockCountLineListItemId.Name = "ColumnStockCountLineListItemId";
+            this.ColumnStockCountLineListItemId.ReadOnly = true;
+            this.ColumnStockCountLineListItemId.Visible = false;
+            // 
+            // ColumnStockCountLineListItemBarcode
+            // 
+            this.ColumnStockCountLineListItemBarcode.DataPropertyName = "ColumnStockCountLineListItemBarcode";
+            this.ColumnStockCountLineListItemBarcode.HeaderText = "Barcode";
+            this.ColumnStockCountLineListItemBarcode.Name = "ColumnStockCountLineListItemBarcode";
+            this.ColumnStockCountLineListItemBarcode.ReadOnly = true;
+            this.ColumnStockCountLineListItemBarcode.Visible = false;
+            // 
+            // ColumnStockCountLineListItemDescription
+            // 
+            this.ColumnStockCountLineListItemDescription.DataPropertyName = "ColumnStockCountLineListItemDescription";
+            this.ColumnStockCountLineListItemDescription.HeaderText = "Item Description";
+            this.ColumnStockCountLineListItemDescription.Name = "ColumnStockCountLineListItemDescription";
+            this.ColumnStockCountLineListItemDescription.ReadOnly = true;
+            this.ColumnStockCountLineListItemDescription.Width = 200;
+            // 
+            // ColumnStockCountLineListUnitId
+            // 
+            this.ColumnStockCountLineListUnitId.DataPropertyName = "ColumnStockCountLineListUnitId";
+            this.ColumnStockCountLineListUnitId.HeaderText = "Unit Id";
+            this.ColumnStockCountLineListUnitId.Name = "ColumnStockCountLineListUnitId";
+            this.ColumnStockCountLineListUnitId.ReadOnly = true;
+            this.ColumnStockCountLineListUnitId.Visible = false;
+            // 
+            // ColumnStockCountLineListUnit
+            // 
+            this.ColumnStockCountLineListUnit.DataPropertyName = "ColumnStockCountLineListUnit";
+            this.ColumnStockCountLineListUnit.HeaderText = "Unit";
+            this.ColumnStockCountLineListUnit.Name = "ColumnStockCountLineListUnit";
+            this.ColumnStockCountLineListUnit.ReadOnly = true;
+            // 
+            // ColumnStockCountLineListQuantity
+            // 
+            this.ColumnStockCountLineListQuantity.DataPropertyName = "ColumnStockCountLineListQuantity";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnStockCountLineListQuantity.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnStockCountLineListQuantity.HeaderText = "Quantity";
+            this.ColumnStockCountLineListQuantity.Name = "ColumnStockCountLineListQuantity";
+            this.ColumnStockCountLineListQuantity.ReadOnly = true;
+            // 
+            // ColumnStockCountLineListCost
+            // 
+            this.ColumnStockCountLineListCost.DataPropertyName = "ColumnStockCountLineListCost";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnStockCountLineListCost.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnStockCountLineListCost.HeaderText = "Cost";
+            this.ColumnStockCountLineListCost.Name = "ColumnStockCountLineListCost";
+            this.ColumnStockCountLineListCost.ReadOnly = true;
+            // 
+            // ColumnStockCountLineListAmount
+            // 
+            this.ColumnStockCountLineListAmount.DataPropertyName = "ColumnStockCountLineListAmount";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnStockCountLineListAmount.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColumnStockCountLineListAmount.HeaderText = "Cost Amount";
+            this.ColumnStockCountLineListAmount.Name = "ColumnStockCountLineListAmount";
+            this.ColumnStockCountLineListAmount.ReadOnly = true;
+            this.ColumnStockCountLineListAmount.Width = 120;
+            // 
+            // ColumnStockCountLineListPrice
+            // 
+            this.ColumnStockCountLineListPrice.DataPropertyName = "ColumnStockCountLineListPrice";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnStockCountLineListPrice.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ColumnStockCountLineListPrice.HeaderText = "Price";
+            this.ColumnStockCountLineListPrice.Name = "ColumnStockCountLineListPrice";
+            this.ColumnStockCountLineListPrice.ReadOnly = true;
+            // 
+            // ColumnStockCountLineListSellingAmount
+            // 
+            this.ColumnStockCountLineListSellingAmount.DataPropertyName = "ColumnStockCountLineListSellingAmount";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnStockCountLineListSellingAmount.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ColumnStockCountLineListSellingAmount.HeaderText = "Selling Amount";
+            this.ColumnStockCountLineListSellingAmount.Name = "ColumnStockCountLineListSellingAmount";
+            this.ColumnStockCountLineListSellingAmount.ReadOnly = true;
+            this.ColumnStockCountLineListSellingAmount.Width = 130;
+            // 
             // TrnStockCountDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -887,6 +888,10 @@
         private System.Windows.Forms.Button buttonExport;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxSellingAmount;
+        private System.Windows.Forms.TextBox textBoxAmount;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnStockCountLineListButtonEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnStockCountLineListButtonDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockCountLineListId;
@@ -901,9 +906,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockCountLineListAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockCountLineListPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockCountLineListSellingAmount;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBoxSellingAmount;
-        private System.Windows.Forms.TextBox textBoxAmount;
     }
 }

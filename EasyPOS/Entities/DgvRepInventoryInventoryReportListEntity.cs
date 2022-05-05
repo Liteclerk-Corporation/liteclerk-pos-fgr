@@ -21,5 +21,6 @@ namespace EasyPOS.Entities
         public String ColumnCost { get; set; }
         public String ColumnItemPrice { get; set; }
         public String ColumnAmount { get; set; }
+        public String ColumnSellingAmount { get; set; }
     }
 }

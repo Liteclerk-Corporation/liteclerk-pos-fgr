@@ -314,7 +314,8 @@ namespace EasyPOS.Controllers
                                               Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
                                               Cost = g.Key.Cost,
                                               Price = g.Key.Price,
-                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
+                                              SellingAmount = g.Key.Price * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
                                           };
 
                         return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
@@ -330,6 +331,7 @@ namespace EasyPOS.Controllers
                                                        where d.TrnStockCount.IsLocked == true
                                                        && d.MstItem.IsInventory == true
                                                        && d.MstItem.IsLocked == true
+                                                       && d.StockCountId == stockCountId
                                                        select new Entities.RepInventoryReportEntity
                                                        {
                                                            Document = "Cur",
@@ -378,7 +380,8 @@ namespace EasyPOS.Controllers
                                               Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
                                               Cost = g.Key.Cost,
                                               Price = g.Key.Price,
-                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
+                                              SellingAmount = g.Key.Price * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
                                           };
 
                         return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
@@ -669,7 +672,8 @@ namespace EasyPOS.Controllers
                                               Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
                                               Cost = g.Key.Cost,
                                               Price = g.Key.Price,
-                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
+                                              SellingAmount = g.Key.Price * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
                                           };
 
                         return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
@@ -687,6 +691,7 @@ namespace EasyPOS.Controllers
                                                        && d.MstItem.IsLocked == true
                                                        && d.MstItem.Category == category
                                                        && d.MstItem.Id == itemId
+                                                       && d.StockCountId == stockCountId
                                                        select new Entities.RepInventoryReportEntity
                                                        {
                                                            Document = "Cur",
@@ -735,7 +740,8 @@ namespace EasyPOS.Controllers
                                               Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
                                               Cost = g.Key.Cost,
                                               Price = g.Key.Price,
-                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
+                                              SellingAmount = g.Key.Price * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
                                           };
 
                         return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
@@ -1018,7 +1024,8 @@ namespace EasyPOS.Controllers
                                               Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
                                               Cost = g.Key.Cost,
                                               Price = g.Key.Price,
-                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
+                                              SellingAmount = g.Key.Price * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
                                           };
 
                         return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
@@ -1035,6 +1042,7 @@ namespace EasyPOS.Controllers
                                                        && d.MstItem.IsInventory == true
                                                        && d.MstItem.IsLocked == true
                                                        && d.MstItem.Id == itemId
+                                                       && d.StockCountId == stockCountId
                                                        select new Entities.RepInventoryReportEntity
                                                        {
                                                            Document = "Cur",
@@ -1083,7 +1091,8 @@ namespace EasyPOS.Controllers
                                               Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
                                               Cost = g.Key.Cost,
                                               Price = g.Key.Price,
-                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
+                                              SellingAmount = g.Key.Price * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
                                           };
 
                         return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
@@ -1366,7 +1375,8 @@ namespace EasyPOS.Controllers
                                               Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
                                               Cost = g.Key.Cost,
                                               Price = g.Key.Price,
-                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
+                                              SellingAmount = g.Key.Price * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
                                           };
 
                         return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
@@ -1383,6 +1393,7 @@ namespace EasyPOS.Controllers
                                                        && d.MstItem.IsInventory == true
                                                        && d.MstItem.IsLocked == true
                                                        && d.MstItem.Category == category
+                                                       && d.StockCountId == stockCountId
                                                        select new Entities.RepInventoryReportEntity
                                                        {
                                                            Document = "Cur",
@@ -1431,7 +1442,8 @@ namespace EasyPOS.Controllers
                                               Variance = g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
                                               Cost = g.Key.Cost,
                                               Price = g.Key.Price,
-                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.CountQuantity),
+                                              Amount = g.Key.Cost * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
+                                              SellingAmount = g.Key.Price * g.Sum(s => (s.BeginningQuantity + s.InQuantity) - s.OutQuantity),
                                           };
 
                         return inventories.Where(d => d.ItemDescription.ToUpper().Contains(filter.ToUpper()) == true || d.Unit.ToUpper().Contains(filter.ToUpper()) == true).OrderBy(d => d.ItemDescription).ToList();
