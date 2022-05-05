@@ -154,6 +154,17 @@ namespace EasyPOS.Forms.Software.TrnStockOut
 
         public Task<List<Entities.DgvTrnStockOutSearchItemListEntity>> GetSearchItemListDataTask()
         {
+            string gridPick = "Pick";
+            var language = Modules.SysCurrentModule.GetCurrentSettings().Language;
+            if (language != "English")
+            {
+                gridPick = "挑选";
+            }
+            else
+            {
+                gridPick = "Pick";
+            }
+
             String filter = textBoxSearchItemListFilter.Text;
             Controllers.TrnStockOutLineController trnStockOutLineController = new Controllers.TrnStockOutLineController();
 
@@ -175,7 +186,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                                 ColumnSearchItemListUnit = d.Unit,
                                 ColumnSearchItemListPrice = d.Price.ToString("#,##0.00"),
                                 ColumnSearchItemListOnhandQuantity = d.OnhandQuantity.ToString("#,##0.00"),
-                                ColumnSearchItemListButtonPick = SetLabel("Pick")
+                                ColumnSearchItemListButtonPick = gridPick
                             };
 
                 return Task.FromResult(items.ToList());
