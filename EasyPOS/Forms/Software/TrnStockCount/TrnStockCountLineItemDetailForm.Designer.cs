@@ -143,6 +143,7 @@
             // 
             // textBoxStockCountLineAmount
             // 
+            this.textBoxStockCountLineAmount.Enabled = false;
             this.textBoxStockCountLineAmount.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxStockCountLineAmount.Location = new System.Drawing.Point(78, 122);
             this.textBoxStockCountLineAmount.Margin = new System.Windows.Forms.Padding(2);
@@ -177,6 +178,7 @@
             // 
             // textBoxStockCountLineCost
             // 
+            this.textBoxStockCountLineCost.Enabled = false;
             this.textBoxStockCountLineCost.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.textBoxStockCountLineCost.Location = new System.Drawing.Point(78, 93);
             this.textBoxStockCountLineCost.Margin = new System.Windows.Forms.Padding(2);

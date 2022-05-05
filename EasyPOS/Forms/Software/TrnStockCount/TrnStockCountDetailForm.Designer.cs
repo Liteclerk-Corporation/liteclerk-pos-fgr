@@ -29,10 +29,12 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnStockCountDetailForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonPost = new System.Windows.Forms.Button();
@@ -59,11 +61,17 @@
             this.ColumnStockCountLineListQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockCountLineListCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnStockCountLineListAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnStockCountLineListSellingAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.textBoxBarcode = new System.Windows.Forms.TextBox();
             this.buttonBarcode = new System.Windows.Forms.Button();
             this.buttonSearchItem = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.buttonStockCountLineListPageListFirst = new System.Windows.Forms.Button();
+            this.textBoxSellingAmount = new System.Windows.Forms.TextBox();
+            this.textBoxAmount = new System.Windows.Forms.TextBox();
             this.buttonStockCountLineListPageListPrevious = new System.Windows.Forms.Button();
             this.buttonStockCountLineListPageListNext = new System.Windows.Forms.Button();
             this.buttonStockCountLineListPageListLast = new System.Windows.Forms.Button();
@@ -322,14 +330,16 @@
             this.ColumnStockCountLineListUnit,
             this.ColumnStockCountLineListQuantity,
             this.ColumnStockCountLineListCost,
-            this.ColumnStockCountLineListAmount});
+            this.ColumnStockCountLineListAmount,
+            this.ColumnStockCountLineListPrice,
+            this.ColumnStockCountLineListSellingAmount});
             this.dataGridViewStockCountLineList.Location = new System.Drawing.Point(10, 42);
             this.dataGridViewStockCountLineList.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewStockCountLineList.MultiSelect = false;
             this.dataGridViewStockCountLineList.Name = "dataGridViewStockCountLineList";
             this.dataGridViewStockCountLineList.ReadOnly = true;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.dataGridViewStockCountLineList.RowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.dataGridViewStockCountLineList.RowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridViewStockCountLineList.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.dataGridViewStockCountLineList.RowTemplate.Height = 24;
             this.dataGridViewStockCountLineList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -439,6 +449,25 @@
             this.ColumnStockCountLineListAmount.Name = "ColumnStockCountLineListAmount";
             this.ColumnStockCountLineListAmount.ReadOnly = true;
             // 
+            // ColumnStockCountLineListPrice
+            // 
+            this.ColumnStockCountLineListPrice.DataPropertyName = "ColumnStockCountLineListPrice";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnStockCountLineListPrice.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ColumnStockCountLineListPrice.HeaderText = "Price";
+            this.ColumnStockCountLineListPrice.Name = "ColumnStockCountLineListPrice";
+            this.ColumnStockCountLineListPrice.ReadOnly = true;
+            // 
+            // ColumnStockCountLineListSellingAmount
+            // 
+            this.ColumnStockCountLineListSellingAmount.DataPropertyName = "ColumnStockCountLineListSellingAmount";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnStockCountLineListSellingAmount.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ColumnStockCountLineListSellingAmount.HeaderText = "Selling Amount";
+            this.ColumnStockCountLineListSellingAmount.Name = "ColumnStockCountLineListSellingAmount";
+            this.ColumnStockCountLineListSellingAmount.ReadOnly = true;
+            this.ColumnStockCountLineListSellingAmount.Width = 130;
+            // 
             // textBoxBarcode
             // 
             this.textBoxBarcode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -492,7 +521,11 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.White;
+            this.panel4.Controls.Add(this.label5);
+            this.panel4.Controls.Add(this.label3);
             this.panel4.Controls.Add(this.buttonStockCountLineListPageListFirst);
+            this.panel4.Controls.Add(this.textBoxSellingAmount);
+            this.panel4.Controls.Add(this.textBoxAmount);
             this.panel4.Controls.Add(this.buttonStockCountLineListPageListPrevious);
             this.panel4.Controls.Add(this.buttonStockCountLineListPageListNext);
             this.panel4.Controls.Add(this.buttonStockCountLineListPageListLast);
@@ -503,6 +536,30 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1096, 42);
             this.panel4.TabIndex = 25;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(784, 13);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(164, 20);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "Total Selling Amount :";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(516, 13);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(114, 20);
+            this.label3.TabIndex = 25;
+            this.label3.Text = "Total Amount :";
             // 
             // buttonStockCountLineListPageListFirst
             // 
@@ -520,6 +577,30 @@
             this.buttonStockCountLineListPageListFirst.Text = "First";
             this.buttonStockCountLineListPageListFirst.UseVisualStyleBackColor = false;
             this.buttonStockCountLineListPageListFirst.Click += new System.EventHandler(this.buttonStockCountLineListPageListFirst_Click);
+            // 
+            // textBoxSellingAmount
+            // 
+            this.textBoxSellingAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxSellingAmount.Enabled = false;
+            this.textBoxSellingAmount.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxSellingAmount.Location = new System.Drawing.Point(952, 9);
+            this.textBoxSellingAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxSellingAmount.Name = "textBoxSellingAmount";
+            this.textBoxSellingAmount.Size = new System.Drawing.Size(133, 27);
+            this.textBoxSellingAmount.TabIndex = 24;
+            this.textBoxSellingAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // textBoxAmount
+            // 
+            this.textBoxAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxAmount.Enabled = false;
+            this.textBoxAmount.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxAmount.Location = new System.Drawing.Point(634, 8);
+            this.textBoxAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxAmount.Name = "textBoxAmount";
+            this.textBoxAmount.Size = new System.Drawing.Size(133, 27);
+            this.textBoxAmount.TabIndex = 24;
+            this.textBoxAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // buttonStockCountLineListPageListPrevious
             // 
@@ -818,5 +899,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockCountLineListQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockCountLineListCost;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockCountLineListAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockCountLineListPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnStockCountLineListSellingAmount;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxSellingAmount;
+        private System.Windows.Forms.TextBox textBoxAmount;
     }
 }

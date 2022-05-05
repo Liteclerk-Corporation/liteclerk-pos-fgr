@@ -31,7 +31,9 @@ namespace EasyPOS.Controllers
                                       Unit = d.MstUnit.Unit,
                                       Quantity = d.Quantity,
                                       Cost = d.MstItem.Cost,
-                                      Amount = d.Amount
+                                      Amount = d.Amount,
+                                      Price = d.MstItem.Price,
+                                      SellingAmount = d.Quantity * d.MstItem.Price
                                   };
 
             return stockCountLines.OrderByDescending(d => d.Id).ToList();

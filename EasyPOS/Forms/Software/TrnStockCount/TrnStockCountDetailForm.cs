@@ -317,11 +317,21 @@ namespace EasyPOS.Forms.Software.TrnStockCount
 
         public Task<List<Entities.DgvTrnStockCountLineListEntity>> GetStockCountLineListDataTask()
         {
+            Decimal totalCost = 0;
+            Decimal totalPrice = 0;
             Controllers.TrnStockCountLineController trnStockCountLineController = new Controllers.TrnStockCountLineController();
 
             List<Entities.TrnStockCountLineEntity> listStockCountLine = trnStockCountLineController.ListStockCountLine(trnStockCountEntity.Id);
             if (listStockCountLine.Any())
             {
+                foreach(var line in listStockCountLine)
+                {
+                    totalCost += line.Amount;
+                    totalPrice += line.SellingAmount;
+                }
+                textBoxAmount.Text = totalCost.ToString("#,##0.00");
+                textBoxSellingAmount.Text = totalPrice.ToString("#,##0.00");
+
                 var items = from d in listStockCountLine
                             select new Entities.DgvTrnStockCountLineListEntity
                             {
@@ -337,6 +347,8 @@ namespace EasyPOS.Forms.Software.TrnStockCount
                                 ColumnStockCountLineListQuantity = d.Quantity.ToString("#,##0.00"),
                                 ColumnStockCountLineListCost = d.Cost.ToString("#,##0.00"),
                                 ColumnStockCountLineListAmount = d.Amount.ToString("#,##0.00"),
+                                ColumnStockCountLineListPrice = d.Price.ToString("#,##0.00"),
+                                ColumnStockCountLineListSellingAmount = d.SellingAmount.ToString("#,##0.00"),
                             };
 
                 return Task.FromResult(items.ToList());
@@ -385,6 +397,8 @@ namespace EasyPOS.Forms.Software.TrnStockCount
                 var quantity = Convert.ToDecimal(dataGridViewStockCountLineList.Rows[e.RowIndex].Cells[dataGridViewStockCountLineList.Columns["ColumnStockCountLineListQuantity"].Index].Value);
                 var cost = Convert.ToDecimal(dataGridViewStockCountLineList.Rows[e.RowIndex].Cells[dataGridViewStockCountLineList.Columns["ColumnStockCountLineListCost"].Index].Value);
                 var amount = Convert.ToDecimal(dataGridViewStockCountLineList.Rows[e.RowIndex].Cells[dataGridViewStockCountLineList.Columns["ColumnStockCountLineListAmount"].Index].Value);
+                var price = Convert.ToDecimal(dataGridViewStockCountLineList.Rows[e.RowIndex].Cells[dataGridViewStockCountLineList.Columns["ColumnStockCountLineListPrice"].Index].Value);
+                var sellingAmount = Convert.ToDecimal(dataGridViewStockCountLineList.Rows[e.RowIndex].Cells[dataGridViewStockCountLineList.Columns["ColumnStockCountLineListSellingAmount"].Index].Value);
 
                 Entities.TrnStockCountLineEntity trnStockCountLineEntity = new Entities.TrnStockCountLineEntity()
                 {
@@ -396,7 +410,9 @@ namespace EasyPOS.Forms.Software.TrnStockCount
                     Unit = unit,
                     Quantity = quantity,
                     Cost = cost,
-                    Amount = amount
+                    Amount = amount,
+                    Price = price,
+                    SellingAmount = sellingAmount
                 };
 
                 TrnStockCountLineItemDetailForm trnStockCountLineItemDetailForm = new TrnStockCountLineItemDetailForm(this, trnStockCountLineEntity);

@@ -223,7 +223,7 @@ namespace EasyPOS.Forms.Software.TrnStockCount
                     Unit = unit,
                     Quantity = 1,
                     Cost = cost,
-                    Amount = 0
+                    Amount = cost
                 };
 
                 TrnStockCountLineItemDetailForm trnStockCountLineItemDetailForm = new TrnStockCountLineItemDetailForm(trnStockCountDetailForm, trnStockCountLineEntity);
