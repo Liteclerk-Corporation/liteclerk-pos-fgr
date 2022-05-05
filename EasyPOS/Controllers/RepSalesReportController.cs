@@ -855,7 +855,7 @@ namespace EasyPOS.Controllers
                                  Quantity = d.Quantity,
                                  Unit = d.MstUnit.Unit,
                                  Price = d.Price,
-                                 Discount = d.MstDiscount.Discount,
+                                 DiscountAmount = d.DiscountAmount,
                                  NetPrice = d.NetPrice,
                                  Amount = d.Amount,
                                  Tax = d.MstTax.Tax,
