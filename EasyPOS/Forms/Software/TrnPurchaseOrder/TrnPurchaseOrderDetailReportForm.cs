@@ -157,7 +157,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                 String remarks = purchaseOrder.FirstOrDefault().Remarks;
 
                 PdfPTable tableHeader = new PdfPTable(4);
-                tableHeader.SetWidths(new float[] { 20f, 30f, 20f, 50f });
+                tableHeader.SetWidths(new float[] { 20f, 40f, 20f, 50f });
                 tableHeader.TotalWidth = document.PageSize.Width - document.LeftMargin - document.RightMargin;
 
                 tableHeader.AddCell(new PdfPCell(new Phrase(companyName + "\n", fontTimesNewRoman14Bold)) { Colspan = 2, Border = 0, Padding = 3f, PaddingBottom = 0f });               
@@ -171,7 +171,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                 tableHeader.AddCell(new PdfPCell(new Phrase("PO Date: ", fontTimesNewRoman11Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
                 tableHeader.AddCell(new PdfPCell(new Phrase(purchaseOrderDate, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
                 tableHeader.AddCell(new PdfPCell(new Phrase("Supplier: ", fontTimesNewRoman11Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
-                tableHeader.AddCell(new PdfPCell(new Phrase(supplier, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
+                tableHeader.AddCell(new PdfPCell(new Phrase(supplier, fontTimesNewRoman11)) { Border = 0, HorizontalAlignment = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
 
                 tableHeader.AddCell(new PdfPCell(new Phrase("Remarks: ", fontTimesNewRoman11Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
                 tableHeader.AddCell(new PdfPCell(new Phrase(remarks, fontTimesNewRoman11)) { Colspan = 3, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
