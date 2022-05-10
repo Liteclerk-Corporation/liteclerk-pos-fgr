@@ -1,6 +1,6 @@
 ﻿{
   "DataSource": "localhost",
-  "InitialCatalog": "mylora_tabuelan",
+  "InitialCatalog": "liteclerk",
   "UserId": "sa",
   "Password": "easyfis"
 }
