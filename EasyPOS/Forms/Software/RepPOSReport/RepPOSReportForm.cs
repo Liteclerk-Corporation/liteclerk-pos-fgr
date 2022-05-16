@@ -201,6 +201,8 @@ namespace EasyPOS.Forms.Software.RepPOSReport
 
         private void buttonView_Click(object sender, EventArgs e)
         {
+            Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
+
             if (listBoxPOSReport.SelectedItem != null)
             {
                 Decimal declareRate = Modules.SysCurrentModule.GetCurrentSettings().DeclareRate;
@@ -219,15 +221,47 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                         {
                             if (sysUserRights.GetUserRights().CanView == true)
                             {
-                                RepZReadingReportForm repZReadingReportForm = new RepZReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()));
-                                repZReadingReportForm.ShowDialog();
+                                var readingAccNetSales = from d in db.SysReadingPrevAccNetSales
+                                                         select d;
+
+                                if (readingAccNetSales.Any())
+                                {
+                                    var currentReadingAccNetSales = from d in db.SysReadingPrevAccNetSales
+                                                                    where d.ReadingDate == Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString())
+                                                                    select d;
+                                    if (currentReadingAccNetSales.Any())
+                                    {
+                                        RepZReadingReportForm repZReadingReportForm = new RepZReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()));
+                                        repZReadingReportForm.ShowDialog();
+                                    }
+                                    else
+                                    {
+                                        DateTime minusDay = Convert.ToDateTime(dateTimePickerDate.Value).AddDays(-1);
+                                        var accNetSales = from d in db.SysReadingPrevAccNetSales
+                                                          where d.ReadingDate == Convert.ToDateTime(minusDay.ToShortDateString())
+                                                          select d;
+                                        if (accNetSales.Any())
+                                        {
+                                            RepZReadingReportForm _repZReadingReportForm = new RepZReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()));
+                                            _repZReadingReportForm.ShowDialog();
+                                        }
+                                        else
+                                        {
+                                            MessageBox.Show("Cannot proceed. Please generate " + minusDay.ToShortDateString(), "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        }
+                                    }
+                                }
+                                else
+                                {
+                                    RepZReadingReportForm repReadingReportForm = new RepZReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()));
+                                    repReadingReportForm.ShowDialog();
+                                }
                             }
                             else
                             {
                                 MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                         }
-
                         break;
                     case "X Reading Report":
                         sysUserRights = new Modules.SysUserRightsModule("RepPOS (X Reading)");
