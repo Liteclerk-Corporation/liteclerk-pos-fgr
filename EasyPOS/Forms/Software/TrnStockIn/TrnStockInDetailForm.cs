@@ -677,6 +677,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                         var unitId = detailItem.UnitId;
                         var unit = detailItem.Unit;
                         var price = detailItem.Price;
+                        var cost = detailItem.Cost;
 
                         Entities.TrnStockInLineEntity trnStockInLineEntity = new Entities.TrnStockInLineEntity()
                         {
@@ -687,8 +688,8 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                             UnitId = unitId,
                             Unit = unit,
                             Quantity = 1,
-                            Cost = 0,
-                            Amount = 0,
+                            Cost = cost,
+                            Amount = cost,
                             ExpiryDate = "",
                             LotNumber = "",
                             AssetAccountId = 0,
