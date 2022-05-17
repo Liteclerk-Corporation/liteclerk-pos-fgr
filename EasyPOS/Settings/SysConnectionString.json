@@ -1,6 +1,6 @@
 ﻿{
   "DataSource": "EGGSY\\SQLEXPRESS",
-  "InitialCatalog": "liteclerk_mylora_tabuelan",
+  "InitialCatalog": "easypos_mapz",
   "UserId": "sa",
   "Password": "easyfis"
 }

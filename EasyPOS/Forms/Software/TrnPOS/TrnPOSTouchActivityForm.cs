@@ -53,6 +53,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 {
                     buttonEditOrder.Enabled = false;
                 }
+                if (sysUserRights.GetUserRights().CanDelete == false)
+                {
+                    buttonDelete.Enabled = false;
+                }
             }
             if (Modules.SysCurrentModule.GetCurrentSettings().EnableSelectOrderTaker == true)
             {
