@@ -206,6 +206,11 @@ namespace EasyPOS.Forms.Software.SysUtilities
                 AdjustStringItemDescription = 3;
             }
 
+            if (itemEntity.Price == 0)
+            {
+                itemPrice = "";
+            }
+
             switch (columns)
             {
                 case 1:
