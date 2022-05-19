@@ -171,6 +171,7 @@ namespace EasyPOS.Controllers
                                 Term = d.MstTerm.Term,
                                 Remarks = d.Remarks,
                                 PreparedByUserName = d.MstUser.FullName,
+                                UpdatedUserName = d.MstUser4.FullName,
                                 Amount = d.Amount,
                                 EntryDateTime = d.EntryDateTime.ToShortTimeString()
 
@@ -199,6 +200,7 @@ namespace EasyPOS.Controllers
                                 Term = d.MstTerm.Term,
                                 Remarks = d.Remarks,
                                 PreparedByUserName = d.MstUser.FullName,
+                                UpdatedUserName = d.MstUser4.FullName,
                                 Amount = d.Amount,
                                 EntryDateTime = d.EntryDateTime.ToShortTimeString()
 
