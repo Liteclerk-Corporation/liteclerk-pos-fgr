@@ -319,7 +319,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         DiscountAmount = Convert.ToDecimal(row.Cells["ColumnReturnDiscountAmount"].Value),
                         NetPrice = Convert.ToDecimal(row.Cells["ColumnReturnNetPrice"].Value),
                         Quantity = Convert.ToDecimal(row.Cells["ColumnReturnReturnQuantity"].Value),
-                        Amount = Convert.ToDecimal(row.Cells["ColumnReturnAmount"].Value),
+                        Amount = Convert.ToDecimal(row.Cells["ColumnReturnNetPrice"].Value) * Convert.ToDecimal(row.Cells["ColumnReturnReturnQuantity"].Value),
                         TaxId = Convert.ToInt32(row.Cells["ColumnReturnTaxId"].Value),
                         TaxRate = Convert.ToDecimal(row.Cells["ColumnReturnTaxRate"].Value),
                         TaxAmount = Convert.ToDecimal(row.Cells["ColumnReturnTaxAmount"].Value),
