@@ -1459,7 +1459,20 @@ namespace EasyPOS.Controllers
                                     //pricePerPaxVatExempt = pricePerPax;
                                     pricePerPaxVatExempt = pricePerPax - VATAmountPerPax;
 
-                                    discountAmountPerPax = pricePerPaxVatExempt * (discountRate / 100);
+                                   
+                                    if (discountRate > 0)
+                                    {
+                                        discountAmountPerPax = pricePerPaxVatExempt * (discountRate / 100);
+                                    }
+                                    else
+                                    {
+                                        var salesQty = from d in db.TrnSalesLines
+                                                       where d.SalesId == salesId
+                                                       select d;
+                                        var totalQty = salesQty.Sum(a => a.Quantity);
+
+                                        discountAmountPerPax = objSalesEntity.DiscountAmount / totalQty;
+                                    }
 
                                     Decimal netPriceDiscountedPax = (pricePerPaxVatExempt - discountAmountPerPax) * discountedPax;
                                     Decimal netPriceWithoutDiscountedPax = pricePerPax * withoutDiscountedPax;
@@ -1482,7 +1495,15 @@ namespace EasyPOS.Controllers
 
                                 salesLine.DiscountId = discount.FirstOrDefault().Id;
                                 salesLine.DiscountRate = discountRate;
-                                salesLine.DiscountAmount = discountAmountPerPax * discountedPax;
+                                
+                                if (discountRate > 0)
+                                {
+                                    salesLine.DiscountAmount = discountAmountPerPax * discountedPax;
+                                }
+                                else
+                                {
+                                    salesLine.DiscountAmount = (discountAmountPerPax * discountedPax) * quantity;
+                                }
                                 salesLine.NetPrice = netPrice;
                                 salesLine.Amount = amount;
                                 salesLine.TaxId = 18;
@@ -1495,7 +1516,20 @@ namespace EasyPOS.Controllers
 
                                 if (taxRate > 0)
                                 {
-                                    discountAmountPerPax = pricePerPax * (discountRate / 100);
+                                    if (discountRate > 0)
+                                    {
+                                        discountAmountPerPax = pricePerPax * (discountRate / 100);
+                                    }
+                                    else
+                                    {
+                                        var salesQty = from d in db.TrnSalesLines
+                                                       where d.SalesId == salesId
+                                                       select d;
+                                        var totalQty = salesQty.Sum(a => a.Quantity);
+
+                                        discountAmountPerPax = objSalesEntity.DiscountAmount / totalQty;
+                                    }
+                                    
 
                                     if (withoutDiscountedPax != 0)
                                     {
@@ -1512,7 +1546,19 @@ namespace EasyPOS.Controllers
                                 }
                                 else
                                 {
-                                    discountAmountPerPax = pricePerPax * (discountRate / 100);
+                                    if (discountRate > 0)
+                                    {
+                                        discountAmountPerPax = pricePerPax * (discountRate / 100);
+                                    }
+                                    else
+                                    {
+                                        var salesQty = from d in db.TrnSalesLines
+                                                       where d.SalesId == salesId
+                                                       select d;
+                                        var totalQty = salesQty.Sum(a => a.Quantity);
+
+                                        discountAmountPerPax = objSalesEntity.DiscountAmount / totalQty;
+                                    }
 
                                     if (withoutDiscountedPax != 0)
                                     {
@@ -1530,7 +1576,14 @@ namespace EasyPOS.Controllers
 
                                 salesLine.DiscountId = discount.FirstOrDefault().Id;
                                 salesLine.DiscountRate = discountRate;
-                                salesLine.DiscountAmount = withoutDiscountedPax > 0 ? discountAmountPerPax * withoutDiscountedPax : discountAmountPerPax;
+                                if (discountRate > 0)
+                                {
+                                    salesLine.DiscountAmount = withoutDiscountedPax > 0 ? discountAmountPerPax * withoutDiscountedPax : discountAmountPerPax;
+                                }
+                                else
+                                {
+                                    salesLine.DiscountAmount = withoutDiscountedPax > 0 ? (discountAmountPerPax * withoutDiscountedPax) * quantity : discountAmountPerPax * quantity;
+                                }
                                 salesLine.NetPrice = netPrice;
                                 salesLine.Amount = amount;
                                 salesLine.TaxAmount = taxAmount;
