@@ -494,7 +494,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
             else
             {
-                ComputeDiscountRate();
+                ComputeAmount();
                 textBoxSalesLineDiscountAmount.Text = Convert.ToDecimal(textBoxSalesLineDiscountAmount.Text).ToString();
             }
         }
