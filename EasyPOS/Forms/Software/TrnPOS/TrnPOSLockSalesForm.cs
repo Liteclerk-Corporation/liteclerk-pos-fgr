@@ -189,6 +189,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         Remarks = textBoxTenderSalesRemarks.Text,
                         SalesAgent = Convert.ToInt32(comboBoxTenderSalesUsers.SelectedValue),
                         Amount = trnSalesEntity.Amount,
+                        IsDelivery = checkBoxIsDelivery.Checked,
+                        DeliveryType = comboBoxDeliveryType.SelectedValue.ToString(),
                         CollectedAmount = Convert.ToDecimal(textBoxTenderedAmount.Text),
                         OrderChangeAmount = Convert.ToDecimal(textBoxTenderedAmount.Text) - trnSalesEntity.Amount,
                     };
@@ -237,6 +239,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         if (Modules.SysCurrentModule.GetCurrentSettings().DisableLockTender == true)
                         {
                             trnPOSBarcodeDetailForm.buttonTender.Enabled = false;
+                        }
+
+                        if (Modules.SysCurrentModule.GetCurrentSettings().LockAutoSales == true)
+                        {
+                            trnPOSBarcodeDetailForm.printOnLock();
                         }
 
                         Close();

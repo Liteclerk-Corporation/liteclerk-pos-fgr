@@ -993,6 +993,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                 if (salesLines.Any())
                                 {
                                     new TrnPOSSalesOrderBodegaForm(trnSalesEntity.Id, printDialogSalesOrder.PrinterSettings.PrinterName);
+                                    new TrnPOSSalesOrderBodegaForm(trnSalesEntity.Id, printDialogSalesOrder.PrinterSettings.PrinterName);
                                 }
                             }
                             new TrnPOSSalesOrderReportForm(trnSalesEntity.Id, printDialogSalesOrder.PrinterSettings.PrinterName);
@@ -1016,6 +1017,72 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     {
                         if (salesLines.Any())
                         {
+                            new TrnPOSSalesOrderBodegaForm(trnSalesEntity.Id, "");
+                            new TrnPOSSalesOrderBodegaForm(trnSalesEntity.Id, "");
+                        }
+                    }
+                    new TrnPOSSalesOrderReportForm(trnSalesEntity.Id, "");
+                }
+            }
+        }
+        public void printOnLock()
+        {
+            // ============
+            // Data Context
+            // ============
+            Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
+
+            var salesLines = from d in db.TrnSalesLines where d.SalesId == trnSalesEntity.Id && d.BodegaItemQty > 0 select d;
+
+            if (Modules.SysCurrentModule.GetCurrentSettings().ChoosePrinter == true)
+            {
+                DialogResult printDialogResult = printDialogSalesOrder.ShowDialog();
+                if (printDialogResult == DialogResult.OK)
+                {
+                    if (trnSalesEntity.IsReturned == true)
+                    {
+                        new TrnPOSReturnReportForm(trnSalesEntity.Id);
+                    }
+                    else
+                    {
+
+                        if (Modules.SysCurrentModule.GetCurrentSettings().SalesOrderPrinterType == "Label Printer")
+                        {
+                            new TrnPOSSalesOrderReportFormLabelPrinter(trnSalesEntity.Id, printDialogSalesOrder.PrinterSettings.PrinterName);
+                        }
+
+                        else
+                        {
+                            if (Modules.SysCurrentModule.GetCurrentSettings().BodegaTransaction == true)
+                            {
+                                if (salesLines.Any())
+                                {
+                                    new TrnPOSSalesOrderBodegaForm(trnSalesEntity.Id, printDialogSalesOrder.PrinterSettings.PrinterName);
+                                    new TrnPOSSalesOrderBodegaForm(trnSalesEntity.Id, printDialogSalesOrder.PrinterSettings.PrinterName);
+                                }
+                            }
+                            new TrnPOSSalesOrderReportForm(trnSalesEntity.Id, printDialogSalesOrder.PrinterSettings.PrinterName);
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (trnSalesEntity.IsReturned == true)
+                {
+                    new TrnPOSReturnReportForm(trnSalesEntity.Id);
+                }
+                else if (Modules.SysCurrentModule.GetCurrentSettings().SalesOrderPrinterType == "Letter Printer")
+                {
+                    new TrnPOSSalesInvoicePDFReportForm(trnSalesEntity.Id);
+                }
+                else
+                {
+                    if (Modules.SysCurrentModule.GetCurrentSettings().BodegaTransaction == true)
+                    {
+                        if (salesLines.Any())
+                        {
+                            new TrnPOSSalesOrderBodegaForm(trnSalesEntity.Id, "");
                             new TrnPOSSalesOrderBodegaForm(trnSalesEntity.Id, "");
                         }
                     }

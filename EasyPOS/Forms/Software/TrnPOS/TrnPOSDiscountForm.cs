@@ -348,14 +348,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         private void textBoxDiscountAmount_Leave(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(textBoxDiscountRate.Text))
+            if (String.IsNullOrEmpty(textBoxDiscountAmount.Text))
             {
                 textBoxDiscountAmount.Text = "0.00";
             }
             else
             {
                 ComputeDiscountRate();
-                textBoxDiscountAmount.Text = Convert.ToDecimal(textBoxDiscountAmount.Text).ToString("#,##0.00");
+                textBoxDiscountAmount.Text = Convert.ToDecimal(textBoxDiscountAmount.Text).ToString();
             }
         }
 

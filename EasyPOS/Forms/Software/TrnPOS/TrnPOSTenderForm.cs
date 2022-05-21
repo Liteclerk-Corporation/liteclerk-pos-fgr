@@ -254,6 +254,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Official Receipt")
                             {
                                 new TrnPOSOfficialReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]), false, "");
+                                if (Modules.SysCurrentModule.GetCurrentSettings().BodegaTransaction == true)
+                                {
+                                    new TrnPOSOfficialReceiptReportForm(trnSalesEntity.Id, Convert.ToInt32(tenderSales[1]), false, "");
+                                }
                             }
                             else if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Delivery Receipt")
                             {

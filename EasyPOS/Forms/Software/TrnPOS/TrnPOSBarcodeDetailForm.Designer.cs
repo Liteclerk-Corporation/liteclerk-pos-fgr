@@ -336,7 +336,7 @@
             this.panel4.Controls.Add(this.textBoxTotalSalesAmount);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel4.Location = new System.Drawing.Point(691, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(679, 139);
             this.panel4.TabIndex = 15;
@@ -915,7 +915,7 @@
             this.panel5.Controls.Add(this.label5);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel5.Location = new System.Drawing.Point(0, 449);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(1370, 51);
             this.panel5.TabIndex = 8;
@@ -946,7 +946,7 @@
             this.textBoxChange.BackColor = System.Drawing.SystemColors.Control;
             this.textBoxChange.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxChange.Location = new System.Drawing.Point(1128, 6);
-            this.textBoxChange.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxChange.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxChange.Name = "textBoxChange";
             this.textBoxChange.ReadOnly = true;
             this.textBoxChange.Size = new System.Drawing.Size(229, 39);
@@ -1053,7 +1053,6 @@
         private System.Windows.Forms.Button buttonReturn;
         private System.Windows.Forms.Button buttonLock;
         private System.Windows.Forms.Button buttonUnlock;
-        private System.Windows.Forms.Button buttonPrint;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button buttonOverRide;
         private System.Windows.Forms.Panel panel5;
@@ -1096,5 +1095,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2LessTax;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePriceSplitPercentage;
+        public System.Windows.Forms.Button buttonPrint;
     }
 }
