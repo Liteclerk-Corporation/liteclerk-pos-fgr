@@ -1,6 +1,6 @@
 ﻿{
-  "DataSource": "localhost",
-  "InitialCatalog": "liteclerk",
+  "DataSource": "EGGSY\\SQLEXPRESS",
+  "InitialCatalog": "easypos_woodennickels",
   "UserId": "sa",
   "Password": "easyfis"
 }
