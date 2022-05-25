@@ -839,7 +839,20 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                                 if (salesLine.MstItem.BarCode != "0000000001")
                                 {
-                                    String itemData = salesLine.MstItem.ItemDescription + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.MstUnit.Unit + " " + salesLine.Preparation;
+                                    String itemData;
+                                    if (Modules.SysCurrentModule.GetCurrentSettings().ShowPriceDescriptioninReceipts == true)
+                                    {
+                                        var itemPrices = from d in db.MstItemPrices
+                                                         where d.ItemId == salesLine.ItemId
+                                                         && d.Price == salesLine.Price
+                                                         select d;
+                                        var itemPrice = itemPrices.FirstOrDefault().PriceDescription;
+                                        itemData = salesLine.MstItem.ItemDescription + " - " + itemPrice + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.MstUnit.Unit + " " + salesLine.Preparation;
+                                    }
+                                    else
+                                    {
+                                        itemData = salesLine.MstItem.ItemDescription + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.MstUnit.Unit + " " + salesLine.Preparation;
+                                    }
                                     RectangleF itemDataRectangle = new RectangleF
                                     {
                                         X = x,
