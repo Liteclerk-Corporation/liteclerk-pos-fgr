@@ -556,6 +556,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxPrintDeletedItem.Checked = Convert.ToBoolean(sysCurrent.EnablePOSTouchPrintDeletedItem);
                 checkBoxDisableSalesDate.Checked = Convert.ToBoolean(sysCurrent.DisableSalesDate);
                 checkBoxEnableSelectOrderTaker.Checked = Convert.ToBoolean(sysCurrent.EnableSelectOrderTaker);
+                checkBoxShowPriceDescriptionInReceipts.Checked = Convert.ToBoolean(sysCurrent.ShowPriceDescriptioninReceipts);
+
             }
             dateTimePickerLoginDate.Enabled = false;
         }
@@ -648,7 +650,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 ChangeComputationOnLock = checkBoxChangeComputeOnLock.Checked,
                 EnablePOSTouchPrintDeletedItem = checkBoxPrintDeletedItem.Checked,
                 DisableSalesDate = checkBoxDisableSalesDate.Checked,
-                EnableSelectOrderTaker = checkBoxEnableSelectOrderTaker.Checked
+                EnableSelectOrderTaker = checkBoxEnableSelectOrderTaker.Checked,
+                ShowPriceDescriptioninReceipts = checkBoxShowPriceDescriptionInReceipts.Checked
             };
 
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);
@@ -722,6 +725,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxPrintDeletedItem.Enabled = false;
                 checkBoxDisableSalesDate.Enabled = false;
                 checkBoxEnableSelectOrderTaker.Enabled = false;
+                checkBoxShowPriceDescriptionInReceipts.Enabled = false;
             }
             else
             {
@@ -827,6 +831,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxPrintDeletedItem.Enabled = true;
                 checkBoxDisableSalesDate.Enabled = true;
                 checkBoxEnableSelectOrderTaker.Enabled = true;
+                checkBoxShowPriceDescriptionInReceipts.Enabled = true;
             }
         }
 

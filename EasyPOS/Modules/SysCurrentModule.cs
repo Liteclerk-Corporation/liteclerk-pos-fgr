@@ -120,7 +120,8 @@ namespace EasyPOS.Modules
                 ChangeComputationOnLock = currentSettings.ChangeComputationOnLock,
                 EnablePOSTouchPrintDeletedItem = currentSettings.EnablePOSTouchPrintDeletedItem,
                 DisableSalesDate = currentSettings.DisableSalesDate,
-                EnableSelectOrderTaker = currentSettings.EnableSelectOrderTaker
+                EnableSelectOrderTaker = currentSettings.EnableSelectOrderTaker,
+                ShowPriceDescriptioninReceipts = currentSettings.ShowPriceDescriptioninReceipts
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);
@@ -208,7 +209,8 @@ namespace EasyPOS.Modules
                 ChangeComputationOnLock = objSysCurrentEntity.ChangeComputationOnLock,
                 EnablePOSTouchPrintDeletedItem = objSysCurrentEntity.EnablePOSTouchPrintDeletedItem,
                 DisableSalesDate = objSysCurrentEntity.DisableSalesDate,
-                EnableSelectOrderTaker = objSysCurrentEntity.EnableSelectOrderTaker
+                EnableSelectOrderTaker = objSysCurrentEntity.EnableSelectOrderTaker,
+                ShowPriceDescriptioninReceipts = objSysCurrentEntity.ShowPriceDescriptioninReceipts
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newSysCurrentEntities);
@@ -297,7 +299,8 @@ namespace EasyPOS.Modules
                 ChangeComputationOnLock = currentSettings.ChangeComputationOnLock,
                 EnablePOSTouchPrintDeletedItem = currentSettings.EnablePOSTouchPrintDeletedItem,
                 DisableSalesDate = currentSettings.DisableSalesDate,
-                EnableSelectOrderTaker = currentSettings.EnableSelectOrderTaker
+                EnableSelectOrderTaker = currentSettings.EnableSelectOrderTaker,
+                ShowPriceDescriptioninReceipts = currentSettings.ShowPriceDescriptioninReceipts
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);

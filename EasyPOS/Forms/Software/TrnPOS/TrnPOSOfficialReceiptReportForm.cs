@@ -491,7 +491,20 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                     itemPreparation = salesLine.Preparation;
                                 }
 
-                                String itemData = salesLine.ItemDescription + " " + itemPreparation + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
+                                String itemData;
+                                if (Modules.SysCurrentModule.GetCurrentSettings().ShowPriceDescriptioninReceipts == true)
+                                {
+                                    var itemPrices = from d in db.MstItemPrices
+                                                     where d.ItemId == salesLine.ItemId
+                                                     && d.Price == salesLine.Price
+                                                     select d;
+                                    var itemPrice = itemPrices.FirstOrDefault().PriceDescription;
+                                    itemData = salesLine.ItemDescription + " " + itemPreparation + " - " + itemPrice + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
+                                }
+                                else
+                                {
+                                    itemData = salesLine.ItemDescription + " " + itemPreparation + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
+                                }
                                 String itemAmountData = (_VAT).ToString("#,##0.00");
                                 RectangleF itemDataRectangle = new RectangleF
                                 {
@@ -956,8 +969,20 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                 {
                                     itemPreparation = salesLine.Preparation;
                                 }
-
-                                String itemData = salesLine.ItemDescription + " " + itemPreparation + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
+                                String itemData;
+                                if (Modules.SysCurrentModule.GetCurrentSettings().ShowPriceDescriptioninReceipts == true)
+                                {
+                                    var itemPrices = from d in db.MstItemPrices
+                                                     where d.ItemId == salesLine.ItemId
+                                                     && d.Price == salesLine.Price
+                                                     select d;
+                                    var itemPrice = itemPrices.FirstOrDefault().PriceDescription;
+                                    itemData = salesLine.ItemDescription + " " + itemPreparation + " - " + itemPrice + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
+                                }
+                                else
+                                {
+                                    itemData = salesLine.ItemDescription + " " + itemPreparation + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
+                                }
                                 String itemAmountData = (_VAT).ToString("#,##0.00");
                                 RectangleF itemDataRectangle = new RectangleF
                                 {
