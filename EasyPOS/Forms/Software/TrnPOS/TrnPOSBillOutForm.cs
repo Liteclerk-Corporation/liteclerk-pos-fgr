@@ -114,52 +114,80 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // ===============
             // Company Address
             // ===============
-
             String companyAddress = systemCurrent.Address;
-
-            float adjustStringAddress = 1;
-            if (companyAddress.Length > 43)
+            RectangleF companyAddressRectangle = new RectangleF
             {
-                adjustStringAddress = 2;
-            }
-
-            graphics.DrawString(companyAddress, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += (graphics.MeasureString(companyAddress, fontArial8Regular).Height + 12F);
+                X = x,
+                Y = y,
+                Size = new Size(245, ((int)graphics.MeasureString(companyAddress, fontArial8Regular, 245, StringFormat.GenericDefault).Height))
+            };
+            graphics.DrawString(companyAddress, fontArial8Regular, Brushes.Black, companyAddressRectangle, drawFormatCenter);
+            y += companyAddressRectangle.Size.Height;
 
             // ==========
             // TIN Number
             // ==========
-            String TINNumber = systemCurrent.TIN;
-            graphics.DrawString("TIN: " + TINNumber, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
+            String TINNumber = "TIN: " + systemCurrent.TIN;
+            RectangleF TINNumbersRectangle = new RectangleF
+            {
+                X = x,
+                Y = y,
+                Size = new Size(245, ((int)graphics.MeasureString(TINNumber, fontArial8Regular, 245, StringFormat.GenericDefault).Height))
+            };
+            graphics.DrawString(TINNumber, fontArial8Regular, Brushes.Black, TINNumbersRectangle, drawFormatCenter);
+            y += TINNumbersRectangle.Size.Height;
 
             // =============
             // Serial Number
             // =============
-            String serialNo = systemCurrent.SerialNo;
-            graphics.DrawString("SN: " + serialNo, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
+            String serialNo = "SN: " + systemCurrent.SerialNo;
+            RectangleF serialNoDataRectangle = new RectangleF
+            {
+                X = x,
+                Y = y,
+                Size = new Size(245, ((int)graphics.MeasureString(serialNo, fontArial8Regular, 245, StringFormat.GenericDefault).Height))
+            };
+            graphics.DrawString(serialNo, fontArial8Regular, Brushes.Black, serialNoDataRectangle, drawFormatCenter);
+            y += serialNoDataRectangle.Size.Height;
 
-            // =============
+            //==============
             // Permit Number
-            // =============
-            String permitNo = systemCurrent.PermitNo;
-            graphics.DrawString("PN: " + permitNo, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
+            //==============
+            String permitNumber = "PN: " + systemCurrent.PermitNo;
+            RectangleF permitNoDataRectangle = new RectangleF
+            {
+                X = x,
+                Y = y,
+                Size = new Size(245, ((int)graphics.MeasureString(permitNumber, fontArial8Regular, 245, StringFormat.GenericDefault).Height))
+            };
+            graphics.DrawString(permitNumber, fontArial8Regular, Brushes.Black, permitNoDataRectangle, drawFormatCenter);
+            y += permitNoDataRectangle.Size.Height;
 
-            // ====================
+            //=====================
             // Accreditation Number
-            // ====================
-            String accrdNo = systemCurrent.AccreditationNo;
-            graphics.DrawString("Acred No.: " + accrdNo, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
+            //=====================
+            String accrdNo = "Accred No.: " + systemCurrent.AccreditationNo;
+            RectangleF accrdNoDataRectangle = new RectangleF
+            {
+                X = x,
+                Y = y,
+                Size = new Size(245, ((int)graphics.MeasureString(accrdNo, fontArial8Regular, 245, StringFormat.GenericDefault).Height))
+            };
+            graphics.DrawString(accrdNo, fontArial8Regular, Brushes.Black, accrdNoDataRectangle, drawFormatCenter);
+            y += accrdNoDataRectangle.Size.Height;
 
             // ==============
             // Machine Number
             // ==============
-            String machineNo = systemCurrent.MachineNo;
-            graphics.DrawString("MIN: " + machineNo, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
+            String machineNo = "MIN: " + systemCurrent.MachineNo;
+            RectangleF MINNumbersRectangle = new RectangleF
+            {
+                X = x,
+                Y = y,
+                Size = new Size(245, ((int)graphics.MeasureString(machineNo, fontArial8Regular, 245, StringFormat.GenericDefault).Height))
+            };
+            graphics.DrawString(machineNo, fontArial8Regular, Brushes.Black, MINNumbersRectangle, drawFormatCenter);
+            y += MINNumbersRectangle.Size.Height;
 
             // ======================
             // Official Receipt Title

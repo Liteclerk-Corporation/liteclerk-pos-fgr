@@ -132,55 +132,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Y = y,
                 Size = new Size(245, ((int)graphics.MeasureString(companyAddress, fontArial8Regular, 245, StringFormat.GenericDefault).Height))
             };
-            graphics.DrawString(companyAddress, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            y += companyAddressRectangle.Size.Height + 12F;
-
-            //// ==========
-            //// TIN Number
-            //// ==========
-            //String TINNumber = systemCurrent.TIN;
-            //RectangleF TINNumbersRectangle = new RectangleF
-            //{
-            //    X = x,
-            //    Y = y,
-            //    Size = new Size(245, ((int)graphics.MeasureString(TINNumber, fontArial8Regular, 245, StringFormat.GenericDefault).Height))
-            //};
-            //graphics.DrawString("TIN: " + TINNumber, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            //y += TINNumbersRectangle.Size.Height + 1.0F;
-
-            //// =============
-            //// Serial Number
-            //// =============
-            //String serialNo = systemCurrent.SerialNo;
-            //RectangleF SNNumbersRectangle = new RectangleF
-            //{
-            //    X = x,
-            //    Y = y,
-            //    Size = new Size(245, ((int)graphics.MeasureString(serialNo, fontArial8Regular, 245, StringFormat.GenericDefault).Height))
-            //};
-            //graphics.DrawString("SN: " + serialNo, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            //y += SNNumbersRectangle.Size.Height + 1.0F;
-
-            //// =============
-            //// Permit Number
-            //// =============
-            //String permitNo = systemCurrent.PermitNo;
-            //graphics.DrawString("PN: " + permitNo, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            //y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
-
-            //// ====================
-            //// Accreditation Number
-            //// ====================
-            //String accrdNo = systemCurrent.AccreditationNo;
-            //graphics.DrawString("Acred No.: " + accrdNo, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            //y += graphics.MeasureString(companyAddress, fontArial8Regular).Height;
-
-            //// ==============
-            //// Machine Number
-            //// ==============
-            //String machineNo = systemCurrent.MachineNo;
-            //graphics.DrawString("MIN: " + machineNo, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-            //y += graphics.MeasureString(machineNo, fontArial8Regular).Height;
+            graphics.DrawString(companyAddress, fontArial8Regular, Brushes.Black, companyAddressRectangle, drawFormatCenter);
+            y += companyAddressRectangle.Size.Height;
 
             // =================
             // Sales Order Title
@@ -366,8 +319,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
 
                     String remarks = "\nRemarks: " + sales.FirstOrDefault().Remarks;
-                    graphics.DrawString(remarks, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    y += graphics.MeasureString(remarks, fontArial7Regular).Height;
+                    RectangleF remarksDataRectangle = new RectangleF
+                    {
+                        X = x,
+                        Y = y,
+                        Size = new Size(150, ((int)graphics.MeasureString(remarks, fontArial7Regular, 150, StringFormat.GenericDefault).Height))
+                    };
+                    graphics.DrawString(remarks, fontArial7Regular, Brushes.Black, remarksDataRectangle, drawFormatLeft);
+                    y += remarksDataRectangle.Size.Height;
 
                     //// ========
                     //// 4th Line
@@ -380,12 +339,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     //graphics.DrawString(orderNumber, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                     //y += graphics.MeasureString(orderNumber, fontArial8Regular).Height;
 
-                    // ========
-                    // 5th Line
-                    // ========
-                    Point fifthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                    Point fifthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                    graphics.DrawLine(blackPen, fifthLineFirstPoint, fifthLineSecondPoint);
+                    //// ========
+                    //// 5th Line
+                    //// ========
+                    //Point fifthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                    //Point fifthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                    //graphics.DrawLine(blackPen, fifthLineFirstPoint, fifthLineSecondPoint);
 
                     // =======
                     // Cashier
@@ -615,8 +574,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     graphics.DrawLine(blackPen, thirdLineFirstPoint, thirdLineSecondPoint);
 
                     String remarks = "\nRemarks: " + sales.FirstOrDefault().Remarks;
-                    graphics.DrawString(remarks, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    y += graphics.MeasureString(remarks, fontArial8Regular).Height;
+                    RectangleF remarksDataRectangle = new RectangleF
+                    {
+                        X = x,
+                        Y = y,
+                        Size = new Size(250, ((int)graphics.MeasureString(remarks, fontArial8Regular, 250, StringFormat.GenericDefault).Height))
+                    };
+                    graphics.DrawString(remarks, fontArial8Regular, Brushes.Black, remarksDataRectangle, drawFormatLeft);
+                    y += remarksDataRectangle.Size.Height;
 
                     //// ========
                     //// 4th Line

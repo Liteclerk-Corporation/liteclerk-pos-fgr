@@ -234,73 +234,73 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     Y = y,
                     Size = new Size(245, ((int)graphics.MeasureString(companyAddress, fontArial8Regular, 245, StringFormat.GenericDefault).Height))
                 };
-                graphics.DrawString(companyAddress, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                y += companyAddressRectangle.Size.Height + 12F;
+                graphics.DrawString(companyAddress, fontArial8Regular, Brushes.Black, companyAddressRectangle, drawFormatCenter);
+                y += companyAddressRectangle.Size.Height;
 
                 // ==========
                 // TIN Number
                 // ==========
-                String TINNumber = systemCurrent.TIN;
+                String TINNumber = "TIN: " + systemCurrent.TIN;
                 RectangleF TINNumbersRectangle = new RectangleF
                 {
                     X = x,
                     Y = y,
                     Size = new Size(245, ((int)graphics.MeasureString(TINNumber, fontArial8Regular, 245, StringFormat.GenericDefault).Height))
                 };
-                graphics.DrawString("TIN: " + TINNumber, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                y += TINNumbersRectangle.Size.Height + 1.0F;
+                graphics.DrawString(TINNumber, fontArial8Regular, Brushes.Black, TINNumbersRectangle, drawFormatCenter);
+                y += TINNumbersRectangle.Size.Height;
 
                 // =============
                 // Serial Number
                 // =============
-                String serialNo = systemCurrent.SerialNo;
-                RectangleF SNNumbersRectangle = new RectangleF
+                String serialNo = "SN: " + systemCurrent.SerialNo;
+                RectangleF serialNoDataRectangle = new RectangleF
                 {
                     X = x,
                     Y = y,
                     Size = new Size(245, ((int)graphics.MeasureString(serialNo, fontArial8Regular, 245, StringFormat.GenericDefault).Height))
                 };
-                graphics.DrawString("SN: " + serialNo, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                y += SNNumbersRectangle.Size.Height + 1.0F;
+                graphics.DrawString(serialNo, fontArial8Regular, Brushes.Black, serialNoDataRectangle, drawFormatCenter);
+                y += serialNoDataRectangle.Size.Height;
 
                 //==============
                 // Permit Number
                 //==============
-                String permitNumber = systemCurrent.PermitNo;
-                RectangleF PermitNumberRectangle = new RectangleF
+                String permitNumber = "PN: " + systemCurrent.PermitNo;
+                RectangleF permitNoDataRectangle = new RectangleF
                 {
                     X = x,
                     Y = y,
                     Size = new Size(245, ((int)graphics.MeasureString(permitNumber, fontArial8Regular, 245, StringFormat.GenericDefault).Height))
                 };
-                graphics.DrawString("PN: " + permitNumber, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                y += PermitNumberRectangle.Size.Height + 1.0F;
+                graphics.DrawString(permitNumber, fontArial8Regular, Brushes.Black, permitNoDataRectangle, drawFormatCenter);
+                y += permitNoDataRectangle.Size.Height;
 
                 //=====================
                 // Accreditation Number
                 //=====================
-                String accrdNo = systemCurrent.AccreditationNo;
-                RectangleF AccrdNumberRectangle = new RectangleF
+                String accrdNo = "Accred No.: " + systemCurrent.AccreditationNo;
+                RectangleF accrdNoDataRectangle = new RectangleF
                 {
                     X = x,
                     Y = y,
                     Size = new Size(245, ((int)graphics.MeasureString(accrdNo, fontArial8Regular, 245, StringFormat.GenericDefault).Height))
                 };
-                graphics.DrawString("Acred No.: " + accrdNo, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                y += AccrdNumberRectangle.Size.Height + 1.0F;
+                graphics.DrawString(accrdNo, fontArial8Regular, Brushes.Black, accrdNoDataRectangle, drawFormatCenter);
+                y += accrdNoDataRectangle.Size.Height;
 
                 // ==============
                 // Machine Number
                 // ==============
-                String machineNo = systemCurrent.MachineNo;
+                String machineNo = "MIN: " + systemCurrent.MachineNo;
                 RectangleF MINNumbersRectangle = new RectangleF
                 {
                     X = x,
                     Y = y,
                     Size = new Size(245, ((int)graphics.MeasureString(machineNo, fontArial8Regular, 245, StringFormat.GenericDefault).Height))
                 };
-                graphics.DrawString("MIN: " + machineNo, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
-                y += MINNumbersRectangle.Size.Height + 1.0F;
+                graphics.DrawString(machineNo, fontArial8Regular, Brushes.Black, MINNumbersRectangle, drawFormatCenter);
+                y += MINNumbersRectangle.Size.Height;
 
                 // ======================
                 // Official Receipt Title
@@ -785,9 +785,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Point ninethLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
                 graphics.DrawLine(blackPen, ninethLineFirstPoint, ninethLineSecondPoint);
 
-                String remarks = "\nRemarks: \n\n " + collections.FirstOrDefault().TrnSale.Remarks;
-                graphics.DrawString(remarks, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                y += graphics.MeasureString(remarks, fontArial7Regular).Height;
+                String remarks = "\nRemarks: " + sales.FirstOrDefault().Remarks;
+                RectangleF remarksDataRectangle = new RectangleF
+                {
+                    X = x,
+                    Y = y,
+                    Size = new Size(150, ((int)graphics.MeasureString(remarks, fontArial7Regular, 150, StringFormat.GenericDefault).Height))
+                };
+                graphics.DrawString(remarks, fontArial7Regular, Brushes.Black, remarksDataRectangle, drawFormatLeft);
+                y += remarksDataRectangle.Size.Height;
 
                 //// =========
                 //// 10th Line
@@ -1287,9 +1293,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Point ninethLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
                 graphics.DrawLine(blackPen, ninethLineFirstPoint, ninethLineSecondPoint);
 
-                String remarks = "\nRemarks: \n" + collections.FirstOrDefault().TrnSale.Remarks;
-                graphics.DrawString(remarks, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                y += graphics.MeasureString(remarks, fontArial8Regular).Height;
+                String remarks = "\nRemarks: " + sales.FirstOrDefault().Remarks;
+                RectangleF remarksDataRectangle = new RectangleF
+                {
+                    X = x,
+                    Y = y,
+                    Size = new Size(250, ((int)graphics.MeasureString(remarks, fontArial8Regular, 250, StringFormat.GenericDefault).Height))
+                };
+                graphics.DrawString(remarks, fontArial8Regular, Brushes.Black, remarksDataRectangle, drawFormatLeft);
+                y += remarksDataRectangle.Size.Height;
 
                 //// =========
                 //// 10th Line
