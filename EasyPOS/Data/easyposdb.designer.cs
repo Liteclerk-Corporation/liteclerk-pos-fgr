@@ -22,7 +22,7 @@ namespace EasyPOS.Data
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="easypos")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="easypos_mylora_baybay")]
 	public partial class easyposdbDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -180,10 +180,13 @@ namespace EasyPOS.Data
     partial void InsertTrnStockOut(TrnStockOut instance);
     partial void UpdateTrnStockOut(TrnStockOut instance);
     partial void DeleteTrnStockOut(TrnStockOut instance);
+    partial void InsertSysMenuForm(SysMenuForm instance);
+    partial void UpdateSysMenuForm(SysMenuForm instance);
+    partial void DeleteSysMenuForm(SysMenuForm instance);
     #endregion
 		
 		public easyposdbDataContext() : 
-				base(global::EasyPOS.Properties.Settings.Default.easyposConnectionString3, mappingSource)
+				base(global::EasyPOS.Properties.Settings.Default.easypos_mylora_baybayConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -609,6 +612,14 @@ namespace EasyPOS.Data
 			get
 			{
 				return this.GetTable<TrnStockOut>();
+			}
+		}
+		
+		public System.Data.Linq.Table<SysMenuForm> SysMenuForms
+		{
+			get
+			{
+				return this.GetTable<SysMenuForm>();
 			}
 		}
 	}
@@ -26819,6 +26830,452 @@ namespace EasyPOS.Data
 		{
 			this.SendPropertyChanging();
 			entity.TrnStockOut = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SysMenuForm")]
+	public partial class SysMenuForm : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private bool _SideBarMenu;
+		
+		private bool _Item;
+		
+		private bool _Discounting;
+		
+		private bool _Customer;
+		
+		private bool _UserAccount;
+		
+		private bool _POS;
+		
+		private bool _CashInOut;
+		
+		private bool _StockIn;
+		
+		private bool _StockOut;
+		
+		private bool _SalesReport;
+		
+		private bool _RemittanceReport;
+		
+		private bool _InventoryReport;
+		
+		private bool _StockCount;
+		
+		private bool _POSReport;
+		
+		private bool _Settings;
+		
+		private bool _SystemTables;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnSideBarMenuChanging(bool value);
+    partial void OnSideBarMenuChanged();
+    partial void OnItemChanging(bool value);
+    partial void OnItemChanged();
+    partial void OnDiscountingChanging(bool value);
+    partial void OnDiscountingChanged();
+    partial void OnCustomerChanging(bool value);
+    partial void OnCustomerChanged();
+    partial void OnUserAccountChanging(bool value);
+    partial void OnUserAccountChanged();
+    partial void OnPOSChanging(bool value);
+    partial void OnPOSChanged();
+    partial void OnCashInOutChanging(bool value);
+    partial void OnCashInOutChanged();
+    partial void OnStockInChanging(bool value);
+    partial void OnStockInChanged();
+    partial void OnStockOutChanging(bool value);
+    partial void OnStockOutChanged();
+    partial void OnSalesReportChanging(bool value);
+    partial void OnSalesReportChanged();
+    partial void OnRemittanceReportChanging(bool value);
+    partial void OnRemittanceReportChanged();
+    partial void OnInventoryReportChanging(bool value);
+    partial void OnInventoryReportChanged();
+    partial void OnStockCountChanging(bool value);
+    partial void OnStockCountChanged();
+    partial void OnPOSReportChanging(bool value);
+    partial void OnPOSReportChanged();
+    partial void OnSettingsChanging(bool value);
+    partial void OnSettingsChanged();
+    partial void OnSystemTablesChanging(bool value);
+    partial void OnSystemTablesChanged();
+    #endregion
+		
+		public SysMenuForm()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SideBarMenu", DbType="Bit NOT NULL")]
+		public bool SideBarMenu
+		{
+			get
+			{
+				return this._SideBarMenu;
+			}
+			set
+			{
+				if ((this._SideBarMenu != value))
+				{
+					this.OnSideBarMenuChanging(value);
+					this.SendPropertyChanging();
+					this._SideBarMenu = value;
+					this.SendPropertyChanged("SideBarMenu");
+					this.OnSideBarMenuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Item", DbType="Bit NOT NULL")]
+		public bool Item
+		{
+			get
+			{
+				return this._Item;
+			}
+			set
+			{
+				if ((this._Item != value))
+				{
+					this.OnItemChanging(value);
+					this.SendPropertyChanging();
+					this._Item = value;
+					this.SendPropertyChanged("Item");
+					this.OnItemChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Discounting", DbType="Bit NOT NULL")]
+		public bool Discounting
+		{
+			get
+			{
+				return this._Discounting;
+			}
+			set
+			{
+				if ((this._Discounting != value))
+				{
+					this.OnDiscountingChanging(value);
+					this.SendPropertyChanging();
+					this._Discounting = value;
+					this.SendPropertyChanged("Discounting");
+					this.OnDiscountingChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Customer", DbType="Bit NOT NULL")]
+		public bool Customer
+		{
+			get
+			{
+				return this._Customer;
+			}
+			set
+			{
+				if ((this._Customer != value))
+				{
+					this.OnCustomerChanging(value);
+					this.SendPropertyChanging();
+					this._Customer = value;
+					this.SendPropertyChanged("Customer");
+					this.OnCustomerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserAccount", DbType="Bit NOT NULL")]
+		public bool UserAccount
+		{
+			get
+			{
+				return this._UserAccount;
+			}
+			set
+			{
+				if ((this._UserAccount != value))
+				{
+					this.OnUserAccountChanging(value);
+					this.SendPropertyChanging();
+					this._UserAccount = value;
+					this.SendPropertyChanged("UserAccount");
+					this.OnUserAccountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POS", DbType="Bit NOT NULL")]
+		public bool POS
+		{
+			get
+			{
+				return this._POS;
+			}
+			set
+			{
+				if ((this._POS != value))
+				{
+					this.OnPOSChanging(value);
+					this.SendPropertyChanging();
+					this._POS = value;
+					this.SendPropertyChanged("POS");
+					this.OnPOSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CashInOut", DbType="Bit NOT NULL")]
+		public bool CashInOut
+		{
+			get
+			{
+				return this._CashInOut;
+			}
+			set
+			{
+				if ((this._CashInOut != value))
+				{
+					this.OnCashInOutChanging(value);
+					this.SendPropertyChanging();
+					this._CashInOut = value;
+					this.SendPropertyChanged("CashInOut");
+					this.OnCashInOutChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockIn", DbType="Bit NOT NULL")]
+		public bool StockIn
+		{
+			get
+			{
+				return this._StockIn;
+			}
+			set
+			{
+				if ((this._StockIn != value))
+				{
+					this.OnStockInChanging(value);
+					this.SendPropertyChanging();
+					this._StockIn = value;
+					this.SendPropertyChanged("StockIn");
+					this.OnStockInChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockOut", DbType="Bit NOT NULL")]
+		public bool StockOut
+		{
+			get
+			{
+				return this._StockOut;
+			}
+			set
+			{
+				if ((this._StockOut != value))
+				{
+					this.OnStockOutChanging(value);
+					this.SendPropertyChanging();
+					this._StockOut = value;
+					this.SendPropertyChanged("StockOut");
+					this.OnStockOutChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalesReport", DbType="Bit NOT NULL")]
+		public bool SalesReport
+		{
+			get
+			{
+				return this._SalesReport;
+			}
+			set
+			{
+				if ((this._SalesReport != value))
+				{
+					this.OnSalesReportChanging(value);
+					this.SendPropertyChanging();
+					this._SalesReport = value;
+					this.SendPropertyChanged("SalesReport");
+					this.OnSalesReportChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RemittanceReport", DbType="Bit NOT NULL")]
+		public bool RemittanceReport
+		{
+			get
+			{
+				return this._RemittanceReport;
+			}
+			set
+			{
+				if ((this._RemittanceReport != value))
+				{
+					this.OnRemittanceReportChanging(value);
+					this.SendPropertyChanging();
+					this._RemittanceReport = value;
+					this.SendPropertyChanged("RemittanceReport");
+					this.OnRemittanceReportChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventoryReport", DbType="Bit NOT NULL")]
+		public bool InventoryReport
+		{
+			get
+			{
+				return this._InventoryReport;
+			}
+			set
+			{
+				if ((this._InventoryReport != value))
+				{
+					this.OnInventoryReportChanging(value);
+					this.SendPropertyChanging();
+					this._InventoryReport = value;
+					this.SendPropertyChanged("InventoryReport");
+					this.OnInventoryReportChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockCount", DbType="Bit NOT NULL")]
+		public bool StockCount
+		{
+			get
+			{
+				return this._StockCount;
+			}
+			set
+			{
+				if ((this._StockCount != value))
+				{
+					this.OnStockCountChanging(value);
+					this.SendPropertyChanging();
+					this._StockCount = value;
+					this.SendPropertyChanged("StockCount");
+					this.OnStockCountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSReport", DbType="Bit NOT NULL")]
+		public bool POSReport
+		{
+			get
+			{
+				return this._POSReport;
+			}
+			set
+			{
+				if ((this._POSReport != value))
+				{
+					this.OnPOSReportChanging(value);
+					this.SendPropertyChanging();
+					this._POSReport = value;
+					this.SendPropertyChanged("POSReport");
+					this.OnPOSReportChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Settings", DbType="Bit NOT NULL")]
+		public bool Settings
+		{
+			get
+			{
+				return this._Settings;
+			}
+			set
+			{
+				if ((this._Settings != value))
+				{
+					this.OnSettingsChanging(value);
+					this.SendPropertyChanging();
+					this._Settings = value;
+					this.SendPropertyChanged("Settings");
+					this.OnSettingsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SystemTables", DbType="Bit NOT NULL")]
+		public bool SystemTables
+		{
+			get
+			{
+				return this._SystemTables;
+			}
+			set
+			{
+				if ((this._SystemTables != value))
+				{
+					this.OnSystemTablesChanging(value);
+					this.SendPropertyChanging();
+					this._SystemTables = value;
+					this.SendPropertyChanged("SystemTables");
+					this.OnSystemTablesChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

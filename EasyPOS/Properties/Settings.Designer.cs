@@ -140,5 +140,16 @@ namespace EasyPOS.Properties {
                 return ((string)(this["easypos_mylora_baybayConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=EGGSY\\SQLEXPRESS;Initial Catalog=easypos_mylora_baybay;Persist Securi" +
+            "ty Info=True;User ID=sa")]
+        public string easypos_mylora_baybayConnectionString1 {
+            get {
+                return ((string)(this["easypos_mylora_baybayConnectionString1"]));
+            }
+        }
     }
 }

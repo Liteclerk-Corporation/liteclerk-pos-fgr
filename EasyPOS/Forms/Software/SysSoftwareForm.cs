@@ -14,6 +14,11 @@ namespace EasyPOS.Forms.Software
 {
     public partial class SysSoftwareForm : Form
     {
+        // ============
+        // Data Context
+        // ============
+        public Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
+
         private Modules.SysUserRightsModule sysUserRights;
 
         public SysSoftwareForm()
@@ -136,8 +141,14 @@ namespace EasyPOS.Forms.Software
             };
 
             tabPageSysMenu.Controls.Add(sysMenuForm);
+            var menuForms = from d in db.SysMenuForms
+                            select d;
+            var form = menuForms.FirstOrDefault();
+            if (form.SideBarMenu == false)
+            {
+                buttonOpenSidebarMenu.Visible = false;
+            }
         }
-
         public void displayTimeStamp(String createdBy, String createdDate, String updatedBy, String updatedDate)
         {
             labelCreatedByUser.Text = createdBy;

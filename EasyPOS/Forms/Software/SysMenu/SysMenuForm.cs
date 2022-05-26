@@ -12,6 +12,11 @@ namespace EasyPOS.Forms.Software.SysMenu
 {
     public partial class SysMenuForm : Form
     {
+        // ============
+        // Data Context
+        // ============
+        public Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
+
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
 
@@ -51,6 +56,9 @@ namespace EasyPOS.Forms.Software.SysMenu
             {
                 buttonPOS.ImageIndex = 14;
             }
+
+            MenuForm();
+            InventoryModuleButtonLocation();
         }
 
         public string SetLabel(string label)
@@ -86,7 +94,106 @@ namespace EasyPOS.Forms.Software.SysMenu
             }
             return label;
         }
+        public void MenuForm()
+        {
+            var menuForms = from d in db.SysMenuForms
+                            select d;
+            var form = menuForms.FirstOrDefault();
 
+            if (form.Item == false)
+            {
+                buttonItem.Visible = false;
+            }
+            if (form.Discounting == false)
+            {
+                buttonDiscounting.Visible = false;
+            }
+            if (form.Customer == false)
+            {
+                buttonCustomer.Visible = false;
+            }
+            if (form.UserAccount == false)
+            {
+                buttonUser.Visible = false;
+            }
+            if (form.POS == false)
+            {
+                buttonPOS.Visible = false;
+            }
+            if (form.CashInOut == false)
+            {
+                buttonDisbursement.Visible = false;
+            }
+            if (form.StockIn == false)
+            {
+                buttonStockIn.Visible = false;
+            }
+            if (form.StockOut == false)
+            {
+                buttonStockOut.Visible = false;
+            }
+            if (form.SalesReport == false)
+            {
+                buttonSalesReport.Visible = false;
+            }
+            if (form.RemittanceReport == false)
+            {
+                buttonRemittanceReport.Visible = false;
+            }
+            if (form.InventoryReport == false)
+            {
+                buttonInventory.Visible = false;
+            }
+            if (form.StockCount == false)
+            {
+                buttonStockCount.Visible = false;
+            }
+            if (form.POSReport == false)
+            {
+                buttonPOSReport.Visible = false;
+            }
+            if (form.Settings == false)
+            {
+                buttonSettings.Visible = false;
+            }
+            if (form.SystemTables == false)
+            {
+                buttonSystemTables.Visible = false;
+            }
+        }
+        public void InventoryModuleButtonLocation()
+        {
+            var menuForms = from d in db.SysMenuForms
+                            select d;
+            var form = menuForms.FirstOrDefault();
+
+            if (form.Discounting == false)
+            {
+                buttonUser.Location = new Point(10, 112);
+            }
+            if (form.POS == false)
+            {
+                if (form.CashInOut == false)
+                {
+                    buttonStockIn.Location = new Point(197, 10);
+                    buttonStockOut.Location = new Point(197, 112);
+                }
+            }
+            if (form.SalesReport == false)
+            {
+                if (form.RemittanceReport == false)
+                {
+                    buttonInventory.Location = new Point(384, 10);
+                    buttonStockCount.Location = new Point(384, 112);
+                }
+            }
+            if (form.POSReport == false)
+            {
+                buttonSettings.Location = new Point(572, 10);
+                buttonUtilities.Location = new Point(572, 112);
+                buttonSystemTables.Location = new Point(572, 215);
+            }
+        }
         private void buttonItem_Click(object sender, EventArgs e)
         {
             sysUserRights = new Modules.SysUserRightsModule("MstItem");
@@ -118,7 +225,7 @@ namespace EasyPOS.Forms.Software.SysMenu
                     {
                         MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    else 
+                    else
                     {
                         sysSoftwareForm.AddTabPagePOSTouchSalesList();
                     }
@@ -310,7 +417,7 @@ namespace EasyPOS.Forms.Software.SysMenu
             {
                 sysSoftwareForm.AddTabPageUtilities();
             }
-            
+
         }
 
     }
