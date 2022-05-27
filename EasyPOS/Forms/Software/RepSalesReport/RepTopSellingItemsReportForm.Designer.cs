@@ -45,6 +45,7 @@
             this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonClose = new System.Windows.Forms.Button();
+            this.buttonPrint = new System.Windows.Forms.Button();
             this.buttonGenerateCSV = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -99,6 +100,7 @@
             this.dataGridViewTopSellingItemsReport.MultiSelect = false;
             this.dataGridViewTopSellingItemsReport.Name = "dataGridViewTopSellingItemsReport";
             this.dataGridViewTopSellingItemsReport.ReadOnly = true;
+            this.dataGridViewTopSellingItemsReport.RowHeadersWidth = 51;
             this.dataGridViewTopSellingItemsReport.RowTemplate.Height = 24;
             this.dataGridViewTopSellingItemsReport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewTopSellingItemsReport.ShowEditingIcon = false;
@@ -111,13 +113,16 @@
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnNumber.DefaultCellStyle = dataGridViewCellStyle1;
             this.ColumnNumber.HeaderText = "No.";
+            this.ColumnNumber.MinimumWidth = 6;
             this.ColumnNumber.Name = "ColumnNumber";
             this.ColumnNumber.ReadOnly = true;
+            this.ColumnNumber.Width = 125;
             // 
             // ColumnItemCode
             // 
             this.ColumnItemCode.DataPropertyName = "ColumnItemCode";
             this.ColumnItemCode.HeaderText = "Barcode";
+            this.ColumnItemCode.MinimumWidth = 6;
             this.ColumnItemCode.Name = "ColumnItemCode";
             this.ColumnItemCode.ReadOnly = true;
             this.ColumnItemCode.Width = 120;
@@ -126,6 +131,7 @@
             // 
             this.ColumnItemDescription.DataPropertyName = "ColumnItemDescription";
             this.ColumnItemDescription.HeaderText = "Item Description";
+            this.ColumnItemDescription.MinimumWidth = 6;
             this.ColumnItemDescription.Name = "ColumnItemDescription";
             this.ColumnItemDescription.ReadOnly = true;
             this.ColumnItemDescription.Width = 200;
@@ -134,6 +140,7 @@
             // 
             this.ColumnItemCategory.DataPropertyName = "ColumnItemCategory";
             this.ColumnItemCategory.HeaderText = "Category";
+            this.ColumnItemCategory.MinimumWidth = 6;
             this.ColumnItemCategory.Name = "ColumnItemCategory";
             this.ColumnItemCategory.ReadOnly = true;
             this.ColumnItemCategory.Width = 150;
@@ -142,8 +149,10 @@
             // 
             this.ColumnUnit.DataPropertyName = "ColumnUnit";
             this.ColumnUnit.HeaderText = "Unit";
+            this.ColumnUnit.MinimumWidth = 6;
             this.ColumnUnit.Name = "ColumnUnit";
             this.ColumnUnit.ReadOnly = true;
+            this.ColumnUnit.Width = 125;
             // 
             // ColumnQuantity
             // 
@@ -151,8 +160,10 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnQuantity.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnQuantity.HeaderText = "Quantity";
+            this.ColumnQuantity.MinimumWidth = 6;
             this.ColumnQuantity.Name = "ColumnQuantity";
             this.ColumnQuantity.ReadOnly = true;
+            this.ColumnQuantity.Width = 125;
             // 
             // ColumnPrice
             // 
@@ -160,8 +171,10 @@
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnPrice.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnPrice.HeaderText = "Price";
+            this.ColumnPrice.MinimumWidth = 6;
             this.ColumnPrice.Name = "ColumnPrice";
             this.ColumnPrice.ReadOnly = true;
+            this.ColumnPrice.Width = 125;
             // 
             // ColumnAmount
             // 
@@ -169,13 +182,16 @@
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnAmount.DefaultCellStyle = dataGridViewCellStyle4;
             this.ColumnAmount.HeaderText = "Amount";
+            this.ColumnAmount.MinimumWidth = 6;
             this.ColumnAmount.Name = "ColumnAmount";
             this.ColumnAmount.ReadOnly = true;
+            this.ColumnAmount.Width = 125;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Controls.Add(this.buttonClose);
+            this.panel1.Controls.Add(this.buttonPrint);
             this.panel1.Controls.Add(this.buttonGenerateCSV);
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.label1);
@@ -204,6 +220,25 @@
             this.buttonClose.Text = "Close";
             this.buttonClose.UseVisualStyleBackColor = false;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            // 
+            // buttonPrint
+            // 
+            this.buttonPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonPrint.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonPrint.FlatAppearance.BorderSize = 0;
+            this.buttonPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPrint.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonPrint.ForeColor = System.Drawing.Color.White;
+            this.buttonPrint.Location = new System.Drawing.Point(1083, 11);
+            this.buttonPrint.Margin = new System.Windows.Forms.Padding(2, 4, 2, 4);
+            this.buttonPrint.Name = "buttonPrint";
+            this.buttonPrint.Size = new System.Drawing.Size(88, 40);
+            this.buttonPrint.TabIndex = 5;
+            this.buttonPrint.TabStop = false;
+            this.buttonPrint.Text = "Print";
+            this.buttonPrint.UseVisualStyleBackColor = false;
+            this.buttonPrint.Click += new System.EventHandler(this.buttonPrint_Click);
             // 
             // buttonGenerateCSV
             // 
@@ -342,10 +377,10 @@
             this.buttonPageListPrevious.FlatAppearance.BorderSize = 0;
             this.buttonPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.buttonPageListPrevious.Location = new System.Drawing.Point(100, 9);
+            this.buttonPageListPrevious.Location = new System.Drawing.Point(97, 9);
             this.buttonPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPageListPrevious.Name = "buttonPageListPrevious";
-            this.buttonPageListPrevious.Size = new System.Drawing.Size(82, 32);
+            this.buttonPageListPrevious.Size = new System.Drawing.Size(92, 32);
             this.buttonPageListPrevious.TabIndex = 9;
             this.buttonPageListPrevious.TabStop = false;
             this.buttonPageListPrevious.Text = "Previous";
@@ -418,5 +453,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAmount;
+        private System.Windows.Forms.Button buttonPrint;
     }
 }

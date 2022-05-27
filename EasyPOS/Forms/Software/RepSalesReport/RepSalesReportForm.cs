@@ -207,6 +207,31 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                 comboBoxItemFilter.ValueMember = "Id";
                 comboBoxItemFilter.DisplayMember = "ItemDescription";
             }
+            GetItemCategoryList();
+        }
+        public void GetItemCategoryList()
+        {
+            Controllers.RepSalesReportController repSalesReportController = new Controllers.RepSalesReportController();
+            if (repSalesReportController.DropdownItemCategory().Any())
+            {
+                List<Entities.MstItemEntity> newSalesItemCategoryList = new List<Entities.MstItemEntity>();
+                newSalesItemCategoryList.Add(new Entities.MstItemEntity
+                {
+                    Category = "ALL"
+                });
+
+                foreach (var obj in repSalesReportController.DropdownItemCategory())
+                {
+                    newSalesItemCategoryList.Add(new Entities.MstItemEntity
+                    {
+                        Category = obj.Category
+                    });
+                };
+
+                comboBoxCategory.DataSource = newSalesItemCategoryList;
+                comboBoxCategory.ValueMember = "Category";
+                comboBoxCategory.DisplayMember = "Category";
+            }
         }
 
         private void listBoxSalesReport_SelectedIndexChanged(object sender, EventArgs e)
@@ -245,6 +270,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("View");
 
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
+
                         break;
                     case "Sales Detail Report":
                     case "销售明细报表":
@@ -274,6 +302,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("View");
+
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
 
                         break;
                     case "80mm Sales Summary Report":
@@ -305,6 +336,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("Print");
 
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
+
                         break;
                     case "80mm Sales Detail Report":
                     case "80mm 销售明细报告":
@@ -334,6 +368,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("Print");
+
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
 
                         break;
                     case "80mm Sales Status Report":
@@ -365,6 +402,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("Print");
 
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
+
                         break;
                     case "Collection Summary Report":
                     case "馆藏汇总报告":
@@ -394,6 +434,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("View");
+
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
 
                         break;
                     case "Collection Detail Report":
@@ -425,6 +468,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("View");
 
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
+
                         break;
                     case "80mm Collection Detail Report":
                     case "80 毫米系列详细报告":
@@ -454,6 +500,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("Print");
+
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
 
                         break;
                     case "Cancelled Summary Report":
@@ -485,6 +534,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("View");
 
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
+
                         break;
                     case "Stock Withdrawal Report":
                     case "股票提取报告":
@@ -514,6 +566,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("View");
+
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
 
                         break;
                     case "Collection Detail Report (Facepay)":
@@ -545,6 +600,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("View");
 
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
+
                         break;
                     case "Top Selling Items Report":
                     case "畅销商品报告":
@@ -575,6 +633,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("View");
 
+                        labelCategory.Visible = true;
+                        comboBoxCategory.Visible = true;
+
                         break;
                     case "Sales Return Detail Report":
                     case "销售退货明细报表":
@@ -604,6 +665,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("View");
+
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
 
                         break;
                     case "Customer List Report":
@@ -639,6 +703,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         buttonView.Text = SetLabel("View");
 
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
+
                         break;
                     case "Net Sales Summary Report - Daily":
                     case "净销售额汇总报告 - 每日":
@@ -667,6 +734,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         buttonView.Text = SetLabel("View");
 
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
+
                         break;
                     case "Net Sales Summary Report - Monthly":
                     case "净销售额汇总报告 - 每月":
@@ -693,6 +763,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("View");
+
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
 
                         break;
                     case "Hourly Top Selling Sales Report":
@@ -721,6 +794,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("View");
 
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
+
                         break;
 
                     case "Unsold Item Report":
@@ -748,6 +824,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("View");
+
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
 
                         break;
                     case "Cost Of Sales Report":
@@ -779,6 +858,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         labelStartDate.Focus();
                         buttonView.Text = SetLabel("View");
 
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
+
                         break;
                     case "Accounts Receivable":
                     case "应收账款":
@@ -808,6 +890,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         labelDateAsOf.Focus();
                         buttonView.Text = "View";
+
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
 
                         break;
                     case "Daily Sales Report (BIR)":
@@ -839,6 +924,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         labelDateAsOf.Focus();
                         buttonView.Text = "Print";
 
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
+
                         break;
 
                     case "POS Touch Deleted Items":
@@ -868,6 +956,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("Print");
+
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
 
                         break;
 
@@ -899,6 +990,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         dateTimePickerStartDate.Focus();
                         buttonView.Text = SetLabel("Print");
 
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
+
                         break;
 
                     default:
@@ -929,6 +1023,9 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                         dateTimePickerDateAsOf.Visible = false;
 
                         buttonView.Text = "View";
+
+                        labelCategory.Visible = false;
+                        comboBoxCategory.Visible = false;
 
                         break;
                 }
@@ -1194,7 +1291,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                             break;
                         case "Top Selling Items Report":
                         case "畅销商品报告":
-                            RepTopSellingItemsReportForm repSalesReportTopSellingItemsReportForm = new RepTopSellingItemsReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date);
+                            RepTopSellingItemsReportForm repSalesReportTopSellingItemsReportForm = new RepTopSellingItemsReportForm(dateTimePickerStartDate.Value.Date, dateTimePickerEndDate.Value.Date, comboBoxCategory.SelectedValue.ToString());
                             repSalesReportTopSellingItemsReportForm.ShowDialog();
 
                             break;

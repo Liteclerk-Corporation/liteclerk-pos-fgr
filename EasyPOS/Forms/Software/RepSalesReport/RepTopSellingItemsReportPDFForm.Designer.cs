@@ -1,6 +1,7 @@
-﻿namespace EasyPOS.Forms.Software.RepSalesReport
+﻿
+namespace EasyPOS.Forms.Software.RepSalesReport
 {
-    partial class RepSalesSummaryReportPDFForm
+    partial class RepTopSellingItemsReportPDFForm
     {
         /// <summary>
         /// Required designer variable.
@@ -35,25 +36,22 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label2.Location = new System.Drawing.Point(118, 42);
+            this.label2.Location = new System.Drawing.Point(99, 43);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(160, 23);
-            this.label2.TabIndex = 10;
+            this.label2.TabIndex = 11;
             this.label2.Text = "Exporting PDF File...";
             // 
-            // RepSalesSummaryReportPDFForm
+            // RepTopSellingItemsReportPDFForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(385, 115);
+            this.ClientSize = new System.Drawing.Size(384, 123);
             this.ControlBox = false;
             this.Controls.Add(this.label2);
-            this.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "RepSalesSummaryReportPDFForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Accounts Receivable Report";
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Name = "RepTopSellingItemsReportPDFForm";
+            this.Text = "Top Selling Items Report";
             this.ResumeLayout(false);
             this.PerformLayout();
 

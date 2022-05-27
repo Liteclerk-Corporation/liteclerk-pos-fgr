@@ -382,6 +382,7 @@
     <Compile Include="Entities\DgvRepUnsoldItemEntity.cs" />
     <Compile Include="Entities\DgvMstSystemTablesLanguageListEntity.cs" />
     <Compile Include="Entities\RepSalesReportSalesAgentReportEntity.cs" />
+    <Compile Include="Entities\RepSalesReportTopSellingItemsPerCategoryReportEntity.cs" />
     <Compile Include="Entities\SysKitchenPrinterEntity.cs" />
     <Compile Include="Entities\EspCardDetailsEntity.cs" />
     <Compile Include="Entities\EspTokenEntity.cs" />
@@ -915,6 +916,12 @@
     </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepCollectionDetailFacepayReportForm.designer.cs">
       <DependentUpon>RepCollectionDetailFacepayReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepTopSellingItemsReportPDFForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepSalesReport\RepTopSellingItemsReportPDFForm.Designer.cs">
+      <DependentUpon>RepTopSellingItemsReportPDFForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\RepSalesReport\RepUnsoldItemReportForm.cs">
       <SubType>Form</SubType>
@@ -1759,6 +1766,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepCollectionDetailFacepayReportForm.resx">
       <DependentUpon>RepCollectionDetailFacepayReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepSalesReport\RepTopSellingItemsReportPDFForm.resx">
+      <DependentUpon>RepTopSellingItemsReportPDFForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepSalesReport\RepUnsoldItemReportForm.resx">
       <DependentUpon>RepUnsoldItemReportForm.cs</DependentUpon>

@@ -37,9 +37,9 @@ namespace EasyPOS.Forms.Software.MstCustomer
             dataGridViewCustomerList.Columns[6].HeaderText = SetLabel(dataGridViewCustomerList.Columns[6].HeaderText);
             dataGridViewCustomerList.Columns[7].HeaderText = SetLabel(dataGridViewCustomerList.Columns[7].HeaderText);
             buttonCustomerListPageListFirst.Text = SetLabel(buttonCustomerListPageListFirst.Text);
-            buttonCustomerListPageListLast.Text = SetLabel(buttonCustomerListPageListFirst.Text);
-            buttonCustomerListPageListNext.Text = SetLabel(buttonCustomerListPageListFirst.Text);
-            buttonCustomerListPageListPrevious.Text = SetLabel(buttonCustomerListPageListFirst.Text);
+            buttonCustomerListPageListLast.Text = SetLabel(buttonCustomerListPageListLast.Text);
+            buttonCustomerListPageListNext.Text = SetLabel(buttonCustomerListPageListNext.Text);
+            buttonCustomerListPageListPrevious.Text = SetLabel(buttonCustomerListPageListPrevious.Text);
 
             sysSoftwareForm = softwareForm;
 

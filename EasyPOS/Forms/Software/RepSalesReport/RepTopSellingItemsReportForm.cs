@@ -24,25 +24,27 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
         public DateTime dateStart;
         public DateTime dateEnd;
+        public String category;
 
-        public RepTopSellingItemsReportForm(DateTime startDate, DateTime endDate)
+        public RepTopSellingItemsReportForm(DateTime startDate, DateTime endDate, String _category)
         {
             InitializeComponent();
 
             dateStart = startDate;
             dateEnd = endDate;
+            category = _category;
 
             GetSalesDetailListDataSource();
             GetSalesDetailListDataGridSource();
         }
 
-        public List<Entities.DgvRepSalesReportTopSellingItemsReportListEntity> GetSalesDetailListData(DateTime startDate, DateTime endDate)
+        public List<Entities.DgvRepSalesReportTopSellingItemsReportListEntity> GetSalesDetailListData(DateTime startDate, DateTime endDate, String category)
         {
             List<Entities.DgvRepSalesReportTopSellingItemsReportListEntity> rowList = new List<Entities.DgvRepSalesReportTopSellingItemsReportListEntity>();
 
             Controllers.RepSalesReportController repTopSellingItemsReportController = new Controllers.RepSalesReportController();
 
-            var salesDetailList = repTopSellingItemsReportController.TopSellingItemsReport(startDate, endDate);
+            var salesDetailList = repTopSellingItemsReportController.TopSellingItemsReport(startDate, endDate, category);
             if (salesDetailList.Any())
             {
                 Decimal totalAmount = 0;
@@ -77,7 +79,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
 
         public void GetSalesDetailListDataSource()
         {
-            salesDetailList = GetSalesDetailListData(dateStart, dateEnd);
+            salesDetailList = GetSalesDetailListData(dateStart, dateEnd, category);
             if (salesDetailList.Any())
             {
                 pageList = new PagedList<Entities.DgvRepSalesReportTopSellingItemsReportListEntity>(salesDetailList, pageNumber, pageSize);
@@ -253,6 +255,11 @@ namespace EasyPOS.Forms.Software.RepSalesReport
         private void buttonClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void buttonPrint_Click(object sender, EventArgs e)
+        {
+            new RepTopSellingItemsReportPDFForm(dateStart, dateEnd, category);
         }
     }
 }
