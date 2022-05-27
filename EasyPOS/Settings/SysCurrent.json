@@ -11,11 +11,11 @@
   "ReceiptFooter": "POS VENDOR: Easyfis Corporation\n#1 211 V. Rama Ave. Corner B. Rodriguez St. Cebu City Phil, 6000\nVAT REG TIN: 010-045-930-000\n\nAccreditation No.: 0820100459302021061436\nDate Issued: November 3,2021\nValid Until: November 3,2026\n\nPTU No.: 000000000000 \nDate Issued: mm-dd-yyy\nValid Until: mm-dd-yyyy\n\nTHIS INVOICE SHALL BE VALID FOR FIVE (5) YEARS FROM THE DATE OF THE PERMIT TO USE",
   "WithdrawalFooter": "POS VENDOR: Easyfis Corporation\n#1 211 V. Rama Ave. Corner B. Rodriguez St. Cebu City Phil, 6000\nVAT REG TIN: 010-045-930-000\n\nAccreditation No.: 0820100459302021061436\nDate Issued: November 3,2021\nValid Until: November 3,2026\n\nPTU No.: 000000000000 \nDate Issued: mm-dd-yyy\nValid Until: mm-dd-yyyy\n\nTHIS INVOICE SHALL BE VALID FOR FIVE (5) YEARS FROM THE DATE OF THE PERMIT TO USE",
   "InvoiceFooter": "POS VENDOR: Easyfis Corporation\n#1 211 V. Rama Ave. Corner B. Rodriguez St. Cebu City Phil, 6000\nVAT REG TIN: 010-045-930-000\n\nAccreditation No.: 0820100459302021061436\nDate Issued: November 3,2021\nValid Until: November 3,2026\n\nPTU No.: 000000000000 \nDate Issued: mm-dd-yyy\nValid Until: mm-dd-yyyy\n\nTHIS INVOICE SHALL BE VALID FOR FIVE (5) YEARS FROM THE DATE OF THE PERMIT TO USE",
-  "LicenseCode": "ZOAGKOoRW8eJzfUM0G7bCd+EP2apNeEextmfNOCHR2Y=",
+  "LicenseCode": "0XKC9gBoxTfPWdQF4Szs+c97ND/PLBmq02kJcIQYSDQ=",
   "TenantOf": "",
   "CurrentUserId": 1,
   "CurrentUserName": "admin",
-  "CurrentVersion": "Version 1.202205271504NOR",
+  "CurrentVersion": "Version 1.202205271942NOR",
   "CurrentDeveloper": "Easyfis Corporation",
   "CurrentSupport": "(032) 234-0787",
   "CurrentPeriodId": 1,
@@ -71,5 +71,5 @@
   "EnablePOSTouchPrintDeletedItem": false,
   "DisableSalesDate": false,
   "EnableSelectOrderTaker": false,
-  "ShowPriceDescriptioninReceipts": false
+  "ShowPriceDescriptioninReceipts": true
 }

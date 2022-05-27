@@ -588,8 +588,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                                          where d.ItemId == salesLine.ItemId
                                                          && d.Price == salesLine.Price
                                                          select d;
-                                        var itemPrice = itemPrices.FirstOrDefault().PriceDescription;
-                                        itemData = salesLine.ItemDescription + " " + salesLine.Preparation + " - " + itemPrice + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
+                                        if (itemPrices.Any())
+                                        {
+                                            var itemPrice = itemPrices.FirstOrDefault().PriceDescription;
+                                            itemData = salesLine.ItemDescription + " " + salesLine.Preparation + " - " + itemPrice + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
+                                        }
+                                        else
+                                        {
+                                            itemData = salesLine.ItemDescription + " " + salesLine.Preparation + "\n" + salesLine.Quantity.ToString("#,##0.00") + " " + salesLine.Unit + " @ " + salesLine.Price.ToString("#,##0.00") + " - " + salesLine.MstTax.Code[0];
+                                        }
                                     }
                                     else
                                     {
