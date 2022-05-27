@@ -700,6 +700,7 @@ namespace EasyPOS.Forms.Software.RepPOSReport
             Font fontArial7Regular = new Font("Arial", 7, FontStyle.Regular);
             Font fontArial6Bold = new Font("Arial", 6, FontStyle.Bold);
             Font fontArial6Regular = new Font("Arial", 6, FontStyle.Regular);
+            Font fontArial7Italic = new Font("Arial", 7, FontStyle.Italic);
 
             // ==================
             // Alignment Settings
@@ -1524,6 +1525,27 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                 graphics.DrawString(zReadingCounterLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                 graphics.DrawString(zReadingCounterData, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                 y += graphics.MeasureString(zReadingCounterData, fontArial8Regular).Height;
+
+                String footerPrintedBy = "Printed By : " + systemCurrent.CurrentUserName;
+                RectangleF footerPrintedByDataRectangle = new RectangleF
+                {
+                    X = x,
+                    Y = y,
+                    Size = new Size(245, ((int)graphics.MeasureString(footerPrintedBy, fontArial8Regular, 245, StringFormat.GenericDefault).Height))
+                };
+                graphics.DrawString(footerPrintedBy, fontArial8Regular, Brushes.Black, footerPrintedByDataRectangle, drawFormatLeft);
+                y += footerPrintedByDataRectangle.Size.Height;
+
+                
+                String footerPrintedDateTime = "Printed Date/Time : " + DateTime.Now.ToString();
+                RectangleF footerPrintedDateTimeDataRectangle = new RectangleF
+                {
+                    X = x,
+                    Y = y,
+                    Size = new Size(245, ((int)graphics.MeasureString(footerPrintedDateTime, fontArial8Regular, 245, StringFormat.GenericDefault).Height))
+                };
+                graphics.DrawString(footerPrintedDateTime, fontArial8Regular, Brushes.Black, footerPrintedDateTimeDataRectangle, drawFormatLeft);
+                y += footerPrintedDateTimeDataRectangle.Size.Height;
 
                 // =========
                 // 12th Line
