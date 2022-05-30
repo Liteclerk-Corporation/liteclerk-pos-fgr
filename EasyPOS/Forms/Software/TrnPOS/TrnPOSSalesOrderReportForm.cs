@@ -177,7 +177,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             //=====================
             // Accreditation Number
             //=====================
-            String accrdNo = "Accred No.: " + systemCurrent.AccreditationNo;
+            String accrdNo = "ACRED No.: " + systemCurrent.AccreditationNo;
             RectangleF accrdNoDataRectangle = new RectangleF
             {
                 X = x,

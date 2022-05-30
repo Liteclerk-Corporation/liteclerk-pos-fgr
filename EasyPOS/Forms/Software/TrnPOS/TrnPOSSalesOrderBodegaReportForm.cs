@@ -339,12 +339,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     //graphics.DrawString(orderNumber, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                     //y += graphics.MeasureString(orderNumber, fontArial8Regular).Height;
 
-                    //// ========
-                    //// 5th Line
-                    //// ========
-                    //Point fifthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
-                    //Point fifthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
-                    //graphics.DrawLine(blackPen, fifthLineFirstPoint, fifthLineSecondPoint);
+                    // ========
+                    // 5th Line
+                    // ========
+                    Point fifthLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                    Point fifthLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                    graphics.DrawLine(blackPen, fifthLineFirstPoint, fifthLineSecondPoint);
 
                     // =======
                     // Cashier

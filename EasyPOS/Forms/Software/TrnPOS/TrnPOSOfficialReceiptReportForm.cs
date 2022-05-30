@@ -208,6 +208,150 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 graphics.DrawLine(blackPen, firstLineFirstPoint, firstLineSecondPoint);
 
             }
+            else if (Modules.SysCurrentModule.GetCurrentSettings().PrinterType == "58mm Printer") 
+            {
+                // ============
+                // Company Name
+                // ============
+                String companyName = systemCurrent.CompanyName;
+                RectangleF companyNameRectangle = new RectangleF
+
+                {
+                    X = x,
+                    Y = y,
+                    Size = new Size(170, ((int)graphics.MeasureString(companyName, fontArial8Bold, 170, StringFormat.GenericDefault).Height))
+                };
+
+                graphics.DrawString(companyName, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                y += companyNameRectangle.Size.Height + 1.0F;
+
+                // ===============
+                // Company Address
+                // ===============
+                String companyAddress = systemCurrent.Address;
+                RectangleF companyAddressRectangle = new RectangleF
+                {
+                    X = x,
+                    Y = y,
+                    Size = new Size(170, ((int)graphics.MeasureString(companyAddress, fontArial8Regular, 170, StringFormat.GenericDefault).Height))
+                };
+                graphics.DrawString(companyAddress, fontArial8Regular, Brushes.Black, companyAddressRectangle, drawFormatCenter);
+                y += companyAddressRectangle.Size.Height;
+
+                // ==========
+                // TIN Number
+                // ==========
+                String TINNumber = "TIN: " + systemCurrent.TIN;
+                RectangleF TINNumbersRectangle = new RectangleF
+                {
+                    X = x,
+                    Y = y,
+                    Size = new Size(170, ((int)graphics.MeasureString(TINNumber, fontArial8Regular, 170, StringFormat.GenericDefault).Height))
+                };
+                graphics.DrawString(TINNumber, fontArial8Regular, Brushes.Black, TINNumbersRectangle, drawFormatCenter);
+                y += TINNumbersRectangle.Size.Height;
+
+                // =============
+                // Serial Number
+                // =============
+                String serialNo = "SN: " + systemCurrent.SerialNo;
+                RectangleF serialNoDataRectangle = new RectangleF
+                {
+                    X = x,
+                    Y = y,
+                    Size = new Size(170, ((int)graphics.MeasureString(serialNo, fontArial8Regular, 170, StringFormat.GenericDefault).Height))
+                };
+                graphics.DrawString(serialNo, fontArial8Regular, Brushes.Black, serialNoDataRectangle, drawFormatCenter);
+                y += serialNoDataRectangle.Size.Height;
+
+                //==============
+                // Permit Number
+                //==============
+                String permitNumber = "PN: " + systemCurrent.PermitNo;
+                RectangleF permitNoDataRectangle = new RectangleF
+                {
+                    X = x,
+                    Y = y,
+                    Size = new Size(170, ((int)graphics.MeasureString(permitNumber, fontArial8Regular, 170, StringFormat.GenericDefault).Height))
+                };
+                graphics.DrawString(permitNumber, fontArial8Regular, Brushes.Black, permitNoDataRectangle, drawFormatCenter);
+                y += permitNoDataRectangle.Size.Height;
+
+                //=====================
+                // Accreditation Number
+                //=====================
+                String accrdNo = "ACRED No.: " + systemCurrent.AccreditationNo;
+                RectangleF accrdNoDataRectangle = new RectangleF
+                {
+                    X = x,
+                    Y = y,
+                    Size = new Size(170, ((int)graphics.MeasureString(accrdNo, fontArial8Regular, 170, StringFormat.GenericDefault).Height))
+                };
+                graphics.DrawString(accrdNo, fontArial8Regular, Brushes.Black, accrdNoDataRectangle, drawFormatCenter);
+                y += accrdNoDataRectangle.Size.Height;
+
+                // ==============
+                // Machine Number
+                // ==============
+                String machineNo = "MIN: " + systemCurrent.MachineNo;
+                RectangleF MINNumbersRectangle = new RectangleF
+                {
+                    X = x,
+                    Y = y,
+                    Size = new Size(170, ((int)graphics.MeasureString(machineNo, fontArial8Regular, 170, StringFormat.GenericDefault).Height))
+                };
+                graphics.DrawString(machineNo, fontArial8Regular, Brushes.Black, MINNumbersRectangle, drawFormatCenter);
+                y += MINNumbersRectangle.Size.Height;
+
+                // ======================
+                // Official Receipt Title
+                // ======================
+                String officialReceiptTitle = systemCurrent.ORPrintTitle;
+                graphics.DrawString(officialReceiptTitle, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                y += graphics.MeasureString(officialReceiptTitle, fontArial8Regular).Height;
+
+                // =================
+                // Collection Header
+                // =================
+                if (collections.Any())
+                {
+                    String terminalText = "Terminal: " + collections.FirstOrDefault().MstTerminal.Terminal;
+                    graphics.DrawString(terminalText, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(terminalText, fontArial8Regular).Height;
+
+                    String collectionNumberText = collections.FirstOrDefault().CollectionNumber;
+                    graphics.DrawString(collectionNumberText, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(collectionNumberText, fontArial8Regular).Height;
+
+                    String collectionDateText = collections.FirstOrDefault().CollectionDate.ToString("MM-dd-yyyy", CultureInfo.InvariantCulture);
+                    graphics.DrawString(collectionDateText, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(collectionDateText, fontArial8Regular).Height;
+
+                    String collectionTimeText = collections.FirstOrDefault().UpdateDateTime.ToString("H:mm:ss", CultureInfo.InvariantCulture);
+                    graphics.DrawString(collectionTimeText, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                    y += graphics.MeasureString(collectionTimeText, fontArial8Regular).Height;
+
+                    if (trnIsReprinted)
+                    {
+                        graphics.DrawString("REPRINTED", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                        y += graphics.MeasureString("REPRINTED", fontArial8Regular).Height;
+                    }
+
+                    if (sales.FirstOrDefault().TableId != null && sales.FirstOrDefault().MstTable.TableCode != "Walk-in")
+                    {
+                        String tableNo = "Table: " + sales.FirstOrDefault().MstTable.TableCode;
+                        graphics.DrawString(tableNo, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                        y += graphics.MeasureString(tableNo, fontArial8Regular).Height;
+                    }
+                }
+
+                // ========
+                // 1st Line
+                // ========
+                Point firstLineFirstPoint = new Point(0, Convert.ToInt32(y) + 5);
+                Point firstLineSecondPoint = new Point(500, Convert.ToInt32(y) + 5);
+                graphics.DrawLine(blackPen, firstLineFirstPoint, firstLineSecondPoint);
+            }
             else
             {
                 // ============
@@ -279,7 +423,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 //=====================
                 // Accreditation Number
                 //=====================
-                String accrdNo = "Accred No.: " + systemCurrent.AccreditationNo;
+                String accrdNo = "ACRED No.: " + systemCurrent.AccreditationNo;
                 RectangleF accrdNoDataRectangle = new RectangleF
                 {
                     X = x,
@@ -1012,7 +1156,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                 }
                                 else
                                 {
-                                    graphics.DrawString(itemAmountData, fontArial8Regular, drawBrush, new RectangleF(x, y, 250.0F, height), drawFormatRight);
+                                    graphics.DrawString(itemAmountData, fontArial8Regular, drawBrush, new RectangleF(x, y, 270, height), drawFormatRight);
 
                                 }
                                 y += itemDataRectangle.Size.Height + 3.0F;
