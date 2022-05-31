@@ -309,9 +309,13 @@ namespace EasyPOS.Controllers
                             if (item.Any())
                             {
                                 var updateItem = item.FirstOrDefault();
-                                updateItem.Cost = Convert.ToDecimal(stockInLine.Cost);
-                                updateItem.Price = Convert.ToDecimal(stockInLine.Price);
-                                updateItem.DefaultSupplierId = stockInLine.TrnStockIn.SupplierId;
+                                if (Modules.SysCurrentModule.GetCurrentSettings().HideStockInPriceAndCost != true)
+                                {
+                                    updateItem.Cost = Convert.ToDecimal(stockInLine.Cost);
+                                    updateItem.Price = Convert.ToDecimal(stockInLine.Price);
+                                    updateItem.DefaultSupplierId = stockInLine.MstItem.DefaultSupplierId;
+                                }
+                                
                                 db.SubmitChanges();
                             }
                         }
