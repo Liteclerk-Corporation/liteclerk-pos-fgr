@@ -45,7 +45,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                 var systemCurrent = Modules.SysCurrentModule.GetCurrentSettings();
 
                 Document document = new Document(PageSize.LETTER);
-                document.SetMargins(30f, 30f, 130f, 30f);
+                document.SetMargins(30f, 30f, 150f, 30f);
 
                 PdfWriter pdfWriter = PdfWriter.GetInstance(document, new FileStream(fileName, FileMode.Create));
                 pdfWriter.PageEvent = new PurchaseOrderDetailReportHeaderFooter(_purchaseOrderId);
@@ -167,11 +167,11 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                 
                 tableHeader.AddCell(new PdfPCell(new Phrase("PO No.: ", fontTimesNewRoman11Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
                 tableHeader.AddCell(new PdfPCell(new Phrase(purchaseOrderNumber, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
-
                 tableHeader.AddCell(new PdfPCell(new Phrase("PO Date: ", fontTimesNewRoman11Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
                 tableHeader.AddCell(new PdfPCell(new Phrase(purchaseOrderDate, fontTimesNewRoman11)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
+                
                 tableHeader.AddCell(new PdfPCell(new Phrase("Supplier: ", fontTimesNewRoman11Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
-                tableHeader.AddCell(new PdfPCell(new Phrase(supplier, fontTimesNewRoman11)) { Border = 0, HorizontalAlignment = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
+                tableHeader.AddCell(new PdfPCell(new Phrase(supplier, fontTimesNewRoman11)) { Colspan = 4, Border = 0, HorizontalAlignment = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
 
                 tableHeader.AddCell(new PdfPCell(new Phrase("Remarks: ", fontTimesNewRoman11Bold)) { Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
                 tableHeader.AddCell(new PdfPCell(new Phrase(remarks, fontTimesNewRoman11)) { Colspan = 3, Border = 0, PaddingLeft = 3f, PaddingRight = 3f, PaddingTop = 3f, PaddingBottom = 3f });
@@ -187,7 +187,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                 tableItem.AddCell(new PdfPCell(new Phrase("Amount", fontTimesNewRoman11Bold)) { HorizontalAlignment = 1, PaddingTop = 2f, PaddingBottom = 5f });
 
                 tableHeader.AddCell(new PdfPCell(tableItem) { Border = 0, Colspan = 4, PaddingBottom = -5f, PaddingLeft = 0f, PaddingRight = 0f });
-                tableHeader.WriteSelectedRows(0, -1, document.LeftMargin, writer.PageSize.GetTop(document.TopMargin) + 105f, writer.DirectContent);
+                tableHeader.WriteSelectedRows(0, -1, document.LeftMargin, writer.PageSize.GetTop(document.TopMargin) + 140f, writer.DirectContent);
             }
         }
 
