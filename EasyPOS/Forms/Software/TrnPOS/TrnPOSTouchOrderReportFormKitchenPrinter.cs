@@ -865,11 +865,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                     {
                                         X = x,
                                         Y = y,
-                                        Size = new Size(180, ((int)graphics.MeasureString(itemData, fontArial10Regular, 150, StringFormat.GenericDefault).Height))
+                                        Size = new Size(180, ((int)graphics.MeasureString(itemData, fontArial10Regular, 180, StringFormat.GenericDefault).Height))
                                     };
                                     graphics.DrawString(itemData, fontArial10Regular, Brushes.Black, itemDataRectangle, drawFormatLeft);
 
-                                    y += itemDataRectangle.Size.Height + 3.0F;
+                                    y += itemDataRectangle.Size.Height;
 
                                     var updateSalesLinePrinted = from d in db.TrnSalesLines where d.Id == salesLine.Id select d;
                                     if (updateSalesLinePrinted.Any())
