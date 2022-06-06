@@ -453,7 +453,6 @@ namespace EasyPOS.Controllers
                                               && d.TrnSale.IsCancelled == false
                                               && d.TrnSale.SalesDate < startDate.Date
                                               && d.MstItem.Category == category
-                                              && d.MstItem.Id == itemId
                                               && d.MstItem.IsInventory == false
                                               && d.MstItem.MstItemComponents.Any() == true
                                               && d.MstItem.IsLocked == true
@@ -468,23 +467,27 @@ namespace EasyPOS.Controllers
                         {
                             foreach (var itemComponent in itemComponents.ToList())
                             {
-                                beginningSoldComponentInventories.Add(new Entities.RepInventoryReportEntity()
+                                if(itemComponent.ComponentItemId == itemId)
                                 {
-                                    Document = "Beg",
-                                    Id = "Beg-Sold-Component" + itemComponent.Id,
-                                    InventoryDate = beginningSoldComponent.TrnSale.SalesDate,
-                                    ItemCode = itemComponent.MstItem1.ItemCode,
-                                    BarCode = itemComponent.MstItem1.BarCode,
-                                    ItemDescription = itemComponent.MstItem1.ItemDescription,
-                                    BeginningQuantity = (itemComponent.Quantity * beginningSoldComponent.Quantity) * -1,
-                                    InQuantity = 0,
-                                    OutQuantity = 0,
-                                    EndingQuantity = 0,
-                                    Unit = itemComponent.MstItem1.MstUnit.Unit,
-                                    Cost = itemComponent.MstItem1.Cost,
-                                    Price = itemComponent.MstItem1.Price,
-                                    Amount = 0
-                                });
+                                    beginningSoldComponentInventories.Add(new Entities.RepInventoryReportEntity()
+                                    {
+                                        Document = "Beg",
+                                        Id = "Beg-Sold-Component" + itemComponent.Id,
+                                        InventoryDate = beginningSoldComponent.TrnSale.SalesDate,
+                                        ItemCode = itemComponent.MstItem1.ItemCode,
+                                        BarCode = itemComponent.MstItem1.BarCode,
+                                        ItemDescription = itemComponent.MstItem1.ItemDescription,
+                                        BeginningQuantity = (itemComponent.Quantity * beginningSoldComponent.Quantity) * -1,
+                                        InQuantity = 0,
+                                        OutQuantity = 0,
+                                        EndingQuantity = 0,
+                                        Unit = itemComponent.MstItem1.MstUnit.Unit,
+                                        Cost = itemComponent.MstItem1.Cost,
+                                        Price = itemComponent.MstItem1.Price,
+                                        Amount = 0
+                                    });
+                                }
+
                             }
                         }
                     }
@@ -578,7 +581,6 @@ namespace EasyPOS.Controllers
                                             && d.TrnSale.SalesDate >= startDate.Date
                                             && d.TrnSale.SalesDate <= endDate.Date
                                             && d.MstItem.Category == category
-                                            && d.MstItem.Id == itemId
                                             && d.MstItem.IsInventory == false
                                             && d.MstItem.MstItemComponents.Any() == true
                                             && d.MstItem.IsLocked == true
@@ -593,23 +595,26 @@ namespace EasyPOS.Controllers
                         {
                             foreach (var itemComponent in itemComponents.ToList())
                             {
-                                currentSoldComponentInventories.Add(new Entities.RepInventoryReportEntity()
+                                if (itemComponent.ComponentItemId == itemId)
                                 {
-                                    Document = "Cur",
-                                    Id = "Cur-Sold-Component" + itemComponent.Id,
-                                    InventoryDate = currentSoldComponent.TrnSale.SalesDate,
-                                    ItemCode = itemComponent.MstItem1.ItemCode,
-                                    BarCode = itemComponent.MstItem1.BarCode,
-                                    ItemDescription = itemComponent.MstItem1.ItemDescription,
-                                    BeginningQuantity = 0,
-                                    InQuantity = 0,
-                                    OutQuantity = itemComponent.Quantity * currentSoldComponent.Quantity,
-                                    EndingQuantity = 0,
-                                    Unit = itemComponent.MstItem1.MstUnit.Unit,
-                                    Cost = itemComponent.MstItem1.Cost,
-                                    Price = itemComponent.MstItem1.Price,
-                                    Amount = 0
-                                });
+                                    currentSoldComponentInventories.Add(new Entities.RepInventoryReportEntity()
+                                    {
+                                        Document = "Cur",
+                                        Id = "Cur-Sold-Component" + itemComponent.Id,
+                                        InventoryDate = currentSoldComponent.TrnSale.SalesDate,
+                                        ItemCode = itemComponent.MstItem1.ItemCode,
+                                        BarCode = itemComponent.MstItem1.BarCode,
+                                        ItemDescription = itemComponent.MstItem1.ItemDescription,
+                                        BeginningQuantity = 0,
+                                        InQuantity = 0,
+                                        OutQuantity = itemComponent.Quantity * currentSoldComponent.Quantity,
+                                        EndingQuantity = 0,
+                                        Unit = itemComponent.MstItem1.MstUnit.Unit,
+                                        Cost = itemComponent.MstItem1.Cost,
+                                        Price = itemComponent.MstItem1.Price,
+                                        Amount = 0
+                                    });
+                                }
                             }
                         }
                     }
@@ -810,7 +815,6 @@ namespace EasyPOS.Controllers
                                               where d.TrnSale.IsLocked == true
                                               && d.TrnSale.IsCancelled == false
                                               && d.TrnSale.SalesDate < startDate.Date
-                                              && d.MstItem.Id == itemId
                                               && d.MstItem.IsInventory == false
                                               && d.MstItem.MstItemComponents.Any() == true
                                               && d.MstItem.IsLocked == true
@@ -825,23 +829,26 @@ namespace EasyPOS.Controllers
                         {
                             foreach (var itemComponent in itemComponents.ToList())
                             {
-                                beginningSoldComponentInventories.Add(new Entities.RepInventoryReportEntity()
+                                if(itemComponent.ComponentItemId == itemId)
                                 {
-                                    Document = "Beg",
-                                    Id = "Beg-Sold-Component" + itemComponent.Id,
-                                    InventoryDate = beginningSoldComponent.TrnSale.SalesDate,
-                                    ItemCode = itemComponent.MstItem1.ItemCode,
-                                    BarCode = itemComponent.MstItem1.BarCode,
-                                    ItemDescription = itemComponent.MstItem1.ItemDescription,
-                                    BeginningQuantity = (itemComponent.Quantity * beginningSoldComponent.Quantity) * -1,
-                                    InQuantity = 0,
-                                    OutQuantity = 0,
-                                    EndingQuantity = 0,
-                                    Unit = itemComponent.MstItem1.MstUnit.Unit,
-                                    Cost = itemComponent.MstItem1.Cost,
-                                    Price = itemComponent.MstItem1.Price,
-                                    Amount = 0
-                                });
+                                    beginningSoldComponentInventories.Add(new Entities.RepInventoryReportEntity()
+                                    {
+                                        Document = "Beg",
+                                        Id = "Beg-Sold-Component" + itemComponent.Id,
+                                        InventoryDate = beginningSoldComponent.TrnSale.SalesDate,
+                                        ItemCode = itemComponent.MstItem1.ItemCode,
+                                        BarCode = itemComponent.MstItem1.BarCode,
+                                        ItemDescription = itemComponent.MstItem1.ItemDescription,
+                                        BeginningQuantity = (itemComponent.Quantity * beginningSoldComponent.Quantity) * -1,
+                                        InQuantity = 0,
+                                        OutQuantity = 0,
+                                        EndingQuantity = 0,
+                                        Unit = itemComponent.MstItem1.MstUnit.Unit,
+                                        Cost = itemComponent.MstItem1.Cost,
+                                        Price = itemComponent.MstItem1.Price,
+                                        Amount = 0
+                                    });
+                                }
                             }
                         }
                     }
@@ -931,7 +938,6 @@ namespace EasyPOS.Controllers
                                             && d.TrnSale.IsCancelled == false
                                             && d.TrnSale.SalesDate >= startDate.Date
                                             && d.TrnSale.SalesDate <= endDate.Date
-                                            && d.MstItem.Id == itemId
                                             && d.MstItem.IsInventory == false
                                             && d.MstItem.MstItemComponents.Any() == true
                                             && d.MstItem.IsLocked == true
@@ -946,23 +952,26 @@ namespace EasyPOS.Controllers
                         {
                             foreach (var itemComponent in itemComponents.ToList())
                             {
-                                currentSoldComponentInventories.Add(new Entities.RepInventoryReportEntity()
+                                if (itemComponent.ComponentItemId == itemId)
                                 {
-                                    Document = "Cur",
-                                    Id = "Cur-Sold-Component" + itemComponent.Id,
-                                    InventoryDate = currentSoldComponent.TrnSale.SalesDate,
-                                    ItemCode = itemComponent.MstItem1.ItemCode,
-                                    BarCode = itemComponent.MstItem1.BarCode,
-                                    ItemDescription = itemComponent.MstItem1.ItemDescription,
-                                    BeginningQuantity = 0,
-                                    InQuantity = 0,
-                                    OutQuantity = itemComponent.Quantity * currentSoldComponent.Quantity,
-                                    EndingQuantity = 0,
-                                    Unit = itemComponent.MstItem1.MstUnit.Unit,
-                                    Cost = itemComponent.MstItem1.Cost,
-                                    Price = itemComponent.MstItem1.Price,
-                                    Amount = 0
-                                });
+                                    currentSoldComponentInventories.Add(new Entities.RepInventoryReportEntity()
+                                    {
+                                        Document = "Cur",
+                                        Id = "Cur-Sold-Component" + itemComponent.Id,
+                                        InventoryDate = currentSoldComponent.TrnSale.SalesDate,
+                                        ItemCode = itemComponent.MstItem1.ItemCode,
+                                        BarCode = itemComponent.MstItem1.BarCode,
+                                        ItemDescription = itemComponent.MstItem1.ItemDescription,
+                                        BeginningQuantity = 0,
+                                        InQuantity = 0,
+                                        OutQuantity = itemComponent.Quantity * currentSoldComponent.Quantity,
+                                        EndingQuantity = 0,
+                                        Unit = itemComponent.MstItem1.MstUnit.Unit,
+                                        Cost = itemComponent.MstItem1.Cost,
+                                        Price = itemComponent.MstItem1.Price,
+                                        Amount = 0
+                                    });
+                                }
                             }
                         }
                     }

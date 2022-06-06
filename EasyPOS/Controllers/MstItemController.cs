@@ -1010,7 +1010,8 @@ namespace EasyPOS.Controllers
                                                     where d.TrnSale.IsLocked == true
                                                     && d.TrnSale.IsCancelled == false
                                                     && d.MstItem.MstItemComponents.Any() == true
-                                                    && d.ItemId == itemId
+                                                    && d.MstItem.IsInventory == false
+                                                    && d.MstItem.IsLocked == true
                                                     select d;
 
                         Decimal componentQty = 0;
@@ -1021,6 +1022,7 @@ namespace EasyPOS.Controllers
                             {
                                 var itemComponents = from d in currentSoldComponent.MstItem.MstItemComponents.ToList()
                                                      where d.ComponentItemId == itemId
+                                                     && d.Quantity > 0
                                                      select d;
 
                                 if (itemComponents.Any() == true)
@@ -1033,6 +1035,7 @@ namespace EasyPOS.Controllers
                                 }
                             }
                         }
+                        Decimal totalComponent = totalComponentQty;
 
                         var currentOutInventories = from d in db.TrnStockOutLines
                                                     where d.TrnStockOut.IsLocked == true
