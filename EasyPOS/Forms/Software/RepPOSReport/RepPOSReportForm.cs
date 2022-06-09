@@ -224,57 +224,65 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                 var sales = from d in db.TrnSales.OrderBy(a => a.SalesDate)
                                             where d.IsLocked == true
                                             select d;
-                                var firstSales = sales.FirstOrDefault().SalesDate;
 
-                                var readingAccNetSales = from d in db.SysReadingPrevAccNetSales
-                                                         select d;
-
-                                if (dateTimePickerDate.Value >= firstSales)
+                                if (sales.Any())
                                 {
-                                    if (readingAccNetSales.Any())
+                                    var firstSales = sales.FirstOrDefault().SalesDate;
+
+                                    var readingAccNetSales = from d in db.SysReadingPrevAccNetSales
+                                                             select d;
+
+                                    if (dateTimePickerDate.Value >= firstSales)
                                     {
-                                        var currentReadingAccNetSales = from d in db.SysReadingPrevAccNetSales
-                                                                        where d.ReadingDate == Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString())
-                                                                        select d;
-                                        if (currentReadingAccNetSales.Any())
+                                        if (readingAccNetSales.Any())
                                         {
-                                            RepZReadingReportForm repZReadingReportForm = new RepZReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()));
-                                            repZReadingReportForm.ShowDialog();
-                                        }
-                                        else
-                                        {
-                                            if (dateTimePickerDate.Value.ToShortDateString() == firstSales.ToShortDateString())
+                                            var currentReadingAccNetSales = from d in db.SysReadingPrevAccNetSales
+                                                                            where d.ReadingDate == Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString())
+                                                                            select d;
+                                            if (currentReadingAccNetSales.Any())
                                             {
-                                                RepZReadingReportForm _repZReadingReportForm = new RepZReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()));
-                                                _repZReadingReportForm.ShowDialog();
+                                                RepZReadingReportForm repZReadingReportForm = new RepZReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()));
+                                                repZReadingReportForm.ShowDialog();
                                             }
                                             else
                                             {
-                                                DateTime minusDay = Convert.ToDateTime(dateTimePickerDate.Value).AddDays(-1);
-                                                var accNetSales = from d in db.SysReadingPrevAccNetSales
-                                                                  where d.ReadingDate == Convert.ToDateTime(minusDay.ToShortDateString())
-                                                                  select d;
-                                                if (accNetSales.Any())
+                                                if (dateTimePickerDate.Value.ToShortDateString() == firstSales.ToShortDateString())
                                                 {
                                                     RepZReadingReportForm _repZReadingReportForm = new RepZReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()));
                                                     _repZReadingReportForm.ShowDialog();
                                                 }
                                                 else
                                                 {
-                                                    MessageBox.Show("Cannot proceed. Please generate " + minusDay.ToShortDateString(), "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                    DateTime minusDay = Convert.ToDateTime(dateTimePickerDate.Value).AddDays(-1);
+                                                    var accNetSales = from d in db.SysReadingPrevAccNetSales
+                                                                      where d.ReadingDate == Convert.ToDateTime(minusDay.ToShortDateString())
+                                                                      select d;
+                                                    if (accNetSales.Any())
+                                                    {
+                                                        RepZReadingReportForm _repZReadingReportForm = new RepZReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()));
+                                                        _repZReadingReportForm.ShowDialog();
+                                                    }
+                                                    else
+                                                    {
+                                                        MessageBox.Show("Cannot proceed. Please generate " + minusDay.ToShortDateString(), "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                                    }
                                                 }
                                             }
+                                        }
+                                        else
+                                        {
+                                            RepZReadingReportForm repReadingReportForm = new RepZReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()));
+                                            repReadingReportForm.ShowDialog();
                                         }
                                     }
                                     else
                                     {
-                                        RepZReadingReportForm repReadingReportForm = new RepZReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()));
-                                        repReadingReportForm.ShowDialog();
+                                        MessageBox.Show("Cannot proceed. No transactions below date " + firstSales.ToShortDateString(), "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Cannot proceed. No transactions below date " + firstSales.ToShortDateString(), "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Cannot proceed. No transactions yet. ", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                             }
                             else
