@@ -282,7 +282,8 @@ namespace EasyPOS.Forms.Software.RepPOSReport
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Cannot proceed. No transactions yet. ", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    RepZReadingReportForm repReadingReportForm = new RepZReadingReportForm(this, Convert.ToInt32(comboBoxTerminal.SelectedValue), Convert.ToDateTime(dateTimePickerDate.Value.ToShortDateString()));
+                                    repReadingReportForm.ShowDialog();
                                 }
                             }
                             else
