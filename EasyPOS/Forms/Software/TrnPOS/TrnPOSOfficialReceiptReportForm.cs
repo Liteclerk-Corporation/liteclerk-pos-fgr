@@ -478,6 +478,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     {
                         graphics.DrawString("REPRINTED", fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
                         y += graphics.MeasureString("REPRINTED", fontArial8Regular).Height;
+
+                        String rePrintedDate = DateTime.Now.ToShortDateString();
+                        String rePrintedTime = DateTime.Now.ToShortTimeString();
+                        graphics.DrawString(rePrintedDate + " " + rePrintedTime, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatCenter);
+                        y += graphics.MeasureString(rePrintedDate, fontArial8Regular).Height;
                     }
 
                     if (sales.FirstOrDefault().TableId != null && sales.FirstOrDefault().MstTable.TableCode != "Walk-in")
@@ -512,6 +517,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Decimal totalVATExempt = 0;
                 Decimal totalVATZeroRated = 0;
                 Decimal totalNumberOfItems = 0;
+                Decimal grossSales = 0;
+                Decimal lessVAT = 0;
 
                 String itemLabel = "\nITEM";
                 String amountLabel = "\nAMOUNT";
@@ -588,6 +595,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             totalGrossSales += salesLine.Amount + salesLine.DiscountAmount;
                             totalSales += salesLine.Amount;
                             totalDiscount += salesLine.DiscountAmount;
+                            grossSales += salesLine.Quantity * salesLine.Price;
 
                             if (salesLine.MstTax.Code == "VAT")
                             {
@@ -615,6 +623,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             {
                                 totalVATZeroRated += salesLine.Amount;
                             }
+
+                            lessVAT = (grossSales / Convert.ToDecimal(1.12)) * Convert.ToDecimal(0.12);
 
                             if (salesLine.MstItem.BarCode != "0000000001")
                             {
@@ -688,11 +698,34 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 // ==============================
                 // Total Sales and Total Discount
                 // ==============================
-                String totalSalesLabel = "\nTotal Sales";
-                String totalSalesAmount = "\n" + (totalGrossSales - totalServiceCharge).ToString("#,##0.00");
-                graphics.DrawString(totalSalesLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalSalesAmount, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalSalesAmount, fontArial7Regular).Height;
+                if (collections.FirstOrDefault().TrnSale.DiscountId == 7 || collections.FirstOrDefault().TrnSale.DiscountId == 16)
+                {
+                    String grossSalesLabel = "\nGross Sales";
+                    String grossSalesAmount = "\n" + (grossSales.ToString("#,##0.00"));
+                    graphics.DrawString(grossSalesLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                    graphics.DrawString(grossSalesAmount, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                    y += graphics.MeasureString(grossSalesAmount, fontArial7Regular).Height;
+
+                    String lessVATLabel = "Less VAT";
+                    String lessVATAmount = lessVAT.ToString("#,##0.00");
+                    graphics.DrawString(lessVATLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                    graphics.DrawString(lessVATAmount, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                    y += graphics.MeasureString(lessVATAmount, fontArial7Regular).Height;
+
+                    String totalSalesLabel = "Total Sales";
+                    String totalSalesAmount = (totalGrossSales - totalServiceCharge).ToString("#,##0.00");
+                    graphics.DrawString(totalSalesLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                    graphics.DrawString(totalSalesAmount, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                    y += graphics.MeasureString(totalSalesAmount, fontArial7Regular).Height;
+                }
+                else
+                {
+                    String totalSalesLabel = "\nTotal Sales";
+                    String totalSalesAmount = "\n" + (totalGrossSales - totalServiceCharge).ToString("#,##0.00");
+                    graphics.DrawString(totalSalesLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                    graphics.DrawString(totalSalesAmount, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                    y += graphics.MeasureString(totalSalesAmount, fontArial7Regular).Height;
+                }
 
                 if (hasServiceCharge == true)
                 {
@@ -998,6 +1031,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Decimal totalVATExempt = 0;
                 Decimal totalVATZeroRated = 0;
                 Decimal totalNumberOfItems = 0;
+                Decimal grossSales = 0;
+                Decimal lessVAT = 0;
 
                 String itemLabel = "\nITEM";
                 String amountLabel = "\nAMOUNT";
@@ -1074,6 +1109,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             totalGrossSales += salesLine.Amount + salesLine.DiscountAmount;
                             totalSales += salesLine.Amount;
                             totalDiscount += salesLine.DiscountAmount;
+                            grossSales += salesLine.Quantity * salesLine.Price;
+                            
 
                             if (salesLine.MstTax.Code == "VAT")
                             {
@@ -1102,6 +1139,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                 totalVATZeroRated += salesLine.Amount;
                             }
 
+                            lessVAT = (grossSales / Convert.ToDecimal(1.12)) * Convert.ToDecimal(0.12);
 
                             if (salesLine.MstItem.BarCode != "0000000001")
                             {
@@ -1180,11 +1218,34 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 // ==============================
                 // Total Sales and Total Discount
                 // ==============================
-                String totalSalesLabel = "\nTotal Sales";
-                String totalSalesAmount = "\n" + (totalGrossSales - totalServiceCharge).ToString("#,##0.00");
-                graphics.DrawString(totalSalesLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                graphics.DrawString(totalSalesAmount, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                y += graphics.MeasureString(totalSalesAmount, fontArial8Regular).Height;
+                if (collections.FirstOrDefault().TrnSale.DiscountId == 7 || collections.FirstOrDefault().TrnSale.DiscountId == 16)
+                {
+                    String grossSalesLabel = "\nGross Sales";
+                    String grossSalesAmount = "\n" + (grossSales.ToString("#,##0.00"));
+                    graphics.DrawString(grossSalesLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                    graphics.DrawString(grossSalesAmount, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                    y += graphics.MeasureString(grossSalesAmount, fontArial8Regular).Height;
+
+                    String lessVATLabel = "Less VAT";
+                    String lessVATAmount = lessVAT.ToString("#,##0.00");
+                    graphics.DrawString(lessVATLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                    graphics.DrawString(lessVATAmount, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                    y += graphics.MeasureString(lessVATAmount, fontArial8Regular).Height;
+
+                    String totalSalesLabel = "Total Sales";
+                    String totalSalesAmount = (totalGrossSales - totalServiceCharge).ToString("#,##0.00");
+                    graphics.DrawString(totalSalesLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                    graphics.DrawString(totalSalesAmount, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                    y += graphics.MeasureString(totalSalesAmount, fontArial8Regular).Height;
+                }
+                else
+                {
+                    String totalSalesLabel = "\nTotal Sales";
+                    String totalSalesAmount = "\n" + (totalGrossSales - totalServiceCharge).ToString("#,##0.00");
+                    graphics.DrawString(totalSalesLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                    graphics.DrawString(totalSalesAmount, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                    y += graphics.MeasureString(totalSalesAmount, fontArial8Regular).Height;
+                }
 
                 if (hasServiceCharge == true)
                 {
