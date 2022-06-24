@@ -18,6 +18,8 @@ namespace EasyPOS.Entities
         public String ColumnPreparedBy { get; set; }
         public Boolean ColumnIsCancelled { get; set; }
         public String ColumnAmount { get; set; }
+        public String ColumnTenderedAmount { get; set; }
+        public String ColumnChangeAmount { get; set; }
         public String ColumnEntryDateTime { get; set; }
     }
 }

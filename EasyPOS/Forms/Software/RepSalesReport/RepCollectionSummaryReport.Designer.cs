@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RepCollectionSummaryReport));
             this.textBoxPageNumber = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -46,6 +48,7 @@
             this.buttonPageListLast = new System.Windows.Forms.Button();
             this.buttonPageListPrevious = new System.Windows.Forms.Button();
             this.dataGridViewCollectionReport = new System.Windows.Forms.DataGridView();
+            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
             this.ColumnTerminal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCollectionDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnCollectionNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,8 +59,9 @@
             this.ColumnPreparedBy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnIsCancelled = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.ColumnAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnTenderedAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnChangeAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnEntryDateTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.folderBrowserDialogGenerateCSV = new System.Windows.Forms.FolderBrowserDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -313,6 +317,8 @@
             this.ColumnPreparedBy,
             this.ColumnIsCancelled,
             this.ColumnAmount,
+            this.ColumnTenderedAmount,
+            this.ColumnChangeAmount,
             this.ColumnEntryDateTime});
             this.dataGridViewCollectionReport.Location = new System.Drawing.Point(12, 70);
             this.dataGridViewCollectionReport.Margin = new System.Windows.Forms.Padding(2);
@@ -418,6 +424,28 @@
             this.ColumnAmount.ReadOnly = true;
             this.ColumnAmount.Width = 120;
             // 
+            // ColumnTenderedAmount
+            // 
+            this.ColumnTenderedAmount.DataPropertyName = "ColumnTenderedAmount";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnTenderedAmount.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnTenderedAmount.HeaderText = "Tendered Amount";
+            this.ColumnTenderedAmount.MinimumWidth = 6;
+            this.ColumnTenderedAmount.Name = "ColumnTenderedAmount";
+            this.ColumnTenderedAmount.ReadOnly = true;
+            this.ColumnTenderedAmount.Width = 125;
+            // 
+            // ColumnChangeAmount
+            // 
+            this.ColumnChangeAmount.DataPropertyName = "ColumnChangeAmount";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnChangeAmount.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnChangeAmount.HeaderText = "Change Amount";
+            this.ColumnChangeAmount.MinimumWidth = 6;
+            this.ColumnChangeAmount.Name = "ColumnChangeAmount";
+            this.ColumnChangeAmount.ReadOnly = true;
+            this.ColumnChangeAmount.Width = 125;
+            // 
             // ColumnEntryDateTime
             // 
             this.ColumnEntryDateTime.DataPropertyName = "ColumnEntryDateTime";
@@ -470,6 +498,7 @@
         private System.Windows.Forms.Button buttonPageListPrevious;
         private System.Windows.Forms.DataGridView dataGridViewCollectionReport;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogGenerateCSV;
+        private System.Windows.Forms.Button buttonPrint;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTerminal;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnCollectionNumber;
@@ -480,7 +509,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnPreparedBy;
         private System.Windows.Forms.DataGridViewCheckBoxColumn ColumnIsCancelled;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnTenderedAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnChangeAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnEntryDateTime;
-        private System.Windows.Forms.Button buttonPrint;
     }
 }

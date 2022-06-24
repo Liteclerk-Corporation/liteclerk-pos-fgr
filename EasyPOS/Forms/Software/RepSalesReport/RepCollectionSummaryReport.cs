@@ -60,6 +60,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                               ColumnPreparedBy = d.PreparedByUserName,
                               ColumnIsCancelled = d.IsCancelled,
                               ColumnAmount = d.IsCancelled == true ? "0" : d.Amount.ToString("#,##0.00"),
+                              ColumnTenderedAmount = d.IsCancelled == true ? "0" : d.TenderAmount.ToString("#,##0.00"),
+                              ColumnChangeAmount = d.IsCancelled == true ? "0" : d.ChangeAmount.ToString("#,##0.00"),
                               ColumnEntryDateTime = d.EntryDateTime
                           };
 
@@ -236,6 +238,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                         collection.ColumnPreparedBy.Replace(",", ""),
                                         collection.ColumnIsCancelled.ToString(),
                                         collection.ColumnAmount.Replace("," , ""),
+                                        collection.ColumnTenderedAmount.Replace("," , ""),
+                                        collection.ColumnChangeAmount.Replace("," , ""),
                                         collection.ColumnEntryDateTime,
                             };
 
