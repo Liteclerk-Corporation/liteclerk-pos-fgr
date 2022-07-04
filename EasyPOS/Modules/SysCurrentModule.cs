@@ -121,7 +121,8 @@ namespace EasyPOS.Modules
                 EnablePOSTouchPrintDeletedItem = currentSettings.EnablePOSTouchPrintDeletedItem,
                 DisableSalesDate = currentSettings.DisableSalesDate,
                 EnableSelectOrderTaker = currentSettings.EnableSelectOrderTaker,
-                ShowPriceDescriptioninReceipts = currentSettings.ShowPriceDescriptioninReceipts
+                ShowPriceDescriptioninReceipts = currentSettings.ShowPriceDescriptioninReceipts,
+                ItemQtyRemoveDecimalPlaces = currentSettings.ItemQtyRemoveDecimalPlaces
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);
@@ -210,7 +211,8 @@ namespace EasyPOS.Modules
                 EnablePOSTouchPrintDeletedItem = objSysCurrentEntity.EnablePOSTouchPrintDeletedItem,
                 DisableSalesDate = objSysCurrentEntity.DisableSalesDate,
                 EnableSelectOrderTaker = objSysCurrentEntity.EnableSelectOrderTaker,
-                ShowPriceDescriptioninReceipts = objSysCurrentEntity.ShowPriceDescriptioninReceipts
+                ShowPriceDescriptioninReceipts = objSysCurrentEntity.ShowPriceDescriptioninReceipts,
+                ItemQtyRemoveDecimalPlaces = objSysCurrentEntity.ItemQtyRemoveDecimalPlaces
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newSysCurrentEntities);
@@ -300,7 +302,8 @@ namespace EasyPOS.Modules
                 EnablePOSTouchPrintDeletedItem = currentSettings.EnablePOSTouchPrintDeletedItem,
                 DisableSalesDate = currentSettings.DisableSalesDate,
                 EnableSelectOrderTaker = currentSettings.EnableSelectOrderTaker,
-                ShowPriceDescriptioninReceipts = currentSettings.ShowPriceDescriptioninReceipts
+                ShowPriceDescriptioninReceipts = currentSettings.ShowPriceDescriptioninReceipts,
+                ItemQtyRemoveDecimalPlaces = currentSettings.ItemQtyRemoveDecimalPlaces
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);

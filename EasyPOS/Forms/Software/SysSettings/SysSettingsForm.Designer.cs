@@ -49,7 +49,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.checkBoxItemQtyRemoveDecimalPlaces = new System.Windows.Forms.CheckBox();
+            this.comboBoxTenant = new System.Windows.Forms.ComboBox();
             this.dateTimePickerLoginDate = new System.Windows.Forms.DateTimePicker();
+            this.checkBoxShowPriceDescriptionInReceipts = new System.Windows.Forms.CheckBox();
             this.checkBoxEnableSelectOrderTaker = new System.Windows.Forms.CheckBox();
             this.checkBoxDisableSalesDate = new System.Windows.Forms.CheckBox();
             this.checkBoxPrintDeletedItem = new System.Windows.Forms.CheckBox();
@@ -87,7 +90,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.comboBoxCurrentPeriod = new System.Windows.Forms.ComboBox();
-            this.textBoxTenantOf = new System.Windows.Forms.TextBox();
             this.checkBoxIsBarcodeQuantityAlwaysOne = new System.Windows.Forms.CheckBox();
             this.comboBoxWalkinCustomer = new System.Windows.Forms.ComboBox();
             this.label20 = new System.Windows.Forms.Label();
@@ -195,7 +197,6 @@
             this.buttonKitchenPageListLast = new System.Windows.Forms.Button();
             this.textBoxKitchenPageNumber = new System.Windows.Forms.TextBox();
             this.backgroundWorkerEasyfisIntegration = new System.ComponentModel.BackgroundWorker();
-            this.checkBoxShowPriceDescriptionInReceipts = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -458,6 +459,8 @@
             // 
             this.panel5.AutoScroll = true;
             this.panel5.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.panel5.Controls.Add(this.checkBoxItemQtyRemoveDecimalPlaces);
+            this.panel5.Controls.Add(this.comboBoxTenant);
             this.panel5.Controls.Add(this.dateTimePickerLoginDate);
             this.panel5.Controls.Add(this.checkBoxShowPriceDescriptionInReceipts);
             this.panel5.Controls.Add(this.checkBoxEnableSelectOrderTaker);
@@ -497,7 +500,6 @@
             this.panel5.Controls.Add(this.label21);
             this.panel5.Controls.Add(this.label36);
             this.panel5.Controls.Add(this.comboBoxCurrentPeriod);
-            this.panel5.Controls.Add(this.textBoxTenantOf);
             this.panel5.Controls.Add(this.checkBoxIsBarcodeQuantityAlwaysOne);
             this.panel5.Controls.Add(this.comboBoxWalkinCustomer);
             this.panel5.Controls.Add(this.label20);
@@ -520,6 +522,31 @@
             this.panel5.Size = new System.Drawing.Size(1370, 594);
             this.panel5.TabIndex = 34;
             // 
+            // checkBoxItemQtyRemoveDecimalPlaces
+            // 
+            this.checkBoxItemQtyRemoveDecimalPlaces.AutoSize = true;
+            this.checkBoxItemQtyRemoveDecimalPlaces.Enabled = false;
+            this.checkBoxItemQtyRemoveDecimalPlaces.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxItemQtyRemoveDecimalPlaces.Location = new System.Drawing.Point(1038, 362);
+            this.checkBoxItemQtyRemoveDecimalPlaces.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxItemQtyRemoveDecimalPlaces.Name = "checkBoxItemQtyRemoveDecimalPlaces";
+            this.checkBoxItemQtyRemoveDecimalPlaces.Size = new System.Drawing.Size(355, 27);
+            this.checkBoxItemQtyRemoveDecimalPlaces.TabIndex = 104;
+            this.checkBoxItemQtyRemoveDecimalPlaces.Text = "Remove Decimal Places(OR Item Quantity)";
+            this.checkBoxItemQtyRemoveDecimalPlaces.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxTenant
+            // 
+            this.comboBoxTenant.Enabled = false;
+            this.comboBoxTenant.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxTenant.FormattingEnabled = true;
+            this.comboBoxTenant.Location = new System.Drawing.Point(172, 82);
+            this.comboBoxTenant.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxTenant.Name = "comboBoxTenant";
+            this.comboBoxTenant.Size = new System.Drawing.Size(248, 31);
+            this.comboBoxTenant.TabIndex = 103;
+            this.comboBoxTenant.Text = "NA";
+            // 
             // dateTimePickerLoginDate
             // 
             this.dateTimePickerLoginDate.Enabled = false;
@@ -529,6 +556,19 @@
             this.dateTimePickerLoginDate.Name = "dateTimePickerLoginDate";
             this.dateTimePickerLoginDate.Size = new System.Drawing.Size(150, 30);
             this.dateTimePickerLoginDate.TabIndex = 102;
+            // 
+            // checkBoxShowPriceDescriptionInReceipts
+            // 
+            this.checkBoxShowPriceDescriptionInReceipts.AutoSize = true;
+            this.checkBoxShowPriceDescriptionInReceipts.Enabled = false;
+            this.checkBoxShowPriceDescriptionInReceipts.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxShowPriceDescriptionInReceipts.Location = new System.Drawing.Point(1038, 331);
+            this.checkBoxShowPriceDescriptionInReceipts.Margin = new System.Windows.Forms.Padding(2);
+            this.checkBoxShowPriceDescriptionInReceipts.Name = "checkBoxShowPriceDescriptionInReceipts";
+            this.checkBoxShowPriceDescriptionInReceipts.Size = new System.Drawing.Size(293, 27);
+            this.checkBoxShowPriceDescriptionInReceipts.TabIndex = 101;
+            this.checkBoxShowPriceDescriptionInReceipts.Text = "Show Price Description in Receipts";
+            this.checkBoxShowPriceDescriptionInReceipts.UseVisualStyleBackColor = true;
             // 
             // checkBoxEnableSelectOrderTaker
             // 
@@ -986,16 +1026,6 @@
             this.comboBoxCurrentPeriod.Name = "comboBoxCurrentPeriod";
             this.comboBoxCurrentPeriod.Size = new System.Drawing.Size(248, 31);
             this.comboBoxCurrentPeriod.TabIndex = 11;
-            // 
-            // textBoxTenantOf
-            // 
-            this.textBoxTenantOf.Enabled = false;
-            this.textBoxTenantOf.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxTenantOf.Location = new System.Drawing.Point(172, 82);
-            this.textBoxTenantOf.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxTenantOf.Name = "textBoxTenantOf";
-            this.textBoxTenantOf.Size = new System.Drawing.Size(248, 30);
-            this.textBoxTenantOf.TabIndex = 7;
             // 
             // checkBoxIsBarcodeQuantityAlwaysOne
             // 
@@ -2280,19 +2310,6 @@
             this.backgroundWorkerEasyfisIntegration.WorkerSupportsCancellation = true;
             this.backgroundWorkerEasyfisIntegration.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerEasyfisIntegration_DoWork);
             // 
-            // checkBoxShowPriceDescriptionInReceipts
-            // 
-            this.checkBoxShowPriceDescriptionInReceipts.AutoSize = true;
-            this.checkBoxShowPriceDescriptionInReceipts.Enabled = false;
-            this.checkBoxShowPriceDescriptionInReceipts.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxShowPriceDescriptionInReceipts.Location = new System.Drawing.Point(1038, 331);
-            this.checkBoxShowPriceDescriptionInReceipts.Margin = new System.Windows.Forms.Padding(2);
-            this.checkBoxShowPriceDescriptionInReceipts.Name = "checkBoxShowPriceDescriptionInReceipts";
-            this.checkBoxShowPriceDescriptionInReceipts.Size = new System.Drawing.Size(293, 27);
-            this.checkBoxShowPriceDescriptionInReceipts.TabIndex = 101;
-            this.checkBoxShowPriceDescriptionInReceipts.Text = "Show Price Description in Receipts";
-            this.checkBoxShowPriceDescriptionInReceipts.UseVisualStyleBackColor = true;
-            // 
             // SysSettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -2415,7 +2432,6 @@
         private System.Windows.Forms.Label label25;
         private System.Windows.Forms.TextBox textBoxCurrentVersion;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox textBoxTenantOf;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Button buttonLock;
         private System.Windows.Forms.ComboBox comboBoxTerminal;
@@ -2514,5 +2530,7 @@
         private System.Windows.Forms.DateTimePicker dateTimePickerLoginDate;
         private System.Windows.Forms.CheckBox checkBoxEnableSelectOrderTaker;
         private System.Windows.Forms.CheckBox checkBoxShowPriceDescriptionInReceipts;
+        private System.Windows.Forms.ComboBox comboBoxTenant;
+        private System.Windows.Forms.CheckBox checkBoxItemQtyRemoveDecimalPlaces;
     }
 }

@@ -133,7 +133,8 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                             if (salesLines.Any())
                                             {
                                                 Decimal VATAmountValue = salesLines.Sum(d =>
-                                                    d.MstTax.Code == "EXEMPTVAT" ? ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : d.TaxAmount
+                                                    d.MstTax.Code == "VAT" ? ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) : 0
+                                                //d.MstTax.Code == "EXEMPTVAT" ? ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100)) : d.TaxAmount
                                                 );
                                                 totalGrossSales += salesLines.Sum(d => d.Price * d.Quantity) - VATAmountValue;
 
@@ -154,20 +155,81 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                                                 );
 
                                                 totalVATAmount += salesLines.Sum(d =>
-                                                    d.MstTax.Code == "EXEMPTVAT" ? 0 : d.TaxAmount
+                                                    d.MstTax.Code == "VAT" ? (d.Amount / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) : 0
                                                 );
+                                                //totalVATAmount = Math.Round(totalVATAmount, 2);
 
                                                 totalNonVATSales += salesLines.Sum(d =>
                                                     d.MstTax.Code == "NONVAT" ? d.Amount : 0
                                                 );
 
                                                 totalVATExemptSales += salesLines.Sum(d =>
-                                                    d.MstTax.Code == "EXEMPTVAT" ? ((d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100))) : 0
+                                                    d.MstTax.Code == "EXEMPTVAT" ? ((d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100))) : 0
                                                 );
 
                                                 totalVATZeroRatedSales += salesLines.Sum(d =>
                                                     d.MstTax.Code == "ZEROVAT" ? d.Amount : 0
                                                 );
+
+                                                //totalVATAmount += salesLines.Sum(d =>
+                                                //    d.MstTax.Code == "EXEMPTVAT" ? 0 : d.TaxAmount
+                                                //);
+
+                                                //totalNonVATSales += salesLines.Sum(d =>
+                                                //    d.MstTax.Code == "NONVAT" ? d.Amount : 0
+                                                //);
+
+                                                //totalVATExemptSales += salesLines.Sum(d =>
+                                                //    d.MstTax.Code == "EXEMPTVAT" ? ((d.Price * d.Quantity) - ((d.Price * d.Quantity) / (1 + (d.MstItem.MstTax1.Rate / 100)) * (d.MstItem.MstTax1.Rate / 100))) : 0
+                                                //);
+
+                                                //totalVATZeroRatedSales += salesLines.Sum(d =>
+                                                //    d.MstTax.Code == "ZEROVAT" ? d.Amount : 0
+                                                //);
+
+                                                Decimal NONVATSalesReturn = 0;
+                                                Decimal VATSalesReturn = 0;
+                                                Decimal VATAmountSalesReturn = 0;
+                                                Decimal VATExemptSalesReturn = 0;
+                                                Decimal VATAmountExemptSalesReturn = 0;
+                                                Decimal totalSalesReturn = 0;
+
+                                                var salesReturnLinesQuery = from d in db.TrnSalesLines
+                                                                            where d.Quantity < 0
+                                                                            && d.TrnSale.SalesDate == dateStart
+                                                                            && d.TrnSale.SalesDate == dateEnd
+                                                                            && d.TrnSale.IsLocked == true
+                                                                            && d.TrnSale.IsCancelled == false
+                                                                            && d.TrnSale.IsReturned == true
+                                                                            && d.TrnSale.TerminalId == filterTerminalId
+                                                                            select d;
+
+                                                if (salesReturnLinesQuery.Any())
+                                                {
+                                                    var salesReturnLines = salesReturnLinesQuery.ToArray();
+
+                                                    NONVATSalesReturn = salesReturnLines.Sum(d =>
+                                                        d.MstTax.Code == "NONVAT" ? d.Amount : 0
+                                                    );
+
+                                                    VATSalesReturn = salesReturnLines.Sum(d =>
+                                                        d.MstTax.Code == "VAT" ? d.Amount : 0
+                                                    );
+
+                                                    VATAmountSalesReturn = salesReturnLines.Sum(d =>
+                                                        d.MstTax.Code == "VAT" ? d.TaxAmount : 0
+                                                    ) * -1;
+
+                                                    VATExemptSalesReturn = salesReturnLines.Sum(d =>
+                                                        d.MstTax.Code == "EXEMPTVAT" ? d.Amount : 0
+                                                    );
+
+                                                    VATAmountExemptSalesReturn = salesReturnLines.Sum(d =>
+                                                        d.MstTax.Code == "EXEMPTVAT" ? ((d.Price * (d.Quantity * -1)) / (1 + (d.MstTax.Rate / 100)) * (d.MstTax.Rate / 100)) : d.TaxAmount
+                                                    ) * -1;
+
+                                                    totalSalesReturn = (VATSalesReturn + VATExemptSalesReturn + NONVATSalesReturn);
+                                                }
                                             }
                                         }
                                     }

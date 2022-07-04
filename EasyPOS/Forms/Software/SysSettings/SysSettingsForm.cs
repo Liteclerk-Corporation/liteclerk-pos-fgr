@@ -478,6 +478,16 @@ namespace EasyPOS.Forms.Software.SysSettings
 
             comboBoxSalesOrderPrinterType.DataSource = salesOrderPrinterType;
 
+            List<String> tenantLists = new List<String>
+            {
+                "NA",
+                "Ayala Malls",
+                "SM",
+                "Robinsons Place"
+            };
+
+            comboBoxTenant.DataSource = tenantLists;
+
             getSysCurrentDetail();
         }
 
@@ -499,7 +509,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 textBoxReceiptFooter.Text = sysCurrent.ReceiptFooter;
                 textBoxInvoiceFooter.Text = sysCurrent.InvoiceFooter;
                 textBoxLicenseCode.Text = sysCurrent.LicenseCode;
-                textBoxTenantOf.Text = sysCurrent.TenantOf;
+                comboBoxTenant.Text = sysCurrent.TenantOf;
                 textBoxCurrentVersion.Text = sysCurrent.CurrentVersion;
                 textBoxCurrentDeveloper.Text = sysCurrent.CurrentDeveloper;
                 textBoxCurrentSupport.Text = sysCurrent.CurrentSupport;
@@ -557,6 +567,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxDisableSalesDate.Checked = Convert.ToBoolean(sysCurrent.DisableSalesDate);
                 checkBoxEnableSelectOrderTaker.Checked = Convert.ToBoolean(sysCurrent.EnableSelectOrderTaker);
                 checkBoxShowPriceDescriptionInReceipts.Checked = Convert.ToBoolean(sysCurrent.ShowPriceDescriptioninReceipts);
+                checkBoxItemQtyRemoveDecimalPlaces.Checked = Convert.ToBoolean(sysCurrent.ItemQtyRemoveDecimalPlaces);
 
             }
             dateTimePickerLoginDate.Enabled = false;
@@ -590,7 +601,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 ReceiptFooter = textBoxReceiptFooter.Text,
                 InvoiceFooter = textBoxInvoiceFooter.Text,
                 LicenseCode = textBoxLicenseCode.Text,
-                TenantOf = textBoxTenantOf.Text,
+                TenantOf = comboBoxTenant.Text,
                 CurrentUserId = currentSettings.CurrentUserId,
                 CurrentUserName = currentSettings.CurrentUserName,
                 CurrentVersion = textBoxCurrentVersion.Text,
@@ -651,7 +662,8 @@ namespace EasyPOS.Forms.Software.SysSettings
                 EnablePOSTouchPrintDeletedItem = checkBoxPrintDeletedItem.Checked,
                 DisableSalesDate = checkBoxDisableSalesDate.Checked,
                 EnableSelectOrderTaker = checkBoxEnableSelectOrderTaker.Checked,
-                ShowPriceDescriptioninReceipts = checkBoxShowPriceDescriptionInReceipts.Checked
+                ShowPriceDescriptioninReceipts = checkBoxShowPriceDescriptionInReceipts.Checked,
+                ItemQtyRemoveDecimalPlaces = checkBoxItemQtyRemoveDecimalPlaces.Checked
             };
 
             String[] saveSysCurrent = sysSettingsController.UpdateSysCurrent(sysCurrentEntity);
@@ -668,7 +680,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 textBoxReceiptFooter.Enabled = false;
                 textBoxInvoiceFooter.Enabled = false;
                 textBoxLicenseCode.Enabled = false;
-                textBoxTenantOf.Enabled = false;
+                comboBoxTenant.Enabled = false;
                 textBoxCurrentVersion.Enabled = false;
                 textBoxCurrentDeveloper.Enabled = false;
                 textBoxCurrentSupport.Enabled = false;
@@ -726,6 +738,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxDisableSalesDate.Enabled = false;
                 checkBoxEnableSelectOrderTaker.Enabled = false;
                 checkBoxShowPriceDescriptionInReceipts.Enabled = false;
+                checkBoxItemQtyRemoveDecimalPlaces.Enabled = false;
             }
             else
             {
@@ -755,7 +768,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 textBoxReceiptFooter.Enabled = true;
                 textBoxInvoiceFooter.Enabled = true;
                 textBoxLicenseCode.Enabled = true;
-                textBoxTenantOf.Enabled = true;
+                comboBoxTenant.Enabled = true;
                 textBoxCurrentVersion.Enabled = true;
                 textBoxCurrentDeveloper.Enabled = true;
                 textBoxCurrentSupport.Enabled = true;
@@ -832,6 +845,7 @@ namespace EasyPOS.Forms.Software.SysSettings
                 checkBoxDisableSalesDate.Enabled = true;
                 checkBoxEnableSelectOrderTaker.Enabled = true;
                 checkBoxShowPriceDescriptionInReceipts.Enabled = true;
+                checkBoxItemQtyRemoveDecimalPlaces.Enabled = true;
             }
         }
 
