@@ -314,6 +314,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                 totalNumberOfItems += 1;
 
                                 totalAmount += salesLine.Amount;
+                                totalDiscount += salesLine.DiscountAmount;
 
                                 if (salesLine.MstItem.BarCode != "0000000001")
                                 {
@@ -393,7 +394,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                     hasServiceCharge = true;
                                     totalServiceCharge += salesLine.Amount;
                                 }
-                                totalDiscount += salesLine.DiscountAmount;
                             }
                         }
                     }
@@ -418,9 +418,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                         String totalDiscountLabel = "Total Discount";
                         String totalDiscountAmount = totalDiscount.ToString("#,##0.00");
-                        graphics.DrawString(totalDiscountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                        graphics.DrawString(totalDiscountAmount, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                        y += graphics.MeasureString(totalDiscountAmount, fontArial8Bold).Height;
+                        graphics.DrawString(totalDiscountLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                        graphics.DrawString(totalDiscountAmount, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                        y += graphics.MeasureString(totalDiscountAmount, fontArial7Regular).Height;
 
                         String totalSalesLabel = "Total Amount";
                         String totalSalesAmount = totalAmount.ToString("#,##0.00");
@@ -430,14 +430,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     }
                     else
                     {
-                        String totalDiscountLabel = "Total Discount";
-                        String totalDiscountAmount = totalDiscount.ToString("#,##0.00");
-                        graphics.DrawString(totalDiscountLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                        graphics.DrawString(totalDiscountAmount, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
-                        y += graphics.MeasureString(totalDiscountAmount, fontArial8Bold).Height;
+                        String totalDiscountLabel = "\nTotal Discount";
+                        String totalDiscountAmount = "\n" + totalDiscount.ToString("#,##0.00");
+                        graphics.DrawString(totalDiscountLabel, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                        graphics.DrawString(totalDiscountAmount, fontArial7Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
+                        y += graphics.MeasureString(totalDiscountAmount, fontArial7Regular).Height;
 
-                        String totalSalesLabel = "\nTotal Amount";
-                        String totalSalesAmount = "\n" + totalAmount.ToString("#,##0.00");
+                        String totalSalesLabel = "Total Amount";
+                        String totalSalesAmount = totalAmount.ToString("#,##0.00");
                         graphics.DrawString(totalSalesLabel, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                         graphics.DrawString(totalSalesAmount, fontArial8Bold, drawBrush, new RectangleF(x, y, width, height), drawFormatRight);
                         y += graphics.MeasureString(totalSalesAmount, fontArial8Bold).Height;
