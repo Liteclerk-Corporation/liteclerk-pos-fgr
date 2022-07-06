@@ -70,17 +70,18 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             return label;
         }
 
-        public List<Entities.DgvStockLevelReportEntity> GetInventoryListReport()
+        public List<Entities.DgvStockLevelReportEntity> GetInventoryListStockLevelAlert()
         {
             List<Entities.DgvStockLevelReportEntity> rowList = new List<Entities.DgvStockLevelReportEntity>();
 
             Controllers.RepInventoryReportController repInvetoryReportController = new Controllers.RepInventoryReportController();
 
-            var inventoryListReport = repInvetoryReportController.GetInventoryListReport();
+            var inventoryListReport = repInvetoryReportController.GetInventoryListStockLevelAlert();
             if (inventoryListReport.Any())
             {
                 var row = from d in inventoryListReport
                           where d.OnhandQuantity <= d.ReorderQuantity
+                          && d.ReorderQuantity != 0
                           select new Entities.DgvStockLevelReportEntity
                           {
                               ColumnItemListCode = d.ItemCode,
@@ -103,7 +104,7 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
         }
         public void GetInventoryListDataSource()
         {
-            itemList = GetInventoryListReport();
+            itemList = GetInventoryListStockLevelAlert();
             if (itemList.Any())
             {
 
@@ -283,6 +284,11 @@ namespace EasyPOS.Forms.Software.RepInventoryReport
             {
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void buttonPDF_Click(object sender, EventArgs e)
+        {
+            new RepInventoryStockLevelReportPDFForm();
         }
     }
 }

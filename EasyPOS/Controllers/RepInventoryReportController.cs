@@ -2789,6 +2789,36 @@ namespace EasyPOS.Controllers
 
             return item.ToList();
         }
+
+        // ================================
+        // Inventory List Stock Level Alert
+        // ================================
+        public List<Entities.MstItemEntity> GetInventoryListStockLevelAlert()
+        {
+            var item = from d in db.MstItems
+                       where d.IsInventory == true
+                       && d.IsLocked == true
+                       && d.OnhandQuantity <= d.ReorderQuantity
+                       && d.ReorderQuantity != 0
+                       select new Entities.MstItemEntity
+                       {
+                           Id = d.Id,
+                           ItemCode = d.ItemCode,
+                           BarCode = d.BarCode,
+                           ItemDescription = d.ItemDescription,
+                           Unit = d.MstUnit.Unit,
+                           Category = d.Category,
+                           Cost = d.Cost,
+                           Price = d.Price,
+                           ReorderQuantity = d.ReorderQuantity,
+                           OnhandQuantity = d.OnhandQuantity,
+                           IsInventory = d.IsInventory,
+                           IsLocked = d.IsLocked
+                       };
+
+            return item.ToList();
+        }
+
         // ==================
         // Item Expiry Report
         // ==================

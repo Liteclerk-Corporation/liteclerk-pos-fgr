@@ -647,6 +647,12 @@
     <Compile Include="Forms\Software\RepInventoryReport\RepInventoryItemListReportForm.Designer.cs">
       <DependentUpon>RepInventoryItemListReportForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryStockLevelReportPDFForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\RepInventoryReport\RepInventoryStockLevelReportPDFForm.Designer.cs">
+      <DependentUpon>RepInventoryStockLevelReportPDFForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\RepInventoryReport\RepStockCountDetailReportPDFForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1634,6 +1640,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepInventoryItemListReportForm.resx">
       <DependentUpon>RepInventoryItemListReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepInventoryStockLevelReportPDFForm.resx">
+      <DependentUpon>RepInventoryStockLevelReportPDFForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\RepInventoryReport\RepStockCountDetailReportPDFForm.resx">
       <DependentUpon>RepStockCountDetailReportPDFForm.cs</DependentUpon>

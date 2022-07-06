@@ -25,6 +25,7 @@ namespace EasyPOS.Forms.Software.SysMenu
         public SysMenuForm(SysSoftwareForm softwareForm)
         {
             InitializeComponent();
+            GetInventoryListStockLevelAlert();
 
             buttonItem.Text = SetLabel(buttonItem.Text);
             buttonDiscounting.Text = SetLabel(buttonDiscounting.Text);
@@ -59,6 +60,25 @@ namespace EasyPOS.Forms.Software.SysMenu
 
             MenuForm();
             InventoryModuleButtonLocation();
+        }
+        
+        public List<Entities.DgvStockLevelReportEntity> GetInventoryListStockLevelAlert()
+        {
+            
+            List<Entities.DgvStockLevelReportEntity> rowList = new List<Entities.DgvStockLevelReportEntity>();
+
+            Controllers.RepInventoryReportController repInvetoryReportController = new Controllers.RepInventoryReportController();
+            
+            var inventoryListReport = repInvetoryReportController.GetInventoryListStockLevelAlert();
+            if (inventoryListReport.Any())
+            {
+                if (Modules.SysCurrentModule.GetCurrentSettings().StockLevelAlert == true)
+                {
+                    RepInventoryReport.RepInventoryStockLevelReportForm repInventoryReportStockLevel = new RepInventoryReport.RepInventoryStockLevelReportForm();
+                    repInventoryReportStockLevel.ShowDialog();
+                }
+            }
+            return rowList;
         }
 
         public string SetLabel(string label)

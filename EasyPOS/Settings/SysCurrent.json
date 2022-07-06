@@ -15,7 +15,7 @@
   "TenantOf": "NA",
   "CurrentUserId": 1,
   "CurrentUserName": "admin",
-  "CurrentVersion": "Version 1.202207051632NOR",
+  "CurrentVersion": "Version 1.202207061703NOR",
   "CurrentDeveloper": "Easyfis Corporation",
   "CurrentSupport": "(032) 234-0787",
   "CurrentPeriodId": 1,
@@ -72,5 +72,6 @@
   "DisableSalesDate": false,
   "EnableSelectOrderTaker": false,
   "ShowPriceDescriptioninReceipts": false,
-  "ItemQtyRemoveDecimalPlaces":  false
+  "ItemQtyRemoveDecimalPlaces": false,
+  "StockLevelAlert": false
 }

@@ -122,7 +122,8 @@ namespace EasyPOS.Modules
                 DisableSalesDate = currentSettings.DisableSalesDate,
                 EnableSelectOrderTaker = currentSettings.EnableSelectOrderTaker,
                 ShowPriceDescriptioninReceipts = currentSettings.ShowPriceDescriptioninReceipts,
-                ItemQtyRemoveDecimalPlaces = currentSettings.ItemQtyRemoveDecimalPlaces
+                ItemQtyRemoveDecimalPlaces = currentSettings.ItemQtyRemoveDecimalPlaces,
+                StockLevelAlert = currentSettings.StockLevelAlert
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);
@@ -212,7 +213,8 @@ namespace EasyPOS.Modules
                 DisableSalesDate = objSysCurrentEntity.DisableSalesDate,
                 EnableSelectOrderTaker = objSysCurrentEntity.EnableSelectOrderTaker,
                 ShowPriceDescriptioninReceipts = objSysCurrentEntity.ShowPriceDescriptioninReceipts,
-                ItemQtyRemoveDecimalPlaces = objSysCurrentEntity.ItemQtyRemoveDecimalPlaces
+                ItemQtyRemoveDecimalPlaces = objSysCurrentEntity.ItemQtyRemoveDecimalPlaces,
+                StockLevelAlert = objSysCurrentEntity.StockLevelAlert
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newSysCurrentEntities);
@@ -303,7 +305,8 @@ namespace EasyPOS.Modules
                 DisableSalesDate = currentSettings.DisableSalesDate,
                 EnableSelectOrderTaker = currentSettings.EnableSelectOrderTaker,
                 ShowPriceDescriptioninReceipts = currentSettings.ShowPriceDescriptioninReceipts,
-                ItemQtyRemoveDecimalPlaces = currentSettings.ItemQtyRemoveDecimalPlaces
+                ItemQtyRemoveDecimalPlaces = currentSettings.ItemQtyRemoveDecimalPlaces,
+                StockLevelAlert = currentSettings.StockLevelAlert
             };
 
             String newJson = new JavaScriptSerializer().Serialize(newEntities);
