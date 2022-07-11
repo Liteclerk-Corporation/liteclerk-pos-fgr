@@ -146,9 +146,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 {
                     if (mstDataGridViewTenderPayType.Rows.Contains(mstDataGridViewTenderPayType.CurrentRow))
                     {
-                        Int32 id = 14;
-                        String payTypeCode = "LOAD";
-                        String payType = "Customer Load";
+                        Int32 id = Convert.ToInt32(mstDataGridViewTenderPayType.CurrentRow.Cells[0].Value);
+                        String payTypeCode = mstDataGridViewTenderPayType.CurrentRow.Cells[1].Value.ToString();
+                        String payType = mstDataGridViewTenderPayType.CurrentRow.Cells[2].Value.ToString();
                         Decimal amount = Convert.ToDecimal(textBoxAmount.Text);
                         String otherInformation = "Load Payment " + DateTime.Now.ToLongDateString();
                         String LoadNumber = textBoxCardNumber.Text;
