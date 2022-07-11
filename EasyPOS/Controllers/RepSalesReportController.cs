@@ -705,6 +705,8 @@ namespace EasyPOS.Controllers
                                   PreparedByUserName = d.MstUser.UserName,
                                   IsCancelled = d.IsCancelled,
                                   Amount = d.Amount,
+                                  TenderAmount = d.TenderAmount,
+                                  ChangeAmount = d.ChangeAmount,
                                   EntryDateTime = d.EntryDateTime.ToShortTimeString()
                               };
 
