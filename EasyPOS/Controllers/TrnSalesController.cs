@@ -1576,14 +1576,21 @@ namespace EasyPOS.Controllers
 
                                 salesLine.DiscountId = discount.FirstOrDefault().Id;
                                 salesLine.DiscountRate = discountRate;
-                                if (discountRate > 0)
-                                {
-                                    salesLine.DiscountAmount = withoutDiscountedPax > 0 ? discountAmountPerPax * withoutDiscountedPax : discountAmountPerPax;
-                                }
-                                else
-                                {
-                                    salesLine.DiscountAmount = withoutDiscountedPax > 0 ? (discountAmountPerPax * withoutDiscountedPax) * quantity : discountAmountPerPax * quantity;
-                                }
+                                salesLine.DiscountAmount = withoutDiscountedPax > 0 ? discountAmountPerPax * withoutDiscountedPax : discountAmountPerPax;
+
+                                //=================================================
+                                //Commented for Variable Discount Computation fixes
+                                //=================================================
+                                //}
+                                //if (discountRate > 0)
+                                //{
+                                //    salesLine.DiscountAmount = withoutDiscountedPax > 0 ? discountAmountPerPax * withoutDiscountedPax : discountAmountPerPax;
+                                //}
+                                //else
+                                //{
+                                //    salesLine.DiscountAmount = withoutDiscountedPax > 0 ? (discountAmountPerPax * withoutDiscountedPax) * quantity : discountAmountPerPax * quantity;
+                                //}
+
                                 salesLine.NetPrice = netPrice;
                                 salesLine.Amount = amount;
                                 salesLine.TaxAmount = taxAmount;
