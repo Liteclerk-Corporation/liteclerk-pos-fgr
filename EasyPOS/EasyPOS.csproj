@@ -272,6 +272,8 @@
     <Compile Include="Controllers\TrnStockOutController.cs" />
     <Compile Include="Controllers\TrnStockInLineController.cs" />
     <Compile Include="Controllers\TrnStockOutLineController.cs" />
+    <Compile Include="Controllers\TrnTradeInController.cs" />
+    <Compile Include="Controllers\TrnTradeInLineController.cs" />
     <Compile Include="Data\easyposdb.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -455,6 +457,8 @@
     <Compile Include="Entities\TrnStockOutEntity.cs" />
     <Compile Include="Entities\TrnStockOutLineEntity.cs" />
     <Compile Include="Entities\MstUserFormEntity.cs" />
+    <Compile Include="Entities\TrnTradeInEntity.cs" />
+    <Compile Include="Entities\TrnTradeInLineEntity.cs" />
     <Compile Include="Forms\Account\SysLogin\SysChangeLoginDateForm.cs">
       <SubType>Form</SubType>
     </Compile>

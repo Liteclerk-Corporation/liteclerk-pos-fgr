@@ -22,7 +22,7 @@ namespace EasyPOS.Data
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="easypos_mylora_baybay")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="liteclerk_fgr")]
 	public partial class easyposdbDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -33,9 +33,9 @@ namespace EasyPOS.Data
     partial void InsertIntCloudSetting(IntCloudSetting instance);
     partial void UpdateIntCloudSetting(IntCloudSetting instance);
     partial void DeleteIntCloudSetting(IntCloudSetting instance);
-    partial void InsertTrnStockOutLine(TrnStockOutLine instance);
-    partial void UpdateTrnStockOutLine(TrnStockOutLine instance);
-    partial void DeleteTrnStockOutLine(TrnStockOutLine instance);
+    partial void InsertTrnTradeInLine(TrnTradeInLine instance);
+    partial void UpdateTrnTradeInLine(TrnTradeInLine instance);
+    partial void DeleteTrnTradeInLine(TrnTradeInLine instance);
     partial void InsertMstAccount(MstAccount instance);
     partial void UpdateMstAccount(MstAccount instance);
     partial void DeleteMstAccount(MstAccount instance);
@@ -120,6 +120,9 @@ namespace EasyPOS.Data
     partial void InsertSysLabel(SysLabel instance);
     partial void UpdateSysLabel(SysLabel instance);
     partial void DeleteSysLabel(SysLabel instance);
+    partial void InsertSysMenuForm(SysMenuForm instance);
+    partial void UpdateSysMenuForm(SysMenuForm instance);
+    partial void DeleteSysMenuForm(SysMenuForm instance);
     partial void InsertSysReadingPrevAccNetSale(SysReadingPrevAccNetSale instance);
     partial void UpdateSysReadingPrevAccNetSale(SysReadingPrevAccNetSale instance);
     partial void DeleteSysReadingPrevAccNetSale(SysReadingPrevAccNetSale instance);
@@ -180,13 +183,16 @@ namespace EasyPOS.Data
     partial void InsertTrnStockOut(TrnStockOut instance);
     partial void UpdateTrnStockOut(TrnStockOut instance);
     partial void DeleteTrnStockOut(TrnStockOut instance);
-    partial void InsertSysMenuForm(SysMenuForm instance);
-    partial void UpdateSysMenuForm(SysMenuForm instance);
-    partial void DeleteSysMenuForm(SysMenuForm instance);
+    partial void InsertTrnStockOutLine(TrnStockOutLine instance);
+    partial void UpdateTrnStockOutLine(TrnStockOutLine instance);
+    partial void DeleteTrnStockOutLine(TrnStockOutLine instance);
+    partial void InsertTrnTradeIn(TrnTradeIn instance);
+    partial void UpdateTrnTradeIn(TrnTradeIn instance);
+    partial void DeleteTrnTradeIn(TrnTradeIn instance);
     #endregion
 		
 		public easyposdbDataContext() : 
-				base(global::EasyPOS.Properties.Settings.Default.easypos_mylora_baybayConnectionString1, mappingSource)
+				base(global::EasyPOS.Properties.Settings.Default.liteclerk_fgrConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -223,11 +229,11 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		public System.Data.Linq.Table<TrnStockOutLine> TrnStockOutLines
+		public System.Data.Linq.Table<TrnTradeInLine> TrnTradeInLines
 		{
 			get
 			{
-				return this.GetTable<TrnStockOutLine>();
+				return this.GetTable<TrnTradeInLine>();
 			}
 		}
 		
@@ -455,6 +461,14 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		public System.Data.Linq.Table<SysMenuForm> SysMenuForms
+		{
+			get
+			{
+				return this.GetTable<SysMenuForm>();
+			}
+		}
+		
 		public System.Data.Linq.Table<SysReadingPrevAccNetSale> SysReadingPrevAccNetSales
 		{
 			get
@@ -615,11 +629,19 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		public System.Data.Linq.Table<SysMenuForm> SysMenuForms
+		public System.Data.Linq.Table<TrnStockOutLine> TrnStockOutLines
 		{
 			get
 			{
-				return this.GetTable<SysMenuForm>();
+				return this.GetTable<TrnStockOutLine>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TrnTradeIn> TrnTradeIns
+		{
+			get
+			{
+				return this.GetTable<TrnTradeIn>();
 			}
 		}
 	}
@@ -960,35 +982,23 @@ namespace EasyPOS.Data
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrnStockOutLine")]
-	public partial class TrnStockOutLine : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrnTradeInLine")]
+	public partial class TrnTradeInLine : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _Id;
 		
-		private int _StockOutId;
+		private int _TradeInId;
 		
 		private int _ItemId;
 		
-		private int _UnitId;
-		
 		private decimal _Quantity;
-		
-		private decimal _Cost;
 		
 		private decimal _Amount;
 		
-		private int _AssetAccountId;
-		
-		private EntityRef<MstAccount> _MstAccount;
-		
-		private EntityRef<MstItem> _MstItem;
-		
-		private EntityRef<MstUnit> _MstUnit;
-		
-		private EntityRef<TrnStockOut> _TrnStockOut;
+		private EntityRef<TrnTradeIn> _TrnTradeIn;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -996,28 +1006,19 @@ namespace EasyPOS.Data
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OnStockOutIdChanging(int value);
-    partial void OnStockOutIdChanged();
+    partial void OnTradeInIdChanging(int value);
+    partial void OnTradeInIdChanged();
     partial void OnItemIdChanging(int value);
     partial void OnItemIdChanged();
-    partial void OnUnitIdChanging(int value);
-    partial void OnUnitIdChanged();
     partial void OnQuantityChanging(decimal value);
     partial void OnQuantityChanged();
-    partial void OnCostChanging(decimal value);
-    partial void OnCostChanged();
     partial void OnAmountChanging(decimal value);
     partial void OnAmountChanged();
-    partial void OnAssetAccountIdChanging(int value);
-    partial void OnAssetAccountIdChanged();
     #endregion
 		
-		public TrnStockOutLine()
+		public TrnTradeInLine()
 		{
-			this._MstAccount = default(EntityRef<MstAccount>);
-			this._MstItem = default(EntityRef<MstItem>);
-			this._MstUnit = default(EntityRef<MstUnit>);
-			this._TrnStockOut = default(EntityRef<TrnStockOut>);
+			this._TrnTradeIn = default(EntityRef<TrnTradeIn>);
 			OnCreated();
 		}
 		
@@ -1041,26 +1042,26 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockOutId", DbType="Int NOT NULL")]
-		public int StockOutId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TradeInId", DbType="Int NOT NULL")]
+		public int TradeInId
 		{
 			get
 			{
-				return this._StockOutId;
+				return this._TradeInId;
 			}
 			set
 			{
-				if ((this._StockOutId != value))
+				if ((this._TradeInId != value))
 				{
-					if (this._TrnStockOut.HasLoadedOrAssignedValue)
+					if (this._TrnTradeIn.HasLoadedOrAssignedValue)
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
-					this.OnStockOutIdChanging(value);
+					this.OnTradeInIdChanging(value);
 					this.SendPropertyChanging();
-					this._StockOutId = value;
-					this.SendPropertyChanged("StockOutId");
-					this.OnStockOutIdChanged();
+					this._TradeInId = value;
+					this.SendPropertyChanged("TradeInId");
+					this.OnTradeInIdChanged();
 				}
 			}
 		}
@@ -1076,10 +1077,6 @@ namespace EasyPOS.Data
 			{
 				if ((this._ItemId != value))
 				{
-					if (this._MstItem.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
 					this.OnItemIdChanging(value);
 					this.SendPropertyChanging();
 					this._ItemId = value;
@@ -1089,31 +1086,7 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitId", DbType="Int NOT NULL")]
-		public int UnitId
-		{
-			get
-			{
-				return this._UnitId;
-			}
-			set
-			{
-				if ((this._UnitId != value))
-				{
-					if (this._MstUnit.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUnitIdChanging(value);
-					this.SendPropertyChanging();
-					this._UnitId = value;
-					this.SendPropertyChanged("UnitId");
-					this.OnUnitIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Decimal(18,5) NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Decimal(18,4) NOT NULL")]
 		public decimal Quantity
 		{
 			get
@@ -1133,27 +1106,7 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cost", DbType="Decimal(18,5) NOT NULL")]
-		public decimal Cost
-		{
-			get
-			{
-				return this._Cost;
-			}
-			set
-			{
-				if ((this._Cost != value))
-				{
-					this.OnCostChanging(value);
-					this.SendPropertyChanging();
-					this._Cost = value;
-					this.SendPropertyChanged("Cost");
-					this.OnCostChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Decimal(18,5) NOT NULL")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Decimal(18,4) NOT NULL")]
 		public decimal Amount
 		{
 			get
@@ -1173,162 +1126,36 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetAccountId", DbType="Int NOT NULL")]
-		public int AssetAccountId
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnTradeIn_TrnTradeInLine", Storage="_TrnTradeIn", ThisKey="TradeInId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public TrnTradeIn TrnTradeIn
 		{
 			get
 			{
-				return this._AssetAccountId;
+				return this._TrnTradeIn.Entity;
 			}
 			set
 			{
-				if ((this._AssetAccountId != value))
-				{
-					if (this._MstAccount.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnAssetAccountIdChanging(value);
-					this.SendPropertyChanging();
-					this._AssetAccountId = value;
-					this.SendPropertyChanged("AssetAccountId");
-					this.OnAssetAccountIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstAccount_TrnStockOutLine", Storage="_MstAccount", ThisKey="AssetAccountId", OtherKey="Id", IsForeignKey=true)]
-		public MstAccount MstAccount
-		{
-			get
-			{
-				return this._MstAccount.Entity;
-			}
-			set
-			{
-				MstAccount previousValue = this._MstAccount.Entity;
+				TrnTradeIn previousValue = this._TrnTradeIn.Entity;
 				if (((previousValue != value) 
-							|| (this._MstAccount.HasLoadedOrAssignedValue == false)))
+							|| (this._TrnTradeIn.HasLoadedOrAssignedValue == false)))
 				{
 					this.SendPropertyChanging();
 					if ((previousValue != null))
 					{
-						this._MstAccount.Entity = null;
-						previousValue.TrnStockOutLines.Remove(this);
+						this._TrnTradeIn.Entity = null;
+						previousValue.TrnTradeInLines.Remove(this);
 					}
-					this._MstAccount.Entity = value;
+					this._TrnTradeIn.Entity = value;
 					if ((value != null))
 					{
-						value.TrnStockOutLines.Add(this);
-						this._AssetAccountId = value.Id;
+						value.TrnTradeInLines.Add(this);
+						this._TradeInId = value.Id;
 					}
 					else
 					{
-						this._AssetAccountId = default(int);
+						this._TradeInId = default(int);
 					}
-					this.SendPropertyChanged("MstAccount");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstItem_TrnStockOutLine", Storage="_MstItem", ThisKey="ItemId", OtherKey="Id", IsForeignKey=true)]
-		public MstItem MstItem
-		{
-			get
-			{
-				return this._MstItem.Entity;
-			}
-			set
-			{
-				MstItem previousValue = this._MstItem.Entity;
-				if (((previousValue != value) 
-							|| (this._MstItem.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._MstItem.Entity = null;
-						previousValue.TrnStockOutLines.Remove(this);
-					}
-					this._MstItem.Entity = value;
-					if ((value != null))
-					{
-						value.TrnStockOutLines.Add(this);
-						this._ItemId = value.Id;
-					}
-					else
-					{
-						this._ItemId = default(int);
-					}
-					this.SendPropertyChanged("MstItem");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUnit_TrnStockOutLine", Storage="_MstUnit", ThisKey="UnitId", OtherKey="Id", IsForeignKey=true)]
-		public MstUnit MstUnit
-		{
-			get
-			{
-				return this._MstUnit.Entity;
-			}
-			set
-			{
-				MstUnit previousValue = this._MstUnit.Entity;
-				if (((previousValue != value) 
-							|| (this._MstUnit.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._MstUnit.Entity = null;
-						previousValue.TrnStockOutLines.Remove(this);
-					}
-					this._MstUnit.Entity = value;
-					if ((value != null))
-					{
-						value.TrnStockOutLines.Add(this);
-						this._UnitId = value.Id;
-					}
-					else
-					{
-						this._UnitId = default(int);
-					}
-					this.SendPropertyChanged("MstUnit");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnStockOut_TrnStockOutLine", Storage="_TrnStockOut", ThisKey="StockOutId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public TrnStockOut TrnStockOut
-		{
-			get
-			{
-				return this._TrnStockOut.Entity;
-			}
-			set
-			{
-				TrnStockOut previousValue = this._TrnStockOut.Entity;
-				if (((previousValue != value) 
-							|| (this._TrnStockOut.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TrnStockOut.Entity = null;
-						previousValue.TrnStockOutLines.Remove(this);
-					}
-					this._TrnStockOut.Entity = value;
-					if ((value != null))
-					{
-						value.TrnStockOutLines.Add(this);
-						this._StockOutId = value.Id;
-					}
-					else
-					{
-						this._StockOutId = default(int);
-					}
-					this.SendPropertyChanged("TrnStockOut");
+					this.SendPropertyChanged("TrnTradeIn");
 				}
 			}
 		}
@@ -1370,8 +1197,6 @@ namespace EasyPOS.Data
 		
 		private string _AccountType;
 		
-		private EntitySet<TrnStockOutLine> _TrnStockOutLines;
-		
 		private EntitySet<MstCustomer> _MstCustomers;
 		
 		private EntitySet<MstItem> _MstItems;
@@ -1406,6 +1231,8 @@ namespace EasyPOS.Data
 		
 		private EntitySet<TrnStockOut> _TrnStockOuts;
 		
+		private EntitySet<TrnStockOutLine> _TrnStockOutLines;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1424,7 +1251,6 @@ namespace EasyPOS.Data
 		
 		public MstAccount()
 		{
-			this._TrnStockOutLines = new EntitySet<TrnStockOutLine>(new Action<TrnStockOutLine>(this.attach_TrnStockOutLines), new Action<TrnStockOutLine>(this.detach_TrnStockOutLines));
 			this._MstCustomers = new EntitySet<MstCustomer>(new Action<MstCustomer>(this.attach_MstCustomers), new Action<MstCustomer>(this.detach_MstCustomers));
 			this._MstItems = new EntitySet<MstItem>(new Action<MstItem>(this.attach_MstItems), new Action<MstItem>(this.detach_MstItems));
 			this._MstItems1 = new EntitySet<MstItem>(new Action<MstItem>(this.attach_MstItems1), new Action<MstItem>(this.detach_MstItems1));
@@ -1442,6 +1268,7 @@ namespace EasyPOS.Data
 			this._TrnSalesLines3 = new EntitySet<TrnSalesLine>(new Action<TrnSalesLine>(this.attach_TrnSalesLines3), new Action<TrnSalesLine>(this.detach_TrnSalesLines3));
 			this._TrnStockInLines = new EntitySet<TrnStockInLine>(new Action<TrnStockInLine>(this.attach_TrnStockInLines), new Action<TrnStockInLine>(this.detach_TrnStockInLines));
 			this._TrnStockOuts = new EntitySet<TrnStockOut>(new Action<TrnStockOut>(this.attach_TrnStockOuts), new Action<TrnStockOut>(this.detach_TrnStockOuts));
+			this._TrnStockOutLines = new EntitySet<TrnStockOutLine>(new Action<TrnStockOutLine>(this.attach_TrnStockOutLines), new Action<TrnStockOutLine>(this.detach_TrnStockOutLines));
 			OnCreated();
 		}
 		
@@ -1542,19 +1369,6 @@ namespace EasyPOS.Data
 					this.SendPropertyChanged("AccountType");
 					this.OnAccountTypeChanged();
 				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstAccount_TrnStockOutLine", Storage="_TrnStockOutLines", ThisKey="Id", OtherKey="AssetAccountId")]
-		public EntitySet<TrnStockOutLine> TrnStockOutLines
-		{
-			get
-			{
-				return this._TrnStockOutLines;
-			}
-			set
-			{
-				this._TrnStockOutLines.Assign(value);
 			}
 		}
 		
@@ -1779,6 +1593,19 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstAccount_TrnStockOutLine", Storage="_TrnStockOutLines", ThisKey="Id", OtherKey="AssetAccountId")]
+		public EntitySet<TrnStockOutLine> TrnStockOutLines
+		{
+			get
+			{
+				return this._TrnStockOutLines;
+			}
+			set
+			{
+				this._TrnStockOutLines.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1797,18 +1624,6 @@ namespace EasyPOS.Data
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_TrnStockOutLines(TrnStockOutLine entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstAccount = this;
-		}
-		
-		private void detach_TrnStockOutLines(TrnStockOutLine entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstAccount = null;
 		}
 		
 		private void attach_MstCustomers(MstCustomer entity)
@@ -2010,6 +1825,18 @@ namespace EasyPOS.Data
 		}
 		
 		private void detach_TrnStockOuts(TrnStockOut entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstAccount = null;
+		}
+		
+		private void attach_TrnStockOutLines(TrnStockOutLine entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstAccount = this;
+		}
+		
+		private void detach_TrnStockOutLines(TrnStockOutLine entity)
 		{
 			this.SendPropertyChanging();
 			entity.MstAccount = null;
@@ -4085,6 +3912,10 @@ namespace EasyPOS.Data
 		
 		private string _BarCode;
 		
+		private string _Size;
+		
+		private string _Brand;
+		
 		private string _ItemDescription;
 		
 		private string _Alias;
@@ -4145,8 +3976,6 @@ namespace EasyPOS.Data
 		
 		private System.Nullable<int> _ChildItemId;
 		
-		private EntitySet<TrnStockOutLine> _TrnStockOutLines;
-		
 		private EntitySet<MstDiscountItem> _MstDiscountItems;
 		
 		private EntitySet<MstItemComponent> _MstItemComponents;
@@ -4172,6 +4001,8 @@ namespace EasyPOS.Data
 		private EntitySet<TrnStockCountLine> _TrnStockCountLines;
 		
 		private EntitySet<TrnStockInLine> _TrnStockInLines;
+		
+		private EntitySet<TrnStockOutLine> _TrnStockOutLines;
 		
 		private EntityRef<MstAccount> _MstAccount;
 		
@@ -4201,6 +4032,10 @@ namespace EasyPOS.Data
     partial void OnItemCodeChanged();
     partial void OnBarCodeChanging(string value);
     partial void OnBarCodeChanged();
+    partial void OnSizeChanging(string value);
+    partial void OnSizeChanged();
+    partial void OnBrandChanging(string value);
+    partial void OnBrandChanged();
     partial void OnItemDescriptionChanging(string value);
     partial void OnItemDescriptionChanged();
     partial void OnAliasChanging(string value);
@@ -4265,7 +4100,6 @@ namespace EasyPOS.Data
 		
 		public MstItem()
 		{
-			this._TrnStockOutLines = new EntitySet<TrnStockOutLine>(new Action<TrnStockOutLine>(this.attach_TrnStockOutLines), new Action<TrnStockOutLine>(this.detach_TrnStockOutLines));
 			this._MstDiscountItems = new EntitySet<MstDiscountItem>(new Action<MstDiscountItem>(this.attach_MstDiscountItems), new Action<MstDiscountItem>(this.detach_MstDiscountItems));
 			this._MstItemComponents = new EntitySet<MstItemComponent>(new Action<MstItemComponent>(this.attach_MstItemComponents), new Action<MstItemComponent>(this.detach_MstItemComponents));
 			this._MstItemComponents1 = new EntitySet<MstItemComponent>(new Action<MstItemComponent>(this.attach_MstItemComponents1), new Action<MstItemComponent>(this.detach_MstItemComponents1));
@@ -4279,6 +4113,7 @@ namespace EasyPOS.Data
 			this._TrnSalesLines = new EntitySet<TrnSalesLine>(new Action<TrnSalesLine>(this.attach_TrnSalesLines), new Action<TrnSalesLine>(this.detach_TrnSalesLines));
 			this._TrnStockCountLines = new EntitySet<TrnStockCountLine>(new Action<TrnStockCountLine>(this.attach_TrnStockCountLines), new Action<TrnStockCountLine>(this.detach_TrnStockCountLines));
 			this._TrnStockInLines = new EntitySet<TrnStockInLine>(new Action<TrnStockInLine>(this.attach_TrnStockInLines), new Action<TrnStockInLine>(this.detach_TrnStockInLines));
+			this._TrnStockOutLines = new EntitySet<TrnStockOutLine>(new Action<TrnStockOutLine>(this.attach_TrnStockOutLines), new Action<TrnStockOutLine>(this.detach_TrnStockOutLines));
 			this._MstAccount = default(EntityRef<MstAccount>);
 			this._MstAccount1 = default(EntityRef<MstAccount>);
 			this._MstAccount2 = default(EntityRef<MstAccount>);
@@ -4347,6 +4182,46 @@ namespace EasyPOS.Data
 					this._BarCode = value;
 					this.SendPropertyChanged("BarCode");
 					this.OnBarCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Size", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string Size
+		{
+			get
+			{
+				return this._Size;
+			}
+			set
+			{
+				if ((this._Size != value))
+				{
+					this.OnSizeChanging(value);
+					this.SendPropertyChanging();
+					this._Size = value;
+					this.SendPropertyChanged("Size");
+					this.OnSizeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Brand", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string Brand
+		{
+			get
+			{
+				return this._Brand;
+			}
+			set
+			{
+				if ((this._Brand != value))
+				{
+					this.OnBrandChanging(value);
+					this.SendPropertyChanging();
+					this._Brand = value;
+					this.SendPropertyChanged("Brand");
+					this.OnBrandChanged();
 				}
 			}
 		}
@@ -4987,19 +4862,6 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstItem_TrnStockOutLine", Storage="_TrnStockOutLines", ThisKey="Id", OtherKey="ItemId")]
-		public EntitySet<TrnStockOutLine> TrnStockOutLines
-		{
-			get
-			{
-				return this._TrnStockOutLines;
-			}
-			set
-			{
-				this._TrnStockOutLines.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstItem_MstDiscountItem", Storage="_MstDiscountItems", ThisKey="Id", OtherKey="ItemId")]
 		public EntitySet<MstDiscountItem> MstDiscountItems
 		{
@@ -5166,6 +5028,19 @@ namespace EasyPOS.Data
 			set
 			{
 				this._TrnStockInLines.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstItem_TrnStockOutLine", Storage="_TrnStockOutLines", ThisKey="Id", OtherKey="ItemId")]
+		public EntitySet<TrnStockOutLine> TrnStockOutLines
+		{
+			get
+			{
+				return this._TrnStockOutLines;
+			}
+			set
+			{
+				this._TrnStockOutLines.Assign(value);
 			}
 		}
 		
@@ -5495,18 +5370,6 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		private void attach_TrnStockOutLines(TrnStockOutLine entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstItem = this;
-		}
-		
-		private void detach_TrnStockOutLines(TrnStockOutLine entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstItem = null;
-		}
-		
 		private void attach_MstDiscountItems(MstDiscountItem entity)
 		{
 			this.SendPropertyChanging();
@@ -5658,6 +5521,18 @@ namespace EasyPOS.Data
 		}
 		
 		private void detach_TrnStockInLines(TrnStockInLine entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstItem = null;
+		}
+		
+		private void attach_TrnStockOutLines(TrnStockOutLine entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstItem = this;
+		}
+		
+		private void detach_TrnStockOutLines(TrnStockOutLine entity)
 		{
 			this.SendPropertyChanging();
 			entity.MstItem = null;
@@ -9715,8 +9590,6 @@ namespace EasyPOS.Data
 		
 		private string _Unit;
 		
-		private EntitySet<TrnStockOutLine> _TrnStockOutLines;
-		
 		private EntitySet<MstItem> _MstItems;
 		
 		private EntitySet<MstItemComponent> _MstItemComponents;
@@ -9731,6 +9604,8 @@ namespace EasyPOS.Data
 		
 		private EntitySet<TrnStockInLine> _TrnStockInLines;
 		
+		private EntitySet<TrnStockOutLine> _TrnStockOutLines;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -9743,7 +9618,6 @@ namespace EasyPOS.Data
 		
 		public MstUnit()
 		{
-			this._TrnStockOutLines = new EntitySet<TrnStockOutLine>(new Action<TrnStockOutLine>(this.attach_TrnStockOutLines), new Action<TrnStockOutLine>(this.detach_TrnStockOutLines));
 			this._MstItems = new EntitySet<MstItem>(new Action<MstItem>(this.attach_MstItems), new Action<MstItem>(this.detach_MstItems));
 			this._MstItemComponents = new EntitySet<MstItemComponent>(new Action<MstItemComponent>(this.attach_MstItemComponents), new Action<MstItemComponent>(this.detach_MstItemComponents));
 			this._MstItemPackages = new EntitySet<MstItemPackage>(new Action<MstItemPackage>(this.attach_MstItemPackages), new Action<MstItemPackage>(this.detach_MstItemPackages));
@@ -9751,6 +9625,7 @@ namespace EasyPOS.Data
 			this._TrnSalesLines = new EntitySet<TrnSalesLine>(new Action<TrnSalesLine>(this.attach_TrnSalesLines), new Action<TrnSalesLine>(this.detach_TrnSalesLines));
 			this._TrnStockCountLines = new EntitySet<TrnStockCountLine>(new Action<TrnStockCountLine>(this.attach_TrnStockCountLines), new Action<TrnStockCountLine>(this.detach_TrnStockCountLines));
 			this._TrnStockInLines = new EntitySet<TrnStockInLine>(new Action<TrnStockInLine>(this.attach_TrnStockInLines), new Action<TrnStockInLine>(this.detach_TrnStockInLines));
+			this._TrnStockOutLines = new EntitySet<TrnStockOutLine>(new Action<TrnStockOutLine>(this.attach_TrnStockOutLines), new Action<TrnStockOutLine>(this.detach_TrnStockOutLines));
 			OnCreated();
 		}
 		
@@ -9791,19 +9666,6 @@ namespace EasyPOS.Data
 					this.SendPropertyChanged("Unit");
 					this.OnUnitChanged();
 				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUnit_TrnStockOutLine", Storage="_TrnStockOutLines", ThisKey="Id", OtherKey="UnitId")]
-		public EntitySet<TrnStockOutLine> TrnStockOutLines
-		{
-			get
-			{
-				return this._TrnStockOutLines;
-			}
-			set
-			{
-				this._TrnStockOutLines.Assign(value);
 			}
 		}
 		
@@ -9898,6 +9760,19 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUnit_TrnStockOutLine", Storage="_TrnStockOutLines", ThisKey="Id", OtherKey="UnitId")]
+		public EntitySet<TrnStockOutLine> TrnStockOutLines
+		{
+			get
+			{
+				return this._TrnStockOutLines;
+			}
+			set
+			{
+				this._TrnStockOutLines.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -9916,18 +9791,6 @@ namespace EasyPOS.Data
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
-		}
-		
-		private void attach_TrnStockOutLines(TrnStockOutLine entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstUnit = this;
-		}
-		
-		private void detach_TrnStockOutLines(TrnStockOutLine entity)
-		{
-			this.SendPropertyChanging();
-			entity.MstUnit = null;
 		}
 		
 		private void attach_MstItems(MstItem entity)
@@ -10009,6 +9872,18 @@ namespace EasyPOS.Data
 		}
 		
 		private void detach_TrnStockInLines(TrnStockInLine entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUnit = null;
+		}
+		
+		private void attach_TrnStockOutLines(TrnStockOutLine entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUnit = this;
+		}
+		
+		private void detach_TrnStockOutLines(TrnStockOutLine entity)
 		{
 			this.SendPropertyChanging();
 			entity.MstUnit = null;
@@ -10163,6 +10038,8 @@ namespace EasyPOS.Data
 		
 		private EntitySet<TrnStockOut> _TrnStockOuts4;
 		
+		private EntitySet<TrnTradeIn> _TrnTradeIns;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -10255,6 +10132,7 @@ namespace EasyPOS.Data
 			this._TrnStockOuts2 = new EntitySet<TrnStockOut>(new Action<TrnStockOut>(this.attach_TrnStockOuts2), new Action<TrnStockOut>(this.detach_TrnStockOuts2));
 			this._TrnStockOuts3 = new EntitySet<TrnStockOut>(new Action<TrnStockOut>(this.attach_TrnStockOuts3), new Action<TrnStockOut>(this.detach_TrnStockOuts3));
 			this._TrnStockOuts4 = new EntitySet<TrnStockOut>(new Action<TrnStockOut>(this.attach_TrnStockOuts4), new Action<TrnStockOut>(this.detach_TrnStockOuts4));
+			this._TrnTradeIns = new EntitySet<TrnTradeIn>(new Action<TrnTradeIn>(this.attach_TrnTradeIns), new Action<TrnTradeIn>(this.detach_TrnTradeIns));
 			OnCreated();
 		}
 		
@@ -11272,6 +11150,19 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnTradeIn", Storage="_TrnTradeIns", ThisKey="Id", OtherKey="PreparedById")]
+		public EntitySet<TrnTradeIn> TrnTradeIns
+		{
+			get
+			{
+				return this._TrnTradeIns;
+			}
+			set
+			{
+				this._TrnTradeIns.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -11986,6 +11877,18 @@ namespace EasyPOS.Data
 		{
 			this.SendPropertyChanging();
 			entity.MstUser4 = null;
+		}
+		
+		private void attach_TrnTradeIns(TrnTradeIn entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser = this;
+		}
+		
+		private void detach_TrnTradeIns(TrnTradeIn entity)
+		{
+			this.SendPropertyChanging();
+			entity.MstUser = null;
 		}
 	}
 	
@@ -13279,6 +13182,452 @@ namespace EasyPOS.Data
 					this._Language = value;
 					this.SendPropertyChanged("Language");
 					this.OnLanguageChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SysMenuForm")]
+	public partial class SysMenuForm : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private bool _SideBarMenu;
+		
+		private bool _Item;
+		
+		private bool _Discounting;
+		
+		private bool _Customer;
+		
+		private bool _UserAccount;
+		
+		private bool _POS;
+		
+		private bool _CashInOut;
+		
+		private bool _StockIn;
+		
+		private bool _StockOut;
+		
+		private bool _SalesReport;
+		
+		private bool _RemittanceReport;
+		
+		private bool _InventoryReport;
+		
+		private bool _StockCount;
+		
+		private bool _POSReport;
+		
+		private bool _Settings;
+		
+		private bool _SystemTables;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnSideBarMenuChanging(bool value);
+    partial void OnSideBarMenuChanged();
+    partial void OnItemChanging(bool value);
+    partial void OnItemChanged();
+    partial void OnDiscountingChanging(bool value);
+    partial void OnDiscountingChanged();
+    partial void OnCustomerChanging(bool value);
+    partial void OnCustomerChanged();
+    partial void OnUserAccountChanging(bool value);
+    partial void OnUserAccountChanged();
+    partial void OnPOSChanging(bool value);
+    partial void OnPOSChanged();
+    partial void OnCashInOutChanging(bool value);
+    partial void OnCashInOutChanged();
+    partial void OnStockInChanging(bool value);
+    partial void OnStockInChanged();
+    partial void OnStockOutChanging(bool value);
+    partial void OnStockOutChanged();
+    partial void OnSalesReportChanging(bool value);
+    partial void OnSalesReportChanged();
+    partial void OnRemittanceReportChanging(bool value);
+    partial void OnRemittanceReportChanged();
+    partial void OnInventoryReportChanging(bool value);
+    partial void OnInventoryReportChanged();
+    partial void OnStockCountChanging(bool value);
+    partial void OnStockCountChanged();
+    partial void OnPOSReportChanging(bool value);
+    partial void OnPOSReportChanged();
+    partial void OnSettingsChanging(bool value);
+    partial void OnSettingsChanged();
+    partial void OnSystemTablesChanging(bool value);
+    partial void OnSystemTablesChanged();
+    #endregion
+		
+		public SysMenuForm()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SideBarMenu", DbType="Bit NOT NULL")]
+		public bool SideBarMenu
+		{
+			get
+			{
+				return this._SideBarMenu;
+			}
+			set
+			{
+				if ((this._SideBarMenu != value))
+				{
+					this.OnSideBarMenuChanging(value);
+					this.SendPropertyChanging();
+					this._SideBarMenu = value;
+					this.SendPropertyChanged("SideBarMenu");
+					this.OnSideBarMenuChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Item", DbType="Bit NOT NULL")]
+		public bool Item
+		{
+			get
+			{
+				return this._Item;
+			}
+			set
+			{
+				if ((this._Item != value))
+				{
+					this.OnItemChanging(value);
+					this.SendPropertyChanging();
+					this._Item = value;
+					this.SendPropertyChanged("Item");
+					this.OnItemChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Discounting", DbType="Bit NOT NULL")]
+		public bool Discounting
+		{
+			get
+			{
+				return this._Discounting;
+			}
+			set
+			{
+				if ((this._Discounting != value))
+				{
+					this.OnDiscountingChanging(value);
+					this.SendPropertyChanging();
+					this._Discounting = value;
+					this.SendPropertyChanged("Discounting");
+					this.OnDiscountingChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Customer", DbType="Bit NOT NULL")]
+		public bool Customer
+		{
+			get
+			{
+				return this._Customer;
+			}
+			set
+			{
+				if ((this._Customer != value))
+				{
+					this.OnCustomerChanging(value);
+					this.SendPropertyChanging();
+					this._Customer = value;
+					this.SendPropertyChanged("Customer");
+					this.OnCustomerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserAccount", DbType="Bit NOT NULL")]
+		public bool UserAccount
+		{
+			get
+			{
+				return this._UserAccount;
+			}
+			set
+			{
+				if ((this._UserAccount != value))
+				{
+					this.OnUserAccountChanging(value);
+					this.SendPropertyChanging();
+					this._UserAccount = value;
+					this.SendPropertyChanged("UserAccount");
+					this.OnUserAccountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POS", DbType="Bit NOT NULL")]
+		public bool POS
+		{
+			get
+			{
+				return this._POS;
+			}
+			set
+			{
+				if ((this._POS != value))
+				{
+					this.OnPOSChanging(value);
+					this.SendPropertyChanging();
+					this._POS = value;
+					this.SendPropertyChanged("POS");
+					this.OnPOSChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CashInOut", DbType="Bit NOT NULL")]
+		public bool CashInOut
+		{
+			get
+			{
+				return this._CashInOut;
+			}
+			set
+			{
+				if ((this._CashInOut != value))
+				{
+					this.OnCashInOutChanging(value);
+					this.SendPropertyChanging();
+					this._CashInOut = value;
+					this.SendPropertyChanged("CashInOut");
+					this.OnCashInOutChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockIn", DbType="Bit NOT NULL")]
+		public bool StockIn
+		{
+			get
+			{
+				return this._StockIn;
+			}
+			set
+			{
+				if ((this._StockIn != value))
+				{
+					this.OnStockInChanging(value);
+					this.SendPropertyChanging();
+					this._StockIn = value;
+					this.SendPropertyChanged("StockIn");
+					this.OnStockInChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockOut", DbType="Bit NOT NULL")]
+		public bool StockOut
+		{
+			get
+			{
+				return this._StockOut;
+			}
+			set
+			{
+				if ((this._StockOut != value))
+				{
+					this.OnStockOutChanging(value);
+					this.SendPropertyChanging();
+					this._StockOut = value;
+					this.SendPropertyChanged("StockOut");
+					this.OnStockOutChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalesReport", DbType="Bit NOT NULL")]
+		public bool SalesReport
+		{
+			get
+			{
+				return this._SalesReport;
+			}
+			set
+			{
+				if ((this._SalesReport != value))
+				{
+					this.OnSalesReportChanging(value);
+					this.SendPropertyChanging();
+					this._SalesReport = value;
+					this.SendPropertyChanged("SalesReport");
+					this.OnSalesReportChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RemittanceReport", DbType="Bit NOT NULL")]
+		public bool RemittanceReport
+		{
+			get
+			{
+				return this._RemittanceReport;
+			}
+			set
+			{
+				if ((this._RemittanceReport != value))
+				{
+					this.OnRemittanceReportChanging(value);
+					this.SendPropertyChanging();
+					this._RemittanceReport = value;
+					this.SendPropertyChanged("RemittanceReport");
+					this.OnRemittanceReportChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventoryReport", DbType="Bit NOT NULL")]
+		public bool InventoryReport
+		{
+			get
+			{
+				return this._InventoryReport;
+			}
+			set
+			{
+				if ((this._InventoryReport != value))
+				{
+					this.OnInventoryReportChanging(value);
+					this.SendPropertyChanging();
+					this._InventoryReport = value;
+					this.SendPropertyChanged("InventoryReport");
+					this.OnInventoryReportChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockCount", DbType="Bit NOT NULL")]
+		public bool StockCount
+		{
+			get
+			{
+				return this._StockCount;
+			}
+			set
+			{
+				if ((this._StockCount != value))
+				{
+					this.OnStockCountChanging(value);
+					this.SendPropertyChanging();
+					this._StockCount = value;
+					this.SendPropertyChanged("StockCount");
+					this.OnStockCountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSReport", DbType="Bit NOT NULL")]
+		public bool POSReport
+		{
+			get
+			{
+				return this._POSReport;
+			}
+			set
+			{
+				if ((this._POSReport != value))
+				{
+					this.OnPOSReportChanging(value);
+					this.SendPropertyChanging();
+					this._POSReport = value;
+					this.SendPropertyChanged("POSReport");
+					this.OnPOSReportChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Settings", DbType="Bit NOT NULL")]
+		public bool Settings
+		{
+			get
+			{
+				return this._Settings;
+			}
+			set
+			{
+				if ((this._Settings != value))
+				{
+					this.OnSettingsChanging(value);
+					this.SendPropertyChanging();
+					this._Settings = value;
+					this.SendPropertyChanged("Settings");
+					this.OnSettingsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SystemTables", DbType="Bit NOT NULL")]
+		public bool SystemTables
+		{
+			get
+			{
+				return this._SystemTables;
+			}
+			set
+			{
+				if ((this._SystemTables != value))
+				{
+					this.OnSystemTablesChanging(value);
+					this.SendPropertyChanging();
+					this._SystemTables = value;
+					this.SendPropertyChanged("SystemTables");
+					this.OnSystemTablesChanged();
 				}
 			}
 		}
@@ -23024,9 +23373,9 @@ namespace EasyPOS.Data
 		
 		private string _Preparation;
 		
-		private string _TableCode;
-		
 		private int _TableId;
+		
+		private string _TableCode;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -23086,10 +23435,10 @@ namespace EasyPOS.Data
     partial void OnItemKitchenChanged();
     partial void OnPreparationChanging(string value);
     partial void OnPreparationChanged();
-    partial void OnTableCodeChanging(string value);
-    partial void OnTableCodeChanged();
     partial void OnTableIdChanging(int value);
     partial void OnTableIdChanged();
+    partial void OnTableCodeChanging(string value);
+    partial void OnTableCodeChanged();
     #endregion
 		
 		public TrnSalesLineDeleted()
@@ -23637,26 +23986,6 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableCode", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string TableCode
-		{
-			get
-			{
-				return this._TableCode;
-			}
-			set
-			{
-				if ((this._TableCode != value))
-				{
-					this.OnTableCodeChanging(value);
-					this.SendPropertyChanging();
-					this._TableCode = value;
-					this.SendPropertyChanged("TableCode");
-					this.OnTableCodeChanged();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableId", DbType="Int NOT NULL")]
 		public int TableId
 		{
@@ -23673,6 +24002,26 @@ namespace EasyPOS.Data
 					this._TableId = value;
 					this.SendPropertyChanged("TableId");
 					this.OnTableIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TableCode", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string TableCode
+		{
+			get
+			{
+				return this._TableCode;
+			}
+			set
+			{
+				if ((this._TableCode != value))
+				{
+					this.OnTableCodeChanging(value);
+					this.SendPropertyChanging();
+					this._TableCode = value;
+					this.SendPropertyChanged("TableCode");
+					this.OnTableCodeChanged();
 				}
 			}
 		}
@@ -26128,9 +26477,9 @@ namespace EasyPOS.Data
 		
 		private System.DateTime _UpdateDateTime;
 		
-		private EntitySet<TrnStockOutLine> _TrnStockOutLines;
-		
 		private EntitySet<TrnJournal> _TrnJournals;
+		
+		private EntitySet<TrnStockOutLine> _TrnStockOutLines;
 		
 		private EntityRef<MstAccount> _MstAccount;
 		
@@ -26184,8 +26533,8 @@ namespace EasyPOS.Data
 		
 		public TrnStockOut()
 		{
-			this._TrnStockOutLines = new EntitySet<TrnStockOutLine>(new Action<TrnStockOutLine>(this.attach_TrnStockOutLines), new Action<TrnStockOutLine>(this.detach_TrnStockOutLines));
 			this._TrnJournals = new EntitySet<TrnJournal>(new Action<TrnJournal>(this.attach_TrnJournals), new Action<TrnJournal>(this.detach_TrnJournals));
+			this._TrnStockOutLines = new EntitySet<TrnStockOutLine>(new Action<TrnStockOutLine>(this.attach_TrnStockOutLines), new Action<TrnStockOutLine>(this.detach_TrnStockOutLines));
 			this._MstAccount = default(EntityRef<MstAccount>);
 			this._MstPeriod = default(EntityRef<MstPeriod>);
 			this._MstUser = default(EntityRef<MstUser>);
@@ -26524,19 +26873,6 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnStockOut_TrnStockOutLine", Storage="_TrnStockOutLines", ThisKey="Id", OtherKey="StockOutId")]
-		public EntitySet<TrnStockOutLine> TrnStockOutLines
-		{
-			get
-			{
-				return this._TrnStockOutLines;
-			}
-			set
-			{
-				this._TrnStockOutLines.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnStockOut_TrnJournal", Storage="_TrnJournals", ThisKey="Id", OtherKey="StockOutId")]
 		public EntitySet<TrnJournal> TrnJournals
 		{
@@ -26547,6 +26883,19 @@ namespace EasyPOS.Data
 			set
 			{
 				this._TrnJournals.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnStockOut_TrnStockOutLine", Storage="_TrnStockOutLines", ThisKey="Id", OtherKey="StockOutId")]
+		public EntitySet<TrnStockOutLine> TrnStockOutLines
+		{
+			get
+			{
+				return this._TrnStockOutLines;
+			}
+			set
+			{
+				this._TrnStockOutLines.Assign(value);
 			}
 		}
 		
@@ -26808,18 +27157,6 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		private void attach_TrnStockOutLines(TrnStockOutLine entity)
-		{
-			this.SendPropertyChanging();
-			entity.TrnStockOut = this;
-		}
-		
-		private void detach_TrnStockOutLines(TrnStockOutLine entity)
-		{
-			this.SendPropertyChanging();
-			entity.TrnStockOut = null;
-		}
-		
 		private void attach_TrnJournals(TrnJournal entity)
 		{
 			this.SendPropertyChanging();
@@ -26831,47 +27168,49 @@ namespace EasyPOS.Data
 			this.SendPropertyChanging();
 			entity.TrnStockOut = null;
 		}
+		
+		private void attach_TrnStockOutLines(TrnStockOutLine entity)
+		{
+			this.SendPropertyChanging();
+			entity.TrnStockOut = this;
+		}
+		
+		private void detach_TrnStockOutLines(TrnStockOutLine entity)
+		{
+			this.SendPropertyChanging();
+			entity.TrnStockOut = null;
+		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.SysMenuForm")]
-	public partial class SysMenuForm : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrnStockOutLine")]
+	public partial class TrnStockOutLine : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _Id;
 		
-		private bool _SideBarMenu;
+		private int _StockOutId;
 		
-		private bool _Item;
+		private int _ItemId;
 		
-		private bool _Discounting;
+		private int _UnitId;
 		
-		private bool _Customer;
+		private decimal _Quantity;
 		
-		private bool _UserAccount;
+		private decimal _Cost;
 		
-		private bool _POS;
+		private decimal _Amount;
 		
-		private bool _CashInOut;
+		private int _AssetAccountId;
 		
-		private bool _StockIn;
+		private EntityRef<MstAccount> _MstAccount;
 		
-		private bool _StockOut;
+		private EntityRef<MstItem> _MstItem;
 		
-		private bool _SalesReport;
+		private EntityRef<MstUnit> _MstUnit;
 		
-		private bool _RemittanceReport;
-		
-		private bool _InventoryReport;
-		
-		private bool _StockCount;
-		
-		private bool _POSReport;
-		
-		private bool _Settings;
-		
-		private bool _SystemTables;
+		private EntityRef<TrnStockOut> _TrnStockOut;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -26879,42 +27218,28 @@ namespace EasyPOS.Data
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OnSideBarMenuChanging(bool value);
-    partial void OnSideBarMenuChanged();
-    partial void OnItemChanging(bool value);
-    partial void OnItemChanged();
-    partial void OnDiscountingChanging(bool value);
-    partial void OnDiscountingChanged();
-    partial void OnCustomerChanging(bool value);
-    partial void OnCustomerChanged();
-    partial void OnUserAccountChanging(bool value);
-    partial void OnUserAccountChanged();
-    partial void OnPOSChanging(bool value);
-    partial void OnPOSChanged();
-    partial void OnCashInOutChanging(bool value);
-    partial void OnCashInOutChanged();
-    partial void OnStockInChanging(bool value);
-    partial void OnStockInChanged();
-    partial void OnStockOutChanging(bool value);
-    partial void OnStockOutChanged();
-    partial void OnSalesReportChanging(bool value);
-    partial void OnSalesReportChanged();
-    partial void OnRemittanceReportChanging(bool value);
-    partial void OnRemittanceReportChanged();
-    partial void OnInventoryReportChanging(bool value);
-    partial void OnInventoryReportChanged();
-    partial void OnStockCountChanging(bool value);
-    partial void OnStockCountChanged();
-    partial void OnPOSReportChanging(bool value);
-    partial void OnPOSReportChanged();
-    partial void OnSettingsChanging(bool value);
-    partial void OnSettingsChanged();
-    partial void OnSystemTablesChanging(bool value);
-    partial void OnSystemTablesChanged();
+    partial void OnStockOutIdChanging(int value);
+    partial void OnStockOutIdChanged();
+    partial void OnItemIdChanging(int value);
+    partial void OnItemIdChanged();
+    partial void OnUnitIdChanging(int value);
+    partial void OnUnitIdChanged();
+    partial void OnQuantityChanging(decimal value);
+    partial void OnQuantityChanged();
+    partial void OnCostChanging(decimal value);
+    partial void OnCostChanged();
+    partial void OnAmountChanging(decimal value);
+    partial void OnAmountChanged();
+    partial void OnAssetAccountIdChanging(int value);
+    partial void OnAssetAccountIdChanged();
     #endregion
 		
-		public SysMenuForm()
+		public TrnStockOutLine()
 		{
+			this._MstAccount = default(EntityRef<MstAccount>);
+			this._MstItem = default(EntityRef<MstItem>);
+			this._MstUnit = default(EntityRef<MstUnit>);
+			this._TrnStockOut = default(EntityRef<TrnStockOut>);
 			OnCreated();
 		}
 		
@@ -26938,322 +27263,294 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SideBarMenu", DbType="Bit NOT NULL")]
-		public bool SideBarMenu
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockOutId", DbType="Int NOT NULL")]
+		public int StockOutId
 		{
 			get
 			{
-				return this._SideBarMenu;
+				return this._StockOutId;
 			}
 			set
 			{
-				if ((this._SideBarMenu != value))
+				if ((this._StockOutId != value))
 				{
-					this.OnSideBarMenuChanging(value);
+					if (this._TrnStockOut.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnStockOutIdChanging(value);
 					this.SendPropertyChanging();
-					this._SideBarMenu = value;
-					this.SendPropertyChanged("SideBarMenu");
-					this.OnSideBarMenuChanged();
+					this._StockOutId = value;
+					this.SendPropertyChanged("StockOutId");
+					this.OnStockOutIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Item", DbType="Bit NOT NULL")]
-		public bool Item
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ItemId", DbType="Int NOT NULL")]
+		public int ItemId
 		{
 			get
 			{
-				return this._Item;
+				return this._ItemId;
 			}
 			set
 			{
-				if ((this._Item != value))
+				if ((this._ItemId != value))
 				{
-					this.OnItemChanging(value);
+					if (this._MstItem.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnItemIdChanging(value);
 					this.SendPropertyChanging();
-					this._Item = value;
-					this.SendPropertyChanged("Item");
-					this.OnItemChanged();
+					this._ItemId = value;
+					this.SendPropertyChanged("ItemId");
+					this.OnItemIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Discounting", DbType="Bit NOT NULL")]
-		public bool Discounting
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UnitId", DbType="Int NOT NULL")]
+		public int UnitId
 		{
 			get
 			{
-				return this._Discounting;
+				return this._UnitId;
 			}
 			set
 			{
-				if ((this._Discounting != value))
+				if ((this._UnitId != value))
 				{
-					this.OnDiscountingChanging(value);
+					if (this._MstUnit.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUnitIdChanging(value);
 					this.SendPropertyChanging();
-					this._Discounting = value;
-					this.SendPropertyChanged("Discounting");
-					this.OnDiscountingChanged();
+					this._UnitId = value;
+					this.SendPropertyChanged("UnitId");
+					this.OnUnitIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Customer", DbType="Bit NOT NULL")]
-		public bool Customer
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Quantity", DbType="Decimal(18,5) NOT NULL")]
+		public decimal Quantity
 		{
 			get
 			{
-				return this._Customer;
+				return this._Quantity;
 			}
 			set
 			{
-				if ((this._Customer != value))
+				if ((this._Quantity != value))
 				{
-					this.OnCustomerChanging(value);
+					this.OnQuantityChanging(value);
 					this.SendPropertyChanging();
-					this._Customer = value;
-					this.SendPropertyChanged("Customer");
-					this.OnCustomerChanged();
+					this._Quantity = value;
+					this.SendPropertyChanged("Quantity");
+					this.OnQuantityChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_UserAccount", DbType="Bit NOT NULL")]
-		public bool UserAccount
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cost", DbType="Decimal(18,5) NOT NULL")]
+		public decimal Cost
 		{
 			get
 			{
-				return this._UserAccount;
+				return this._Cost;
 			}
 			set
 			{
-				if ((this._UserAccount != value))
+				if ((this._Cost != value))
 				{
-					this.OnUserAccountChanging(value);
+					this.OnCostChanging(value);
 					this.SendPropertyChanging();
-					this._UserAccount = value;
-					this.SendPropertyChanged("UserAccount");
-					this.OnUserAccountChanged();
+					this._Cost = value;
+					this.SendPropertyChanged("Cost");
+					this.OnCostChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POS", DbType="Bit NOT NULL")]
-		public bool POS
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Amount", DbType="Decimal(18,5) NOT NULL")]
+		public decimal Amount
 		{
 			get
 			{
-				return this._POS;
+				return this._Amount;
 			}
 			set
 			{
-				if ((this._POS != value))
+				if ((this._Amount != value))
 				{
-					this.OnPOSChanging(value);
+					this.OnAmountChanging(value);
 					this.SendPropertyChanging();
-					this._POS = value;
-					this.SendPropertyChanged("POS");
-					this.OnPOSChanged();
+					this._Amount = value;
+					this.SendPropertyChanged("Amount");
+					this.OnAmountChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CashInOut", DbType="Bit NOT NULL")]
-		public bool CashInOut
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AssetAccountId", DbType="Int NOT NULL")]
+		public int AssetAccountId
 		{
 			get
 			{
-				return this._CashInOut;
+				return this._AssetAccountId;
 			}
 			set
 			{
-				if ((this._CashInOut != value))
+				if ((this._AssetAccountId != value))
 				{
-					this.OnCashInOutChanging(value);
+					if (this._MstAccount.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnAssetAccountIdChanging(value);
 					this.SendPropertyChanging();
-					this._CashInOut = value;
-					this.SendPropertyChanged("CashInOut");
-					this.OnCashInOutChanged();
+					this._AssetAccountId = value;
+					this.SendPropertyChanged("AssetAccountId");
+					this.OnAssetAccountIdChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockIn", DbType="Bit NOT NULL")]
-		public bool StockIn
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstAccount_TrnStockOutLine", Storage="_MstAccount", ThisKey="AssetAccountId", OtherKey="Id", IsForeignKey=true)]
+		public MstAccount MstAccount
 		{
 			get
 			{
-				return this._StockIn;
+				return this._MstAccount.Entity;
 			}
 			set
 			{
-				if ((this._StockIn != value))
+				MstAccount previousValue = this._MstAccount.Entity;
+				if (((previousValue != value) 
+							|| (this._MstAccount.HasLoadedOrAssignedValue == false)))
 				{
-					this.OnStockInChanging(value);
 					this.SendPropertyChanging();
-					this._StockIn = value;
-					this.SendPropertyChanged("StockIn");
-					this.OnStockInChanged();
+					if ((previousValue != null))
+					{
+						this._MstAccount.Entity = null;
+						previousValue.TrnStockOutLines.Remove(this);
+					}
+					this._MstAccount.Entity = value;
+					if ((value != null))
+					{
+						value.TrnStockOutLines.Add(this);
+						this._AssetAccountId = value.Id;
+					}
+					else
+					{
+						this._AssetAccountId = default(int);
+					}
+					this.SendPropertyChanged("MstAccount");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockOut", DbType="Bit NOT NULL")]
-		public bool StockOut
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstItem_TrnStockOutLine", Storage="_MstItem", ThisKey="ItemId", OtherKey="Id", IsForeignKey=true)]
+		public MstItem MstItem
 		{
 			get
 			{
-				return this._StockOut;
+				return this._MstItem.Entity;
 			}
 			set
 			{
-				if ((this._StockOut != value))
+				MstItem previousValue = this._MstItem.Entity;
+				if (((previousValue != value) 
+							|| (this._MstItem.HasLoadedOrAssignedValue == false)))
 				{
-					this.OnStockOutChanging(value);
 					this.SendPropertyChanging();
-					this._StockOut = value;
-					this.SendPropertyChanged("StockOut");
-					this.OnStockOutChanged();
+					if ((previousValue != null))
+					{
+						this._MstItem.Entity = null;
+						previousValue.TrnStockOutLines.Remove(this);
+					}
+					this._MstItem.Entity = value;
+					if ((value != null))
+					{
+						value.TrnStockOutLines.Add(this);
+						this._ItemId = value.Id;
+					}
+					else
+					{
+						this._ItemId = default(int);
+					}
+					this.SendPropertyChanged("MstItem");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalesReport", DbType="Bit NOT NULL")]
-		public bool SalesReport
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUnit_TrnStockOutLine", Storage="_MstUnit", ThisKey="UnitId", OtherKey="Id", IsForeignKey=true)]
+		public MstUnit MstUnit
 		{
 			get
 			{
-				return this._SalesReport;
+				return this._MstUnit.Entity;
 			}
 			set
 			{
-				if ((this._SalesReport != value))
+				MstUnit previousValue = this._MstUnit.Entity;
+				if (((previousValue != value) 
+							|| (this._MstUnit.HasLoadedOrAssignedValue == false)))
 				{
-					this.OnSalesReportChanging(value);
 					this.SendPropertyChanging();
-					this._SalesReport = value;
-					this.SendPropertyChanged("SalesReport");
-					this.OnSalesReportChanged();
+					if ((previousValue != null))
+					{
+						this._MstUnit.Entity = null;
+						previousValue.TrnStockOutLines.Remove(this);
+					}
+					this._MstUnit.Entity = value;
+					if ((value != null))
+					{
+						value.TrnStockOutLines.Add(this);
+						this._UnitId = value.Id;
+					}
+					else
+					{
+						this._UnitId = default(int);
+					}
+					this.SendPropertyChanged("MstUnit");
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RemittanceReport", DbType="Bit NOT NULL")]
-		public bool RemittanceReport
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnStockOut_TrnStockOutLine", Storage="_TrnStockOut", ThisKey="StockOutId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
+		public TrnStockOut TrnStockOut
 		{
 			get
 			{
-				return this._RemittanceReport;
+				return this._TrnStockOut.Entity;
 			}
 			set
 			{
-				if ((this._RemittanceReport != value))
+				TrnStockOut previousValue = this._TrnStockOut.Entity;
+				if (((previousValue != value) 
+							|| (this._TrnStockOut.HasLoadedOrAssignedValue == false)))
 				{
-					this.OnRemittanceReportChanging(value);
 					this.SendPropertyChanging();
-					this._RemittanceReport = value;
-					this.SendPropertyChanged("RemittanceReport");
-					this.OnRemittanceReportChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InventoryReport", DbType="Bit NOT NULL")]
-		public bool InventoryReport
-		{
-			get
-			{
-				return this._InventoryReport;
-			}
-			set
-			{
-				if ((this._InventoryReport != value))
-				{
-					this.OnInventoryReportChanging(value);
-					this.SendPropertyChanging();
-					this._InventoryReport = value;
-					this.SendPropertyChanged("InventoryReport");
-					this.OnInventoryReportChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StockCount", DbType="Bit NOT NULL")]
-		public bool StockCount
-		{
-			get
-			{
-				return this._StockCount;
-			}
-			set
-			{
-				if ((this._StockCount != value))
-				{
-					this.OnStockCountChanging(value);
-					this.SendPropertyChanging();
-					this._StockCount = value;
-					this.SendPropertyChanged("StockCount");
-					this.OnStockCountChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POSReport", DbType="Bit NOT NULL")]
-		public bool POSReport
-		{
-			get
-			{
-				return this._POSReport;
-			}
-			set
-			{
-				if ((this._POSReport != value))
-				{
-					this.OnPOSReportChanging(value);
-					this.SendPropertyChanging();
-					this._POSReport = value;
-					this.SendPropertyChanged("POSReport");
-					this.OnPOSReportChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Settings", DbType="Bit NOT NULL")]
-		public bool Settings
-		{
-			get
-			{
-				return this._Settings;
-			}
-			set
-			{
-				if ((this._Settings != value))
-				{
-					this.OnSettingsChanging(value);
-					this.SendPropertyChanging();
-					this._Settings = value;
-					this.SendPropertyChanged("Settings");
-					this.OnSettingsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SystemTables", DbType="Bit NOT NULL")]
-		public bool SystemTables
-		{
-			get
-			{
-				return this._SystemTables;
-			}
-			set
-			{
-				if ((this._SystemTables != value))
-				{
-					this.OnSystemTablesChanging(value);
-					this.SendPropertyChanging();
-					this._SystemTables = value;
-					this.SendPropertyChanged("SystemTables");
-					this.OnSystemTablesChanged();
+					if ((previousValue != null))
+					{
+						this._TrnStockOut.Entity = null;
+						previousValue.TrnStockOutLines.Remove(this);
+					}
+					this._TrnStockOut.Entity = value;
+					if ((value != null))
+					{
+						value.TrnStockOutLines.Add(this);
+						this._StockOutId = value.Id;
+					}
+					else
+					{
+						this._StockOutId = default(int);
+					}
+					this.SendPropertyChanged("TrnStockOut");
 				}
 			}
 		}
@@ -27276,6 +27573,257 @@ namespace EasyPOS.Data
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrnTradeIn")]
+	public partial class TrnTradeIn : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _TradeInNo;
+		
+		private System.DateTime _TradeInDate;
+		
+		private string _Remarks;
+		
+		private int _PreparedById;
+		
+		private bool _IsLocked;
+		
+		private EntitySet<TrnTradeInLine> _TrnTradeInLines;
+		
+		private EntityRef<MstUser> _MstUser;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnTradeInNoChanging(string value);
+    partial void OnTradeInNoChanged();
+    partial void OnTradeInDateChanging(System.DateTime value);
+    partial void OnTradeInDateChanged();
+    partial void OnRemarksChanging(string value);
+    partial void OnRemarksChanged();
+    partial void OnPreparedByIdChanging(int value);
+    partial void OnPreparedByIdChanged();
+    partial void OnIsLockedChanging(bool value);
+    partial void OnIsLockedChanged();
+    #endregion
+		
+		public TrnTradeIn()
+		{
+			this._TrnTradeInLines = new EntitySet<TrnTradeInLine>(new Action<TrnTradeInLine>(this.attach_TrnTradeInLines), new Action<TrnTradeInLine>(this.detach_TrnTradeInLines));
+			this._MstUser = default(EntityRef<MstUser>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TradeInNo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string TradeInNo
+		{
+			get
+			{
+				return this._TradeInNo;
+			}
+			set
+			{
+				if ((this._TradeInNo != value))
+				{
+					this.OnTradeInNoChanging(value);
+					this.SendPropertyChanging();
+					this._TradeInNo = value;
+					this.SendPropertyChanged("TradeInNo");
+					this.OnTradeInNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TradeInDate", DbType="DateTime NOT NULL")]
+		public System.DateTime TradeInDate
+		{
+			get
+			{
+				return this._TradeInDate;
+			}
+			set
+			{
+				if ((this._TradeInDate != value))
+				{
+					this.OnTradeInDateChanging(value);
+					this.SendPropertyChanging();
+					this._TradeInDate = value;
+					this.SendPropertyChanged("TradeInDate");
+					this.OnTradeInDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remarks", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Remarks
+		{
+			get
+			{
+				return this._Remarks;
+			}
+			set
+			{
+				if ((this._Remarks != value))
+				{
+					this.OnRemarksChanging(value);
+					this.SendPropertyChanging();
+					this._Remarks = value;
+					this.SendPropertyChanged("Remarks");
+					this.OnRemarksChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PreparedById", DbType="Int NOT NULL")]
+		public int PreparedById
+		{
+			get
+			{
+				return this._PreparedById;
+			}
+			set
+			{
+				if ((this._PreparedById != value))
+				{
+					if (this._MstUser.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPreparedByIdChanging(value);
+					this.SendPropertyChanging();
+					this._PreparedById = value;
+					this.SendPropertyChanged("PreparedById");
+					this.OnPreparedByIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsLocked", DbType="Bit NOT NULL")]
+		public bool IsLocked
+		{
+			get
+			{
+				return this._IsLocked;
+			}
+			set
+			{
+				if ((this._IsLocked != value))
+				{
+					this.OnIsLockedChanging(value);
+					this.SendPropertyChanging();
+					this._IsLocked = value;
+					this.SendPropertyChanged("IsLocked");
+					this.OnIsLockedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnTradeIn_TrnTradeInLine", Storage="_TrnTradeInLines", ThisKey="Id", OtherKey="TradeInId")]
+		public EntitySet<TrnTradeInLine> TrnTradeInLines
+		{
+			get
+			{
+				return this._TrnTradeInLines;
+			}
+			set
+			{
+				this._TrnTradeInLines.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstUser_TrnTradeIn", Storage="_MstUser", ThisKey="PreparedById", OtherKey="Id", IsForeignKey=true)]
+		public MstUser MstUser
+		{
+			get
+			{
+				return this._MstUser.Entity;
+			}
+			set
+			{
+				MstUser previousValue = this._MstUser.Entity;
+				if (((previousValue != value) 
+							|| (this._MstUser.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._MstUser.Entity = null;
+						previousValue.TrnTradeIns.Remove(this);
+					}
+					this._MstUser.Entity = value;
+					if ((value != null))
+					{
+						value.TrnTradeIns.Add(this);
+						this._PreparedById = value.Id;
+					}
+					else
+					{
+						this._PreparedById = default(int);
+					}
+					this.SendPropertyChanged("MstUser");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TrnTradeInLines(TrnTradeInLine entity)
+		{
+			this.SendPropertyChanging();
+			entity.TrnTradeIn = this;
+		}
+		
+		private void detach_TrnTradeInLines(TrnTradeInLine entity)
+		{
+			this.SendPropertyChanging();
+			entity.TrnTradeIn = null;
 		}
 	}
 }

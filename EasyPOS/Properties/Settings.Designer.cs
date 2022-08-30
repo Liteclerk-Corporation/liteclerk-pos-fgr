@@ -151,5 +151,16 @@ namespace EasyPOS.Properties {
                 return ((string)(this["easypos_mylora_baybayConnectionString1"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(local);Initial Catalog=liteclerk_fgr;Persist Security Info=True;User" +
+            " ID=sa")]
+        public string liteclerk_fgrConnectionString {
+            get {
+                return ((string)(this["liteclerk_fgrConnectionString"]));
+            }
+        }
     }
 }

@@ -145,6 +145,19 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 textBoxSeniorCitizenAge.Text = "0";
             }
+
+            GetTradeInNoList();
+        }
+
+        public void GetTradeInNoList()
+        {
+            Controllers.TrnTradeInController trnTradeInController = new Controllers.TrnTradeInController();
+            if (trnTradeInController.DropdownListTradeInNo().Any())
+            {
+                comboBoxTradeInNumber.DataSource = trnTradeInController.DropdownListTradeInNo();
+                comboBoxTradeInNumber.ValueMember = "Id";
+                comboBoxTradeInNumber.DisplayMember = "TradeInNo";
+            }
         }
 
         private void buttonSave_Click(object sender, EventArgs e)

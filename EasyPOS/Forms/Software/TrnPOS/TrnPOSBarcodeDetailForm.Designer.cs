@@ -148,7 +148,7 @@
             this.buttonOverRide.Location = new System.Drawing.Point(1056, 12);
             this.buttonOverRide.Margin = new System.Windows.Forms.Padding(2);
             this.buttonOverRide.Name = "buttonOverRide";
-            this.buttonOverRide.Size = new System.Drawing.Size(160, 40);
+            this.buttonOverRide.Size = new System.Drawing.Size(160, 46);
             this.buttonOverRide.TabIndex = 10;
             this.buttonOverRide.TabStop = false;
             this.buttonOverRide.Text = "F11 - Override";
@@ -167,7 +167,7 @@
             this.buttonPrint.Location = new System.Drawing.Point(219, 12);
             this.buttonPrint.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPrint.Name = "buttonPrint";
-            this.buttonPrint.Size = new System.Drawing.Size(130, 40);
+            this.buttonPrint.Size = new System.Drawing.Size(130, 46);
             this.buttonPrint.TabIndex = 9;
             this.buttonPrint.TabStop = false;
             this.buttonPrint.Text = "F2 - Print";
@@ -186,7 +186,7 @@
             this.buttonLock.Location = new System.Drawing.Point(354, 12);
             this.buttonLock.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLock.Name = "buttonLock";
-            this.buttonLock.Size = new System.Drawing.Size(125, 40);
+            this.buttonLock.Size = new System.Drawing.Size(125, 46);
             this.buttonLock.TabIndex = 8;
             this.buttonLock.TabStop = false;
             this.buttonLock.Text = "F3 - Lock";
@@ -205,7 +205,7 @@
             this.buttonUnlock.Location = new System.Drawing.Point(484, 12);
             this.buttonUnlock.Margin = new System.Windows.Forms.Padding(2);
             this.buttonUnlock.Name = "buttonUnlock";
-            this.buttonUnlock.Size = new System.Drawing.Size(136, 40);
+            this.buttonUnlock.Size = new System.Drawing.Size(136, 46);
             this.buttonUnlock.TabIndex = 7;
             this.buttonUnlock.TabStop = false;
             this.buttonUnlock.Text = "F4 - Unlock";
@@ -224,7 +224,7 @@
             this.buttonReturn.Location = new System.Drawing.Point(625, 12);
             this.buttonReturn.Margin = new System.Windows.Forms.Padding(2);
             this.buttonReturn.Name = "buttonReturn";
-            this.buttonReturn.Size = new System.Drawing.Size(135, 40);
+            this.buttonReturn.Size = new System.Drawing.Size(135, 46);
             this.buttonReturn.TabIndex = 5;
             this.buttonReturn.TabStop = false;
             this.buttonReturn.Text = "F5 - Return";
@@ -238,15 +238,15 @@
             this.buttonDiscount.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
             this.buttonDiscount.FlatAppearance.BorderSize = 0;
             this.buttonDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDiscount.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDiscount.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDiscount.ForeColor = System.Drawing.Color.White;
             this.buttonDiscount.Location = new System.Drawing.Point(765, 12);
             this.buttonDiscount.Margin = new System.Windows.Forms.Padding(2);
             this.buttonDiscount.Name = "buttonDiscount";
-            this.buttonDiscount.Size = new System.Drawing.Size(145, 40);
+            this.buttonDiscount.Size = new System.Drawing.Size(145, 46);
             this.buttonDiscount.TabIndex = 4;
             this.buttonDiscount.TabStop = false;
-            this.buttonDiscount.Text = "F6 - Discount";
+            this.buttonDiscount.Text = "F6 - Discount / Trade-In";
             this.buttonDiscount.UseVisualStyleBackColor = false;
             this.buttonDiscount.Click += new System.EventHandler(this.buttonDiscount_Click);
             // 
@@ -284,7 +284,7 @@
             this.buttonClose.Location = new System.Drawing.Point(1221, 12);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(136, 40);
+            this.buttonClose.Size = new System.Drawing.Size(136, 46);
             this.buttonClose.TabIndex = 2;
             this.buttonClose.TabStop = false;
             this.buttonClose.Text = "Esc - Close";
@@ -303,7 +303,7 @@
             this.buttonTender.Location = new System.Drawing.Point(915, 12);
             this.buttonTender.Margin = new System.Windows.Forms.Padding(2);
             this.buttonTender.Name = "buttonTender";
-            this.buttonTender.Size = new System.Drawing.Size(136, 40);
+            this.buttonTender.Size = new System.Drawing.Size(136, 46);
             this.buttonTender.TabIndex = 2;
             this.buttonTender.TabStop = false;
             this.buttonTender.Text = "F7 - Tender";
