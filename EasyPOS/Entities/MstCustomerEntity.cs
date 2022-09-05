@@ -40,5 +40,7 @@ namespace EasyPOS.Entities
         public Decimal? TotalClaimRewards { get; set; }
         public Decimal LoadAmount { get; set; }
         public String PriceLevel { get; set; }
+        public String VehiclePlateNumber { get; set; }
+        public String VehicleType { get; set; }
     }
 }

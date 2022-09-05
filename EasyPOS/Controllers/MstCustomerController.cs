@@ -48,7 +48,9 @@ namespace EasyPOS.Controllers
                                 CustomerCode = d.CustomerCode,
                                 BusinessStyle = d.BusinessStyle,
                                 LoadAmount = d.LoadAmount,
-                                PriceLevel = d.PriceLevel
+                                PriceLevel = d.PriceLevel,
+                                VehiclePlateNumber = d.VehiclePlateNumber,
+                                VehicleType = d.VehicleType
                             };
 
             return customers.OrderBy(d => d.Customer).ToList();
@@ -89,7 +91,9 @@ namespace EasyPOS.Controllers
                                CustomerCode = d.CustomerCode,
                                BusinessStyle = d.BusinessStyle,
                                LoadAmount = d.LoadAmount,
-                               PriceLevel = d.PriceLevel
+                               PriceLevel = d.PriceLevel,
+                               VehiclePlateNumber = d.VehiclePlateNumber,
+                               VehicleType = d.VehicleType
                            };
 
             return customer.FirstOrDefault();
@@ -127,7 +131,9 @@ namespace EasyPOS.Controllers
                                CustomerCode = d.CustomerCode,
                                BusinessStyle = d.BusinessStyle,
                                LoadAmount = d.LoadAmount,
-                               PriceLevel = d.PriceLevel
+                               PriceLevel = d.PriceLevel,
+                               VehiclePlateNumber = d.VehiclePlateNumber,
+                               VehicleType = d.VehicleType
                            };
 
             return customer.FirstOrDefault();
@@ -196,7 +202,9 @@ namespace EasyPOS.Controllers
                     CustomerCode = null,
                     BusinessStyle = "",
                     LoadAmount = 0,
-                    PriceLevel = "Retail Price"
+                    PriceLevel = "Retail Price",
+                    VehiclePlateNumber = "NA",
+                    VehicleType = "NA"
                 };
 
                 db.MstCustomers.InsertOnSubmit(newCustomer);
@@ -284,6 +292,8 @@ namespace EasyPOS.Controllers
                     lockCustomer.CustomerCode = objCustomer.CustomerCode;
                     lockCustomer.BusinessStyle = objCustomer.BusinessStyle;
                     lockCustomer.PriceLevel = objCustomer.PriceLevel;
+                    lockCustomer.VehiclePlateNumber = objCustomer.VehiclePlateNumber;
+                    lockCustomer.VehicleType = objCustomer.VehicleType;
                     db.SubmitChanges();
 
                     String newObject = Modules.SysAuditTrailModule.GetObjectString(customer.FirstOrDefault());
@@ -556,6 +566,8 @@ namespace EasyPOS.Controllers
                     saveCustomer.CustomerCode = objCustomer.CustomerCode;
                     saveCustomer.BusinessStyle = objCustomer.BusinessStyle;
                     saveCustomer.PriceLevel = objCustomer.PriceLevel;
+                    saveCustomer.VehiclePlateNumber = objCustomer.VehiclePlateNumber;
+                    saveCustomer.VehicleType = objCustomer.VehicleType;
                     db.SubmitChanges();
 
                     String newObject = Modules.SysAuditTrailModule.GetObjectString(customer.FirstOrDefault());

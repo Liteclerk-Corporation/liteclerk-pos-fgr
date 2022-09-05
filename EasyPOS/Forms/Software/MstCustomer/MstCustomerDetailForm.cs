@@ -169,6 +169,8 @@ namespace EasyPOS.Forms.Software.MstCustomer
             textBoxBusinessStyle.Text = mstCustomerEntity.BusinessStyle;
             textBoxLoadBalance.Text = mstCustomerEntity.LoadAmount.ToString("#,##0.00");
             comboBoxPriceLevel.Text = mstCustomerEntity.PriceLevel;
+            textBoxVehiclePlateNo.Text = mstCustomerEntity.VehiclePlateNumber;
+            textBoxVehicleType.Text = mstCustomerEntity.VehicleType;
 
             CreateCustomerLoadListDataGridView();
         }
@@ -209,6 +211,8 @@ namespace EasyPOS.Forms.Software.MstCustomer
             textBoxCustomerCode.Focus();
             textBoxBusinessStyle.Enabled = !isLocked;
             comboBoxPriceLevel.Enabled = !isLocked;
+            textBoxVehiclePlateNo.Enabled = !isLocked;
+            textBoxVehicleType.Enabled = !isLocked;
         }
 
         private void buttonLock_Click(object sender, EventArgs e)
@@ -231,7 +235,9 @@ namespace EasyPOS.Forms.Software.MstCustomer
                 AvailableReward = Convert.ToDecimal(textBoxAvailableReward.Text),
                 DefaultPriceDescription = textBoxDefaultPrice.Text,
                 BusinessStyle = textBoxBusinessStyle.Text,
-                PriceLevel = comboBoxPriceLevel.SelectedValue.ToString()
+                PriceLevel = comboBoxPriceLevel.SelectedValue.ToString(),
+                VehiclePlateNumber = textBoxVehiclePlateNo.Text,
+                VehicleType = textBoxVehicleType.Text
             };
 
             String[] lockCustomer = mstCustomerController.LockCustomer(mstCustomerEntity.Id, newCustomerEntity);

@@ -523,7 +523,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                         String soldToBusinessStyleLabel = "Business Style: ________________________";
                         graphics.DrawString(soldToBusinessStyleLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                        y += graphics.MeasureString(soldToTINLabel, fontArial8Regular).Height;
+                        y += graphics.MeasureString(soldToBusinessStyleLabel, fontArial8Regular).Height;
+
+                        String vehicleNoLabel = "Vehicle Plate No.: ________________________";
+                        graphics.DrawString(vehicleNoLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                        y += graphics.MeasureString(vehicleNoLabel, fontArial8Regular).Height;
+
+                        String vehicleTypeLabel = "Vehicle Type: ________________________";
+                        graphics.DrawString(vehicleTypeLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                        y += graphics.MeasureString(vehicleTypeLabel, fontArial8Regular).Height;
                     }
                     else
                     {
@@ -531,6 +539,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         String customerAddress = sales.FirstOrDefault().MstCustomer.Address;
                         String customerTIN = sales.FirstOrDefault().MstCustomer.TIN;
                         String customerBusinessStyle = sales.FirstOrDefault().MstCustomer.BusinessStyle;
+                        String customerVehicleNo = sales.FirstOrDefault().MstCustomer.VehiclePlateNumber;
+                        String customerVehicleType = sales.FirstOrDefault().MstCustomer.VehicleType;
 
                         String soldToLabel = "\nCustomer Name: " + customerName;
                         graphics.DrawString(soldToLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
@@ -547,6 +557,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         String soldToBusinessStyleLabel = "Business Style: " + customerBusinessStyle;
                         graphics.DrawString(soldToBusinessStyleLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                         y += graphics.MeasureString(soldToTINLabel, fontArial8Regular).Height;
+
+                        String vehicleNoLabel = "Vehicle Plate No.: " + customerVehicleNo;
+                        graphics.DrawString(vehicleNoLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                        y += graphics.MeasureString(vehicleNoLabel, fontArial8Regular).Height;
+
+                        String vehicleTypeLabel = "Vehicle Type: " + customerVehicleType;
+                        graphics.DrawString(vehicleTypeLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                        y += graphics.MeasureString(vehicleTypeLabel, fontArial8Regular).Height;
                     }
 
                     // ========
@@ -887,7 +905,15 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                         String soldToBusinessStyleLabel = "Business Style: ________________________";
                         graphics.DrawString(soldToBusinessStyleLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                        y += graphics.MeasureString(soldToTINLabel, fontArial8Regular).Height;
+                        y += graphics.MeasureString(soldToBusinessStyleLabel, fontArial8Regular).Height;
+
+                        String vehicleNoLabel = "Vehicle Plate No.: ________________________";
+                        graphics.DrawString(vehicleNoLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                        y += graphics.MeasureString(vehicleNoLabel, fontArial8Regular).Height;
+
+                        String vehicleTypeLabel = "Vehicle Type: ________________________";
+                        graphics.DrawString(vehicleTypeLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                        y += graphics.MeasureString(vehicleTypeLabel, fontArial8Regular).Height;
                     }
                     else
                     {
@@ -895,6 +921,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         String customerAddress = sales.FirstOrDefault().MstCustomer.Address;
                         String customerTIN = sales.FirstOrDefault().MstCustomer.TIN;
                         String customerBusinessStyle = sales.FirstOrDefault().MstCustomer.BusinessStyle;
+                        String customerVehicleNo = sales.FirstOrDefault().MstCustomer.VehiclePlateNumber;
+                        String customerVehicleType = sales.FirstOrDefault().MstCustomer.VehicleType;
 
                         String soldToLabel = "\nCustomer Name: " + customerName;
                         graphics.DrawString(soldToLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
@@ -911,6 +939,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         String soldToBusinessStyleLabel = "Business Style: " + customerBusinessStyle;
                         graphics.DrawString(soldToBusinessStyleLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
                         y += graphics.MeasureString(soldToTINLabel, fontArial8Regular).Height;
+
+                        String vehicleNoLabel = "Vehicle Plate No.: " + customerVehicleNo;
+                        graphics.DrawString(vehicleNoLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                        y += graphics.MeasureString(vehicleNoLabel, fontArial8Regular).Height;
+
+                        String vehicleTypeLabel = "Vehicle Type: " + customerVehicleType;
+                        graphics.DrawString(vehicleTypeLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                        y += graphics.MeasureString(vehicleTypeLabel, fontArial8Regular).Height;
                     }
 
                     // ========

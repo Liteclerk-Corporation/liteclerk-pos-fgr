@@ -15,6 +15,8 @@ namespace EasyPOS.Entities
         public String ColumnCustomerListCustomer { get; set; }
         public String ColumnCustomerListContactNumber { get; set; }
         public String ColumnCustomerListAddress { get; set; }
+        public String ColumnCustomerListVehiclePlateNo { get; set; }
+        public String ColumnCustomerListVehicleType { get; set; }
         public Boolean ColumnCustomerListIsLocked { get; set; }
     }
 }

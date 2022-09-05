@@ -195,6 +195,8 @@ namespace EasyPOS.Forms.Software.MstCustomer
                                 ColumnCustomerListCustomer = d.Customer,
                                 ColumnCustomerListContactNumber = d.ContactNumber,
                                 ColumnCustomerListAddress = d.Address,
+                                ColumnCustomerListVehiclePlateNo = d.VehiclePlateNumber,
+                                ColumnCustomerListVehicleType = d.VehicleType,
                                 ColumnCustomerListIsLocked = d.IsLocked
                             };
 
@@ -331,7 +333,7 @@ namespace EasyPOS.Forms.Software.MstCustomer
 
             if (e.RowIndex > -1 && dataGridViewCustomerList.CurrentCell.ColumnIndex == dataGridViewCustomerList.Columns["ColumnCustomerListButtonDelete"].Index)
             {
-                Boolean isLocked = Convert.ToBoolean(dataGridViewCustomerList.Rows[e.RowIndex].Cells[7].Value);
+                Boolean isLocked = Convert.ToBoolean(dataGridViewCustomerList.Rows[e.RowIndex].Cells[9].Value);
 
                 if (isLocked == true)
                 {

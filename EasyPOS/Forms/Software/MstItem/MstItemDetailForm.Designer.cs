@@ -205,9 +205,9 @@
             this.label3.Location = new System.Drawing.Point(9, 49);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(122, 23);
+            this.label3.Size = new System.Drawing.Size(128, 23);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Barcode (SKU):";
+            this.label3.Text = "Warranty Code:";
             // 
             // panel2
             // 
@@ -544,9 +544,9 @@
             this.label6.Location = new System.Drawing.Point(9, 234);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(83, 23);
+            this.label6.Size = new System.Drawing.Size(119, 23);
             this.label6.TabIndex = 7;
-            this.label6.Text = "Category:";
+            this.label6.Text = "Product Code:";
             // 
             // label7
             // 
