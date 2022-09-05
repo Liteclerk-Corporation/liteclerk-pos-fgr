@@ -1612,6 +1612,7 @@ namespace EasyPOS.Controllers
 
                             var tradeIn = from d in db.TrnTradeIns
                                           where d.IsLocked == true
+                                          && d.Id == objSalesEntity.TradeInId
                                           select d;
 
                             if (tradeIn.Any())
@@ -1622,12 +1623,12 @@ namespace EasyPOS.Controllers
                                 updateTradeIn.SalesId = salesId;
 
                                 var tradeInAmount = from d in db.TrnTradeInLines
-                                                    where d.TradeInId == d.TrnTradeIn.Id
+                                                    where d.TradeInId == tradeIn.FirstOrDefault().Id
                                                     select d;
 
                                 if (tradeInAmount.Any())
                                 {
-                                    tradeAmount = tradeInAmount.FirstOrDefault().Amount;
+                                    tradeAmount = tradeInAmount.Sum(a => a.Amount);
 
                                     salesLine.Amount = amount - tradeAmount;
                                 }

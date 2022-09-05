@@ -16,15 +16,19 @@ namespace EasyPOS.Controllers
         // ======================
         // Trade-In Dropdown List
         // ======================
-        public List<Entities.TrnTradeInLineEntity> DropdownListTradeInLineAmount()
+        public List<Entities.TrnTradeInLineEntity> DropdownListTradeInLineAmount(Int32 tradeInId)
         {
             var tradeInLineAmount = from d in db.TrnTradeInLines
-                                    where d.TradeInId == d.TrnTradeIn.Id
-                            select new Entities.TrnTradeInLineEntity
-                            {
-                                Id = d.Id,
-                                Amount = d.Amount
-                            };
+                                    where d.TradeInId == tradeInId
+                                    group d by new
+                                    {
+                                        d.TradeInId
+                                    }into g
+                                    select new Entities.TrnTradeInLineEntity
+                                    {
+                                        TradeInId = g.Key.TradeInId,
+                                        Amount = g.Sum(a => a.Amount)
+                                    };
 
             return tradeInLineAmount.ToList();
         }

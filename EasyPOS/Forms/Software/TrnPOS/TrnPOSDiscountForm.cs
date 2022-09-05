@@ -156,7 +156,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             trnTradeList.Add(new Entities.TrnTradeInEntity
             {
                 Id = 0,
-                TradeInNo = "NA"
+                TradeInNo = "None"
             });
             if (trnTradeInController.DropdownListTradeInNo().Any())
             {
@@ -174,23 +174,19 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 comboBoxTradeInNumber.DisplayMember = "TradeInNo";
             }
 
-            GetTradeInLineAmountList();
-        }
+            comboBoxTradeInNumber.SelectedValue = trnTradeInController.SearchTradeInNo(listSalesLines.FirstOrDefault().SalesId);
 
-        public void GetTradeInLineAmountList()
-        {
             Controllers.TrnTradeInLineController trnTradeInLineController = new Controllers.TrnTradeInLineController();
 
-            if (comboBoxTradeInNumber.Text != "NA")
+            if (Convert.ToInt32(comboBoxTradeInNumber.SelectedValue) == 0)
             {
                 textBoxTradeInAmount.Text = "0.00";
             }
-            else /*if (comboBoxTradeInNumber.Text != "NA")*/
+            else
             {
-                textBoxTradeInAmount.Text = trnTradeInLineController.DropdownListTradeInLineAmount().FirstOrDefault().Amount.ToString("#,##0.00");
+                textBoxTradeInAmount.Text = trnTradeInLineController.DropdownListTradeInLineAmount(Convert.ToInt32(comboBoxTradeInNumber.SelectedValue)).FirstOrDefault().Amount.ToString("#,##0.00");
             }
         }
-
         private void buttonSave_Click(object sender, EventArgs e)
         {
             Int32 discountId = Convert.ToInt32(comboBoxDiscount.SelectedValue);
@@ -584,13 +580,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             Controllers.TrnTradeInLineController trnTradeInLineController = new Controllers.TrnTradeInLineController();
 
-            if (comboBoxTradeInNumber.Text != "NA")
+            if (Convert.ToInt32(comboBoxTradeInNumber.SelectedValue) == 0)
             {
                 textBoxTradeInAmount.Text = "0.00";
             }
-            else /*if (comboBoxTradeInNumber.Text != "NA")*/
+            else
             {
-                textBoxTradeInAmount.Text = trnTradeInLineController.DropdownListTradeInLineAmount().FirstOrDefault().Amount.ToString("#,##0.00");
+                textBoxTradeInAmount.Text = trnTradeInLineController.DropdownListTradeInLineAmount(Convert.ToInt32(comboBoxTradeInNumber.SelectedValue)).FirstOrDefault().Amount.ToString("#,##0.00");
             }
         }
     }

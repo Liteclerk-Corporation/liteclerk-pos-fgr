@@ -778,6 +778,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                     salesAmount += price * quantity;
 
+                    Int32 salesId = Convert.ToInt32(row.Cells[3].Value);
                     Int32 ItemId = Convert.ToInt32(row.Cells[4].Value);
                     String ItemDescription = row.Cells[5].Value.ToString();
                     Decimal Price = Convert.ToDecimal(row.Cells[10].Value);
@@ -787,7 +788,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     listSalesLine.Add(new Entities.TrnSalesLineEntity()
                     {
                         Id = 0,
-                        SalesId = 0,
+                        SalesId = salesId,
                         ItemId = ItemId,
                         ItemDescription = ItemDescription,
                         UnitId = 0,
@@ -823,13 +824,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     var groupedSalesLine = from d in listSalesLine.ToList()
                                            group d by new
                                            {
+                                               d.SalesId,
                                                d.ItemId,
                                                d.ItemDescription
                                            } into g
                                            select new Entities.TrnSalesLineEntity()
                                            {
                                                Id = 0,
-                                               SalesId = 0,
+                                               SalesId = g.Key.SalesId,
                                                ItemId = g.Key.ItemId,
                                                ItemDescription = g.Key.ItemDescription,
                                                UnitId = 0,

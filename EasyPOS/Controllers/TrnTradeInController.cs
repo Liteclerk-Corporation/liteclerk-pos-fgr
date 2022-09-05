@@ -29,5 +29,16 @@ namespace EasyPOS.Controllers
 
             return tradeInNo.ToList();
         }
+        // ======================
+        // Trade-In Dropdown List
+        // ======================
+        public Int32 SearchTradeInNo(Int32 salesId)
+        {
+            var tradeIn = from d in db.TrnSales
+                          where d.Id == salesId
+                          select d;
+
+            return tradeIn.FirstOrDefault().TradeInId;
+        }
     }
 }

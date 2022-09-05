@@ -15,5 +15,6 @@ namespace EasyPOS.Entities
         public Int32 PreparedById { get; set; }
         public Boolean Islocked { get; set; }
         public Int32 SalesId { get; set; }
+        public Decimal Amount { get; set; }
     }
 }
