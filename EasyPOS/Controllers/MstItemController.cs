@@ -280,6 +280,8 @@ namespace EasyPOS.Controllers
                            Id = d.Id,
                            ItemCode = d.ItemCode,
                            BarCode = d.BarCode,
+                           Size = d.Size,
+                           Brand = d.Brand,
                            ItemDescription = d.ItemDescription,
                            Alias = d.Alias,
                            GenericName = d.GenericName,
@@ -549,6 +551,8 @@ namespace EasyPOS.Controllers
                 {
                     ItemCode = itemCode,
                     BarCode = "NA",
+                    Size = "NA",
+                    Brand = "NA",
                     ItemDescription = "NA",
                     Alias = "NA",
                     GenericName = "NA",
@@ -629,6 +633,8 @@ namespace EasyPOS.Controllers
                     var lockItem = item.FirstOrDefault();
                     lockItem.ItemCode = objItem.ItemCode;
                     lockItem.BarCode = objItem.BarCode;
+                    lockItem.Size = objItem.Size;
+                    lockItem.Brand = objItem.Brand;
                     lockItem.ItemDescription = objItem.ItemDescription;
                     lockItem.Alias = objItem.Alias;
                     lockItem.GenericName = objItem.GenericName;
@@ -1187,6 +1193,8 @@ namespace EasyPOS.Controllers
                     var saveItem = item.FirstOrDefault();
                     saveItem.ItemCode = objItem.ItemCode;
                     saveItem.BarCode = objItem.BarCode;
+                    saveItem.Size = objItem.Size;
+                    saveItem.Brand = objItem.Brand;
                     saveItem.ItemDescription = objItem.ItemDescription;
                     saveItem.Alias = objItem.Alias;
                     saveItem.GenericName = objItem.GenericName;

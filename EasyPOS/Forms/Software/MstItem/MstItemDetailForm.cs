@@ -246,6 +246,8 @@ namespace EasyPOS.Forms.Software.MstItem
 
             textBoxItemCode.Text = mstItemEntity.ItemCode;
             textBoxBarcode.Text = mstItemEntity.BarCode;
+            textBoxSize.Text = mstItemEntity.Size;
+            textBoxBrand.Text = mstItemEntity.Brand;
             textBoxDescription.Text = mstItemEntity.ItemDescription;
             textBoxAlias.Text = mstItemEntity.Alias;
             comboBoxCategory.Text = mstItemEntity.Category;
@@ -299,8 +301,10 @@ namespace EasyPOS.Forms.Software.MstItem
             }
 
             textBoxBarcode.Enabled = !isLocked;
-            textBoxDescription.Enabled = !isLocked;
-            textBoxAlias.Enabled = !isLocked;
+            textBoxSize.Enabled = !isLocked;
+            textBoxBrand.Enabled = !isLocked;
+            //textBoxDescription.Enabled = !isLocked;
+            //textBoxAlias.Enabled = !isLocked;
             comboBoxCategory.Enabled = !isLocked;
             comboBoxUnit.Enabled = !isLocked;
             comboBoxDefaultSupplier.Enabled = !isLocked;
@@ -324,7 +328,7 @@ namespace EasyPOS.Forms.Software.MstItem
             dateTimePickerExpiryDate.Enabled = !isLocked;
             textBoxLotNumber.Enabled = !isLocked;
             textBoxRemarks.Enabled = !isLocked;
-            textBoxGenericName.Enabled = !isLocked;
+            //textBoxGenericName.Enabled = !isLocked;
             comboBoxSalesVAT.Enabled = !isLocked;
             comboBoxChildItem.Enabled = !isLocked;
             textBoxConversionValue.Enabled = !isLocked;
@@ -376,9 +380,11 @@ namespace EasyPOS.Forms.Software.MstItem
                 {
                     ItemCode = textBoxItemCode.Text,
                     BarCode = textBoxBarcode.Text,
-                    ItemDescription = textBoxDescription.Text,
-                    Alias = textBoxAlias.Text,
-                    GenericName = textBoxGenericName.Text,
+                    Size = textBoxSize.Text,
+                    Brand = textBoxBrand.Text,
+                    ItemDescription = textBoxSize.Text + " " + textBoxBrand.Text,
+                    Alias = textBoxSize.Text + " " + textBoxBrand.Text,
+                    GenericName = textBoxSize.Text + " " + textBoxBrand.Text,
                     Category = comboBoxCategory.Text,
                     OutTaxId = Convert.ToInt32(comboBoxSalesVAT.SelectedValue),
                     UnitId = Convert.ToInt32(comboBoxUnit.SelectedValue),
@@ -412,6 +418,9 @@ namespace EasyPOS.Forms.Software.MstItem
                     UpdateComponents(false);
                     MessageBox.Show(lockItem[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
+                textBoxDescription.Text = newItemEntity.ItemDescription;
+                textBoxAlias.Text = newItemEntity.Alias;
+                textBoxGenericName.Text = newItemEntity.GenericName;
             }
             catch (Exception ex)
             {
@@ -457,9 +466,11 @@ namespace EasyPOS.Forms.Software.MstItem
                     {
                         ItemCode = textBoxItemCode.Text,
                         BarCode = textBoxBarcode.Text,
-                        ItemDescription = textBoxDescription.Text,
-                        Alias = textBoxAlias.Text,
-                        GenericName = textBoxGenericName.Text,
+                        Size = textBoxSize.Text,
+                        Brand = textBoxBrand.Text,
+                        ItemDescription = textBoxSize.Text + " " + textBoxBrand.Text,
+                        Alias = textBoxSize.Text + " " + textBoxBrand.Text,
+                        GenericName = textBoxSize.Text + " " + textBoxBrand.Text,
                         Category = comboBoxCategory.Text,
                         OutTaxId = Convert.ToInt32(comboBoxSalesVAT.SelectedValue),
                         UnitId = Convert.ToInt32(comboBoxUnit.SelectedValue),
