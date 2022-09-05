@@ -23,6 +23,7 @@
       <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
       <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
       <Association Name="TrnTradeIn_TrnTradeInLine" Member="TrnTradeIn" ThisKey="TradeInId" OtherKey="Id" Type="TrnTradeIn" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="TrnTradeIn_TrnTradeInLine1" Member="TrnTradeIn1" ThisKey="TradeInId" OtherKey="Id" Type="TrnTradeIn" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.MstAccount" Member="MstAccounts">
@@ -860,6 +861,8 @@
       <Column Name="OrderChangeAmount" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
       <Column Name="IsDelivery" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="DeliveryType" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="TradeInDiscount" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="TradeInId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="TrnSale_SysSalesLocked" Member="SysSalesLockeds" ThisKey="Id" OtherKey="SalesId" Type="SysSalesLocked" />
       <Association Name="TrnSale_TrnCollection" Member="TrnCollections" ThisKey="Id" OtherKey="SalesId" Type="TrnCollection" />
       <Association Name="TrnSale_TrnCollectionLine" Member="TrnCollectionLines" ThisKey="Id" OtherKey="SalesReturnSalesId" Type="TrnCollectionLine" />
@@ -868,6 +871,7 @@
       <Association Name="TrnSale_TrnJournal" Member="TrnJournals" ThisKey="Id" OtherKey="SalesId" Type="TrnJournal" />
       <Association Name="TrnSale_TrnSalesLine" Member="TrnSalesLines" ThisKey="Id" OtherKey="SalesId" Type="TrnSalesLine" />
       <Association Name="TrnSale_TrnStockIn" Member="TrnStockIns" ThisKey="Id" OtherKey="SalesId" Type="TrnStockIn" />
+      <Association Name="TrnSale_TrnTradeIn" Member="TrnTradeIns" ThisKey="Id" OtherKey="SalesId" Type="TrnTradeIn" />
       <Association Name="MstCustomer_TrnSale" Member="MstCustomer" ThisKey="CustomerId" OtherKey="Id" Type="MstCustomer" IsForeignKey="true" />
       <Association Name="MstPeriod_TrnSale" Member="MstPeriod" ThisKey="PeriodId" OtherKey="Id" Type="MstPeriod" IsForeignKey="true" />
       <Association Name="MstTable_TrnSale" Member="MstTable" ThisKey="TableId" OtherKey="Id" Type="MstTable" IsForeignKey="true" />
@@ -1121,8 +1125,11 @@
       <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
       <Column Name="PreparedById" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="IsLocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="SalesId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Association Name="TrnTradeIn_TrnTradeInLine" Member="TrnTradeInLines" ThisKey="Id" OtherKey="TradeInId" Type="TrnTradeInLine" />
+      <Association Name="TrnTradeIn_TrnTradeInLine1" Member="TrnTradeInLines1" ThisKey="Id" OtherKey="TradeInId" Type="TrnTradeInLine" />
       <Association Name="MstUser_TrnTradeIn" Member="MstUser" ThisKey="PreparedById" OtherKey="Id" Type="MstUser" IsForeignKey="true" />
+      <Association Name="TrnSale_TrnTradeIn" Member="TrnSale" ThisKey="SalesId" OtherKey="Id" Type="TrnSale" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

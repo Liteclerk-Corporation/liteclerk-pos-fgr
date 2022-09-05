@@ -35,6 +35,7 @@
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonSave = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBoxTradeInAmount = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.comboBoxTradeInNumber = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -138,6 +139,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.textBoxTradeInAmount);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.comboBoxTradeInNumber);
             this.panel2.Controls.Add(this.label11);
@@ -167,6 +169,16 @@
             this.panel2.Size = new System.Drawing.Size(712, 466);
             this.panel2.TabIndex = 5;
             // 
+            // textBoxTradeInAmount
+            // 
+            this.textBoxTradeInAmount.Enabled = false;
+            this.textBoxTradeInAmount.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.textBoxTradeInAmount.Location = new System.Drawing.Point(484, 50);
+            this.textBoxTradeInAmount.Name = "textBoxTradeInAmount";
+            this.textBoxTradeInAmount.Size = new System.Drawing.Size(145, 34);
+            this.textBoxTradeInAmount.TabIndex = 55;
+            this.textBoxTradeInAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -187,6 +199,7 @@
             this.comboBoxTradeInNumber.Name = "comboBoxTradeInNumber";
             this.comboBoxTradeInNumber.Size = new System.Drawing.Size(279, 36);
             this.comboBoxTradeInNumber.TabIndex = 53;
+            this.comboBoxTradeInNumber.DropDownClosed += new System.EventHandler(this.comboBoxTradeInNumber_DropDownClosed);
             // 
             // label11
             // 
@@ -468,5 +481,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.ComboBox comboBoxTradeInNumber;
+        private System.Windows.Forms.TextBox textBoxTradeInAmount;
     }
 }

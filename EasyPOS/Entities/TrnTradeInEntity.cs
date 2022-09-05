@@ -14,5 +14,6 @@ namespace EasyPOS.Entities
         public String Remarks { get; set; }
         public Int32 PreparedById { get; set; }
         public Boolean Islocked { get; set; }
+        public Int32 SalesId { get; set; }
     }
 }

@@ -14,12 +14,13 @@ namespace EasyPOS.Controllers
         public Data.easyposdbDataContext db = new Data.easyposdbDataContext(Modules.SysConnectionStringModule.GetConnectionString());
 
         // ======================
-        // Dropdown List Discount
+        // Trade-In Dropdown List
         // ======================
         public List<Entities.TrnTradeInEntity> DropdownListTradeInNo()
         {
             var tradeInNo = from d in db.TrnTradeIns
                             where d.IsLocked == true
+                            && d.TrnSale.IsTendered == false
                             select new Entities.TrnTradeInEntity
                             {
                                 Id = d.Id,

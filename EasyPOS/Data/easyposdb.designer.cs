@@ -1000,6 +1000,8 @@ namespace EasyPOS.Data
 		
 		private EntityRef<TrnTradeIn> _TrnTradeIn;
 		
+		private EntityRef<TrnTradeIn> _TrnTradeIn1;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1019,6 +1021,7 @@ namespace EasyPOS.Data
 		public TrnTradeInLine()
 		{
 			this._TrnTradeIn = default(EntityRef<TrnTradeIn>);
+			this._TrnTradeIn1 = default(EntityRef<TrnTradeIn>);
 			OnCreated();
 		}
 		
@@ -1053,7 +1056,7 @@ namespace EasyPOS.Data
 			{
 				if ((this._TradeInId != value))
 				{
-					if (this._TrnTradeIn.HasLoadedOrAssignedValue)
+					if ((this._TrnTradeIn.HasLoadedOrAssignedValue || this._TrnTradeIn1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -1156,6 +1159,40 @@ namespace EasyPOS.Data
 						this._TradeInId = default(int);
 					}
 					this.SendPropertyChanged("TrnTradeIn");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnTradeIn_TrnTradeInLine1", Storage="_TrnTradeIn1", ThisKey="TradeInId", OtherKey="Id", IsForeignKey=true)]
+		public TrnTradeIn TrnTradeIn1
+		{
+			get
+			{
+				return this._TrnTradeIn1.Entity;
+			}
+			set
+			{
+				TrnTradeIn previousValue = this._TrnTradeIn1.Entity;
+				if (((previousValue != value) 
+							|| (this._TrnTradeIn1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TrnTradeIn1.Entity = null;
+						previousValue.TrnTradeInLines1.Remove(this);
+					}
+					this._TrnTradeIn1.Entity = value;
+					if ((value != null))
+					{
+						value.TrnTradeInLines1.Add(this);
+						this._TradeInId = value.Id;
+					}
+					else
+					{
+						this._TradeInId = default(int);
+					}
+					this.SendPropertyChanged("TrnTradeIn1");
 				}
 			}
 		}
@@ -20040,6 +20077,10 @@ namespace EasyPOS.Data
 		
 		private string _DeliveryType;
 		
+		private decimal _TradeInDiscount;
+		
+		private int _TradeInId;
+		
 		private EntitySet<SysSalesLocked> _SysSalesLockeds;
 		
 		private EntitySet<TrnCollection> _TrnCollections;
@@ -20055,6 +20096,8 @@ namespace EasyPOS.Data
 		private EntitySet<TrnSalesLine> _TrnSalesLines;
 		
 		private EntitySet<TrnStockIn> _TrnStockIns;
+		
+		private EntitySet<TrnTradeIn> _TrnTradeIns;
 		
 		private EntityRef<MstCustomer> _MstCustomer;
 		
@@ -20174,6 +20217,10 @@ namespace EasyPOS.Data
     partial void OnIsDeliveryChanged();
     partial void OnDeliveryTypeChanging(string value);
     partial void OnDeliveryTypeChanged();
+    partial void OnTradeInDiscountChanging(decimal value);
+    partial void OnTradeInDiscountChanged();
+    partial void OnTradeInIdChanging(int value);
+    partial void OnTradeInIdChanged();
     #endregion
 		
 		public TrnSale()
@@ -20186,6 +20233,7 @@ namespace EasyPOS.Data
 			this._TrnJournals = new EntitySet<TrnJournal>(new Action<TrnJournal>(this.attach_TrnJournals), new Action<TrnJournal>(this.detach_TrnJournals));
 			this._TrnSalesLines = new EntitySet<TrnSalesLine>(new Action<TrnSalesLine>(this.attach_TrnSalesLines), new Action<TrnSalesLine>(this.detach_TrnSalesLines));
 			this._TrnStockIns = new EntitySet<TrnStockIn>(new Action<TrnStockIn>(this.attach_TrnStockIns), new Action<TrnStockIn>(this.detach_TrnStockIns));
+			this._TrnTradeIns = new EntitySet<TrnTradeIn>(new Action<TrnTradeIn>(this.attach_TrnTradeIns), new Action<TrnTradeIn>(this.detach_TrnTradeIns));
 			this._MstCustomer = default(EntityRef<MstCustomer>);
 			this._MstPeriod = default(EntityRef<MstPeriod>);
 			this._MstTable = default(EntityRef<MstTable>);
@@ -21149,6 +21197,46 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TradeInDiscount", DbType="Decimal(18,5) NOT NULL")]
+		public decimal TradeInDiscount
+		{
+			get
+			{
+				return this._TradeInDiscount;
+			}
+			set
+			{
+				if ((this._TradeInDiscount != value))
+				{
+					this.OnTradeInDiscountChanging(value);
+					this.SendPropertyChanging();
+					this._TradeInDiscount = value;
+					this.SendPropertyChanged("TradeInDiscount");
+					this.OnTradeInDiscountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TradeInId", DbType="Int NOT NULL")]
+		public int TradeInId
+		{
+			get
+			{
+				return this._TradeInId;
+			}
+			set
+			{
+				if ((this._TradeInId != value))
+				{
+					this.OnTradeInIdChanging(value);
+					this.SendPropertyChanging();
+					this._TradeInId = value;
+					this.SendPropertyChanged("TradeInId");
+					this.OnTradeInIdChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnSale_SysSalesLocked", Storage="_SysSalesLockeds", ThisKey="Id", OtherKey="SalesId")]
 		public EntitySet<SysSalesLocked> SysSalesLockeds
 		{
@@ -21250,6 +21338,19 @@ namespace EasyPOS.Data
 			set
 			{
 				this._TrnStockIns.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnSale_TrnTradeIn", Storage="_TrnTradeIns", ThisKey="Id", OtherKey="SalesId")]
+		public EntitySet<TrnTradeIn> TrnTradeIns
+		{
+			get
+			{
+				return this._TrnTradeIns;
+			}
+			set
+			{
+				this._TrnTradeIns.Assign(value);
 			}
 		}
 		
@@ -21772,6 +21873,18 @@ namespace EasyPOS.Data
 		}
 		
 		private void detach_TrnStockIns(TrnStockIn entity)
+		{
+			this.SendPropertyChanging();
+			entity.TrnSale = null;
+		}
+		
+		private void attach_TrnTradeIns(TrnTradeIn entity)
+		{
+			this.SendPropertyChanging();
+			entity.TrnSale = this;
+		}
+		
+		private void detach_TrnTradeIns(TrnTradeIn entity)
 		{
 			this.SendPropertyChanging();
 			entity.TrnSale = null;
@@ -27594,9 +27707,15 @@ namespace EasyPOS.Data
 		
 		private bool _IsLocked;
 		
+		private int _SalesId;
+		
 		private EntitySet<TrnTradeInLine> _TrnTradeInLines;
 		
+		private EntitySet<TrnTradeInLine> _TrnTradeInLines1;
+		
 		private EntityRef<MstUser> _MstUser;
+		
+		private EntityRef<TrnSale> _TrnSale;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -27614,12 +27733,16 @@ namespace EasyPOS.Data
     partial void OnPreparedByIdChanged();
     partial void OnIsLockedChanging(bool value);
     partial void OnIsLockedChanged();
+    partial void OnSalesIdChanging(int value);
+    partial void OnSalesIdChanged();
     #endregion
 		
 		public TrnTradeIn()
 		{
 			this._TrnTradeInLines = new EntitySet<TrnTradeInLine>(new Action<TrnTradeInLine>(this.attach_TrnTradeInLines), new Action<TrnTradeInLine>(this.detach_TrnTradeInLines));
+			this._TrnTradeInLines1 = new EntitySet<TrnTradeInLine>(new Action<TrnTradeInLine>(this.attach_TrnTradeInLines1), new Action<TrnTradeInLine>(this.detach_TrnTradeInLines1));
 			this._MstUser = default(EntityRef<MstUser>);
+			this._TrnSale = default(EntityRef<TrnSale>);
 			OnCreated();
 		}
 		
@@ -27747,6 +27870,30 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalesId", DbType="Int NOT NULL")]
+		public int SalesId
+		{
+			get
+			{
+				return this._SalesId;
+			}
+			set
+			{
+				if ((this._SalesId != value))
+				{
+					if (this._TrnSale.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnSalesIdChanging(value);
+					this.SendPropertyChanging();
+					this._SalesId = value;
+					this.SendPropertyChanged("SalesId");
+					this.OnSalesIdChanged();
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnTradeIn_TrnTradeInLine", Storage="_TrnTradeInLines", ThisKey="Id", OtherKey="TradeInId")]
 		public EntitySet<TrnTradeInLine> TrnTradeInLines
 		{
@@ -27757,6 +27904,19 @@ namespace EasyPOS.Data
 			set
 			{
 				this._TrnTradeInLines.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnTradeIn_TrnTradeInLine1", Storage="_TrnTradeInLines1", ThisKey="Id", OtherKey="TradeInId")]
+		public EntitySet<TrnTradeInLine> TrnTradeInLines1
+		{
+			get
+			{
+				return this._TrnTradeInLines1;
+			}
+			set
+			{
+				this._TrnTradeInLines1.Assign(value);
 			}
 		}
 		
@@ -27794,6 +27954,40 @@ namespace EasyPOS.Data
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnSale_TrnTradeIn", Storage="_TrnSale", ThisKey="SalesId", OtherKey="Id", IsForeignKey=true)]
+		public TrnSale TrnSale
+		{
+			get
+			{
+				return this._TrnSale.Entity;
+			}
+			set
+			{
+				TrnSale previousValue = this._TrnSale.Entity;
+				if (((previousValue != value) 
+							|| (this._TrnSale.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._TrnSale.Entity = null;
+						previousValue.TrnTradeIns.Remove(this);
+					}
+					this._TrnSale.Entity = value;
+					if ((value != null))
+					{
+						value.TrnTradeIns.Add(this);
+						this._SalesId = value.Id;
+					}
+					else
+					{
+						this._SalesId = default(int);
+					}
+					this.SendPropertyChanged("TrnSale");
+				}
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -27824,6 +28018,18 @@ namespace EasyPOS.Data
 		{
 			this.SendPropertyChanging();
 			entity.TrnTradeIn = null;
+		}
+		
+		private void attach_TrnTradeInLines1(TrnTradeInLine entity)
+		{
+			this.SendPropertyChanging();
+			entity.TrnTradeIn1 = this;
+		}
+		
+		private void detach_TrnTradeInLines1(TrnTradeInLine entity)
+		{
+			this.SendPropertyChanging();
+			entity.TrnTradeIn1 = null;
 		}
 	}
 }

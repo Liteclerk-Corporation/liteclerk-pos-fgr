@@ -75,6 +75,9 @@ namespace EasyPOS.Entities
         public Decimal OrderChangeAmount { get; set; }
         public Boolean? IsDelivery { get; set; }
         public String DeliveryType { get; set; }
+        public Decimal TradeInDiscount { get; set; }
+        public Int32 TradeInId { get; set; }
+        public Int32 SalesId { get; set; }
     }
 
     public class SysDeliverDriver
