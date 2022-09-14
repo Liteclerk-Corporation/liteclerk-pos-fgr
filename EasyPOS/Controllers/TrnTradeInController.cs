@@ -20,7 +20,7 @@ namespace EasyPOS.Controllers
         {
             var tradeInNo = from d in db.TrnTradeIns
                             where d.IsLocked == true
-                            && d.TrnSale.IsTendered == false
+                            && d.SalesId == 0
                             select new Entities.TrnTradeInEntity
                             {
                                 Id = d.Id,
