@@ -268,7 +268,9 @@
     <Compile Include="Controllers\TrnSalesLineController.cs" />
     <Compile Include="Controllers\TrnStockCountController.cs" />
     <Compile Include="Controllers\TrnStockCountLineController.cs" />
+    <Compile Include="Controllers\TrnDefectiveController.cs" />
     <Compile Include="Controllers\TrnStockInController.cs" />
+    <Compile Include="Controllers\TrnDefectiveLineController.cs" />
     <Compile Include="Controllers\TrnStockOutController.cs" />
     <Compile Include="Controllers\TrnStockInLineController.cs" />
     <Compile Include="Controllers\TrnStockOutLineController.cs" />
@@ -311,6 +313,7 @@
     <Compile Include="Entities\DgvRepDeletedItemEntity.cs" />
     <Compile Include="Entities\DgvRepSalesReportSalesAgentReportListEntity.cs" />
     <Compile Include="Entities\DgvStockLevelReportEntity.cs" />
+    <Compile Include="Entities\DgvTrnDefectiveListEntity.cs" />
     <Compile Include="Entities\DgvTrnPOSTouchPrintOrderDetailEntity.cs" />
     <Compile Include="Entities\DgvTrnSalesMergeEntity.cs" />
     <Compile Include="Entities\DgvTrnSalesItemSplitEntity.cs" />
@@ -443,6 +446,8 @@
     <Compile Include="Entities\SysUserRightsEntity.cs" />
     <Compile Include="Entities\TrnCollectionEntity.cs" />
     <Compile Include="Entities\TrnCollectionLineEntity.cs" />
+    <Compile Include="Entities\DgvTrnDefectiveLineListEntity.cs" />
+    <Compile Include="Entities\TrnDefectiveLineEntity.cs" />
     <Compile Include="Entities\TrnDisbursementEntity.cs" />
     <Compile Include="Entities\TrnPOSTouchPrintOrderDetailEntity.cs" />
     <Compile Include="Entities\TrnPurchaseOrderEntity.cs" />
@@ -457,6 +462,7 @@
     <Compile Include="Entities\TrnStockOutEntity.cs" />
     <Compile Include="Entities\TrnStockOutLineEntity.cs" />
     <Compile Include="Entities\MstUserFormEntity.cs" />
+    <Compile Include="Entities\TrnDefectiveEntity.cs" />
     <Compile Include="Entities\TrnTradeInEntity.cs" />
     <Compile Include="Entities\TrnTradeInLineEntity.cs" />
     <Compile Include="Forms\Account\SysLogin\SysChangeLoginDateForm.cs">
@@ -1010,6 +1016,24 @@
     </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnPOSBillOutForm.Designer.cs">
       <DependentUpon>TrnPOSBillOutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSDefectiveDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSDefectiveDetailForm.Designer.cs">
+      <DependentUpon>TrnPOSDefectiveDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSDefectiveLineItemDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSDefectiveLineItemDetailForm.Designer.cs">
+      <DependentUpon>TrnPOSDefectiveLineItemDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSDefectiveListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSDefectiveListForm.Designer.cs">
+      <DependentUpon>TrnPOSDefectiveListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Software\TrnPOS\TrnPOSOpenCashDrawerPrintForm.cs">
       <SubType>Form</SubType>
@@ -1821,6 +1845,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSBillOutForm.resx">
       <DependentUpon>TrnPOSBillOutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSDefectiveDetailForm.resx">
+      <DependentUpon>TrnPOSDefectiveDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSDefectiveLineItemDetailForm.resx">
+      <DependentUpon>TrnPOSDefectiveLineItemDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSDefectiveListForm.resx">
+      <DependentUpon>TrnPOSDefectiveListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSOpenCashDrawerPrintForm.resx">
       <DependentUpon>TrnPOSOpenCashDrawerPrintForm.cs</DependentUpon>

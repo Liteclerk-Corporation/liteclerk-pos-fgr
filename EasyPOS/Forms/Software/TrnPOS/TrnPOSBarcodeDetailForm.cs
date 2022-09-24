@@ -1310,5 +1310,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
             Account.SysLogin.SysLoginOpenDrawerForm login = new Account.SysLogin.SysLoginOpenDrawerForm();
             login.ShowDialog();
         }
+
+        private void buttonDefect_Click(object sender, EventArgs e)
+        {
+            TrnPOSDefectiveListForm trnPOSDefectiveListForm = new TrnPOSDefectiveListForm(trnSalesEntity);
+            trnPOSDefectiveListForm.ShowDialog();
+        }
     }
 }

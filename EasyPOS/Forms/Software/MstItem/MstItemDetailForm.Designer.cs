@@ -44,6 +44,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.textBoxBrand = new System.Windows.Forms.TextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.textBoxSize = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
             this.buttonComputeMarkup = new System.Windows.Forms.Button();
             this.buttonCompute = new System.Windows.Forms.Button();
             this.comboBoxChildItem = new System.Windows.Forms.ComboBox();
@@ -128,10 +132,6 @@
             this.buttonUnlock = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.textBoxSize = new System.Windows.Forms.TextBox();
-            this.textBoxBrand = new System.Windows.Forms.TextBox();
-            this.label24 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -314,6 +314,46 @@
             this.panel3.Padding = new System.Windows.Forms.Padding(10);
             this.panel3.Size = new System.Drawing.Size(1370, 594);
             this.panel3.TabIndex = 38;
+            // 
+            // textBoxBrand
+            // 
+            this.textBoxBrand.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxBrand.Location = new System.Drawing.Point(196, 117);
+            this.textBoxBrand.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxBrand.Name = "textBoxBrand";
+            this.textBoxBrand.Size = new System.Drawing.Size(213, 30);
+            this.textBoxBrand.TabIndex = 4;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label24.Location = new System.Drawing.Point(117, 121);
+            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(59, 23);
+            this.label24.TabIndex = 30;
+            this.label24.Text = "Brand:";
+            // 
+            // textBoxSize
+            // 
+            this.textBoxSize.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxSize.Location = new System.Drawing.Point(196, 81);
+            this.textBoxSize.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxSize.Name = "textBoxSize";
+            this.textBoxSize.Size = new System.Drawing.Size(213, 30);
+            this.textBoxSize.TabIndex = 3;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.label23.Location = new System.Drawing.Point(132, 86);
+            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(44, 23);
+            this.label23.TabIndex = 28;
+            this.label23.Text = "Size:";
             // 
             // buttonComputeMarkup
             // 
@@ -551,7 +591,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label6.Location = new System.Drawing.Point(93, 270);
+            this.label6.Location = new System.Drawing.Point(57, 266);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(119, 23);
@@ -1387,46 +1427,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label23.Location = new System.Drawing.Point(132, 86);
-            this.label23.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(44, 23);
-            this.label23.TabIndex = 28;
-            this.label23.Text = "Size:";
-            // 
-            // textBoxSize
-            // 
-            this.textBoxSize.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxSize.Location = new System.Drawing.Point(196, 81);
-            this.textBoxSize.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxSize.Name = "textBoxSize";
-            this.textBoxSize.Size = new System.Drawing.Size(213, 30);
-            this.textBoxSize.TabIndex = 3;
-            // 
-            // textBoxBrand
-            // 
-            this.textBoxBrand.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxBrand.Location = new System.Drawing.Point(196, 117);
-            this.textBoxBrand.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxBrand.Name = "textBoxBrand";
-            this.textBoxBrand.Size = new System.Drawing.Size(213, 30);
-            this.textBoxBrand.TabIndex = 4;
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label24.Location = new System.Drawing.Point(117, 121);
-            this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(59, 23);
-            this.label24.TabIndex = 30;
-            this.label24.Text = "Brand:";
             // 
             // MstItemDetailForm
             // 

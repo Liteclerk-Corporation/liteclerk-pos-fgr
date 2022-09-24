@@ -158,6 +158,7 @@
       <Association Name="MstItem_TrnStockCountLine" Member="TrnStockCountLines" ThisKey="Id" OtherKey="ItemId" Type="TrnStockCountLine" />
       <Association Name="MstItem_TrnStockInLine" Member="TrnStockInLines" ThisKey="Id" OtherKey="ItemId" Type="TrnStockInLine" />
       <Association Name="MstItem_TrnStockOutLine" Member="TrnStockOutLines" ThisKey="Id" OtherKey="ItemId" Type="TrnStockOutLine" />
+      <Association Name="MstItem_TrnDefectiveItem" Member="TrnDefectiveItems" ThisKey="Id" OtherKey="ItemId" Type="TrnDefectiveItem" />
       <Association Name="MstAccount_MstItem" Member="MstAccount" ThisKey="CostAccountId" OtherKey="Id" Type="MstAccount" IsForeignKey="true" />
       <Association Name="MstAccount_MstItem1" Member="MstAccount1" ThisKey="SalesAccountId" OtherKey="Id" Type="MstAccount" IsForeignKey="true" />
       <Association Name="MstAccount_MstItem2" Member="MstAccount2" ThisKey="AssetAccountId" OtherKey="Id" Type="MstAccount" IsForeignKey="true" />
@@ -1120,6 +1121,7 @@
       <Association Name="TrnSale_TrnSalesLine" Member="TrnSalesLines" ThisKey="Id" OtherKey="SalesId" Type="TrnSalesLine" />
       <Association Name="TrnSale_TrnStockIn" Member="TrnStockIns" ThisKey="Id" OtherKey="SalesId" Type="TrnStockIn" />
       <Association Name="TrnSale_TrnTradeIn" Member="TrnTradeIns" ThisKey="Id" OtherKey="SalesId" Type="TrnTradeIn" />
+      <Association Name="TrnSale_TrnDefective" Member="TrnDefectives" ThisKey="Id" OtherKey="SalesId" Type="TrnDefective" />
       <Association Name="MstCustomer_TrnSale" Member="MstCustomer" ThisKey="CustomerId" OtherKey="Id" Type="MstCustomer" IsForeignKey="true" />
       <Association Name="MstPeriod_TrnSale" Member="MstPeriod" ThisKey="PeriodId" OtherKey="Id" Type="MstPeriod" IsForeignKey="true" />
       <Association Name="MstTable_TrnSale" Member="MstTable" ThisKey="TableId" OtherKey="Id" Type="MstTable" IsForeignKey="true" />
@@ -1132,6 +1134,32 @@
       <Association Name="MstUser_TrnSale4" Member="MstUser4" ThisKey="UpdateUserId" OtherKey="Id" Type="MstUser" IsForeignKey="true" />
       <Association Name="MstUser_TrnSale5" Member="MstUser5" ThisKey="SalesAgent" OtherKey="Id" Type="MstUser" IsForeignKey="true" />
       <Association Name="MstDiscount_TrnSale" Member="MstDiscount" ThisKey="DiscountId" OtherKey="Id" Type="MstDiscount" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TrnDefective" Member="TrnDefectives">
+    <Type Name="TrnDefective">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="SalesId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DefectiveNo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="DefectiveDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="InvoiceNo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerName" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="WarrantyCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="PreparedById" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IsLocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="TrnDefective_TrnDefectiveItem" Member="TrnDefectiveItems" ThisKey="Id" OtherKey="DefectiveId" Type="TrnDefectiveItem" />
+      <Association Name="TrnSale_TrnDefective" Member="TrnSale" ThisKey="SalesId" OtherKey="Id" Type="TrnSale" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TrnDefectiveItem" Member="TrnDefectiveItems">
+    <Type Name="TrnDefectiveItem">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DefectiveId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ItemId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Association Name="MstItem_TrnDefectiveItem" Member="MstItem" ThisKey="ItemId" OtherKey="Id" Type="MstItem" IsForeignKey="true" />
+      <Association Name="TrnDefective_TrnDefectiveItem" Member="TrnDefective" ThisKey="DefectiveId" OtherKey="Id" Type="TrnDefective" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
 </Database>
