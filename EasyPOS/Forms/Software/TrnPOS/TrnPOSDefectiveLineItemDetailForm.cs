@@ -21,7 +21,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             trnDefectiveDetailForm = defectiveDetailForm;
             trnDefectiveLineEntity = defectiveLineEntity;
 
-            GetDefectiveLineItemDetail();
+            GetItemList();
         }
         public void GetDefectiveLineItemDetail()
         {
@@ -29,11 +29,23 @@ namespace EasyPOS.Forms.Software.TrnPOS
             textBoxDefectiveLineQuantity.Text = trnDefectiveLineEntity.Quantity.ToString("#,##0.00");
             textBoxDefectiveLineAmount.Text = trnDefectiveLineEntity.Amount.ToString("#,##0.00");
         }
+        public void GetItemList()
+        {
+            Controllers.TrnDefectiveLineController trnDefectiveLineController = new Controllers.TrnDefectiveLineController();
+            if (trnDefectiveLineController.DropdownListItem().Any())
+            {
+                comboBoxItemDescription.DataSource = trnDefectiveLineController.DropdownListItem();
+                comboBoxItemDescription.ValueMember = "Id";
+                comboBoxItemDescription.DisplayMember = "ItemDescription";
+
+                GetDefectiveLineItemDetail();
+            }
+        }
         public void SaveDefectiveLine()
         {
             var id = trnDefectiveLineEntity.Id;
             var defectiveId = trnDefectiveLineEntity.DefectiveId;
-            var itemId = trnDefectiveLineEntity.ItemId;
+            var itemId = comboBoxItemDescription.SelectedValue;
             var quantity = Convert.ToDecimal(textBoxDefectiveLineQuantity.Text);
             var amount = Convert.ToDecimal(textBoxDefectiveLineAmount.Text);
 
@@ -41,7 +53,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 Id = id,
                 DefectiveId = defectiveId,
-                ItemId = itemId,
+                ItemId = Convert.ToInt32(itemId),
                 Quantity = quantity,
                 Amount = amount,
             };

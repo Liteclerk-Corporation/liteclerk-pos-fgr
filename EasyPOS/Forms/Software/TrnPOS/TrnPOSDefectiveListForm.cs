@@ -25,6 +25,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             InitializeComponent();
 
             trnSalesEntity = salesEntity;
+
+            CreateDefectiveListDataGridView();
         }
         public void UpdateDefectiveListDataSource()
         {
@@ -250,7 +252,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             if (e.RowIndex > -1 && dataGridViewDefectiveList.CurrentCell.ColumnIndex == dataGridViewDefectiveList.Columns["ColumnDefectiveListButtonDelete"].Index)
             {
-                Boolean isLocked = Convert.ToBoolean(dataGridViewDefectiveList.Rows[e.RowIndex].Cells[8].Value);
+                Boolean isLocked = Convert.ToBoolean(dataGridViewDefectiveList.Rows[e.RowIndex].Cells[10].Value);
 
                 if (isLocked == true)
                 {

@@ -32,6 +32,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSDefectiveDetailForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonEdit = new System.Windows.Forms.Button();
@@ -60,13 +66,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.dateTimePickerDefectiveDate = new System.Windows.Forms.DateTimePicker();
             this.textBoxDefectiveNumber = new System.Windows.Forms.TextBox();
             this.dataGridViewDefectiveLineList = new System.Windows.Forms.DataGridView();
-            this.ColumnDefectiveLineButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnDefectiveLineButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnDefectiveLineId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDefectiveLineItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDefectiveLineItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDefectiveLineQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDefectiveLineAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDefectiveLineListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnDefectiveLineListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.ColumnDefectiveLineListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDefectiveLineListDefectiveId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDefectiveLineListItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDefectiveLineListItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDefectiveLineListQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDefectiveLineListAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel15.SuspendLayout();
@@ -299,6 +306,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonAdd.TabStop = false;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = false;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // label6
             // 
@@ -447,13 +455,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.dataGridViewDefectiveLineList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridViewDefectiveLineList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewDefectiveLineList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnDefectiveLineButtonEdit,
-            this.ColumnDefectiveLineButtonDelete,
-            this.ColumnDefectiveLineId,
-            this.ColumnDefectiveLineItemId,
-            this.ColumnDefectiveLineItemDescription,
-            this.ColumnDefectiveLineQuantity,
-            this.ColumnDefectiveLineAmount});
+            this.ColumnDefectiveLineListButtonEdit,
+            this.ColumnDefectiveLineListButtonDelete,
+            this.ColumnDefectiveLineListId,
+            this.ColumnDefectiveLineListDefectiveId,
+            this.ColumnDefectiveLineListItemId,
+            this.ColumnDefectiveLineListItemDescription,
+            this.ColumnDefectiveLineListQuantity,
+            this.ColumnDefectiveLineListAmount});
             this.dataGridViewDefectiveLineList.Location = new System.Drawing.Point(11, 187);
             this.dataGridViewDefectiveLineList.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewDefectiveLineList.MultiSelect = false;
@@ -465,80 +474,107 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.dataGridViewDefectiveLineList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewDefectiveLineList.Size = new System.Drawing.Size(1072, 227);
             this.dataGridViewDefectiveLineList.TabIndex = 29;
+            this.dataGridViewDefectiveLineList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDefectiveLineList_CellClick);
             // 
-            // ColumnDefectiveLineButtonEdit
+            // ColumnDefectiveLineListButtonEdit
             // 
-            this.ColumnDefectiveLineButtonEdit.DataPropertyName = "ColumnDefectiveLineButtonEdit";
-            this.ColumnDefectiveLineButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnDefectiveLineButtonEdit.Frozen = true;
-            this.ColumnDefectiveLineButtonEdit.HeaderText = "";
-            this.ColumnDefectiveLineButtonEdit.MinimumWidth = 6;
-            this.ColumnDefectiveLineButtonEdit.Name = "ColumnDefectiveLineButtonEdit";
-            this.ColumnDefectiveLineButtonEdit.ReadOnly = true;
-            this.ColumnDefectiveLineButtonEdit.Width = 70;
+            this.ColumnDefectiveLineListButtonEdit.DataPropertyName = "ColumnDefectiveLineListButtonEdit";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ColumnDefectiveLineListButtonEdit.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnDefectiveLineListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnDefectiveLineListButtonEdit.Frozen = true;
+            this.ColumnDefectiveLineListButtonEdit.HeaderText = "";
+            this.ColumnDefectiveLineListButtonEdit.MinimumWidth = 6;
+            this.ColumnDefectiveLineListButtonEdit.Name = "ColumnDefectiveLineListButtonEdit";
+            this.ColumnDefectiveLineListButtonEdit.ReadOnly = true;
+            this.ColumnDefectiveLineListButtonEdit.Width = 70;
             // 
-            // ColumnDefectiveLineButtonDelete
+            // ColumnDefectiveLineListButtonDelete
             // 
-            this.ColumnDefectiveLineButtonDelete.DataPropertyName = "ColumnDefectiveLineButtonDelete";
-            this.ColumnDefectiveLineButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnDefectiveLineButtonDelete.Frozen = true;
-            this.ColumnDefectiveLineButtonDelete.HeaderText = "";
-            this.ColumnDefectiveLineButtonDelete.MinimumWidth = 6;
-            this.ColumnDefectiveLineButtonDelete.Name = "ColumnDefectiveLineButtonDelete";
-            this.ColumnDefectiveLineButtonDelete.ReadOnly = true;
-            this.ColumnDefectiveLineButtonDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnDefectiveLineButtonDelete.Width = 70;
+            this.ColumnDefectiveLineListButtonDelete.DataPropertyName = "ColumnDefectiveLineListButtonDelete";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.ColumnDefectiveLineListButtonDelete.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnDefectiveLineListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ColumnDefectiveLineListButtonDelete.Frozen = true;
+            this.ColumnDefectiveLineListButtonDelete.HeaderText = "";
+            this.ColumnDefectiveLineListButtonDelete.MinimumWidth = 6;
+            this.ColumnDefectiveLineListButtonDelete.Name = "ColumnDefectiveLineListButtonDelete";
+            this.ColumnDefectiveLineListButtonDelete.ReadOnly = true;
+            this.ColumnDefectiveLineListButtonDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.ColumnDefectiveLineListButtonDelete.Width = 70;
             // 
-            // ColumnDefectiveLineId
+            // ColumnDefectiveLineListId
             // 
-            this.ColumnDefectiveLineId.DataPropertyName = "ColumnDefectiveLineId";
-            this.ColumnDefectiveLineId.HeaderText = "Id";
-            this.ColumnDefectiveLineId.MinimumWidth = 6;
-            this.ColumnDefectiveLineId.Name = "ColumnDefectiveLineId";
-            this.ColumnDefectiveLineId.ReadOnly = true;
-            this.ColumnDefectiveLineId.Visible = false;
-            this.ColumnDefectiveLineId.Width = 125;
+            this.ColumnDefectiveLineListId.DataPropertyName = "ColumnDefectiveLineListId";
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.ColumnDefectiveLineListId.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColumnDefectiveLineListId.HeaderText = "Id";
+            this.ColumnDefectiveLineListId.MinimumWidth = 6;
+            this.ColumnDefectiveLineListId.Name = "ColumnDefectiveLineListId";
+            this.ColumnDefectiveLineListId.ReadOnly = true;
+            this.ColumnDefectiveLineListId.Visible = false;
+            this.ColumnDefectiveLineListId.Width = 125;
             // 
-            // ColumnDefectiveLineItemId
+            // ColumnDefectiveLineListDefectiveId
             // 
-            this.ColumnDefectiveLineItemId.DataPropertyName = "ColumnDefectiveLineItemId";
-            this.ColumnDefectiveLineItemId.HeaderText = "ItemId";
-            this.ColumnDefectiveLineItemId.MinimumWidth = 6;
-            this.ColumnDefectiveLineItemId.Name = "ColumnDefectiveLineItemId";
-            this.ColumnDefectiveLineItemId.ReadOnly = true;
-            this.ColumnDefectiveLineItemId.Visible = false;
-            this.ColumnDefectiveLineItemId.Width = 125;
+            this.ColumnDefectiveLineListDefectiveId.DataPropertyName = "ColumnDefectiveLineListDefectiveId";
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.ColumnDefectiveLineListDefectiveId.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ColumnDefectiveLineListDefectiveId.HeaderText = "DefectiveId";
+            this.ColumnDefectiveLineListDefectiveId.MinimumWidth = 6;
+            this.ColumnDefectiveLineListDefectiveId.Name = "ColumnDefectiveLineListDefectiveId";
+            this.ColumnDefectiveLineListDefectiveId.ReadOnly = true;
+            this.ColumnDefectiveLineListDefectiveId.Visible = false;
+            this.ColumnDefectiveLineListDefectiveId.Width = 125;
             // 
-            // ColumnDefectiveLineItemDescription
+            // ColumnDefectiveLineListItemId
             // 
-            this.ColumnDefectiveLineItemDescription.DataPropertyName = "ColumnDefectiveLineItemDescription";
-            this.ColumnDefectiveLineItemDescription.HeaderText = "Item Description";
-            this.ColumnDefectiveLineItemDescription.MinimumWidth = 6;
-            this.ColumnDefectiveLineItemDescription.Name = "ColumnDefectiveLineItemDescription";
-            this.ColumnDefectiveLineItemDescription.ReadOnly = true;
-            this.ColumnDefectiveLineItemDescription.Width = 200;
+            this.ColumnDefectiveLineListItemId.DataPropertyName = "ColumnDefectiveLineListItemId";
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.ColumnDefectiveLineListItemId.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ColumnDefectiveLineListItemId.HeaderText = "ItemId";
+            this.ColumnDefectiveLineListItemId.MinimumWidth = 6;
+            this.ColumnDefectiveLineListItemId.Name = "ColumnDefectiveLineListItemId";
+            this.ColumnDefectiveLineListItemId.ReadOnly = true;
+            this.ColumnDefectiveLineListItemId.Visible = false;
+            this.ColumnDefectiveLineListItemId.Width = 125;
             // 
-            // ColumnDefectiveLineQuantity
+            // ColumnDefectiveLineListItemDescription
             // 
-            this.ColumnDefectiveLineQuantity.DataPropertyName = "ColumnDefectiveLineQuantity";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnDefectiveLineQuantity.DefaultCellStyle = dataGridViewCellStyle2;
-            this.ColumnDefectiveLineQuantity.HeaderText = "Quantity";
-            this.ColumnDefectiveLineQuantity.MinimumWidth = 6;
-            this.ColumnDefectiveLineQuantity.Name = "ColumnDefectiveLineQuantity";
-            this.ColumnDefectiveLineQuantity.ReadOnly = true;
-            this.ColumnDefectiveLineQuantity.Width = 125;
+            this.ColumnDefectiveLineListItemDescription.DataPropertyName = "ColumnDefectiveLineListItemDescription";
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.ColumnDefectiveLineListItemDescription.DefaultCellStyle = dataGridViewCellStyle7;
+            this.ColumnDefectiveLineListItemDescription.HeaderText = "Item Description";
+            this.ColumnDefectiveLineListItemDescription.MinimumWidth = 6;
+            this.ColumnDefectiveLineListItemDescription.Name = "ColumnDefectiveLineListItemDescription";
+            this.ColumnDefectiveLineListItemDescription.ReadOnly = true;
+            this.ColumnDefectiveLineListItemDescription.Width = 250;
             // 
-            // ColumnDefectiveLineAmount
+            // ColumnDefectiveLineListQuantity
             // 
-            this.ColumnDefectiveLineAmount.DataPropertyName = "ColumnDefectiveLineAmount";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnDefectiveLineAmount.DefaultCellStyle = dataGridViewCellStyle3;
-            this.ColumnDefectiveLineAmount.HeaderText = "Amount";
-            this.ColumnDefectiveLineAmount.MinimumWidth = 6;
-            this.ColumnDefectiveLineAmount.Name = "ColumnDefectiveLineAmount";
-            this.ColumnDefectiveLineAmount.ReadOnly = true;
-            this.ColumnDefectiveLineAmount.Width = 125;
+            this.ColumnDefectiveLineListQuantity.DataPropertyName = "ColumnDefectiveLineListQuantity";
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.ColumnDefectiveLineListQuantity.DefaultCellStyle = dataGridViewCellStyle8;
+            this.ColumnDefectiveLineListQuantity.HeaderText = "Quantity";
+            this.ColumnDefectiveLineListQuantity.MinimumWidth = 6;
+            this.ColumnDefectiveLineListQuantity.Name = "ColumnDefectiveLineListQuantity";
+            this.ColumnDefectiveLineListQuantity.ReadOnly = true;
+            this.ColumnDefectiveLineListQuantity.Width = 125;
+            // 
+            // ColumnDefectiveLineListAmount
+            // 
+            this.ColumnDefectiveLineListAmount.DataPropertyName = "ColumnDefectiveLineListAmount";
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.ColumnDefectiveLineListAmount.DefaultCellStyle = dataGridViewCellStyle9;
+            this.ColumnDefectiveLineListAmount.HeaderText = "Amount";
+            this.ColumnDefectiveLineListAmount.MinimumWidth = 6;
+            this.ColumnDefectiveLineListAmount.Name = "ColumnDefectiveLineListAmount";
+            this.ColumnDefectiveLineListAmount.ReadOnly = true;
+            this.ColumnDefectiveLineListAmount.Width = 125;
             // 
             // TrnPOSDefectiveDetailForm
             // 
@@ -593,13 +629,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxInvoiceNo;
         private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnDefectiveLineButtonEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnDefectiveLineButtonDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineItemId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineItemDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineAmount;
         private System.Windows.Forms.Button buttonEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnDefectiveLineListButtonEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnDefectiveLineListButtonDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineListId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineListDefectiveId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineListItemId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineListItemDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineListQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineListAmount;
     }
 }

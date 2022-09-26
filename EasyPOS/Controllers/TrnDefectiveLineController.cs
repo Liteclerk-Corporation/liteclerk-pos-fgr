@@ -34,6 +34,22 @@ namespace EasyPOS.Controllers
             return defectiveLines.Where(d => d.DefectiveId == defectiveId).ToList();
         }
         // ==================
+        // Dropdown List Item
+        // ==================
+        public List<Entities.MstItemEntity> DropdownListItem()
+        {
+            var items = from d in db.MstItems
+                        where d.IsInventory == true
+                        && d.IsLocked == true
+                        select new Entities.MstItemEntity
+                        {
+                            Id = d.Id,
+                            ItemDescription = d.ItemDescription,
+                        };
+
+            return items.OrderBy(d => d.ItemDescription).ToList();
+        }
+        // ==================
         // Add Defective Line
         // ==================
         public String[] AddDefectiveLine(Entities.TrnDefectiveLineEntity objDefectiveLine)
@@ -98,7 +114,7 @@ namespace EasyPOS.Controllers
                     return new String[] { "Current login user not found.", "0" };
                 }
 
-                var defectiveLine = from d in db.TrnStockInLines
+                var defectiveLine = from d in db.TrnDefectiveItems
                                   where d.Id == id
                                   select d;
 

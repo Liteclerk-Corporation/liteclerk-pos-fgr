@@ -30,6 +30,18 @@ namespace EasyPOS.Forms.Software.TrnPOS
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSDefectiveListForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -273,6 +285,14 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.dataGridViewDefectiveList.MultiSelect = false;
             this.dataGridViewDefectiveList.Name = "dataGridViewDefectiveList";
             this.dataGridViewDefectiveList.ReadOnly = true;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridViewDefectiveList.RowHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridViewDefectiveList.RowHeadersWidth = 51;
             this.dataGridViewDefectiveList.RowTemplate.Height = 24;
             this.dataGridViewDefectiveList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -316,6 +336,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // ColumnDefectiveListButtonEdit
             // 
             this.ColumnDefectiveListButtonEdit.DataPropertyName = "ColumnDefectiveListButtonEdit";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ColumnDefectiveListButtonEdit.DefaultCellStyle = dataGridViewCellStyle2;
             this.ColumnDefectiveListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ColumnDefectiveListButtonEdit.HeaderText = "";
             this.ColumnDefectiveListButtonEdit.MinimumWidth = 6;
@@ -326,6 +349,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // ColumnDefectiveListButtonDelete
             // 
             this.ColumnDefectiveListButtonDelete.DataPropertyName = "ColumnDefectiveListButtonDelete";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.ColumnDefectiveListButtonDelete.DefaultCellStyle = dataGridViewCellStyle3;
             this.ColumnDefectiveListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ColumnDefectiveListButtonDelete.HeaderText = "";
             this.ColumnDefectiveListButtonDelete.MinimumWidth = 6;
@@ -336,6 +362,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // ColumnDefectiveListId
             // 
             this.ColumnDefectiveListId.DataPropertyName = "ColumnDefectiveListId";
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.ColumnDefectiveListId.DefaultCellStyle = dataGridViewCellStyle4;
             this.ColumnDefectiveListId.HeaderText = "Id";
             this.ColumnDefectiveListId.MinimumWidth = 6;
             this.ColumnDefectiveListId.Name = "ColumnDefectiveListId";
@@ -345,6 +373,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // 
             // ColumnDefectiveListSalesId
             // 
+            this.ColumnDefectiveListSalesId.DataPropertyName = "ColumnDefectiveListSalesId";
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.ColumnDefectiveListSalesId.DefaultCellStyle = dataGridViewCellStyle5;
             this.ColumnDefectiveListSalesId.HeaderText = "Sales Id";
             this.ColumnDefectiveListSalesId.MinimumWidth = 6;
             this.ColumnDefectiveListSalesId.Name = "ColumnDefectiveListSalesId";
@@ -355,6 +386,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // ColumnDefectiveListDefectiveNo
             // 
             this.ColumnDefectiveListDefectiveNo.DataPropertyName = "ColumnDefectiveListDefectiveNo";
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.ColumnDefectiveListDefectiveNo.DefaultCellStyle = dataGridViewCellStyle6;
             this.ColumnDefectiveListDefectiveNo.HeaderText = "Defective No.";
             this.ColumnDefectiveListDefectiveNo.MinimumWidth = 6;
             this.ColumnDefectiveListDefectiveNo.Name = "ColumnDefectiveListDefectiveNo";
@@ -364,6 +397,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // ColumnDefectiveListDefectiveDate
             // 
             this.ColumnDefectiveListDefectiveDate.DataPropertyName = "ColumnDefectiveListDefectiveDate";
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.ColumnDefectiveListDefectiveDate.DefaultCellStyle = dataGridViewCellStyle7;
             this.ColumnDefectiveListDefectiveDate.HeaderText = "Defective Date";
             this.ColumnDefectiveListDefectiveDate.MinimumWidth = 6;
             this.ColumnDefectiveListDefectiveDate.Name = "ColumnDefectiveListDefectiveDate";
@@ -372,6 +407,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // 
             // ColumnDefectiveListInvoiceNo
             // 
+            this.ColumnDefectiveListInvoiceNo.DataPropertyName = "ColumnDefectiveListInvoiceNo";
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.ColumnDefectiveListInvoiceNo.DefaultCellStyle = dataGridViewCellStyle8;
             this.ColumnDefectiveListInvoiceNo.HeaderText = "Invoice No.";
             this.ColumnDefectiveListInvoiceNo.MinimumWidth = 6;
             this.ColumnDefectiveListInvoiceNo.Name = "ColumnDefectiveListInvoiceNo";
@@ -380,6 +418,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // 
             // ColumnDefectiveListCustomerName
             // 
+            this.ColumnDefectiveListCustomerName.DataPropertyName = "ColumnDefectiveListCustomerName";
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.ColumnDefectiveListCustomerName.DefaultCellStyle = dataGridViewCellStyle9;
             this.ColumnDefectiveListCustomerName.HeaderText = "Customer Name";
             this.ColumnDefectiveListCustomerName.MinimumWidth = 6;
             this.ColumnDefectiveListCustomerName.Name = "ColumnDefectiveListCustomerName";
@@ -388,6 +429,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // 
             // ColumnDefectiveListWarrantyCode
             // 
+            this.ColumnDefectiveListWarrantyCode.DataPropertyName = "ColumnDefectiveListWarrantyCode";
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.ColumnDefectiveListWarrantyCode.DefaultCellStyle = dataGridViewCellStyle10;
             this.ColumnDefectiveListWarrantyCode.HeaderText = "Warranty Code";
             this.ColumnDefectiveListWarrantyCode.MinimumWidth = 6;
             this.ColumnDefectiveListWarrantyCode.Name = "ColumnDefectiveListWarrantyCode";
@@ -397,6 +441,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // ColumnDefectiveListPreparedById
             // 
             this.ColumnDefectiveListPreparedById.DataPropertyName = "ColumnDefectiveListPreparedById";
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.ColumnDefectiveListPreparedById.DefaultCellStyle = dataGridViewCellStyle11;
             this.ColumnDefectiveListPreparedById.HeaderText = "PreparedById";
             this.ColumnDefectiveListPreparedById.MinimumWidth = 6;
             this.ColumnDefectiveListPreparedById.Name = "ColumnDefectiveListPreparedById";
@@ -407,6 +453,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // ColumnDefectiveListIsLocked
             // 
             this.ColumnDefectiveListIsLocked.DataPropertyName = "ColumnDefectiveListIsLocked";
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            dataGridViewCellStyle12.NullValue = false;
+            this.ColumnDefectiveListIsLocked.DefaultCellStyle = dataGridViewCellStyle12;
             this.ColumnDefectiveListIsLocked.HeaderText = "L";
             this.ColumnDefectiveListIsLocked.MinimumWidth = 6;
             this.ColumnDefectiveListIsLocked.Name = "ColumnDefectiveListIsLocked";

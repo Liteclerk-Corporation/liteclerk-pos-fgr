@@ -151,6 +151,47 @@ namespace EasyPOS.Modules
                 throw new Exception(e.Message);
             }
         }
+        // =========================
+        // Update Defective Inventory
+        // =========================
+        public void UpdateDefectiveInventory(Int32 defectiveId)
+        {
+            try
+            {
+                var defective = from d in db.TrnDefectives
+                                where d.Id == defectiveId
+                                select d;
+
+                if (defective.Any())
+                {
+                    var defectiveLines = defective.FirstOrDefault().TrnDefectiveItems.Where(d => d.MstItem.IsInventory == true);
+                    if (defectiveLines.Any())
+                    {
+                        var defectiveLineItems = from d in defectiveLines
+                                                 group d by new
+                                                 {
+                                                     d.ItemId
+                                                 } into g
+                                                 select new
+                                                 {
+                                                     g.Key.ItemId
+                                                 };
+
+                        if (defectiveLineItems.Any())
+                        {
+                            foreach (var defectiveLineItem in defectiveLineItems)
+                            {
+                                UpdateItemInventory(defectiveLineItem.ItemId);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
 
         // =====================
         // Update Item Inventory
@@ -189,11 +230,11 @@ namespace EasyPOS.Modules
                 // Get total RETURNED quantity
                 Decimal totalReturnedQuantity = 0;
                 var allReturnedItems = from d in db.TrnSalesLines
-                                        where d.ItemId == itemId
-                                        && d.TrnSale.IsLocked == true
-                                        && d.TrnSale.IsCancelled == false
-                                        && d.TrnSale.IsReturned == true
-                                        select d;
+                                       where d.ItemId == itemId
+                                       && d.TrnSale.IsLocked == true
+                                       && d.TrnSale.IsCancelled == false
+                                       && d.TrnSale.IsReturned == true
+                                       select d;
 
                 if (allReturnedItems.Any())
                 {
@@ -234,9 +275,20 @@ namespace EasyPOS.Modules
                         }
                     }
                 }
+                // Get total Defective quantity
+                Decimal totalDefectiveLineQuantity = 0;
+                var allDefectiveLineItems = from d in db.TrnDefectiveItems
+                                          where d.ItemId == itemId
+                                          && d.TrnDefective.IsLocked == true
+                                          select d;
+
+                if (allDefectiveLineItems.Any())
+                {
+                    totalDefectiveLineQuantity = allDefectiveLineItems.Sum(d => d.Quantity);
+                }
 
                 var updateItem = item.FirstOrDefault();
-                updateItem.OnhandQuantity = (totalStockInLineQuantity + totalReturnedQuantity) - (totalSalesLineQuantity + totalStockOutLineQuantity + totalSalesLineComponentQuantity);
+                updateItem.OnhandQuantity = (totalStockInLineQuantity + totalReturnedQuantity + totalDefectiveLineQuantity) - (totalSalesLineQuantity + totalStockOutLineQuantity + totalSalesLineComponentQuantity);
                 db.SubmitChanges();
             }
         }

@@ -179,7 +179,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             if (e.RowIndex > -1 && dataGridViewDefectiveLineList.CurrentCell.ColumnIndex == dataGridViewDefectiveLineList.Columns["ColumnDefectiveLineListButtonEdit"].Index)
             {
                 var id = Convert.ToInt32(dataGridViewDefectiveLineList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineList.Columns["ColumnDefectiveLineListId"].Index].Value);
-                var defectiveId = Convert.ToInt32(dataGridViewDefectiveLineList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineList.Columns["ColumnDefectiveLineListStockInId"].Index].Value);
+                var defectiveId = Convert.ToInt32(dataGridViewDefectiveLineList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineList.Columns["ColumnDefectiveLineListDefectiveId"].Index].Value);
                 var itemId = Convert.ToInt32(dataGridViewDefectiveLineList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineList.Columns["ColumnDefectiveLineListItemId"].Index].Value);
                 var itemDescription = dataGridViewDefectiveLineList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineList.Columns["ColumnDefectiveLineListItemDescription"].Index].Value.ToString();
                 var quantity = Convert.ToDecimal(dataGridViewDefectiveLineList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineList.Columns["ColumnDefectiveLineListQuantity"].Index].Value);
@@ -313,6 +313,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             textBoxCustomerName.Enabled = !isLocked;
             textBoxWarrantyCode.Enabled = !isLocked;
             comboBoxPreparedBy.Enabled = !isLocked;
+            buttonAdd.Enabled = !isLocked;
 
             dataGridViewDefectiveLineList.Columns[0].Visible = !isLocked;
             dataGridViewDefectiveLineList.Columns[1].Visible = !isLocked;
@@ -332,6 +333,22 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 MessageBox.Show(unlockDefective[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            Entities.TrnDefectiveLineEntity trnDefectiveLineEntity = new Entities.TrnDefectiveLineEntity()
+            {
+                Id = 0,
+                DefectiveId = trnDefectiveEntity.Id,
+                ItemId = 0,
+                ItemDescription = "",
+                Quantity = 1,
+                Amount = 0,
+            };
+
+            TrnPOSDefectiveLineItemDetailForm trnPOSDefectiveLineItemDetailForm = new TrnPOSDefectiveLineItemDetailForm(this, trnDefectiveLineEntity);
+            trnPOSDefectiveLineItemDetailForm.ShowDialog();
         }
     }
 }
