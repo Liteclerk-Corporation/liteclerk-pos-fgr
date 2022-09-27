@@ -1,7 +1,7 @@
-﻿using PagedList;
+﻿using EasyPOS.Interfaces.Forms;
+using PagedList;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -14,12 +14,12 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.TrnStockOut
 {
-    public partial class TrnStockOutDetailForm : Form
+    public partial class TrnStockOutDetailForm : Form, IUpdateListDataSource
     {
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
 
-        public TrnStockOutListForm trnStockOutListForm;
+        IUpdateListDataSource FormWithUpdate;
         public Entities.TrnStockOutEntity trnStockOutEntity;
 
         public static List<Entities.DgvTrnStockOutLineListEntity> stockOutLineData = new List<Entities.DgvTrnStockOutLineListEntity>();
@@ -30,7 +30,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
 
         public List<Entities.SysLanguageEntity> sysLanguageEntities = new List<Entities.SysLanguageEntity>();
 
-        public TrnStockOutDetailForm(SysSoftwareForm softwareForm, TrnStockOutListForm stockOutListForm, Entities.TrnStockOutEntity stockOutEntity)
+        public TrnStockOutDetailForm(SysSoftwareForm softwareForm, IUpdateListDataSource formWithUpdate, Entities.TrnStockOutEntity stockOutEntity)
         {
             InitializeComponent();
 
@@ -71,7 +71,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
             }
             else
             {
-                trnStockOutListForm = stockOutListForm;
+                FormWithUpdate = formWithUpdate;
                 trnStockOutEntity = stockOutEntity;
 
                 GetAccountList();
@@ -245,7 +245,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
             if (lockStockOut[1].Equals("0") == false)
             {
                 UpdateComponents(true);
-                trnStockOutListForm.UpdateStockOutListDataSource();
+                FormWithUpdate.UpdateListDataSource();
             }
             else
             {
@@ -261,7 +261,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
             if (unlockStockOut[1].Equals("0") == false)
             {
                 UpdateComponents(false);
-                trnStockOutListForm.UpdateStockOutListDataSource();
+                FormWithUpdate.UpdateListDataSource();
             }
             else
             {
@@ -301,7 +301,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                     if (lockStockOut[1].Equals("0") == false)
                     {
                         sysSoftwareForm.RemoveTabPage();
-                        trnStockOutListForm.UpdateStockOutListDataSource();
+                        FormWithUpdate.UpdateListDataSource();
                     }
                     else
                     {
@@ -315,7 +315,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
             }
         }
 
-        public void UpdateStockOutLineListDataSource()
+        public void UpdateListDataSource()
         {
             SetStockOutLineListDataSourceAsync();
         }
@@ -412,7 +412,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
 
         public void CreateStockOutLineListDataGridView()
         {
-            UpdateStockOutLineListDataSource();
+            UpdateListDataSource();
 
             dataGridViewStockOutLineList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewStockOutLineList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -482,7 +482,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                     if (deleteStockOutLine[1].Equals("0") == false)
                     {
                         stockOutLinePageNumber = 1;
-                        UpdateStockOutLineListDataSource();
+                        UpdateListDataSource();
                     }
                     else
                     {
@@ -581,7 +581,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                 if (Modules.SysCurrentModule.GetCurrentSettings().IsBarcodeQuantityAlwaysOne == true)
                 {
                     trnPOSStockOutLineController.BarcodeStockOutLine(trnStockOutEntity.Id, textBoxBarcode.Text);
-                    UpdateStockOutLineListDataSource();
+                    UpdateListDataSource();
                 }
                 else
                 {

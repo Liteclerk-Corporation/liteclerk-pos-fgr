@@ -1,18 +1,17 @@
 ﻿using EasyPOS.Entities;
+using EasyPOS.Interfaces.Forms;
 using PagedList;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.TrnCollection
 {
-    public partial class TrnCollectionListForm : Form
+    public partial class TrnCollectionListForm : Form, IUpdateListDataSource
     {
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
@@ -61,7 +60,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
             }
 
         }
-        public void UpdateCollectionListDataSource()
+        public void UpdateListDataSource()
         {
             SetCollectionListDataSourceAsync();
         }
@@ -169,7 +168,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
         }
         public void CreateCollectionListDataGridView()
         {
-            UpdateCollectionListDataSource();
+            UpdateListDataSource();
 
             dataGridViewCollectionList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewCollectionList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -217,7 +216,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
                         if (deleteCollection[1].Equals("0") == false)
                         {
                             pageNumber = 1;
-                            UpdateCollectionListDataSource();
+                            UpdateListDataSource();
                         }
                         else
                         {
@@ -231,7 +230,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
         private void dateTimePickerCollectionListFilter_ValueChanged(object sender, EventArgs e)
         {
             pageNumber = 1;
-            UpdateCollectionListDataSource();
+            UpdateListDataSource();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -241,7 +240,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
             if (addCollection[1].Equals("0") == false)
             {
                 sysSoftwareForm.AddTabPageCollectionDetail(this, trnCollectionController.DetailCollection(Convert.ToInt32(addCollection[1])));
-                UpdateCollectionListDataSource();
+                UpdateListDataSource();
             }
             else
             {

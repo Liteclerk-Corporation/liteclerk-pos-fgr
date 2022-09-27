@@ -1,23 +1,19 @@
-﻿using System;
+﻿using EasyPOS.Interfaces.Forms;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.TrnStockIn
 {
     public partial class TrnStockInLineItemDetailForm : Form
     {
-        public TrnStockInDetailForm trnStockInDetailForm;
+        IUpdateListDataSource FormWithUpdate;
         public Entities.TrnStockInLineEntity trnStockInLineEntity;
 
         public List<Entities.SysLanguageEntity> sysLanguageEntities = new List<Entities.SysLanguageEntity>();
 
-        public TrnStockInLineItemDetailForm(TrnStockInDetailForm stockInDetailForm, Entities.TrnStockInLineEntity stockInLineEntity)
+        public TrnStockInLineItemDetailForm(IUpdateListDataSource formWithUpdate, Entities.TrnStockInLineEntity stockInLineEntity)
         {
             InitializeComponent();
 
@@ -32,7 +28,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             buttonSave.Text = SetLabel(buttonSave.Text);
             buttonClose.Text = SetLabel(buttonClose.Text);
 
-            trnStockInDetailForm = stockInDetailForm;
+            FormWithUpdate = formWithUpdate;
             trnStockInLineEntity = stockInLineEntity;
 
             GetStockInLineItemDetail();
@@ -178,7 +174,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                 String[] addStockInLine = trnPOSStockInLineController.AddStockInLine(newStockInLineEntity);
                 if (addStockInLine[1].Equals("0") == false)
                 {
-                    trnStockInDetailForm.UpdateStockInLineListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                     Close();
                 }
                 else
@@ -191,7 +187,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                 String[] updateStockInLine = trnPOSStockInLineController.UpdateStockInLine(trnStockInLineEntity.Id, newStockInLineEntity);
                 if (updateStockInLine[1].Equals("0") == false)
                 {
-                    trnStockInDetailForm.UpdateStockInLineListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                     Close();
                 }
                 else

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyPOS.Interfaces.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,15 +13,15 @@ namespace EasyPOS.Forms.Software.MstDiscounting
 {
     public partial class MstDiscountingDetailForm : Form
     {
+        IUpdateListDataSource FormWithUpdate;
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
 
-        public MstDiscountingListForm mstDiscountListForm;
         public Entities.MstDiscountEntity mstDiscountEntity;
 
         public List<Entities.SysLanguageEntity> sysLanguageEntities = new List<Entities.SysLanguageEntity>();
 
-        public MstDiscountingDetailForm(SysSoftwareForm softwareForm, MstDiscountingListForm itemListForm, Entities.MstDiscountEntity itemEntity)
+        public MstDiscountingDetailForm(SysSoftwareForm softwareForm, IUpdateListDataSource formWithUpdate, Entities.MstDiscountEntity itemEntity)
         {
             InitializeComponent();
 
@@ -59,7 +60,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
             }
             else
             {
-                mstDiscountListForm = itemListForm;
+                FormWithUpdate = formWithUpdate;
                 mstDiscountEntity = itemEntity;
 
                 GetDiscountDetail();
@@ -268,12 +269,8 @@ namespace EasyPOS.Forms.Software.MstDiscounting
 
             if (lockDiscount[1].Equals("0") == false)
             {
-
-
                 UpdateComponents(true);
-                mstDiscountListForm.UpdateDiscountListDataSource();
-
-
+                FormWithUpdate.UpdateListDataSource();
             }
             else
             {
@@ -290,7 +287,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
             if (unlockDiscount[1].Equals("0") == false)
             {
                 UpdateComponents(false);
-                mstDiscountListForm.UpdateDiscountListDataSource();
+                FormWithUpdate.UpdateListDataSource();
             }
             else
             {
@@ -338,7 +335,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
                     if (lockDiscount[1].Equals("0") == false)
                     {
                         sysSoftwareForm.RemoveTabPage();
-                        mstDiscountListForm.UpdateDiscountListDataSource();
+                        FormWithUpdate.UpdateListDataSource();
                     }
                     else
                     {

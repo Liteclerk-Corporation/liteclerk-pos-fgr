@@ -1,4 +1,5 @@
 ﻿using EasyPOS.Entities;
+using EasyPOS.Interfaces.Forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,11 +14,11 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
 {
     public partial class TrnPurchaseOrderLineItemDetailForm : Form
     {
-        public TrnPurchaseOrderDetailForm trnPurchaseOrderDetailForm;
+        IUpdateListDataSource FormWithUpdate;
         public TrnPurchaseOrderLineEntity trnPurchaseOrderLineEntity;
-        public TrnPurchaseOrderLineItemDetailForm(TrnPurchaseOrderDetailForm purchaseOrderDetailForm, TrnPurchaseOrderLineEntity purchaseOrderLineEntity)
+        public TrnPurchaseOrderLineItemDetailForm(IUpdateListDataSource formWithUpdate, TrnPurchaseOrderLineEntity purchaseOrderLineEntity)
         {
-            trnPurchaseOrderDetailForm = purchaseOrderDetailForm;
+            FormWithUpdate = formWithUpdate;
             trnPurchaseOrderLineEntity = purchaseOrderLineEntity;
 
             InitializeComponent();
@@ -89,7 +90,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                 String[] addPurchaseOrderLine = trnPOSPurchaseOrderLineController.AddPurchaseOrderLine(newPurchaseOrderLineEntity);
                 if (addPurchaseOrderLine[1].Equals("0") == false)
                 {
-                    trnPurchaseOrderDetailForm.UpdatePurchaseOrderLineListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                     Close();
                 }
                 else
@@ -102,7 +103,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                 String[] updatePurchaseOrderLine = trnPOSPurchaseOrderLineController.UpdatePurchaseOrderLine(trnPurchaseOrderLineEntity.Id, newPurchaseOrderLineEntity);
                 if (updatePurchaseOrderLine[1].Equals("0") == false)
                 {
-                    trnPurchaseOrderDetailForm.UpdatePurchaseOrderLineListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                     Close();
                 }
                 else

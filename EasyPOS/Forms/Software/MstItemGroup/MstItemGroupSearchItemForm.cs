@@ -1,4 +1,5 @@
-﻿using PagedList;
+﻿using EasyPOS.Interfaces.Forms;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ namespace EasyPOS.Forms.Software.MstItemGroup
 {
     public partial class MstItemGroupSearchItemForm : Form
     {
-        public MstItemGroupDetailForm mstItemGroupDetailForm;
+        IUpdateListDataSource FormWithUpdate;
         public Entities.MstItemGroupItemEntity mstItemGroupItemEntity;
 
         public static List<Entities.DgvMstItemGroupSearchItemListEntity> searchItemListData = new List<Entities.DgvMstItemGroupSearchItemListEntity>();
@@ -22,11 +23,11 @@ namespace EasyPOS.Forms.Software.MstItemGroup
         public PagedList<Entities.DgvMstItemGroupSearchItemListEntity> searchItemListPageList = new PagedList<Entities.DgvMstItemGroupSearchItemListEntity>(searchItemListData, pageNumber, pageSize);
         public BindingSource searchItemListDataSource = new BindingSource();
 
-        public MstItemGroupSearchItemForm(MstItemGroupDetailForm itemGroupDetailForm, Entities.MstItemGroupItemEntity itemGroupItemEntity)
+        public MstItemGroupSearchItemForm(IUpdateListDataSource formWithUpdate, Entities.MstItemGroupItemEntity itemGroupItemEntity)
         {
             InitializeComponent();
 
-            mstItemGroupDetailForm = itemGroupDetailForm;
+            FormWithUpdate = formWithUpdate;
             mstItemGroupItemEntity = itemGroupItemEntity;
 
             CreateSearchItemListDataGridView();
@@ -170,7 +171,7 @@ namespace EasyPOS.Forms.Software.MstItemGroup
                     String[] addUserForm = mstItemGroupItemController.AddItemGroupItem(newItemGroupItemEntity);
                     if (addUserForm[1].Equals("0") == false)
                     {
-                        mstItemGroupDetailForm.UpdateItemGroupItemListDataSource();
+                        FormWithUpdate.UpdateListDataSource();
                         Close();
                     }
                     else
@@ -183,7 +184,7 @@ namespace EasyPOS.Forms.Software.MstItemGroup
                     String[] updateUserForm = mstItemGroupItemController.UpdateItemGroupItem(newItemGroupItemEntity.Id, newItemGroupItemEntity);
                     if (updateUserForm[1].Equals("0") == false)
                     {
-                        mstItemGroupDetailForm.UpdateItemGroupItemListDataSource();
+                        FormWithUpdate.UpdateListDataSource();
                         Close();
                     }
                     else

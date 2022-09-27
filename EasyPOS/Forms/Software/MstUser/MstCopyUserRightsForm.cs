@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyPOS.Interfaces.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,13 +13,14 @@ namespace EasyPOS.Forms.Software.MstUser
 {
     public partial class MstCopyUserRightsForm : Form
     {
-        public MstUserDetailForm mstUserDetailForm;
+
+        IUpdateListDataSource FormWithUpdate;
         public Int32 userId;
 
         public List<Entities.SysLanguageEntity> sysLanguageEntities = new List<Entities.SysLanguageEntity>();
 
 
-        public MstCopyUserRightsForm(MstUserDetailForm userDetailForm, Int32 currentUserId)
+        public MstCopyUserRightsForm(IUpdateListDataSource formWithUpdate, Int32 currentUserId)
         {
             InitializeComponent();
 
@@ -37,7 +39,7 @@ namespace EasyPOS.Forms.Software.MstUser
                 }
             }
 
-            mstUserDetailForm = userDetailForm;
+            FormWithUpdate = formWithUpdate;
             userId = currentUserId;
             //sysUserRights = new Modules.SysUserRightsModule("SysTables");
             //if (sysUserRights.GetUserRights() == null)
@@ -93,7 +95,7 @@ namespace EasyPOS.Forms.Software.MstUser
                 String[] copyUserForm = mstUserFormController.CopyUserRight(userId, copyUserFormFromUserId);
                 if (copyUserForm[1].Equals("0") == false)
                 {
-                    mstUserDetailForm.UpdateUserFormListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                     Close();
                 }
                 else

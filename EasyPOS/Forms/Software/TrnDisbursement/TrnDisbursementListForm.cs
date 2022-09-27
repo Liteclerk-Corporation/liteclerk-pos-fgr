@@ -1,17 +1,16 @@
-﻿using PagedList;
+﻿using EasyPOS.Interfaces.Forms;
+using PagedList;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.TrnDisbursement
 {
-    public partial class TrnDisbursementListForm : Form
+    public partial class TrnDisbursementListForm : Form, IUpdateListDataSource
     {
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
@@ -106,7 +105,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             return label;
         }
 
-        public void UpdateDisbursementListDataSource()
+        public void UpdateListDataSource()
         {
             SetDisbursementListDataSourceAsync();
         }
@@ -201,7 +200,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
 
         public void CreateDisbursementListDataGridView()
         {
-            UpdateDisbursementListDataSource();
+            UpdateListDataSource();
 
             dataGridViewDisbursementList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewDisbursementList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -226,7 +225,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             if (addDisbursement[1].Equals("0") == false)
             {
                 sysSoftwareForm.AddTabPageDisbursementDetail(this, trnDisbursementController.DetailDisbursement(Convert.ToInt32(addDisbursement[1])));
-                UpdateDisbursementListDataSource();
+                UpdateListDataSource();
             }
             else
             {
@@ -242,14 +241,14 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
 
         private void dateTimePickerDisbursementListFilter_ValueChanged(object sender, EventArgs e)
         {
-            UpdateDisbursementListDataSource();
+            UpdateListDataSource();
         }
 
         private void textBoxDisbursementListFilter_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                UpdateDisbursementListDataSource();
+                UpdateListDataSource();
             }
         }
 
@@ -285,7 +284,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
                         if (deleteDisbursement[1].Equals("0") == false)
                         {
                             pageNumber = 1;
-                            UpdateDisbursementListDataSource();
+                            UpdateListDataSource();
                         }
                         else
                         {

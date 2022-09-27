@@ -1,22 +1,21 @@
-﻿using PagedList;
+﻿using EasyPOS.Interfaces.Forms;
+using PagedList;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.MstItem
 {
-    public partial class MstItemDetailForm : Form
+    public partial class MstItemDetailForm : Form, IUpdateListDataSource
     {
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
 
-        public MstItemListForm mstItemListForm;
+        IUpdateListDataSource FormWithUpdate;
         public Entities.MstItemEntity mstItemEntity;
 
         public static Int32 pageSize = 50;
@@ -34,7 +33,7 @@ namespace EasyPOS.Forms.Software.MstItem
 
         public List<Entities.SysLanguageEntity> sysLanguageEntities = new List<Entities.SysLanguageEntity>();
 
-        public MstItemDetailForm(SysSoftwareForm softwareForm, MstItemListForm itemListForm, Entities.MstItemEntity itemEntity)
+        public MstItemDetailForm(SysSoftwareForm softwareForm, IUpdateListDataSource formWithUpdate, Entities.MstItemEntity itemEntity)
         {
             InitializeComponent();
 
@@ -95,7 +94,7 @@ namespace EasyPOS.Forms.Software.MstItem
             }
             else
             {
-                mstItemListForm = itemListForm;
+                FormWithUpdate = formWithUpdate;
                 mstItemEntity = itemEntity;
 
                 GetItemList();
@@ -409,7 +408,7 @@ namespace EasyPOS.Forms.Software.MstItem
                     mstItemEntity.IsLocked = true;
 
                     UpdateComponents(true);
-                    mstItemListForm.UpdateItemListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                 }
                 else
                 {
@@ -438,7 +437,7 @@ namespace EasyPOS.Forms.Software.MstItem
                 mstItemEntity.IsLocked = false;
 
                 UpdateComponents(false);
-                mstItemListForm.UpdateItemListDataSource();
+                FormWithUpdate.UpdateListDataSource();
             }
             else
             {
@@ -493,7 +492,7 @@ namespace EasyPOS.Forms.Software.MstItem
                     if (lockItem[1].Equals("0") == false)
                     {
                         sysSoftwareForm.RemoveTabPage();
-                        mstItemListForm.UpdateItemListDataSource();
+                        FormWithUpdate.UpdateListDataSource();
                     }
                     else
                     {
@@ -573,7 +572,7 @@ namespace EasyPOS.Forms.Software.MstItem
             }
         }
 
-        public void UpdateItemPriceListDataSource()
+        public void UpdateListDataSource()
         {
             SetItemPriceListDataSourceAsync();
         }
@@ -660,7 +659,7 @@ namespace EasyPOS.Forms.Software.MstItem
 
         public void CreateItemPriceListDataGridView()
         {
-            UpdateItemPriceListDataSource();
+            UpdateListDataSource();
 
             dataGridViewItemPriceList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewItemPriceList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -677,7 +676,7 @@ namespace EasyPOS.Forms.Software.MstItem
         {
             if (e.KeyCode == Keys.Enter)
             {
-                UpdateItemPriceListDataSource();
+                UpdateListDataSource();
             }
         }
 
@@ -716,7 +715,7 @@ namespace EasyPOS.Forms.Software.MstItem
                         Int32 currentPageNumber = pageNumber;
 
                         pageNumber = 1;
-                        UpdateItemPriceListDataSource();
+                        UpdateListDataSource();
                     }
                     else
                     {

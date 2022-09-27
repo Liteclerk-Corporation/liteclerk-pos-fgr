@@ -1,23 +1,20 @@
-﻿using System;
+﻿using EasyPOS.Interfaces.Forms;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.MstItem
 {
     public partial class MstItemPriceDetailForm : Form
     {
-        MstItemDetailForm mstItemDetailForm;
+        IUpdateListDataSource FormWithUpdate;
+
         Entities.MstItemPriceEntity mstItemPriceEntity;
         public List<Entities.SysLanguageEntity> sysLanguageEntities = new List<Entities.SysLanguageEntity>();
 
 
-        public MstItemPriceDetailForm(MstItemDetailForm itemDetailForm, Entities.MstItemPriceEntity itemPriceEntity)
+        public MstItemPriceDetailForm(IUpdateListDataSource formWithUpdate, Entities.MstItemPriceEntity itemPriceEntity)
         {
             InitializeComponent();
 
@@ -38,7 +35,7 @@ namespace EasyPOS.Forms.Software.MstItem
                 }
             }
 
-            mstItemDetailForm = itemDetailForm;
+            FormWithUpdate = formWithUpdate;
             mstItemPriceEntity = itemPriceEntity;
 
             LoadItemPrice();
@@ -96,7 +93,7 @@ namespace EasyPOS.Forms.Software.MstItem
                 }
                 else
                 {
-                    mstItemDetailForm.UpdateItemPriceListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                     Close();
                 }
             }
@@ -111,7 +108,7 @@ namespace EasyPOS.Forms.Software.MstItem
                 }
                 else
                 {
-                    mstItemDetailForm.UpdateItemPriceListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                     Close();
                 }
             }

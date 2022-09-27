@@ -1,18 +1,14 @@
-﻿using System;
+﻿using EasyPOS.Interfaces.Forms;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.IO.Ports;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.TrnPOS
 {
-    public partial class TrnPOSBarcodeDetailForm : Form
+    public partial class TrnPOSBarcodeDetailForm : Form, IOverrideSales
     {
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
@@ -257,7 +253,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         }
         private void buttonOverRide_Click(object sender, EventArgs e)
         {
-            Account.SysLogin.SysLoginForm login = new Account.SysLogin.SysLoginForm(null, this, null, null, true);
+            Account.SysLogin.SysLoginForm login = new Account.SysLogin.SysLoginForm(null, this, null);
             login.ShowDialog();
         }
         public void OverrideSales(Int32 overrideUserId)

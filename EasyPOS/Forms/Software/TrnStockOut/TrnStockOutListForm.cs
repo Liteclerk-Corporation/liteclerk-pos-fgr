@@ -1,17 +1,16 @@
-﻿using PagedList;
+﻿using EasyPOS.Interfaces.Forms;
+using PagedList;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.TrnStockOut
 {
-    public partial class TrnStockOutListForm : Form
+    public partial class TrnStockOutListForm : Form, IUpdateListDataSource
     {
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
@@ -110,7 +109,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
             return label;
         }
 
-        public void UpdateStockOutListDataSource()
+        public void UpdateListDataSource()
         {
             SetStockOutListDataSourceAsync();
         }
@@ -216,7 +215,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
 
         public void CreateStockOutListDataGridView()
         {
-            UpdateStockOutListDataSource();
+            UpdateListDataSource();
 
             dataGridViewStockOutList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewStockOutList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -241,7 +240,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
             if (addStockOut[1].Equals("0") == false)
             {
                 sysSoftwareForm.AddTabPageStockOutDetail(this, trnStockOutController.DetailStockOut(Convert.ToInt32(addStockOut[1])));
-                UpdateStockOutListDataSource();
+                UpdateListDataSource();
             }
             else
             {
@@ -257,14 +256,14 @@ namespace EasyPOS.Forms.Software.TrnStockOut
 
         private void dateTimePickerStockOutListFilter_ValueChanged(object sender, EventArgs e)
         {
-            UpdateStockOutListDataSource();
+            UpdateListDataSource();
         }
 
         private void textBoxStockOutListFilter_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                UpdateStockOutListDataSource();
+                UpdateListDataSource();
             }
         }
 
@@ -300,7 +299,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                         if (deleteStockOut[1].Equals("0") == false)
                         {
                             pageNumber = 1;
-                            UpdateStockOutListDataSource();
+                            UpdateListDataSource();
                         }
                         else
                         {

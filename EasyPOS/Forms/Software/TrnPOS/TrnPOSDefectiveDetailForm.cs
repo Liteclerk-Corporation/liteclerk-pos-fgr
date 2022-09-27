@@ -1,19 +1,18 @@
-﻿using PagedList;
+﻿using EasyPOS.Interfaces.Forms;
+using PagedList;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.TrnPOS
 {
-    public partial class TrnPOSDefectiveDetailForm : Form
+    public partial class TrnPOSDefectiveDetailForm : Form, IUpdateListDataSource
     {
-        public TrnPOSDefectiveListForm trnDefectiveListForm;
+        IUpdateListDataSource FormWithUpdate;
         public Entities.TrnDefectiveEntity trnDefectiveEntity;
 
         public static List<Entities.DgvTrnDefectiveLineListEntity> defectiveLineData = new List<Entities.DgvTrnDefectiveLineListEntity>();
@@ -22,11 +21,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public PagedList<Entities.DgvTrnDefectiveLineListEntity> defectiveLinePageList = new PagedList<Entities.DgvTrnDefectiveLineListEntity>(defectiveLineData, defectiveLinePageNumber, defectiveLinePageSize);
         public BindingSource defectiveLineDataSource = new BindingSource();
 
-        public TrnPOSDefectiveDetailForm(TrnPOSDefectiveListForm defectiveListForm, Entities.TrnDefectiveEntity defectiveEntity)
+        public TrnPOSDefectiveDetailForm(IUpdateListDataSource formWithUpdate, Entities.TrnDefectiveEntity defectiveEntity)
         {
             InitializeComponent();
 
-            trnDefectiveListForm = defectiveListForm;
+            FormWithUpdate = formWithUpdate;
             trnDefectiveEntity = defectiveEntity;
 
             GetUserList();
@@ -61,7 +60,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             CreateDefectiveLineListDataGridView();
         }
-        public void UpdateDefectiveLineListDataSource()
+        public void UpdateListDataSource()
         {
             SetDefectiveLineListDataSourceAsync();
         }
@@ -151,7 +150,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         public void CreateDefectiveLineListDataGridView()
         {
-            UpdateDefectiveLineListDataSource();
+            UpdateListDataSource();
 
             dataGridViewDefectiveLineList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewDefectiveLineList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -211,7 +210,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     if (deleteDefectiveLine[1].Equals("0") == false)
                     {
                         defectiveLinePageNumber = 1;
-                        UpdateDefectiveLineListDataSource();
+                        UpdateListDataSource();
                     }
                     else
                     {
@@ -293,7 +292,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             if (lockDefective[1].Equals("0") == false)
             {
                 UpdateComponents(true);
-                trnDefectiveListForm.UpdateDefectiveListDataSource();
+                FormWithUpdate.UpdateListDataSource();
             }
             else
             {
@@ -327,7 +326,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             if (unlockDefective[1].Equals("0") == false)
             {
                 UpdateComponents(false);
-                trnDefectiveListForm.UpdateDefectiveListDataSource();
+                FormWithUpdate.UpdateListDataSource();
             }
             else
             {

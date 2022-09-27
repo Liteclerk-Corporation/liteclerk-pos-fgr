@@ -1,24 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using EasyPOS.Interfaces.Forms;
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.TrnPOS
 {
     public partial class TrnPOSDefectiveLineItemDetailForm : Form
     {
-        public TrnPOSDefectiveDetailForm trnDefectiveDetailForm;
+        IUpdateListDataSource FormWithUpdate;
         public Entities.TrnDefectiveLineEntity trnDefectiveLineEntity;
-        public TrnPOSDefectiveLineItemDetailForm(TrnPOSDefectiveDetailForm defectiveDetailForm, Entities.TrnDefectiveLineEntity defectiveLineEntity)
+        public TrnPOSDefectiveLineItemDetailForm(IUpdateListDataSource formWithUpdate, Entities.TrnDefectiveLineEntity defectiveLineEntity)
         {
             InitializeComponent();
 
-            trnDefectiveDetailForm = defectiveDetailForm;
+            FormWithUpdate = formWithUpdate;
             trnDefectiveLineEntity = defectiveLineEntity;
 
             GetItemList();
@@ -64,7 +59,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 String[] addDefectiveLine = trnPOSDefectiveLineController.AddDefectiveLine(newDefectiveLineEntity);
                 if (addDefectiveLine[1].Equals("0") == false)
                 {
-                    trnDefectiveDetailForm.UpdateDefectiveLineListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                     Close();
                 }
                 else
@@ -77,7 +72,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 String[] updateDefectiveLine = trnPOSDefectiveLineController.UpdateDefectiveLine(trnDefectiveLineEntity.Id, newDefectiveLineEntity);
                 if (updateDefectiveLine[1].Equals("0") == false)
                 {
-                    trnDefectiveDetailForm.UpdateDefectiveLineListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                     Close();
                 }
                 else

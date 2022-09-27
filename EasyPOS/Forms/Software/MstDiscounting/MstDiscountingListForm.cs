@@ -1,17 +1,16 @@
-﻿using PagedList;
+﻿using EasyPOS.Interfaces.Forms;
+using PagedList;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.MstDiscounting
 {
-    public partial class MstDiscountingListForm : Form
+    public partial class MstDiscountingListForm : Form, IUpdateListDataSource
     {
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
@@ -102,7 +101,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
             return label;
         }
 
-        public void UpdateDiscountListDataSource()
+        public void UpdateListDataSource()
         {
             SetDiscountListDataSourceAsync();
         }
@@ -191,7 +190,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
 
         public void CreateDiscountListDataGridView()
         {
-            UpdateDiscountListDataSource();
+            UpdateListDataSource();
 
             dataGridViewDiscountList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewDiscountList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -221,7 +220,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
             if (addDiscount[1].Equals("0") == false)
             {
                 sysSoftwareForm.AddTabPageDiscountingDetail(this, mstDiscountController.DetailDiscount(Convert.ToInt32(addDiscount[1])));
-                UpdateDiscountListDataSource();
+                UpdateListDataSource();
             }
             else
             {
@@ -272,7 +271,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
                             Int32 currentPageNumber = pageNumber;
 
                             pageNumber = 1;
-                            UpdateDiscountListDataSource();
+                            UpdateListDataSource();
 
                             if (discountListPageList != null)
                             {
@@ -305,7 +304,7 @@ namespace EasyPOS.Forms.Software.MstDiscounting
         {
             if (e.KeyCode == Keys.Enter)
             {
-                UpdateDiscountListDataSource();
+                UpdateListDataSource();
             }
         }
 

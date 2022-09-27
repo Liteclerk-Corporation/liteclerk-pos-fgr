@@ -7,11 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EasyPOS.Interfaces.Forms;
 using PagedList;
 
 namespace EasyPOS.Forms.Software.TrnStockIn
 {
-    public partial class TrnStockInListForm : Form
+    public partial class TrnStockInListForm : Form, IUpdateListDataSource
     {
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
@@ -111,7 +112,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             return label;
         }
 
-        public void UpdateStockInListDataSource()
+        public void UpdateListDataSource()
         {
             SetStockInListDataSourceAsync();
         }
@@ -218,7 +219,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
 
         public void CreateStockInListDataGridView()
         {
-            UpdateStockInListDataSource();
+            UpdateListDataSource();
 
             dataGridViewStockInList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewStockInList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -243,7 +244,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             if (addStockIn[1].Equals("0") == false)
             {
                 sysSoftwareForm.AddTabPageStockInDetail(this, trnStockInController.DetailStockIn(Convert.ToInt32(addStockIn[1])));
-                UpdateStockInListDataSource();
+                UpdateListDataSource();
             }
             else
             {
@@ -289,7 +290,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                         if (deleteStockIn[1].Equals("0") == false)
                         {
                             pageNumber = 1;
-                            UpdateStockInListDataSource();
+                            UpdateListDataSource();
                         }
                         else
                         {
@@ -302,14 +303,14 @@ namespace EasyPOS.Forms.Software.TrnStockIn
 
         private void dateTimePickerStockInListFilter_ValueChanged(object sender, EventArgs e)
         {
-            UpdateStockInListDataSource();
+            UpdateListDataSource();
         }
 
         private void textBoxStockInListFilter_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                UpdateStockInListDataSource();
+                UpdateListDataSource();
             }
         }
 

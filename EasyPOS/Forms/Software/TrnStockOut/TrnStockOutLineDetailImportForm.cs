@@ -109,7 +109,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                 String[] addStockInLine = trnPOSStockOutLineController.ImportStockOutLine(stockOutItemList);
                 if (addStockInLine[1].Equals("0") == false)
                 {
-                    _trnStockOutDetailForm.UpdateStockOutLineListDataSource();
+                    _trnStockOutDetailForm.UpdateListDataSource();
                     Close();
                 }
                 else

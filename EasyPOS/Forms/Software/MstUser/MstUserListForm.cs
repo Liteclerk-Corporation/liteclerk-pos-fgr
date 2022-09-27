@@ -1,17 +1,16 @@
-﻿using PagedList;
+﻿using EasyPOS.Interfaces.Forms;
+using PagedList;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.MstUser
 {
-    public partial class MstUserListForm : Form
+    public partial class MstUserListForm : Form, IUpdateListDataSource
     {
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
@@ -100,7 +99,7 @@ namespace EasyPOS.Forms.Software.MstUser
             return label;
         }
 
-        public void UpdateUserListDataSource()
+        public void UpdateListDataSource()
         {
             SetUserListDataSourceAsync();
         }
@@ -188,7 +187,7 @@ namespace EasyPOS.Forms.Software.MstUser
 
         public void CreateUserListDataGridView()
         {
-            UpdateUserListDataSource();
+            UpdateListDataSource();
 
             dataGridViewUserList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewUserList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -210,7 +209,7 @@ namespace EasyPOS.Forms.Software.MstUser
         {
             if (e.KeyCode == Keys.Enter)
             {
-                UpdateUserListDataSource();
+                UpdateListDataSource();
             }
         }
 
@@ -221,7 +220,7 @@ namespace EasyPOS.Forms.Software.MstUser
             if (addUser[1].Equals("0") == false)
             {
                 sysSoftwareForm.AddTabPageUserDetail(this, mstUserController.DetailUser(Convert.ToInt32(addUser[1])));
-                UpdateUserListDataSource();
+                UpdateListDataSource();
             }
             else
             {
@@ -268,7 +267,7 @@ namespace EasyPOS.Forms.Software.MstUser
                             Int32 currentPageNumber = pageNumber;
 
                             pageNumber = 1;
-                            UpdateUserListDataSource();
+                            UpdateListDataSource();
 
                             if (userListPageList != null)
                             {

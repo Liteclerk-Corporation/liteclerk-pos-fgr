@@ -7,15 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using EasyPOS.Interfaces.Forms;
 using PagedList;
 
 namespace EasyPOS.Forms.Software.TrnPurchaseOrder
 {
-    public partial class TrnPurchaseOrderDetailForm : Form
+    public partial class TrnPurchaseOrderDetailForm : Form, IUpdateListDataSource
     {
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
-        public TrnPurchaseOrderListForm trnPurchaseOrderListForm;
+        IUpdateListDataSource FormWithUpdate;
         public Entities.TrnPurchaseOrderEntity trnPurchaseOrderEntity;
 
         public static List<Entities.DgvTrnPurchaseOrderLineListEntity> purchaseOrderLineData = new List<Entities.DgvTrnPurchaseOrderLineListEntity>();
@@ -23,7 +24,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
         public static Int32 PurchaseOrderLinePageSize = 50;
         public PagedList<Entities.DgvTrnPurchaseOrderLineListEntity> purchaseOrderLinePageList = new PagedList<Entities.DgvTrnPurchaseOrderLineListEntity>(purchaseOrderLineData, PurchaseOrderLinePageNumber, PurchaseOrderLinePageSize);
         public BindingSource purchaseOrderLineDataSource = new BindingSource();
-        public TrnPurchaseOrderDetailForm(SysSoftwareForm softwareForm, TrnPurchaseOrderListForm purchaseOrderListForm, Entities.TrnPurchaseOrderEntity purchaseOrderEntity)
+        public TrnPurchaseOrderDetailForm(SysSoftwareForm softwareForm, IUpdateListDataSource formWithUpdate, Entities.TrnPurchaseOrderEntity purchaseOrderEntity)
         {
             InitializeComponent();
             sysSoftwareForm = softwareForm;
@@ -35,7 +36,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
             }
             else
             {
-                trnPurchaseOrderListForm = purchaseOrderListForm;
+                FormWithUpdate = formWithUpdate;
                 trnPurchaseOrderEntity = purchaseOrderEntity;
 
                 GetStatus();
@@ -186,7 +187,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
             if (lockPurchaseOrder[1].Equals("0") == false)
             {
                 UpdateComponents(true);
-                trnPurchaseOrderListForm.UpdatePurchaseOrderListDataSource();
+                FormWithUpdate.UpdateListDataSource();
             }
             else
             {
@@ -202,7 +203,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
             if (unlockPurchaseOrder[1].Equals("0") == false)
             {
                 UpdateComponents(false);
-                trnPurchaseOrderListForm.UpdatePurchaseOrderListDataSource();
+                FormWithUpdate.UpdateListDataSource();
             }
             else
             {
@@ -219,7 +220,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
         {
             sysSoftwareForm.RemoveTabPage();
         }
-        public void UpdatePurchaseOrderLineListDataSource()
+        public void UpdateListDataSource()
         {
             SetPurchaseOrderLineListDataSourceAsync();
         }
@@ -310,7 +311,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
         }
         public void CreatePurchaseOrderLineListDataGridView()
         {
-            UpdatePurchaseOrderLineListDataSource();
+            UpdateListDataSource();
 
             dataGridViewPurchaseOrderLineList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewPurchaseOrderLineList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -379,7 +380,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                     if (deletePurchaseOrderLine[1].Equals("0") == false)
                     {
                         PurchaseOrderLinePageNumber = 1;
-                        UpdatePurchaseOrderLineListDataSource();
+                        UpdateListDataSource();
                     }
                     else
                     {
@@ -478,7 +479,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                 if (Modules.SysCurrentModule.GetCurrentSettings().IsBarcodeQuantityAlwaysOne == true)
                 {
                     trnPOSPurchaseOrderLineController.BarcodePurchaseOrderLine(trnPurchaseOrderEntity.Id, textBoxBarcode.Text);
-                    UpdatePurchaseOrderLineListDataSource();
+                    UpdateListDataSource();
                 }
                 else
                 {

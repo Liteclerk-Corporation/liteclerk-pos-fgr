@@ -1,13 +1,8 @@
 ﻿using EasyPOS.Forms.Software.TrnPOS;
+using EasyPOS.Interfaces.Forms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software
@@ -1077,7 +1072,7 @@ namespace EasyPOS.Forms.Software
 
         private void SysSoftwareForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Account.SysLogin.SysLoginForm sysLogin = new Account.SysLogin.SysLoginForm(null, null, null, null, false); ;
+            Account.SysLogin.SysLoginForm sysLogin = new Account.SysLogin.SysLoginForm(null, null, null);
             sysLogin.Show();
         }
 

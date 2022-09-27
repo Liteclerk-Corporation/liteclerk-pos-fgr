@@ -1,26 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EasyPOS.Interfaces.Forms;
+using System;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.MstTableGroup
 {
     public partial class MstTableDetailForm : Form
     {
-        MstTableGroupDetailForm mstTableGroupDetailForm;
+        IUpdateListDataSource FormWithUpdate;
         private Modules.SysUserRightsModule sysUserRights;
 
         Entities.MstTableEntity mstTableEntity;
 
-        public MstTableDetailForm(MstTableGroupDetailForm systemTablesForm, Entities.MstTableEntity tableEntity)
+        public MstTableDetailForm(IUpdateListDataSource formWithUpdate, Entities.MstTableEntity tableEntity)
         {
             InitializeComponent();
-            mstTableGroupDetailForm = systemTablesForm;
+            FormWithUpdate = formWithUpdate;
             mstTableEntity = tableEntity;
 
             sysUserRights = new Modules.SysUserRightsModule("MstRestaurantTableDetail");
@@ -68,7 +62,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
                 }
                 else
                 {
-                    mstTableGroupDetailForm.UpdateTableListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                     Close();
                 }
             }
@@ -84,7 +78,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
                 }
                 else
                 {
-                    mstTableGroupDetailForm.UpdateTableListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                     Close();
                 }
 

@@ -1,18 +1,14 @@
-﻿using System;
+﻿using EasyPOS.Interfaces.Forms;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.MstUser
 {
     public partial class MstUserFormDetailForm : Form
     {
-        public MstUserDetailForm mstUserDetailForm;
+        IUpdateListDataSource FormWithUpdate;
         private Modules.SysUserRightsModule sysUserRights;
 
         public Entities.MstUserFormEntity mtUserFormEntity;
@@ -20,7 +16,7 @@ namespace EasyPOS.Forms.Software.MstUser
         public List<Entities.SysLanguageEntity> sysLanguageEntities = new List<Entities.SysLanguageEntity>();
 
 
-        public MstUserFormDetailForm(MstUserDetailForm userDetailForm, Entities.MstUserFormEntity userFormEntity)
+        public MstUserFormDetailForm(IUpdateListDataSource formWithUpdate, Entities.MstUserFormEntity userFormEntity)
         {
             InitializeComponent();
 
@@ -52,7 +48,7 @@ namespace EasyPOS.Forms.Software.MstUser
                 }
             }
 
-            mstUserDetailForm = userDetailForm;
+            FormWithUpdate = formWithUpdate;
             mtUserFormEntity = userFormEntity;
 
             sysUserRights = new Modules.SysUserRightsModule("MstUserDetail");
@@ -159,7 +155,7 @@ namespace EasyPOS.Forms.Software.MstUser
                 String[] addUserForm = mstUserFormController.AddUserForm(newUserFormEntity);
                 if (addUserForm[1].Equals("0") == false)
                 {
-                    mstUserDetailForm.UpdateUserFormListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                     Close();
                 }
                 else
@@ -172,7 +168,7 @@ namespace EasyPOS.Forms.Software.MstUser
                 String[] updateUserForm = mstUserFormController.UpdateUserForm(mtUserFormEntity.Id, newUserFormEntity);
                 if (updateUserForm[1].Equals("0") == false)
                 {
-                    mstUserDetailForm.UpdateUserFormListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                     Close();
                 }
                 else

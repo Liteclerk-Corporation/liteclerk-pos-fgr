@@ -9,14 +9,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EasyPOS.Forms.Software.TrnPOS;
+using EasyPOS.Interfaces.Forms;
 
 namespace EasyPOS.Forms.Software.TrnCollection
 {
-    public partial class TrnCollectionDetailForm : Form
+    public partial class TrnCollectionDetailForm : Form, IUpdateListDataSource
     {
+
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
-        public TrnCollectionListForm trnCollectionListForm;
+
+        IUpdateListDataSource FormWithUpdate;
         public Entities.TrnCollectionEntity trnCollectionEntity;
 
         public static List<Entities.DgvTrnCollectionLineListEntity> collectionLineData = new List<Entities.DgvTrnCollectionLineListEntity>();
@@ -24,7 +27,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
         public static Int32 CollectionLinePageSize = 50;
         public PagedList<Entities.DgvTrnCollectionLineListEntity> collectionLinePageList = new PagedList<Entities.DgvTrnCollectionLineListEntity>(collectionLineData, CollectionLinePageNumber, CollectionLinePageSize);
         public BindingSource collectionLineDataSource = new BindingSource();
-        public TrnCollectionDetailForm(SysSoftwareForm softwareForm, TrnCollectionListForm collectionListForm, Entities.TrnCollectionEntity collectionEntity)
+        public TrnCollectionDetailForm(SysSoftwareForm softwareForm, IUpdateListDataSource formWithUpdate, Entities.TrnCollectionEntity collectionEntity)
         {
             InitializeComponent();
             sysSoftwareForm = softwareForm;
@@ -36,7 +39,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
             }
             else
             {
-                trnCollectionListForm = collectionListForm;
+                FormWithUpdate = formWithUpdate;
                 trnCollectionEntity = collectionEntity;
 
                 GetTerminal();
@@ -208,7 +211,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
                 if (lockCollection[1].Equals("0") == false)
                 {
                     UpdateComponents(true);
-                    trnCollectionListForm.UpdateCollectionListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                 }
                 else
                 {
@@ -230,14 +233,14 @@ namespace EasyPOS.Forms.Software.TrnCollection
             if (unlockCollection[1].Equals("0") == false)
             {
                 UpdateComponents(false);
-                trnCollectionListForm.UpdateCollectionListDataSource();
+                FormWithUpdate.UpdateListDataSource();
             }
             else
             {
                 MessageBox.Show(unlockCollection[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void UpdateCollectionListDataSource()
+        public void UpdateListDataSource()
         {
             SetCollectionLineListDataSourceAsync();
         }
@@ -352,7 +355,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
         }
         public void CreateCollectionLineListDataGridView()
         {
-            UpdateCollectionListDataSource();
+            UpdateListDataSource();
 
             dataGridViewCollectionLineList.AutoGenerateColumns = false;
 
@@ -439,7 +442,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
                     if (deleteCollectionLine[1].Equals("0") == false)
                     {
                         CollectionLinePageNumber = 1;
-                        UpdateCollectionListDataSource();
+                        UpdateListDataSource();
                     }
                     else
                     {

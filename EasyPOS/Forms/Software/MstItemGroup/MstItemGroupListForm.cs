@@ -1,17 +1,16 @@
-﻿using PagedList;
+﻿using EasyPOS.Interfaces.Forms;
+using PagedList;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.MstItemGroup
 {
-    public partial class MstItemGroupListForm : Form
+    public partial class MstItemGroupListForm : Form, IUpdateListDataSource
     {
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
@@ -53,7 +52,7 @@ namespace EasyPOS.Forms.Software.MstItemGroup
             }
         }
 
-        public void UpdateItemGroupListDataSource()
+        public void UpdateListDataSource()
         {
             SetItemGroupListDataSourceAsync();
         }
@@ -141,7 +140,7 @@ namespace EasyPOS.Forms.Software.MstItemGroup
 
         public void CreateItemGroupListDataGridView()
         {
-            UpdateItemGroupListDataSource();
+            UpdateListDataSource();
 
             dataGridViewItemGroupList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewItemGroupList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -171,7 +170,7 @@ namespace EasyPOS.Forms.Software.MstItemGroup
             if (addItemGroup[1].Equals("0") == false)
             {
                 sysSoftwareForm.AddTabPageItemGroupDetail(this, mstItemGroupController.DetailItemGroup(Convert.ToInt32(addItemGroup[1])));
-                UpdateItemGroupListDataSource();
+                UpdateListDataSource();
             }
             else
             {
@@ -213,7 +212,7 @@ namespace EasyPOS.Forms.Software.MstItemGroup
                             Int32 currentPageNumber = pageNumber;
 
                             pageNumber = 1;
-                            UpdateItemGroupListDataSource();
+                            UpdateListDataSource();
 
                             if (itemGroupListPageList != null)
                             {
@@ -246,7 +245,7 @@ namespace EasyPOS.Forms.Software.MstItemGroup
         {
             if (e.KeyCode == Keys.Enter)
             {
-                UpdateItemGroupListDataSource();
+                UpdateListDataSource();
             }
         }
 

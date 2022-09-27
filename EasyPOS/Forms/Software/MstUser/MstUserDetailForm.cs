@@ -1,22 +1,21 @@
-﻿using PagedList;
+﻿using EasyPOS.Interfaces.Forms;
+using PagedList;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.MstUser
 {
-    public partial class MstUserDetailForm : Form
+    public partial class MstUserDetailForm : Form, IUpdateListDataSource
     {
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
 
-        public MstUserListForm mstUserListForm;
+        public IUpdateListDataSource FormWithUpdate;
         public Entities.MstUserEntity mstUserEntity;
 
         public static List<Entities.DgvMstUserFormListEntity> userFormData = new List<Entities.DgvMstUserFormListEntity>();
@@ -27,7 +26,7 @@ namespace EasyPOS.Forms.Software.MstUser
 
         public List<Entities.SysLanguageEntity> sysLanguageEntities = new List<Entities.SysLanguageEntity>();
 
-        public MstUserDetailForm(SysSoftwareForm softwareForm, MstUserListForm userListForm, Entities.MstUserEntity userEntity)
+        public MstUserDetailForm(SysSoftwareForm softwareForm, IUpdateListDataSource formWithUpdate, Entities.MstUserEntity userEntity)
         {
             InitializeComponent();
 
@@ -70,7 +69,7 @@ namespace EasyPOS.Forms.Software.MstUser
             }
 
             sysSoftwareForm = softwareForm;
-            mstUserListForm = userListForm;
+            FormWithUpdate = formWithUpdate;
             mstUserEntity = userEntity;
 
             sysUserRights = new Modules.SysUserRightsModule("MstUserDetail");
@@ -148,7 +147,7 @@ namespace EasyPOS.Forms.Software.MstUser
                     if (lockUser[1].Equals("0") == false)
                     {
                         sysSoftwareForm.RemoveTabPage();
-                        mstUserListForm.UpdateUserListDataSource();
+                        FormWithUpdate.UpdateListDataSource();
                     }
                     else
                     {
@@ -237,7 +236,7 @@ namespace EasyPOS.Forms.Software.MstUser
             if (lockUser[1].Equals("0") == false)
             {
                 UpdateComponents(true);
-                mstUserListForm.UpdateUserListDataSource();
+                FormWithUpdate.UpdateListDataSource();
             }
             else
             {
@@ -254,7 +253,7 @@ namespace EasyPOS.Forms.Software.MstUser
             if (unlockUser[1].Equals("0") == false)
             {
                 UpdateComponents(false);
-                mstUserListForm.UpdateUserListDataSource();
+                FormWithUpdate.UpdateListDataSource();
             }
             else
             {
@@ -263,7 +262,7 @@ namespace EasyPOS.Forms.Software.MstUser
             }
         }
 
-        public void UpdateUserFormListDataSource()
+        public void UpdateListDataSource()
         {
             SetUserFormListDataSourceAsync();
         }
@@ -276,33 +275,28 @@ namespace EasyPOS.Forms.Software.MstUser
                 userFormData = getUserFormListData;
                 userFormPageList = new PagedList<Entities.DgvMstUserFormListEntity>(userFormData, userFormPageNumber, userFormPageSize);
 
+                buttonUserFormListPageListNext.Enabled = (userFormPageList.PageCount != 1) && (userFormPageNumber == userFormPageList.PageCount);
+                buttonUserFormListPageListLast.Enabled = buttonUserFormListPageListNext.Enabled;
+
                 if (userFormPageList.PageCount == 1)
                 {
                     buttonUserFormListPageListFirst.Enabled = false;
                     buttonUserFormListPageListPrevious.Enabled = false;
-                    buttonUserFormListPageListNext.Enabled = false;
-                    buttonUserFormListPageListLast.Enabled = false;
                 }
                 else if (userFormPageNumber == 1)
                 {
                     buttonUserFormListPageListFirst.Enabled = false;
                     buttonUserFormListPageListPrevious.Enabled = false;
-                    buttonUserFormListPageListNext.Enabled = true;
-                    buttonUserFormListPageListLast.Enabled = true;
                 }
                 else if (userFormPageNumber == userFormPageList.PageCount)
                 {
                     buttonUserFormListPageListFirst.Enabled = true;
                     buttonUserFormListPageListPrevious.Enabled = true;
-                    buttonUserFormListPageListNext.Enabled = false;
-                    buttonUserFormListPageListLast.Enabled = false;
                 }
                 else
                 {
                     buttonUserFormListPageListFirst.Enabled = true;
                     buttonUserFormListPageListPrevious.Enabled = true;
-                    buttonUserFormListPageListNext.Enabled = true;
-                    buttonUserFormListPageListLast.Enabled = true;
                 }
 
                 textBoxUserFormListPageNumber.Text = userFormPageNumber + " / " + userFormPageList.PageCount;
@@ -364,7 +358,7 @@ namespace EasyPOS.Forms.Software.MstUser
 
         public void CreateUserFormListDataGridView()
         {
-            UpdateUserFormListDataSource();
+            UpdateListDataSource();
 
             dataGridViewUserFormList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewUserFormList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -446,7 +440,7 @@ namespace EasyPOS.Forms.Software.MstUser
                     if (deleteUserForm[1].Equals("0") == false)
                     {
                         userFormPageNumber = 1;
-                        UpdateUserFormListDataSource();
+                        UpdateListDataSource();
                     }
                     else
                     {

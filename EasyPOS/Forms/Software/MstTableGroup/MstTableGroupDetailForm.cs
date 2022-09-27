@@ -1,4 +1,5 @@
-﻿using PagedList;
+﻿using EasyPOS.Interfaces.Forms;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,12 +12,12 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.MstTableGroup
 {
-    public partial class MstTableGroupDetailForm : Form
+    public partial class MstTableGroupDetailForm : Form, IUpdateListDataSource
     {
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
 
-        public MstTableGroupListForm mstTableGroupListForm;
+        IUpdateListDataSource FormWithUpdate;
         public Entities.MstTableGroupEntity mstTableGroupEntity;
 
         public static List<Entities.DgvMstTableListEntity> tableData = new List<Entities.DgvMstTableListEntity>();
@@ -25,7 +26,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
         public PagedList<Entities.DgvMstTableListEntity> tablePageList = new PagedList<Entities.DgvMstTableListEntity>(tableData, tablePageNumber, tablePageSize);
         public BindingSource tableDataSource = new BindingSource();
 
-        public MstTableGroupDetailForm(SysSoftwareForm softwareForm, MstTableGroupListForm tableListForm, Entities.MstTableGroupEntity tableEntity)
+        public MstTableGroupDetailForm(SysSoftwareForm softwareForm, IUpdateListDataSource formWithUpdate, Entities.MstTableGroupEntity tableEntity)
         {
             InitializeComponent();
             sysSoftwareForm = softwareForm;
@@ -37,7 +38,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
             }
             else
             {
-                mstTableGroupListForm = tableListForm;
+                FormWithUpdate = formWithUpdate;
                 mstTableGroupEntity = tableEntity;
 
                 if (sysUserRights.GetUserRights().CanAdd == false)
@@ -132,7 +133,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
             if (lockTableGroup[1].Equals("0") == false)
             {
                 UpdateComponents(true);
-                mstTableGroupListForm.UpdateTableGroupListDataSource();
+                FormWithUpdate.UpdateListDataSource();
             }
             else
             {
@@ -149,7 +150,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
             if (unlockTableGroup[1].Equals("0") == false)
             {
                 UpdateComponents(false);
-                mstTableGroupListForm.UpdateTableGroupListDataSource();
+                FormWithUpdate.UpdateListDataSource();
             }
             else
             {
@@ -163,7 +164,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
             sysSoftwareForm.RemoveTabPage();
         }
 
-        public void UpdateTableListDataSource()
+        public void UpdateListDataSource()
         {
             SetTableListDataSourceAsync();
         }
@@ -251,7 +252,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
 
         public void CreateTableListDataGridView()
         {
-            UpdateTableListDataSource();
+            UpdateListDataSource();
 
             dataGridViewTableList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewTableList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -310,7 +311,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
                     if (deleteTable[1].Equals("0") == false)
                     {
                         tablePageNumber = 1;
-                        UpdateTableListDataSource();
+                        UpdateListDataSource();
                     }
                     else
                     {

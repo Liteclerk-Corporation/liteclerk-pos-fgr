@@ -1,17 +1,16 @@
-﻿using PagedList;
+﻿using EasyPOS.Interfaces.Forms;
+using PagedList;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.MstCustomer
 {
-    public partial class MstCustomerListForm : Form
+    public partial class MstCustomerListForm : Form, IUpdateListDataSource
     {
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
@@ -103,7 +102,7 @@ namespace EasyPOS.Forms.Software.MstCustomer
             return label;
         }
 
-        public void UpdateCustomerListDataSource()
+        public void UpdateListDataSource()
         {
             SetCustomerListDataSourceAsync();
         }
@@ -210,7 +209,7 @@ namespace EasyPOS.Forms.Software.MstCustomer
 
         public void CreateCustomerListDataGridView()
         {
-            UpdateCustomerListDataSource();
+            UpdateListDataSource();
 
             dataGridViewCustomerList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewCustomerList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -236,7 +235,7 @@ namespace EasyPOS.Forms.Software.MstCustomer
             if (addCustomer[1].Equals("0") == false)
             {
                 sysSoftwareForm.AddTabPageCustomerDetail(this, mstCustomerController.DetailCustomer(Convert.ToInt32(addCustomer[1])));
-                UpdateCustomerListDataSource();
+                UpdateListDataSource();
             }
             else
             {
@@ -350,7 +349,7 @@ namespace EasyPOS.Forms.Software.MstCustomer
                         if (deleteCustomer[1].Equals("0") == false)
                         {
                             pageNumber = 1;
-                            UpdateCustomerListDataSource();
+                            UpdateListDataSource();
                         }
                         else
                         {
@@ -365,7 +364,7 @@ namespace EasyPOS.Forms.Software.MstCustomer
         {
             if (e.KeyCode == Keys.Enter)
             {
-                UpdateCustomerListDataSource();
+                UpdateListDataSource();
             }
         }
     }

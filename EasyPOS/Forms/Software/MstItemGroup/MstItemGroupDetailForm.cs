@@ -1,4 +1,5 @@
-﻿using PagedList;
+﻿using EasyPOS.Interfaces.Forms;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,12 +12,12 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.MstItemGroup
 {
-    public partial class MstItemGroupDetailForm : Form
+    public partial class MstItemGroupDetailForm : Form, IUpdateListDataSource
     {
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
 
-        public MstItemGroupListForm mstItemGroupListForm;
+        IUpdateListDataSource FormWithUpdate;
         public Entities.MstItemGroupEntity mstItemGroupEntity;
 
         public static List<Entities.DgvMstItemGroupItemListEntity> itemGroupItemData = new List<Entities.DgvMstItemGroupItemListEntity>();
@@ -27,7 +28,7 @@ namespace EasyPOS.Forms.Software.MstItemGroup
 
         public List<String> kitchens;
 
-        public MstItemGroupDetailForm(SysSoftwareForm softwareForm, MstItemGroupListForm itemListForm, Entities.MstItemGroupEntity itemEntity)
+        public MstItemGroupDetailForm(SysSoftwareForm softwareForm, IUpdateListDataSource formWithUpdate, Entities.MstItemGroupEntity itemEntity)
         {
             InitializeComponent();
             sysSoftwareForm = softwareForm;
@@ -39,7 +40,7 @@ namespace EasyPOS.Forms.Software.MstItemGroup
             }
             else
             {
-                mstItemGroupListForm = itemListForm;
+                FormWithUpdate = formWithUpdate;
                 mstItemGroupEntity = itemEntity;
 
                 if (sysUserRights.GetUserRights().CanAdd == false)
@@ -185,7 +186,7 @@ namespace EasyPOS.Forms.Software.MstItemGroup
                 if (lockItemGroup[1].Equals("0") == false)
                 {
                     UpdateComponents(true);
-                    mstItemGroupListForm.UpdateItemGroupListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                 }
                 else
                 {
@@ -203,7 +204,7 @@ namespace EasyPOS.Forms.Software.MstItemGroup
             if (unlockItemGroup[1].Equals("0") == false)
             {
                 UpdateComponents(false);
-                mstItemGroupListForm.UpdateItemGroupListDataSource();
+                FormWithUpdate.UpdateListDataSource();
             }
             else
             {
@@ -218,7 +219,7 @@ namespace EasyPOS.Forms.Software.MstItemGroup
         }
 
 
-        public void UpdateItemGroupItemListDataSource()
+        public void UpdateListDataSource()
         {
             SetItemGroupItemListDataSourceAsync();
         }
@@ -307,7 +308,7 @@ namespace EasyPOS.Forms.Software.MstItemGroup
 
         public void CreateItemGroupItemListDataGridView()
         {
-            UpdateItemGroupItemListDataSource();
+            UpdateListDataSource();
 
             dataGridViewItemGroupItemList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewItemGroupItemList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -365,7 +366,7 @@ namespace EasyPOS.Forms.Software.MstItemGroup
                     if (deleteItemGroupItem[1].Equals("0") == false)
                     {
                         itemGroupItemPageNumber = 1;
-                        UpdateItemGroupItemListDataSource();
+                        UpdateListDataSource();
                     }
                     else
                     {

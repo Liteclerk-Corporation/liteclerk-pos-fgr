@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS
@@ -25,7 +22,7 @@ namespace EasyPOS
             }
             else if (Modules.SysLicenseModule.DecryptLicenseCodeToSerialNumber(licenseCode) == Modules.SysLicenseModule.GetSerialNumber())
             {
-                Application.Run(new Forms.Account.SysLogin.SysLoginForm(null,null,null,null, false));
+                Application.Run(new Forms.Account.SysLogin.SysLoginForm(null,null,null));
             }
             else
             {

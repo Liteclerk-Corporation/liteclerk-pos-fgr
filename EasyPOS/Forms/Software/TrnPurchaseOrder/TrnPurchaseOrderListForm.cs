@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using EasyPOS.Entities;
+using EasyPOS.Interfaces.Forms;
 using PagedList;
 
 namespace EasyPOS.Forms.Software.TrnPurchaseOrder
 {
-    public partial class TrnPurchaseOrderListForm : Form
+    public partial class TrnPurchaseOrderListForm : Form, IUpdateListDataSource
     {
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
@@ -61,7 +60,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
             }
         }
 
-        public void UpdatePurchaseOrderListDataSource()
+        public void UpdateListDataSource()
         {
             SetPurchaseOrderListDataSourceAsync();
         }
@@ -160,7 +159,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
         }
         public void CreatePurchaseOrderListDataGridView()
         {
-            UpdatePurchaseOrderListDataSource();
+            UpdateListDataSource();
 
             dataGridViewPurchaseOrderList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewPurchaseOrderList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -184,7 +183,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
             if (addPurchaseOrder[1].Equals("0") == false)
             {
                 sysSoftwareForm.AddTabPagePurchaseOrderDetail(this, trnPurchaseOrderController.DetailPurchaseOrder(Convert.ToInt32(addPurchaseOrder[1])));
-                UpdatePurchaseOrderListDataSource();
+                UpdateListDataSource();
             }
             else
             {
@@ -230,7 +229,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
                         if (deletePurchaseOrder[1].Equals("0") == false)
                         {
                             pageNumber = 1;
-                            UpdatePurchaseOrderListDataSource();
+                            UpdateListDataSource();
                         }
                         else
                         {
@@ -244,7 +243,7 @@ namespace EasyPOS.Forms.Software.TrnPurchaseOrder
         private void dateTimePickerPurchaseOrderListFilter_ValueChanged(object sender, EventArgs e)
         {
             pageNumber = 1;
-            UpdatePurchaseOrderListDataSource();
+            UpdateListDataSource();
         }
 
         private void buttonPurchaseOrderListPageListFirst_Click(object sender, EventArgs e)

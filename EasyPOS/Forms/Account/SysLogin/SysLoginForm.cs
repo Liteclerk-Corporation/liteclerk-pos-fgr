@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EasyPOS.Interfaces.Forms;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Account.SysLogin
@@ -14,13 +15,14 @@ namespace EasyPOS.Forms.Account.SysLogin
     public partial class SysLoginForm : Form
     {
         public TrnPOSBarcodeForm _trnPOSBarcodeForm;
-        public TrnPOSBarcodeDetailForm _trnPOSBarcodeDetailForm;
+        private IOverrideSales _trnPOSFormWithOverrideSales;
         public TrnPOSTouchForm _trnPOSTouchForm;
-        public TrnPOSTouchDetailForm _trnPOSTouchDetailForm;
-        public Boolean _isOverride = false;
+
+        public Boolean _isOverride { get { return _trnPOSFormWithOverrideSales != null; } }
+
         public List<Entities.SysLanguageEntity> sysLanguageEntities = new List<Entities.SysLanguageEntity>();
 
-        public SysLoginForm(TrnPOSBarcodeForm trnPOSBarcodeForm, TrnPOSBarcodeDetailForm trnPOSBarcodeDetailForm, TrnPOSTouchForm trnPOSTouchForm, TrnPOSTouchDetailForm trnPOSTouchDetailForm, Boolean isOverride)
+        public SysLoginForm(TrnPOSBarcodeForm trnPOSBarcodeForm, IOverrideSales trnPOSFormWithOverrideSales, TrnPOSTouchForm trnPOSTouchForm)
         {
             InitializeComponent();
 
@@ -41,8 +43,6 @@ namespace EasyPOS.Forms.Account.SysLogin
                     label8.Text = SetLabel(label8.Text);
                 }
             }
-
-            _isOverride = isOverride;
 
             if(Modules.SysCurrentModule.GetCurrentSettings().IsLoginDate == false)
             {
@@ -76,9 +76,8 @@ namespace EasyPOS.Forms.Account.SysLogin
             labelSupport.Text = "Support: Easyfis Corporation " + Modules.SysCurrentModule.GetCurrentSettings().CurrentSupport;
 
             _trnPOSBarcodeForm = trnPOSBarcodeForm;
-            _trnPOSBarcodeDetailForm = trnPOSBarcodeDetailForm;
             _trnPOSTouchForm = trnPOSTouchForm;
-            _trnPOSTouchDetailForm = trnPOSTouchDetailForm;
+            _trnPOSFormWithOverrideSales = trnPOSFormWithOverrideSales;
         }
 
         public string SetLabel(string label)
@@ -108,7 +107,7 @@ namespace EasyPOS.Forms.Account.SysLogin
                     Hide();
                 }
             }
-            else if (_trnPOSBarcodeDetailForm != null || _trnPOSTouchDetailForm != null)
+            else if (_isOverride)
             {
                 Hide();
             }
@@ -142,17 +141,10 @@ namespace EasyPOS.Forms.Account.SysLogin
             String[] login = sysLoginController.Login(textBoxUserCardNumber.Text, textBoxUsername.Text, textBoxPassword.Text, dateTimePickerLoginDate.Value.ToShortDateString(), radioButtonLoginDate.Checked, _isOverride);
             if (login[1].Equals("0") == false)
             {
-                if (_isOverride == true)
+                if (_isOverride)
                 {
-                    if (_trnPOSTouchDetailForm != null)
-                    {
-                        _trnPOSTouchDetailForm.OverrideSales(Convert.ToInt32(login[1]));
-                    }
 
-                    if (_trnPOSBarcodeDetailForm != null)
-                    {
-                        _trnPOSBarcodeDetailForm.OverrideSales(Convert.ToInt32(login[1]));
-                    }
+                    _trnPOSFormWithOverrideSales.OverrideSales(Convert.ToInt32(login[1]));
 
                     Hide();
                 }
@@ -224,7 +216,7 @@ namespace EasyPOS.Forms.Account.SysLogin
         {
             if (_isOverride == false)
             {
-                if (_trnPOSTouchForm != null || _trnPOSTouchDetailForm != null || _trnPOSBarcodeForm != null || _trnPOSBarcodeDetailForm != null)
+                if (_trnPOSTouchForm != null ||  _trnPOSBarcodeForm != null)
                 {
                     if (Modules.SysCurrentModule.GetCurrentSettings().PromptLoginSales == false)
                     {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyPOS.Interfaces.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,13 +16,13 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
 
-        public TrnDisbursementListForm trnDisbursementListForm;
+        IUpdateListDataSource FormWithUpdate;
         public Entities.TrnDisbursementEntity trnDisbursementEntity;
 
         public List<Entities.SysLanguageEntity> sysLanguageEntities = new List<Entities.SysLanguageEntity>();
 
 
-        public TrnDisbursementDetailForm(SysSoftwareForm softwareForm, TrnDisbursementListForm disbursementListForm, Entities.TrnDisbursementEntity disbursementEntity)
+        public TrnDisbursementDetailForm(SysSoftwareForm softwareForm, IUpdateListDataSource formWithUpdate, Entities.TrnDisbursementEntity disbursementEntity)
         {
             InitializeComponent();
 
@@ -60,7 +61,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             }
 
             sysSoftwareForm = softwareForm;
-            trnDisbursementListForm = disbursementListForm;
+            FormWithUpdate = formWithUpdate;
             trnDisbursementEntity = disbursementEntity;
 
             sysUserRights = new Modules.SysUserRightsModule("TrnDisbursementDetail");
@@ -301,7 +302,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             if (lockDisbursement[1].Equals("0") == false)
             {
                 EnableDisableControls(true);
-                trnDisbursementListForm.UpdateDisbursementListDataSource();
+                FormWithUpdate.UpdateListDataSource();
             }
             else
             {
@@ -317,7 +318,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
             if (unlockDisbursement[1].Equals("0") == false)
             {
                 EnableDisableControls(false);
-                trnDisbursementListForm.UpdateDisbursementListDataSource();
+                FormWithUpdate.UpdateListDataSource();
             }
             else
             {
@@ -379,7 +380,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
                     if (lockDisbursement[1].Equals("0") == false)
                     {
                         sysSoftwareForm.RemoveTabPage();
-                        trnDisbursementListForm.UpdateDisbursementListDataSource();
+                        FormWithUpdate.UpdateListDataSource();
                     }
                     else
                     {

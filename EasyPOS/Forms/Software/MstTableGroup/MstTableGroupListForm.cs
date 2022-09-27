@@ -1,4 +1,5 @@
-﻿using PagedList;
+﻿using EasyPOS.Interfaces.Forms;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.MstTableGroup
 {
-    public partial class MstTableGroupListForm : Form
+    public partial class MstTableGroupListForm : Form, IUpdateListDataSource
     {
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
@@ -53,7 +54,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
             }
         }
 
-        public void UpdateTableGroupListDataSource()
+        public void UpdateListDataSource()
         {
             SetTableGroupListDataSourceAsync();
         }
@@ -141,7 +142,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
 
         public void CreateTableGroupListDataGridView()
         {
-            UpdateTableGroupListDataSource();
+            UpdateListDataSource();
 
             dataGridViewTableGroupList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewTableGroupList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -171,7 +172,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
             if (addTableGroup[1].Equals("0") == false)
             {
                 sysSoftwareForm.AddTabPageTableGroupDetail(this, mstTableGroupController.DetailTableGroup(Convert.ToInt32(addTableGroup[1])));
-                UpdateTableGroupListDataSource();
+                UpdateListDataSource();
             }
             else
             {
@@ -213,7 +214,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
                             Int32 currentPageNumber = pageNumber;
 
                             pageNumber = 1;
-                            UpdateTableGroupListDataSource();
+                            UpdateListDataSource();
 
                             if (tableGroupListPageList != null)
                             {
@@ -246,7 +247,7 @@ namespace EasyPOS.Forms.Software.MstTableGroup
         {
             if (e.KeyCode == Keys.Enter)
             {
-                UpdateTableGroupListDataSource();
+                UpdateListDataSource();
             }
         }
 

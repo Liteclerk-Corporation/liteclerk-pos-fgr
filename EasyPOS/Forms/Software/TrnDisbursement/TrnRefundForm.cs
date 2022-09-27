@@ -1,24 +1,20 @@
-﻿using System;
+﻿using EasyPOS.Interfaces.Forms;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.TrnDisbursement
 {
     public partial class TrnRefundForm : Form
     {
-        public TrnDisbursementListForm trnDisbursementListForm;
+        IUpdateListDataSource FormWithUpdate;
         public Int32 salesId = 0;
 
         public List<Entities.SysLanguageEntity> sysLanguageEntities = new List<Entities.SysLanguageEntity>();
 
 
-        public TrnRefundForm(TrnDisbursementListForm disbursementListForm)
+        public TrnRefundForm(IUpdateListDataSource formWithUpdate)
         {
             InitializeComponent();
 
@@ -39,7 +35,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
                 }
             }
 
-            trnDisbursementListForm = disbursementListForm;
+            FormWithUpdate = formWithUpdate;
         }
 
         public string SetLabel(string label)
@@ -84,7 +80,7 @@ namespace EasyPOS.Forms.Software.TrnDisbursement
                 {
                     MessageBox.Show("Refund successful.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    trnDisbursementListForm.UpdateDisbursementListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                     Close();
                 }
                 else

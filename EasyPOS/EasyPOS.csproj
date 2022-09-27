@@ -1533,6 +1533,8 @@
     <Compile Include="IndexForm.Designer.cs">
       <DependentUpon>IndexForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\Forms\IOverrideSales.cs" />
+    <Compile Include="Interfaces\Forms\IUpdateListDataSource.cs" />
     <Compile Include="LiteclerkIntegration\Controllers\LiteclerkMstArticleCustomerController.cs" />
     <Compile Include="LiteclerkIntegration\Controllers\LiteclerkMstArticleItemController.cs" />
     <Compile Include="LiteclerkIntegration\Controllers\LiteclerkMstArticleSupplierController.cs" />

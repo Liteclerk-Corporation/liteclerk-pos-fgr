@@ -1,4 +1,5 @@
-﻿using PagedList;
+﻿using EasyPOS.Interfaces.Forms;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,11 +15,11 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.TrnStockIn
 {
-    public partial class TrnStockInDetailForm : Form
+    public partial class TrnStockInDetailForm : Form, IUpdateListDataSource
     {
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
-        public TrnStockInListForm trnStockInListForm;
+        IUpdateListDataSource FormWithUpdate;
         public Entities.TrnStockInEntity trnStockInEntity;
 
         public static List<Entities.DgvTrnStockInLineListEntity> stockInLineData = new List<Entities.DgvTrnStockInLineListEntity>();
@@ -30,7 +31,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
         public List<Entities.SysLanguageEntity> sysLanguageEntities = new List<Entities.SysLanguageEntity>();
 
 
-        public TrnStockInDetailForm(SysSoftwareForm softwareForm, TrnStockInListForm stockInListForm, Entities.TrnStockInEntity stockInEntity)
+        public TrnStockInDetailForm(SysSoftwareForm softwareForm, IUpdateListDataSource formWithUpdate, Entities.TrnStockInEntity stockInEntity)
         {
             InitializeComponent();
 
@@ -74,7 +75,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             }
             else
             {
-                trnStockInListForm = stockInListForm;
+                FormWithUpdate = formWithUpdate;
                 trnStockInEntity = stockInEntity;
 
                 GetSupplierList();
@@ -259,7 +260,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             if (lockStockIn[1].Equals("0") == false)
             {
                 UpdateComponents(true);
-                trnStockInListForm.UpdateStockInListDataSource();
+                FormWithUpdate.UpdateListDataSource();
             }
             else
             {
@@ -275,7 +276,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
             if (unlockStockIn[1].Equals("0") == false)
             {
                 UpdateComponents(false);
-                trnStockInListForm.UpdateStockInListDataSource();
+                FormWithUpdate.UpdateListDataSource();
             }
             else
             {
@@ -315,7 +316,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                     if (lockStockIn[1].Equals("0") == false)
                     {
                         sysSoftwareForm.RemoveTabPage();
-                        trnStockInListForm.UpdateStockInListDataSource();
+                        FormWithUpdate.UpdateListDataSource();
                     }
                     else
                     {
@@ -328,7 +329,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                     sysSoftwareForm.RemoveTabPage();
                 }
             }
-           
+
         }
         private void buttonExport_Click(object sender, EventArgs e)
         {
@@ -388,7 +389,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                 MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void UpdateStockInLineListDataSource()
+        public void UpdateListDataSource()
         {
             SetStockInLineListDataSourceAsync();
         }
@@ -487,7 +488,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
 
         public void CreateStockInLineListDataGridView()
         {
-            UpdateStockInLineListDataSource();
+            UpdateListDataSource();
 
             dataGridViewStockInLineList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewStockInLineList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -565,7 +566,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                     if (deleteStockInLine[1].Equals("0") == false)
                     {
                         stockInLinePageNumber = 1;
-                        UpdateStockInLineListDataSource();
+                        UpdateListDataSource();
                     }
                     else
                     {
@@ -664,7 +665,7 @@ namespace EasyPOS.Forms.Software.TrnStockIn
                 if (Modules.SysCurrentModule.GetCurrentSettings().IsBarcodeQuantityAlwaysOne == true)
                 {
                     trnPOSStockInLineController.BarcodeStockInLine(trnStockInEntity.Id, textBoxBarcode.Text);
-                    UpdateStockInLineListDataSource();
+                    UpdateListDataSource();
                 }
                 else
                 {

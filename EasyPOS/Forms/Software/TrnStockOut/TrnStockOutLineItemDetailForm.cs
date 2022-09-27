@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyPOS.Interfaces.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,12 +13,12 @@ namespace EasyPOS.Forms.Software.TrnStockOut
 {
     public partial class TrnStockOutLineItemDetailForm : Form
     {
-        public TrnStockOutDetailForm trnStockOutDetailForm;
+        IUpdateListDataSource FormWithUpdate;
         public Entities.TrnStockOutLineEntity trnStockOutLineEntity;
 
         public List<Entities.SysLanguageEntity> sysLanguageEntities = new List<Entities.SysLanguageEntity>();
 
-        public TrnStockOutLineItemDetailForm(TrnStockOutDetailForm stockOutDetailForm, Entities.TrnStockOutLineEntity stockOutLineEntity)
+        public TrnStockOutLineItemDetailForm(IUpdateListDataSource formWithUpdate, Entities.TrnStockOutLineEntity stockOutLineEntity)
         {
             InitializeComponent();
 
@@ -30,7 +31,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
             buttonSave.Text = SetLabel(buttonSave.Text);
             buttonClose.Text = SetLabel(buttonClose.Text);
 
-            trnStockOutDetailForm = stockOutDetailForm;
+            FormWithUpdate = formWithUpdate;
             trnStockOutLineEntity = stockOutLineEntity;
 
             GetStockOutLineItemDetail();
@@ -144,7 +145,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                 String[] addStockOutLine = trnPOSStockOutLineController.AddStockOutLine(newStockOutLineEntity);
                 if (addStockOutLine[1].Equals("0") == false)
                 {
-                    trnStockOutDetailForm.UpdateStockOutLineListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                     Close();
                 }
                 else
@@ -157,7 +158,7 @@ namespace EasyPOS.Forms.Software.TrnStockOut
                 String[] updateStockOutLine = trnPOSStockOutLineController.UpdateStockOutLine(trnStockOutLineEntity.Id, newStockOutLineEntity);
                 if (updateStockOutLine[1].Equals("0") == false)
                 {
-                    trnStockOutDetailForm.UpdateStockOutLineListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                     Close();
                 }
                 else

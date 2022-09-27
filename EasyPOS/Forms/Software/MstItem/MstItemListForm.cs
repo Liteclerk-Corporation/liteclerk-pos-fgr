@@ -1,17 +1,16 @@
-﻿using PagedList;
+﻿using EasyPOS.Interfaces.Forms;
+using PagedList;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.MstItem
 {
-    public partial class MstItemListForm : Form
+    public partial class MstItemListForm : Form, IUpdateListDataSource
     {
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
@@ -141,7 +140,7 @@ namespace EasyPOS.Forms.Software.MstItem
             return label;
         }
 
-        public void UpdateItemListDataSource()
+        public void UpdateListDataSource()
         {
             String selectedIsInventory = Convert.ToString(comboBoxIsInventory.SelectedValue);
             String selectedIsLocked = Convert.ToString(comboBoxIsLocked.SelectedValue);
@@ -238,7 +237,7 @@ namespace EasyPOS.Forms.Software.MstItem
                                 ColumnItemListCategory = d.Category,
                                 ColumnItemListCost = d.Cost.ToString("#,##0.00"),
                                 ColumnItemListPrice = d.Price.ToString("#,##0.00"),
-                                ColumnItemListOnHandQuantity = Math.Round(d.OnhandQuantity,2).ToString(),
+                                ColumnItemListOnHandQuantity = Math.Round(d.OnhandQuantity, 2).ToString(),
                                 ColumnItemListIsInventory = d.IsInventory,
                                 ColumnItemListIsLocked = d.IsLocked,
                                 ColumnSupplier = d.Supplier
@@ -255,7 +254,7 @@ namespace EasyPOS.Forms.Software.MstItem
 
         public void CreateItemListDataGridView()
         {
-            UpdateItemListDataSource();
+            UpdateListDataSource();
 
             dataGridViewItemList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewItemList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -293,7 +292,7 @@ namespace EasyPOS.Forms.Software.MstItem
             if (addItem[1].Equals("0") == false)
             {
                 sysSoftwareForm.AddTabPageItemDetail(this, mstItemController.DetailItem(Convert.ToInt32(addItem[1])));
-                UpdateItemListDataSource();
+                UpdateListDataSource();
             }
             else
             {
@@ -335,7 +334,7 @@ namespace EasyPOS.Forms.Software.MstItem
                             Int32 currentPageNumber = pageNumber;
 
                             pageNumber = 1;
-                            UpdateItemListDataSource();
+                            UpdateListDataSource();
 
                             if (itemListPageList != null)
                             {
@@ -368,7 +367,7 @@ namespace EasyPOS.Forms.Software.MstItem
         {
             if (e.KeyCode == Keys.Enter)
             {
-                UpdateItemListDataSource();
+                UpdateListDataSource();
             }
         }
         public void moveToFirstPage()
@@ -445,12 +444,12 @@ namespace EasyPOS.Forms.Software.MstItem
 
         private void comboBoxIsInventory_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UpdateItemListDataSource();
+            UpdateListDataSource();
         }
 
         private void comboBoxIsLocked_SelectedIndexChanged(object sender, EventArgs e)
         {
-            UpdateItemListDataSource();
+            UpdateListDataSource();
         }
 
         private void dataGridViewItemList_CellContentClick(object sender, DataGridViewCellEventArgs e)

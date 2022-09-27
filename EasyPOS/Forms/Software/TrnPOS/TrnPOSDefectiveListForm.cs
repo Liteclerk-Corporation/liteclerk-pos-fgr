@@ -1,4 +1,5 @@
-﻿using PagedList;
+﻿using EasyPOS.Interfaces.Forms;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,7 +12,7 @@ using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.TrnPOS
 {
-    public partial class TrnPOSDefectiveListForm : Form
+    public partial class TrnPOSDefectiveListForm : Form, IUpdateListDataSource
     {
         public static List<Entities.DgvTrnDefectiveListEntity> itemListData = new List<Entities.DgvTrnDefectiveListEntity>();
         public static Int32 pageNumber = 1;
@@ -28,7 +29,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             CreateDefectiveListDataGridView();
         }
-        public void UpdateDefectiveListDataSource()
+        public void UpdateListDataSource()
         {
             SetDefectiveListDataSourceAsync();
         }
@@ -137,7 +138,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         public void CreateDefectiveListDataGridView()
         {
-            UpdateDefectiveListDataSource();
+            UpdateListDataSource();
 
             dataGridViewDefectiveList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
             dataGridViewDefectiveList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
@@ -227,13 +228,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             if (e.KeyCode == Keys.Enter)
             {
-                UpdateDefectiveListDataSource();
+                UpdateListDataSource();
             }
         }
 
         private void dateTimePickerDefectveListFilter_ValueChanged(object sender, EventArgs e)
         {
-            UpdateDefectiveListDataSource();
+            UpdateListDataSource();
         }
 
         private void dataGridViewDefectiveList_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -269,7 +270,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         if (deleteDefective[1].Equals("0") == false)
                         {
                             pageNumber = 1;
-                            UpdateDefectiveListDataSource();
+                            UpdateListDataSource();
                         }
                         else
                         {
@@ -293,7 +294,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 TrnPOS.TrnPOSDefectiveDetailForm trnPOSDefectiveDetailForm = new TrnPOS.TrnPOSDefectiveDetailForm(this, trnDefectiveController.DetailDefective(Convert.ToInt32(addDefective[1])));
                 trnPOSDefectiveDetailForm.ShowDialog();
-                UpdateDefectiveListDataSource();
+                UpdateListDataSource();
             }
             else
             {

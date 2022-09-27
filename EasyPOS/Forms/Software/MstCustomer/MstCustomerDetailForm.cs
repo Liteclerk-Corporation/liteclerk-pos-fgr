@@ -1,13 +1,10 @@
-﻿using EasyPOS.Forms.Software.MstItem;
+﻿using EasyPOS.Interfaces.Forms;
 using PagedList;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,10 +12,10 @@ namespace EasyPOS.Forms.Software.MstCustomer
 {
     public partial class MstCustomerDetailForm : Form
     {
+        IUpdateListDataSource FormWithUpdate;
         public SysSoftwareForm sysSoftwareForm;
         private Modules.SysUserRightsModule sysUserRights;
 
-        public MstCustomerListForm mstCustomerListForm;
         public Entities.MstCustomerEntity mstCustomerEntity;
 
         public static Int32 pageSize = 50;
@@ -30,7 +27,7 @@ namespace EasyPOS.Forms.Software.MstCustomer
 
         public List<Entities.SysLanguageEntity> sysLanguageEntities = new List<Entities.SysLanguageEntity>();
 
-        public MstCustomerDetailForm(SysSoftwareForm softwareForm, MstCustomerListForm itemListForm, Entities.MstCustomerEntity itemEntity)
+        public MstCustomerDetailForm(SysSoftwareForm softwareForm, IUpdateListDataSource formWithUpdate, Entities.MstCustomerEntity itemEntity)
         {
             InitializeComponent();
 
@@ -75,7 +72,7 @@ namespace EasyPOS.Forms.Software.MstCustomer
             }
             else
             {
-                mstCustomerListForm = itemListForm;
+                FormWithUpdate = formWithUpdate;
                 mstCustomerEntity = itemEntity;
 
                 List<String> priceLevel = new List<String>
@@ -244,7 +241,7 @@ namespace EasyPOS.Forms.Software.MstCustomer
             if (lockCustomer[1].Equals("0") == false)
             {
                 UpdateComponents(true);
-                mstCustomerListForm.UpdateCustomerListDataSource();
+                FormWithUpdate.UpdateListDataSource();
             }
             else
             {
@@ -267,7 +264,7 @@ namespace EasyPOS.Forms.Software.MstCustomer
                 if (unlockCustomer[1].Equals("0") == false)
                 {
                     UpdateComponents(false);
-                    mstCustomerListForm.UpdateCustomerListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                 }
                 else
                 {
@@ -313,7 +310,7 @@ namespace EasyPOS.Forms.Software.MstCustomer
                     if (lockCustomer[1].Equals("0") == false)
                     {
                         sysSoftwareForm.RemoveTabPage();
-                        mstCustomerListForm.UpdateCustomerListDataSource();
+                        FormWithUpdate.UpdateListDataSource();
                     }
                     else
                     {
@@ -380,34 +377,10 @@ namespace EasyPOS.Forms.Software.MstCustomer
                 customerLoadListData = getCustomerLoadListData;
                 customerLoadListPageList = new PagedList<Entities.DgvMstCustomerLoadListEntity>(customerLoadListData, pageNumber, pageSize);
 
-                if (customerLoadListPageList.PageCount == 1)
-                {
-                    buttonCustomerLoadListPageListFirst.Enabled = false;
-                    buttonCustomerLoadListPageListPrevious.Enabled = false;
-                    buttonCustomerLoadListPageListNext.Enabled = false;
-                    buttonCustomerLoadListPageListLast.Enabled = false;
-                }
-                else if (pageNumber == 1)
-                {
-                    buttonCustomerLoadListPageListFirst.Enabled = false;
-                    buttonCustomerLoadListPageListPrevious.Enabled = false;
-                    buttonCustomerLoadListPageListNext.Enabled = true;
-                    buttonCustomerLoadListPageListLast.Enabled = true;
-                }
-                else if (pageNumber == customerLoadListPageList.PageCount)
-                {
-                    buttonCustomerLoadListPageListFirst.Enabled = true;
-                    buttonCustomerLoadListPageListPrevious.Enabled = true;
-                    buttonCustomerLoadListPageListNext.Enabled = false;
-                    buttonCustomerLoadListPageListLast.Enabled = false;
-                }
-                else
-                {
-                    buttonCustomerLoadListPageListFirst.Enabled = true;
-                    buttonCustomerLoadListPageListPrevious.Enabled = true;
-                    buttonCustomerLoadListPageListNext.Enabled = true;
-                    buttonCustomerLoadListPageListLast.Enabled = true;
-                }
+                buttonCustomerLoadListPageListFirst.Enabled = (customerLoadListPageList.PageCount != 1) && (pageNumber != 1);
+                buttonCustomerLoadListPageListPrevious.Enabled = buttonCustomerLoadListPageListFirst.Enabled;
+                buttonCustomerLoadListPageListNext.Enabled = (customerLoadListPageList.PageCount != 1) && (pageNumber != customerLoadListPageList.PageCount);
+                buttonCustomerLoadListPageListLast.Enabled = buttonCustomerLoadListPageListNext.Enabled;
 
                 textBoxCustomerLoadListPageNumber.Text = pageNumber + " / " + customerLoadListPageList.PageCount;
                 customerLoadListDataSource.DataSource = customerLoadListPageList;

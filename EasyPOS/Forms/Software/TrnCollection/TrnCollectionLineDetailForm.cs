@@ -1,26 +1,21 @@
 ﻿using EasyPOS.Entities;
+using EasyPOS.Interfaces.Forms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EasyPOS.Forms.Software.TrnCollection
 {
     public partial class TrnCollectionLineDetailForm : Form
     {
-        public TrnCollectionDetailForm trnCollectionDetailForm;
+        IUpdateListDataSource FormWithUpdate;
         public TrnCollectionLineEntity trnCollectionLineEntity;
 
-        public TrnCollectionLineDetailForm(TrnCollectionDetailForm collectionDetailForm, TrnCollectionLineEntity collectionLineEntity)
+        public TrnCollectionLineDetailForm(IUpdateListDataSource formWithUpdate, TrnCollectionLineEntity collectionLineEntity)
         {
             InitializeComponent();
 
-            trnCollectionDetailForm = collectionDetailForm;
+            FormWithUpdate = formWithUpdate;
             trnCollectionLineEntity = collectionLineEntity;
 
             comboBoxPayType.Focus();
@@ -109,7 +104,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
                 String[] addCollectionLine = trnPOSCollectionLineController.AddCollectionLine(newCollectionLineEntity);
                 if (addCollectionLine[1].Equals("0") == false)
                 {
-                    trnCollectionDetailForm.UpdateCollectionListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                     Close();
                 }
                 else
@@ -122,7 +117,7 @@ namespace EasyPOS.Forms.Software.TrnCollection
                 String[] updateCollectionLine = trnPOSCollectionLineController.UpdateCollectionLine(trnCollectionLineEntity.Id, newCollectionLineEntity);
                 if (updateCollectionLine[1].Equals("0") == false)
                 {
-                    trnCollectionDetailForm.UpdateCollectionListDataSource();
+                    FormWithUpdate.UpdateListDataSource();
                     Close();
                 }
                 else
