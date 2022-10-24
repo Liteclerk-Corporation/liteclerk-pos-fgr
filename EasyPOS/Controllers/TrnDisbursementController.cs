@@ -436,6 +436,7 @@ namespace EasyPOS.Controllers
                     var lockDisbursement = disbursement.FirstOrDefault();
                     lockDisbursement.DisbursementType = objDisbursement.DisbursementType;
                     lockDisbursement.PayTypeId = payType.FirstOrDefault().Id;
+                    lockDisbursement.AccountId = objDisbursement.AccountId;
                     lockDisbursement.Remarks = objDisbursement.Remarks;
                     lockDisbursement.Amount = objDisbursement.Amount;
                     lockDisbursement.IsRefund = objDisbursement.IsRefund;
@@ -861,6 +862,7 @@ namespace EasyPOS.Controllers
                     var saveDisbursement = disbursement.FirstOrDefault();
                     saveDisbursement.DisbursementType = objDisbursement.DisbursementType;
                     saveDisbursement.PayTypeId = payType.FirstOrDefault().Id;
+                    saveDisbursement.AccountId = objDisbursement.AccountId;
                     saveDisbursement.Remarks = objDisbursement.Remarks;
                     saveDisbursement.Amount = objDisbursement.Amount;
                     saveDisbursement.IsRefund = objDisbursement.IsRefund;
