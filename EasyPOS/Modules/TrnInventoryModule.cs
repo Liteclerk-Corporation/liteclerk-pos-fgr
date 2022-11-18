@@ -164,7 +164,48 @@ namespace EasyPOS.Modules
 
                 if (defective.Any())
                 {
-                    var defectiveLines = defective.FirstOrDefault().TrnDefectiveItems.Where(d => d.MstItem.IsInventory == true);
+                    var defectiveLines = defective.FirstOrDefault().TrnDefectiveItems.Where(d => d.MstItem.IsInventory == true && d.Type == "Defective");
+                    if (defectiveLines.Any())
+                    {
+                        var defectiveLineItems = from d in defectiveLines
+                                                 group d by new
+                                                 {
+                                                     d.ItemId
+                                                 } into g
+                                                 select new
+                                                 {
+                                                     g.Key.ItemId
+                                                 };
+
+                        if (defectiveLineItems.Any())
+                        {
+                            foreach (var defectiveLineItem in defectiveLineItems)
+                            {
+                                UpdateItemInventory(defectiveLineItem.ItemId);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+        // =========================
+        // Update Defective Inventory
+        // =========================
+        public void UpdateReplacementInventory(Int32 defectiveId)
+        {
+            try
+            {
+                var defective = from d in db.TrnDefectives
+                                where d.Id == defectiveId
+                                select d;
+
+                if (defective.Any())
+                {
+                    var defectiveLines = defective.FirstOrDefault().TrnDefectiveItems.Where(d => d.MstItem.IsInventory == true && d.Type == "Replacement");
                     if (defectiveLines.Any())
                     {
                         var defectiveLineItems = from d in defectiveLines
@@ -279,6 +320,7 @@ namespace EasyPOS.Modules
                 Decimal totalDefectiveLineQuantity = 0;
                 var allDefectiveLineItems = from d in db.TrnDefectiveItems
                                           where d.ItemId == itemId
+                                          && d.Type == "Defective"
                                           && d.TrnDefective.IsLocked == true
                                           select d;
 
@@ -287,8 +329,21 @@ namespace EasyPOS.Modules
                     totalDefectiveLineQuantity = allDefectiveLineItems.Sum(d => d.Quantity);
                 }
 
+                // Get total Replacement quantity
+                Decimal totalReplacementLineQuantity = 0;
+                var allReplacementLineItems = from d in db.TrnDefectiveItems
+                                            where d.ItemId == itemId
+                                            && d.Type == "Replacement"
+                                            && d.TrnDefective.IsLocked == true
+                                            select d;
+
+                if (allReplacementLineItems.Any())
+                {
+                    totalReplacementLineQuantity = allReplacementLineItems.Sum(d => d.Quantity);
+                }
+
                 var updateItem = item.FirstOrDefault();
-                updateItem.OnhandQuantity = (totalStockInLineQuantity + totalReturnedQuantity + totalDefectiveLineQuantity) - (totalSalesLineQuantity + totalStockOutLineQuantity + totalSalesLineComponentQuantity);
+                updateItem.OnhandQuantity = (totalStockInLineQuantity + totalReturnedQuantity + totalDefectiveLineQuantity) - (totalSalesLineQuantity + totalStockOutLineQuantity + totalSalesLineComponentQuantity + totalReplacementLineQuantity);
                 db.SubmitChanges();
             }
         }

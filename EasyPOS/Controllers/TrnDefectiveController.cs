@@ -39,7 +39,6 @@ namespace EasyPOS.Controllers
                            select new Entities.TrnDefectiveEntity
                            {
                                Id = d.Id,
-                               SalesId = d.SalesId,
                                DefectiveNo = d.DefectiveNo,
                                DefectiveDate = d.DefectiveDate.ToShortDateString(),
                                InvoiceNo = d.InvoiceNo,
@@ -61,7 +60,6 @@ namespace EasyPOS.Controllers
                           select new Entities.TrnDefectiveEntity
                           {
                               Id = d.Id,
-                              SalesId = d.SalesId,
                               DefectiveNo = d.DefectiveNo,
                               DefectiveDate = d.DefectiveDate.ToShortDateString(),
                               InvoiceNo = d.InvoiceNo,
@@ -91,7 +89,7 @@ namespace EasyPOS.Controllers
         // =============
         // Add Defective
         // =============
-        public String[] AddDefective(Int32 salesId)
+        public String[] AddDefective()
         {
             try
             {
@@ -117,7 +115,6 @@ namespace EasyPOS.Controllers
 
                 Data.TrnDefective newDefective = new Data.TrnDefective()
                 {
-                    SalesId = salesId,
                     DefectiveNo = defectiveNumber,
                     DefectiveDate = currentDate,
                     InvoiceNo = "NA",
@@ -171,6 +168,10 @@ namespace EasyPOS.Controllers
                     lockDefective.IsLocked = true;
                     db.SubmitChanges();
 
+                    Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
+                    trnInventoryModule.UpdateDefectiveInventory(defective.FirstOrDefault().Id);
+                    trnInventoryModule.UpdateReplacementInventory(defective.FirstOrDefault().Id);
+
                     return new String[] { "", "1" };
                 }
                 else
@@ -213,7 +214,8 @@ namespace EasyPOS.Controllers
                     db.SubmitChanges();
 
                     Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
-                    trnInventoryModule.UpdateStockInInventory(defective.FirstOrDefault().Id);
+                    trnInventoryModule.UpdateDefectiveInventory(defective.FirstOrDefault().Id);
+                    trnInventoryModule.UpdateReplacementInventory(defective.FirstOrDefault().Id);
 
 
                     return new String[] { "", "1" };

@@ -1012,17 +1012,6 @@ namespace EasyPOS.Controllers
                 Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
                 trnInventoryModule.UpdateSalesInventory(currentSales.FirstOrDefault().Id);
 
-                var defectives = from d in db.TrnDefectives
-                                 where d.SalesId == currentSales.FirstOrDefault().Id
-                                 select d;
-                if (defectives.Any())
-                {
-                    foreach (var defective in defectives)
-                    {
-                        trnInventoryModule.UpdateDefectiveInventory(defective.Id);
-                    }
-                }
-
                 String newObject3 = Modules.SysAuditTrailModule.GetObjectString(currentSales.FirstOrDefault());
 
                 Entities.SysAuditTrailEntity newAuditTrail3 = new Entities.SysAuditTrailEntity()
@@ -1911,17 +1900,6 @@ namespace EasyPOS.Controllers
 
                     Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
                     trnInventoryModule.UpdateSalesInventory(salesId);
-
-                    var defectives = from d in db.TrnDefectives
-                                    where d.SalesId == salesId
-                                    select d;
-                    if (defectives.Any())
-                    {
-                        foreach (var defective in defectives)
-                        {
-                            trnInventoryModule.UpdateDefectiveInventory(defective.Id);
-                        }
-                    }
 
                     if (Modules.SysCurrentModule.GetCurrentSettings().DisableLockTender == true)
                     {

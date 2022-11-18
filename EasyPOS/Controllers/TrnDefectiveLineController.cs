@@ -20,16 +20,35 @@ namespace EasyPOS.Controllers
         public List<Entities.TrnDefectiveLineEntity> ListDefectiveLine(Int32 defectiveId)
         {
             var defectiveLines = from d in db.TrnDefectiveItems
+                                 where d.Type == "Defective"
+                                 select new Entities.TrnDefectiveLineEntity
+                                 {
+                                     Id = d.Id,
+                                     DefectiveId = d.DefectiveId,
+                                     ItemId = d.ItemId,
+                                     ItemDescription = d.MstItem.ItemDescription,
+                                     Quantity = d.Quantity,
+                                     Amount = d.Amount,
+                                 };
 
-                               select new Entities.TrnDefectiveLineEntity
-                               {
-                                   Id = d.Id,
-                                   DefectiveId = d.DefectiveId,
-                                   ItemId = d.ItemId,
-                                   ItemDescription = d.MstItem.ItemDescription,
-                                   Quantity = d.Quantity,
-                                   Amount = d.Amount,
-                               };
+            return defectiveLines.Where(d => d.DefectiveId == defectiveId).ToList();
+        }
+        // =====================
+        // List Replacement Line
+        // =====================
+        public List<Entities.TrnDefectiveLineEntity> ListReplacementLine(Int32 defectiveId)
+        {
+            var defectiveLines = from d in db.TrnDefectiveItems
+                                 where d.Type == "Replacement"
+                                 select new Entities.TrnDefectiveLineEntity
+                                 {
+                                     Id = d.Id,
+                                     DefectiveId = d.DefectiveId,
+                                     ItemId = d.ItemId,
+                                     ItemDescription = d.MstItem.ItemDescription,
+                                     Quantity = d.Quantity,
+                                     Amount = d.Amount,
+                                 };
 
             return defectiveLines.Where(d => d.DefectiveId == defectiveId).ToList();
         }
@@ -63,8 +82,8 @@ namespace EasyPOS.Controllers
                 }
 
                 var defective = from d in db.TrnDefectives
-                              where d.Id == objDefectiveLine.DefectiveId
-                              select d;
+                                where d.Id == objDefectiveLine.DefectiveId
+                                select d;
 
                 if (defective.Any() == false)
                 {
@@ -88,6 +107,7 @@ namespace EasyPOS.Controllers
                     ItemId = objDefectiveLine.ItemId,
                     Quantity = objDefectiveLine.Quantity,
                     Amount = objDefectiveLine.Amount,
+                    Type = objDefectiveLine.Type
                 };
 
                 db.TrnDefectiveItems.InsertOnSubmit(newDefectiveLine);
@@ -115,14 +135,14 @@ namespace EasyPOS.Controllers
                 }
 
                 var defectiveLine = from d in db.TrnDefectiveItems
-                                  where d.Id == id
-                                  select d;
+                                    where d.Id == id
+                                    select d;
 
                 if (defectiveLine.Any())
                 {
                     var defective = from d in db.TrnDefectives
-                                  where d.Id == objDefectiveLine.DefectiveId
-                                  select d;
+                                    where d.Id == objDefectiveLine.DefectiveId
+                                    select d;
 
                     if (defective.Any() == false)
                     {
@@ -162,8 +182,8 @@ namespace EasyPOS.Controllers
                 }
 
                 var defectiveLine = from d in db.TrnDefectiveItems
-                                  where d.Id == id
-                                  select d;
+                                    where d.Id == id
+                                    select d;
 
                 if (defectiveLine.Any())
                 {

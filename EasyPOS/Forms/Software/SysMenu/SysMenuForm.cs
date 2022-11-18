@@ -60,6 +60,7 @@ namespace EasyPOS.Forms.Software.SysMenu
 
             MenuForm();
             InventoryModuleButtonLocation();
+            OpenPOS();
         }
         
         public List<Entities.DgvStockLevelReportEntity> GetInventoryListStockLevelAlert()
@@ -256,7 +257,34 @@ namespace EasyPOS.Forms.Software.SysMenu
                 }
             }
         }
-
+        private void OpenPOS()
+        {
+            sysUserRights = new Modules.SysUserRightsModule("TrnSales");
+            if (sysUserRights.GetUserRights() == null)
+            {
+                MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                var sysCurrent = Modules.SysCurrentModule.GetCurrentSettings();
+                if (sysCurrent.POSType == "POS Touch")
+                {
+                    sysUserRights = new Modules.SysUserRightsModule("TrnRestaurant");
+                    if (sysUserRights.GetUserRights() == null)
+                    {
+                        MessageBox.Show("No rights!", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        sysSoftwareForm.AddTabPagePOSTouchSalesList();
+                    }
+                }
+                else
+                {
+                    sysSoftwareForm.AddTabPagePOSSalesList();
+                }
+            }
+        }
         private void buttonDiscounting_Click(object sender, EventArgs e)
         {
             sysUserRights = new Modules.SysUserRightsModule("MstDiscount");

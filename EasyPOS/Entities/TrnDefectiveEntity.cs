@@ -9,7 +9,6 @@ namespace EasyPOS.Entities
     public class TrnDefectiveEntity
     {
         public Int32 Id { get; set; }
-        public Int32 SalesId { get; set; }
         public String DefectiveNo { get; set; }
         public String DefectiveDate { get; set; }
         public String InvoiceNo { get; set; }

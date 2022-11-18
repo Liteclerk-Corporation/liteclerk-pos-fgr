@@ -11,7 +11,6 @@ namespace EasyPOS.Entities
         public String ColumnDefectiveListButtonEdit { get; set; }
         public String ColumnDefectiveListButtonDelete { get; set; }
         public Int32 ColumnDefectiveListId { get; set; }
-        public Int32 ColumnDefectiveListSalesId { get; set; }
         public String ColumnDefectiveListDefectiveNo { get; set; }
         public String ColumnDefectiveListDefectiveDate { get; set; }
         public String ColumnDefectiveListInvoiceNo { get; set; }

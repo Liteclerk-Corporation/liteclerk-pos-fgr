@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="liteclerk_fgr" Class="easyposdbDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=EGGSY\SQLEXPRESS;Initial Catalog=liteclerk_fgr;User ID=sa" SettingsObjectName="EasyPOS.Properties.Settings" SettingsPropertyName="liteclerk_fgrConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=EGGSY\SQLEXPRESS;Initial Catalog=liteclerk_fgr;Persist Security Info=True;User ID=sa" SettingsObjectName="EasyPOS.Properties.Settings" SettingsPropertyName="liteclerk_fgrConnectionString2" Provider="System.Data.SqlClient" />
   <Table Name="dbo.IntCloudSettings" Member="IntCloudSettings">
     <Type Name="IntCloudSetting">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -1121,7 +1121,6 @@
       <Association Name="TrnSale_TrnSalesLine" Member="TrnSalesLines" ThisKey="Id" OtherKey="SalesId" Type="TrnSalesLine" />
       <Association Name="TrnSale_TrnStockIn" Member="TrnStockIns" ThisKey="Id" OtherKey="SalesId" Type="TrnStockIn" />
       <Association Name="TrnSale_TrnTradeIn" Member="TrnTradeIns" ThisKey="Id" OtherKey="SalesId" Type="TrnTradeIn" />
-      <Association Name="TrnSale_TrnDefective" Member="TrnDefectives" ThisKey="Id" OtherKey="SalesId" Type="TrnDefective" />
       <Association Name="MstCustomer_TrnSale" Member="MstCustomer" ThisKey="CustomerId" OtherKey="Id" Type="MstCustomer" IsForeignKey="true" />
       <Association Name="MstPeriod_TrnSale" Member="MstPeriod" ThisKey="PeriodId" OtherKey="Id" Type="MstPeriod" IsForeignKey="true" />
       <Association Name="MstTable_TrnSale" Member="MstTable" ThisKey="TableId" OtherKey="Id" Type="MstTable" IsForeignKey="true" />
@@ -1139,7 +1138,6 @@
   <Table Name="dbo.TrnDefective" Member="TrnDefectives">
     <Type Name="TrnDefective">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="SalesId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="DefectiveNo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="DefectiveDate" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
       <Column Name="InvoiceNo" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
@@ -1148,7 +1146,6 @@
       <Column Name="PreparedById" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="IsLocked" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="TrnDefective_TrnDefectiveItem" Member="TrnDefectiveItems" ThisKey="Id" OtherKey="DefectiveId" Type="TrnDefectiveItem" />
-      <Association Name="TrnSale_TrnDefective" Member="TrnSale" ThisKey="SalesId" OtherKey="Id" Type="TrnSale" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.TrnDefectiveItem" Member="TrnDefectiveItems">
@@ -1158,6 +1155,7 @@
       <Column Name="ItemId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="Quantity" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
       <Column Name="Amount" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Type" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="MstItem_TrnDefectiveItem" Member="MstItem" ThisKey="ItemId" OtherKey="Id" Type="MstItem" IsForeignKey="true" />
       <Association Name="TrnDefective_TrnDefectiveItem" Member="TrnDefective" ThisKey="DefectiveId" OtherKey="Id" Type="TrnDefective" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
     </Type>

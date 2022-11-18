@@ -313,6 +313,7 @@
     <Compile Include="Entities\DgvRepDeletedItemEntity.cs" />
     <Compile Include="Entities\DgvRepSalesReportSalesAgentReportListEntity.cs" />
     <Compile Include="Entities\DgvStockLevelReportEntity.cs" />
+    <Compile Include="Entities\DgvTrnDefectiveLineReplacementListEntity .cs" />
     <Compile Include="Entities\DgvTrnDefectiveListEntity.cs" />
     <Compile Include="Entities\DgvTrnPOSTouchPrintOrderDetailEntity.cs" />
     <Compile Include="Entities\DgvTrnSalesMergeEntity.cs" />

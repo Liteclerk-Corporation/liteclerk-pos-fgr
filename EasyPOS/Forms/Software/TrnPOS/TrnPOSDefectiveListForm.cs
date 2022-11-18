@@ -20,11 +20,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public BindingSource itemListDataSource = new BindingSource();
 
         public Entities.TrnSalesEntity trnSalesEntity;
-        public TrnPOSDefectiveListForm(Entities.TrnSalesEntity salesEntity)
+        public TrnPOSDefectiveListForm()
         {
             InitializeComponent();
-
-            trnSalesEntity = salesEntity;
 
             CreateDefectiveListDataGridView();
         }
@@ -117,7 +115,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                 ColumnDefectiveListButtonEdit = gridEdit,
                                 ColumnDefectiveListButtonDelete = gridDelete,
                                 ColumnDefectiveListId = d.Id,
-                                ColumnDefectiveListSalesId = d.SalesId,
                                 ColumnDefectiveListDefectiveNo = d.DefectiveNo,
                                 ColumnDefectiveListDefectiveDate = d.DefectiveDate,
                                 ColumnDefectiveListInvoiceNo = d.InvoiceNo,
@@ -252,7 +249,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             if (e.RowIndex > -1 && dataGridViewDefectiveList.CurrentCell.ColumnIndex == dataGridViewDefectiveList.Columns["ColumnDefectiveListButtonDelete"].Index)
             {
-                Boolean isLocked = Convert.ToBoolean(dataGridViewDefectiveList.Rows[e.RowIndex].Cells[10].Value);
+                Boolean isLocked = Convert.ToBoolean(dataGridViewDefectiveList.Rows[e.RowIndex].Cells[9].Value);
 
                 if (isLocked == true)
                 {
@@ -288,7 +285,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             Controllers.TrnDefectiveController trnDefectiveController = new Controllers.TrnDefectiveController();
-            String[] addDefective = trnDefectiveController.AddDefective(trnSalesEntity.Id);
+            String[] addDefective = trnDefectiveController.AddDefective();
             if (addDefective[1].Equals("0") == false)
             {
                 TrnPOS.TrnPOSDefectiveDetailForm trnPOSDefectiveDetailForm = new TrnPOS.TrnPOSDefectiveDetailForm(this, trnDefectiveController.DetailDefective(Convert.ToInt32(addDefective[1])));

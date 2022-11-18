@@ -198,7 +198,7 @@ namespace EasyPOS.Data
     #endregion
 		
 		public easyposdbDataContext() : 
-				base(global::EasyPOS.Properties.Settings.Default.liteclerk_fgrConnectionString1, mappingSource)
+				base(global::EasyPOS.Properties.Settings.Default.liteclerk_fgrConnectionString2, mappingSource)
 		{
 			OnCreated();
 		}
@@ -26339,8 +26339,6 @@ namespace EasyPOS.Data
 		
 		private EntitySet<TrnTradeIn> _TrnTradeIns;
 		
-		private EntitySet<TrnDefective> _TrnDefectives;
-		
 		private EntityRef<MstCustomer> _MstCustomer;
 		
 		private EntityRef<MstPeriod> _MstPeriod;
@@ -26476,7 +26474,6 @@ namespace EasyPOS.Data
 			this._TrnSalesLines = new EntitySet<TrnSalesLine>(new Action<TrnSalesLine>(this.attach_TrnSalesLines), new Action<TrnSalesLine>(this.detach_TrnSalesLines));
 			this._TrnStockIns = new EntitySet<TrnStockIn>(new Action<TrnStockIn>(this.attach_TrnStockIns), new Action<TrnStockIn>(this.detach_TrnStockIns));
 			this._TrnTradeIns = new EntitySet<TrnTradeIn>(new Action<TrnTradeIn>(this.attach_TrnTradeIns), new Action<TrnTradeIn>(this.detach_TrnTradeIns));
-			this._TrnDefectives = new EntitySet<TrnDefective>(new Action<TrnDefective>(this.attach_TrnDefectives), new Action<TrnDefective>(this.detach_TrnDefectives));
 			this._MstCustomer = default(EntityRef<MstCustomer>);
 			this._MstPeriod = default(EntityRef<MstPeriod>);
 			this._MstTable = default(EntityRef<MstTable>);
@@ -27597,19 +27594,6 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnSale_TrnDefective", Storage="_TrnDefectives", ThisKey="Id", OtherKey="SalesId")]
-		public EntitySet<TrnDefective> TrnDefectives
-		{
-			get
-			{
-				return this._TrnDefectives;
-			}
-			set
-			{
-				this._TrnDefectives.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="MstCustomer_TrnSale", Storage="_MstCustomer", ThisKey="CustomerId", OtherKey="Id", IsForeignKey=true)]
 		public MstCustomer MstCustomer
 		{
@@ -28145,18 +28129,6 @@ namespace EasyPOS.Data
 			this.SendPropertyChanging();
 			entity.TrnSale = null;
 		}
-		
-		private void attach_TrnDefectives(TrnDefective entity)
-		{
-			this.SendPropertyChanging();
-			entity.TrnSale = this;
-		}
-		
-		private void detach_TrnDefectives(TrnDefective entity)
-		{
-			this.SendPropertyChanging();
-			entity.TrnSale = null;
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrnDefective")]
@@ -28166,8 +28138,6 @@ namespace EasyPOS.Data
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
 		private int _Id;
-		
-		private int _SalesId;
 		
 		private string _DefectiveNo;
 		
@@ -28185,16 +28155,12 @@ namespace EasyPOS.Data
 		
 		private EntitySet<TrnDefectiveItem> _TrnDefectiveItems;
 		
-		private EntityRef<TrnSale> _TrnSale;
-		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
     partial void OnIdChanging(int value);
     partial void OnIdChanged();
-    partial void OnSalesIdChanging(int value);
-    partial void OnSalesIdChanged();
     partial void OnDefectiveNoChanging(string value);
     partial void OnDefectiveNoChanged();
     partial void OnDefectiveDateChanging(System.DateTime value);
@@ -28214,7 +28180,6 @@ namespace EasyPOS.Data
 		public TrnDefective()
 		{
 			this._TrnDefectiveItems = new EntitySet<TrnDefectiveItem>(new Action<TrnDefectiveItem>(this.attach_TrnDefectiveItems), new Action<TrnDefectiveItem>(this.detach_TrnDefectiveItems));
-			this._TrnSale = default(EntityRef<TrnSale>);
 			OnCreated();
 		}
 		
@@ -28234,30 +28199,6 @@ namespace EasyPOS.Data
 					this._Id = value;
 					this.SendPropertyChanged("Id");
 					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalesId", DbType="Int NOT NULL")]
-		public int SalesId
-		{
-			get
-			{
-				return this._SalesId;
-			}
-			set
-			{
-				if ((this._SalesId != value))
-				{
-					if (this._TrnSale.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnSalesIdChanging(value);
-					this.SendPropertyChanging();
-					this._SalesId = value;
-					this.SendPropertyChanged("SalesId");
-					this.OnSalesIdChanged();
 				}
 			}
 		}
@@ -28415,40 +28356,6 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnSale_TrnDefective", Storage="_TrnSale", ThisKey="SalesId", OtherKey="Id", IsForeignKey=true, DeleteOnNull=true, DeleteRule="CASCADE")]
-		public TrnSale TrnSale
-		{
-			get
-			{
-				return this._TrnSale.Entity;
-			}
-			set
-			{
-				TrnSale previousValue = this._TrnSale.Entity;
-				if (((previousValue != value) 
-							|| (this._TrnSale.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._TrnSale.Entity = null;
-						previousValue.TrnDefectives.Remove(this);
-					}
-					this._TrnSale.Entity = value;
-					if ((value != null))
-					{
-						value.TrnDefectives.Add(this);
-						this._SalesId = value.Id;
-					}
-					else
-					{
-						this._SalesId = default(int);
-					}
-					this.SendPropertyChanged("TrnSale");
-				}
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -28498,6 +28405,8 @@ namespace EasyPOS.Data
 		
 		private decimal _Amount;
 		
+		private string _Type;
+		
 		private EntityRef<MstItem> _MstItem;
 		
 		private EntityRef<TrnDefective> _TrnDefective;
@@ -28516,6 +28425,8 @@ namespace EasyPOS.Data
     partial void OnQuantityChanged();
     partial void OnAmountChanging(decimal value);
     partial void OnAmountChanged();
+    partial void OnTypeChanging(string value);
+    partial void OnTypeChanged();
     #endregion
 		
 		public TrnDefectiveItem()
@@ -28629,6 +28540,26 @@ namespace EasyPOS.Data
 					this._Amount = value;
 					this.SendPropertyChanged("Amount");
 					this.OnAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Type", DbType="NVarChar(50)")]
+		public string Type
+		{
+			get
+			{
+				return this._Type;
+			}
+			set
+			{
+				if ((this._Type != value))
+				{
+					this.OnTypeChanging(value);
+					this.SendPropertyChanging();
+					this._Type = value;
+					this.SendPropertyChanged("Type");
+					this.OnTypeChanged();
 				}
 			}
 		}
