@@ -26,26 +26,9 @@ namespace EasyPOS.Controllers
                                      Id = d.Id,
                                      DefectiveId = d.DefectiveId,
                                      ItemId = d.ItemId,
-                                     ItemDescription = d.MstItem.ItemDescription,
-                                     Quantity = d.Quantity,
-                                     Amount = d.Amount,
-                                 };
-
-            return defectiveLines.Where(d => d.DefectiveId == defectiveId).ToList();
-        }
-        // =====================
-        // List Replacement Line
-        // =====================
-        public List<Entities.TrnDefectiveLineEntity> ListReplacementLine(Int32 defectiveId)
-        {
-            var defectiveLines = from d in db.TrnDefectiveItems
-                                 where d.Type == "Replacement"
-                                 select new Entities.TrnDefectiveLineEntity
-                                 {
-                                     Id = d.Id,
-                                     DefectiveId = d.DefectiveId,
-                                     ItemId = d.ItemId,
-                                     ItemDescription = d.MstItem.ItemDescription,
+                                     Size = d.MstItem.Size,
+                                     Brand = d.MstItem.Brand,
+                                     WarrantyCode = d.MstItem.BarCode,
                                      Quantity = d.Quantity,
                                      Amount = d.Amount,
                                  };

@@ -42,8 +42,11 @@ namespace EasyPOS.Controllers
                                DefectiveNo = d.DefectiveNo,
                                DefectiveDate = d.DefectiveDate.ToShortDateString(),
                                InvoiceNo = d.InvoiceNo,
+                               PurchasedDate = d.PurchasedDate.ToShortDateString(),
+                               VehicleType = d.VehicleType,
                                CustomerName = d.CustomerName,
-                               WarrantyCode = d.WarrantyCode,
+                               ReplacementDate = d.ReplacementDate.ToShortDateString(),
+                               ReplacementInvoiceNo = d.ReplacementInvoiceNo,
                                PreparedById = d.PreparedById,
                                IsLocked = d.IsLocked,
                            };
@@ -63,10 +66,13 @@ namespace EasyPOS.Controllers
                               DefectiveNo = d.DefectiveNo,
                               DefectiveDate = d.DefectiveDate.ToShortDateString(),
                               InvoiceNo = d.InvoiceNo,
+                              PurchasedDate = d.PurchasedDate.ToShortDateString(),
+                              VehicleType = d.VehicleType,
                               CustomerName = d.CustomerName,
-                              WarrantyCode = d.WarrantyCode,
+                              ReplacementDate = d.ReplacementDate.ToShortDateString(),
+                              ReplacementInvoiceNo = d.ReplacementInvoiceNo,
                               PreparedById = d.PreparedById,
-                              IsLocked = d.IsLocked
+                              IsLocked = d.IsLocked,
                           };
 
             return defectives.FirstOrDefault();
@@ -117,9 +123,12 @@ namespace EasyPOS.Controllers
                 {
                     DefectiveNo = defectiveNumber,
                     DefectiveDate = currentDate,
+                    PurchasedDate = currentDate,
+                    ReplacementDate = currentDate,
                     InvoiceNo = "NA",
+                    ReplacementInvoiceNo = "NA",
+                    VehicleType = "Private",
                     CustomerName = "NA",
-                    WarrantyCode = "NA",
                     PreparedById = currentUserLogin.FirstOrDefault().Id,
                     IsLocked = false,
                 };
@@ -161,16 +170,18 @@ namespace EasyPOS.Controllers
 
                     var lockDefective = defective.FirstOrDefault();
                     lockDefective.DefectiveDate = Convert.ToDateTime(objDefective.DefectiveDate);
+                    lockDefective.PurchasedDate = Convert.ToDateTime(objDefective.PurchasedDate);
+                    lockDefective.ReplacementDate = Convert.ToDateTime(objDefective.ReplacementDate);
                     lockDefective.InvoiceNo = objDefective.InvoiceNo;
+                    lockDefective.ReplacementInvoiceNo = objDefective.ReplacementInvoiceNo;
+                    lockDefective.VehicleType = objDefective.VehicleType;
                     lockDefective.CustomerName = objDefective.CustomerName;
-                    lockDefective.WarrantyCode = objDefective.WarrantyCode;
                     lockDefective.PreparedById = currentUserLogin.FirstOrDefault().Id;
                     lockDefective.IsLocked = true;
                     db.SubmitChanges();
 
                     Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
                     trnInventoryModule.UpdateDefectiveInventory(defective.FirstOrDefault().Id);
-                    trnInventoryModule.UpdateReplacementInventory(defective.FirstOrDefault().Id);
 
                     return new String[] { "", "1" };
                 }

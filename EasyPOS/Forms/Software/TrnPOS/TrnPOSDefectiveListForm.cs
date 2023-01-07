@@ -117,9 +117,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                 ColumnDefectiveListId = d.Id,
                                 ColumnDefectiveListDefectiveNo = d.DefectiveNo,
                                 ColumnDefectiveListDefectiveDate = d.DefectiveDate,
+                                ColumnDefectiveListPurchasedDate = d.PurchasedDate,
                                 ColumnDefectiveListInvoiceNo = d.InvoiceNo,
                                 ColumnDefectiveListCustomerName = d.CustomerName,
-                                ColumnDefectiveListWarrantyCode = d.WarrantyCode,
+                                ColumnDefectiveListReplacementDate = d.ReplacementDate,
+                                ColumnDefectiveListReplacementInvoiceNo = d.ReplacementInvoiceNo,
                                 ColumnDefectiveListPreparedById = d.PreparedById,
                                 ColumnDefectiveListIsLocked = d.IsLocked
                             };
@@ -249,7 +251,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             if (e.RowIndex > -1 && dataGridViewDefectiveList.CurrentCell.ColumnIndex == dataGridViewDefectiveList.Columns["ColumnDefectiveListButtonDelete"].Index)
             {
-                Boolean isLocked = Convert.ToBoolean(dataGridViewDefectiveList.Rows[e.RowIndex].Cells[9].Value);
+                Boolean isLocked = Convert.ToBoolean(dataGridViewDefectiveList.Rows[e.RowIndex].Cells[11].Value);
 
                 if (isLocked == true)
                 {

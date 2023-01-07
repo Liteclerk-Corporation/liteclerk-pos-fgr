@@ -38,15 +38,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSDefectiveDetailForm));
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonEdit = new System.Windows.Forms.Button();
@@ -55,6 +46,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.label1 = new System.Windows.Forms.Label();
             this.buttonClose = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.comboBoxVehicleType = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panel15 = new System.Windows.Forms.Panel();
@@ -70,38 +63,30 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.ColumnDefectiveLineListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDefectiveLineListDefectiveId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDefectiveLineListItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDefectiveLineListItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDefectiveLineListItemSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDefectiveLineListItemBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnDefectiveLineListItemWarrantyCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDefectiveLineListQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnDefectiveLineListAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.buttonDefectiveLineReplacementListPageListFirst = new System.Windows.Forms.Button();
-            this.buttonDefectiveLineReplacementListPageListPrevious = new System.Windows.Forms.Button();
-            this.buttonDefectiveLineReplacementListPageListNext = new System.Windows.Forms.Button();
-            this.buttonDefectiveLineReplacementListPageListLast = new System.Windows.Forms.Button();
-            this.textBoxDefectiveLineReplacementListPageNumber = new System.Windows.Forms.TextBox();
-            this.buttonAddReplacement = new System.Windows.Forms.Button();
-            this.dataGridViewDefectiveLineReplacementList = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
-            this.textBoxWarrantyCode = new System.Windows.Forms.TextBox();
+            this.textBoxRepInvoiceNo = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxCustomerName = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBoxWarrantyPeriod = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxInvoiceNo = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.comboBoxPreparedBy = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.dateTimePickerRepDate = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerPurchasedDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dateTimePickerDefectiveDate = new System.Windows.Forms.DateTimePicker();
             this.textBoxDefectiveNumber = new System.Windows.Forms.TextBox();
-            this.ColumnDefectiveLineReplacementListButtonEdit = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnDefectiveLineReplacementListButtonDelete = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.ColumnDefectiveLineReplacementListId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDefectiveLineReplacementListDefectiveId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDefectiveLineReplacementListItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDefectiveLineReplacementListItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDefectiveLineReplacementListQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnDefectiveLineReplacementListAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -109,9 +94,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.tabPage1.SuspendLayout();
             this.panel15.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDefectiveLineList)).BeginInit();
-            this.tabPage2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDefectiveLineReplacementList)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -126,7 +108,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1095, 62);
+            this.panel1.Size = new System.Drawing.Size(1245, 62);
             this.panel1.TabIndex = 7;
             // 
             // buttonEdit
@@ -138,7 +120,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEdit.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonEdit.ForeColor = System.Drawing.Color.White;
-            this.buttonEdit.Location = new System.Drawing.Point(808, 11);
+            this.buttonEdit.Location = new System.Drawing.Point(958, 11);
             this.buttonEdit.Margin = new System.Windows.Forms.Padding(2);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(135, 40);
@@ -157,7 +139,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSave.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSave.ForeColor = System.Drawing.Color.White;
-            this.buttonSave.Location = new System.Drawing.Point(669, 11);
+            this.buttonSave.Location = new System.Drawing.Point(819, 11);
             this.buttonSave.Margin = new System.Windows.Forms.Padding(2);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(135, 40);
@@ -198,7 +180,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonClose.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonClose.ForeColor = System.Drawing.Color.White;
-            this.buttonClose.Location = new System.Drawing.Point(947, 12);
+            this.buttonClose.Location = new System.Drawing.Point(1097, 12);
             this.buttonClose.Margin = new System.Windows.Forms.Padding(2);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(136, 40);
@@ -211,16 +193,25 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.Control;
+            this.panel2.Controls.Add(this.comboBoxVehicleType);
+            this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.tabControl1);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.textBoxWarrantyCode);
+            this.panel2.Controls.Add(this.textBoxRepInvoiceNo);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.textBoxCustomerName);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.label12);
+            this.panel2.Controls.Add(this.textBoxWarrantyPeriod);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.textBoxInvoiceNo);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.comboBoxPreparedBy);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.dateTimePickerRepDate);
+            this.panel2.Controls.Add(this.dateTimePickerPurchasedDate);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.dateTimePickerDefectiveDate);
             this.panel2.Controls.Add(this.textBoxDefectiveNumber);
@@ -228,19 +219,40 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.panel2.Location = new System.Drawing.Point(0, 62);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1095, 559);
+            this.panel2.Size = new System.Drawing.Size(1245, 683);
             this.panel2.TabIndex = 29;
+            // 
+            // comboBoxVehicleType
+            // 
+            this.comboBoxVehicleType.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.comboBoxVehicleType.FormattingEnabled = true;
+            this.comboBoxVehicleType.Location = new System.Drawing.Point(241, 101);
+            this.comboBoxVehicleType.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxVehicleType.Name = "comboBoxVehicleType";
+            this.comboBoxVehicleType.Size = new System.Drawing.Size(196, 31);
+            this.comboBoxVehicleType.TabIndex = 43;
+            this.comboBoxVehicleType.TextChanged += new System.EventHandler(this.comboBoxVehicleType_TextChanged);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(17, 139);
+            this.label8.Margin = new System.Windows.Forms.Padding(0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(135, 28);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Replacement";
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tabControl1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControl1.Location = new System.Drawing.Point(0, 143);
+            this.tabControl1.Location = new System.Drawing.Point(0, 245);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1095, 416);
+            this.tabControl1.Size = new System.Drawing.Size(1245, 438);
             this.tabControl1.TabIndex = 42;
             // 
             // tabPage1
@@ -251,7 +263,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.tabPage1.Location = new System.Drawing.Point(4, 32);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1087, 380);
+            this.tabPage1.Size = new System.Drawing.Size(1237, 402);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Defective Item(s)";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -265,10 +277,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.panel15.Controls.Add(this.buttonDefectiveLineListPageListLast);
             this.panel15.Controls.Add(this.textBoxDefectiveLineListPageNumber);
             this.panel15.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel15.Location = new System.Drawing.Point(3, 325);
+            this.panel15.Location = new System.Drawing.Point(3, 347);
             this.panel15.Margin = new System.Windows.Forms.Padding(2);
             this.panel15.Name = "panel15";
-            this.panel15.Size = new System.Drawing.Size(1081, 52);
+            this.panel15.Size = new System.Drawing.Size(1231, 52);
             this.panel15.TabIndex = 32;
             // 
             // buttonDefectiveLineListPageListFirst
@@ -356,7 +368,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAdd.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAdd.ForeColor = System.Drawing.Color.White;
-            this.buttonAdd.Location = new System.Drawing.Point(871, 5);
+            this.buttonAdd.Location = new System.Drawing.Point(1021, 5);
             this.buttonAdd.Margin = new System.Windows.Forms.Padding(2);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(208, 40);
@@ -390,7 +402,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.ColumnDefectiveLineListId,
             this.ColumnDefectiveLineListDefectiveId,
             this.ColumnDefectiveLineListItemId,
-            this.ColumnDefectiveLineListItemDescription,
+            this.ColumnDefectiveLineListItemSize,
+            this.ColumnDefectiveLineListItemBrand,
+            this.ColumnDefectiveLineListItemWarrantyCode,
             this.ColumnDefectiveLineListQuantity,
             this.ColumnDefectiveLineListAmount});
             this.dataGridViewDefectiveLineList.Location = new System.Drawing.Point(6, 49);
@@ -402,7 +416,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.dataGridViewDefectiveLineList.RowHeadersWidth = 51;
             this.dataGridViewDefectiveLineList.RowTemplate.Height = 24;
             this.dataGridViewDefectiveLineList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewDefectiveLineList.Size = new System.Drawing.Size(1075, 281);
+            this.dataGridViewDefectiveLineList.Size = new System.Drawing.Size(1225, 303);
             this.dataGridViewDefectiveLineList.TabIndex = 31;
             this.dataGridViewDefectiveLineList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDefectiveLineList_CellClick);
             // 
@@ -471,16 +485,34 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.ColumnDefectiveLineListItemId.Visible = false;
             this.ColumnDefectiveLineListItemId.Width = 125;
             // 
-            // ColumnDefectiveLineListItemDescription
+            // ColumnDefectiveLineListItemSize
             // 
-            this.ColumnDefectiveLineListItemDescription.DataPropertyName = "ColumnDefectiveLineListItemDescription";
+            this.ColumnDefectiveLineListItemSize.DataPropertyName = "ColumnDefectiveLineListItemSize";
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.ColumnDefectiveLineListItemDescription.DefaultCellStyle = dataGridViewCellStyle7;
-            this.ColumnDefectiveLineListItemDescription.HeaderText = "Item Description";
-            this.ColumnDefectiveLineListItemDescription.MinimumWidth = 6;
-            this.ColumnDefectiveLineListItemDescription.Name = "ColumnDefectiveLineListItemDescription";
-            this.ColumnDefectiveLineListItemDescription.ReadOnly = true;
-            this.ColumnDefectiveLineListItemDescription.Width = 250;
+            this.ColumnDefectiveLineListItemSize.DefaultCellStyle = dataGridViewCellStyle7;
+            this.ColumnDefectiveLineListItemSize.HeaderText = "Size";
+            this.ColumnDefectiveLineListItemSize.MinimumWidth = 6;
+            this.ColumnDefectiveLineListItemSize.Name = "ColumnDefectiveLineListItemSize";
+            this.ColumnDefectiveLineListItemSize.ReadOnly = true;
+            this.ColumnDefectiveLineListItemSize.Width = 150;
+            // 
+            // ColumnDefectiveLineListItemBrand
+            // 
+            this.ColumnDefectiveLineListItemBrand.DataPropertyName = "ColumnDefectiveLineListItemBrand";
+            this.ColumnDefectiveLineListItemBrand.HeaderText = "Brand";
+            this.ColumnDefectiveLineListItemBrand.MinimumWidth = 6;
+            this.ColumnDefectiveLineListItemBrand.Name = "ColumnDefectiveLineListItemBrand";
+            this.ColumnDefectiveLineListItemBrand.ReadOnly = true;
+            this.ColumnDefectiveLineListItemBrand.Width = 150;
+            // 
+            // ColumnDefectiveLineListItemWarrantyCode
+            // 
+            this.ColumnDefectiveLineListItemWarrantyCode.DataPropertyName = "ColumnDefectiveLineListItemWarrantyCode";
+            this.ColumnDefectiveLineListItemWarrantyCode.HeaderText = "Warranty Code";
+            this.ColumnDefectiveLineListItemWarrantyCode.MinimumWidth = 6;
+            this.ColumnDefectiveLineListItemWarrantyCode.Name = "ColumnDefectiveLineListItemWarrantyCode";
+            this.ColumnDefectiveLineListItemWarrantyCode.ReadOnly = true;
+            this.ColumnDefectiveLineListItemWarrantyCode.Width = 200;
             // 
             // ColumnDefectiveLineListQuantity
             // 
@@ -506,227 +538,96 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.ColumnDefectiveLineListAmount.ReadOnly = true;
             this.ColumnDefectiveLineListAmount.Width = 125;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.panel3);
-            this.tabPage2.Controls.Add(this.buttonAddReplacement);
-            this.tabPage2.Controls.Add(this.dataGridViewDefectiveLineReplacementList);
-            this.tabPage2.Location = new System.Drawing.Point(4, 32);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1087, 380);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Replacement Item(s)";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.buttonDefectiveLineReplacementListPageListFirst);
-            this.panel3.Controls.Add(this.buttonDefectiveLineReplacementListPageListPrevious);
-            this.panel3.Controls.Add(this.buttonDefectiveLineReplacementListPageListNext);
-            this.panel3.Controls.Add(this.buttonDefectiveLineReplacementListPageListLast);
-            this.panel3.Controls.Add(this.textBoxDefectiveLineReplacementListPageNumber);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(3, 325);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1081, 52);
-            this.panel3.TabIndex = 34;
-            // 
-            // buttonDefectiveLineReplacementListPageListFirst
-            // 
-            this.buttonDefectiveLineReplacementListPageListFirst.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonDefectiveLineReplacementListPageListFirst.Enabled = false;
-            this.buttonDefectiveLineReplacementListPageListFirst.FlatAppearance.BorderSize = 0;
-            this.buttonDefectiveLineReplacementListPageListFirst.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDefectiveLineReplacementListPageListFirst.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonDefectiveLineReplacementListPageListFirst.Location = new System.Drawing.Point(12, 9);
-            this.buttonDefectiveLineReplacementListPageListFirst.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDefectiveLineReplacementListPageListFirst.Name = "buttonDefectiveLineReplacementListPageListFirst";
-            this.buttonDefectiveLineReplacementListPageListFirst.Size = new System.Drawing.Size(82, 32);
-            this.buttonDefectiveLineReplacementListPageListFirst.TabIndex = 13;
-            this.buttonDefectiveLineReplacementListPageListFirst.Text = "First";
-            this.buttonDefectiveLineReplacementListPageListFirst.UseVisualStyleBackColor = false;
-            this.buttonDefectiveLineReplacementListPageListFirst.Click += new System.EventHandler(this.buttonDefectiveLineReplacementListPageListFirst_Click);
-            // 
-            // buttonDefectiveLineReplacementListPageListPrevious
-            // 
-            this.buttonDefectiveLineReplacementListPageListPrevious.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonDefectiveLineReplacementListPageListPrevious.Enabled = false;
-            this.buttonDefectiveLineReplacementListPageListPrevious.FlatAppearance.BorderSize = 0;
-            this.buttonDefectiveLineReplacementListPageListPrevious.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDefectiveLineReplacementListPageListPrevious.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonDefectiveLineReplacementListPageListPrevious.Location = new System.Drawing.Point(100, 9);
-            this.buttonDefectiveLineReplacementListPageListPrevious.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDefectiveLineReplacementListPageListPrevious.Name = "buttonDefectiveLineReplacementListPageListPrevious";
-            this.buttonDefectiveLineReplacementListPageListPrevious.Size = new System.Drawing.Size(82, 32);
-            this.buttonDefectiveLineReplacementListPageListPrevious.TabIndex = 14;
-            this.buttonDefectiveLineReplacementListPageListPrevious.Text = "Previous";
-            this.buttonDefectiveLineReplacementListPageListPrevious.UseVisualStyleBackColor = false;
-            this.buttonDefectiveLineReplacementListPageListPrevious.Click += new System.EventHandler(this.buttonDefectiveLineReplacementListPageListPrevious_Click);
-            // 
-            // buttonDefectiveLineReplacementListPageListNext
-            // 
-            this.buttonDefectiveLineReplacementListPageListNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonDefectiveLineReplacementListPageListNext.FlatAppearance.BorderSize = 0;
-            this.buttonDefectiveLineReplacementListPageListNext.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDefectiveLineReplacementListPageListNext.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonDefectiveLineReplacementListPageListNext.Location = new System.Drawing.Point(262, 9);
-            this.buttonDefectiveLineReplacementListPageListNext.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDefectiveLineReplacementListPageListNext.Name = "buttonDefectiveLineReplacementListPageListNext";
-            this.buttonDefectiveLineReplacementListPageListNext.Size = new System.Drawing.Size(82, 32);
-            this.buttonDefectiveLineReplacementListPageListNext.TabIndex = 15;
-            this.buttonDefectiveLineReplacementListPageListNext.Text = "Next";
-            this.buttonDefectiveLineReplacementListPageListNext.UseVisualStyleBackColor = false;
-            this.buttonDefectiveLineReplacementListPageListNext.Click += new System.EventHandler(this.buttonDefectiveLineReplacementListPageListNext_Click);
-            // 
-            // buttonDefectiveLineReplacementListPageListLast
-            // 
-            this.buttonDefectiveLineReplacementListPageListLast.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonDefectiveLineReplacementListPageListLast.FlatAppearance.BorderSize = 0;
-            this.buttonDefectiveLineReplacementListPageListLast.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDefectiveLineReplacementListPageListLast.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.buttonDefectiveLineReplacementListPageListLast.Location = new System.Drawing.Point(348, 9);
-            this.buttonDefectiveLineReplacementListPageListLast.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDefectiveLineReplacementListPageListLast.Name = "buttonDefectiveLineReplacementListPageListLast";
-            this.buttonDefectiveLineReplacementListPageListLast.Size = new System.Drawing.Size(82, 32);
-            this.buttonDefectiveLineReplacementListPageListLast.TabIndex = 16;
-            this.buttonDefectiveLineReplacementListPageListLast.Text = "Last";
-            this.buttonDefectiveLineReplacementListPageListLast.UseVisualStyleBackColor = false;
-            this.buttonDefectiveLineReplacementListPageListLast.Click += new System.EventHandler(this.buttonDefectiveLineReplacementListPageListLast_Click);
-            // 
-            // textBoxDefectiveLineReplacementListPageNumber
-            // 
-            this.textBoxDefectiveLineReplacementListPageNumber.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBoxDefectiveLineReplacementListPageNumber.BackColor = System.Drawing.Color.White;
-            this.textBoxDefectiveLineReplacementListPageNumber.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxDefectiveLineReplacementListPageNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.textBoxDefectiveLineReplacementListPageNumber.Location = new System.Drawing.Point(189, 14);
-            this.textBoxDefectiveLineReplacementListPageNumber.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxDefectiveLineReplacementListPageNumber.Name = "textBoxDefectiveLineReplacementListPageNumber";
-            this.textBoxDefectiveLineReplacementListPageNumber.ReadOnly = true;
-            this.textBoxDefectiveLineReplacementListPageNumber.Size = new System.Drawing.Size(69, 20);
-            this.textBoxDefectiveLineReplacementListPageNumber.TabIndex = 17;
-            this.textBoxDefectiveLineReplacementListPageNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // buttonAddReplacement
-            // 
-            this.buttonAddReplacement.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAddReplacement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonAddReplacement.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonAddReplacement.FlatAppearance.BorderSize = 0;
-            this.buttonAddReplacement.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddReplacement.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddReplacement.ForeColor = System.Drawing.Color.White;
-            this.buttonAddReplacement.Location = new System.Drawing.Point(843, 5);
-            this.buttonAddReplacement.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonAddReplacement.Name = "buttonAddReplacement";
-            this.buttonAddReplacement.Size = new System.Drawing.Size(233, 40);
-            this.buttonAddReplacement.TabIndex = 32;
-            this.buttonAddReplacement.TabStop = false;
-            this.buttonAddReplacement.Text = "Add Replacement Item ";
-            this.buttonAddReplacement.UseVisualStyleBackColor = false;
-            this.buttonAddReplacement.Click += new System.EventHandler(this.buttonAddReplacement_Click);
-            // 
-            // dataGridViewDefectiveLineReplacementList
-            // 
-            this.dataGridViewDefectiveLineReplacementList.AllowUserToAddRows = false;
-            this.dataGridViewDefectiveLineReplacementList.AllowUserToDeleteRows = false;
-            this.dataGridViewDefectiveLineReplacementList.AllowUserToResizeRows = false;
-            this.dataGridViewDefectiveLineReplacementList.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridViewDefectiveLineReplacementList.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridViewDefectiveLineReplacementList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.dataGridViewDefectiveLineReplacementList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewDefectiveLineReplacementList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColumnDefectiveLineReplacementListButtonEdit,
-            this.ColumnDefectiveLineReplacementListButtonDelete,
-            this.ColumnDefectiveLineReplacementListId,
-            this.ColumnDefectiveLineReplacementListDefectiveId,
-            this.ColumnDefectiveLineReplacementListItemId,
-            this.ColumnDefectiveLineReplacementListItemDescription,
-            this.ColumnDefectiveLineReplacementListQuantity,
-            this.ColumnDefectiveLineReplacementListAmount});
-            this.dataGridViewDefectiveLineReplacementList.Location = new System.Drawing.Point(6, 49);
-            this.dataGridViewDefectiveLineReplacementList.Margin = new System.Windows.Forms.Padding(2);
-            this.dataGridViewDefectiveLineReplacementList.MultiSelect = false;
-            this.dataGridViewDefectiveLineReplacementList.Name = "dataGridViewDefectiveLineReplacementList";
-            this.dataGridViewDefectiveLineReplacementList.ReadOnly = true;
-            this.dataGridViewDefectiveLineReplacementList.RowHeadersVisible = false;
-            this.dataGridViewDefectiveLineReplacementList.RowHeadersWidth = 51;
-            this.dataGridViewDefectiveLineReplacementList.RowTemplate.Height = 24;
-            this.dataGridViewDefectiveLineReplacementList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewDefectiveLineReplacementList.Size = new System.Drawing.Size(1072, 281);
-            this.dataGridViewDefectiveLineReplacementList.TabIndex = 33;
-            this.dataGridViewDefectiveLineReplacementList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDefectiveReplacementLineList_CellClick);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label6.Location = new System.Drawing.Point(27, 94);
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(250, 178);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(133, 23);
+            this.label6.Size = new System.Drawing.Size(174, 20);
             this.label6.TabIndex = 41;
-            this.label6.Text = "Warranty Code :";
+            this.label6.Text = "Replacement Invoice No.";
             // 
-            // textBoxWarrantyCode
+            // textBoxRepInvoiceNo
             // 
-            this.textBoxWarrantyCode.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxWarrantyCode.Location = new System.Drawing.Point(188, 91);
-            this.textBoxWarrantyCode.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxWarrantyCode.Name = "textBoxWarrantyCode";
-            this.textBoxWarrantyCode.Size = new System.Drawing.Size(194, 30);
-            this.textBoxWarrantyCode.TabIndex = 40;
-            this.textBoxWarrantyCode.TabStop = false;
+            this.textBoxRepInvoiceNo.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxRepInvoiceNo.Location = new System.Drawing.Point(254, 203);
+            this.textBoxRepInvoiceNo.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxRepInvoiceNo.Name = "textBoxRepInvoiceNo";
+            this.textBoxRepInvoiceNo.Size = new System.Drawing.Size(194, 30);
+            this.textBoxRepInvoiceNo.TabIndex = 40;
+            this.textBoxRepInvoiceNo.TabStop = false;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label5.Location = new System.Drawing.Point(407, 97);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(668, 77);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(144, 23);
+            this.label5.Size = new System.Drawing.Size(116, 20);
             this.label5.TabIndex = 39;
-            this.label5.Text = "Customer Name :";
+            this.label5.Text = "Customer Name";
             // 
             // textBoxCustomerName
             // 
             this.textBoxCustomerName.Enabled = false;
             this.textBoxCustomerName.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxCustomerName.Location = new System.Drawing.Point(589, 94);
+            this.textBoxCustomerName.Location = new System.Drawing.Point(672, 102);
             this.textBoxCustomerName.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxCustomerName.Name = "textBoxCustomerName";
             this.textBoxCustomerName.Size = new System.Drawing.Size(494, 30);
             this.textBoxCustomerName.TabIndex = 38;
             this.textBoxCustomerName.TabStop = false;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(237, 77);
+            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(140, 20);
+            this.label10.TabIndex = 37;
+            this.label10.Text = "Private/Commercial";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(451, 77);
+            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(114, 20);
+            this.label12.TabIndex = 37;
+            this.label12.Text = "Warranty Period";
+            // 
+            // textBoxWarrantyPeriod
+            // 
+            this.textBoxWarrantyPeriod.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.textBoxWarrantyPeriod.Location = new System.Drawing.Point(455, 102);
+            this.textBoxWarrantyPeriod.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxWarrantyPeriod.Name = "textBoxWarrantyPeriod";
+            this.textBoxWarrantyPeriod.Size = new System.Drawing.Size(194, 30);
+            this.textBoxWarrantyPeriod.TabIndex = 36;
+            this.textBoxWarrantyPeriod.TabStop = false;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label3.Location = new System.Drawing.Point(27, 55);
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(451, 10);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(141, 23);
+            this.label3.Size = new System.Drawing.Size(154, 20);
             this.label3.TabIndex = 37;
-            this.label3.Text = "Invoice Number :";
+            this.label3.Text = "Purchased Invoice No.";
             // 
             // textBoxInvoiceNo
             // 
             this.textBoxInvoiceNo.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxInvoiceNo.Location = new System.Drawing.Point(188, 49);
+            this.textBoxInvoiceNo.Location = new System.Drawing.Point(455, 35);
             this.textBoxInvoiceNo.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxInvoiceNo.Name = "textBoxInvoiceNo";
             this.textBoxInvoiceNo.Size = new System.Drawing.Size(194, 30);
@@ -736,51 +637,93 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label11.Location = new System.Drawing.Point(445, 55);
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(668, 10);
             this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(106, 23);
+            this.label11.Size = new System.Drawing.Size(89, 20);
             this.label11.TabIndex = 35;
-            this.label11.Text = "Prepared by:";
+            this.label11.Text = "Prepared by";
             // 
             // comboBoxPreparedBy
             // 
             this.comboBoxPreparedBy.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.comboBoxPreparedBy.FormattingEnabled = true;
-            this.comboBoxPreparedBy.Location = new System.Drawing.Point(589, 49);
+            this.comboBoxPreparedBy.Location = new System.Drawing.Point(672, 35);
             this.comboBoxPreparedBy.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxPreparedBy.Name = "comboBoxPreparedBy";
             this.comboBoxPreparedBy.Size = new System.Drawing.Size(288, 31);
             this.comboBoxPreparedBy.TabIndex = 33;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(15, 178);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(107, 20);
+            this.label7.TabIndex = 34;
+            this.label7.Text = "Date Replaced";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(15, 77);
+            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(112, 20);
+            this.label9.TabIndex = 34;
+            this.label9.Text = "Purchased Date";
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label4.Location = new System.Drawing.Point(421, 16);
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(225, 10);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(130, 23);
+            this.label4.Size = new System.Drawing.Size(120, 20);
             this.label4.TabIndex = 34;
-            this.label4.Text = "Defective Date :";
+            this.label4.Text = "Transaction Date";
+            // 
+            // dateTimePickerRepDate
+            // 
+            this.dateTimePickerRepDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.dateTimePickerRepDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerRepDate.Location = new System.Drawing.Point(19, 203);
+            this.dateTimePickerRepDate.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePickerRepDate.Name = "dateTimePickerRepDate";
+            this.dateTimePickerRepDate.Size = new System.Drawing.Size(208, 30);
+            this.dateTimePickerRepDate.TabIndex = 31;
+            // 
+            // dateTimePickerPurchasedDate
+            // 
+            this.dateTimePickerPurchasedDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
+            this.dateTimePickerPurchasedDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerPurchasedDate.Location = new System.Drawing.Point(19, 102);
+            this.dateTimePickerPurchasedDate.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePickerPurchasedDate.Name = "dateTimePickerPurchasedDate";
+            this.dateTimePickerPurchasedDate.Size = new System.Drawing.Size(208, 30);
+            this.dateTimePickerPurchasedDate.TabIndex = 31;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.label2.Location = new System.Drawing.Point(11, 12);
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(15, 10);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(157, 23);
+            this.label2.Size = new System.Drawing.Size(106, 20);
             this.label2.TabIndex = 32;
-            this.label2.Text = "Defective Number :";
+            this.label2.Text = "Series Number";
             // 
             // dateTimePickerDefectiveDate
             // 
             this.dateTimePickerDefectiveDate.Font = new System.Drawing.Font("Segoe UI", 10.2F);
             this.dateTimePickerDefectiveDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerDefectiveDate.Location = new System.Drawing.Point(589, 10);
+            this.dateTimePickerDefectiveDate.Location = new System.Drawing.Point(229, 35);
             this.dateTimePickerDefectiveDate.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerDefectiveDate.Name = "dateTimePickerDefectiveDate";
             this.dateTimePickerDefectiveDate.Size = new System.Drawing.Size(208, 30);
@@ -790,118 +733,18 @@ namespace EasyPOS.Forms.Software.TrnPOS
             // 
             this.textBoxDefectiveNumber.Enabled = false;
             this.textBoxDefectiveNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.textBoxDefectiveNumber.Location = new System.Drawing.Point(188, 9);
+            this.textBoxDefectiveNumber.Location = new System.Drawing.Point(19, 35);
             this.textBoxDefectiveNumber.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxDefectiveNumber.Name = "textBoxDefectiveNumber";
             this.textBoxDefectiveNumber.Size = new System.Drawing.Size(194, 30);
             this.textBoxDefectiveNumber.TabIndex = 30;
             this.textBoxDefectiveNumber.TabStop = false;
             // 
-            // ColumnDefectiveLineReplacementListButtonEdit
-            // 
-            this.ColumnDefectiveLineReplacementListButtonEdit.DataPropertyName = "ColumnDefectiveLineReplacementListButtonEdit";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ColumnDefectiveLineReplacementListButtonEdit.DefaultCellStyle = dataGridViewCellStyle11;
-            this.ColumnDefectiveLineReplacementListButtonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnDefectiveLineReplacementListButtonEdit.Frozen = true;
-            this.ColumnDefectiveLineReplacementListButtonEdit.HeaderText = "";
-            this.ColumnDefectiveLineReplacementListButtonEdit.MinimumWidth = 6;
-            this.ColumnDefectiveLineReplacementListButtonEdit.Name = "ColumnDefectiveLineReplacementListButtonEdit";
-            this.ColumnDefectiveLineReplacementListButtonEdit.ReadOnly = true;
-            this.ColumnDefectiveLineReplacementListButtonEdit.Width = 70;
-            // 
-            // ColumnDefectiveLineReplacementListButtonDelete
-            // 
-            this.ColumnDefectiveLineReplacementListButtonDelete.DataPropertyName = "ColumnDefectiveLineReplacementListButtonDelete";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.ColumnDefectiveLineReplacementListButtonDelete.DefaultCellStyle = dataGridViewCellStyle12;
-            this.ColumnDefectiveLineReplacementListButtonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ColumnDefectiveLineReplacementListButtonDelete.Frozen = true;
-            this.ColumnDefectiveLineReplacementListButtonDelete.HeaderText = "";
-            this.ColumnDefectiveLineReplacementListButtonDelete.MinimumWidth = 6;
-            this.ColumnDefectiveLineReplacementListButtonDelete.Name = "ColumnDefectiveLineReplacementListButtonDelete";
-            this.ColumnDefectiveLineReplacementListButtonDelete.ReadOnly = true;
-            this.ColumnDefectiveLineReplacementListButtonDelete.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.ColumnDefectiveLineReplacementListButtonDelete.Width = 70;
-            // 
-            // ColumnDefectiveLineReplacementListId
-            // 
-            this.ColumnDefectiveLineReplacementListId.DataPropertyName = "ColumnDefectiveLineReplacementListId";
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.ColumnDefectiveLineReplacementListId.DefaultCellStyle = dataGridViewCellStyle13;
-            this.ColumnDefectiveLineReplacementListId.HeaderText = "Id";
-            this.ColumnDefectiveLineReplacementListId.MinimumWidth = 6;
-            this.ColumnDefectiveLineReplacementListId.Name = "ColumnDefectiveLineReplacementListId";
-            this.ColumnDefectiveLineReplacementListId.ReadOnly = true;
-            this.ColumnDefectiveLineReplacementListId.Visible = false;
-            this.ColumnDefectiveLineReplacementListId.Width = 125;
-            // 
-            // ColumnDefectiveLineReplacementListDefectiveId
-            // 
-            this.ColumnDefectiveLineReplacementListDefectiveId.DataPropertyName = "ColumnDefectiveLineReplacementListDefectiveId";
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.ColumnDefectiveLineReplacementListDefectiveId.DefaultCellStyle = dataGridViewCellStyle14;
-            this.ColumnDefectiveLineReplacementListDefectiveId.HeaderText = "DefectiveId";
-            this.ColumnDefectiveLineReplacementListDefectiveId.MinimumWidth = 6;
-            this.ColumnDefectiveLineReplacementListDefectiveId.Name = "ColumnDefectiveLineReplacementListDefectiveId";
-            this.ColumnDefectiveLineReplacementListDefectiveId.ReadOnly = true;
-            this.ColumnDefectiveLineReplacementListDefectiveId.Visible = false;
-            this.ColumnDefectiveLineReplacementListDefectiveId.Width = 125;
-            // 
-            // ColumnDefectiveLineReplacementListItemId
-            // 
-            this.ColumnDefectiveLineReplacementListItemId.DataPropertyName = "ColumnDefectiveLineReplacementListItemId";
-            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.ColumnDefectiveLineReplacementListItemId.DefaultCellStyle = dataGridViewCellStyle15;
-            this.ColumnDefectiveLineReplacementListItemId.HeaderText = "ItemId";
-            this.ColumnDefectiveLineReplacementListItemId.MinimumWidth = 6;
-            this.ColumnDefectiveLineReplacementListItemId.Name = "ColumnDefectiveLineReplacementListItemId";
-            this.ColumnDefectiveLineReplacementListItemId.ReadOnly = true;
-            this.ColumnDefectiveLineReplacementListItemId.Visible = false;
-            this.ColumnDefectiveLineReplacementListItemId.Width = 125;
-            // 
-            // ColumnDefectiveLineReplacementListItemDescription
-            // 
-            this.ColumnDefectiveLineReplacementListItemDescription.DataPropertyName = "ColumnDefectiveLineReplacementListItemDescription";
-            dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.ColumnDefectiveLineReplacementListItemDescription.DefaultCellStyle = dataGridViewCellStyle16;
-            this.ColumnDefectiveLineReplacementListItemDescription.HeaderText = "Item Description";
-            this.ColumnDefectiveLineReplacementListItemDescription.MinimumWidth = 6;
-            this.ColumnDefectiveLineReplacementListItemDescription.Name = "ColumnDefectiveLineReplacementListItemDescription";
-            this.ColumnDefectiveLineReplacementListItemDescription.ReadOnly = true;
-            this.ColumnDefectiveLineReplacementListItemDescription.Width = 250;
-            // 
-            // ColumnDefectiveLineReplacementListQuantity
-            // 
-            this.ColumnDefectiveLineReplacementListQuantity.DataPropertyName = "ColumnDefectiveLineReplacementListQuantity";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.ColumnDefectiveLineReplacementListQuantity.DefaultCellStyle = dataGridViewCellStyle17;
-            this.ColumnDefectiveLineReplacementListQuantity.HeaderText = "Quantity";
-            this.ColumnDefectiveLineReplacementListQuantity.MinimumWidth = 6;
-            this.ColumnDefectiveLineReplacementListQuantity.Name = "ColumnDefectiveLineReplacementListQuantity";
-            this.ColumnDefectiveLineReplacementListQuantity.ReadOnly = true;
-            this.ColumnDefectiveLineReplacementListQuantity.Width = 125;
-            // 
-            // ColumnDefectiveLineReplacementListAmount
-            // 
-            this.ColumnDefectiveLineReplacementListAmount.DataPropertyName = "ColumnDefectiveLineReplacementListAmount";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 10.2F);
-            this.ColumnDefectiveLineReplacementListAmount.DefaultCellStyle = dataGridViewCellStyle18;
-            this.ColumnDefectiveLineReplacementListAmount.HeaderText = "Amount";
-            this.ColumnDefectiveLineReplacementListAmount.MinimumWidth = 6;
-            this.ColumnDefectiveLineReplacementListAmount.Name = "ColumnDefectiveLineReplacementListAmount";
-            this.ColumnDefectiveLineReplacementListAmount.ReadOnly = true;
-            this.ColumnDefectiveLineReplacementListAmount.Width = 125;
-            // 
             // TrnPOSDefectiveDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1095, 621);
+            this.ClientSize = new System.Drawing.Size(1245, 745);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -919,10 +762,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
             this.panel15.ResumeLayout(false);
             this.panel15.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDefectiveLineList)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewDefectiveLineReplacementList)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -942,7 +781,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
         private System.Windows.Forms.DateTimePicker dateTimePickerDefectiveDate;
         private System.Windows.Forms.TextBox textBoxDefectiveNumber;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox textBoxWarrantyCode;
+        private System.Windows.Forms.TextBox textBoxRepInvoiceNo;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxCustomerName;
         private System.Windows.Forms.Label label3;
@@ -952,36 +791,30 @@ namespace EasyPOS.Forms.Software.TrnPOS
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Button buttonAdd;
         public System.Windows.Forms.DataGridView dataGridViewDefectiveLineList;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnDefectiveLineListButtonEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnDefectiveLineListButtonDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineListId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineListDefectiveId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineListItemId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineListItemDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineListQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineListAmount;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button buttonAddReplacement;
-        public System.Windows.Forms.DataGridView dataGridViewDefectiveLineReplacementList;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Button buttonDefectiveLineListPageListFirst;
         private System.Windows.Forms.Button buttonDefectiveLineListPageListPrevious;
         private System.Windows.Forms.Button buttonDefectiveLineListPageListNext;
         private System.Windows.Forms.Button buttonDefectiveLineListPageListLast;
         private System.Windows.Forms.TextBox textBoxDefectiveLineListPageNumber;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Button buttonDefectiveLineReplacementListPageListFirst;
-        private System.Windows.Forms.Button buttonDefectiveLineReplacementListPageListPrevious;
-        private System.Windows.Forms.Button buttonDefectiveLineReplacementListPageListNext;
-        private System.Windows.Forms.Button buttonDefectiveLineReplacementListPageListLast;
-        private System.Windows.Forms.TextBox textBoxDefectiveLineReplacementListPageNumber;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnDefectiveLineReplacementListButtonEdit;
-        private System.Windows.Forms.DataGridViewButtonColumn ColumnDefectiveLineReplacementListButtonDelete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineReplacementListId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineReplacementListDefectiveId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineReplacementListItemId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineReplacementListItemDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineReplacementListQuantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineReplacementListAmount;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.DateTimePicker dateTimePickerRepDate;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.DateTimePicker dateTimePickerPurchasedDate;
+        private System.Windows.Forms.ComboBox comboBoxVehicleType;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnDefectiveLineListButtonEdit;
+        private System.Windows.Forms.DataGridViewButtonColumn ColumnDefectiveLineListButtonDelete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineListId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineListDefectiveId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineListItemId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineListItemSize;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineListItemBrand;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineListItemWarrantyCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineListQuantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnDefectiveLineListAmount;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox textBoxWarrantyPeriod;
     }
 }

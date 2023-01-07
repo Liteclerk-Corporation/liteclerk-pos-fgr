@@ -13,9 +13,11 @@ namespace EasyPOS.Entities
         public Int32 ColumnDefectiveListId { get; set; }
         public String ColumnDefectiveListDefectiveNo { get; set; }
         public String ColumnDefectiveListDefectiveDate { get; set; }
+        public String ColumnDefectiveListPurchasedDate { get; set; }
         public String ColumnDefectiveListInvoiceNo { get; set; }
         public String ColumnDefectiveListCustomerName { get; set; }
-        public String ColumnDefectiveListWarrantyCode { get; set; }
+        public String ColumnDefectiveListReplacementDate { get; set; }
+        public String ColumnDefectiveListReplacementInvoiceNo { get; set; }
         public Int32 ColumnDefectiveListPreparedById { get; set; }
         public Boolean ColumnDefectiveListIsLocked { get; set; }
     }

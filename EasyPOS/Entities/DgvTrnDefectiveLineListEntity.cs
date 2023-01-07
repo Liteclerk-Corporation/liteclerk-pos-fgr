@@ -13,7 +13,9 @@ namespace EasyPOS.Entities
         public Int32 ColumnDefectiveLineListId { get; set; }
         public Int32 ColumnDefectiveLineListDefectiveId { get; set; }
         public Int32 ColumnDefectiveLineListItemId { get; set; }
-        public String ColumnDefectiveLineListItemDescription { get; set; }
+        public String ColumnDefectiveLineListItemSize { get; set; }
+        public String ColumnDefectiveLineListItemBrand { get; set; }
+        public String ColumnDefectiveLineListItemWarrantyCode { get; set; }
         public String ColumnDefectiveLineListQuantity { get; set; }
         public String ColumnDefectiveLineListAmount { get; set; }
     }

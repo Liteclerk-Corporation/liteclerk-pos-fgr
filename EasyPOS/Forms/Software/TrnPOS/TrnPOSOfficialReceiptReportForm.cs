@@ -1552,6 +1552,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     String customerAddress = collections.FirstOrDefault().TrnSale.MstCustomer.Address;
                     String customerTIN = collections.FirstOrDefault().TrnSale.MstCustomer.TIN;
                     String customerBusinessStyle = collections.FirstOrDefault().TrnSale.MstCustomer.BusinessStyle;
+                    String customerVehicleType = collections.FirstOrDefault().TrnSale.MstCustomer.VehicleType;
+                    String customerPlateNo = collections.FirstOrDefault().TrnSale.MstCustomer.VehiclePlateNumber;
+                    String customerContactNo = collections.FirstOrDefault().TrnSale.MstCustomer.ContactNumber;
                     
                     
 
@@ -1602,16 +1605,28 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                         String soldToBusinessStyleLabel = "Business Style: " + customerBusinessStyle;
                         graphics.DrawString(soldToBusinessStyleLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                        y += graphics.MeasureString(soldToTINLabel, fontArial8Regular).Height;
+                        y += graphics.MeasureString(soldToBusinessStyleLabel, fontArial8Regular).Height;
+
+                        String soldToVehicleTypeLabel = "Vehicle Type: " + customerVehicleType;
+                        graphics.DrawString(soldToVehicleTypeLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                        y += graphics.MeasureString(soldToVehicleTypeLabel, fontArial8Regular).Height;
+
+                        String soldToPlateNoLabel = "Plate No.: " + customerPlateNo;
+                        graphics.DrawString(soldToPlateNoLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                        y += graphics.MeasureString(soldToPlateNoLabel, fontArial8Regular).Height;
+
+                        String soldToContactNoLabel = "Contact No.: " + customerContactNo;
+                        graphics.DrawString(soldToContactNoLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                        y += graphics.MeasureString(soldToContactNoLabel, fontArial8Regular).Height;
                     }
 
-                    String customerAvailableRewaredLabel = "Available Reward: " + customerAvailableReward.ToString("#,##0.00");
-                    graphics.DrawString(customerAvailableRewaredLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    y += graphics.MeasureString(customerAvailableRewaredLabel, fontArial8Regular).Height;
+                    //String customerAvailableRewaredLabel = "Available Reward: " + customerAvailableReward.ToString("#,##0.00");
+                    //graphics.DrawString(customerAvailableRewaredLabel, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                    //y += graphics.MeasureString(customerAvailableRewaredLabel, fontArial8Regular).Height;
 
-                    String customerAvailableRewaredLoad = "Available Load: " + customerAvailableLoad.ToString("#,##0.00");
-                    graphics.DrawString(customerAvailableRewaredLoad, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
-                    y += graphics.MeasureString(customerAvailableRewaredLoad, fontArial8Regular).Height;
+                    //String customerAvailableRewaredLoad = "Available Load: " + customerAvailableLoad.ToString("#,##0.00");
+                    //graphics.DrawString(customerAvailableRewaredLoad, fontArial8Regular, drawBrush, new RectangleF(x, y, width, height), drawFormatLeft);
+                    //y += graphics.MeasureString(customerAvailableRewaredLoad, fontArial8Regular).Height;
                 }
 
                 // ========

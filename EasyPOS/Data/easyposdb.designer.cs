@@ -189,12 +189,12 @@ namespace EasyPOS.Data
     partial void InsertTrnSale(TrnSale instance);
     partial void UpdateTrnSale(TrnSale instance);
     partial void DeleteTrnSale(TrnSale instance);
-    partial void InsertTrnDefective(TrnDefective instance);
-    partial void UpdateTrnDefective(TrnDefective instance);
-    partial void DeleteTrnDefective(TrnDefective instance);
     partial void InsertTrnDefectiveItem(TrnDefectiveItem instance);
     partial void UpdateTrnDefectiveItem(TrnDefectiveItem instance);
     partial void DeleteTrnDefectiveItem(TrnDefectiveItem instance);
+    partial void InsertTrnDefective(TrnDefective instance);
+    partial void UpdateTrnDefective(TrnDefective instance);
+    partial void DeleteTrnDefective(TrnDefective instance);
     #endregion
 		
 		public easyposdbDataContext() : 
@@ -651,19 +651,19 @@ namespace EasyPOS.Data
 			}
 		}
 		
-		public System.Data.Linq.Table<TrnDefective> TrnDefectives
-		{
-			get
-			{
-				return this.GetTable<TrnDefective>();
-			}
-		}
-		
 		public System.Data.Linq.Table<TrnDefectiveItem> TrnDefectiveItems
 		{
 			get
 			{
 				return this.GetTable<TrnDefectiveItem>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TrnDefective> TrnDefectives
+		{
+			get
+			{
+				return this.GetTable<TrnDefective>();
 			}
 		}
 	}
@@ -28131,264 +28131,6 @@ namespace EasyPOS.Data
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrnDefective")]
-	public partial class TrnDefective : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _DefectiveNo;
-		
-		private System.DateTime _DefectiveDate;
-		
-		private string _InvoiceNo;
-		
-		private string _CustomerName;
-		
-		private string _WarrantyCode;
-		
-		private int _PreparedById;
-		
-		private bool _IsLocked;
-		
-		private EntitySet<TrnDefectiveItem> _TrnDefectiveItems;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnDefectiveNoChanging(string value);
-    partial void OnDefectiveNoChanged();
-    partial void OnDefectiveDateChanging(System.DateTime value);
-    partial void OnDefectiveDateChanged();
-    partial void OnInvoiceNoChanging(string value);
-    partial void OnInvoiceNoChanged();
-    partial void OnCustomerNameChanging(string value);
-    partial void OnCustomerNameChanged();
-    partial void OnWarrantyCodeChanging(string value);
-    partial void OnWarrantyCodeChanged();
-    partial void OnPreparedByIdChanging(int value);
-    partial void OnPreparedByIdChanged();
-    partial void OnIsLockedChanging(bool value);
-    partial void OnIsLockedChanged();
-    #endregion
-		
-		public TrnDefective()
-		{
-			this._TrnDefectiveItems = new EntitySet<TrnDefectiveItem>(new Action<TrnDefectiveItem>(this.attach_TrnDefectiveItems), new Action<TrnDefectiveItem>(this.detach_TrnDefectiveItems));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DefectiveNo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string DefectiveNo
-		{
-			get
-			{
-				return this._DefectiveNo;
-			}
-			set
-			{
-				if ((this._DefectiveNo != value))
-				{
-					this.OnDefectiveNoChanging(value);
-					this.SendPropertyChanging();
-					this._DefectiveNo = value;
-					this.SendPropertyChanged("DefectiveNo");
-					this.OnDefectiveNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DefectiveDate", DbType="DateTime NOT NULL")]
-		public System.DateTime DefectiveDate
-		{
-			get
-			{
-				return this._DefectiveDate;
-			}
-			set
-			{
-				if ((this._DefectiveDate != value))
-				{
-					this.OnDefectiveDateChanging(value);
-					this.SendPropertyChanging();
-					this._DefectiveDate = value;
-					this.SendPropertyChanged("DefectiveDate");
-					this.OnDefectiveDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceNo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string InvoiceNo
-		{
-			get
-			{
-				return this._InvoiceNo;
-			}
-			set
-			{
-				if ((this._InvoiceNo != value))
-				{
-					this.OnInvoiceNoChanging(value);
-					this.SendPropertyChanging();
-					this._InvoiceNo = value;
-					this.SendPropertyChanged("InvoiceNo");
-					this.OnInvoiceNoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
-		public string CustomerName
-		{
-			get
-			{
-				return this._CustomerName;
-			}
-			set
-			{
-				if ((this._CustomerName != value))
-				{
-					this.OnCustomerNameChanging(value);
-					this.SendPropertyChanging();
-					this._CustomerName = value;
-					this.SendPropertyChanged("CustomerName");
-					this.OnCustomerNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WarrantyCode", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
-		public string WarrantyCode
-		{
-			get
-			{
-				return this._WarrantyCode;
-			}
-			set
-			{
-				if ((this._WarrantyCode != value))
-				{
-					this.OnWarrantyCodeChanging(value);
-					this.SendPropertyChanging();
-					this._WarrantyCode = value;
-					this.SendPropertyChanged("WarrantyCode");
-					this.OnWarrantyCodeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PreparedById", DbType="Int NOT NULL")]
-		public int PreparedById
-		{
-			get
-			{
-				return this._PreparedById;
-			}
-			set
-			{
-				if ((this._PreparedById != value))
-				{
-					this.OnPreparedByIdChanging(value);
-					this.SendPropertyChanging();
-					this._PreparedById = value;
-					this.SendPropertyChanged("PreparedById");
-					this.OnPreparedByIdChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsLocked", DbType="Bit NOT NULL")]
-		public bool IsLocked
-		{
-			get
-			{
-				return this._IsLocked;
-			}
-			set
-			{
-				if ((this._IsLocked != value))
-				{
-					this.OnIsLockedChanging(value);
-					this.SendPropertyChanging();
-					this._IsLocked = value;
-					this.SendPropertyChanged("IsLocked");
-					this.OnIsLockedChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnDefective_TrnDefectiveItem", Storage="_TrnDefectiveItems", ThisKey="Id", OtherKey="DefectiveId")]
-		public EntitySet<TrnDefectiveItem> TrnDefectiveItems
-		{
-			get
-			{
-				return this._TrnDefectiveItems;
-			}
-			set
-			{
-				this._TrnDefectiveItems.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_TrnDefectiveItems(TrnDefectiveItem entity)
-		{
-			this.SendPropertyChanging();
-			entity.TrnDefective = this;
-		}
-		
-		private void detach_TrnDefectiveItems(TrnDefectiveItem entity)
-		{
-			this.SendPropertyChanging();
-			entity.TrnDefective = null;
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrnDefectiveItem")]
 	public partial class TrnDefectiveItem : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -28650,6 +28392,360 @@ namespace EasyPOS.Data
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TrnDefective")]
+	public partial class TrnDefective : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _DefectiveNo;
+		
+		private System.DateTime _DefectiveDate;
+		
+		private System.DateTime _PurchasedDate;
+		
+		private string _InvoiceNo;
+		
+		private string _CustomerName;
+		
+		private string _VehicleType;
+		
+		private int _WarrantyPeriod;
+		
+		private System.DateTime _ReplacementDate;
+		
+		private string _ReplacementInvoiceNo;
+		
+		private int _PreparedById;
+		
+		private bool _IsLocked;
+		
+		private EntitySet<TrnDefectiveItem> _TrnDefectiveItems;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnDefectiveNoChanging(string value);
+    partial void OnDefectiveNoChanged();
+    partial void OnDefectiveDateChanging(System.DateTime value);
+    partial void OnDefectiveDateChanged();
+    partial void OnPurchasedDateChanging(System.DateTime value);
+    partial void OnPurchasedDateChanged();
+    partial void OnInvoiceNoChanging(string value);
+    partial void OnInvoiceNoChanged();
+    partial void OnCustomerNameChanging(string value);
+    partial void OnCustomerNameChanged();
+    partial void OnVehicleTypeChanging(string value);
+    partial void OnVehicleTypeChanged();
+    partial void OnWarrantyPeriodChanging(int value);
+    partial void OnWarrantyPeriodChanged();
+    partial void OnReplacementDateChanging(System.DateTime value);
+    partial void OnReplacementDateChanged();
+    partial void OnReplacementInvoiceNoChanging(string value);
+    partial void OnReplacementInvoiceNoChanged();
+    partial void OnPreparedByIdChanging(int value);
+    partial void OnPreparedByIdChanged();
+    partial void OnIsLockedChanging(bool value);
+    partial void OnIsLockedChanged();
+    #endregion
+		
+		public TrnDefective()
+		{
+			this._TrnDefectiveItems = new EntitySet<TrnDefectiveItem>(new Action<TrnDefectiveItem>(this.attach_TrnDefectiveItems), new Action<TrnDefectiveItem>(this.detach_TrnDefectiveItems));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DefectiveNo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string DefectiveNo
+		{
+			get
+			{
+				return this._DefectiveNo;
+			}
+			set
+			{
+				if ((this._DefectiveNo != value))
+				{
+					this.OnDefectiveNoChanging(value);
+					this.SendPropertyChanging();
+					this._DefectiveNo = value;
+					this.SendPropertyChanged("DefectiveNo");
+					this.OnDefectiveNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DefectiveDate", DbType="DateTime NOT NULL")]
+		public System.DateTime DefectiveDate
+		{
+			get
+			{
+				return this._DefectiveDate;
+			}
+			set
+			{
+				if ((this._DefectiveDate != value))
+				{
+					this.OnDefectiveDateChanging(value);
+					this.SendPropertyChanging();
+					this._DefectiveDate = value;
+					this.SendPropertyChanged("DefectiveDate");
+					this.OnDefectiveDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PurchasedDate", DbType="DateTime NOT NULL")]
+		public System.DateTime PurchasedDate
+		{
+			get
+			{
+				return this._PurchasedDate;
+			}
+			set
+			{
+				if ((this._PurchasedDate != value))
+				{
+					this.OnPurchasedDateChanging(value);
+					this.SendPropertyChanging();
+					this._PurchasedDate = value;
+					this.SendPropertyChanged("PurchasedDate");
+					this.OnPurchasedDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_InvoiceNo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string InvoiceNo
+		{
+			get
+			{
+				return this._InvoiceNo;
+			}
+			set
+			{
+				if ((this._InvoiceNo != value))
+				{
+					this.OnInvoiceNoChanging(value);
+					this.SendPropertyChanging();
+					this._InvoiceNo = value;
+					this.SendPropertyChanged("InvoiceNo");
+					this.OnInvoiceNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerName", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string CustomerName
+		{
+			get
+			{
+				return this._CustomerName;
+			}
+			set
+			{
+				if ((this._CustomerName != value))
+				{
+					this.OnCustomerNameChanging(value);
+					this.SendPropertyChanging();
+					this._CustomerName = value;
+					this.SendPropertyChanged("CustomerName");
+					this.OnCustomerNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_VehicleType", DbType="NVarChar(MAX)")]
+		public string VehicleType
+		{
+			get
+			{
+				return this._VehicleType;
+			}
+			set
+			{
+				if ((this._VehicleType != value))
+				{
+					this.OnVehicleTypeChanging(value);
+					this.SendPropertyChanging();
+					this._VehicleType = value;
+					this.SendPropertyChanged("VehicleType");
+					this.OnVehicleTypeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_WarrantyPeriod", DbType="Int NOT NULL")]
+		public int WarrantyPeriod
+		{
+			get
+			{
+				return this._WarrantyPeriod;
+			}
+			set
+			{
+				if ((this._WarrantyPeriod != value))
+				{
+					this.OnWarrantyPeriodChanging(value);
+					this.SendPropertyChanging();
+					this._WarrantyPeriod = value;
+					this.SendPropertyChanged("WarrantyPeriod");
+					this.OnWarrantyPeriodChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReplacementDate", DbType="DateTime NOT NULL")]
+		public System.DateTime ReplacementDate
+		{
+			get
+			{
+				return this._ReplacementDate;
+			}
+			set
+			{
+				if ((this._ReplacementDate != value))
+				{
+					this.OnReplacementDateChanging(value);
+					this.SendPropertyChanging();
+					this._ReplacementDate = value;
+					this.SendPropertyChanged("ReplacementDate");
+					this.OnReplacementDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReplacementInvoiceNo", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string ReplacementInvoiceNo
+		{
+			get
+			{
+				return this._ReplacementInvoiceNo;
+			}
+			set
+			{
+				if ((this._ReplacementInvoiceNo != value))
+				{
+					this.OnReplacementInvoiceNoChanging(value);
+					this.SendPropertyChanging();
+					this._ReplacementInvoiceNo = value;
+					this.SendPropertyChanged("ReplacementInvoiceNo");
+					this.OnReplacementInvoiceNoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PreparedById", DbType="Int NOT NULL")]
+		public int PreparedById
+		{
+			get
+			{
+				return this._PreparedById;
+			}
+			set
+			{
+				if ((this._PreparedById != value))
+				{
+					this.OnPreparedByIdChanging(value);
+					this.SendPropertyChanging();
+					this._PreparedById = value;
+					this.SendPropertyChanged("PreparedById");
+					this.OnPreparedByIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsLocked", DbType="Bit NOT NULL")]
+		public bool IsLocked
+		{
+			get
+			{
+				return this._IsLocked;
+			}
+			set
+			{
+				if ((this._IsLocked != value))
+				{
+					this.OnIsLockedChanging(value);
+					this.SendPropertyChanging();
+					this._IsLocked = value;
+					this.SendPropertyChanged("IsLocked");
+					this.OnIsLockedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="TrnDefective_TrnDefectiveItem", Storage="_TrnDefectiveItems", ThisKey="Id", OtherKey="DefectiveId")]
+		public EntitySet<TrnDefectiveItem> TrnDefectiveItems
+		{
+			get
+			{
+				return this._TrnDefectiveItems;
+			}
+			set
+			{
+				this._TrnDefectiveItems.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_TrnDefectiveItems(TrnDefectiveItem entity)
+		{
+			this.SendPropertyChanging();
+			entity.TrnDefective = this;
+		}
+		
+		private void detach_TrnDefectiveItems(TrnDefectiveItem entity)
+		{
+			this.SendPropertyChanging();
+			entity.TrnDefective = null;
 		}
 	}
 }

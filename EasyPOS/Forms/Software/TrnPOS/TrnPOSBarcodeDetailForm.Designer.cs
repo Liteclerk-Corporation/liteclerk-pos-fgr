@@ -64,6 +64,17 @@
             this.label3 = new System.Windows.Forms.Label();
             this.labelInvoiceNumber = new System.Windows.Forms.Label();
             this.dataGridViewSalesLineList = new System.Windows.Forms.DataGridView();
+            this.buttonSearchItem = new System.Windows.Forms.Button();
+            this.textBoxBarcode = new System.Windows.Forms.TextBox();
+            this.buttonBarcode = new System.Windows.Forms.Button();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.buttonOpenCashDrawer = new System.Windows.Forms.Button();
+            this.textBoxChange = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.buttonDownload = new System.Windows.Forms.Button();
+            this.printDialogSalesOrder = new System.Windows.Forms.PrintDialog();
+            this.printDialogSalesInvoice = new System.Windows.Forms.PrintDialog();
             this.ColumnSalesLineEdit = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnSalesLineDelete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.ColumnSalesLineId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,17 +107,7 @@
             this.ColumnSalesLinePrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLinePrice2LessTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLinePriceSplitPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonSearchItem = new System.Windows.Forms.Button();
-            this.textBoxBarcode = new System.Windows.Forms.TextBox();
-            this.buttonBarcode = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.buttonOpenCashDrawer = new System.Windows.Forms.Button();
-            this.textBoxChange = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.buttonDownload = new System.Windows.Forms.Button();
-            this.printDialogSalesOrder = new System.Windows.Forms.PrintDialog();
-            this.printDialogSalesInvoice = new System.Windows.Forms.PrintDialog();
+            this.buttonDefect = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -119,6 +120,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.buttonDefect);
             this.panel1.Controls.Add(this.buttonOverRide);
             this.panel1.Controls.Add(this.buttonPrint);
             this.panel1.Controls.Add(this.buttonLock);
@@ -164,7 +166,7 @@
             this.buttonPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonPrint.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonPrint.ForeColor = System.Drawing.Color.White;
-            this.buttonPrint.Location = new System.Drawing.Point(220, 12);
+            this.buttonPrint.Location = new System.Drawing.Point(168, 11);
             this.buttonPrint.Margin = new System.Windows.Forms.Padding(2);
             this.buttonPrint.Name = "buttonPrint";
             this.buttonPrint.Size = new System.Drawing.Size(130, 46);
@@ -183,13 +185,13 @@
             this.buttonLock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonLock.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonLock.ForeColor = System.Drawing.Color.White;
-            this.buttonLock.Location = new System.Drawing.Point(355, 12);
+            this.buttonLock.Location = new System.Drawing.Point(302, 12);
             this.buttonLock.Margin = new System.Windows.Forms.Padding(2);
             this.buttonLock.Name = "buttonLock";
-            this.buttonLock.Size = new System.Drawing.Size(125, 46);
+            this.buttonLock.Size = new System.Drawing.Size(178, 46);
             this.buttonLock.TabIndex = 8;
             this.buttonLock.TabStop = false;
-            this.buttonLock.Text = "F3 - Lock";
+            this.buttonLock.Text = "F3 - Save Terms";
             this.buttonLock.UseVisualStyleBackColor = false;
             this.buttonLock.Click += new System.EventHandler(this.buttonLock_Click);
             // 
@@ -238,7 +240,7 @@
             this.buttonDiscount.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
             this.buttonDiscount.FlatAppearance.BorderSize = 0;
             this.buttonDiscount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDiscount.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDiscount.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDiscount.ForeColor = System.Drawing.Color.White;
             this.buttonDiscount.Location = new System.Drawing.Point(765, 12);
             this.buttonDiscount.Margin = new System.Windows.Forms.Padding(2);
@@ -246,7 +248,7 @@
             this.buttonDiscount.Size = new System.Drawing.Size(145, 46);
             this.buttonDiscount.TabIndex = 4;
             this.buttonDiscount.TabStop = false;
-            this.buttonDiscount.Text = "F6 - Discount / Trade-In";
+            this.buttonDiscount.Text = "F6 - Discount";
             this.buttonDiscount.UseVisualStyleBackColor = false;
             this.buttonDiscount.Click += new System.EventHandler(this.buttonDiscount_Click);
             // 
@@ -377,7 +379,7 @@
             this.labelRemarks.AutoSize = true;
             this.labelRemarks.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.labelRemarks.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelRemarks.Location = new System.Drawing.Point(120, 102);
+            this.labelRemarks.Location = new System.Drawing.Point(125, 102);
             this.labelRemarks.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelRemarks.Name = "labelRemarks";
             this.labelRemarks.Size = new System.Drawing.Size(79, 23);
@@ -401,7 +403,7 @@
             this.labelCustomerCode.AutoSize = true;
             this.labelCustomerCode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.labelCustomerCode.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelCustomerCode.Location = new System.Drawing.Point(120, 55);
+            this.labelCustomerCode.Location = new System.Drawing.Point(125, 55);
             this.labelCustomerCode.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCustomerCode.Name = "labelCustomerCode";
             this.labelCustomerCode.Size = new System.Drawing.Size(110, 23);
@@ -425,7 +427,7 @@
             this.labelCustomer.AutoSize = true;
             this.labelCustomer.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.labelCustomer.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelCustomer.Location = new System.Drawing.Point(120, 79);
+            this.labelCustomer.Location = new System.Drawing.Point(125, 79);
             this.labelCustomer.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelCustomer.Name = "labelCustomer";
             this.labelCustomer.Size = new System.Drawing.Size(139, 23);
@@ -440,16 +442,16 @@
             this.label4.Location = new System.Drawing.Point(14, 31);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(99, 23);
+            this.label4.Size = new System.Drawing.Size(110, 23);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Order Date:";
+            this.label4.Text = "Invoice Date:";
             // 
             // labelInvoiceDate
             // 
             this.labelInvoiceDate.AutoSize = true;
             this.labelInvoiceDate.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.labelInvoiceDate.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelInvoiceDate.Location = new System.Drawing.Point(120, 31);
+            this.labelInvoiceDate.Location = new System.Drawing.Point(125, 31);
             this.labelInvoiceDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelInvoiceDate.Name = "labelInvoiceDate";
             this.labelInvoiceDate.Size = new System.Drawing.Size(116, 23);
@@ -464,16 +466,16 @@
             this.label3.Location = new System.Drawing.Point(14, 8);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(90, 23);
+            this.label3.Size = new System.Drawing.Size(101, 23);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Order No.:";
+            this.label3.Text = "Invoice No.:";
             // 
             // labelInvoiceNumber
             // 
             this.labelInvoiceNumber.AutoSize = true;
             this.labelInvoiceNumber.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
             this.labelInvoiceNumber.ForeColor = System.Drawing.SystemColors.ActiveBorder;
-            this.labelInvoiceNumber.Location = new System.Drawing.Point(120, 8);
+            this.labelInvoiceNumber.Location = new System.Drawing.Point(125, 8);
             this.labelInvoiceNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelInvoiceNumber.Name = "labelInvoiceNumber";
             this.labelInvoiceNumber.Size = new System.Drawing.Size(110, 23);
@@ -544,6 +546,157 @@
             this.dataGridViewSalesLineList.TabIndex = 1;
             this.dataGridViewSalesLineList.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewSalesLineList_CellClick);
             this.dataGridViewSalesLineList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridViewSalesLineList_KeyDown);
+            // 
+            // buttonSearchItem
+            // 
+            this.buttonSearchItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonSearchItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonSearchItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
+            this.buttonSearchItem.FlatAppearance.BorderSize = 0;
+            this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
+            this.buttonSearchItem.Location = new System.Drawing.Point(971, 6);
+            this.buttonSearchItem.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonSearchItem.Name = "buttonSearchItem";
+            this.buttonSearchItem.Size = new System.Drawing.Size(199, 40);
+            this.buttonSearchItem.TabIndex = 5;
+            this.buttonSearchItem.TabStop = false;
+            this.buttonSearchItem.Text = "F9 - Search Item";
+            this.buttonSearchItem.UseVisualStyleBackColor = false;
+            this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
+            // 
+            // textBoxBarcode
+            // 
+            this.textBoxBarcode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxBarcode.Font = new System.Drawing.Font("Segoe UI Semibold", 13.3F, System.Drawing.FontStyle.Bold);
+            this.textBoxBarcode.Location = new System.Drawing.Point(168, 8);
+            this.textBoxBarcode.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxBarcode.Name = "textBoxBarcode";
+            this.textBoxBarcode.Size = new System.Drawing.Size(798, 37);
+            this.textBoxBarcode.TabIndex = 0;
+            this.textBoxBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarcode_KeyDown);
+            // 
+            // buttonBarcode
+            // 
+            this.buttonBarcode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonBarcode.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
+            this.buttonBarcode.FlatAppearance.BorderSize = 0;
+            this.buttonBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBarcode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.buttonBarcode.ForeColor = System.Drawing.Color.White;
+            this.buttonBarcode.Location = new System.Drawing.Point(12, 6);
+            this.buttonBarcode.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonBarcode.Name = "buttonBarcode";
+            this.buttonBarcode.Size = new System.Drawing.Size(150, 40);
+            this.buttonBarcode.TabIndex = 6;
+            this.buttonBarcode.TabStop = false;
+            this.buttonBarcode.Text = "F8 - Barcode";
+            this.buttonBarcode.UseVisualStyleBackColor = false;
+            this.buttonBarcode.Click += new System.EventHandler(this.buttonBarcode_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.SystemColors.Control;
+            this.panel3.Controls.Add(this.panel5);
+            this.panel3.Controls.Add(this.buttonDownload);
+            this.panel3.Controls.Add(this.buttonBarcode);
+            this.panel3.Controls.Add(this.dataGridViewSalesLineList);
+            this.panel3.Controls.Add(this.buttonSearchItem);
+            this.panel3.Controls.Add(this.textBoxBarcode);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel3.Location = new System.Drawing.Point(0, 201);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1370, 500);
+            this.panel3.TabIndex = 7;
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.buttonOpenCashDrawer);
+            this.panel5.Controls.Add(this.textBoxChange);
+            this.panel5.Controls.Add(this.label5);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel5.Location = new System.Drawing.Point(0, 449);
+            this.panel5.Margin = new System.Windows.Forms.Padding(4);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1370, 51);
+            this.panel5.TabIndex = 8;
+            // 
+            // buttonOpenCashDrawer
+            // 
+            this.buttonOpenCashDrawer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonOpenCashDrawer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonOpenCashDrawer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonOpenCashDrawer.FlatAppearance.BorderSize = 0;
+            this.buttonOpenCashDrawer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOpenCashDrawer.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonOpenCashDrawer.ForeColor = System.Drawing.Color.White;
+            this.buttonOpenCashDrawer.Location = new System.Drawing.Point(12, 6);
+            this.buttonOpenCashDrawer.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonOpenCashDrawer.Name = "buttonOpenCashDrawer";
+            this.buttonOpenCashDrawer.Size = new System.Drawing.Size(254, 40);
+            this.buttonOpenCashDrawer.TabIndex = 10;
+            this.buttonOpenCashDrawer.TabStop = false;
+            this.buttonOpenCashDrawer.Text = "F12 - Open Cash Drawer";
+            this.buttonOpenCashDrawer.UseVisualStyleBackColor = false;
+            this.buttonOpenCashDrawer.Click += new System.EventHandler(this.buttonOpenCashDrawer_Click);
+            // 
+            // textBoxChange
+            // 
+            this.textBoxChange.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxChange.BackColor = System.Drawing.SystemColors.Control;
+            this.textBoxChange.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxChange.Location = new System.Drawing.Point(1128, 6);
+            this.textBoxChange.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxChange.Name = "textBoxChange";
+            this.textBoxChange.ReadOnly = true;
+            this.textBoxChange.Size = new System.Drawing.Size(229, 39);
+            this.textBoxChange.TabIndex = 2;
+            this.textBoxChange.TabStop = false;
+            this.textBoxChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label5
+            // 
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(965, 10);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(159, 32);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Last Change:";
+            // 
+            // buttonDownload
+            // 
+            this.buttonDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDownload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            this.buttonDownload.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
+            this.buttonDownload.FlatAppearance.BorderSize = 0;
+            this.buttonDownload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDownload.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
+            this.buttonDownload.ForeColor = System.Drawing.Color.White;
+            this.buttonDownload.Location = new System.Drawing.Point(1176, 6);
+            this.buttonDownload.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDownload.Name = "buttonDownload";
+            this.buttonDownload.Size = new System.Drawing.Size(181, 40);
+            this.buttonDownload.TabIndex = 7;
+            this.buttonDownload.TabStop = false;
+            this.buttonDownload.Text = "F10 - Download";
+            this.buttonDownload.UseVisualStyleBackColor = false;
+            this.buttonDownload.Click += new System.EventHandler(this.buttonDownload_Click);
+            // 
+            // printDialogSalesOrder
+            // 
+            this.printDialogSalesOrder.UseEXDialog = true;
+            // 
+            // printDialogSalesInvoice
+            // 
+            this.printDialogSalesInvoice.UseEXDialog = true;
             // 
             // ColumnSalesLineEdit
             // 
@@ -619,6 +772,7 @@
             this.ColumnSalesLineBodegaQty.MinimumWidth = 6;
             this.ColumnSalesLineBodegaQty.Name = "ColumnSalesLineBodegaQty";
             this.ColumnSalesLineBodegaQty.ReadOnly = true;
+            this.ColumnSalesLineBodegaQty.Visible = false;
             this.ColumnSalesLineBodegaQty.Width = 125;
             // 
             // ColumnSalesLineUnitId
@@ -843,156 +997,24 @@
             this.ColumnSalesLinePriceSplitPercentage.Visible = false;
             this.ColumnSalesLinePriceSplitPercentage.Width = 125;
             // 
-            // buttonSearchItem
+            // buttonDefect
             // 
-            this.buttonSearchItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonSearchItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonSearchItem.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
-            this.buttonSearchItem.FlatAppearance.BorderSize = 0;
-            this.buttonSearchItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchItem.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.buttonSearchItem.ForeColor = System.Drawing.Color.White;
-            this.buttonSearchItem.Location = new System.Drawing.Point(971, 6);
-            this.buttonSearchItem.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonSearchItem.Name = "buttonSearchItem";
-            this.buttonSearchItem.Size = new System.Drawing.Size(199, 40);
-            this.buttonSearchItem.TabIndex = 5;
-            this.buttonSearchItem.TabStop = false;
-            this.buttonSearchItem.Text = "F9 - Search Item";
-            this.buttonSearchItem.UseVisualStyleBackColor = false;
-            this.buttonSearchItem.Click += new System.EventHandler(this.buttonSearchItem_Click);
-            // 
-            // textBoxBarcode
-            // 
-            this.textBoxBarcode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxBarcode.Font = new System.Drawing.Font("Segoe UI Semibold", 13.3F, System.Drawing.FontStyle.Bold);
-            this.textBoxBarcode.Location = new System.Drawing.Point(168, 8);
-            this.textBoxBarcode.Margin = new System.Windows.Forms.Padding(2);
-            this.textBoxBarcode.Name = "textBoxBarcode";
-            this.textBoxBarcode.Size = new System.Drawing.Size(798, 37);
-            this.textBoxBarcode.TabIndex = 0;
-            this.textBoxBarcode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxBarcode_KeyDown);
-            // 
-            // buttonBarcode
-            // 
-            this.buttonBarcode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonBarcode.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
-            this.buttonBarcode.FlatAppearance.BorderSize = 0;
-            this.buttonBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBarcode.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.buttonBarcode.ForeColor = System.Drawing.Color.White;
-            this.buttonBarcode.Location = new System.Drawing.Point(12, 6);
-            this.buttonBarcode.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonBarcode.Name = "buttonBarcode";
-            this.buttonBarcode.Size = new System.Drawing.Size(150, 40);
-            this.buttonBarcode.TabIndex = 6;
-            this.buttonBarcode.TabStop = false;
-            this.buttonBarcode.Text = "F8 - Barcode";
-            this.buttonBarcode.UseVisualStyleBackColor = false;
-            this.buttonBarcode.Click += new System.EventHandler(this.buttonBarcode_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.Control;
-            this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.buttonDownload);
-            this.panel3.Controls.Add(this.buttonBarcode);
-            this.panel3.Controls.Add(this.dataGridViewSalesLineList);
-            this.panel3.Controls.Add(this.buttonSearchItem);
-            this.panel3.Controls.Add(this.textBoxBarcode);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 201);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1370, 500);
-            this.panel3.TabIndex = 7;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.buttonOpenCashDrawer);
-            this.panel5.Controls.Add(this.textBoxChange);
-            this.panel5.Controls.Add(this.label5);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(0, 449);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1370, 51);
-            this.panel5.TabIndex = 8;
-            // 
-            // buttonOpenCashDrawer
-            // 
-            this.buttonOpenCashDrawer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.buttonOpenCashDrawer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonOpenCashDrawer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonOpenCashDrawer.FlatAppearance.BorderSize = 0;
-            this.buttonOpenCashDrawer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonOpenCashDrawer.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonOpenCashDrawer.ForeColor = System.Drawing.Color.White;
-            this.buttonOpenCashDrawer.Location = new System.Drawing.Point(12, 6);
-            this.buttonOpenCashDrawer.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonOpenCashDrawer.Name = "buttonOpenCashDrawer";
-            this.buttonOpenCashDrawer.Size = new System.Drawing.Size(254, 40);
-            this.buttonOpenCashDrawer.TabIndex = 10;
-            this.buttonOpenCashDrawer.TabStop = false;
-            this.buttonOpenCashDrawer.Text = "F12 - Open Cash Drawer";
-            this.buttonOpenCashDrawer.UseVisualStyleBackColor = false;
-            this.buttonOpenCashDrawer.Click += new System.EventHandler(this.buttonOpenCashDrawer_Click);
-            // 
-            // textBoxChange
-            // 
-            this.textBoxChange.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxChange.BackColor = System.Drawing.SystemColors.Control;
-            this.textBoxChange.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxChange.Location = new System.Drawing.Point(1128, 6);
-            this.textBoxChange.Margin = new System.Windows.Forms.Padding(4);
-            this.textBoxChange.Name = "textBoxChange";
-            this.textBoxChange.ReadOnly = true;
-            this.textBoxChange.Size = new System.Drawing.Size(229, 39);
-            this.textBoxChange.TabIndex = 2;
-            this.textBoxChange.TabStop = false;
-            this.textBoxChange.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(965, 10);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(159, 32);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Last Change:";
-            // 
-            // buttonDownload
-            // 
-            this.buttonDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDownload.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(127)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            this.buttonDownload.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(116)))), ((int)(((byte)(34)))), ((int)(((byte)(116)))));
-            this.buttonDownload.FlatAppearance.BorderSize = 0;
-            this.buttonDownload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDownload.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold);
-            this.buttonDownload.ForeColor = System.Drawing.Color.White;
-            this.buttonDownload.Location = new System.Drawing.Point(1176, 6);
-            this.buttonDownload.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDownload.Name = "buttonDownload";
-            this.buttonDownload.Size = new System.Drawing.Size(181, 40);
-            this.buttonDownload.TabIndex = 7;
-            this.buttonDownload.TabStop = false;
-            this.buttonDownload.Text = "F10 - Download";
-            this.buttonDownload.UseVisualStyleBackColor = false;
-            this.buttonDownload.Click += new System.EventHandler(this.buttonDownload_Click);
-            // 
-            // printDialogSalesOrder
-            // 
-            this.printDialogSalesOrder.UseEXDialog = true;
-            // 
-            // printDialogSalesInvoice
-            // 
-            this.printDialogSalesInvoice.UseEXDialog = true;
+            this.buttonDefect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDefect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonDefect.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonDefect.FlatAppearance.BorderSize = 0;
+            this.buttonDefect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDefect.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDefect.ForeColor = System.Drawing.Color.White;
+            this.buttonDefect.Location = new System.Drawing.Point(7, 11);
+            this.buttonDefect.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDefect.Name = "buttonDefect";
+            this.buttonDefect.Size = new System.Drawing.Size(157, 46);
+            this.buttonDefect.TabIndex = 27;
+            this.buttonDefect.TabStop = false;
+            this.buttonDefect.Text = "F1 - Defective";
+            this.buttonDefect.UseVisualStyleBackColor = false;
+            this.buttonDefect.Click += new System.EventHandler(this.buttonDefect_Click);
             // 
             // TrnPOSBarcodeDetailForm
             // 
@@ -1063,6 +1085,7 @@
         public System.Windows.Forms.DataGridView dataGridViewSalesLineList;
         public System.Windows.Forms.Button buttonTender;
         private System.Windows.Forms.Button buttonOpenCashDrawer;
+        public System.Windows.Forms.Button buttonPrint;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnSalesLineEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnSalesLineDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineId;
@@ -1095,6 +1118,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2LessTax;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePriceSplitPercentage;
-        public System.Windows.Forms.Button buttonPrint;
+        private System.Windows.Forms.Button buttonDefect;
     }
 }

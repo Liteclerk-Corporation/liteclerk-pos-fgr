@@ -1005,16 +1005,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             switch (keyData)
             {
-                case Keys.F1:
-                    {
-                        if (buttonDefect.Enabled == true)
-                        {
-                            buttonDefect.PerformClick();
-                            Focus();
-                        }
-
-                        break;
-                    }
                 case Keys.F2:
                     {
                         if (buttonTender.Enabled == true)
@@ -1082,12 +1072,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
         private void comboBoxLockOption_SelectedIndexChanged(object sender, EventArgs e)
         {
             UpdateSalesListGridDataSource();
-        }
-
-        private void buttonDefect_Click(object sender, EventArgs e)
-        {
-            TrnPOSDefectiveListForm trnPOSDefectiveListForm = new TrnPOSDefectiveListForm();
-            trnPOSDefectiveListForm.ShowDialog();
         }
     }
 }

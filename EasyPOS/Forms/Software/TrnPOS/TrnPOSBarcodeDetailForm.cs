@@ -1097,6 +1097,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             switch (keyData)
             {
+                case Keys.F1:
+                    {
+                        if (buttonDefect.Enabled == true)
+                        {
+                            buttonDefect.PerformClick();
+                            Focus();
+                        }
+
+                        break;
+                    }
                 case Keys.F2:
                     {
                         if (buttonPrint.Enabled == true)
@@ -1309,6 +1319,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             Account.SysLogin.SysLoginOpenDrawerForm login = new Account.SysLogin.SysLoginOpenDrawerForm();
             login.ShowDialog();
+        }
+
+        private void buttonDefect_Click(object sender, EventArgs e)
+        {
+            TrnPOSDefectiveListForm trnPOSDefectiveListForm = new TrnPOSDefectiveListForm();
+            trnPOSDefectiveListForm.ShowDialog();
         }
     }
 }

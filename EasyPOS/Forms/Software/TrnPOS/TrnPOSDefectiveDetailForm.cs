@@ -22,12 +22,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public PagedList<Entities.DgvTrnDefectiveLineListEntity> defectiveLinePageList = new PagedList<Entities.DgvTrnDefectiveLineListEntity>(defectiveLineData, defectiveLinePageNumber, defectiveLinePageSize);
         public BindingSource defectiveLineDataSource = new BindingSource();
 
-        public static List<Entities.DgvTrnDefectiveLineReplacementListEntity> replacementLineData = new List<Entities.DgvTrnDefectiveLineReplacementListEntity>();
-        public static Int32 replacementLinePageNumber = 1;
-        public static Int32 replacementLinePageSize = 50;
-        public PagedList<Entities.DgvTrnDefectiveLineReplacementListEntity> replacementLinePageList = new PagedList<Entities.DgvTrnDefectiveLineReplacementListEntity>(replacementLineData, replacementLinePageNumber, replacementLinePageSize);
-        public BindingSource replacementLineDataSource = new BindingSource();
-
         public TrnPOSDefectiveDetailForm(TrnPOSDefectiveListForm defectiveListForm, Entities.TrnDefectiveEntity defectiveEntity)
         {
             InitializeComponent();
@@ -35,12 +29,24 @@ namespace EasyPOS.Forms.Software.TrnPOS
             trnDefectiveListForm = defectiveListForm;
             trnDefectiveEntity = defectiveEntity;
 
-            GetUserList();
+            GetVehicleType();
 
             var id = trnDefectiveEntity.Id;
 
             Controllers.TrnDefectiveController trnDefective = new Controllers.TrnDefectiveController();
             var detail = trnDefective.DetailDefective(id);
+        }
+        public void GetVehicleType()
+        {
+            List<String> vehicleType;
+            vehicleType = new List<String>
+            {
+                "Private",
+                "Commercial"
+            };
+            comboBoxVehicleType.DataSource = vehicleType;
+
+            GetUserList();
         }
         public void GetUserList()
         {
@@ -60,21 +66,19 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             textBoxDefectiveNumber.Text = trnDefectiveEntity.DefectiveNo;
             dateTimePickerDefectiveDate.Value = Convert.ToDateTime(trnDefectiveEntity.DefectiveDate);
+            dateTimePickerPurchasedDate.Value = Convert.ToDateTime(trnDefectiveEntity.PurchasedDate);
+            dateTimePickerRepDate.Value = Convert.ToDateTime(trnDefectiveEntity.ReplacementDate);
             textBoxInvoiceNo.Text = trnDefectiveEntity.InvoiceNo;
+            textBoxRepInvoiceNo.Text = trnDefectiveEntity.ReplacementInvoiceNo;
+            comboBoxVehicleType.SelectedText = trnDefectiveEntity.VehicleType;
             textBoxCustomerName.Text = trnDefectiveEntity.CustomerName;
-            textBoxWarrantyCode.Text = trnDefectiveEntity.WarrantyCode;
             comboBoxPreparedBy.SelectedValue = trnDefectiveEntity.PreparedById;
 
             CreateDefectiveLineListDataGridView();
-            CreateDefectiveLineReplacementListDataGridView();
         }
         public void UpdateDefectiveLineListDataSource()
         {
             SetDefectiveLineListDataSourceAsync();
-        }
-        public void UpdateDefectiveLineReplacementListDataSource()
-        {
-            SetDefectiveLineReplacementListDataSourceAsync();
         }
         public async void SetDefectiveLineListDataSourceAsync()
         {
@@ -130,61 +134,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 textBoxDefectiveLineListPageNumber.Text = "1 / 1";
             }
         }
-        public async void SetDefectiveLineReplacementListDataSourceAsync()
-        {
-            List<Entities.DgvTrnDefectiveLineReplacementListEntity> getDefectiveLineListData = await GetDefectiveLineReplacementListDataTask();
-            if (getDefectiveLineListData.Any())
-            {
-                replacementLineData = getDefectiveLineListData;
-                replacementLinePageList = new PagedList<Entities.DgvTrnDefectiveLineReplacementListEntity>(replacementLineData, replacementLinePageNumber, replacementLinePageSize);
-
-                if (replacementLinePageList.PageCount == 1)
-                {
-                    buttonDefectiveLineReplacementListPageListFirst.Enabled = false;
-                    buttonDefectiveLineReplacementListPageListPrevious.Enabled = false;
-                    buttonDefectiveLineReplacementListPageListNext.Enabled = false;
-                    buttonDefectiveLineReplacementListPageListLast.Enabled = false;
-                }
-                else if (defectiveLinePageNumber == 1)
-                {
-                    buttonDefectiveLineReplacementListPageListFirst.Enabled = false;
-                    buttonDefectiveLineReplacementListPageListPrevious.Enabled = false;
-                    buttonDefectiveLineReplacementListPageListNext.Enabled = true;
-                    buttonDefectiveLineReplacementListPageListLast.Enabled = true;
-                }
-                else if (defectiveLinePageNumber == defectiveLinePageList.PageCount)
-                {
-                    buttonDefectiveLineReplacementListPageListFirst.Enabled = true;
-                    buttonDefectiveLineReplacementListPageListPrevious.Enabled = true;
-                    buttonDefectiveLineReplacementListPageListNext.Enabled = false;
-                    buttonDefectiveLineReplacementListPageListLast.Enabled = false;
-                }
-                else
-                {
-                    buttonDefectiveLineReplacementListPageListFirst.Enabled = true;
-                    buttonDefectiveLineReplacementListPageListPrevious.Enabled = true;
-                    buttonDefectiveLineReplacementListPageListNext.Enabled = true;
-                    buttonDefectiveLineReplacementListPageListLast.Enabled = true;
-                }
-
-                textBoxDefectiveLineReplacementListPageNumber.Text = replacementLinePageNumber + " / " + replacementLinePageList.PageCount;
-                replacementLineDataSource.DataSource = replacementLinePageList;
-            }
-            else
-            {
-                buttonDefectiveLineReplacementListPageListFirst.Enabled = false;
-                buttonDefectiveLineReplacementListPageListPrevious.Enabled = false;
-                buttonDefectiveLineReplacementListPageListNext.Enabled = false;
-                buttonDefectiveLineReplacementListPageListLast.Enabled = false;
-
-                replacementLinePageNumber = 1;
-
-                replacementLineData = new List<Entities.DgvTrnDefectiveLineReplacementListEntity>();
-                replacementLineDataSource.Clear();
-                textBoxDefectiveLineReplacementListPageNumber.Text = "1 / 1";
-            }
-        }
-
         public Task<List<Entities.DgvTrnDefectiveLineListEntity>> GetDefectiveLineListDataTask()
         {
             Controllers.TrnDefectiveLineController trnDefectiveLineController = new Controllers.TrnDefectiveLineController();
@@ -200,7 +149,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
                                 ColumnDefectiveLineListId = d.Id,
                                 ColumnDefectiveLineListDefectiveId = d.DefectiveId,
                                 ColumnDefectiveLineListItemId = d.ItemId,
-                                ColumnDefectiveLineListItemDescription = d.ItemDescription,
+                                ColumnDefectiveLineListItemSize = d.Size,
+                                ColumnDefectiveLineListItemBrand = d.Brand,
+                                ColumnDefectiveLineListItemWarrantyCode = d.WarrantyCode,
                                 ColumnDefectiveLineListQuantity = d.Quantity.ToString("#,##0.00"),
                                 ColumnDefectiveLineListAmount = d.Amount.ToString("#,##0.00"),
                             };
@@ -210,33 +161,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
             else
             {
                 return Task.FromResult(new List<Entities.DgvTrnDefectiveLineListEntity>());
-            }
-        }
-        public Task<List<Entities.DgvTrnDefectiveLineReplacementListEntity>> GetDefectiveLineReplacementListDataTask()
-        {
-            Controllers.TrnDefectiveLineController trnDefectiveLineController = new Controllers.TrnDefectiveLineController();
-
-            List<Entities.TrnDefectiveLineEntity> listDefectiveLine = trnDefectiveLineController.ListReplacementLine(trnDefectiveEntity.Id);
-            if (listDefectiveLine.Any())
-            {
-                var items = from d in listDefectiveLine
-                            select new Entities.DgvTrnDefectiveLineReplacementListEntity
-                            {
-                                ColumnDefectiveLineReplacementListButtonEdit = "Edit",
-                                ColumnDefectiveLineReplacementListButtonDelete = "Delete",
-                                ColumnDefectiveLineReplacementListId = d.Id,
-                                ColumnDefectiveLineReplacementListDefectiveId = d.DefectiveId,
-                                ColumnDefectiveLineReplacementListItemId = d.ItemId,
-                                ColumnDefectiveLineReplacementListItemDescription = d.ItemDescription,
-                                ColumnDefectiveLineReplacementListQuantity = d.Quantity.ToString("#,##0.00"),
-                                ColumnDefectiveLineReplacementListAmount = d.Amount.ToString("#,##0.00"),
-                            };
-
-                return Task.FromResult(items.ToList());
-            }
-            else
-            {
-                return Task.FromResult(new List<Entities.DgvTrnDefectiveLineReplacementListEntity>());
             }
         }
 
@@ -254,26 +178,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             dataGridViewDefectiveLineList.DataSource = defectiveLineDataSource;
         }
-        public void CreateDefectiveLineReplacementListDataGridView()
-        {
-            UpdateDefectiveLineReplacementListDataSource();
-
-            dataGridViewDefectiveLineReplacementList.Columns[0].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#01A6F0");
-            dataGridViewDefectiveLineReplacementList.Columns[0].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#01A6F0");
-            dataGridViewDefectiveLineReplacementList.Columns[0].DefaultCellStyle.ForeColor = Color.White;
-
-            dataGridViewDefectiveLineReplacementList.Columns[1].DefaultCellStyle.BackColor = ColorTranslator.FromHtml("#F34F1C");
-            dataGridViewDefectiveLineReplacementList.Columns[1].DefaultCellStyle.SelectionBackColor = ColorTranslator.FromHtml("#F34F1C");
-            dataGridViewDefectiveLineReplacementList.Columns[1].DefaultCellStyle.ForeColor = Color.White;
-
-            dataGridViewDefectiveLineReplacementList.DataSource = replacementLineDataSource;
-        }
 
         public void GetDefectiveLineListCurrentSelectedCell(Int32 rowIndex)
-        {
-
-        }
-        public void GetDefectiveLineReplacementListCurrentSelectedCell(Int32 rowIndex)
         {
 
         }
@@ -290,7 +196,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 var id = Convert.ToInt32(dataGridViewDefectiveLineList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineList.Columns["ColumnDefectiveLineListId"].Index].Value);
                 var defectiveId = Convert.ToInt32(dataGridViewDefectiveLineList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineList.Columns["ColumnDefectiveLineListDefectiveId"].Index].Value);
                 var itemId = Convert.ToInt32(dataGridViewDefectiveLineList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineList.Columns["ColumnDefectiveLineListItemId"].Index].Value);
-                var itemDescription = dataGridViewDefectiveLineList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineList.Columns["ColumnDefectiveLineListItemDescription"].Index].Value.ToString();
+                var size = dataGridViewDefectiveLineList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineList.Columns["ColumnDefectiveLineListItemSize"].Index].Value.ToString();
+                var brand = dataGridViewDefectiveLineList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineList.Columns["ColumnDefectiveLineListItemBrand"].Index].Value.ToString();
+                var warrantyCode = dataGridViewDefectiveLineList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineList.Columns["ColumnDefectiveLineListWarrantyCode"].Index].Value.ToString();
                 var quantity = Convert.ToDecimal(dataGridViewDefectiveLineList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineList.Columns["ColumnDefectiveLineListQuantity"].Index].Value);
                 var amount = Convert.ToDecimal(dataGridViewDefectiveLineList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineList.Columns["ColumnDefectiveLineListAmount"].Index].Value);
 
@@ -299,7 +207,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     Id = id,
                     DefectiveId = defectiveId,
                     ItemId = itemId,
-                    ItemDescription = itemDescription,
+                    Size = size,
+                    Brand = brand,
+                    WarrantyCode = warrantyCode,
                     Quantity = quantity,
                     Amount = amount,
                     Type = "Defective"
@@ -322,58 +232,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     {
                         defectiveLinePageNumber = 1;
                         UpdateDefectiveLineListDataSource();
-                    }
-                    else
-                    {
-                        MessageBox.Show(deleteDefectiveLine[0], "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-        }
-        private void dataGridViewDefectiveReplacementLineList_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex > -1)
-            {
-                GetDefectiveLineReplacementListCurrentSelectedCell(e.RowIndex);
-            }
-
-            if (e.RowIndex > -1 && dataGridViewDefectiveLineReplacementList.CurrentCell.ColumnIndex == dataGridViewDefectiveLineReplacementList.Columns["ColumnDefectiveLineReplacementListButtonEdit"].Index)
-            {
-                var id = Convert.ToInt32(dataGridViewDefectiveLineReplacementList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineReplacementList.Columns["ColumnDefectiveLineReplacementListId"].Index].Value);
-                var defectiveId = Convert.ToInt32(dataGridViewDefectiveLineReplacementList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineReplacementList.Columns["ColumnDefectiveLineReplacementListDefectiveId"].Index].Value);
-                var itemId = Convert.ToInt32(dataGridViewDefectiveLineReplacementList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineReplacementList.Columns["ColumnDefectiveLineReplacementListItemId"].Index].Value);
-                var itemDescription = dataGridViewDefectiveLineReplacementList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineReplacementList.Columns["ColumnDefectiveLineReplacementListItemDescription"].Index].Value.ToString();
-                var quantity = Convert.ToDecimal(dataGridViewDefectiveLineReplacementList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineReplacementList.Columns["ColumnDefectiveLineReplacementListQuantity"].Index].Value);
-                var amount = Convert.ToDecimal(dataGridViewDefectiveLineReplacementList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineReplacementList.Columns["ColumnDefectiveLineReplacementListAmount"].Index].Value);
-
-                Entities.TrnDefectiveLineEntity trnDefectiveLineEntity = new Entities.TrnDefectiveLineEntity()
-                {
-                    Id = id,
-                    DefectiveId = defectiveId,
-                    ItemId = itemId,
-                    ItemDescription = itemDescription,
-                    Quantity = quantity,
-                    Amount = amount,
-                    Type = "Defective"
-                };
-
-                TrnPOSDefectiveLineItemDetailForm trnPOSDefectiveLineItemDetailForm = new TrnPOSDefectiveLineItemDetailForm(this, trnDefectiveLineEntity);
-                trnPOSDefectiveLineItemDetailForm.ShowDialog();
-            }
-
-            if (e.RowIndex > -1 && dataGridViewDefectiveLineReplacementList.CurrentCell.ColumnIndex == dataGridViewDefectiveLineReplacementList.Columns["ColumnDefectiveLineReplacementListButtonDelete"].Index)
-            {
-                DialogResult deleteDialogResult = MessageBox.Show("Delete Defective?", "Easy POS", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (deleteDialogResult == DialogResult.Yes)
-                {
-                    var id = Convert.ToInt32(dataGridViewDefectiveLineReplacementList.Rows[e.RowIndex].Cells[dataGridViewDefectiveLineReplacementList.Columns["ColumnDefectiveLineReplacementListId"].Index].Value);
-
-                    Controllers.TrnDefectiveLineController trnDefectiveLineController = new Controllers.TrnDefectiveLineController();
-                    String[] deleteDefectiveLine = trnDefectiveLineController.DeleteDefectiveLine(id);
-                    if (deleteDefectiveLine[1].Equals("0") == false)
-                    {
-                        replacementLinePageNumber = 1;
-                        UpdateDefectiveLineReplacementListDataSource();
                     }
                     else
                     {
@@ -448,72 +306,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
             defectiveLinePageNumber = defectiveLinePageList.PageCount;
             textBoxDefectiveLineListPageNumber.Text = defectiveLinePageNumber + " / " + defectiveLinePageList.PageCount;
         }
-        private void buttonDefectiveLineReplacementListPageListFirst_Click(object sender, EventArgs e)
-        {
-            replacementLinePageList = new PagedList<Entities.DgvTrnDefectiveLineReplacementListEntity>(replacementLineData, 1, replacementLinePageSize);
-            replacementLineDataSource.DataSource = replacementLinePageList;
-
-            buttonDefectiveLineReplacementListPageListFirst.Enabled = false;
-            buttonDefectiveLineReplacementListPageListPrevious.Enabled = false;
-            buttonDefectiveLineReplacementListPageListNext.Enabled = true;
-            buttonDefectiveLineReplacementListPageListLast.Enabled = true;
-
-            replacementLinePageNumber = 1;
-            textBoxDefectiveLineReplacementListPageNumber.Text = replacementLinePageNumber + " / " + replacementLinePageList.PageCount;
-        }
-
-        private void buttonDefectiveLineReplacementListPageListPrevious_Click(object sender, EventArgs e)
-        {
-            if (replacementLinePageList.HasPreviousPage == true)
-            {
-                replacementLinePageList = new PagedList<Entities.DgvTrnDefectiveLineReplacementListEntity>(replacementLineData, --replacementLinePageNumber, replacementLinePageSize);
-                replacementLineDataSource.DataSource = replacementLinePageList;
-            }
-
-            buttonDefectiveLineReplacementListPageListNext.Enabled = true;
-            buttonDefectiveLineReplacementListPageListLast.Enabled = true;
-
-            if (replacementLinePageNumber == 1)
-            {
-                buttonDefectiveLineReplacementListPageListFirst.Enabled = false;
-                buttonDefectiveLineReplacementListPageListPrevious.Enabled = false;
-            }
-
-            textBoxDefectiveLineReplacementListPageNumber.Text = replacementLinePageNumber + " / " + replacementLinePageList.PageCount;
-        }
-
-        private void buttonDefectiveLineReplacementListPageListNext_Click(object sender, EventArgs e)
-        {
-            if (replacementLinePageList.HasNextPage == true)
-            {
-                replacementLinePageList = new PagedList<Entities.DgvTrnDefectiveLineReplacementListEntity>(replacementLineData, ++replacementLinePageNumber, replacementLinePageSize);
-                replacementLineDataSource.DataSource = replacementLinePageList;
-            }
-
-            buttonDefectiveLineReplacementListPageListFirst.Enabled = true;
-            buttonDefectiveLineReplacementListPageListPrevious.Enabled = true;
-
-            if (replacementLinePageNumber == replacementLinePageList.PageCount)
-            {
-                buttonDefectiveLineReplacementListPageListNext.Enabled = false;
-                buttonDefectiveLineReplacementListPageListLast.Enabled = false;
-            }
-
-            textBoxDefectiveLineReplacementListPageNumber.Text = replacementLinePageNumber + " / " + replacementLinePageList.PageCount;
-        }
-        private void buttonDefectiveLineReplacementListPageListLast_Click(object sender, EventArgs e)
-        {
-            replacementLinePageList = new PagedList<Entities.DgvTrnDefectiveLineReplacementListEntity>(replacementLineData, ++replacementLinePageNumber, replacementLinePageSize);
-            replacementLineDataSource.DataSource = replacementLinePageList;
-
-            buttonDefectiveLineReplacementListPageListFirst.Enabled = true;
-            buttonDefectiveLineReplacementListPageListPrevious.Enabled = true;
-            buttonDefectiveLineReplacementListPageListNext.Enabled = false;
-            buttonDefectiveLineReplacementListPageListLast.Enabled = false;
-
-            replacementLinePageNumber = replacementLinePageList.PageCount;
-            textBoxDefectiveLineReplacementListPageNumber.Text = replacementLinePageNumber + " / " + replacementLinePageList.PageCount;
-        }
         private void buttonSave_Click(object sender, EventArgs e)
         {
             Controllers.TrnDefectiveController trnDefectiveController = new Controllers.TrnDefectiveController();
@@ -522,9 +314,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 DefectiveNo = textBoxDefectiveNumber.Text,
                 DefectiveDate = dateTimePickerDefectiveDate.Value.Date.ToShortDateString(),
+                PurchasedDate = dateTimePickerPurchasedDate.Value.Date.ToShortDateString(),
+                ReplacementDate = dateTimePickerRepDate.Value.Date.ToShortDateString(),
                 InvoiceNo = textBoxInvoiceNo.Text,
+                VehicleType = comboBoxVehicleType.SelectedValue.ToString(),
                 CustomerName = textBoxCustomerName.Text,
-                WarrantyCode = textBoxWarrantyCode.Text,
+                ReplacementInvoiceNo = textBoxRepInvoiceNo.Text,
                 PreparedById = Convert.ToInt32(comboBoxPreparedBy.SelectedValue)
             };
 
@@ -547,18 +342,18 @@ namespace EasyPOS.Forms.Software.TrnPOS
         public void UpdateComponents(Boolean isLocked)
         {
             dateTimePickerDefectiveDate.Enabled = !isLocked;
+            dateTimePickerPurchasedDate.Enabled = !isLocked;
+            dateTimePickerRepDate.Enabled = !isLocked;
             textBoxDefectiveNumber.Enabled = !isLocked;
             textBoxInvoiceNo.Enabled = !isLocked;
             textBoxCustomerName.Enabled = !isLocked;
-            textBoxWarrantyCode.Enabled = !isLocked;
+            textBoxRepInvoiceNo.Enabled = !isLocked;
             comboBoxPreparedBy.Enabled = !isLocked;
+            comboBoxVehicleType.Enabled = !isLocked;
             buttonAdd.Enabled = !isLocked;
-            buttonAddReplacement.Enabled = !isLocked;
 
             dataGridViewDefectiveLineList.Columns[0].Visible = !isLocked;
             dataGridViewDefectiveLineList.Columns[1].Visible = !isLocked;
-            dataGridViewDefectiveLineReplacementList.Columns[0].Visible = !isLocked;
-            dataGridViewDefectiveLineReplacementList.Columns[1].Visible = !isLocked;
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
@@ -584,7 +379,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Id = 0,
                 DefectiveId = trnDefectiveEntity.Id,
                 ItemId = 0,
-                ItemDescription = "",
                 Quantity = 1,
                 Amount = 0,
                 Type = "Defective"
@@ -594,21 +388,16 @@ namespace EasyPOS.Forms.Software.TrnPOS
             trnPOSDefectiveLineItemDetailForm.ShowDialog();
         }
 
-        private void buttonAddReplacement_Click(object sender, EventArgs e)
+        private void comboBoxVehicleType_TextChanged(object sender, EventArgs e)
         {
-            Entities.TrnDefectiveLineEntity trnDefectiveLineEntity = new Entities.TrnDefectiveLineEntity()
+            if (comboBoxVehicleType.Text == "Private")
             {
-                Id = 0,
-                DefectiveId = trnDefectiveEntity.Id,
-                ItemId = 0,
-                ItemDescription = "",
-                Quantity = 1,
-                Amount = 0,
-                Type = "Replacement"
-            };
-
-            TrnPOSDefectiveLineItemDetailForm trnPOSDefectiveLineItemDetailForm = new TrnPOSDefectiveLineItemDetailForm(this, trnDefectiveLineEntity);
-            trnPOSDefectiveLineItemDetailForm.ShowDialog();
+                textBoxWarrantyPeriod.Text = "21";
+            }
+            else
+            {
+                textBoxWarrantyPeriod.Text = "6";
+            }
         }
     }
 }

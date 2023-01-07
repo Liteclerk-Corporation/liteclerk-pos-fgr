@@ -66,7 +66,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 if (addDefectiveLine[1].Equals("0") == false)
                 {
                     trnDefectiveDetailForm.UpdateDefectiveLineListDataSource();
-                    trnDefectiveDetailForm.UpdateDefectiveLineReplacementListDataSource();
                     Close();
                 }
                 else

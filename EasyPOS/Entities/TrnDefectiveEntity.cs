@@ -11,9 +11,12 @@ namespace EasyPOS.Entities
         public Int32 Id { get; set; }
         public String DefectiveNo { get; set; }
         public String DefectiveDate { get; set; }
+        public String PurchasedDate { get; set; }
         public String InvoiceNo { get; set; }
         public String CustomerName { get; set; }
-        public String WarrantyCode { get; set; }
+        public String VehicleType { get; set; }
+        public String ReplacementDate{ get; set; }
+        public String ReplacementInvoiceNo{ get; set; }
         public Int32 PreparedById { get; set; }
         public Boolean IsLocked { get; set; }
     }
