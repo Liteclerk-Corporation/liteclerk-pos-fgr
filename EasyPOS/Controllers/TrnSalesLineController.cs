@@ -28,6 +28,7 @@ namespace EasyPOS.Controllers
                                  Id = d.Id,
                                  SalesId = d.SalesId,
                                  ItemId = d.ItemId,
+                                 WarrantyCode = d.MstItem.BarCode,
                                  ItemDescription = d.MstItem.ItemDescription,
                                  ItemKitchen = d.MstItem.DefaultKitchenReport,
                                  UnitId = d.UnitId,
@@ -60,6 +61,8 @@ namespace EasyPOS.Controllers
                                  TableCode = d.TrnSale.TableId != null ? d.TrnSale.MstTable.TableCode : "",
                                  IsPrinted = d.IsPrinted,
                                  BodegaItemQty = Convert.ToDecimal(d.BodegaItemQty),
+                                 TradeInId = d.TradeInId,
+                                 TradeInAmount = d.TradeInAmount
                              };
 
             return salesLines.OrderByDescending(d => d.Id).ToList();
@@ -104,6 +107,8 @@ namespace EasyPOS.Controllers
                                  Price2 = d.Price2,
                                  Price2LessTax = d.Price2LessTax,
                                  PriceSplitPercentage = d.PriceSplitPercentage,
+                                 TradeInId = d.TradeInId,
+                                 TradeInAmount = d.TradeInAmount
                              };
 
             return salesLines.FirstOrDefault();
@@ -291,6 +296,8 @@ namespace EasyPOS.Controllers
                     Price2LessTax = 0,
                     PriceSplitPercentage = 0,
                     BodegaItemQty = objSalesLine.BodegaItemQty,
+                    TradeInId = objSalesLine.TradeInId,
+                    TradeInAmount = objSalesLine.TradeInAmount
                 };
 
                 db.TrnSalesLines.InsertOnSubmit(newSaleLine);
@@ -409,6 +416,8 @@ namespace EasyPOS.Controllers
                     updateSalesLine.Preparation = objSalesLine.Preparation;
                     updateSalesLine.IsPrinted = objSalesLine.IsPrinted;
                     updateSalesLine.BodegaItemQty = objSalesLine.BodegaItemQty;
+                    updateSalesLine.TradeInId = objSalesLine.TradeInId;
+                    updateSalesLine.TradeInAmount = objSalesLine.TradeInAmount;
                     db.SubmitChanges();
 
                     String newObject = Modules.SysAuditTrailModule.GetObjectString(salesLine.FirstOrDefault());
@@ -570,7 +579,8 @@ namespace EasyPOS.Controllers
                     Price1 = 0,
                     Price2 = 0,
                     Price2LessTax = 0,
-                    PriceSplitPercentage = 0
+                    PriceSplitPercentage = 0,
+                    TradeInAmount = 0
                 };
 
                 db.TrnSalesLines.InsertOnSubmit(newSaleLine);
@@ -754,6 +764,7 @@ namespace EasyPOS.Controllers
                                     Price2 = 0,
                                     Price2LessTax = 0,
                                     PriceSplitPercentage = 0,
+                                    TradeInAmount = 0
                                 });
                             }
                         }

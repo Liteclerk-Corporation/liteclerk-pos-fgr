@@ -235,9 +235,9 @@
             this.labelSupport.Location = new System.Drawing.Point(84, 30);
             this.labelSupport.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelSupport.Name = "labelSupport";
-            this.labelSupport.Size = new System.Drawing.Size(323, 20);
+            this.labelSupport.Size = new System.Drawing.Size(334, 20);
             this.labelSupport.TabIndex = 7;
-            this.labelSupport.Text = "Support: Easyfis Corporation (032) 234 0787";
+            this.labelSupport.Text = "Support: Liteclerk Corporation (032) 234 0787";
             // 
             // panel2
             // 

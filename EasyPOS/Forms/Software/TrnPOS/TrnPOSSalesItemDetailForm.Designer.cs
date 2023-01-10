@@ -60,6 +60,9 @@
             this.textBoxSalesLineRemarks = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.comboBoxTradeInNo = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.textBoxTradeInAmount = new System.Windows.Forms.TextBox();
             this.textBoxBodegaItemQty = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -176,7 +179,7 @@
             this.textBoxSalesLineQuantity.Location = new System.Drawing.Point(182, 52);
             this.textBoxSalesLineQuantity.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineQuantity.Name = "textBoxSalesLineQuantity";
-            this.textBoxSalesLineQuantity.Size = new System.Drawing.Size(269, 34);
+            this.textBoxSalesLineQuantity.Size = new System.Drawing.Size(259, 34);
             this.textBoxSalesLineQuantity.TabIndex = 0;
             this.textBoxSalesLineQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.textBoxSalesLineQuantity.TextChanged += new System.EventHandler(this.textBoxSalesLineQuantity_TextChanged);
@@ -191,7 +194,7 @@
             this.textBoxSalesLineUnit.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineUnit.Name = "textBoxSalesLineUnit";
             this.textBoxSalesLineUnit.ReadOnly = true;
-            this.textBoxSalesLineUnit.Size = new System.Drawing.Size(269, 34);
+            this.textBoxSalesLineUnit.Size = new System.Drawing.Size(259, 34);
             this.textBoxSalesLineUnit.TabIndex = 2;
             this.textBoxSalesLineUnit.TabStop = false;
             // 
@@ -215,7 +218,7 @@
             this.textBoxSalesLinePrice.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLinePrice.Name = "textBoxSalesLinePrice";
             this.textBoxSalesLinePrice.ReadOnly = true;
-            this.textBoxSalesLinePrice.Size = new System.Drawing.Size(269, 34);
+            this.textBoxSalesLinePrice.Size = new System.Drawing.Size(259, 34);
             this.textBoxSalesLinePrice.TabIndex = 3;
             this.textBoxSalesLinePrice.TabStop = false;
             this.textBoxSalesLinePrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -239,7 +242,7 @@
             this.comboBoxSalesLineDiscount.Location = new System.Drawing.Point(182, 172);
             this.comboBoxSalesLineDiscount.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxSalesLineDiscount.Name = "comboBoxSalesLineDiscount";
-            this.comboBoxSalesLineDiscount.Size = new System.Drawing.Size(269, 36);
+            this.comboBoxSalesLineDiscount.Size = new System.Drawing.Size(259, 36);
             this.comboBoxSalesLineDiscount.TabIndex = 4;
             this.comboBoxSalesLineDiscount.SelectedIndexChanged += new System.EventHandler(this.comboBoxSalesLineDiscount_SelectedIndexChanged);
             // 
@@ -261,7 +264,7 @@
             this.textBoxSalesLineDiscountRate.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineDiscountRate.Name = "textBoxSalesLineDiscountRate";
             this.textBoxSalesLineDiscountRate.ReadOnly = true;
-            this.textBoxSalesLineDiscountRate.Size = new System.Drawing.Size(269, 34);
+            this.textBoxSalesLineDiscountRate.Size = new System.Drawing.Size(259, 34);
             this.textBoxSalesLineDiscountRate.TabIndex = 5;
             this.textBoxSalesLineDiscountRate.TabStop = false;
             this.textBoxSalesLineDiscountRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -286,7 +289,7 @@
             this.textBoxSalesLineDiscountAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineDiscountAmount.Name = "textBoxSalesLineDiscountAmount";
             this.textBoxSalesLineDiscountAmount.ReadOnly = true;
-            this.textBoxSalesLineDiscountAmount.Size = new System.Drawing.Size(269, 34);
+            this.textBoxSalesLineDiscountAmount.Size = new System.Drawing.Size(259, 34);
             this.textBoxSalesLineDiscountAmount.TabIndex = 6;
             this.textBoxSalesLineDiscountAmount.TabStop = false;
             this.textBoxSalesLineDiscountAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -311,7 +314,7 @@
             this.textBoxSalesLineNetPrice.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineNetPrice.Name = "textBoxSalesLineNetPrice";
             this.textBoxSalesLineNetPrice.ReadOnly = true;
-            this.textBoxSalesLineNetPrice.Size = new System.Drawing.Size(269, 34);
+            this.textBoxSalesLineNetPrice.Size = new System.Drawing.Size(259, 34);
             this.textBoxSalesLineNetPrice.TabIndex = 7;
             this.textBoxSalesLineNetPrice.TabStop = false;
             this.textBoxSalesLineNetPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -334,7 +337,7 @@
             this.textBoxSalesLineAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineAmount.Name = "textBoxSalesLineAmount";
             this.textBoxSalesLineAmount.ReadOnly = true;
-            this.textBoxSalesLineAmount.Size = new System.Drawing.Size(269, 34);
+            this.textBoxSalesLineAmount.Size = new System.Drawing.Size(259, 34);
             this.textBoxSalesLineAmount.TabIndex = 8;
             this.textBoxSalesLineAmount.TabStop = false;
             this.textBoxSalesLineAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -357,7 +360,7 @@
             this.textBoxSalesLineVAT.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineVAT.Name = "textBoxSalesLineVAT";
             this.textBoxSalesLineVAT.ReadOnly = true;
-            this.textBoxSalesLineVAT.Size = new System.Drawing.Size(269, 34);
+            this.textBoxSalesLineVAT.Size = new System.Drawing.Size(259, 34);
             this.textBoxSalesLineVAT.TabIndex = 9;
             this.textBoxSalesLineVAT.TabStop = false;
             // 
@@ -379,7 +382,7 @@
             this.textBoxSalesLineVATRate.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineVATRate.Name = "textBoxSalesLineVATRate";
             this.textBoxSalesLineVATRate.ReadOnly = true;
-            this.textBoxSalesLineVATRate.Size = new System.Drawing.Size(269, 34);
+            this.textBoxSalesLineVATRate.Size = new System.Drawing.Size(259, 34);
             this.textBoxSalesLineVATRate.TabIndex = 10;
             this.textBoxSalesLineVATRate.TabStop = false;
             this.textBoxSalesLineVATRate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -402,7 +405,7 @@
             this.textBoxSalesLineVATAmount.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineVATAmount.Name = "textBoxSalesLineVATAmount";
             this.textBoxSalesLineVATAmount.ReadOnly = true;
-            this.textBoxSalesLineVATAmount.Size = new System.Drawing.Size(269, 34);
+            this.textBoxSalesLineVATAmount.Size = new System.Drawing.Size(259, 34);
             this.textBoxSalesLineVATAmount.TabIndex = 11;
             this.textBoxSalesLineVATAmount.TabStop = false;
             this.textBoxSalesLineVATAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -421,11 +424,11 @@
             // textBoxSalesLineRemarks
             // 
             this.textBoxSalesLineRemarks.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxSalesLineRemarks.Location = new System.Drawing.Point(458, 172);
+            this.textBoxSalesLineRemarks.Location = new System.Drawing.Point(458, 176);
             this.textBoxSalesLineRemarks.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineRemarks.Multiline = true;
             this.textBoxSalesLineRemarks.Name = "textBoxSalesLineRemarks";
-            this.textBoxSalesLineRemarks.Size = new System.Drawing.Size(392, 316);
+            this.textBoxSalesLineRemarks.Size = new System.Drawing.Size(392, 312);
             this.textBoxSalesLineRemarks.TabIndex = 12;
             this.textBoxSalesLineRemarks.TabStop = false;
             // 
@@ -433,7 +436,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label13.Location = new System.Drawing.Point(455, 132);
+            this.label13.Location = new System.Drawing.Point(454, 148);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(209, 28);
@@ -442,11 +445,14 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.comboBoxTradeInNo);
+            this.panel2.Controls.Add(this.label15);
+            this.panel2.Controls.Add(this.textBoxTradeInAmount);
+            this.panel2.Controls.Add(this.textBoxSalesLineRemarks);
             this.panel2.Controls.Add(this.textBoxBodegaItemQty);
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.textBoxItemDescription);
-            this.panel2.Controls.Add(this.textBoxSalesLineRemarks);
             this.panel2.Controls.Add(this.textBoxSalesLineQuantity);
             this.panel2.Controls.Add(this.label13);
             this.panel2.Controls.Add(this.label3);
@@ -473,15 +479,52 @@
             this.panel2.Location = new System.Drawing.Point(0, 62);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(860, 500);
+            this.panel2.Size = new System.Drawing.Size(860, 505);
             this.panel2.TabIndex = 31;
+            // 
+            // comboBoxTradeInNo
+            // 
+            this.comboBoxTradeInNo.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.comboBoxTradeInNo.FormattingEnabled = true;
+            this.comboBoxTradeInNo.Location = new System.Drawing.Point(579, 53);
+            this.comboBoxTradeInNo.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxTradeInNo.Name = "comboBoxTradeInNo";
+            this.comboBoxTradeInNo.Size = new System.Drawing.Size(269, 36);
+            this.comboBoxTradeInNo.TabIndex = 31;
+            this.comboBoxTradeInNo.DropDown += new System.EventHandler(this.comboBoxTradeInNo_DropDown);
+            this.comboBoxTradeInNo.TextUpdate += new System.EventHandler(this.comboBoxTradeInNo_TextUpdate);
+            this.comboBoxTradeInNo.DropDownClosed += new System.EventHandler(this.comboBoxTradeInNo_DropDownClosed);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label15.Location = new System.Drawing.Point(455, 61);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(123, 28);
+            this.label15.TabIndex = 33;
+            this.label15.Text = "Trade-In No.:";
+            // 
+            // textBoxTradeInAmount
+            // 
+            this.textBoxTradeInAmount.Enabled = false;
+            this.textBoxTradeInAmount.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.textBoxTradeInAmount.Location = new System.Drawing.Point(580, 95);
+            this.textBoxTradeInAmount.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxTradeInAmount.Name = "textBoxTradeInAmount";
+            this.textBoxTradeInAmount.ReadOnly = true;
+            this.textBoxTradeInAmount.Size = new System.Drawing.Size(269, 34);
+            this.textBoxTradeInAmount.TabIndex = 32;
+            this.textBoxTradeInAmount.TabStop = false;
+            this.textBoxTradeInAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBoxBodegaItemQty
             // 
             this.textBoxBodegaItemQty.AcceptsTab = true;
             this.textBoxBodegaItemQty.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.textBoxBodegaItemQty.HideSelection = false;
-            this.textBoxBodegaItemQty.Location = new System.Drawing.Point(589, 53);
+            this.textBoxBodegaItemQty.Location = new System.Drawing.Point(591, 267);
             this.textBoxBodegaItemQty.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxBodegaItemQty.Name = "textBoxBodegaItemQty";
             this.textBoxBodegaItemQty.Size = new System.Drawing.Size(261, 34);
@@ -492,7 +535,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label14.Location = new System.Drawing.Point(468, 55);
+            this.label14.Location = new System.Drawing.Point(470, 269);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(117, 28);
@@ -503,7 +546,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(860, 562);
+            this.ClientSize = new System.Drawing.Size(860, 567);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -557,5 +600,8 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox textBoxBodegaItemQty;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ComboBox comboBoxTradeInNo;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBoxTradeInAmount;
     }
 }

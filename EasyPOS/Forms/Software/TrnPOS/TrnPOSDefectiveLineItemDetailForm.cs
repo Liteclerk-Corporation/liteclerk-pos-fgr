@@ -56,7 +56,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 ItemId = Convert.ToInt32(itemId),
                 Quantity = quantity,
                 Amount = amount,
-                Type = trnDefectiveLineEntity.Type
             };
 
             Controllers.TrnDefectiveLineController trnPOSDefectiveLineController = new Controllers.TrnDefectiveLineController();

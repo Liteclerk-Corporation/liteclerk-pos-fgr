@@ -164,7 +164,7 @@ namespace EasyPOS.Modules
 
                 if (defective.Any())
                 {
-                    var defectiveLines = defective.FirstOrDefault().TrnDefectiveItems.Where(d => d.MstItem.IsInventory == true && d.Type == "Defective");
+                    var defectiveLines = defective.FirstOrDefault().TrnDefectiveItems.Where(d => d.MstItem.IsInventory == true);
                     if (defectiveLines.Any())
                     {
                         var defectiveLineItems = from d in defectiveLines
@@ -192,37 +192,37 @@ namespace EasyPOS.Modules
                 throw new Exception(e.Message);
             }
         }
-        // =========================
-        // Update Defective Inventory
-        // =========================
-        public void UpdateReplacementInventory(Int32 defectiveId)
+        // ===========================
+        // Update Trade - In Inventory
+        // ===========================
+        public void UpdateTradeInInventory(Int32 tradeInId)
         {
             try
             {
-                var defective = from d in db.TrnDefectives
-                                where d.Id == defectiveId
-                                select d;
+                var tradeIn = from d in db.TrnTradeIns
+                              where d.Id == tradeInId
+                              select d;
 
-                if (defective.Any())
+                if (tradeIn.Any())
                 {
-                    var defectiveLines = defective.FirstOrDefault().TrnDefectiveItems.Where(d => d.MstItem.IsInventory == true && d.Type == "Replacement");
-                    if (defectiveLines.Any())
+                    var tradeInLines = tradeIn.FirstOrDefault().TrnTradeInLines.Where(d => d.MstItem.IsInventory == true);
+                    if (tradeInLines.Any())
                     {
-                        var defectiveLineItems = from d in defectiveLines
-                                                 group d by new
-                                                 {
-                                                     d.ItemId
-                                                 } into g
-                                                 select new
-                                                 {
-                                                     g.Key.ItemId
-                                                 };
+                        var tradeInLineItems = from d in tradeInLines
+                                               group d by new
+                                               {
+                                                   d.ItemId
+                                               } into g
+                                               select new
+                                               {
+                                                   g.Key.ItemId
+                                               };
 
-                        if (defectiveLineItems.Any())
+                        if (tradeInLineItems.Any())
                         {
-                            foreach (var defectiveLineItem in defectiveLineItems)
+                            foreach (var tradeInLineItem in tradeInLineItems)
                             {
-                                UpdateItemInventory(defectiveLineItem.ItemId);
+                                UpdateItemInventory(tradeInLineItem.ItemId);
                             }
                         }
                     }
@@ -319,31 +319,29 @@ namespace EasyPOS.Modules
                 // Get total Defective quantity
                 Decimal totalDefectiveLineQuantity = 0;
                 var allDefectiveLineItems = from d in db.TrnDefectiveItems
-                                          where d.ItemId == itemId
-                                          && d.Type == "Defective"
-                                          && d.TrnDefective.IsLocked == true
-                                          select d;
+                                            where d.ItemId == itemId
+                                            && d.TrnDefective.IsLocked == true
+                                            select d;
 
                 if (allDefectiveLineItems.Any())
                 {
                     totalDefectiveLineQuantity = allDefectiveLineItems.Sum(d => d.Quantity);
                 }
 
-                // Get total Replacement quantity
-                Decimal totalReplacementLineQuantity = 0;
-                var allReplacementLineItems = from d in db.TrnDefectiveItems
-                                            where d.ItemId == itemId
-                                            && d.Type == "Replacement"
-                                            && d.TrnDefective.IsLocked == true
-                                            select d;
+                // Get total Trade - In quantity
+                Decimal totalTradeInLineQuantity = 0;
+                var allTradeInLineItems = from d in db.TrnTradeInLines
+                                              where d.ItemId == itemId
+                                              && d.TrnTradeIn.IsLocked == true
+                                              select d;
 
-                if (allReplacementLineItems.Any())
+                if (allTradeInLineItems.Any())
                 {
-                    totalReplacementLineQuantity = allReplacementLineItems.Sum(d => d.Quantity);
+                    totalTradeInLineQuantity = allTradeInLineItems.Sum(d => d.Quantity);
                 }
 
                 var updateItem = item.FirstOrDefault();
-                updateItem.OnhandQuantity = (totalStockInLineQuantity + totalReturnedQuantity + totalDefectiveLineQuantity) - (totalSalesLineQuantity + totalStockOutLineQuantity + totalSalesLineComponentQuantity + totalReplacementLineQuantity);
+                updateItem.OnhandQuantity = (totalStockInLineQuantity + totalReturnedQuantity + totalDefectiveLineQuantity + totalTradeInLineQuantity) - (totalSalesLineQuantity + totalStockOutLineQuantity + totalSalesLineComponentQuantity);
                 db.SubmitChanges();
             }
         }

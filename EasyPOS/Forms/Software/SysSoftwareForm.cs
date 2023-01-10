@@ -51,7 +51,7 @@ namespace EasyPOS.Forms.Software
             panelSidebarMenu.Visible = false;
 
             labelVersion.Text = "Liteclerk POS Version: " + Modules.SysCurrentModule.GetCurrentSettings().CurrentVersion;
-            labelSupport.Text = "Support: Easyfis Corporation " + Modules.SysCurrentModule.GetCurrentSettings().CurrentSupport;
+            labelSupport.Text = "Support: Liteclerk Corporation " + Modules.SysCurrentModule.GetCurrentSettings().CurrentSupport;
         }
 
         public TabPage tabPageItemList = new TabPage { Name = "tabPageItemList", Text = "Setup - Item List" };

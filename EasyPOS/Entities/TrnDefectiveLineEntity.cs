@@ -16,7 +16,6 @@ namespace EasyPOS.Entities
         public String WarrantyCode { get; set; }
         public Decimal Quantity { get; set; }
         public Decimal Amount { get; set; }
-        public String Type { get; set; }
 
     }
 }

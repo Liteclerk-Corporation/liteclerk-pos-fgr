@@ -145,47 +145,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
             {
                 textBoxSeniorCitizenAge.Text = "0";
             }
-
-            GetTradeInNoList();
-        }
-
-        public void GetTradeInNoList()
-        {
-            Controllers.TrnTradeInController trnTradeInController = new Controllers.TrnTradeInController();
-            List<Entities.TrnTradeInEntity> trnTradeList = new List<Entities.TrnTradeInEntity>();
-            trnTradeList.Add(new Entities.TrnTradeInEntity
-            {
-                Id = 0,
-                TradeInNo = "None"
-            });
-            if (trnTradeInController.DropdownListTradeInNo().Any())
-            {
-                foreach (var obj in trnTradeInController.DropdownListTradeInNo())
-                {
-                    trnTradeList.Add(new Entities.TrnTradeInEntity
-                    {
-                        Id = obj.Id,
-                        TradeInNo = obj.TradeInNo
-                    });
-                };
-
-                comboBoxTradeInNumber.DataSource = trnTradeList;
-                comboBoxTradeInNumber.ValueMember = "Id";
-                comboBoxTradeInNumber.DisplayMember = "TradeInNo";
-            }
-
-            comboBoxTradeInNumber.SelectedValue = trnTradeInController.SearchTradeInNo(listSalesLines.FirstOrDefault().SalesId);
-
-            Controllers.TrnTradeInLineController trnTradeInLineController = new Controllers.TrnTradeInLineController();
-
-            if (Convert.ToInt32(comboBoxTradeInNumber.SelectedValue) == 0)
-            {
-                textBoxTradeInAmount.Text = "0.00";
-            }
-            else
-            {
-                textBoxTradeInAmount.Text = trnTradeInLineController.DropdownListTradeInLineAmount(Convert.ToInt32(comboBoxTradeInNumber.SelectedValue)).FirstOrDefault().Amount.ToString("#,##0.00");
-            }
         }
         private void buttonSave_Click(object sender, EventArgs e)
         {
@@ -197,8 +156,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
             Int32 seniorCitizenAge = Convert.ToInt32(textBoxSeniorCitizenAge.Text);
             Int32 pax = Convert.ToInt32(textBoxPax.Text);
             Int32 discountedPax = Convert.ToInt32(textBoxDiscountedPax.Text);
-            Decimal tradeInDiscount = Convert.ToDecimal(textBoxTradeInAmount.Text);
-            Int32 tradeInNumber = Convert.ToInt32(comboBoxTradeInNumber.SelectedValue);
 
             Entities.TrnSalesEntity salesEntity = new Entities.TrnSalesEntity()
             {
@@ -210,8 +167,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 SeniorCitizenAge = seniorCitizenAge,
                 Pax = pax,
                 DiscountedPax = discountedPax,
-                TradeInDiscount = tradeInDiscount,
-                TradeInId = tradeInNumber
             };
 
             Controllers.TrnSalesController trnSalesController = new Controllers.TrnSalesController();
@@ -574,20 +529,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
         private void textBoxDiscountAmount_KeyDown(object sender, KeyEventArgs e)
         {
             //ComputeDiscountRate();
-        }
-
-        private void comboBoxTradeInNumber_DropDownClosed(object sender, EventArgs e)
-        {
-            Controllers.TrnTradeInLineController trnTradeInLineController = new Controllers.TrnTradeInLineController();
-
-            if (Convert.ToInt32(comboBoxTradeInNumber.SelectedValue) == 0)
-            {
-                textBoxTradeInAmount.Text = "0.00";
-            }
-            else
-            {
-                textBoxTradeInAmount.Text = trnTradeInLineController.DropdownListTradeInLineAmount(Convert.ToInt32(comboBoxTradeInNumber.SelectedValue)).FirstOrDefault().Amount.ToString("#,##0.00");
-            }
         }
     }
 }

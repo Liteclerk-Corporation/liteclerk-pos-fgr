@@ -527,6 +527,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     objSalesLineList.Id,
                     objSalesLineList.SalesId,
                     objSalesLineList.ItemId,
+                    objSalesLineList.WarrantyCode,
                     objSalesLineList.ItemDescription,
                     objSalesLineList.Quantity.ToString("#,##0.00"),
                     objSalesLineList.BodegaItemQty.ToString("#,##0.00"),
@@ -553,7 +554,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     objSalesLineList.Price1.ToString("#,##0.00"),
                     objSalesLineList.Price2.ToString("#,##0.00"),
                     objSalesLineList.Price2LessTax.ToString("#,##0.00"),
-                    objSalesLineList.PriceSplitPercentage.ToString("#,##0.00")
+                    objSalesLineList.PriceSplitPercentage.ToString("#,##0.00"),
+                    objSalesLineList.TradeInId,
+                    objSalesLineList.TradeInAmount
                 );
                 }
             }
@@ -583,39 +586,43 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Int32 Id = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[2].Value);
                 Int32 SalesId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[3].Value);
                 Int32 ItemId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[4].Value);
-                String ItemDescription = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[5].Value.ToString();
-                Decimal Quantity = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[6].Value);
-                Decimal BodegaItemQty = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[7].Value);
-                Int32 UnitId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[8].Value);
-                String Unit = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[9].Value.ToString();
-                Decimal Price = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[10].Value);
-                Int32 DiscountId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[11].Value);
-                String Discount = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[12].Value.ToString(); ;
-                Decimal DiscountRate = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[13].Value);
-                Decimal DiscountAmount = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[14].Value);
-                Decimal NetPrice = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[15].Value);
-                Decimal Amount = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[16].Value);
-                Int32 TaxId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[17].Value);
-                String Tax = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[18].Value.ToString();
-                Decimal TaxRate = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[19].Value);
-                Decimal TaxAmount = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[20].Value);
-                Int32 SalesAccountId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[21].Value);
-                Int32 AssetAccountId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[22].Value);
-                Int32 CostAccountId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[23].Value);
-                Int32 TaxAccountId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[24].Value);
-                String SalesLineTimeStamp = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[25].Value.ToString();
-                Int32 UserId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[26].Value);
-                String Preparation = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[27].Value.ToString();
-                Decimal Price1 = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[28].Value);
-                Decimal Price2 = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[29].Value);
-                Decimal Price2LessTax = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[30].Value);
-                Decimal PriceSplitPercentage = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[31].Value);
+                String WarrantyCode = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[5].Value.ToString();
+                String ItemDescription = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[6].Value.ToString();
+                Decimal Quantity = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[7].Value);
+                Decimal BodegaItemQty = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[8].Value);
+                Int32 UnitId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[9].Value);
+                String Unit = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[10].Value.ToString();
+                Decimal Price = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[11].Value);
+                Int32 DiscountId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[12].Value);
+                String Discount = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[13].Value.ToString(); ;
+                Decimal DiscountRate = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[14].Value);
+                Decimal DiscountAmount = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[15].Value);
+                Decimal NetPrice = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[16].Value);
+                Decimal Amount = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[17].Value);
+                Int32 TaxId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[18].Value);
+                String Tax = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[19].Value.ToString();
+                Decimal TaxRate = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[20].Value);
+                Decimal TaxAmount = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[21].Value);
+                Int32 SalesAccountId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[22].Value);
+                Int32 AssetAccountId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[23].Value);
+                Int32 CostAccountId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[24].Value);
+                Int32 TaxAccountId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[25].Value);
+                String SalesLineTimeStamp = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[26].Value.ToString();
+                Int32 UserId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[27].Value);
+                String Preparation = dataGridViewSalesLineList.Rows[e.RowIndex].Cells[28].Value.ToString();
+                Decimal Price1 = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[29].Value);
+                Decimal Price2 = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[30].Value);
+                Decimal Price2LessTax = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[31].Value);
+                Decimal PriceSplitPercentage = Convert.ToDecimal(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[32].Value);
+                Int32 TradeInId = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[33].Value);
+                Int32 TradeInAmount = Convert.ToInt32(dataGridViewSalesLineList.Rows[e.RowIndex].Cells[34].Value);
 
                 Entities.TrnSalesLineEntity trnSalesLineEntity = new Entities.TrnSalesLineEntity()
                 {
                     Id = Id,
                     SalesId = SalesId,
                     ItemId = ItemId,
+                    WarrantyCode = WarrantyCode,
                     ItemDescription = ItemDescription,
                     UnitId = UnitId,
                     Unit = Unit,
@@ -642,7 +649,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     Price2 = Price2,
                     Price2LessTax = Price2LessTax,
                     PriceSplitPercentage = PriceSplitPercentage,
-                    BodegaItemQty = BodegaItemQty
+                    BodegaItemQty = BodegaItemQty,
+                    TradeInId = TradeInId,
+                    TradeInAmount = TradeInAmount
                 };
 
                 TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(this, null, trnSalesLineEntity, null);
@@ -738,7 +747,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             Price1 = 0,
                             Price2 = 0,
                             Price2LessTax = 0,
-                            PriceSplitPercentage = 0
+                            PriceSplitPercentage = 0,
+                            TradeInAmount = 0
                         };
 
                         TrnPOSSalesItemDetailForm trnSalesDetailSalesItemDetailForm = new TrnPOSSalesItemDetailForm(this, null, trnSalesLineEntity, null);
@@ -780,9 +790,9 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                     Int32 salesId = Convert.ToInt32(row.Cells[3].Value);
                     Int32 ItemId = Convert.ToInt32(row.Cells[4].Value);
-                    String ItemDescription = row.Cells[5].Value.ToString();
-                    Decimal Price = Convert.ToDecimal(row.Cells[10].Value);
-                    Decimal Quantity = Convert.ToDecimal(row.Cells[6].Value);
+                    String ItemDescription = row.Cells[6].Value.ToString();
+                    Decimal Price = Convert.ToDecimal(row.Cells[11].Value);
+                    Decimal Quantity = Convert.ToDecimal(row.Cells[7].Value);
 
 
                     listSalesLine.Add(new Entities.TrnSalesLineEntity()
@@ -1325,6 +1335,12 @@ namespace EasyPOS.Forms.Software.TrnPOS
         {
             TrnPOSDefectiveListForm trnPOSDefectiveListForm = new TrnPOSDefectiveListForm();
             trnPOSDefectiveListForm.ShowDialog();
+        }
+
+        private void buttonTradeIn_Click(object sender, EventArgs e)
+        {
+            TrnPOSTradeInListForm trnPOSTradeInListForm = new TrnPOSTradeInListForm();
+            trnPOSTradeInListForm.ShowDialog();
         }
     }
 }

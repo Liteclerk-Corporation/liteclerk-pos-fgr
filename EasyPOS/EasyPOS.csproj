@@ -313,6 +313,8 @@
     <Compile Include="Entities\DgvRepDeletedItemEntity.cs" />
     <Compile Include="Entities\DgvRepSalesReportSalesAgentReportListEntity.cs" />
     <Compile Include="Entities\DgvStockLevelReportEntity.cs" />
+    <Compile Include="Entities\DgvTrnTradeInLineListEntity.cs" />
+    <Compile Include="Entities\DgvTrnTradeInListEntity.cs" />
     <Compile Include="Entities\DgvTrnDefectiveListEntity.cs" />
     <Compile Include="Entities\DgvTrnPOSTouchPrintOrderDetailEntity.cs" />
     <Compile Include="Entities\DgvTrnSalesMergeEntity.cs" />
@@ -1389,6 +1391,24 @@
     <Compile Include="Forms\Software\TrnPOS\TrnPOSTouchSelectOrderTaker.Designer.cs">
       <DependentUpon>TrnPOSTouchSelectOrderTaker.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTradeInDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTradeInDetailForm.Designer.cs">
+      <DependentUpon>TrnPOSTradeInDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTradeInLineItemDetailForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTradeInLineItemDetailForm.Designer.cs">
+      <DependentUpon>TrnPOSTradeInLineItemDetailForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTradeInListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Software\TrnPOS\TrnPOSTradeInListForm.Designer.cs">
+      <DependentUpon>TrnPOSTradeInListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Software\TrnPurchaseOrder\TrnPurchaseOrderDetailForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -2008,6 +2028,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTouchSelectOrderTaker.resx">
       <DependentUpon>TrnPOSTouchSelectOrderTaker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTradeInDetailForm.resx">
+      <DependentUpon>TrnPOSTradeInDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTradeInLineItemDetailForm.resx">
+      <DependentUpon>TrnPOSTradeInLineItemDetailForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Software\TrnPOS\TrnPOSTradeInListForm.resx">
+      <DependentUpon>TrnPOSTradeInListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Software\TrnPurchaseOrder\TrnPurchaseOrderDetailForm.resx">
       <DependentUpon>TrnPurchaseOrderDetailForm.cs</DependentUpon>

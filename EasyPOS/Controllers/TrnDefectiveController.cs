@@ -226,7 +226,6 @@ namespace EasyPOS.Controllers
 
                     Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();
                     trnInventoryModule.UpdateDefectiveInventory(defective.FirstOrDefault().Id);
-                    trnInventoryModule.UpdateReplacementInventory(defective.FirstOrDefault().Id);
 
 
                     return new String[] { "", "1" };
@@ -242,9 +241,9 @@ namespace EasyPOS.Controllers
             }
         }
 
-        // ===============
-        // Delete Stock-In
-        // ===============
+        // =================
+        // Delete Defective
+        // =================
         public String[] DeleteDefective(Int32 id)
         {
             try

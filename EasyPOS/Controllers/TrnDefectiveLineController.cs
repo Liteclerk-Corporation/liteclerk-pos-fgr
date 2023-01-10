@@ -20,7 +20,6 @@ namespace EasyPOS.Controllers
         public List<Entities.TrnDefectiveLineEntity> ListDefectiveLine(Int32 defectiveId)
         {
             var defectiveLines = from d in db.TrnDefectiveItems
-                                 where d.Type == "Defective"
                                  select new Entities.TrnDefectiveLineEntity
                                  {
                                      Id = d.Id,
@@ -90,7 +89,6 @@ namespace EasyPOS.Controllers
                     ItemId = objDefectiveLine.ItemId,
                     Quantity = objDefectiveLine.Quantity,
                     Amount = objDefectiveLine.Amount,
-                    Type = objDefectiveLine.Type
                 };
 
                 db.TrnDefectiveItems.InsertOnSubmit(newDefectiveLine);

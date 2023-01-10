@@ -50,10 +50,10 @@ namespace EasyPOS.Forms.Software.TrnPOS
         }
         public void GetUserList()
         {
-            Controllers.TrnStockInController trnStockInController = new Controllers.TrnStockInController();
-            if (trnStockInController.DropdownListStockInUser().Any())
+            Controllers.TrnDefectiveController trnDefectiveController = new Controllers.TrnDefectiveController();
+            if (trnDefectiveController.DropdownListDefectiveUser().Any())
             {
-                comboBoxPreparedBy.DataSource = trnStockInController.DropdownListStockInUser();
+                comboBoxPreparedBy.DataSource = trnDefectiveController.DropdownListDefectiveUser();
                 comboBoxPreparedBy.ValueMember = "Id";
                 comboBoxPreparedBy.DisplayMember = "FullName";
 
@@ -212,7 +212,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     WarrantyCode = warrantyCode,
                     Quantity = quantity,
                     Amount = amount,
-                    Type = "Defective"
                 };
 
                 TrnPOSDefectiveLineItemDetailForm trnPOSDefectiveLineItemDetailForm = new TrnPOSDefectiveLineItemDetailForm(this, trnDefectiveLineEntity);
@@ -381,7 +380,6 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 ItemId = 0,
                 Quantity = 1,
                 Amount = 0,
-                Type = "Defective"
             };
 
             TrnPOSDefectiveLineItemDetailForm trnPOSDefectiveLineItemDetailForm = new TrnPOSDefectiveLineItemDetailForm(this, trnDefectiveLineEntity);

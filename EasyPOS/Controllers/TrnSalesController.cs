@@ -201,8 +201,6 @@ namespace EasyPOS.Controllers
                                 OrderChangeAmount = d.OrderChangeAmount,
                                 IsDelivery = d.IsDelivery,
                                 DeliveryType = d.DeliveryType,
-                                TradeInDiscount = d.TradeInDiscount,
-                                TradeInId = d.TradeInId
                             };
 
                 return sales.OrderByDescending(d => d.Id).ToList();
@@ -278,8 +276,6 @@ namespace EasyPOS.Controllers
                                 OrderChangeAmount = d.OrderChangeAmount,
                                 IsDelivery = d.IsDelivery,
                                 DeliveryType = d.DeliveryType,
-                                TradeInDiscount = d.TradeInDiscount,
-                                TradeInId = d.TradeInId
                             };
 
                 return sales.OrderByDescending(d => d.Id).ToList();
@@ -355,8 +351,6 @@ namespace EasyPOS.Controllers
                                 OrderChangeAmount = d.OrderChangeAmount,
                                 IsDelivery = d.IsDelivery,
                                 DeliveryType = d.DeliveryType,
-                                TradeInDiscount = d.TradeInDiscount,
-                                TradeInId = d.TradeInId
                             };
 
                 return sales.OrderByDescending(d => d.Id).ToList();
@@ -439,8 +433,6 @@ namespace EasyPOS.Controllers
                                 OrderChangeAmount = d.OrderChangeAmount,
                                 IsDelivery = d.IsDelivery,
                                 DeliveryType = d.DeliveryType,
-                                TradeInDiscount = d.TradeInDiscount,
-                                TradeInId = d.TradeInId
                             };
 
                 return sales.OrderByDescending(d => d.Id).ToList();
@@ -517,8 +509,6 @@ namespace EasyPOS.Controllers
                             OrderChangeAmount = d.OrderChangeAmount,
                             IsDelivery = d.IsDelivery,
                             DeliveryType = d.DeliveryType,
-                            TradeInDiscount = d.TradeInDiscount,
-                            TradeInId = d.TradeInId
                         };
 
             return sales.FirstOrDefault();
@@ -650,8 +640,6 @@ namespace EasyPOS.Controllers
                     PostCode = null,
                     IsDelivery = false,
                     DeliveryType = "Paid",
-                    TradeInDiscount = 0,
-                    TradeInId = 0
                 };
 
                 db.TrnSales.InsertOnSubmit(newSales);
@@ -1418,8 +1406,6 @@ namespace EasyPOS.Controllers
                     updateSales.UpdateDateTime = DateTime.Now;
                     updateSales.Pax = objSalesEntity.Pax;
                     updateSales.DiscountedPax = objSalesEntity.DiscountedPax;
-                    updateSales.TradeInDiscount = objSalesEntity.TradeInDiscount;
-                    updateSales.TradeInId = objSalesEntity.TradeInId;
                     db.SubmitChanges();
 
                     Decimal discountRate = objSalesEntity.DiscountRate;
@@ -1615,24 +1601,24 @@ namespace EasyPOS.Controllers
                                           && d.Id == objSalesEntity.TradeInId
                                           select d;
 
-                            if (tradeIn.Any())
-                            {
-                                Decimal tradeAmount;
+                            //if (tradeIn.Any())
+                            //{
+                            //    Decimal tradeAmount;
 
-                                var updateTradeIn = tradeIn.FirstOrDefault();
-                                updateTradeIn.SalesId = salesId;
+                            //    var updateTradeIn = tradeIn.FirstOrDefault();
+                            //    updateTradeIn.SalesId = salesId;
 
-                                var tradeInAmount = from d in db.TrnTradeInLines
-                                                    where d.TradeInId == tradeIn.FirstOrDefault().Id
-                                                    select d;
+                            //    var tradeInAmount = from d in db.TrnTradeInLines
+                            //                        where d.TradeInId == tradeIn.FirstOrDefault().Id
+                            //                        select d;
 
-                                if (tradeInAmount.Any())
-                                {
-                                    tradeAmount = tradeInAmount.Sum(a => a.Amount);
+                            //    if (tradeInAmount.Any())
+                            //    {
+                            //        tradeAmount = tradeInAmount.Sum(a => a.Amount);
 
-                                    salesLine.Amount = amount - tradeAmount;
-                                }
-                            }
+                            //        salesLine.Amount = amount - tradeAmount;
+                            //    }
+                            //}
 
                             db.SubmitChanges();
                         }
@@ -1894,8 +1880,6 @@ namespace EasyPOS.Controllers
                     lockSales.OrderChangeAmount = objSales.OrderChangeAmount;
                     lockSales.IsDelivery = objSales.IsDelivery;
                     lockSales.DeliveryType = objSales.DeliveryType;
-                    lockSales.TradeInDiscount = objSales.TradeInDiscount;
-                    lockSales.TradeInId = objSales.TradeInId;
                     db.SubmitChanges();
 
                     Modules.TrnInventoryModule trnInventoryModule = new Modules.TrnInventoryModule();

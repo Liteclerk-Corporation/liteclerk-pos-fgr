@@ -197,6 +197,20 @@ namespace EasyPOS.Forms.Software.TrnPOS
             textBoxSalesLineRemarks.Text = trnSalesLineEntity.Preparation;
             textBoxBodegaItemQty.Text = trnSalesLineEntity.BodegaItemQty.ToString("#,##0.00");
 
+            Controllers.TrnTradeInController trnTradeInController = new Controllers.TrnTradeInController();
+            if (trnSalesLineEntity.TradeInId != null)
+            {
+                if (trnTradeInController.DropdownListTradeInNo().Any())
+                {
+                    comboBoxTradeInNo.DataSource = trnTradeInController.DropdownListTradeInNo().ToList();
+                    comboBoxTradeInNo.ValueMember = "Id";
+                    comboBoxTradeInNo.DisplayMember = "TradeInNo";
+                }
+            }
+            comboBoxTradeInNo.SelectedValue = trnSalesLineEntity.TradeInId;
+            
+            textBoxTradeInAmount.Text = trnSalesLineEntity.TradeInAmount.ToString("#,##0.00");
+
             Int32? discountId = null;
 
             if (trnSalesDetailForm != null)
@@ -258,6 +272,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 Price2LessTax = 0,
                 PriceSplitPercentage = 0,
                 BodegaItemQty = Convert.ToDecimal(textBoxBodegaItemQty.Text),
+                TradeInId = Convert.ToInt32(comboBoxTradeInNo.SelectedValue),
+                TradeInAmount = Convert.ToDecimal(textBoxTradeInAmount.Text)
             };
 
             Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
@@ -396,6 +412,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     Decimal price = Convert.ToDecimal(textBoxSalesLinePrice.Text);
                     Decimal discountRate = Convert.ToDecimal(textBoxSalesLineDiscountRate.Text);
                     Decimal taxRate = trnSalesLineEntity.TaxRate;
+                    Decimal tradeInAmount = Convert.ToDecimal(textBoxTradeInAmount.Text);
 
                     Decimal discountAmount = Convert.ToDecimal(textBoxSalesLineDiscountAmount.Text);
                     if (discountRate > 0)
@@ -404,14 +421,13 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     }
 
                     Decimal netPrice = price - discountAmount;
-                    Decimal amount = netPrice * quantity;
+                    Decimal amount = (netPrice * quantity) - tradeInAmount;
 
                     Decimal taxAmount = 0;
                     if (taxRate > 0)
                     {
                         taxAmount = amount / (1 + (taxRate / 100)) * (taxRate / 100);
                     }
-
                     textBoxSalesLineDiscountAmount.Text = discountAmount.ToString("#,##0.00");
                     textBoxSalesLineNetPrice.Text = netPrice.ToString("#,##0.00");
                     textBoxSalesLineAmount.Text = amount.ToString("#,##0.00");
@@ -588,6 +604,41 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void comboBoxTradeInNo_DropDown(object sender, EventArgs e)
+        {
+            if(comboBoxTradeInNo.Text == "")
+            {
+                Controllers.TrnTradeInController trnTradeInController = new Controllers.TrnTradeInController();
+                if (trnTradeInController.DropdownListTradeInNo().Any())
+                {
+                    comboBoxTradeInNo.DataSource = trnTradeInController.DropdownListTradeInNo().ToList();
+                    comboBoxTradeInNo.ValueMember = "Id";
+                    comboBoxTradeInNo.DisplayMember = "TradeInNo";
+                }
+            }
+        }
+
+        private void comboBoxTradeInNo_DropDownClosed(object sender, EventArgs e)
+        {
+            Decimal amount;
+            Controllers.TrnTradeInController trnTradeInController = new Controllers.TrnTradeInController();
+            amount = trnTradeInController.GetTradeInAmount(Convert.ToInt32(comboBoxTradeInNo.SelectedValue));
+
+            textBoxTradeInAmount.Text = amount.ToString("#,##0.00");
+
+            ComputeAmount();
+        }
+
+        private void comboBoxTradeInNo_TextUpdate(object sender, EventArgs e)
+        {
+            if (comboBoxTradeInNo.Text == "")
+            {
+                textBoxTradeInAmount.Text = "0.00";
+            }
+
+            ComputeAmount();
         }
     }
 }

@@ -40,6 +40,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TrnPOSBarcodeDetailForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonTradeIn = new System.Windows.Forms.Button();
+            this.buttonDefect = new System.Windows.Forms.Button();
             this.buttonOverRide = new System.Windows.Forms.Button();
             this.buttonPrint = new System.Windows.Forms.Button();
             this.buttonLock = new System.Windows.Forms.Button();
@@ -80,6 +82,7 @@
             this.ColumnSalesLineId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineSalesId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineItemId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesWarrantyCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineItemDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineBodegaQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -107,7 +110,8 @@
             this.ColumnSalesLinePrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLinePrice2LessTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLinePriceSplitPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.buttonDefect = new System.Windows.Forms.Button();
+            this.ColumnSalesLineTradeInId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineTradeInAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -120,6 +124,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.buttonTradeIn);
             this.panel1.Controls.Add(this.buttonDefect);
             this.panel1.Controls.Add(this.buttonOverRide);
             this.panel1.Controls.Add(this.buttonPrint);
@@ -137,6 +142,44 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1370, 62);
             this.panel1.TabIndex = 3;
+            // 
+            // buttonTradeIn
+            // 
+            this.buttonTradeIn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonTradeIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonTradeIn.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonTradeIn.FlatAppearance.BorderSize = 0;
+            this.buttonTradeIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonTradeIn.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonTradeIn.ForeColor = System.Drawing.Color.White;
+            this.buttonTradeIn.Location = new System.Drawing.Point(-154, 11);
+            this.buttonTradeIn.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonTradeIn.Name = "buttonTradeIn";
+            this.buttonTradeIn.Size = new System.Drawing.Size(157, 46);
+            this.buttonTradeIn.TabIndex = 28;
+            this.buttonTradeIn.TabStop = false;
+            this.buttonTradeIn.Text = "Trade - In";
+            this.buttonTradeIn.UseVisualStyleBackColor = false;
+            this.buttonTradeIn.Click += new System.EventHandler(this.buttonTradeIn_Click);
+            // 
+            // buttonDefect
+            // 
+            this.buttonDefect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDefect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonDefect.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
+            this.buttonDefect.FlatAppearance.BorderSize = 0;
+            this.buttonDefect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDefect.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDefect.ForeColor = System.Drawing.Color.White;
+            this.buttonDefect.Location = new System.Drawing.Point(7, 11);
+            this.buttonDefect.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDefect.Name = "buttonDefect";
+            this.buttonDefect.Size = new System.Drawing.Size(157, 46);
+            this.buttonDefect.TabIndex = 27;
+            this.buttonDefect.TabStop = false;
+            this.buttonDefect.Text = "F1 - Defective";
+            this.buttonDefect.UseVisualStyleBackColor = false;
+            this.buttonDefect.Click += new System.EventHandler(this.buttonDefect_Click);
             // 
             // buttonOverRide
             // 
@@ -506,6 +549,7 @@
             this.ColumnSalesLineId,
             this.ColumnSalesLineSalesId,
             this.ColumnSalesLineItemId,
+            this.ColumnSalesWarrantyCode,
             this.ColumnSalesLineItemDescription,
             this.ColumnSalesLineQuantity,
             this.ColumnSalesLineBodegaQty,
@@ -532,7 +576,9 @@
             this.ColumnSalesLinePrice1,
             this.ColumnSalesLinePrice2,
             this.ColumnSalesLinePrice2LessTax,
-            this.ColumnSalesLinePriceSplitPercentage});
+            this.ColumnSalesLinePriceSplitPercentage,
+            this.ColumnSalesLineTradeInId,
+            this.ColumnSalesLineTradeInAmount});
             this.dataGridViewSalesLineList.Location = new System.Drawing.Point(12, 55);
             this.dataGridViewSalesLineList.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewSalesLineList.MultiSelect = false;
@@ -721,6 +767,7 @@
             // 
             // ColumnSalesLineId
             // 
+            this.ColumnSalesLineId.Frozen = true;
             this.ColumnSalesLineId.HeaderText = "Id";
             this.ColumnSalesLineId.MinimumWidth = 6;
             this.ColumnSalesLineId.Name = "ColumnSalesLineId";
@@ -730,6 +777,7 @@
             // 
             // ColumnSalesLineSalesId
             // 
+            this.ColumnSalesLineSalesId.Frozen = true;
             this.ColumnSalesLineSalesId.HeaderText = "SalesId";
             this.ColumnSalesLineSalesId.MinimumWidth = 6;
             this.ColumnSalesLineSalesId.Name = "ColumnSalesLineSalesId";
@@ -739,6 +787,7 @@
             // 
             // ColumnSalesLineItemId
             // 
+            this.ColumnSalesLineItemId.Frozen = true;
             this.ColumnSalesLineItemId.HeaderText = "ItemId";
             this.ColumnSalesLineItemId.MinimumWidth = 6;
             this.ColumnSalesLineItemId.Name = "ColumnSalesLineItemId";
@@ -746,8 +795,20 @@
             this.ColumnSalesLineItemId.Visible = false;
             this.ColumnSalesLineItemId.Width = 125;
             // 
+            // ColumnSalesWarrantyCode
+            // 
+            this.ColumnSalesWarrantyCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ColumnSalesWarrantyCode.DataPropertyName = "ColumnSalesWarrantyCode";
+            this.ColumnSalesWarrantyCode.Frozen = true;
+            this.ColumnSalesWarrantyCode.HeaderText = "Warranty Code";
+            this.ColumnSalesWarrantyCode.MinimumWidth = 6;
+            this.ColumnSalesWarrantyCode.Name = "ColumnSalesWarrantyCode";
+            this.ColumnSalesWarrantyCode.ReadOnly = true;
+            this.ColumnSalesWarrantyCode.Width = 153;
+            // 
             // ColumnSalesLineItemDescription
             // 
+            this.ColumnSalesLineItemDescription.Frozen = true;
             this.ColumnSalesLineItemDescription.HeaderText = "Item Description";
             this.ColumnSalesLineItemDescription.MinimumWidth = 6;
             this.ColumnSalesLineItemDescription.Name = "ColumnSalesLineItemDescription";
@@ -758,6 +819,7 @@
             // 
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnSalesLineQuantity.DefaultCellStyle = dataGridViewCellStyle2;
+            this.ColumnSalesLineQuantity.Frozen = true;
             this.ColumnSalesLineQuantity.HeaderText = "Quantity";
             this.ColumnSalesLineQuantity.MinimumWidth = 6;
             this.ColumnSalesLineQuantity.Name = "ColumnSalesLineQuantity";
@@ -768,6 +830,7 @@
             // 
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnSalesLineBodegaQty.DefaultCellStyle = dataGridViewCellStyle3;
+            this.ColumnSalesLineBodegaQty.Frozen = true;
             this.ColumnSalesLineBodegaQty.HeaderText = "Bodega Qty";
             this.ColumnSalesLineBodegaQty.MinimumWidth = 6;
             this.ColumnSalesLineBodegaQty.Name = "ColumnSalesLineBodegaQty";
@@ -777,6 +840,7 @@
             // 
             // ColumnSalesLineUnitId
             // 
+            this.ColumnSalesLineUnitId.Frozen = true;
             this.ColumnSalesLineUnitId.HeaderText = "UnitId";
             this.ColumnSalesLineUnitId.MinimumWidth = 6;
             this.ColumnSalesLineUnitId.Name = "ColumnSalesLineUnitId";
@@ -786,6 +850,7 @@
             // 
             // ColumnSalesLineUnit
             // 
+            this.ColumnSalesLineUnit.Frozen = true;
             this.ColumnSalesLineUnit.HeaderText = "Unit";
             this.ColumnSalesLineUnit.MinimumWidth = 6;
             this.ColumnSalesLineUnit.Name = "ColumnSalesLineUnit";
@@ -796,6 +861,7 @@
             // 
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnSalesLinePrice.DefaultCellStyle = dataGridViewCellStyle4;
+            this.ColumnSalesLinePrice.Frozen = true;
             this.ColumnSalesLinePrice.HeaderText = "Price";
             this.ColumnSalesLinePrice.MinimumWidth = 6;
             this.ColumnSalesLinePrice.Name = "ColumnSalesLinePrice";
@@ -804,6 +870,7 @@
             // 
             // ColumnSalesLineDiscountId
             // 
+            this.ColumnSalesLineDiscountId.Frozen = true;
             this.ColumnSalesLineDiscountId.HeaderText = "DiscountId";
             this.ColumnSalesLineDiscountId.MinimumWidth = 6;
             this.ColumnSalesLineDiscountId.Name = "ColumnSalesLineDiscountId";
@@ -813,6 +880,7 @@
             // 
             // ColumnSalesLineDiscount
             // 
+            this.ColumnSalesLineDiscount.Frozen = true;
             this.ColumnSalesLineDiscount.HeaderText = "Discount";
             this.ColumnSalesLineDiscount.MinimumWidth = 6;
             this.ColumnSalesLineDiscount.Name = "ColumnSalesLineDiscount";
@@ -824,6 +892,7 @@
             // 
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnSalesLineDiscountRate.DefaultCellStyle = dataGridViewCellStyle5;
+            this.ColumnSalesLineDiscountRate.Frozen = true;
             this.ColumnSalesLineDiscountRate.HeaderText = "Discount %";
             this.ColumnSalesLineDiscountRate.MinimumWidth = 6;
             this.ColumnSalesLineDiscountRate.Name = "ColumnSalesLineDiscountRate";
@@ -834,6 +903,7 @@
             // 
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnSalesLineDiscountAmount.DefaultCellStyle = dataGridViewCellStyle6;
+            this.ColumnSalesLineDiscountAmount.Frozen = true;
             this.ColumnSalesLineDiscountAmount.HeaderText = "Discount";
             this.ColumnSalesLineDiscountAmount.MinimumWidth = 6;
             this.ColumnSalesLineDiscountAmount.Name = "ColumnSalesLineDiscountAmount";
@@ -844,6 +914,7 @@
             // 
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnSalesLineNetPrice.DefaultCellStyle = dataGridViewCellStyle7;
+            this.ColumnSalesLineNetPrice.Frozen = true;
             this.ColumnSalesLineNetPrice.HeaderText = "Net Price";
             this.ColumnSalesLineNetPrice.MinimumWidth = 6;
             this.ColumnSalesLineNetPrice.Name = "ColumnSalesLineNetPrice";
@@ -854,6 +925,7 @@
             // 
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnSalesLineAmount.DefaultCellStyle = dataGridViewCellStyle8;
+            this.ColumnSalesLineAmount.Frozen = true;
             this.ColumnSalesLineAmount.HeaderText = "Amount";
             this.ColumnSalesLineAmount.MinimumWidth = 6;
             this.ColumnSalesLineAmount.Name = "ColumnSalesLineAmount";
@@ -862,6 +934,7 @@
             // 
             // ColumnSalesLineTaxId
             // 
+            this.ColumnSalesLineTaxId.Frozen = true;
             this.ColumnSalesLineTaxId.HeaderText = "TaxId";
             this.ColumnSalesLineTaxId.MinimumWidth = 6;
             this.ColumnSalesLineTaxId.Name = "ColumnSalesLineTaxId";
@@ -871,6 +944,7 @@
             // 
             // ColumnSalesLineTax
             // 
+            this.ColumnSalesLineTax.Frozen = true;
             this.ColumnSalesLineTax.HeaderText = "Tax";
             this.ColumnSalesLineTax.MinimumWidth = 6;
             this.ColumnSalesLineTax.Name = "ColumnSalesLineTax";
@@ -882,6 +956,7 @@
             // 
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnSalesLineTaxRate.DefaultCellStyle = dataGridViewCellStyle9;
+            this.ColumnSalesLineTaxRate.Frozen = true;
             this.ColumnSalesLineTaxRate.HeaderText = "Tax %";
             this.ColumnSalesLineTaxRate.MinimumWidth = 6;
             this.ColumnSalesLineTaxRate.Name = "ColumnSalesLineTaxRate";
@@ -892,6 +967,7 @@
             // 
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnSalesLineTaxAmount.DefaultCellStyle = dataGridViewCellStyle10;
+            this.ColumnSalesLineTaxAmount.Frozen = true;
             this.ColumnSalesLineTaxAmount.HeaderText = "Tax";
             this.ColumnSalesLineTaxAmount.MinimumWidth = 6;
             this.ColumnSalesLineTaxAmount.Name = "ColumnSalesLineTaxAmount";
@@ -900,6 +976,7 @@
             // 
             // ColumnSalesLineSalesAccountId
             // 
+            this.ColumnSalesLineSalesAccountId.Frozen = true;
             this.ColumnSalesLineSalesAccountId.HeaderText = "SalesAccountId";
             this.ColumnSalesLineSalesAccountId.MinimumWidth = 6;
             this.ColumnSalesLineSalesAccountId.Name = "ColumnSalesLineSalesAccountId";
@@ -909,6 +986,7 @@
             // 
             // ColumnSalesLineAssetAccountId
             // 
+            this.ColumnSalesLineAssetAccountId.Frozen = true;
             this.ColumnSalesLineAssetAccountId.HeaderText = "AssetAccountId";
             this.ColumnSalesLineAssetAccountId.MinimumWidth = 6;
             this.ColumnSalesLineAssetAccountId.Name = "ColumnSalesLineAssetAccountId";
@@ -918,6 +996,7 @@
             // 
             // ColumnSalesLineCostAccountId
             // 
+            this.ColumnSalesLineCostAccountId.Frozen = true;
             this.ColumnSalesLineCostAccountId.HeaderText = "CostAccountId";
             this.ColumnSalesLineCostAccountId.MinimumWidth = 6;
             this.ColumnSalesLineCostAccountId.Name = "ColumnSalesLineCostAccountId";
@@ -927,6 +1006,7 @@
             // 
             // ColumnSalesLineTaxAccountId
             // 
+            this.ColumnSalesLineTaxAccountId.Frozen = true;
             this.ColumnSalesLineTaxAccountId.HeaderText = "TaxAccountId";
             this.ColumnSalesLineTaxAccountId.MinimumWidth = 6;
             this.ColumnSalesLineTaxAccountId.Name = "ColumnSalesLineTaxAccountId";
@@ -936,6 +1016,7 @@
             // 
             // ColumnSalesLineTimeStamp
             // 
+            this.ColumnSalesLineTimeStamp.Frozen = true;
             this.ColumnSalesLineTimeStamp.HeaderText = "SalesLineTimeStamp";
             this.ColumnSalesLineTimeStamp.MinimumWidth = 6;
             this.ColumnSalesLineTimeStamp.Name = "ColumnSalesLineTimeStamp";
@@ -945,6 +1026,7 @@
             // 
             // ColumnSalesLineUserId
             // 
+            this.ColumnSalesLineUserId.Frozen = true;
             this.ColumnSalesLineUserId.HeaderText = "UserId";
             this.ColumnSalesLineUserId.MinimumWidth = 6;
             this.ColumnSalesLineUserId.Name = "ColumnSalesLineUserId";
@@ -954,6 +1036,7 @@
             // 
             // ColumnSalesLinePreparation
             // 
+            this.ColumnSalesLinePreparation.Frozen = true;
             this.ColumnSalesLinePreparation.HeaderText = "Preparation";
             this.ColumnSalesLinePreparation.MinimumWidth = 6;
             this.ColumnSalesLinePreparation.Name = "ColumnSalesLinePreparation";
@@ -963,6 +1046,7 @@
             // 
             // ColumnSalesLinePrice1
             // 
+            this.ColumnSalesLinePrice1.Frozen = true;
             this.ColumnSalesLinePrice1.HeaderText = "Price1";
             this.ColumnSalesLinePrice1.MinimumWidth = 6;
             this.ColumnSalesLinePrice1.Name = "ColumnSalesLinePrice1";
@@ -972,6 +1056,7 @@
             // 
             // ColumnSalesLinePrice2
             // 
+            this.ColumnSalesLinePrice2.Frozen = true;
             this.ColumnSalesLinePrice2.HeaderText = "Price2";
             this.ColumnSalesLinePrice2.MinimumWidth = 6;
             this.ColumnSalesLinePrice2.Name = "ColumnSalesLinePrice2";
@@ -981,6 +1066,7 @@
             // 
             // ColumnSalesLinePrice2LessTax
             // 
+            this.ColumnSalesLinePrice2LessTax.Frozen = true;
             this.ColumnSalesLinePrice2LessTax.HeaderText = "Price2LessTax";
             this.ColumnSalesLinePrice2LessTax.MinimumWidth = 6;
             this.ColumnSalesLinePrice2LessTax.Name = "ColumnSalesLinePrice2LessTax";
@@ -990,6 +1076,7 @@
             // 
             // ColumnSalesLinePriceSplitPercentage
             // 
+            this.ColumnSalesLinePriceSplitPercentage.Frozen = true;
             this.ColumnSalesLinePriceSplitPercentage.HeaderText = "PriceSplitPercentage";
             this.ColumnSalesLinePriceSplitPercentage.MinimumWidth = 6;
             this.ColumnSalesLinePriceSplitPercentage.Name = "ColumnSalesLinePriceSplitPercentage";
@@ -997,24 +1084,26 @@
             this.ColumnSalesLinePriceSplitPercentage.Visible = false;
             this.ColumnSalesLinePriceSplitPercentage.Width = 125;
             // 
-            // buttonDefect
+            // ColumnSalesLineTradeInId
             // 
-            this.buttonDefect.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonDefect.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonDefect.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(166)))), ((int)(((byte)(240)))));
-            this.buttonDefect.FlatAppearance.BorderSize = 0;
-            this.buttonDefect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDefect.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonDefect.ForeColor = System.Drawing.Color.White;
-            this.buttonDefect.Location = new System.Drawing.Point(7, 11);
-            this.buttonDefect.Margin = new System.Windows.Forms.Padding(2);
-            this.buttonDefect.Name = "buttonDefect";
-            this.buttonDefect.Size = new System.Drawing.Size(157, 46);
-            this.buttonDefect.TabIndex = 27;
-            this.buttonDefect.TabStop = false;
-            this.buttonDefect.Text = "F1 - Defective";
-            this.buttonDefect.UseVisualStyleBackColor = false;
-            this.buttonDefect.Click += new System.EventHandler(this.buttonDefect_Click);
+            this.ColumnSalesLineTradeInId.DataPropertyName = "ColumnSalesLineTradeInId";
+            this.ColumnSalesLineTradeInId.Frozen = true;
+            this.ColumnSalesLineTradeInId.HeaderText = "TradeInId";
+            this.ColumnSalesLineTradeInId.MinimumWidth = 6;
+            this.ColumnSalesLineTradeInId.Name = "ColumnSalesLineTradeInId";
+            this.ColumnSalesLineTradeInId.ReadOnly = true;
+            this.ColumnSalesLineTradeInId.Visible = false;
+            this.ColumnSalesLineTradeInId.Width = 125;
+            // 
+            // ColumnSalesLineTradeInAmount
+            // 
+            this.ColumnSalesLineTradeInAmount.DataPropertyName = "ColumnSalesLineTradeInAmount";
+            this.ColumnSalesLineTradeInAmount.HeaderText = "TradeInAmount";
+            this.ColumnSalesLineTradeInAmount.MinimumWidth = 6;
+            this.ColumnSalesLineTradeInAmount.Name = "ColumnSalesLineTradeInAmount";
+            this.ColumnSalesLineTradeInAmount.ReadOnly = true;
+            this.ColumnSalesLineTradeInAmount.Visible = false;
+            this.ColumnSalesLineTradeInAmount.Width = 125;
             // 
             // TrnPOSBarcodeDetailForm
             // 
@@ -1086,11 +1175,14 @@
         public System.Windows.Forms.Button buttonTender;
         private System.Windows.Forms.Button buttonOpenCashDrawer;
         public System.Windows.Forms.Button buttonPrint;
+        private System.Windows.Forms.Button buttonDefect;
+        private System.Windows.Forms.Button buttonTradeIn;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnSalesLineEdit;
         private System.Windows.Forms.DataGridViewButtonColumn ColumnSalesLineDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineSalesId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineItemId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesWarrantyCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineItemDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineQuantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineBodegaQty;
@@ -1118,6 +1210,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2LessTax;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePriceSplitPercentage;
-        private System.Windows.Forms.Button buttonDefect;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineTradeInId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineTradeInAmount;
     }
 }
