@@ -89,12 +89,18 @@
             this.ColumnSalesLineUnitId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLinePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineNetPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineTradeInId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineTradeInNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineTradeInAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineDefectiveId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineDefectiveNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColumnSalesLineDefectiveInvoiceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineDiscountId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineDiscount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineDiscountRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineDiscountAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesLineNetPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesLineAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineTaxId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLineTaxRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -110,8 +116,6 @@
             this.ColumnSalesLinePrice2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLinePrice2LessTax = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColumnSalesLinePriceSplitPercentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesLineTradeInId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColumnSalesLineTradeInAmount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
@@ -556,12 +560,18 @@
             this.ColumnSalesLineUnitId,
             this.ColumnSalesLineUnit,
             this.ColumnSalesLinePrice,
+            this.ColumnSalesLineNetPrice,
+            this.ColumnSalesLineAmount,
+            this.ColumnSalesLineTradeInId,
+            this.ColumnSalesLineTradeInNo,
+            this.ColumnSalesLineTradeInAmount,
+            this.ColumnSalesLineDefectiveId,
+            this.ColumnSalesLineDefectiveNo,
+            this.ColumnSalesLineDefectiveInvoiceNo,
             this.ColumnSalesLineDiscountId,
             this.ColumnSalesLineDiscount,
             this.ColumnSalesLineDiscountRate,
             this.ColumnSalesLineDiscountAmount,
-            this.ColumnSalesLineNetPrice,
-            this.ColumnSalesLineAmount,
             this.ColumnSalesLineTaxId,
             this.ColumnSalesLineTax,
             this.ColumnSalesLineTaxRate,
@@ -576,9 +586,7 @@
             this.ColumnSalesLinePrice1,
             this.ColumnSalesLinePrice2,
             this.ColumnSalesLinePrice2LessTax,
-            this.ColumnSalesLinePriceSplitPercentage,
-            this.ColumnSalesLineTradeInId,
-            this.ColumnSalesLineTradeInAmount});
+            this.ColumnSalesLinePriceSplitPercentage});
             this.dataGridViewSalesLineList.Location = new System.Drawing.Point(12, 55);
             this.dataGridViewSalesLineList.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridViewSalesLineList.MultiSelect = false;
@@ -813,7 +821,7 @@
             this.ColumnSalesLineItemDescription.MinimumWidth = 6;
             this.ColumnSalesLineItemDescription.Name = "ColumnSalesLineItemDescription";
             this.ColumnSalesLineItemDescription.ReadOnly = true;
-            this.ColumnSalesLineItemDescription.Width = 200;
+            this.ColumnSalesLineItemDescription.Width = 300;
             // 
             // ColumnSalesLineQuantity
             // 
@@ -868,52 +876,10 @@
             this.ColumnSalesLinePrice.ReadOnly = true;
             this.ColumnSalesLinePrice.Width = 125;
             // 
-            // ColumnSalesLineDiscountId
-            // 
-            this.ColumnSalesLineDiscountId.Frozen = true;
-            this.ColumnSalesLineDiscountId.HeaderText = "DiscountId";
-            this.ColumnSalesLineDiscountId.MinimumWidth = 6;
-            this.ColumnSalesLineDiscountId.Name = "ColumnSalesLineDiscountId";
-            this.ColumnSalesLineDiscountId.ReadOnly = true;
-            this.ColumnSalesLineDiscountId.Visible = false;
-            this.ColumnSalesLineDiscountId.Width = 125;
-            // 
-            // ColumnSalesLineDiscount
-            // 
-            this.ColumnSalesLineDiscount.Frozen = true;
-            this.ColumnSalesLineDiscount.HeaderText = "Discount";
-            this.ColumnSalesLineDiscount.MinimumWidth = 6;
-            this.ColumnSalesLineDiscount.Name = "ColumnSalesLineDiscount";
-            this.ColumnSalesLineDiscount.ReadOnly = true;
-            this.ColumnSalesLineDiscount.Visible = false;
-            this.ColumnSalesLineDiscount.Width = 125;
-            // 
-            // ColumnSalesLineDiscountRate
-            // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineDiscountRate.DefaultCellStyle = dataGridViewCellStyle5;
-            this.ColumnSalesLineDiscountRate.Frozen = true;
-            this.ColumnSalesLineDiscountRate.HeaderText = "Discount %";
-            this.ColumnSalesLineDiscountRate.MinimumWidth = 6;
-            this.ColumnSalesLineDiscountRate.Name = "ColumnSalesLineDiscountRate";
-            this.ColumnSalesLineDiscountRate.ReadOnly = true;
-            this.ColumnSalesLineDiscountRate.Width = 110;
-            // 
-            // ColumnSalesLineDiscountAmount
-            // 
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineDiscountAmount.DefaultCellStyle = dataGridViewCellStyle6;
-            this.ColumnSalesLineDiscountAmount.Frozen = true;
-            this.ColumnSalesLineDiscountAmount.HeaderText = "Discount";
-            this.ColumnSalesLineDiscountAmount.MinimumWidth = 6;
-            this.ColumnSalesLineDiscountAmount.Name = "ColumnSalesLineDiscountAmount";
-            this.ColumnSalesLineDiscountAmount.ReadOnly = true;
-            this.ColumnSalesLineDiscountAmount.Width = 125;
-            // 
             // ColumnSalesLineNetPrice
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineNetPrice.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineNetPrice.DefaultCellStyle = dataGridViewCellStyle5;
             this.ColumnSalesLineNetPrice.Frozen = true;
             this.ColumnSalesLineNetPrice.HeaderText = "Net Price";
             this.ColumnSalesLineNetPrice.MinimumWidth = 6;
@@ -923,8 +889,8 @@
             // 
             // ColumnSalesLineAmount
             // 
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            this.ColumnSalesLineAmount.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineAmount.DefaultCellStyle = dataGridViewCellStyle6;
             this.ColumnSalesLineAmount.Frozen = true;
             this.ColumnSalesLineAmount.HeaderText = "Amount";
             this.ColumnSalesLineAmount.MinimumWidth = 6;
@@ -932,9 +898,97 @@
             this.ColumnSalesLineAmount.ReadOnly = true;
             this.ColumnSalesLineAmount.Width = 125;
             // 
+            // ColumnSalesLineTradeInId
+            // 
+            this.ColumnSalesLineTradeInId.Frozen = true;
+            this.ColumnSalesLineTradeInId.HeaderText = "TradeInId";
+            this.ColumnSalesLineTradeInId.MinimumWidth = 6;
+            this.ColumnSalesLineTradeInId.Name = "ColumnSalesLineTradeInId";
+            this.ColumnSalesLineTradeInId.ReadOnly = true;
+            this.ColumnSalesLineTradeInId.Visible = false;
+            this.ColumnSalesLineTradeInId.Width = 125;
+            // 
+            // ColumnSalesLineTradeInNo
+            // 
+            this.ColumnSalesLineTradeInNo.HeaderText = "Trade - In No.";
+            this.ColumnSalesLineTradeInNo.MinimumWidth = 6;
+            this.ColumnSalesLineTradeInNo.Name = "ColumnSalesLineTradeInNo";
+            this.ColumnSalesLineTradeInNo.ReadOnly = true;
+            this.ColumnSalesLineTradeInNo.Width = 125;
+            // 
+            // ColumnSalesLineTradeInAmount
+            // 
+            this.ColumnSalesLineTradeInAmount.HeaderText = "Trade - In Amount";
+            this.ColumnSalesLineTradeInAmount.MinimumWidth = 6;
+            this.ColumnSalesLineTradeInAmount.Name = "ColumnSalesLineTradeInAmount";
+            this.ColumnSalesLineTradeInAmount.ReadOnly = true;
+            this.ColumnSalesLineTradeInAmount.Width = 125;
+            // 
+            // ColumnSalesLineDefectiveId
+            // 
+            this.ColumnSalesLineDefectiveId.HeaderText = "DefectiveId";
+            this.ColumnSalesLineDefectiveId.MinimumWidth = 6;
+            this.ColumnSalesLineDefectiveId.Name = "ColumnSalesLineDefectiveId";
+            this.ColumnSalesLineDefectiveId.ReadOnly = true;
+            this.ColumnSalesLineDefectiveId.Visible = false;
+            this.ColumnSalesLineDefectiveId.Width = 125;
+            // 
+            // ColumnSalesLineDefectiveNo
+            // 
+            this.ColumnSalesLineDefectiveNo.HeaderText = "Defective No.";
+            this.ColumnSalesLineDefectiveNo.MinimumWidth = 6;
+            this.ColumnSalesLineDefectiveNo.Name = "ColumnSalesLineDefectiveNo";
+            this.ColumnSalesLineDefectiveNo.ReadOnly = true;
+            this.ColumnSalesLineDefectiveNo.Width = 125;
+            // 
+            // ColumnSalesLineDefectiveInvoiceNo
+            // 
+            this.ColumnSalesLineDefectiveInvoiceNo.HeaderText = "Invoice No.";
+            this.ColumnSalesLineDefectiveInvoiceNo.MinimumWidth = 6;
+            this.ColumnSalesLineDefectiveInvoiceNo.Name = "ColumnSalesLineDefectiveInvoiceNo";
+            this.ColumnSalesLineDefectiveInvoiceNo.ReadOnly = true;
+            this.ColumnSalesLineDefectiveInvoiceNo.Width = 125;
+            // 
+            // ColumnSalesLineDiscountId
+            // 
+            this.ColumnSalesLineDiscountId.HeaderText = "DiscountId";
+            this.ColumnSalesLineDiscountId.MinimumWidth = 6;
+            this.ColumnSalesLineDiscountId.Name = "ColumnSalesLineDiscountId";
+            this.ColumnSalesLineDiscountId.ReadOnly = true;
+            this.ColumnSalesLineDiscountId.Visible = false;
+            this.ColumnSalesLineDiscountId.Width = 125;
+            // 
+            // ColumnSalesLineDiscount
+            // 
+            this.ColumnSalesLineDiscount.HeaderText = "Discount";
+            this.ColumnSalesLineDiscount.MinimumWidth = 6;
+            this.ColumnSalesLineDiscount.Name = "ColumnSalesLineDiscount";
+            this.ColumnSalesLineDiscount.ReadOnly = true;
+            this.ColumnSalesLineDiscount.Visible = false;
+            this.ColumnSalesLineDiscount.Width = 125;
+            // 
+            // ColumnSalesLineDiscountRate
+            // 
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineDiscountRate.DefaultCellStyle = dataGridViewCellStyle7;
+            this.ColumnSalesLineDiscountRate.HeaderText = "Discount %";
+            this.ColumnSalesLineDiscountRate.MinimumWidth = 6;
+            this.ColumnSalesLineDiscountRate.Name = "ColumnSalesLineDiscountRate";
+            this.ColumnSalesLineDiscountRate.ReadOnly = true;
+            this.ColumnSalesLineDiscountRate.Width = 110;
+            // 
+            // ColumnSalesLineDiscountAmount
+            // 
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            this.ColumnSalesLineDiscountAmount.DefaultCellStyle = dataGridViewCellStyle8;
+            this.ColumnSalesLineDiscountAmount.HeaderText = "Discount";
+            this.ColumnSalesLineDiscountAmount.MinimumWidth = 6;
+            this.ColumnSalesLineDiscountAmount.Name = "ColumnSalesLineDiscountAmount";
+            this.ColumnSalesLineDiscountAmount.ReadOnly = true;
+            this.ColumnSalesLineDiscountAmount.Width = 125;
+            // 
             // ColumnSalesLineTaxId
             // 
-            this.ColumnSalesLineTaxId.Frozen = true;
             this.ColumnSalesLineTaxId.HeaderText = "TaxId";
             this.ColumnSalesLineTaxId.MinimumWidth = 6;
             this.ColumnSalesLineTaxId.Name = "ColumnSalesLineTaxId";
@@ -944,7 +998,6 @@
             // 
             // ColumnSalesLineTax
             // 
-            this.ColumnSalesLineTax.Frozen = true;
             this.ColumnSalesLineTax.HeaderText = "Tax";
             this.ColumnSalesLineTax.MinimumWidth = 6;
             this.ColumnSalesLineTax.Name = "ColumnSalesLineTax";
@@ -956,7 +1009,6 @@
             // 
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnSalesLineTaxRate.DefaultCellStyle = dataGridViewCellStyle9;
-            this.ColumnSalesLineTaxRate.Frozen = true;
             this.ColumnSalesLineTaxRate.HeaderText = "Tax %";
             this.ColumnSalesLineTaxRate.MinimumWidth = 6;
             this.ColumnSalesLineTaxRate.Name = "ColumnSalesLineTaxRate";
@@ -967,8 +1019,7 @@
             // 
             dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
             this.ColumnSalesLineTaxAmount.DefaultCellStyle = dataGridViewCellStyle10;
-            this.ColumnSalesLineTaxAmount.Frozen = true;
-            this.ColumnSalesLineTaxAmount.HeaderText = "Tax";
+            this.ColumnSalesLineTaxAmount.HeaderText = "Tax Amount";
             this.ColumnSalesLineTaxAmount.MinimumWidth = 6;
             this.ColumnSalesLineTaxAmount.Name = "ColumnSalesLineTaxAmount";
             this.ColumnSalesLineTaxAmount.ReadOnly = true;
@@ -976,7 +1027,6 @@
             // 
             // ColumnSalesLineSalesAccountId
             // 
-            this.ColumnSalesLineSalesAccountId.Frozen = true;
             this.ColumnSalesLineSalesAccountId.HeaderText = "SalesAccountId";
             this.ColumnSalesLineSalesAccountId.MinimumWidth = 6;
             this.ColumnSalesLineSalesAccountId.Name = "ColumnSalesLineSalesAccountId";
@@ -986,7 +1036,6 @@
             // 
             // ColumnSalesLineAssetAccountId
             // 
-            this.ColumnSalesLineAssetAccountId.Frozen = true;
             this.ColumnSalesLineAssetAccountId.HeaderText = "AssetAccountId";
             this.ColumnSalesLineAssetAccountId.MinimumWidth = 6;
             this.ColumnSalesLineAssetAccountId.Name = "ColumnSalesLineAssetAccountId";
@@ -996,7 +1045,6 @@
             // 
             // ColumnSalesLineCostAccountId
             // 
-            this.ColumnSalesLineCostAccountId.Frozen = true;
             this.ColumnSalesLineCostAccountId.HeaderText = "CostAccountId";
             this.ColumnSalesLineCostAccountId.MinimumWidth = 6;
             this.ColumnSalesLineCostAccountId.Name = "ColumnSalesLineCostAccountId";
@@ -1006,7 +1054,6 @@
             // 
             // ColumnSalesLineTaxAccountId
             // 
-            this.ColumnSalesLineTaxAccountId.Frozen = true;
             this.ColumnSalesLineTaxAccountId.HeaderText = "TaxAccountId";
             this.ColumnSalesLineTaxAccountId.MinimumWidth = 6;
             this.ColumnSalesLineTaxAccountId.Name = "ColumnSalesLineTaxAccountId";
@@ -1016,7 +1063,6 @@
             // 
             // ColumnSalesLineTimeStamp
             // 
-            this.ColumnSalesLineTimeStamp.Frozen = true;
             this.ColumnSalesLineTimeStamp.HeaderText = "SalesLineTimeStamp";
             this.ColumnSalesLineTimeStamp.MinimumWidth = 6;
             this.ColumnSalesLineTimeStamp.Name = "ColumnSalesLineTimeStamp";
@@ -1026,7 +1072,6 @@
             // 
             // ColumnSalesLineUserId
             // 
-            this.ColumnSalesLineUserId.Frozen = true;
             this.ColumnSalesLineUserId.HeaderText = "UserId";
             this.ColumnSalesLineUserId.MinimumWidth = 6;
             this.ColumnSalesLineUserId.Name = "ColumnSalesLineUserId";
@@ -1036,7 +1081,6 @@
             // 
             // ColumnSalesLinePreparation
             // 
-            this.ColumnSalesLinePreparation.Frozen = true;
             this.ColumnSalesLinePreparation.HeaderText = "Preparation";
             this.ColumnSalesLinePreparation.MinimumWidth = 6;
             this.ColumnSalesLinePreparation.Name = "ColumnSalesLinePreparation";
@@ -1046,7 +1090,6 @@
             // 
             // ColumnSalesLinePrice1
             // 
-            this.ColumnSalesLinePrice1.Frozen = true;
             this.ColumnSalesLinePrice1.HeaderText = "Price1";
             this.ColumnSalesLinePrice1.MinimumWidth = 6;
             this.ColumnSalesLinePrice1.Name = "ColumnSalesLinePrice1";
@@ -1056,7 +1099,6 @@
             // 
             // ColumnSalesLinePrice2
             // 
-            this.ColumnSalesLinePrice2.Frozen = true;
             this.ColumnSalesLinePrice2.HeaderText = "Price2";
             this.ColumnSalesLinePrice2.MinimumWidth = 6;
             this.ColumnSalesLinePrice2.Name = "ColumnSalesLinePrice2";
@@ -1066,7 +1108,6 @@
             // 
             // ColumnSalesLinePrice2LessTax
             // 
-            this.ColumnSalesLinePrice2LessTax.Frozen = true;
             this.ColumnSalesLinePrice2LessTax.HeaderText = "Price2LessTax";
             this.ColumnSalesLinePrice2LessTax.MinimumWidth = 6;
             this.ColumnSalesLinePrice2LessTax.Name = "ColumnSalesLinePrice2LessTax";
@@ -1076,34 +1117,12 @@
             // 
             // ColumnSalesLinePriceSplitPercentage
             // 
-            this.ColumnSalesLinePriceSplitPercentage.Frozen = true;
             this.ColumnSalesLinePriceSplitPercentage.HeaderText = "PriceSplitPercentage";
             this.ColumnSalesLinePriceSplitPercentage.MinimumWidth = 6;
             this.ColumnSalesLinePriceSplitPercentage.Name = "ColumnSalesLinePriceSplitPercentage";
             this.ColumnSalesLinePriceSplitPercentage.ReadOnly = true;
             this.ColumnSalesLinePriceSplitPercentage.Visible = false;
             this.ColumnSalesLinePriceSplitPercentage.Width = 125;
-            // 
-            // ColumnSalesLineTradeInId
-            // 
-            this.ColumnSalesLineTradeInId.DataPropertyName = "ColumnSalesLineTradeInId";
-            this.ColumnSalesLineTradeInId.Frozen = true;
-            this.ColumnSalesLineTradeInId.HeaderText = "TradeInId";
-            this.ColumnSalesLineTradeInId.MinimumWidth = 6;
-            this.ColumnSalesLineTradeInId.Name = "ColumnSalesLineTradeInId";
-            this.ColumnSalesLineTradeInId.ReadOnly = true;
-            this.ColumnSalesLineTradeInId.Visible = false;
-            this.ColumnSalesLineTradeInId.Width = 125;
-            // 
-            // ColumnSalesLineTradeInAmount
-            // 
-            this.ColumnSalesLineTradeInAmount.DataPropertyName = "ColumnSalesLineTradeInAmount";
-            this.ColumnSalesLineTradeInAmount.HeaderText = "TradeInAmount";
-            this.ColumnSalesLineTradeInAmount.MinimumWidth = 6;
-            this.ColumnSalesLineTradeInAmount.Name = "ColumnSalesLineTradeInAmount";
-            this.ColumnSalesLineTradeInAmount.ReadOnly = true;
-            this.ColumnSalesLineTradeInAmount.Visible = false;
-            this.ColumnSalesLineTradeInAmount.Width = 125;
             // 
             // TrnPOSBarcodeDetailForm
             // 
@@ -1189,12 +1208,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineUnitId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineNetPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineTradeInId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineTradeInNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineTradeInAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineDefectiveId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineDefectiveNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineDefectiveInvoiceNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineDiscountId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineDiscount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineDiscountRate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineDiscountAmount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineNetPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineAmount;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineTaxId;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineTax;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineTaxRate;
@@ -1210,7 +1235,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePrice2LessTax;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLinePriceSplitPercentage;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineTradeInId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColumnSalesLineTradeInAmount;
     }
 }

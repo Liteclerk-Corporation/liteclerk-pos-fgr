@@ -282,5 +282,29 @@ namespace EasyPOS.Controllers
                 return new String[] { e.Message, "0" };
             }
         }
+        // =======================
+        // Defective Dropdown List
+        // =======================
+        public List<Entities.TrnDefectiveEntity> DropdownListDefectiveNo()
+        {
+            var defectiveNo = from d in db.TrnDefectives
+                            where d.IsLocked == true
+                            select new Entities.TrnDefectiveEntity
+                            {
+                                Id = d.Id,
+                                DefectiveNo = d.DefectiveNo,
+                            };
+
+            return defectiveNo.ToList();
+        }
+        public String GetDefectiveInvoiceNo(Int32 defectiveId)
+        {
+            var defectives = from d in db.TrnDefectives
+                             where d.IsLocked == true
+                             && d.Id == defectiveId
+                             select d;
+
+            return defectives.FirstOrDefault().InvoiceNo;
+        }
     }
 }

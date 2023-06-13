@@ -27558,6 +27558,8 @@ namespace EasyPOS.Data
 		
 		private decimal _TradeInAmount;
 		
+		private System.Nullable<int> _DefectiveId;
+		
 		private EntityRef<MstAccount> _MstAccount;
 		
 		private EntityRef<MstAccount> _MstAccount1;
@@ -27642,6 +27644,8 @@ namespace EasyPOS.Data
     partial void OnTradeInIdChanged();
     partial void OnTradeInAmountChanging(decimal value);
     partial void OnTradeInAmountChanged();
+    partial void OnDefectiveIdChanging(System.Nullable<int> value);
+    partial void OnDefectiveIdChanged();
     #endregion
 		
 		public TrnSalesLine()
@@ -28295,6 +28299,26 @@ namespace EasyPOS.Data
 					this._TradeInAmount = value;
 					this.SendPropertyChanged("TradeInAmount");
 					this.OnTradeInAmountChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DefectiveId", DbType="Int")]
+		public System.Nullable<int> DefectiveId
+		{
+			get
+			{
+				return this._DefectiveId;
+			}
+			set
+			{
+				if ((this._DefectiveId != value))
+				{
+					this.OnDefectiveIdChanging(value);
+					this.SendPropertyChanging();
+					this._DefectiveId = value;
+					this.SendPropertyChanged("DefectiveId");
+					this.OnDefectiveIdChanged();
 				}
 			}
 		}

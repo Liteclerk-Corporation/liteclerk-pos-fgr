@@ -211,6 +211,20 @@ namespace EasyPOS.Forms.Software.TrnPOS
             
             textBoxTradeInAmount.Text = trnSalesLineEntity.TradeInAmount.ToString("#,##0.00");
 
+            Controllers.TrnDefectiveController trnDefectiveController = new Controllers.TrnDefectiveController();
+            if (trnSalesLineEntity.DefectiveId != null)
+            {
+                if (trnDefectiveController.DropdownListDefectiveNo().Any())
+                {
+                    comboBoxDefectiveNo.DataSource = trnDefectiveController.DropdownListDefectiveNo().ToList();
+                    comboBoxDefectiveNo.ValueMember = "Id";
+                    comboBoxDefectiveNo.DisplayMember = "DefectiveNo";
+                }
+            }
+            comboBoxDefectiveNo.SelectedValue = trnSalesLineEntity.DefectiveId;
+
+            textBoxDefectiveInvoiceNo.Text = trnSalesLineEntity.DefectiveInvoiceNo;
+
             Int32? discountId = null;
 
             if (trnSalesDetailForm != null)
@@ -273,7 +287,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                 PriceSplitPercentage = 0,
                 BodegaItemQty = Convert.ToDecimal(textBoxBodegaItemQty.Text),
                 TradeInId = Convert.ToInt32(comboBoxTradeInNo.SelectedValue),
-                TradeInAmount = Convert.ToDecimal(textBoxTradeInAmount.Text)
+                TradeInAmount = Convert.ToDecimal(textBoxTradeInAmount.Text),
+                DefectiveId = Convert.ToInt32(comboBoxDefectiveNo.SelectedValue)
             };
 
             Controllers.TrnSalesLineController trnPOSSalesLineController = new Controllers.TrnSalesLineController();
@@ -420,8 +435,8 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         discountAmount = price * (discountRate / 100);
                     }
 
-                    Decimal netPrice = price - discountAmount;
-                    Decimal amount = (netPrice * quantity) - tradeInAmount;
+                    Decimal netPrice = (price - discountAmount) - tradeInAmount;
+                    Decimal amount = (netPrice * quantity);
 
                     Decimal taxAmount = 0;
                     if (taxRate > 0)
@@ -639,6 +654,35 @@ namespace EasyPOS.Forms.Software.TrnPOS
             }
 
             ComputeAmount();
+        }
+
+        private void comboBoxDefectiveNo_DropDown(object sender, EventArgs e)
+        {
+            if (comboBoxDefectiveNo.Text == "")
+            {
+                Controllers.TrnDefectiveController trnDefectiveController = new Controllers.TrnDefectiveController();
+                if (trnDefectiveController.DropdownListDefectiveNo().Any())
+                {
+                    comboBoxDefectiveNo.DataSource = trnDefectiveController.DropdownListDefectiveNo().ToList();
+                    comboBoxDefectiveNo.ValueMember = "Id";
+                    comboBoxDefectiveNo.DisplayMember = "DefectiveNo";
+                }
+            }
+        }
+
+        private void comboBoxDefectiveNo_DropDownClosed(object sender, EventArgs e)
+        {
+            Controllers.TrnDefectiveController trnDefectiveController = new Controllers.TrnDefectiveController();
+
+            textBoxDefectiveInvoiceNo.Text = trnDefectiveController.GetDefectiveInvoiceNo(Convert.ToInt32(comboBoxDefectiveNo.SelectedValue));
+        }
+
+        private void comboBoxDefectiveNo_TextUpdate(object sender, EventArgs e)
+        {
+            if (comboBoxTradeInNo.Text == "")
+            {
+                textBoxDefectiveInvoiceNo.Text = "";
+            }
         }
     }
 }

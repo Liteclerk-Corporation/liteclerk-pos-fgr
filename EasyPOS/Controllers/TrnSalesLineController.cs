@@ -62,12 +62,38 @@ namespace EasyPOS.Controllers
                                  IsPrinted = d.IsPrinted,
                                  BodegaItemQty = Convert.ToDecimal(d.BodegaItemQty),
                                  TradeInId = d.TradeInId,
-                                 TradeInAmount = d.TradeInAmount
+                                 TradeInNo = d.TradeInId > 0 ? GetTradeInNo(d.TradeInId) : null,
+                                 TradeInAmount = d.TradeInAmount,
+                                 DefectiveId = d.DefectiveId,
+                                 DefectiveNo = d.DefectiveId > 0 ? GetDefectiveNo(d.DefectiveId) : null,
+                                 DefectiveInvoiceNo = d.DefectiveId > 0 ? GetDefectiveInvoiceNo(d.DefectiveId) : null
                              };
 
             return salesLines.OrderByDescending(d => d.Id).ToList();
         }
+        public String GetTradeInNo(Int32? tradeInId)
+        {
+            var tradeIns = from d in db.TrnTradeIns
+                           where d.Id == tradeInId
+                           select d;
+            return tradeIns.FirstOrDefault().TradeInNo;
+        }
+        public String GetDefectiveNo(Int32? defectiveId)
+        {
+            var defectives = from d in db.TrnDefectives
+                             where d.Id == defectiveId
+                             select d;
+            return defectives.FirstOrDefault().DefectiveNo;
+            
+        }
+        public String GetDefectiveInvoiceNo(Int32? defectiveId)
+        {
+            var defectives = from d in db.TrnDefectives
+                             where d.Id == defectiveId
+                             select d;
+            return defectives.FirstOrDefault().InvoiceNo;
 
+        }
         // =================
         // Detail Sales Line
         // =================
@@ -108,7 +134,7 @@ namespace EasyPOS.Controllers
                                  Price2LessTax = d.Price2LessTax,
                                  PriceSplitPercentage = d.PriceSplitPercentage,
                                  TradeInId = d.TradeInId,
-                                 TradeInAmount = d.TradeInAmount
+                                 TradeInAmount = d.TradeInAmount,
                              };
 
             return salesLines.FirstOrDefault();
@@ -120,7 +146,7 @@ namespace EasyPOS.Controllers
         public List<Entities.MstItemEntity> ListSearchItem(String filter)
         {
             var items = from d in db.MstItems
-                        where d.IsLocked == true 
+                        where d.IsLocked == true
                         && (d.BarCode.Contains(filter)
                         || d.ItemDescription.Contains(filter)
                         || d.GenericName.Contains(filter))
@@ -297,7 +323,8 @@ namespace EasyPOS.Controllers
                     PriceSplitPercentage = 0,
                     BodegaItemQty = objSalesLine.BodegaItemQty,
                     TradeInId = objSalesLine.TradeInId,
-                    TradeInAmount = objSalesLine.TradeInAmount
+                    TradeInAmount = objSalesLine.TradeInAmount,
+                    DefectiveId = objSalesLine.DefectiveId
                 };
 
                 db.TrnSalesLines.InsertOnSubmit(newSaleLine);
@@ -418,6 +445,7 @@ namespace EasyPOS.Controllers
                     updateSalesLine.BodegaItemQty = objSalesLine.BodegaItemQty;
                     updateSalesLine.TradeInId = objSalesLine.TradeInId;
                     updateSalesLine.TradeInAmount = objSalesLine.TradeInAmount;
+                    updateSalesLine.DefectiveId = objSalesLine.DefectiveId;
                     db.SubmitChanges();
 
                     String newObject = Modules.SysAuditTrailModule.GetObjectString(salesLine.FirstOrDefault());
@@ -802,6 +830,21 @@ namespace EasyPOS.Controllers
             {
                 return new String[] { e.Message, "0" };
             }
+        }
+        public Boolean HasDefective(Int32 salesId)
+        {
+            Boolean hasDefective = false;
+
+            var salesLines = from d in db.TrnSalesLines
+                             where d.SalesId == salesId
+                             && d.DefectiveId > 0
+                             select d;
+            if (salesLines.Any())
+            {
+                hasDefective = true;
+            }
+
+            return hasDefective;
         }
     }
 }

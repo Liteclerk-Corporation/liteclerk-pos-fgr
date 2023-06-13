@@ -239,7 +239,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
             if (e.RowIndex > -1 && dataGridViewTradeInList.CurrentCell.ColumnIndex == dataGridViewTradeInList.Columns["ColumnTradeInListButtonDelete"].Index)
             {
-                Boolean isLocked = Convert.ToBoolean(dataGridViewTradeInList.Rows[e.RowIndex].Cells[11].Value);
+                Boolean isLocked = Convert.ToBoolean(dataGridViewTradeInList.Rows[e.RowIndex].Cells[6].Value);
 
                 if (isLocked == true)
                 {

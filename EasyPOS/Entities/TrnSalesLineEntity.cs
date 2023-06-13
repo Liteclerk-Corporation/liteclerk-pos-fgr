@@ -45,8 +45,10 @@ namespace EasyPOS.Entities
         public Boolean? IsPrinted { get; set; }
         public Decimal BodegaItemQty { get; set; }
         public Int32? TradeInId { get; set; }
+        public String TradeInNo { get; set; }
         public Decimal TradeInAmount { get; set; }
-
-
+        public Int32? DefectiveId { get; set; }
+        public String DefectiveNo { get; set; }
+        public String DefectiveInvoiceNo { get; set; }
     }
 }

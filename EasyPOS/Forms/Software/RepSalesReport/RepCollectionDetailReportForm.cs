@@ -60,7 +60,7 @@ namespace EasyPOS.Forms.Software.RepSalesReport
                               ColumnCustomer = d.Customer,
                               ColumnSalesNumber = d.SalesNumber,
                               ColumnPayType = d.PayType,
-                              ColumnAmount = d.IsCancelled == true ? "0" : d.PayTypeCode.Equals("CASH") ? (d.Amount - d.ChangeAmount).ToString("#,##0.00") : d.Amount.ToString("#,##0.00"),
+                              ColumnAmount = d.IsCancelled == true ? "0" : d.PayTypeCode.Equals("CASH") ? d.Amount > 0 ? (d.Amount - d.ChangeAmount).ToString("#,##0.00") : d.Amount.ToString("#,##0.00") : d.Amount.ToString("#,##0.00"),
                               ColumnCheckNumber = d.CheckNumber,
                               ColumnCheckDate = d.CheckDate,
                               ColumnCheckBank = d.CheckBank,

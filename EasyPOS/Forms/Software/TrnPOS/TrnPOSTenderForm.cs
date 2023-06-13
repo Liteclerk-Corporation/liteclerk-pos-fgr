@@ -108,10 +108,90 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
         public void TenderSales()
         {
-            if (Convert.ToDecimal(textBoxChangeAmount.Text) < 0)
+            Controllers.TrnSalesLineController trnSalesLineController = new Controllers.TrnSalesLineController();
+            Boolean hasDefective = trnSalesLineController.HasDefective(trnSalesEntity.Id);
+            if (hasDefective == false)
             {
-                buttonTender.Enabled = false;
-                //MessageBox.Show("Change amount must be non-negative value.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (Convert.ToDecimal(textBoxChangeAmount.Text) < 0)
+                {
+                    buttonTender.Enabled = false;
+                    //MessageBox.Show("Change amount must be non-negative value.", "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    List<Entities.DgvTrnSalesTenderPayTypeListEntity> payTypes = new List<Entities.DgvTrnSalesTenderPayTypeListEntity>();
+                    foreach (DataGridViewRow row in dataGridViewTenderPayType.Rows)
+                    {
+                        payTypes.Add(new Entities.DgvTrnSalesTenderPayTypeListEntity()
+                        {
+                            Code = row.Cells[1].Value.ToString(),
+                            PayType = row.Cells[2].Value.ToString(),
+                            Amount = Convert.ToDecimal(row.Cells[4].Value),
+                            OtherInformation = row.Cells[5].Value.ToString()
+                        });
+                    }
+
+                    Decimal salesAmount = Convert.ToDecimal(textBoxTotalSalesAmount.Text);
+                    Decimal cashAmount = 0;
+                    Decimal nonCashAmount = 0;
+                    Decimal changeAmount = Convert.ToDecimal(textBoxChangeAmount.Text);
+
+                    var cashPayType = from d in payTypes where d.Code.Equals("CASH") == true select d;
+                    if (cashPayType.Any())
+                    {
+                        cashAmount = cashPayType.FirstOrDefault().Amount;
+                    }
+
+                    var nonCashPayType = from d in payTypes where d.Code.Equals("CASH") == false select d;
+                    if (nonCashPayType.Any())
+                    {
+                        nonCashAmount = nonCashPayType.Sum(d => d.Amount);
+                    }
+
+                    Boolean isValidTender = false;
+                    String invalidTenderMessage = "";
+
+                    if (cashAmount > 0)
+                    {
+                        if (cashAmount >= changeAmount)
+                        {
+                            isValidTender = true;
+                        }
+                        else
+                        {
+                            invalidTenderMessage = "Cash amount must be greater than the change amount.";
+                        }
+                    }
+                    else
+                    {
+                        if (cashAmount == 0)
+                        {
+                            if (nonCashAmount == salesAmount)
+                            {
+                                isValidTender = true;
+                            }
+                            else
+                            {
+                                invalidTenderMessage = "Non-cash amount must be equal to the sales amount.";
+                            }
+                        }
+                        else
+                        {
+                            invalidTenderMessage = "Cash amount must not below zero.";
+                        }
+                    }
+
+                    if (isValidTender == true)
+                    {
+                        buttonTender.Enabled = true;
+                        CreateCollection(null);
+                    }
+                    else
+                    {
+                        buttonTender.Enabled = false;
+                        MessageBox.Show(invalidTenderMessage, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
             else
             {
@@ -127,69 +207,11 @@ namespace EasyPOS.Forms.Software.TrnPOS
                     });
                 }
 
-                Decimal salesAmount = Convert.ToDecimal(textBoxTotalSalesAmount.Text);
-                Decimal cashAmount = 0;
-                Decimal nonCashAmount = 0;
-                Decimal changeAmount = Convert.ToDecimal(textBoxChangeAmount.Text);
-
-                var cashPayType = from d in payTypes where d.Code.Equals("CASH") == true select d;
-                if (cashPayType.Any())
-                {
-                    cashAmount = cashPayType.FirstOrDefault().Amount;
-                }
-
-                var nonCashPayType = from d in payTypes where d.Code.Equals("CASH") == false select d;
-                if (nonCashPayType.Any())
-                {
-                    nonCashAmount = nonCashPayType.Sum(d => d.Amount);
-                }
-
-                Boolean isValidTender = false;
-                String invalidTenderMessage = "";
-
-                if (cashAmount > 0)
-                {
-                    if (cashAmount >= changeAmount)
-                    {
-                        isValidTender = true;
-                    }
-                    else
-                    {
-                        invalidTenderMessage = "Cash amount must be greater than the change amount.";
-                    }
-                }
-                else
-                {
-                    if (cashAmount == 0)
-                    {
-                        if (nonCashAmount == salesAmount)
-                        {
-                            isValidTender = true;
-                        }
-                        else
-                        {
-                            invalidTenderMessage = "Non-cash amount must be equal to the sales amount.";
-                        }
-                    }
-                    else
-                    {
-                        invalidTenderMessage = "Cash amount must not below zero.";
-                    }
-                }
-
-                if (isValidTender == true)
-                {
-                    buttonTender.Enabled = true;
-                    CreateCollection(null);
-                }
-                else
-                {
-                    buttonTender.Enabled = false;
-                    MessageBox.Show(invalidTenderMessage, "Easy POS", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                buttonTender.Enabled = true;
+                CreateCollection(null);
             }
         }
-        
+
         public void CreateCollection(Image facepayCapturedImage)
         {
             List<Entities.TrnCollectionLineEntity> listCollectionLine = new List<Entities.TrnCollectionLineEntity>();
@@ -203,32 +225,67 @@ namespace EasyPOS.Forms.Software.TrnPOS
                         salesReturnSalesId = Convert.ToInt32(row.Cells[6].Value);
                     }
 
-                    if (Convert.ToDecimal(row.Cells[4].Value) > 0)
+                    Controllers.TrnSalesLineController trnSalesLineController = new Controllers.TrnSalesLineController();
+                    Boolean hasDefective = trnSalesLineController.HasDefective(trnSalesEntity.Id);
+                    if (hasDefective == false)
                     {
-                        String checkDate = null;
-                        //if (row.Cells[9].Value != null)
-                        //{
-                        //    checkDate = row.Cells[9].Value.ToString();
-                        //}
-                        
-                        listCollectionLine.Add(new Entities.TrnCollectionLineEntity()
+                        if (Convert.ToDecimal(row.Cells[4].Value) > 0)
                         {
-                            Amount = Convert.ToDecimal(row.Cells[4].Value),
-                            PayTypeId = Convert.ToInt32(row.Cells[0].Value),
-                            CheckNumber = row.Cells[8].Value != null ? row.Cells[8].Value.ToString() : "NA",
-                            CheckDate = checkDate != null ? checkDate : DateTime.Now.ToString(),
-                            CheckBank = row.Cells[10].Value != null ? row.Cells[10].Value.ToString() : "NA",
-                            CreditCardVerificationCode = row.Cells[11].Value != null ? row.Cells[11].Value.ToString() : "NA",
-                            CreditCardNumber = row.Cells[14].Value != null ? row.Cells[14].Value.ToString() : "NA",
-                            CreditCardType = row.Cells[15].Value != null ? row.Cells[15].Value.ToString() : "NA",
-                            CreditCardBank = row.Cells[16].Value != null ? row.Cells[16].Value.ToString() : "NA",
-                            GiftCertificateNumber = row.Cells[18].Value != null ? row.Cells[18].Value.ToString() : "NA",
-                            OtherInformation = row.Cells[5].Value != null ? row.Cells[5].Value.ToString() : "NA",
-                            SalesReturnSalesId = salesReturnSalesId,
-                            CreditCardReferenceNumber = row.Cells[12].Value != null ? row.Cells[12].Value.ToString() : "NA",
-                            CreditCardHolderName = row.Cells[13].Value != null ? row.Cells[13].Value.ToString() : "NA",
-                            CreditCardExpiry = row.Cells[17].Value != null ? row.Cells[17].Value.ToString() : "NA"
-                        });
+                            String checkDate = null;
+                            //if (row.Cells[9].Value != null)
+                            //{
+                            //    checkDate = row.Cells[9].Value.ToString();
+                            //}
+
+                            listCollectionLine.Add(new Entities.TrnCollectionLineEntity()
+                            {
+                                Amount = Convert.ToDecimal(row.Cells[4].Value),
+                                PayTypeId = Convert.ToInt32(row.Cells[0].Value),
+                                CheckNumber = row.Cells[8].Value != null ? row.Cells[8].Value.ToString() : "NA",
+                                CheckDate = checkDate != null ? checkDate : DateTime.Now.ToString(),
+                                CheckBank = row.Cells[10].Value != null ? row.Cells[10].Value.ToString() : "NA",
+                                CreditCardVerificationCode = row.Cells[11].Value != null ? row.Cells[11].Value.ToString() : "NA",
+                                CreditCardNumber = row.Cells[14].Value != null ? row.Cells[14].Value.ToString() : "NA",
+                                CreditCardType = row.Cells[15].Value != null ? row.Cells[15].Value.ToString() : "NA",
+                                CreditCardBank = row.Cells[16].Value != null ? row.Cells[16].Value.ToString() : "NA",
+                                GiftCertificateNumber = row.Cells[18].Value != null ? row.Cells[18].Value.ToString() : "NA",
+                                OtherInformation = row.Cells[5].Value != null ? row.Cells[5].Value.ToString() : "NA",
+                                SalesReturnSalesId = salesReturnSalesId,
+                                CreditCardReferenceNumber = row.Cells[12].Value != null ? row.Cells[12].Value.ToString() : "NA",
+                                CreditCardHolderName = row.Cells[13].Value != null ? row.Cells[13].Value.ToString() : "NA",
+                                CreditCardExpiry = row.Cells[17].Value != null ? row.Cells[17].Value.ToString() : "NA"
+                            });
+                        }
+                    }
+                    else
+                    {
+                        if(Convert.ToDecimal(row.Cells[0].Value) == 1)
+                        {
+                            String checkDate = null;
+                            //if (row.Cells[9].Value != null)
+                            //{
+                            //    checkDate = row.Cells[9].Value.ToString();
+                            //}
+
+                            listCollectionLine.Add(new Entities.TrnCollectionLineEntity()
+                            {
+                                Amount = Convert.ToDecimal(row.Cells[4].Value),
+                                PayTypeId = Convert.ToInt32(row.Cells[0].Value),
+                                CheckNumber = row.Cells[8].Value != null ? row.Cells[8].Value.ToString() : "NA",
+                                CheckDate = checkDate != null ? checkDate : DateTime.Now.ToString(),
+                                CheckBank = row.Cells[10].Value != null ? row.Cells[10].Value.ToString() : "NA",
+                                CreditCardVerificationCode = row.Cells[11].Value != null ? row.Cells[11].Value.ToString() : "NA",
+                                CreditCardNumber = row.Cells[14].Value != null ? row.Cells[14].Value.ToString() : "NA",
+                                CreditCardType = row.Cells[15].Value != null ? row.Cells[15].Value.ToString() : "NA",
+                                CreditCardBank = row.Cells[16].Value != null ? row.Cells[16].Value.ToString() : "NA",
+                                GiftCertificateNumber = row.Cells[18].Value != null ? row.Cells[18].Value.ToString() : "NA",
+                                OtherInformation = row.Cells[5].Value != null ? row.Cells[5].Value.ToString() : "NA",
+                                SalesReturnSalesId = salesReturnSalesId,
+                                CreditCardReferenceNumber = row.Cells[12].Value != null ? row.Cells[12].Value.ToString() : "NA",
+                                CreditCardHolderName = row.Cells[13].Value != null ? row.Cells[13].Value.ToString() : "NA",
+                                CreditCardExpiry = row.Cells[17].Value != null ? row.Cells[17].Value.ToString() : "NA"
+                            });
+                        }
                     }
                 }
             }
@@ -261,7 +318,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
                             }
                             else if (Modules.SysCurrentModule.GetCurrentSettings().CollectionReport == "Delivery Receipt")
                             {
-                                new TrnPOSDeliveryReceiptReportForm("", StockWithdrawalReport(trnSalesEntity.Id), true,false, true);
+                                new TrnPOSDeliveryReceiptReportForm("", StockWithdrawalReport(trnSalesEntity.Id), true, false, true);
                             }
                             else
                             {
@@ -463,7 +520,7 @@ namespace EasyPOS.Forms.Software.TrnPOS
 
                 //if (dataGridViewTenderPayType.CurrentRow.Cells[1].Value.ToString() == "CREDIT CARD")
                 //{
-                    TenderSales();
+                TenderSales();
                 //}
             }
             catch (Exception ex)

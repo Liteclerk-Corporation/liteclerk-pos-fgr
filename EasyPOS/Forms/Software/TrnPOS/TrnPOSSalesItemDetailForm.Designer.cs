@@ -60,6 +60,9 @@
             this.textBoxSalesLineRemarks = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.comboBoxDefectiveNo = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBoxDefectiveInvoiceNo = new System.Windows.Forms.TextBox();
             this.comboBoxTradeInNo = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.textBoxTradeInAmount = new System.Windows.Forms.TextBox();
@@ -424,11 +427,11 @@
             // textBoxSalesLineRemarks
             // 
             this.textBoxSalesLineRemarks.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.textBoxSalesLineRemarks.Location = new System.Drawing.Point(458, 176);
+            this.textBoxSalesLineRemarks.Location = new System.Drawing.Point(458, 249);
             this.textBoxSalesLineRemarks.Margin = new System.Windows.Forms.Padding(2);
             this.textBoxSalesLineRemarks.Multiline = true;
             this.textBoxSalesLineRemarks.Name = "textBoxSalesLineRemarks";
-            this.textBoxSalesLineRemarks.Size = new System.Drawing.Size(392, 312);
+            this.textBoxSalesLineRemarks.Size = new System.Drawing.Size(392, 239);
             this.textBoxSalesLineRemarks.TabIndex = 12;
             this.textBoxSalesLineRemarks.TabStop = false;
             // 
@@ -436,7 +439,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.label13.Location = new System.Drawing.Point(454, 148);
+            this.label13.Location = new System.Drawing.Point(455, 214);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(209, 28);
@@ -445,6 +448,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.comboBoxDefectiveNo);
+            this.panel2.Controls.Add(this.label16);
+            this.panel2.Controls.Add(this.textBoxDefectiveInvoiceNo);
             this.panel2.Controls.Add(this.comboBoxTradeInNo);
             this.panel2.Controls.Add(this.label15);
             this.panel2.Controls.Add(this.textBoxTradeInAmount);
@@ -481,6 +487,43 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(860, 505);
             this.panel2.TabIndex = 31;
+            // 
+            // comboBoxDefectiveNo
+            // 
+            this.comboBoxDefectiveNo.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.comboBoxDefectiveNo.FormattingEnabled = true;
+            this.comboBoxDefectiveNo.Location = new System.Drawing.Point(579, 136);
+            this.comboBoxDefectiveNo.Margin = new System.Windows.Forms.Padding(2);
+            this.comboBoxDefectiveNo.Name = "comboBoxDefectiveNo";
+            this.comboBoxDefectiveNo.Size = new System.Drawing.Size(269, 36);
+            this.comboBoxDefectiveNo.TabIndex = 34;
+            this.comboBoxDefectiveNo.DropDown += new System.EventHandler(this.comboBoxDefectiveNo_DropDown);
+            this.comboBoxDefectiveNo.TextUpdate += new System.EventHandler(this.comboBoxDefectiveNo_TextUpdate);
+            this.comboBoxDefectiveNo.DropDownClosed += new System.EventHandler(this.comboBoxDefectiveNo_DropDownClosed);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.label16.Location = new System.Drawing.Point(449, 144);
+            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(133, 28);
+            this.label16.TabIndex = 36;
+            this.label16.Text = "Defective No.:";
+            // 
+            // textBoxDefectiveInvoiceNo
+            // 
+            this.textBoxDefectiveInvoiceNo.Enabled = false;
+            this.textBoxDefectiveInvoiceNo.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.textBoxDefectiveInvoiceNo.Location = new System.Drawing.Point(580, 178);
+            this.textBoxDefectiveInvoiceNo.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxDefectiveInvoiceNo.Name = "textBoxDefectiveInvoiceNo";
+            this.textBoxDefectiveInvoiceNo.ReadOnly = true;
+            this.textBoxDefectiveInvoiceNo.Size = new System.Drawing.Size(269, 34);
+            this.textBoxDefectiveInvoiceNo.TabIndex = 35;
+            this.textBoxDefectiveInvoiceNo.TabStop = false;
+            this.textBoxDefectiveInvoiceNo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // comboBoxTradeInNo
             // 
@@ -603,5 +646,8 @@
         private System.Windows.Forms.ComboBox comboBoxTradeInNo;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBoxTradeInAmount;
+        private System.Windows.Forms.ComboBox comboBoxDefectiveNo;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textBoxDefectiveInvoiceNo;
     }
 }
