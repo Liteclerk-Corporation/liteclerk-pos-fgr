@@ -1,5 +1,5 @@
 ﻿{
-  "DataSource": "EGGSY\\SQLEXPRESS",
+  "DataSource": "localhost",
   "InitialCatalog": "liteclerk_fgr",
   "UserId": "sa",
   "Password": "easyfis"

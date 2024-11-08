@@ -640,6 +640,8 @@ namespace EasyPOS.Controllers
                     PostCode = null,
                     IsDelivery = false,
                     DeliveryType = "Paid",
+                    TradeInDiscount = 0,
+                    TradeInId = 0
                 };
 
                 db.TrnSales.InsertOnSubmit(newSales);
